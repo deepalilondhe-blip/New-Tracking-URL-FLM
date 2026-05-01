@@ -1,0 +1,25 @@
+{
+  "name": "new-tracking-url",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:ftd": "playwright test tests/brands/ftd.test.js",
+    "test:all": "playwright test tests/brands/",
+    "setup:sheets": "node utils/setupSheets.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.59.1"
+  },
+  "dependencies": {
+    "axios": "^1.15.2",
+    "dotenv": "^17.4.2",
+    "googleapis": "^171.4.0",
+    "xml2js": "^0.6.2"
+  }
+}
