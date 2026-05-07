@@ -116,11 +116,10 @@ async function appendRowByHeader(sheetName, rowData) {
       rowData.step3 || 'N/A'
     ];
 
-    await sheets.spreadsheets.values.append({
+    const response = await sheets.spreadsheets.values.append({
       spreadsheetId: process.env.GOOGLE_SHEET_ID,
       range: `${sheetName}!A:V`,
       valueInputOption: 'USER_ENTERED',
-      insertDataOption: 'INSERT_ROWS',
       requestBody: {
         values: [formattedRow]
       }
@@ -138,7 +137,27 @@ async function appendRowByHeader(sheetName, rowData) {
       spreadsheetId: process.env.GOOGLE_SHEET_ID,
       requestBody: {
         requests: [
-          // ✅ 1. Header Row Styling (Dark Navy Blue + White Bold Text)
+          // ✅ 1. Reset Data Cells to White Background + Black Text (Clearing any inherited header formats)
+          {
+            repeatCell: {
+              range: { sheetId, startRowIndex: 1, endRowIndex: 1000, startColumnIndex: 0, endColumnIndex: 22 },
+              cell: {
+                userEnteredFormat: {
+                  backgroundColor: { red: 1, green: 1, blue: 1 },
+                  textFormat: {
+                    foregroundColor: { red: 0, green: 0, blue: 0 },
+                    bold: false,
+                    fontSize: 10
+                  },
+                  horizontalAlignment: 'CENTER',
+                  verticalAlignment: 'MIDDLE'
+                }
+              },
+              fields: 'userEnteredFormat(backgroundColor,textFormat,horizontalAlignment,verticalAlignment)'
+            }
+          },
+
+          // ✅ 2. Header Row Styling (Dark Navy Blue + White Bold Text)
           {
             repeatCell: {
               range: { sheetId, startRowIndex: 0, endRowIndex: 1, startColumnIndex: 0, endColumnIndex: 22 },
@@ -155,7 +174,7 @@ async function appendRowByHeader(sheetName, rowData) {
             }
           },
 
-          // ✅ 2. Zebra Striping Pattern (Light Blue even rows)
+          // ✅ 3. Zebra Striping Pattern (Light Blue even rows)
           {
             addConditionalFormatRule: {
               rule: {
