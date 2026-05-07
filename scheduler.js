@@ -16,11 +16,6 @@ const runnerScripts = [
   'run-fsi-ppc2-mobile.js',
   'run-fsi-ppc2-tablet.js',
 
-  // 3. Guardian Tax Relief
-  'run-guardian-tr.js',
-  'run-guardian-tr-mobile.js',
-  'run-guardian-tr-tablet.js',
-
   // 4. TRA-CPL
   'run-tra-cpl.js',
   'run-tra-cpl-mobile.js',

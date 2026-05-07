@@ -312,63 +312,93 @@ class FormPage {
         postStateCounter++;
       }
 
-      // ===== STEP: NAME & CONTACT INFO =====
+      // ===== STEP: NAME & CONTACT INFO (Unbreakable Dynamic Step-based Loop) =====
       await this.waitForSpinner();
-      console.log('🔘 Filling Contact Info');
+      console.log('🔘 Filling Contact Info (Dynamic Loop)...');
 
-      // First Name
-      try {
-        const fName = this.page.locator('#first_name:visible, input[name="first_name"]:visible').first();
-        await fName.waitFor({ state: 'visible', timeout: 5000 });
-        await fName.click();
-        await fName.fill(firstName);
-        await this.page.keyboard.press('Tab');
-        console.log(`✅ First Name filled: ${firstName}`);
-      } catch (e) {
-        console.warn('⚠️ First Name input failed or not found:', e.message);
-      }
+      let contactSafetyCounter = 0;
+      let lastFilledState = "";
+      while (contactSafetyCounter < 10) {
+        await this.waitForSpinner();
 
-      // Last Name
-      try {
-        const lName = this.page.locator('#last_name:visible, input[name="last_name"]:visible').first();
-        await lName.waitFor({ state: 'visible', timeout: 4000 });
-        await lName.click();
-        await lName.fill(lastName);
-        await this.page.keyboard.press('Tab');
-        console.log(`✅ Last Name filled: ${lastName}`);
-      } catch (e) {
-        console.warn('⚠️ Last Name input failed or not found:', e.message);
-      }
+        let filledSomething = false;
 
-      // Email
-      await this.waitForSpinner();
-      try {
+        // First Name
+        const fName = this.page.locator('#first_name:visible, input[name="first_name"]:visible, input[placeholder*="First Name" i]:visible').first();
+        if (await fName.isVisible({ timeout: 500 }).catch(() => false)) {
+          const currentVal = await fName.inputValue().catch(() => '');
+          if (!currentVal || currentVal !== firstName) {
+            await fName.click();
+            await fName.fill(firstName);
+            await this.page.keyboard.press('Tab');
+            console.log(`✅ Filled First Name: ${firstName}`);
+            filledSomething = true;
+          }
+        }
+
+        // Last Name
+        const lName = this.page.locator('#last_name:visible, input[name="last_name"]:visible, input[placeholder*="Last Name" i]:visible').first();
+        if (await lName.isVisible({ timeout: 500 }).catch(() => false)) {
+          const currentVal = await lName.inputValue().catch(() => '');
+          if (!currentVal || currentVal !== lastName) {
+            await lName.click();
+            await lName.fill(lastName);
+            await this.page.keyboard.press('Tab');
+            console.log(`✅ Filled Last Name: ${lastName}`);
+            filledSomething = true;
+          }
+        }
+
+        // Email
         const emailField = this.page.locator('#email:visible, #email_address:visible, input[name="email"]:visible, input[name="email_address"]:visible, input[type="email"]:visible, input[placeholder*="Email" i]:visible').first();
-        await emailField.waitFor({ state: 'visible', timeout: 5000 });
-        await emailField.click();
-        await emailField.fill(email);
-        await this.page.keyboard.press('Tab');
-        console.log(`✅ Email filled: ${email}`);
-      } catch (e) {
-        console.warn('⚠️ Email input failed or not found:', e.message);
-      }
+        if (await emailField.isVisible({ timeout: 500 }).catch(() => false)) {
+          const currentVal = await emailField.inputValue().catch(() => '');
+          if (!currentVal || currentVal !== email) {
+            await emailField.click();
+            await emailField.fill(email);
+            await this.page.keyboard.press('Tab');
+            console.log(`✅ Filled Email: ${email}`);
+            filledSomething = true;
+          }
+        }
 
-      await this.clickNextButton('.next-btn3, .next-btn4, .btn-next');
-
-      // Phone
-      await this.waitForSpinner();
-      try {
+        // Phone
         const phoneField = this.page.locator('#primary_phone:visible, #phone:visible, #phone_home:visible, input[name="phone"]:visible, input[name="phone_home"]:visible, input[name="primary_phone"]:visible, input[type="tel"]:visible').first();
-        await phoneField.waitFor({ state: 'visible', timeout: 5000 });
-        await phoneField.click();
-        await phoneField.fill(phone);
-        await this.page.keyboard.press('Tab');
-        console.log(`✅ Phone filled: ${phone}`);
-      } catch (e) {
-        console.warn('⚠️ Phone input failed or not found:', e.message);
-      }
+        if (await phoneField.isVisible({ timeout: 500 }).catch(() => false)) {
+          const currentVal = await phoneField.inputValue().catch(() => '');
+          if (!currentVal || currentVal !== phone) {
+            await phoneField.click();
+            await phoneField.fill(phone);
+            await this.page.keyboard.press('Tab');
+            console.log(`✅ Filled Phone: ${phone}`);
+            filledSomething = true;
+          }
+        }
 
-      await this.clickNextButton('.next-btn4, .next-btn5, .btn-next');
+        // Click next/submit button if visible on this contact sub-step
+        const nextBtn = this.page.locator('.btn-next:visible, .next-btn:visible, .next-btn3:visible, .next-btn4:visible, .next-btn5:visible, button:has-text("NEXT"):visible, button:has-text("Next"):visible, button:has-text("Submit"):visible, button:has-text("Continue"):visible, input[type="submit"]:visible, .emailbtn:visible, .namebtn:visible').first();
+        
+        if (await nextBtn.isVisible({ timeout: 1000 }).catch(() => false)) {
+          const btnText = await nextBtn.textContent().catch(() => 'Next');
+          const currentUrl = this.page.url();
+          const currentState = `${currentUrl}_${btnText}`;
+          
+          if (!filledSomething && currentState === lastFilledState) {
+            console.log('🔘 Contact form stable (no new fields to fill). Exiting contact loop.');
+            break;
+          }
+          
+          lastFilledState = currentState;
+          console.log(`🔘 Clicking active contact NEXT/SUBMIT button...`);
+          await nextBtn.click({ force: true }).catch(() => {});
+          await this.page.waitForTimeout(2000);
+        } else {
+          console.log('🔘 No active contact NEXT/SUBMIT button visible. Exiting loop.');
+          break;
+        }
+
+        contactSafetyCounter++;
+      }
 
       // ===== STEP 6: SOURCE / HOW DID YOU HEAR (If present) =====
       await this.waitForSpinner();

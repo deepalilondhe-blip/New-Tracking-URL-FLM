@@ -671,87 +671,104 @@ class MobileFormPage {
         postStateCounter++;
       }
 
-      // ===== STEP 3: CONTACT INFORMATION (Adaptive Flat or Wizard layout) =====
+      // ===== STEP 3: CONTACT INFORMATION (Unbreakable Dynamic Step-based Loop) =====
       await this.waitForSpinner();
-      console.log('🔘 [Mobile] Step 3: Filling Contact Info (Adaptive Stepwise)');
+      console.log('🔘 [Mobile] Step 3: Filling Contact Info (Dynamic Loop)...');
 
-      // 1. First Name
-      try {
-        const fName = this.page.locator('#first_name, input[name="first_name"]').first();
-        if (await fName.isVisible({ timeout: 2000 })) {
-          await fName.evaluate((node, val) => { 
-            node.value = val; 
-            node.dispatchEvent(new Event('input', { bubbles: true })); 
-            node.dispatchEvent(new Event('change', { bubbles: true }));
-          }, firstName);
-          console.log(`✅ [Mobile] First Name filled: ${firstName}`);
-          
-          // Check if Last Name is also visible on this exact same step
-          const lName = this.page.locator('#last_name, input[name="last_name"]').first();
-          if (!(await lName.isVisible({ timeout: 1000 }))) {
-            console.log('🔘 [Mobile] Last Name not on first name step, advancing...');
-            await this.clickNextButton('.next-btn3, .next-btn4, .next-btn');
+      let contactSafetyCounter = 0;
+      let lastFilledState = "";
+      while (contactSafetyCounter < 10) {
+        await this.waitForSpinner();
+        await this.injectDeviceFrame();
+
+        let filledSomething = false;
+
+        // First Name
+        const fName = this.page.locator('#first_name, input[name="first_name"], input[placeholder*="First Name" i]').first();
+        if (await fName.isVisible({ timeout: 500 }).catch(() => false)) {
+          const currentVal = await fName.inputValue().catch(() => '');
+          if (!currentVal || currentVal !== firstName) {
+            await fName.evaluate((node, val) => {
+              node.value = val;
+              node.dispatchEvent(new Event('input', { bubbles: true }));
+              node.dispatchEvent(new Event('change', { bubbles: true }));
+            }, firstName);
+            console.log(`✅ [Mobile] Filled First Name: ${firstName}`);
+            filledSomething = true;
           }
         }
-      } catch (e) {
-        console.warn('⚠️ [Mobile] First Name check skipped:', e.message);
-      }
 
-      // 2. Last Name
-      await this.waitForSpinner();
-      try {
-        const lName = this.page.locator('#last_name, input[name="last_name"]').first();
-        if (await lName.isVisible({ timeout: 2000 })) {
-          await lName.evaluate((node, val) => { 
-            node.value = val; 
-            node.dispatchEvent(new Event('input', { bubbles: true })); 
-            node.dispatchEvent(new Event('change', { bubbles: true }));
-          }, lastName);
-          console.log(`✅ [Mobile] Last Name filled: ${lastName}`);
-          
-          // Check if Email is also visible on this exact same step
-          const emailField = this.page.locator('#email, #email_address, input[name="email"], input[name="email_address"], input[type="email"], input[placeholder*="Email"]').first();
-          if (!(await emailField.isVisible({ timeout: 1000 }))) {
-            console.log('🔘 [Mobile] Email not on last name step, advancing...');
-            await this.clickNextButton('.next-btn3, .next-btn4, .next-btn');
+        // Last Name
+        const lName = this.page.locator('#last_name, input[name="last_name"], input[placeholder*="Last Name" i]').first();
+        if (await lName.isVisible({ timeout: 500 }).catch(() => false)) {
+          const currentVal = await lName.inputValue().catch(() => '');
+          if (!currentVal || currentVal !== lastName) {
+            await lName.evaluate((node, val) => {
+              node.value = val;
+              node.dispatchEvent(new Event('input', { bubbles: true }));
+              node.dispatchEvent(new Event('change', { bubbles: true }));
+            }, lastName);
+            console.log(`✅ [Mobile] Filled Last Name: ${lastName}`);
+            filledSomething = true;
           }
         }
-      } catch (e) {
-        console.warn('⚠️ [Mobile] Last Name check skipped:', e.message);
-      }
 
-      // 3. Email
-      await this.waitForSpinner();
-      try {
-        const emailField = this.page.locator('#email, #email_address, input[name="email"], input[name="email_address"], input[type="email"], input[placeholder*="Email"]').first();
-        if (await emailField.isVisible({ timeout: 2000 })) {
-          await emailField.evaluate((node, val) => { 
-            node.value = val; 
-            node.dispatchEvent(new Event('input', { bubbles: true })); 
-            node.dispatchEvent(new Event('change', { bubbles: true }));
-          }, email);
-          console.log(`✅ [Mobile] Email filled: ${email}`);
-          await this.clickNextButton('.next-btn3, .next-btn4, .next-btn');
+        // Email
+        const emailField = this.page.locator('#email, #email_address, input[name="email"], input[name="email_address"], input[type="email"], input[placeholder*="Email" i]').first();
+        if (await emailField.isVisible({ timeout: 500 }).catch(() => false)) {
+          const currentVal = await emailField.inputValue().catch(() => '');
+          if (!currentVal || currentVal !== email) {
+            await emailField.evaluate((node, val) => {
+              node.value = val;
+              node.dispatchEvent(new Event('input', { bubbles: true }));
+              node.dispatchEvent(new Event('change', { bubbles: true }));
+            }, email);
+            console.log(`✅ [Mobile] Filled Email: ${email}`);
+            filledSomething = true;
+          }
         }
-      } catch (e) {
-        console.warn('⚠️ [Mobile] Email check skipped:', e.message);
-      }
 
-      // 4. Phone Number
-      await this.waitForSpinner();
-      try {
+        // Phone
         const phoneField = this.page.locator('#primary_phone, #phone, #phone_home, input[name="phone"], input[name="phone_home"], input[name="primary_phone"], input[type="tel"]').first();
-        if (await phoneField.isVisible({ timeout: 2000 })) {
-          await phoneField.evaluate((node, val) => { 
-            node.value = val; 
-            node.dispatchEvent(new Event('input', { bubbles: true })); 
-            node.dispatchEvent(new Event('change', { bubbles: true }));
-          }, phone);
-          console.log(`✅ [Mobile] Phone filled: ${phone}`);
-          await this.clickNextButton('.next-btn4, .next-btn5, .next-btn');
+        if (await phoneField.isVisible({ timeout: 500 }).catch(() => false)) {
+          const currentVal = await phoneField.inputValue().catch(() => '');
+          if (!currentVal || currentVal !== phone) {
+            await phoneField.evaluate((node, val) => {
+              node.value = val;
+              node.dispatchEvent(new Event('input', { bubbles: true }));
+              node.dispatchEvent(new Event('change', { bubbles: true }));
+            }, phone);
+            console.log(`✅ [Mobile] Filled Phone: ${phone}`);
+            filledSomething = true;
+          }
         }
-      } catch (e) {
-        console.warn('⚠️ [Mobile] Phone check skipped:', e.message);
+
+        // Click next/submit button if visible on this contact sub-step
+        const visibleSelector = '.btn-next:visible, .next-btn:visible, .next-btn3:visible, .next-btn4:visible, .next-btn5:visible, button:has-text("NEXT"):visible, button:has-text("Next"):visible, button:has-text("Submit"):visible, button:has-text("Continue"):visible, input[type="submit"]:visible, .emailbtn:visible, .namebtn:visible';
+        const nextBtn = this.page.locator(visibleSelector).first();
+        
+        if (await nextBtn.isVisible({ timeout: 1000 }).catch(() => false)) {
+          const btnText = await nextBtn.textContent().catch(() => 'Next');
+          const currentUrl = this.page.url();
+          const currentState = `${currentUrl}_${btnText}`;
+          
+          if (!filledSomething && currentState === lastFilledState) {
+            console.log('🔘 [Mobile] Contact form stable (no new fields to fill). Exiting contact loop.');
+            break;
+          }
+          
+          lastFilledState = currentState;
+          console.log(`🔘 [Mobile] Clicking active contact NEXT/SUBMIT button...`);
+          await nextBtn.evaluate(node => node.click()).catch(async () => {
+            await nextBtn.tap({ force: true }).catch(() => {});
+          });
+          await this.page.waitForTimeout(2000);
+        } else {
+          console.log('🔘 [Mobile] No active contact NEXT/SUBMIT button visible. Exiting loop.');
+          break;
+        }
+
+        contactSafetyCounter++;
       }
 
       // ===== STEP 4: ADAPTIVE MOBILE SUBMIT SCAN =====
