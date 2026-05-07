@@ -1,0 +1,60 @@
+name: Automation Scheduler
+
+on:
+  schedule:
+    - cron: '0 */2 * * *' # Automatically execute every 2 hours
+  workflow_dispatch: # Allows manual trigger from the Actions tab on GitHub website
+
+jobs:
+  run-automation:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci || npm install
+
+      - name: Install Playwright Chromium Browser
+        run: npx playwright install --with-deps chromium
+
+      - name: Build Environment Configuration File
+        run: |
+          echo "FIRST_API_BASE_URL=http://app.forwardleapmarketing.com/api/1/get.asmx/LeadInfo" >> .env
+          echo "FIRST_API_KEY=${{ secrets.FIRST_API_KEY }}" >> .env
+          echo "VERTICAL_ID=2" >> .env
+          echo "SECOND_API_URL_STANDARD=https://flm-utility.com/api-qa-automation-hostgator/getData.php" >> .env
+          echo "SECOND_API_URL_SENIOR=https://everesttaxrelief.net/api-qa-automation-atwohosting/getData.php" >> .env
+          echo "GOOGLE_SHEET_ID=1rXIg3dMQ4APH3lHLcfWYfP45PnOAKmV9POkoSS3YWxI" >> .env
+          echo "GOOGLE_SERVICE_ACCOUNT_FILE=service-account-creds.json" >> .env
+          echo "TEST_FIRST_NAME=ckmtestpixel" >> .env
+          echo "TEST_LAST_NAME=ckmtestpixel" >> .env
+          echo "TEST_EMAIL=ckmtestpixel@gmail.com" >> .env
+          echo "SCHEDULER_INTERVAL_HOURS=2" >> .env
+          echo "SMTP_HOST=smtp.gmail.com" >> .env
+          echo "SMTP_PORT=587" >> .env
+          echo "SMTP_SECURE=false" >> .env
+          echo "SMTP_USER=${{ secrets.SMTP_USER }}" >> .env
+          echo "SMTP_PASS=${{ secrets.SMTP_PASS }}" >> .env
+          echo "REPORT_EMAIL_RECIPIENT=${{ secrets.REPORT_EMAIL_RECIPIENT }}" >> .env
+          
+          # Write service account creds from JSON secret
+          echo '${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}' > service-account-creds.json
+
+      - name: Execute Automation Suite
+        run: node scheduler.js --once
+
+      - name: Save Execution Videos & Traces as Artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: campaign-videos-and-traces
+          path: traces/
+          retention-days: 7
