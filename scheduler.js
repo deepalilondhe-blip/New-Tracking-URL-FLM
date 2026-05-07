@@ -111,14 +111,15 @@ async function sendEmailReport(results, durationMinutes) {
   const port = process.env.SMTP_PORT;
   const user = process.env.SMTP_USER;
   const pass = process.env.SMTP_PASS;
+  const recipient = process.env.REPORT_EMAIL_RECIPIENT || 'deepali.londhe@magnetoitsolutions.com';
 
   if (!host || !port || !user || !pass) {
     console.log('\n⚠️  SMTP settings (SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS) not configured in .env.');
-    console.log('⚠️  Skipping email status report to deepali.londhe@magnetoitsolutions.com.');
+    console.log(`⚠️  Skipping email status report to ${recipient}.`);
     return;
   }
 
-  console.log('\n📧 Sending batch status email report to deepali.londhe@magnetoitsolutions.com...');
+  console.log(`\n📧 Sending batch status email report to ${recipient}...`);
 
   const transporter = nodemailer.createTransport({
     host: host,
@@ -209,7 +210,7 @@ async function sendEmailReport(results, durationMinutes) {
         <!-- Footer -->
         <div style="background-color: #f8fafc; padding: 25px; text-align: center; border-top: 1px solid #e2e8f0; color: #94a3b8; font-size: 13px; line-height: 1.5;">
           <p style="margin: 0;">This is an automated status update compiled from your local lead generation pipeline.</p>
-          <p style="margin: 5px 0 0 0;">Securely sent to: <strong>deepali.londhe@magnetoitsolutions.com</strong></p>
+          <p style="margin: 5px 0 0 0;">Securely sent to: <strong>${recipient}</strong></p>
         </div>
       </div>
     </body>
@@ -219,14 +220,14 @@ async function sendEmailReport(results, durationMinutes) {
   try {
     const info = await transporter.sendMail({
       from: `"Leads Automation Suite" <${user}>`,
-      to: 'deepali.londhe@magnetoitsolutions.com',
+      to: recipient,
       subject: `🔄 Automation Report: [${succeededCount}/${results.length} Passed] - ${formatTimestamp()}`,
       html: htmlBody
     });
 
-    console.log(`✅ Status report email successfully sent to deepali.londhe@magnetoitsolutions.com! (Message ID: ${info.messageId})`);
+    console.log(`✅ Status report email successfully sent to ${recipient}! (Message ID: ${info.messageId})`);
   } catch (error) {
-    console.error('❌ Failed to send status email report via SMTP:', error.message);
+    console.error(`❌ Failed to send status email report via SMTP:`, error.message);
   }
 }
 
