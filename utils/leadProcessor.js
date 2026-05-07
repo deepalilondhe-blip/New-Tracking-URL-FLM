@@ -34,6 +34,42 @@ async function processLead(brandConfig, page) {
   console.log(`🔄 Processing lead for brand: ${brandConfig.name}`);
 
   try {
+    // ===== AUTO-RENAME VIDEO ON CONCLOSE =====
+    const context = page.context();
+    const video = page.video();
+    if (video) {
+      const fs = require('fs');
+      const path = require('path');
+      context.on('close', async () => {
+        try {
+          const videoPath = await video.path().catch(() => null);
+          if (!videoPath) return;
+
+          const ext = path.extname(videoPath) || '.webm';
+          const cleanBrandName = brandConfig.name.replace(/\s+/g, '_');
+          const targetName = `${brandConfig.sheet}_${cleanBrandName}${ext}`;
+          const targetPath = path.join(path.dirname(videoPath), targetName);
+
+          // Wait 2.5 seconds to let Playwright finish writing video buffers and release the file handle
+          setTimeout(() => {
+            try {
+              if (fs.existsSync(videoPath)) {
+                if (fs.existsSync(targetPath)) {
+                  fs.unlinkSync(targetPath); // Remove previous run's video to allow overwrite
+                }
+                fs.renameSync(videoPath, targetPath);
+                console.log(`\n🎥 Video saved as: traces/videos/${targetName}`);
+              }
+            } catch (err) {
+              console.warn('⚠️ Video rename deferred execution failed:', err.message);
+            }
+          }, 2500);
+        } catch (e) {
+          console.warn('⚠️ Could not intercept video file path:', e.message);
+        }
+      });
+    }
+
     const viewport = page.viewportSize();
     const isMobile = viewport && viewport.width < 500;
     const isTablet = viewport && viewport.width >= 500 && viewport.width < 1024;
