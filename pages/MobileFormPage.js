@@ -86,22 +86,7 @@ class MobileFormPage {
             transform: translate3d(0, 0, 0); /* Containing block forces fixed elements to remain inside the device */
           }
 
-          /* Correctly contain and position any fixed-position header or navbar of the target website inside the phone bezel, clear of the notch */
-          #iphone-17-device header,
-          #iphone-17-device .header,
-          #iphone-17-device .navbar,
-          #iphone-17-device [class*="header"],
-          #iphone-17-device [class*="navbar"],
-          #iphone-17-device [style*="position: fixed"],
-          #iphone-17-device [style*="position:fixed"] {
-            position: absolute !important;
-            top: 48px !important; /* Push down to clear the Dynamic Island notch */
-            left: 0 !important;
-            right: 0 !important;
-            width: 100% !important;
-            box-sizing: border-box !important;
-            z-index: 99999 !important; /* Stack below dynamic-island (1000000) but above form content */
-          }
+
 
           /* Dynamic Island Camera Notch */
           #dynamic-island {
@@ -333,22 +318,7 @@ class MobileFormPage {
             border-radius: 10px;
           }
 
-          /* Ensure tablet navbar/headers stay contained nicely */
-          #ipad-device header,
-          #ipad-device .header,
-          #ipad-device .navbar,
-          #ipad-device [class*="header"],
-          #ipad-device [class*="navbar"],
-          #ipad-device [style*="position: fixed"],
-          #ipad-device [style*="position:fixed"] {
-            position: absolute !important;
-            top: 0 !important; /* Sitting nicely at top without notch overlap */
-            left: 0 !important;
-            right: 0 !important;
-            width: 100% !important;
-            box-sizing: border-box !important;
-            z-index: 99999 !important;
-          }
+
         `;
         document.head.appendChild(style);
 
