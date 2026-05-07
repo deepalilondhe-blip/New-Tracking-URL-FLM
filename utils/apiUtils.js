@@ -65,6 +65,52 @@ async function callFirstApi(leadId) {
   return {};
 }
 
+function getDomainNameForBrand(brandName) {
+  const brand = brandName.trim();
+  
+  if (brand.includes('FTD') || brand.includes('Fidelity')) {
+    return 'https://fidelity-tax-defense.net';
+  }
+  if (brand.includes('VTS') || brand.includes('Veterans')) {
+    return 'https://www.veteranstaxservices.com';
+  }
+  if (brand.includes('FSI') || brand.includes('Fresh Start')) {
+    return 'https://www.freshstartinitiative.com';
+  }
+  if (brand.includes('TRA') || brand.includes('PPC') || brand.includes('Advocates')) {
+    return 'https://www.taxreliefadvocates.com';
+  }
+  if (brand.includes('1800') || brand.includes('FTH') || brand.includes('Fresh Tax')) {
+    return 'https://www.1800freshtax.com';
+  }
+  if (brand.includes('SCTR') || brand.includes('Second Chance')) {
+    return 'https://www.secondchancetaxrelief.com';
+  }
+  if (brand.includes('SCTD') || brand.includes('Senior Tax Defence')) {
+    return 'https://www.seniortaxdefence.com';
+  }
+  if (brand.includes('Guardian')) {
+    return 'https://www.guardiantaxrelief.com';
+  }
+  if (brand.includes('Everest')) {
+    return 'https://www.everesttaxrelief.com';
+  }
+  if (brand.includes('Empire')) {
+    return 'https://www.empiretaxrelief.com';
+  }
+  if (brand.includes('Capital')) {
+    return 'https://www.capitaltaxrelief.com';
+  }
+  if (brand.includes('AFTR') || brand.includes('America Fresh')) {
+    return 'https://www.americafreshtaxrelief.com';
+  }
+  if (brand.includes('Premier')) {
+    return 'https://www.premiertaxrelief.com';
+  }
+  
+  return 'https://fidelity-tax-defense.net'; // Default fallback
+}
+
 async function callSecondApi(leadId, domainName) {
   const maxRetries = 2;
   console.log(`📡 Fetching Second API data for Lead ID: ${leadId}...`);
@@ -78,22 +124,37 @@ async function callSecondApi(leadId, domainName) {
         ? process.env.SECOND_API_URL_SENIOR 
         : process.env.SECOND_API_URL_STANDARD;
 
+      const params = new URLSearchParams();
+      if (isSeniorBrand) {
+        params.append('lead_id', leadId);
+      } else {
+        params.append('cake_id', leadId);
+        const resolvedDomain = getDomainNameForBrand(domainName);
+        params.append('domain_name', resolvedDomain);
+        console.log(`📡 Standard Second API Payload: cake_id=${leadId}, domain_name=${resolvedDomain}`);
+      }
+
       const response = await axios.post(apiUrl, 
-        new URLSearchParams({ lead_id: leadId }).toString(),
-        { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
+        params.toString(),
+        { 
+          headers: { 
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+          } 
+        }
       );
 
       const data = response.data || {};
 
       if (data.dbid) {
-        console.log(`✅ Second API Data retrieved on attempt ${attempt}`);
+        console.log(`✅ Second API Data retrieved on attempt ${attempt}: dbid=${data.dbid}`);
         return {
           dbid: data.dbid || '',
           cdbStatus: data.cdb_status || 'FALSE',
           cdbEmail: data.cdb_email || ''
         };
       } else {
-        console.warn(`⚠️  Attempt ${attempt}: Second API returned no DBID`);
+        console.warn(`⚠️  Attempt ${attempt}: Second API returned no DBID. Response:`, JSON.stringify(data));
       }
     } catch (error) {
       console.error(`❌ Second API Attempt ${attempt} failed:`, error.message);
