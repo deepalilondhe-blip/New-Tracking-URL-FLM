@@ -38,6 +38,8 @@ This file keeps track of all 30 lead automation campaigns, their target URLs, Go
 | 28 | **Empire Tax Relief**| `Empire-TR` | `https://jsttrk.com/?a=659&oc=844&c=2689&s1=` | Yes 📱 | Yes 📋 | `run-fth-x.js` (universal) |
 | 29 | **Capital Tax Relief**| `Capital-TR` | `https://jsttrk.com/?a=659&oc=846&c=2691&s1=` | Yes 📱 | Yes 📋 | `run-fth-x.js` (universal) |
 | 30 | **FTH-X** | `FTH-X` | `https://fthmlf-trk.com/?a=659&oc=821&c=81&s1=` | Yes 📱 | Yes 📋 | `run-fth-x.js` (universal) |
+| 31 | **FSI-PPC2** | `FSI-PPC2` | `https://fsimlf-trk.com/?a=659&oc=750&c=143&s1=` | **Yes 📱 (Active)** | **Yes 📋 (Active)** | `run-fsi-ppc2.js` |
+| 32 | **FTD-X** | `FTD-X` | `https://mlfftd.com/?a=659&oc=656&c=167&s1=` | **Yes 📱 (Active)** | **Yes 📋 (Active)** | `run-ftd-x.js` |
 
 ---
 

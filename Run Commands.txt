@@ -1,0 +1,50 @@
+================================================================================
+🚀 LEADS AUTOMATION RUNNER & GIT COMMAND GUIDE
+================================================================================
+
+This guide contains the exact commands to run the automated tracking campaign
+scripts across Chrome Desktop, Mobile (iPhone), and Tablet (iPad), followed by
+helpful Git commands to synchronize your local workspace with GitHub.
+
+--------------------------------------------------------------------------------
+1. 🤖 CAMPAIGN RUN COMMANDS
+--------------------------------------------------------------------------------
+
+📊 FSI-PPC2 Campaign:
+  🔹 Chrome Desktop: node run-fsi-ppc2.js
+  🔹 Mobile iPhone:   node run-fsi-ppc2-mobile.js
+  🔹 Tablet iPad:     node run-fsi-ppc2-tablet.js
+
+📊 FTD-X Campaign (NEW):
+  🔹 Chrome Desktop: node run-ftd-x.js
+  🔹 Mobile iPhone:   node run-ftd-x-mobile.js
+  🔹 Tablet iPad:     node run-ftd-x-tablet.js
+
+*Note: All data from Desktop, Mobile, and Tablet runs will be automatically
+ appended and styled in the exact same sheet tab for that campaign with professional,
+ dark-black text and alternating light-blue zebra lines.
+
+--------------------------------------------------------------------------------
+2. 🐙 GIT COMMANDS FOR SYNCHRONIZATION
+--------------------------------------------------------------------------------
+
+Use these commands to save your changes and upload them to your repository on GitHub:
+
+🔹 Step 1: Stage all changes
+   git add .
+
+🔹 Step 2: Commit your changes with a descriptive message
+   git commit -m "feat: setup FSI-PPC2 campaign runner and formatting self-heal"
+
+🔹 Step 3: Push changes to the remote branch
+   git push origin main
+
+🔹 Step 4: Pull the latest updates from GitHub (in case you made changes on GitHub)
+   git pull origin main
+
+================================================================================
+📁 WORKSPACE & GOOGLE SHEET INFORMATION
+================================================================================
+Spreadsheet: https://docs.google.com/spreadsheets/d/1rXIg3dMQ4APH3lHLcfWYfP45PnOAKmV9POkoSS3YWxI/edit#gid=1177143742
+Repository:  https://github.com/deepalilondhe-blip/new-tracking-url-automation.git
+================================================================================

@@ -48,3 +48,7 @@ https://docs.google.com/spreadsheets/d/1rXIg3dMQ4APH3lHLcfWYfP45PnOAKmV9POkoSS3Y
 11. FSI-PPC2
     - Sheet Tab: FSI-PPC2
     - Tracking URL: https://fsimlf-trk.com/?a=659&oc=750&c=143&s1=
+
+12. FTD-X
+    - Sheet Tab: FTD-X
+    - Tracking URL: https://mlfftd.com/?a=659&oc=656&c=167&s1=

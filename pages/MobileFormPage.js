@@ -474,6 +474,21 @@ class MobileFormPage {
           await this.page.waitForTimeout(1500);
         }
 
+        // Check for range input slider
+        const rangeInput = this.page.locator('input[type="range"]').first();
+        if (await rangeInput.isVisible({ timeout: 1500 })) {
+          console.log('🔘 [Mobile] Found range input slider. Setting value via DOM evaluation...');
+          await rangeInput.evaluate((node, amountVal) => {
+            const cleanVal = amountVal.replace(/[$,\s]/g, '');
+            node.value = cleanVal;
+            node.dispatchEvent(new Event('change', { bubbles: true }));
+            node.dispatchEvent(new Event('input', { bubbles: true }));
+          }, sliderAmount);
+          console.log(`✅ [Mobile] Set range input slider to ${sliderAmount}`);
+          selected = true;
+          await this.page.waitForTimeout(1000);
+        }
+
         if (!selected) {
           const amountStr = sliderAmount.replace(/,/g, '');
           const amountNum = parseInt(amountStr);
@@ -483,118 +498,177 @@ class MobileFormPage {
 
           // Define options for mobile selectors
           const sliderSelectors = [
-          `span:has-text("$${amountK},000")`,
-          `span:has-text("$${amountK}k")`,
-          `span:has-text("$${amountK},000+")`,
-          `label:has-text("$${amountK},000")`,
-          `div:has-text("$${amountK},000")`,
-          `.slider-option:has-text("${amountK},000")`,
-          `[data-value="${amountStr}"]`,
-          `[data-amount="${amountStr}"]`
+            `span:has-text("$${amountK},000")`,
+            `span:has-text("$${amountK}k")`,
+            `span:has-text("$${amountK},000+")`,
+            `label:has-text("$${amountK},000")`,
+            `div:has-text("$${amountK},000")`,
+            `.slider-option:has-text("${amountK},000")`,
+            `[data-value="${amountStr}"]`,
+            `[data-amount="${amountStr}"]`
           ];
-        for (const selector of sliderSelectors) {
-          const option = this.page.locator(selector).first();
-          if (await option.isVisible({ timeout: 1500 })) {
-            // Tap/click the option on mobile view
-            await option.tap({ force: true }).catch(() => option.click({ force: true }));
-            console.log(`✅ [Mobile] Selected debt amount: ${selector}`);
-            selected = true;
-            break;
+          for (const selector of sliderSelectors) {
+            const option = this.page.locator(selector).first();
+            if (await option.isVisible({ timeout: 1500 })) {
+              // Tap/click the option on mobile view
+              await option.tap({ force: true }).catch(() => option.click({ force: true }));
+              console.log(`✅ [Mobile] Selected debt amount: ${selector}`);
+              selected = true;
+              break;
+            }
           }
-        }
 
-        if (!selected) {
-          // Fallback regex scan for mobile layouts
-          const fallbackRegex = new RegExp(`${amountK}.*000`);
-          const fallback = this.page.locator('span, div, label, li').filter({ hasText: fallbackRegex }).first();
-          if (await fallback.isVisible({ timeout: 1500 })) {
-            await fallback.tap({ force: true }).catch(() => fallback.click({ force: true }));
-            console.log('✅ [Mobile] Selected debt amount via regex fallback');
-            selected = true;
+          if (!selected) {
+            // Fallback regex scan for mobile layouts
+            const fallbackRegex = new RegExp(`${amountK}.*000`);
+            const fallback = this.page.locator('span, div, label, li').filter({ hasText: fallbackRegex }).first();
+            if (await fallback.isVisible({ timeout: 1500 })) {
+              await fallback.tap({ force: true }).catch(() => fallback.click({ force: true }));
+              console.log('✅ [Mobile] Selected debt amount via regex fallback');
+              selected = true;
+            }
           }
-        }
 
-        if (!selected) {
-          const debtInput = this.page.locator('#debt_amount, input[name="debt_amount"]').first();
-          if (await debtInput.isVisible({ timeout: 1500 })) {
-            await debtInput.tap().catch(() => debtInput.click());
-            await debtInput.fill(amountStr);
-            console.log(`✅ [Mobile] Inputted debt amount directly: ${amountStr}`);
+          if (!selected) {
+            const debtInput = this.page.locator('#debt_amount, input[name="debt_amount"]').first();
+            if (await debtInput.isVisible({ timeout: 1500 })) {
+              await debtInput.tap().catch(() => debtInput.click());
+              await debtInput.fill(amountStr);
+              console.log(`✅ [Mobile] Inputted debt amount directly: ${amountStr}`);
+            }
           }
-        }
         }
       } catch (e) {
         console.warn('⚠️ [Mobile] Could not complete debt selection:', e.message);
       }
 
-      await this.clickNextButton('.next-btn1');
+      await this.clickNextButton('.next-btn1, .btn-next');
 
-      // ===== STEP: DEBT TYPE (If present) =====
-      await this.waitForSpinner();
-      try {
-        const debtTypeLocator = this.page.locator('.next-btn2:has-text("Federal"), button:has-text("Federal")').first();
-        if (await debtTypeLocator.isVisible({ timeout: 2000 })) {
-          const stepHeader = await this.getVisibleStepHeader();
-          const text = await debtTypeLocator.textContent().catch(() => "Federal");
-          this.step1 = stepHeader ? `${stepHeader}: ${text.trim()}` : `Debt Type: ${text.trim()}`;
-          console.log(`🔘 [Mobile] Step: Selecting Debt Type (${this.step1})`);
-          await debtTypeLocator.tap({ force: true }).catch(() => debtTypeLocator.click({ force: true }));
-          await this.page.waitForTimeout(1000);
-          await this.injectDeviceFrame();
+      // ==================================================
+      // 🔹 DYNAMIC CHOICE/INTERMEDIATE STEPS TRAVERSAL
+      // ==================================================
+      let safetyCounter = 0;
+      let choiceStepCount = 0;
+      while (safetyCounter < 8) {
+        await this.waitForSpinner();
+        const isStateVisible = await this.page.locator('#state:visible, select#state:visible').first().isVisible({ timeout: 1000 }).catch(() => false);
+        const isContactVisible = await this.page.locator('#first_name:visible, input[name="first_name"]:visible').first().isVisible({ timeout: 1000 }).catch(() => false);
+
+        if (isStateVisible || isContactVisible) {
+          console.log('✅ [Mobile] Reached a recognized terminal step (State or Contact). Stopping dynamic traversal.');
+          break;
         }
-      } catch (e) {
-        console.warn('⚠️ [Mobile] Debt Type step check skipped:', e.message);
+
+        // Check if there are any custom/intermediate buttons visible and tap/click them!
+        const choiceSelectors = [
+          '.custom-btn:visible',
+          '.choice-btn:visible',
+          '.choice-box:visible',
+          '.btn-choice:visible',
+          '.form-choice:visible',
+          '.debt-option:visible',
+          'label.custom-control-label:visible',
+          '.option-button:visible',
+          'button:not([type="submit"]):not(:has-text("NEXT")):not(:has-text("Next")):visible',
+          'a.btn:not(:has-text("NEXT")):not(:has-text("Next")):visible'
+        ];
+
+        let clickedChoice = false;
+        for (const selector of choiceSelectors) {
+          const option = this.page.locator(selector).first();
+          if (await option.isVisible({ timeout: 1000 }).catch(() => false)) {
+            const text = await option.textContent().catch(() => 'Choice');
+            const cleanedText = text.trim().replace(/\s+/g, ' ');
+            console.log(`🔘 [Mobile] Dynamic Choice found: clicking "${cleanedText}" (${selector})`);
+            
+            // Record clicked text to step1, step2, step3 columns based on progression
+            if (choiceStepCount === 0) {
+              this.step1 = cleanedText;
+              console.log(`📝 [Mobile] step1 column set to: "${this.step1}"`);
+            } else if (choiceStepCount === 1) {
+              this.step2 = cleanedText;
+              console.log(`📝 [Mobile] step2 column set to: "${this.step2}"`);
+            } else if (choiceStepCount === 2) {
+              this.step3 = cleanedText;
+              console.log(`📝 [Mobile] step3 column set to: "${this.step3}"`);
+            }
+            choiceStepCount++;
+
+            await option.tap({ force: true }).catch(() => option.click({ force: true }));
+            clickedChoice = true;
+            await this.page.waitForTimeout(1500);
+            await this.injectDeviceFrame();
+            break;
+          }
+        }
+
+        if (!clickedChoice) {
+          const nextBtn = this.page.locator('.btn-next:visible, .next-btn:visible, button:has-text("NEXT"):visible, button:has-text("Next"):visible').first();
+          if (await nextBtn.isVisible({ timeout: 1000 }).catch(() => false)) {
+            console.log('🔘 [Mobile] No choices found, but NEXT button is visible. Clicking to advance...');
+            await nextBtn.tap({ force: true }).catch(() => nextBtn.click({ force: true }));
+            await this.page.waitForTimeout(1500);
+            await this.injectDeviceFrame();
+          } else {
+            console.log('⚠️ [Mobile] No visible dynamic choices or next buttons on this step. Ending traversal.');
+            break;
+          }
+        }
+        safetyCounter++;
       }
 
       // ===== STEP 2: STATE SELECTION =====
       await this.waitForSpinner();
-      console.log('🔘 [Mobile] Step 2: Selecting State');
-
-      try {
-        const stateSelect = this.page.locator('#state').first();
-        // Try standard Playwright selectOption first which handles all framework state events perfectly
-        await stateSelect.selectOption({ label: state }, { timeout: 3000 }).catch(async () => {
-          await stateSelect.selectOption({ value: state }, { timeout: 3000 }).catch(async () => {
-            // Fallback to direct DOM evaluation if standard select is hidden
-            await stateSelect.evaluate((node, stateVal) => {
-              const matchedOption = Array.from(node.options).find(opt =>
-                opt.text.toLowerCase().trim() === stateVal.toLowerCase().trim() ||
-                opt.value.toLowerCase().trim() === stateVal.toLowerCase().trim()
-              );
-              if (matchedOption) {
-                node.value = matchedOption.value;
-              } else {
-                node.value = stateVal;
-              }
-              node.dispatchEvent(new Event('change', { bubbles: true }));
-              node.dispatchEvent(new Event('input', { bubbles: true }));
-            }, state);
+      const stateSelect = this.page.locator('#state:visible, select#state:visible, select[name="state"]:visible').first();
+      if (await stateSelect.isVisible({ timeout: 2000 })) {
+        console.log('🔘 [Mobile] Step 2: Selecting State');
+        try {
+          await stateSelect.selectOption({ label: state }, { timeout: 3000 }).catch(async () => {
+            await stateSelect.selectOption({ value: state }, { timeout: 3000 }).catch(async () => {
+              await stateSelect.evaluate((node, stateVal) => {
+                const matchedOption = Array.from(node.options).find(opt =>
+                  opt.text.toLowerCase().trim() === stateVal.toLowerCase().trim() ||
+                  opt.value.toLowerCase().trim() === stateVal.toLowerCase().trim()
+                );
+                if (matchedOption) {
+                  node.value = matchedOption.value;
+                } else {
+                  node.value = stateVal;
+                }
+                node.dispatchEvent(new Event('change', { bubbles: true }));
+                node.dispatchEvent(new Event('input', { bubbles: true }));
+              }, state);
+            });
           });
-        });
-        const stepHeader = await this.getVisibleStepHeader();
-        this.step3 = stepHeader ? `${stepHeader}: ${state}` : `State: ${state}`;
-        console.log(`✅ [Mobile] Selected State: ${this.step3}`);
-      } catch (e) {
-        console.warn('⚠️ [Mobile] State dropdown setting failed, continuing:', e.message);
+          
+          // If step3 has not been set yet, populate it with state
+          if (choiceStepCount < 3) {
+            this.step3 = state;
+            console.log(`📝 [Mobile] step3 column set to State: "${this.step3}"`);
+          }
+        } catch (e) {
+          console.warn('⚠️ [Mobile] State dropdown setting failed, continuing:', e.message);
+        }
+        await this.clickNextButton('.next-btn, .next-btn2, .btn-next');
       }
 
-      await this.clickNextButton('.next-btn, .next-btn2');
-
-      // ===== STEP: MONTHLY INCOME (If present) =====
+      // ===== POST-STATE DYNAMIC STEPS (If any) =====
       await this.waitForSpinner();
-      try {
-        const incomeLocator = this.page.locator('.next-btn3').first();
-        if (await incomeLocator.isVisible({ timeout: 2000 })) {
-          const stepHeader = await this.getVisibleStepHeader();
-          const text = await incomeLocator.textContent().catch(() => "Less than $4,000");
-          this.step2 = stepHeader ? `${stepHeader}: ${text.trim()}` : `Monthly Income: ${text.trim()}`;
-          console.log(`🔘 [Mobile] Step: Selecting Monthly Income (${this.step2})`);
-          await incomeLocator.tap({ force: true }).catch(() => incomeLocator.click({ force: true }));
-          await this.page.waitForTimeout(1000);
+      let postStateCounter = 0;
+      while (postStateCounter < 3) {
+        const isContactVisible = await this.page.locator('#first_name, input[name="first_name"]').first().isVisible({ timeout: 1000 }).catch(() => false);
+        if (isContactVisible) break;
+
+        const nextBtn = this.page.locator('.btn-next, .next-btn, button:has-text("NEXT"), button:has-text("Next")').first();
+        if (await nextBtn.isVisible({ timeout: 1000 })) {
+          console.log('🔘 [Mobile] Advancing past post-state step...');
+          await nextBtn.tap({ force: true }).catch(() => nextBtn.click({ force: true }));
+          await this.page.waitForTimeout(1500);
           await this.injectDeviceFrame();
+        } else {
+          break;
         }
-      } catch (e) {
-        console.warn('⚠️ [Mobile] Monthly Income step check skipped:', e.message);
+        postStateCounter++;
       }
 
       // ===== STEP 3: CONTACT INFORMATION (Adaptive Flat or Wizard layout) =====

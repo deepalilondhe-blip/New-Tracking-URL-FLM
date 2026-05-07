@@ -4,7 +4,7 @@ require('dotenv').config();
 const SHEET_NAMES = [
   "PPC", "TRA-DT3", "TRA-CPL", "PPC-ST", "PPC-ST2",
   "PPC-M/CA", "PPC-CR", "TRA-CPM", "Guardian Tax Relief", "PPC-FS",
-  "FSI-PPC2"
+  "FSI-PPC2", "FTD-X"
 ];
 
 const HEADERS = [
@@ -42,10 +42,11 @@ async function setupSheets() {
       const existingSheet = existingSheets.find(s => s.properties.title === sheetName);
       
       if (existingSheet) {
-        sheetId = existingSheet.properties.sheetId;
-        console.log(`Tab ${sheetName} already exists, updating headers...`);
-      } else {
-        console.log(`Creating tab: ${sheetName}...`);
+        console.log(`Tab ${sheetName} already exists, skipping...`);
+        continue;
+      }
+      
+      console.log(`Creating tab: ${sheetName}...`);
         
         // Create new sheet
         const createResponse = await sheets.spreadsheets.batchUpdate({
@@ -64,7 +65,6 @@ async function setupSheets() {
 
         // Get actual sheetId from Google response
         sheetId = createResponse.data.replies[0].addSheet.properties.sheetId;
-      }
 
       // Perform ALL formatting in ONE single batch request
       const requests = [

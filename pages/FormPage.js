@@ -114,6 +114,21 @@ class FormPage {
           await this.page.waitForTimeout(1500);
         }
 
+        // Check for range input slider
+        const rangeInput = this.page.locator('input[type="range"]').first();
+        if (await rangeInput.isVisible({ timeout: 1500 })) {
+          console.log('🔘 Found range input slider. Setting value via DOM evaluation...');
+          await rangeInput.evaluate((node, amountVal) => {
+            const cleanVal = amountVal.replace(/[$,\s]/g, '');
+            node.value = cleanVal;
+            node.dispatchEvent(new Event('change', { bubbles: true }));
+            node.dispatchEvent(new Event('input', { bubbles: true }));
+          }, sliderAmount);
+          console.log(`✅ Set range input slider to ${sliderAmount}`);
+          selected = true;
+          await this.page.waitForTimeout(1000);
+        }
+
         if (!selected) {
           const amountStr = sliderAmount.replace(/,/g, '');
           const amountNum = parseInt(amountStr);
@@ -128,68 +143,132 @@ class FormPage {
 
           // Dynamically create selectors for actual slider amount
           const sliderSelectors = [
-          `span:has-text("$${amountK},000")`,
-          `span:has-text("$${amountK}k")`,
-          `span:has-text("$${amountK},000+")`,
-          `label:has-text("$${amountK},000")`,
-          `div:has-text("$${amountK},000")`,
-          `.slider-option:has-text("${amountK},000")`,
-          `[data-value="${amountStr}"]`,
-          `[data-amount="${amountStr}"]`,
-          `span:has-text("$1,000")`,
-          `span:has-text("$1k")`
-        ];
+            `span:has-text("$${amountK},000")`,
+            `span:has-text("$${amountK}k")`,
+            `span:has-text("$${amountK},000+")`,
+            `label:has-text("$${amountK},000")`,
+            `div:has-text("$${amountK},000")`,
+            `.slider-option:has-text("${amountK},000")`,
+            `[data-value="${amountStr}"]`,
+            `[data-amount="${amountStr}"]`,
+            `span:has-text("$1,000")`,
+            `span:has-text("$1k")`
+          ];
 
-        for (const selector of sliderSelectors) {
-          const option = this.page.locator(selector).first();
-          if (await option.isVisible({ timeout: 1500 })) {
-            await option.click({ force: true });
-            console.log(`✅ Selected debt amount via selector: ${selector}`);
-            selected = true;
-            break;
+          for (const selector of sliderSelectors) {
+            const option = this.page.locator(selector).first();
+            if (await option.isVisible({ timeout: 1500 })) {
+              await option.click({ force: true });
+              console.log(`✅ Selected debt amount via selector: ${selector}`);
+              selected = true;
+              break;
+            }
           }
-        }
 
-        if (!selected) {
-          // Last resort: find any element containing the actual amount
-          const fallbackRegex = new RegExp(`${amountK}.*000`);
-          const fallback = this.page.locator('span, div, label, li').filter({ hasText: fallbackRegex }).first();
-          if (await fallback.isVisible({ timeout: 1500 })) {
-            await fallback.click({ force: true });
-            console.log('✅ Selected debt amount via regex fallback');
-            selected = true;
+          if (!selected) {
+            // Last resort: find any element containing the actual amount
+            const fallbackRegex = new RegExp(`${amountK}.*000`);
+            const fallback = this.page.locator('span, div, label, li').filter({ hasText: fallbackRegex }).first();
+            if (await fallback.isVisible({ timeout: 1500 })) {
+              await fallback.click({ force: true });
+              console.log('✅ Selected debt amount via regex fallback');
+              selected = true;
+            }
           }
-        }
 
-        if (!selected) {
-          const debtInput = this.page.locator('#debt_amount, input[name="debt_amount"]').first();
-          if (await debtInput.isVisible({ timeout: 1500 })) {
-            await debtInput.fill(amountStr);
-            console.log(`✅ Filled debt_amount input with ${amountStr}`);
+          if (!selected) {
+            const debtInput = this.page.locator('#debt_amount, input[name="debt_amount"]').first();
+            if (await debtInput.isVisible({ timeout: 1500 })) {
+              await debtInput.fill(amountStr);
+              console.log(`✅ Filled debt_amount input with ${amountStr}`);
+            }
           }
-        }
         }
       } catch (e) {
         console.warn('⚠️ Could not select debt amount:', e.message);
       }
-      await this.clickNextButton('.next-btn1');
+      await this.clickNextButton('.next-btn1, .btn-next');
 
-      // ===== STEP: DEBT TYPE (If present) =====
+      // ==================================================
+      // 🔹 DYNAMIC CHOICE/INTERMEDIATE STEPS TRAVERSAL
+      // ==================================================
+      // This loops through any visible intermediate question/choice screens
+      // until we land on the State or Contact form page!
+      let safetyCounter = 0;
+      let choiceStepCount = 0;
+      while (safetyCounter < 8) {
+        await this.waitForSpinner();
+        const isStateVisible = await this.page.locator('#state:visible, select#state:visible').first().isVisible({ timeout: 1000 }).catch(() => false);
+        const isContactVisible = await this.page.locator('#first_name:visible, input[name="first_name"]:visible').first().isVisible({ timeout: 1000 }).catch(() => false);
+
+        if (isStateVisible || isContactVisible) {
+          console.log('✅ Reached a recognized terminal step (State or Contact). Stopping dynamic traversal.');
+          break;
+        }
+
+        // Check if there are any custom/intermediate buttons visible and click them!
+        const choiceSelectors = [
+          '.custom-btn:visible',
+          '.choice-btn:visible',
+          '.choice-box:visible',
+          '.btn-choice:visible',
+          '.form-choice:visible',
+          '.debt-option:visible',
+          'label.custom-control-label:visible',
+          '.option-button:visible',
+          'button:not([type="submit"]):not(:has-text("NEXT")):not(:has-text("Next")):visible',
+          'a.btn:not(:has-text("NEXT")):not(:has-text("Next")):visible'
+        ];
+
+        let clickedChoice = false;
+        for (const selector of choiceSelectors) {
+          const option = this.page.locator(selector).first();
+          if (await option.isVisible({ timeout: 1000 }).catch(() => false)) {
+            const text = await option.textContent().catch(() => 'Choice');
+            const cleanedText = text.trim().replace(/\s+/g, ' ');
+            console.log(`🔘 Dynamic Choice found: clicking "${cleanedText}" (${selector})`);
+            
+            // Record clicked text to step1, step2, step3 columns based on progression
+            if (choiceStepCount === 0) {
+              this.step1 = cleanedText;
+              console.log(`📝 step1 column set to: "${this.step1}"`);
+            } else if (choiceStepCount === 1) {
+              this.step2 = cleanedText;
+              console.log(`📝 step2 column set to: "${this.step2}"`);
+            } else if (choiceStepCount === 2) {
+              this.step3 = cleanedText;
+              console.log(`📝 step3 column set to: "${this.step3}"`);
+            }
+            choiceStepCount++;
+
+            await option.click({ force: true }).catch(() => {});
+            clickedChoice = true;
+            await this.page.waitForTimeout(1500);
+            break; // Break selector loop to check the step state again
+          }
+        }
+
+        if (!clickedChoice) {
+          // If no custom button is found, check if a generic Next button is visible to skip/advance
+          const nextBtn = this.page.locator('.btn-next:visible, .next-btn:visible, button:has-text("NEXT"):visible, button:has-text("Next"):visible').first();
+          if (await nextBtn.isVisible({ timeout: 1000 }).catch(() => false)) {
+            console.log('🔘 No choices found, but NEXT button is visible. Clicking to advance...');
+            await nextBtn.click().catch(() => {});
+            await this.page.waitForTimeout(1500);
+          } else {
+            console.log('⚠️ No visible dynamic choices or next buttons on this step. Ending traversal.');
+            break;
+          }
+        }
+        safetyCounter++;
+      }
+
+      // ===== STATE STEP (If present) =====
       await this.waitForSpinner();
-      const debtTypeLocator = this.page.locator('.next-btn2:has-text("Federal"), button:has-text("Federal")').first();
-      if (await debtTypeLocator.isVisible({ timeout: 2000 })) {
-        const stepHeader = await this.getVisibleStepHeader();
-        const text = await debtTypeLocator.textContent().catch(() => "Federal");
-        this.step1 = stepHeader ? `${stepHeader}: ${text.trim()}` : `Debt Type: ${text.trim()}`;
-        console.log(`🔘 Step: Selecting Debt Type (${this.step1})`);
-        await debtTypeLocator.click();
-        await this.page.waitForTimeout(800);
-      } else {
-        // ===== STEP 2: STATE (Fallback if Debt Type not there) =====
-        console.log('🔘 Step 2: Selecting State');
+      const stateSelect = this.page.locator('#state:visible, select#state:visible, select[name="state"]:visible').first();
+      if (await stateSelect.isVisible({ timeout: 2000 })) {
+        console.log('🔘 Step: Selecting State');
         try {
-          const stateSelect = this.page.locator('#state').first();
-          // Select option directly on the underlying select tag via DOM evaluation (supports hidden elements)
           await stateSelect.evaluate((node, stateVal) => {
             const matchedOption = Array.from(node.options).find(opt => 
               opt.text.toLowerCase().trim() === stateVal.toLowerCase().trim() || 
@@ -203,25 +282,34 @@ class FormPage {
             node.dispatchEvent(new Event('change', { bubbles: true }));
             node.dispatchEvent(new Event('input', { bubbles: true }));
           }, state);
-          const stepHeader = await this.getVisibleStepHeader();
-          this.step3 = stepHeader ? `${stepHeader}: ${state}` : `State: ${state}`;
-          console.log(`✅ Selected State: ${this.step3}`);
+          
+          // If step3 has not been set yet, populate it with state
+          if (choiceStepCount < 3) {
+            this.step3 = state;
+            console.log(`📝 step3 column set to State: "${this.step3}"`);
+          }
         } catch (e) {
           console.warn('⚠️ State selection DOM evaluation failed:', e.message);
         }
-        await this.clickNextButton('.next-btn, .next-btn2');
+        await this.clickNextButton('.next-btn, .next-btn2, .btn-next');
       }
 
-      // ===== STEP: MONTHLY INCOME (If present) =====
+      // ===== POST-STATE DYNAMIC STEPS (If any) =====
       await this.waitForSpinner();
-      const incomeLocator = this.page.locator('.next-btn3').first();
-      if (await incomeLocator.isVisible({ timeout: 2000 })) {
-        const stepHeader = await this.getVisibleStepHeader();
-        const text = await incomeLocator.textContent().catch(() => "Less than $4,000");
-        this.step2 = stepHeader ? `${stepHeader}: ${text.trim()}` : `Monthly Income: ${text.trim()}`;
-        console.log(`🔘 Step: Selecting Monthly Income (${this.step2})`);
-        await incomeLocator.click();
-        await this.page.waitForTimeout(800);
+      let postStateCounter = 0;
+      while (postStateCounter < 3) {
+        const isContactVisible = await this.page.locator('#first_name:visible, input[name="first_name"]:visible').first().isVisible({ timeout: 1000 }).catch(() => false);
+        if (isContactVisible) break;
+
+        const nextBtn = this.page.locator('.btn-next:visible, .next-btn:visible, button:has-text("NEXT"):visible, button:has-text("Next"):visible').first();
+        if (await nextBtn.isVisible({ timeout: 1000 })) {
+          console.log('🔘 Advancing past post-state step...');
+          await nextBtn.click().catch(() => {});
+          await this.page.waitForTimeout(1500);
+        } else {
+          break;
+        }
+        postStateCounter++;
       }
 
       // ===== STEP: NAME & CONTACT INFO =====
@@ -230,7 +318,7 @@ class FormPage {
 
       // First Name
       try {
-        const fName = this.page.locator('#first_name, input[name="first_name"]').first();
+        const fName = this.page.locator('#first_name:visible, input[name="first_name"]:visible').first();
         await fName.waitFor({ state: 'visible', timeout: 5000 });
         await fName.click();
         await fName.fill(firstName);
@@ -242,7 +330,7 @@ class FormPage {
 
       // Last Name
       try {
-        const lName = this.page.locator('#last_name, input[name="last_name"]').first();
+        const lName = this.page.locator('#last_name:visible, input[name="last_name"]:visible').first();
         await lName.waitFor({ state: 'visible', timeout: 4000 });
         await lName.click();
         await lName.fill(lastName);
@@ -255,7 +343,7 @@ class FormPage {
       // Email
       await this.waitForSpinner();
       try {
-        const emailField = this.page.locator('#email, #email_address, input[name="email"], input[name="email_address"], input[type="email"], input[placeholder*="Email"]').first();
+        const emailField = this.page.locator('#email:visible, #email_address:visible, input[name="email"]:visible, input[name="email_address"]:visible, input[type="email"]:visible, input[placeholder*="Email" i]:visible').first();
         await emailField.waitFor({ state: 'visible', timeout: 5000 });
         await emailField.click();
         await emailField.fill(email);
@@ -265,12 +353,12 @@ class FormPage {
         console.warn('⚠️ Email input failed or not found:', e.message);
       }
 
-      await this.clickNextButton('.next-btn3, .next-btn4');
+      await this.clickNextButton('.next-btn3, .next-btn4, .btn-next');
 
       // Phone
       await this.waitForSpinner();
       try {
-        const phoneField = this.page.locator('#primary_phone, #phone, #phone_home, input[name="phone"], input[name="phone_home"], input[name="primary_phone"], input[type="tel"]').first();
+        const phoneField = this.page.locator('#primary_phone:visible, #phone:visible, #phone_home:visible, input[name="phone"]:visible, input[name="phone_home"]:visible, input[name="primary_phone"]:visible, input[type="tel"]:visible').first();
         await phoneField.waitFor({ state: 'visible', timeout: 5000 });
         await phoneField.click();
         await phoneField.fill(phone);
@@ -280,7 +368,7 @@ class FormPage {
         console.warn('⚠️ Phone input failed or not found:', e.message);
       }
 
-      await this.clickNextButton('.next-btn4, .next-btn5');
+      await this.clickNextButton('.next-btn4, .next-btn5, .btn-next');
 
       // ===== STEP 6: SOURCE / HOW DID YOU HEAR (If present) =====
       await this.waitForSpinner();
@@ -350,7 +438,7 @@ class FormPage {
         await this.page.waitForTimeout(1500);
       } else {
         // Fallback to generic next if specific class not found
-        const genericNext = this.page.locator('button:has-text("NEXT"), button:has-text("Next"), a:has-text("NEXT"), a:has-text("Next"), div:has-text("NEXT"), div:has-text("Next"), .next-btn, .next-btn1, .next-btn2, .next-btn3, .next-btn4, .next-btn5').first();
+        const genericNext = this.page.locator('button:has-text("NEXT"), button:has-text("Next"), a:has-text("NEXT"), a:has-text("Next"), div:has-text("NEXT"), div:has-text("Next"), .next-btn, .next-btn1, .next-btn2, .next-btn3, .next-btn4, .next-btn5, .btn-next').first();
         if (await genericNext.isVisible({ timeout: 2000 })) {
           console.log('🔘 Clicking generic NEXT button');
           await genericNext.click().catch(async () => {
