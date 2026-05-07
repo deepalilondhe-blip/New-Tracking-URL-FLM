@@ -44,3 +44,7 @@ https://docs.google.com/spreadsheets/d/1rXIg3dMQ4APH3lHLcfWYfP45PnOAKmV9POkoSS3Y
 10. PPC-FS
     - Sheet Tab: PPC-FS
     - Tracking URL: https://flmtra.com/?a=659&oc=841&c=2210&s1=
+
+11. FSI-PPC2
+    - Sheet Tab: FSI-PPC2
+    - Tracking URL: https://fsimlf-trk.com/?a=659&oc=750&c=143&s1=

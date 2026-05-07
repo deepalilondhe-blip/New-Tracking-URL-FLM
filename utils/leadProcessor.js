@@ -66,18 +66,30 @@ async function processLead(brandConfig, page) {
     }
     console.log(`📱 Device Type detected: ${deviceType}`);
 
+    let leadIdToUse = leadId;
+    let hasLeadId = true;
+
     if (!leadId) {
-      throw new Error('Lead ID not found in thank you URL');
+      console.warn('⚠️ No Lead ID found. This is likely a duplicate lead submission redirected to a static thank you page. Using DUPLICATE fallback.');
+      leadIdToUse = 'DUPLICATE';
+      hasLeadId = false;
     }
 
-    console.log(`✅ Lead captured: ${leadId}`);
+    console.log(`✅ Lead captured: ${leadIdToUse}`);
 
     // ==================================================
     // 🔹 STAGE 2: FIRST API CALL (GET XML)
     // ==================================================
     // Endpoint: CAKE XML API
     // Extracts: Affiliate, Campaign ID, Income, State, Neustar status, Pixel fired
-    const firstApiData = await callFirstApi(leadId);
+    let firstApiData = { affiliateId: '', campaignId: '', income: '', state: '', phone: '', neustar: '', neustarDisposition: '', pixelFired: 'false' };
+    if (hasLeadId) {
+      try {
+        firstApiData = await callFirstApi(leadIdToUse);
+      } catch (e) {
+        console.warn('⚠️ First API fetch failed:', e.message);
+      }
+    }
 
     // ==================================================
     // 🔹 STAGE 3: SECOND API CALL (POST JSON)
@@ -87,9 +99,9 @@ async function processLead(brandConfig, page) {
     let secondApiData = { dbid: '', cdbStatus: '', cdbEmail: '' };
 
     // Skip second API for brands that don't support it
-    if (!brandConfig.skipSecondApi) {
+    if (hasLeadId && !brandConfig.skipSecondApi) {
       try {
-        secondApiData = await callSecondApi(leadId, brandConfig.name);
+        secondApiData = await callSecondApi(leadIdToUse, brandConfig.name);
       } catch (e) {
         console.log(`⚠️  Second API skipped for ${brandConfig.name}`);
       }
@@ -109,7 +121,7 @@ async function processLead(brandConfig, page) {
       cakeIncome: firstApiData.income || '',
       state: firstApiData.state || '',
       phone: firstApiData.phone || '',
-      leadId: leadId,
+      leadId: leadIdToUse,
       dbid: secondApiData.dbid || '',
       thankYouUrl: thankYouUrl,
       pageOrigin: brandConfig.url,

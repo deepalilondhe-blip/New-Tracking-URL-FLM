@@ -2,13 +2,9 @@ const { google } = require('googleapis');
 require('dotenv').config();
 
 const SHEET_NAMES = [
-  "FTD", "VTS-Original", "VTS-NE-Branded", "Original",
-  "SCTR-Secondary", "1800-FTH-Main", "1800-FTH-AFR",
-  "SCTD-Main", "FSI-MAIN", "FTD-PPC2", "TRA-CPL", "PPC",
-  "PPC-ST", "PPC-ST2", "PPC-S2", "PPC-M/CA", "PPC-MCA", "PPC-FS", "PPC-CR",
-  "AFTR", "TRA-CPM", "Premier-TR", "FTH-Q", "TRA-DT3",
-  "SCTR-Main", "1800-FTH-CPC", "Guardian-TR", "Guardian Tax Relief", "Everest-TR",
-  "SCTD-Alt", "Empire-TR", "Capital-TR"
+  "PPC", "TRA-DT3", "TRA-CPL", "PPC-ST", "PPC-ST2",
+  "PPC-M/CA", "PPC-CR", "TRA-CPM", "Guardian Tax Relief", "PPC-FS",
+  "FSI-PPC2"
 ];
 
 const HEADERS = [

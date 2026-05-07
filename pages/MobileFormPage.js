@@ -434,14 +434,55 @@ class MobileFormPage {
       console.log(`🔘 [Mobile] Step 1: Selecting Debt Amount (${sliderAmount})`);
 
       try {
-        const amountStr = sliderAmount.replace(/,/g, '');
-        const amountNum = parseInt(amountStr);
-        // For this form with 10k step increments, round to nearest 10,000 for slider selection
-        // Note: We still pass the actual requested value to Google Sheets and API
-        const amountK = Math.round(amountNum / 10000) * 10;
+        let selected = false;
 
-        // Define options for mobile selectors
-        const sliderSelectors = [
+        const taxDebtSelect = this.page.locator('select#tax_debt').first();
+        if (await taxDebtSelect.isVisible({ timeout: 2000 })) {
+          console.log('🔘 [Mobile] Found select#tax_debt dropdown. Selecting option...');
+          await taxDebtSelect.evaluate((node, amountVal) => {
+            const cleanVal = amountVal.replace(/[$,\s]/g, '').toLowerCase();
+            let optionToSelect;
+            
+            if (cleanVal.includes('0-9999') || cleanVal.includes('09999') || parseInt(cleanVal) < 10000) {
+              optionToSelect = Array.from(node.options).find(opt => opt.value === '0-9999' || opt.text.includes('0 - $9,999'));
+            } else if (cleanVal.includes('10000-19999') || cleanVal.includes('1000019999') || (parseInt(cleanVal) >= 10000 && parseInt(cleanVal) < 20000)) {
+              optionToSelect = Array.from(node.options).find(opt => opt.value === '10000-19999' || opt.text.includes('10,000 - $19,999'));
+            } else if (cleanVal.includes('20000-50000') || cleanVal.includes('2000050000') || (parseInt(cleanVal) >= 20000 && parseInt(cleanVal) < 50000)) {
+              optionToSelect = Array.from(node.options).find(opt => opt.value === '20000-50000' || opt.text.includes('20,000 - $50,000'));
+            } else if (cleanVal.includes('50000') || cleanVal.includes('50000+') || parseInt(cleanVal) >= 50000) {
+              optionToSelect = Array.from(node.options).find(opt => opt.value === '50000+' || opt.text.includes('50,000 or more') || opt.text.includes('50,000+'));
+            }
+            
+            if (!optionToSelect) {
+              optionToSelect = Array.from(node.options).find(opt => 
+                opt.text.toLowerCase().includes(cleanVal) || opt.value.toLowerCase().includes(cleanVal)
+              );
+            }
+            
+            if (optionToSelect) {
+              node.value = optionToSelect.value;
+            } else {
+              node.selectedIndex = node.options.length - 1; // Default to last option (50000+)
+            }
+            
+            node.dispatchEvent(new Event('change', { bubbles: true }));
+            node.dispatchEvent(new Event('input', { bubbles: true }));
+          }, sliderAmount);
+          
+          console.log(`✅ [Mobile] Selected option from select#tax_debt dropdown for amount: ${sliderAmount}`);
+          selected = true;
+          await this.page.waitForTimeout(1500);
+        }
+
+        if (!selected) {
+          const amountStr = sliderAmount.replace(/,/g, '');
+          const amountNum = parseInt(amountStr);
+          // For this form with 10k step increments, round to nearest 10,000 for slider selection
+          // Note: We still pass the actual requested value to Google Sheets and API
+          const amountK = Math.round(amountNum / 10000) * 10;
+
+          // Define options for mobile selectors
+          const sliderSelectors = [
           `span:has-text("$${amountK},000")`,
           `span:has-text("$${amountK}k")`,
           `span:has-text("$${amountK},000+")`,
@@ -450,9 +491,7 @@ class MobileFormPage {
           `.slider-option:has-text("${amountK},000")`,
           `[data-value="${amountStr}"]`,
           `[data-amount="${amountStr}"]`
-        ];
-
-        let selected = false;
+          ];
         for (const selector of sliderSelectors) {
           const option = this.page.locator(selector).first();
           if (await option.isVisible({ timeout: 1500 })) {
@@ -482,6 +521,7 @@ class MobileFormPage {
             await debtInput.fill(amountStr);
             console.log(`✅ [Mobile] Inputted debt amount directly: ${amountStr}`);
           }
+        }
         }
       } catch (e) {
         console.warn('⚠️ [Mobile] Could not complete debt selection:', e.message);
