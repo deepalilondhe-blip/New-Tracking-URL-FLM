@@ -492,9 +492,12 @@ class MobileFormPage {
         if (!selected) {
           const amountStr = sliderAmount.replace(/,/g, '');
           const amountNum = parseInt(amountStr);
-          // For this form with 10k step increments, round to nearest 10,000 for slider selection
-          // Note: We still pass the actual requested value to Google Sheets and API
-          const amountK = Math.round(amountNum / 10000) * 10;
+          let amountK;
+          if (amountNum === 1000) {
+            amountK = 1;
+          } else {
+            amountK = Math.round(amountNum / 1000);
+          }
 
           // Define options for mobile selectors
           const sliderSelectors = [
