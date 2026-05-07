@@ -55,6 +55,28 @@ Use these commands to save your changes and upload them to your repository on Gi
    git pull origin main
 
 ================================================================================
+🎥 HOW TO ACCESS AND VIEW RUN VIDEOS & TRACES
+================================================================================
+
+All automation runs record full-length high-definition videos and tracing files of the emulated browser screen interactions!
+
+🔹 Location of recorded videos:
+  📁 Directory: traces/videos/
+
+🔹 To view a video:
+  1. Open File Explorer and navigate to your project directory.
+  2. Open the 'traces' folder, then double-click 'videos'.
+  3. Double-click any of the '.webm' video files. 
+  4. They can be played instantly in any modern web browser (Google Chrome, Edge) or media player (VLC).
+
+🔹 Location of execution trace logs:
+  📁 Directory: traces/ (saved as zip files, e.g., FTD_X_Desktop.zip)
+
+🔹 To view the rich Playwright timeline trace:
+  Run this command in terminal to load the full visual execution timeline with screenshots:
+  👉 npx playwright show-trace traces/FTD_X_Desktop.zip
+
+================================================================================
 📁 WORKSPACE & GOOGLE SHEET INFORMATION
 ================================================================================
 Spreadsheet: https://docs.google.com/spreadsheets/d/1rXIg3dMQ4APH3lHLcfWYfP45PnOAKmV9POkoSS3YWxI/edit#gid=1177143742
