@@ -25,7 +25,19 @@ helpful Git commands to synchronize your local workspace with GitHub.
  dark-black text and alternating light-blue zebra lines.
 
 --------------------------------------------------------------------------------
-2. 🐙 GIT COMMANDS FOR SYNCHRONIZATION
+2. 🔄 RECURRING BATCH SCHEDULER (AUTOMATION)
+--------------------------------------------------------------------------------
+
+To run ALL campaigns across all device modes (Desktop, Mobile, Tablet) sequentially 
+and automatically repeat every 2 hours:
+
+  🔹 Run Scheduler: node scheduler.js
+
+  *The scheduler will run all active campaigns sequentially to conserve system resources
+   and memory, and will repeat at the interval specified in `.env` (SCHEDULER_INTERVAL_HOURS).
+
+--------------------------------------------------------------------------------
+3. 🐙 GIT COMMANDS FOR SYNCHRONIZATION
 --------------------------------------------------------------------------------
 
 Use these commands to save your changes and upload them to your repository on GitHub:
