@@ -27,5 +27,6 @@ module.exports = [
   { name: "Everest Tax Relief", url: "https://mlf-trk.com/?a=659&oc=812&c=2498&s1=", sheet: "Everest-TR" },
   { name: "Senior Tax Defence 2", url: "https://flmtrk.com/?a=659&oc=831&c=2599&s1=", sheet: "SCTD-Alt" },
   { name: "Empire Tax Relief", url: "https://jsttrk.com/?a=659&oc=844&c=2689&s1=", sheet: "Empire-TR" },
-  { name: "Capital Tax Relief", url: "https://jsttrk.com/?a=659&oc=846&c=2691&s1=", sheet: "Capital-TR" }
+  { name: "Capital Tax Relief", url: "https://jsttrk.com/?a=659&oc=846&c=2691&s1=", sheet: "Capital-TR" },
+  { name: "FTH-X", url: "https://fthmlf-trk.com/?a=659&oc=821&c=81&s1=", sheet: "FTH-X" }
 ];
