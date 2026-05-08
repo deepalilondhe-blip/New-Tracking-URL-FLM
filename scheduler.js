@@ -4,58 +4,21 @@ const fs = require('fs');
 const nodemailer = require('nodemailer');
 require('dotenv').config();
 
-// Configuration: List of all active campaign runners in sequence
+// Configuration: List of all 13 core campaign runners in sequence
 const runnerScripts = [
-  // 1. FTD-X
   'run-ftd-x.js',
-  'run-ftd-x-mobile.js',
-  'run-ftd-x-tablet.js',
-
-  // 2. FSI-PPC2
   'run-fsi-ppc2.js',
-  'run-fsi-ppc2-mobile.js',
-  'run-fsi-ppc2-tablet.js',
-
-  // 4. TRA-CPL
   'run-tra-cpl.js',
-  'run-tra-cpl-mobile.js',
-  'run-tra-cpl-tablet.js',
-
-  // 5. TRA-D3 (TRA-DT3)
   'run-tra-d3.js',
-  'run-tra-d3-mobile.js',
-  'run-tra-d3-tablet.js',
-
-  // 6. PPC-ST
   'run-ppc-st.js',
-  'run-ppc-st-mobile.js',
-  'run-ppc-st-tablet.js',
-
-  // 7. PPC-ST2
   'run-ppc-st2.js',
-  'run-ppc-st2-mobile.js',
-  'run-ppc-st2-tablet.js',
-
-  // 8. PPC-M/CA
+  'run-ppc-st2-api.js',
   'run-ppc-m-ca.js',
-  'run-ppc-m-ca-mobile.js',
-  'run-ppc-m-ca-tablet.js',
-
-  // 9. PPC-CR
   'run-ppc-cr.js',
-  'run-ppc-cr-mobile.js',
-  'run-ppc-cr-tablet.js',
-
-  // 10. PPC-FS
   'run-ppc-fs.js',
-  'run-ppc-fs-mobile.js',
-  'run-ppc-fs-tablet.js',
-
-  // 11. PPC (Desktop)
   'run-ppc.js',
-
-  // 12. TRA-CPM (Desktop)
-  'run-tra-cpm.js'
+  'run-tra-cpm.js',
+  'run-fth-x.js'
 ];
 
 // Load Interval from environment variables (default to 2 hours)
@@ -277,8 +240,20 @@ async function runBatch() {
   console.log(`\n⏳ Next automation batch will start at: ${new Date(Date.now() + intervalMs).toLocaleString()}`);
 }
 
-// Start immediately on launch
-runBatch();
+const runOnce = process.argv.includes('--once');
 
-// Schedule recurrences
-setInterval(runBatch, intervalMs);
+// Start immediately on launch
+if (runOnce) {
+  runBatch().then(() => {
+    console.log('🏁 Batch run completed in single-execution mode. Exiting.');
+    process.exit(0);
+  }).catch((err) => {
+    console.error('❌ Batch run encountered an unhandled error:', err);
+    process.exit(1);
+  });
+} else {
+  runBatch();
+
+  // Schedule recurrences
+  setInterval(runBatch, intervalMs);
+}
