@@ -237,6 +237,35 @@ async function runBatch() {
   // Trigger Email Send
   await sendEmailReport(results, durationMinutes);
 
+  // Generate Markdown Summary for GitHub Cloud Summary
+  try {
+    const fs = require('fs');
+    let md = `## 🔄 Leads Automation Batch Report\n\n`;
+    md += `**Executed on:** ${formatTimestamp()}\n\n`;
+    md += `### 📋 Execution Summary\n\n`;
+    md += `| Metric | Value |\n`;
+    md += `| :--- | :--- |\n`;
+    md += `| **Total Run Duration** | ${durationMinutes} Minutes |\n`;
+    md += `| **Total Runners Executed** | ${results.length} |\n`;
+    md += `| **Succeeded Campaigns** | 🟢 ${succeeded} |\n`;
+    md += `| **Failed Campaigns** | 🔴 ${failed} |\n\n`;
+    
+    md += `### 📊 Detailed Campaign Statuses\n\n`;
+    md += `| Campaign Runner | Status | Details / Error Reason |\n`;
+    md += `| :--- | :---: | :--- |\n`;
+    
+    results.forEach(r => {
+      const statusIcon = r.success ? '🟢 PASS' : '🔴 FAIL';
+      const cleanError = r.success ? 'Success' : r.error.replace(/\n/g, ' ');
+      md += `| \`${r.scriptFile}\` | ${statusIcon} | ${cleanError} |\n`;
+    });
+    
+    fs.writeFileSync('execution-summary.md', md);
+    console.log('✅ Generated execution-summary.md for GitHub Cloud Summary');
+  } catch (err) {
+    console.error('⚠️ Failed to generate execution-summary.md:', err.message);
+  }
+
   console.log(`\n⏳ Next automation batch will start at: ${new Date(Date.now() + intervalMs).toLocaleString()}`);
 }
 

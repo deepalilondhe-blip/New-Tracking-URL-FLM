@@ -51,6 +51,15 @@ jobs:
       - name: Execute Automation Suite
         run: xvfb-run --auto-servernum --server-args="-screen 0 1280x1024x24" node scheduler.js --once
 
+      - name: Publish Batch Run Summary to GitHub Actions
+        if: always()
+        run: |
+          if [ -f execution-summary.md ]; then
+            cat execution-summary.md >> $GITHUB_STEP_SUMMARY
+          else
+            echo "## ❌ Automation Execution Failed to Start" >> $GITHUB_STEP_SUMMARY
+          fi
+
       - name: Save Execution Videos & Traces as Artifacts
         if: always()
         uses: actions/upload-artifact@v4
