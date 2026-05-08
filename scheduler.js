@@ -4,19 +4,59 @@ const fs = require('fs');
 const nodemailer = require('nodemailer');
 require('dotenv').config();
 
-// Configuration: List of all 13 core campaign runners in sequence
 const runnerScripts = [
+  // FTD-X (3 Devices)
   'run-ftd-x.js',
+  'run-ftd-x-tablet.js',
+  'run-ftd-x-mobile.js',
+
+  // FSI-PPC2 (3 Devices)
   'run-fsi-ppc2.js',
+  'run-fsi-ppc2-tablet.js',
+  'run-fsi-ppc2-mobile.js',
+
+  // TRA-CPL (3 Devices)
   'run-tra-cpl.js',
+  'run-tra-cpl-tablet.js',
+  'run-tra-cpl-mobile.js',
+
+  // TRA-D3 (3 Devices)
   'run-tra-d3.js',
+  'run-tra-d3-tablet.js',
+  'run-tra-d3-mobile.js',
+
+  // PPC-ST (3 Devices)
   'run-ppc-st.js',
+  'run-ppc-st-tablet.js',
+  'run-ppc-st-mobile.js',
+
+  // PPC-ST2 (3 Devices + API)
   'run-ppc-st2.js',
+  'run-ppc-st2-tablet.js',
+  'run-ppc-st2-mobile.js',
   'run-ppc-st2-api.js',
+
+  // PPC-M/CA (3 Devices)
   'run-ppc-m-ca.js',
+  'run-ppc-m-ca-tablet.js',
+  'run-ppc-m-ca-mobile.js',
+
+  // PPC-CR (3 Devices)
   'run-ppc-cr.js',
+  'run-ppc-cr-tablet.js',
+  'run-ppc-cr-mobile.js',
+
+  // PPC-FS (3 Devices)
   'run-ppc-fs.js',
+  'run-ppc-fs-tablet.js',
+  'run-ppc-fs-mobile.js',
+
+  // PPC (3 Devices)
   'run-ppc.js',
+  'run-ppc-tablet.js',
+  'run-ppc-mobile.js',
+
+  // Other Campaigns (Desktop-Only)
   'run-tra-cpm.js',
   'run-fth-x.js'
 ];
