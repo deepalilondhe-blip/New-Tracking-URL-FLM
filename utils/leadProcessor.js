@@ -176,13 +176,6 @@ async function processLead(brandConfig, page) {
         // Copy video file to clean name
         await video.saveAs(targetPath).catch(() => null);
 
-        // Delete the original messy page@...webm temp file if it still exists
-        if (originalPath && fs.existsSync(originalPath) && originalPath !== targetPath) {
-          try {
-            fs.unlinkSync(originalPath);
-          } catch (e) {}
-        }
-
         console.log(`🎥 Video saved successfully: traces/videos/${targetName}`);
       }
     } catch (e) {
