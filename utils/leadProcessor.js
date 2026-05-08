@@ -34,41 +34,6 @@ async function processLead(brandConfig, page) {
   console.log(`🔄 Processing lead for brand: ${brandConfig.name}`);
 
   try {
-    // ===== AUTO-RENAME VIDEO ON CONCLOSE =====
-    const context = page.context();
-    const video = page.video();
-    if (video) {
-      const fs = require('fs');
-      const path = require('path');
-      context.on('close', async () => {
-        try {
-          const videoPath = await video.path().catch(() => null);
-          if (!videoPath) return;
-
-          const ext = path.extname(videoPath) || '.webm';
-          const cleanBrandName = brandConfig.name.replace(/\s+/g, '_');
-          const targetName = `${brandConfig.sheet}_${cleanBrandName}${ext}`;
-          const targetPath = path.join(path.dirname(videoPath), targetName);
-
-          // Wait 2.5 seconds to let Playwright finish writing video buffers and release the file handle
-          setTimeout(() => {
-            try {
-              if (fs.existsSync(videoPath)) {
-                if (fs.existsSync(targetPath)) {
-                  fs.unlinkSync(targetPath); // Remove previous run's video to allow overwrite
-                }
-                fs.renameSync(videoPath, targetPath);
-                console.log(`\n🎥 Video saved as: traces/videos/${targetName}`);
-              }
-            } catch (err) {
-              console.warn('⚠️ Video rename deferred execution failed:', err.message);
-            }
-          }, 2500);
-        } catch (e) {
-          console.warn('⚠️ Could not intercept video file path:', e.message);
-        }
-      });
-    }
 
     const viewport = page.viewportSize();
     const isMobile = viewport && viewport.width < 500;
@@ -183,6 +148,46 @@ async function processLead(brandConfig, page) {
     }
 
     console.log(`✅ Lead processed successfully for ${brandConfig.name}`);
+
+    // ===== STAGE 5: SAVE VIDEO WITH CAMPAIGN NAME & CLEAN TEMP FILES =====
+    try {
+      const video = page.video();
+      if (video) {
+        const path = require('path');
+        const fs = require('fs');
+        const cleanBrandName = brandConfig.name.replace(/\s+/g, '_');
+        const targetName = `${brandConfig.sheet}_${cleanBrandName}.webm`;
+        const targetPath = path.join(__dirname, '..', 'traces', 'videos', targetName);
+
+        // Ensure target directory exists
+        const dir = path.dirname(targetPath);
+        if (!fs.existsSync(dir)) {
+          fs.mkdirSync(dir, { recursive: true });
+        }
+
+        // Retrieve temp video path before closing
+        const originalPath = await video.path().catch(() => null);
+
+        // Close page & context to flush playwright video stream
+        const context = page.context();
+        await page.close().catch(() => null);
+        await context.close().catch(() => null);
+
+        // Copy video file to clean name
+        await video.saveAs(targetPath).catch(() => null);
+
+        // Delete the original messy page@...webm temp file if it still exists
+        if (originalPath && fs.existsSync(originalPath) && originalPath !== targetPath) {
+          try {
+            fs.unlinkSync(originalPath);
+          } catch (e) {}
+        }
+
+        console.log(`🎥 Video saved successfully: traces/videos/${targetName}`);
+      }
+    } catch (e) {
+      console.warn('⚠️ Could not save custom video file:', e.message);
+    }
 
     return {
       success: true,
