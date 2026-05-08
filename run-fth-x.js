@@ -32,6 +32,9 @@ console.log('✅ Sheet Name: FTH-X');
             sheet: "FTH-X",
             sliderAmount: "9,000",
             state: "Rhode Island",
+            firstName: "ckmtestpixel",
+            lastName: "ckmtestpixel",
+            email: "ckmtestpixel@gmail.com",
             phone: "401-453-0576"
         };
 

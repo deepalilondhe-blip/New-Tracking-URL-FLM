@@ -56,9 +56,15 @@ const runnerScripts = [
   'run-ppc-tablet.js',
   'run-ppc-mobile.js',
 
-  // Other Campaigns (Desktop-Only)
+  // TRA-CPM (3 Devices)
   'run-tra-cpm.js',
-  'run-fth-x.js'
+  'run-tra-cpm-tablet.js',
+  'run-tra-cpm-mobile.js',
+
+  // FTH-X (3 Devices)
+  'run-fth-x.js',
+  'run-fth-x-tablet.js',
+  'run-fth-x-mobile.js'
 ];
 
 // Load Interval from environment variables (default to 2 hours)
