@@ -13,7 +13,7 @@ console.log('✅ Running TRA-D3 test (Updated Data)...');
       name: "TRA-D3",
       url: "https://flmtra.com/?a=659&oc=792&c=2386&s1=",
       sheet: "TRA-DT3",
-      sliderAmount: "40,000",
+      sliderAmount: "10,000",
       state: "IN",
       firstName: "ckmtestpixel",
       lastName: "ckmtestpixel",

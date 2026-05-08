@@ -32,7 +32,7 @@ console.log('💻 This will automatically set Device Type to "M" (Mobile/Tablet)
             name: "TRA-DT3 Tablet",
             url: "https://flmtra.com/?a=659&oc=792&c=2386&s1=",
             sheet: "TRA-DT3",
-            sliderAmount: "42,000",
+            sliderAmount: "10,000",
             state: "Oklahoma",
             phone: "918-792-0557"
         };

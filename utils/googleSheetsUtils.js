@@ -28,7 +28,7 @@ async function appendRowByHeader(sheetName, rowData) {
       if (headersRow.length > 0 && !headersRow.includes("Step 1")) {
         console.log(`📋 Existing sheet ${sheetName} is missing "Step 1" column. Upgrading headers row...`);
         const fullHeaders = [
-          "DateTime", "Type", "Affiliate", "Campaign ID", "Tracking Link",
+          "DateTime", "Type", "Affiliate", "Campaign ID", "Link",
           "Slider Amount", "Cake Income", "State", "Phone", "Lead ID",
           "DBID", "Page Origin", "Thank u URL", "CDB Status", "CDB Email",
           "Neustar", "Neustar Disposition", "Pixel Fired", "Run Date",
@@ -72,7 +72,7 @@ async function appendRowByHeader(sheetName, rowData) {
 
       // Add header row
       const headers = [
-        "DateTime", "Type", "Affiliate", "Campaign ID", "Tracking Link",
+        "DateTime", "Type", "Affiliate", "Campaign ID", "Link",
         "Slider Amount", "Cake Income", "State", "Phone", "Lead ID",
         "DBID", "Page Origin", "Thank u URL", "CDB Status", "CDB Email",
         "Neustar", "Neustar Disposition", "Pixel Fired", "Run Date",
@@ -96,15 +96,15 @@ async function appendRowByHeader(sheetName, rowData) {
       rowData.type || 'D',
       rowData.affiliate,
       rowData.campaignId,
-      `=HYPERLINK("${rowData.trackingLink}", "Open Tracking")`,
+      rowData.trackingLink ? `=HYPERLINK("${rowData.trackingLink}", "Open Tracking")` : '',
       rowData.sliderAmount,
       rowData.cakeIncome,
       rowData.state,
       rowData.phone,
       rowData.leadId,
       rowData.dbid,
-      `=HYPERLINK("${rowData.pageOrigin}", "View Page Origin")`,
-      `=HYPERLINK("${rowData.thankYouUrl}", "ViewThankURL")`,
+      rowData.pageOrigin ? `=HYPERLINK("${rowData.pageOrigin}", "View Page Origin")` : '',
+      rowData.thankYouUrl ? `=HYPERLINK("${rowData.thankYouUrl}", "ViewThankURL")` : '',
       rowData.cdbStatus,
       rowData.cdbEmail,
       rowData.neustar,
@@ -218,8 +218,41 @@ async function appendRowByHeader(sheetName, rowData) {
             }
           },
 
-          // ✅ 4. Set Column Widths
+          // ✅ 4. Hyperlink Text Color and Underline Styling (Explicit Blue color + Underline for Link columns)
+          {
+            repeatCell: {
+              range: { sheetId, startRowIndex: 1, endRowIndex: 1000, startColumnIndex: 4, endColumnIndex: 5 },
+              cell: {
+                userEnteredFormat: {
+                  textFormat: {
+                    foregroundColor: { red: 0.062, green: 0.353, blue: 0.824 },
+                    underline: true,
+                    fontSize: 10
+                  }
+                }
+              },
+              fields: 'userEnteredFormat(textFormat)'
+            }
+          },
+          {
+            repeatCell: {
+              range: { sheetId, startRowIndex: 1, endRowIndex: 1000, startColumnIndex: 11, endColumnIndex: 13 },
+              cell: {
+                userEnteredFormat: {
+                  textFormat: {
+                    foregroundColor: { red: 0.062, green: 0.353, blue: 0.824 },
+                    underline: true,
+                    fontSize: 10
+                  }
+                }
+              },
+              fields: 'userEnteredFormat(textFormat)'
+            }
+          },
+
+          // ✅ 5. Set Column Widths
           { updateDimensionProperties: { range: { sheetId, dimension: 'COLUMNS', startIndex: 0, endIndex: 22 }, properties: { pixelSize: 140 }, fields: 'pixelSize' } },
+          { updateDimensionProperties: { range: { sheetId, dimension: 'COLUMNS', startIndex: 4, endIndex: 5 }, properties: { pixelSize: 180 }, fields: 'pixelSize' } }, // Link column
           { updateDimensionProperties: { range: { sheetId, dimension: 'COLUMNS', startIndex: 11, endIndex: 12 }, properties: { pixelSize: 240 }, fields: 'pixelSize' } }, // Thank u URL
           { updateDimensionProperties: { range: { sheetId, dimension: 'COLUMNS', startIndex: 12, endIndex: 13 }, properties: { pixelSize: 320 }, fields: 'pixelSize' } }  // Page Origin
         ]
