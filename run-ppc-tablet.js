@@ -1,9 +1,9 @@
-const { chromium } = require('playwright');
+const { chromium, devices } = require('playwright');
 const { processLead } = require('./utils/leadProcessor');
 const path = require('path');
 const fs = require('fs');
 
-console.log('💻 Running PPC Campaign in Desktop Mode...');
+console.log('📋 Running PPC Campaign in iPad (Tablet) Emulation...');
 
 (async () => {
     const traceDir = path.join(__dirname, 'traces');
@@ -15,7 +15,13 @@ console.log('💻 Running PPC Campaign in Desktop Mode...');
         args: ['--start-maximized']
     });
 
+    const iPad = devices['iPad Pro 11'];
+
     const context = await browser.newContext({
+        ...iPad,
+        viewport: { width: 834, height: 1194 },
+        isMobile: true,
+        hasTouch: true,
         recordVideo: { dir: 'traces/videos/' },
         acceptDownloads: true,
         bypassCSP: true,
@@ -35,7 +41,7 @@ console.log('💻 Running PPC Campaign in Desktop Mode...');
 
     try {
         const brand = {
-            name: "PPC",
+            name: "PPC Tablet",
             url: "https://flmtra.com/?a=659&oc=782&c=2210&s1=",
             sheet: "PPC",
             sliderAmount: "30,000",
@@ -46,14 +52,17 @@ console.log('💻 Running PPC Campaign in Desktop Mode...');
             phone: "7767899899"
         };
 
-        const result = await processLead(brand, page);
-        console.log('✅ Desktop PPC Test completed:', result);
+        console.log('⏳ Waiting extra 2 seconds before form processing...');
+        await page.waitForTimeout(2000);
 
-        await context.tracing.stop({ path: path.join(traceDir, 'PPC_Desktop.zip') });
-        console.log(`\n💻 Desktop Trace Report saved`);
+        const result = await processLead(brand, page);
+        console.log('✅ iPad PPC Test completed:', result);
+
+        await context.tracing.stop({ path: path.join(traceDir, 'PPC_Tablet.zip') });
+        console.log(`\n📋 Tablet Trace Report saved`);
 
     } catch (error) {
-        console.error('❌ Desktop PPC Test failed:', error);
+        console.error('❌ iPad PPC Test failed:', error);
     } finally {
         await page.waitForTimeout(3000);
         await browser.close();
