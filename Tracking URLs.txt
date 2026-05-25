@@ -2,7 +2,7 @@
 https://docs.google.com/spreadsheets/d/1rXIg3dMQ4APH3lHLcfWYfP45PnOAKmV9POkoSS3YWxI/edit?gid=1177143742#gid=1177143742
 
 ================================================================================
-🔗 ACTIVE CREATED SHEET TAB TRACKING URLs (10 Active Tabs)
+🔗 ACTIVE CREATED SHEET TAB TRACKING URLs (12 Active Tabs)
 ================================================================================
 
 1. PPC
@@ -37,18 +37,26 @@ https://docs.google.com/spreadsheets/d/1rXIg3dMQ4APH3lHLcfWYfP45PnOAKmV9POkoSS3Y
    - Sheet Tab: TRA-CPM
    - Tracking URL: https://flmtra.com/?a=659&oc=763&c=2225&s1=
 
-9. Guardian Tax Relief
-   - Sheet Tab: Guardian Tax Relief
-   - Tracking URL: https://mlf-gt.com/?a=659&oc=816&c=2521&s1=
-
-10. PPC-FS
+9. PPC-FS
     - Sheet Tab: PPC-FS
     - Tracking URL: https://flmtra.com/?a=659&oc=841&c=2210&s1=
 
-11. FSI-PPC2
+10. FSI-PPC2
     - Sheet Tab: FSI-PPC2
     - Tracking URL: https://fsimlf-trk.com/?a=659&oc=750&c=143&s1=
 
-12. FTD-X
+11. FTD-X
     - Sheet Tab: FTD-X
     - Tracking URL: https://mlfftd.com/?a=659&oc=656&c=167&s1=
+
+12. Everest Tax Releif(X)
+    - Sheet Tab: Everest Tax Releif(X)
+    - Tracking URL: https://mlf-trk.com/?a=659&oc=812&c=2498&s1=
+
+13. VTS-Original
+    - Sheet Tab: VTS-Original
+    - Tracking URL: https://flmtra.com/?a=659&oc=855&c=2210&s1=
+
+14. 1800 Fresh Tax (X) Main
+    - Sheet Tab: 1800 Fresh Tax (X) Main
+    - Tracking URL: https://flmtrk.com/?a=659&oc=696&c=1867&s1=

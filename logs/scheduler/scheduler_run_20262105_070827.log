@@ -1,0 +1,17 @@
+===================================================== 
+SCHEDULER STARTED AT: 21-05-2026  7:08:27.31 
+===================================================== 
+Cleaning up existing browser processes... 
+Running Playwright batch scheduler... 
+◇ injected env (17) from .env // tip: ⌘ custom filepath { path: '/custom/path/.env' }
+◇ injected env (0) from .env // tip: ⌘ override existing { override: true }
+
+🤖 ================================================================
+🤖 STARTING LEADS AUTOMATION BATCH RUN [21/5/2026, 7:08:28 am]
+🤖 Interval configured: every 3 hours
+🤖 ================================================================
+
+[21/5/2026, 7:08:28 am] 🗓️ Skipping today's run. Scheduler is configured to run ONLY on Monday, Wednesday, and Friday.
+===================================================== 
+SCHEDULER FINISHED AT: 21-05-2026  7:08:28.49 
+===================================================== 

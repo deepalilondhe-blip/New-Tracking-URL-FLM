@@ -23,10 +23,8 @@ module.exports = [
   { name: "TRA-DT3", url: "https://flmtra.com/?a=659&oc=792&c=2386&s1=", sheet: "TRA-DT3" },
   { name: "SCTR-Main", url: "https://secure-sctr.com/?a=659&oc=800&c=2432&s1=", sheet: "SCTR-Main" },
   { name: "1800 Fresh Tax CPC", url: "https://mlf-1800-trk.com/?a=659&oc=806&c=2464&s1=", sheet: "1800-FTH-CPC" },
-  { name: "Guardian Tax Relief", url: "https://mlf-gt.com/?a=659&oc=816&c=2521&s1=", sheet: "Guardian-TR" },
-  { name: "Everest Tax Relief", url: "https://mlf-trk.com/?a=659&oc=812&c=2498&s1=", sheet: "Everest-TR" },
+  { name: "Everest Tax Releif(X)", url: "https://mlf-trk.com/?a=659&oc=812&c=2498&s1=", sheet: "Everest Tax Releif(X)" },
   { name: "Senior Tax Defence 2", url: "https://flmtrk.com/?a=659&oc=831&c=2599&s1=", sheet: "SCTD-Alt" },
   { name: "Empire Tax Relief", url: "https://jsttrk.com/?a=659&oc=844&c=2689&s1=", sheet: "Empire-TR" },
-  { name: "Capital Tax Relief", url: "https://jsttrk.com/?a=659&oc=846&c=2691&s1=", sheet: "Capital-TR" },
-  { name: "FTH-X", url: "https://fthmlf-trk.com/?a=659&oc=821&c=81&s1=", sheet: "FTH-X" }
+  { name: "Capital Tax Relief", url: "https://jsttrk.com/?a=659&oc=846&c=2691&s1=", sheet: "Capital-TR" }
 ];

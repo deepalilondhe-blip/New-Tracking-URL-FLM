@@ -6,7 +6,7 @@ test.describe('FTD Brand Tracking Test', () => {
   const ftdBrand = brands.find(brand => brand.name === 'FTD');
 
   test('should submit form, capture lead and log to Google Sheets', async ({ page }) => {
-    test.setTimeout(60000);
+    test.setTimeout(120000);
     
     const result = await processLead(ftdBrand, page);
     

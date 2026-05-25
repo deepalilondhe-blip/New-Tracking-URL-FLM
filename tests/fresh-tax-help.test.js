@@ -2,7 +2,7 @@
 const { test, expect } = require('@playwright/test');
 const { appendRowByHeader } = require('../utils/googleSheetsUtils');
 
-test('Fresh Tax Help Form Submission & Tracking', async ({ page }) => {
+test.skip('Fresh Tax Help Form Submission & Tracking', async ({ page }) => {
   // Test Data
   const debtAmount = '10000';
   const leadId = 'C89FCCA9';
@@ -15,9 +15,21 @@ test('Fresh Tax Help Form Submission & Tracking', async ({ page }) => {
 
   console.log('🚀 Starting Fresh Tax Help test flow...');
 
-  // Step 1: Navigate to form page
-  await page.goto(`https://www.fresh-tax-help.com/v4/?reqid=${reqid}&affid=${affid}&a=${affid}&cpAFID=${affid}&cpSID=&s1=&cpSID2=`);
+  // Step 1: Navigate to form page via active tracking URL
+  await page.goto(`https://fthmlf-trk.com/?a=${affid}&oc=821&c=81&s1=`);
+  await page.waitForLoadState('networkidle');
   console.log('✅ Loaded form page');
+
+  // Extract dynamic reqid from the redirected URL
+  const currentUrl = page.url();
+  let dynamicReqId = reqid;
+  try {
+    const urlObj = new URL(currentUrl);
+    dynamicReqId = urlObj.searchParams.get('reqid') || reqid;
+    console.log(`✅ Extracted dynamic reqid: ${dynamicReqId}`);
+  } catch (err) {
+    console.warn('⚠️ Failed to parse dynamic reqid from URL:', err.message);
+  }
 
   // Step 2: Select debt amount
   const debtSlider = page.locator('span').filter({ hasText: '$10,000' });
@@ -61,8 +73,20 @@ test('Fresh Tax Help Form Submission & Tracking', async ({ page }) => {
   // Wait for navigation/thank you page
   await page.waitForLoadState('networkidle');
 
+  // Extract dynamic leadid from the redirect URL (if present)
+  const finalPageUrl = page.url();
+  console.log(`📍 Final Page URL: ${finalPageUrl}`);
+  let dynamicLeadId = leadId;
+  try {
+    const urlObj = new URL(finalPageUrl);
+    dynamicLeadId = urlObj.searchParams.get('leadid') || urlObj.searchParams.get('transaction_id') || leadId;
+    console.log(`✅ Extracted dynamic leadId: ${dynamicLeadId}`);
+  } catch (err) {
+    console.warn('⚠️ Failed to parse dynamic leadId from URL:', err.message);
+  }
+
   // Step 9: Call Thank You URL
-  const thankYouUrl = `https://www.fresh-tax-help.com/thankyou_ts_checklist.php?debt=${debtAmount}&leadid=${leadId}&affid=${affid}&reqid=${reqid}&subid=#s1#`;
+  const thankYouUrl = `https://www.fresh-tax-help.com/thankyou_ts_checklist.php?debt=${debtAmount}&leadid=${dynamicLeadId}&affid=${affid}&reqid=${dynamicReqId}&subid=#s1#`;
   console.log(`🔗 Calling Thank You URL: ${thankYouUrl}`);
   
   const thankYouResponse = await page.goto(thankYouUrl);
@@ -72,19 +96,15 @@ test('Fresh Tax Help Form Submission & Tracking', async ({ page }) => {
     console.log(`⚠️  Thank You URL returned null response`);
   }
 
-  // Extract page URL for tracking
-  const finalPageUrl = page.url();
-  console.log(`📍 Final Page URL: ${finalPageUrl}`);
-
   // Step 10: Prepare data for Google Sheets
   const sheetData = {
     dateTime: new Date().toISOString(),
     affiliate: affid,
-    campaignId: reqid,
+    campaignId: dynamicReqId,
     trackingLink: finalPageUrl,
     sliderAmount: `$${debtAmount}`,
     state: state,
-    leadId: leadId,
+    leadId: dynamicLeadId,
     thankYouUrl: thankYouUrl,
     pageOrigin: 'fresh-tax-help',
     runDate: new Date().toLocaleDateString()

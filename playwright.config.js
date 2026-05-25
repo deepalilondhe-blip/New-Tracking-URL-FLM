@@ -1,4 +1,5 @@
 // @ts-check
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 const { defineConfig, devices } = require('@playwright/test');
 
 /**
@@ -30,6 +31,7 @@ module.exports = defineConfig({
     trace: 'on-first-retry',
     headless: false,
     viewport: { width: 1280, height: 720 },
+    ignoreHTTPSErrors: true,
   },
 
   /* Configure projects for major browsers */

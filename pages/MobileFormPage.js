@@ -1,4 +1,5 @@
 require('dotenv').config();
+const flmAgent = require('../utils/flmAgent');
 
 /**
  * =========================================================
@@ -13,9 +14,11 @@ class MobileFormPage {
   constructor(page) {
     this.page = page;
     this.originalUrl = null;
-    this.step1 = 'N/A';
-    this.step2 = 'N/A';
-    this.step3 = 'N/A';
+    this.step1 = '';
+    this.step2 = '';
+    this.step3 = '';
+    this.selectedSliderAmount = '';
+    this.clickedChoiceTexts = new Set();
   }
 
   /**
@@ -42,326 +45,297 @@ class MobileFormPage {
   }
 
   /**
-   * Inject high-fidelity glossy space-black Titanium iPhone 17 Pro frame layout.
-   * Completely visual and dynamic, centering the questionnaire inside an authentic phone body.
+   * Inject high-fidelity glossy brushed Natural Titanium iPhone 17 Pro mockup frame.
+   * Renders realistic bezel, rounded corners, Dynamic Island, status bar, and home indicator.
    */
   async injectIPhoneFrame() {
-    console.log('📱 [Mobile] Injecting Titanium iPhone 17 Pro device outline mockup...');
+    console.log('📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...');
     try {
       await this.page.evaluate(() => {
-        if (document.getElementById('iphone-frame-injected')) return;
+        if (document.getElementById('iphone-bezel-wrapper')) return;
 
-        // Create style block
-        const style = document.createElement('style');
-        style.id = 'iphone-frame-style';
-        style.innerHTML = `
-          /* Reset body and background to desk workspace background */
-          html, body {
-            margin: 0 !important;
-            padding: 0 !important;
-            height: 100% !important;
-            width: 100% !important;
-            background: #eef1f6 !important; /* Premium desk surface gray */
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
-            overflow: hidden !important;
-          }
-
-          /* iPhone 17 Pro Device Outline Container (Optimized to fit screen boundaries perfectly) */
-          #iphone-17-device {
-            position: relative;
-            width: 340px;
-            height: 700px;
-            background: #fff;
-            border: 11px solid #1f1f21; /* Polished Titanium Bezel */
+        // Bezel and Status Overlays Container
+        const wrapper = document.createElement('div');
+        wrapper.id = 'iphone-bezel-wrapper';
+        wrapper.innerHTML = `
+          <!-- Premium Titanium Device Frame Bezel Overlay -->
+          <div style="
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            border: 14px solid #9f9d96; /* Natural Titanium Brushed Finish */
             border-radius: 46px;
-            box-shadow: 0 25px 65px rgba(0, 0, 0, 0.4), 
-                        0 0 0 2px #3a3a3c, /* Metallic bezel rim reflection */
-                        inset 0 0 10px rgba(0,0,0,0.25);
-            overflow: hidden;
-            z-index: 999999;
             box-sizing: border-box;
-            transform: translate3d(0, 0, 0); /* Containing block forces fixed elements to remain inside the device */
-          }
-
-
-
-          /* Dynamic Island Camera Notch */
-          #dynamic-island {
-            position: absolute;
-            top: 13px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 98px;
-            height: 25px;
-            background: #000;
-            border-radius: 18px;
-            z-index: 1000000;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 12px;
+            pointer-events: none;
+            z-index: 99999999;
+            box-shadow: inset 0 0 12px rgba(0,0,0,0.95), 0 0 25px rgba(0,0,0,0.5);
+          "></div>
+          
+          <!-- Screen Glass Border Reflection -->
+          <div style="
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 44px;
             box-sizing: border-box;
-            box-shadow: inset 0 1px 3px rgba(255,255,255,0.1);
-          }
+            pointer-events: none;
+            z-index: 100000000;
+          "></div>
 
-          #dynamic-island::before {
-            content: '';
-            width: 8px;
-            height: 8px;
-            background: #15151a;
-            border-radius: 50%;
-            box-shadow: inset 0 1px 2px rgba(255,255,255,0.3);
-          }
-
-          #dynamic-island::after {
-            content: '';
-            width: 5px;
-            height: 5px;
-            background: #051a42;
-            border-radius: 50%;
-            box-shadow: 0 0 2px #0cf;
-          }
-
-          /* Micro speaker slot at the top bezel */
-          #speaker-grill {
-            position: absolute;
-            top: 5px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 40px;
-            height: 3px;
-            background: #2c2c2e;
-            border-radius: 2px;
-            z-index: 1000000;
-          }
-
-          /* Bottom Home Bar swipe indicator */
-          #home-indicator {
-            position: absolute;
-            bottom: 6px;
+          <!-- Dynamic Island -->
+          <div style="
+            position: fixed;
+            top: 14px;
             left: 50%;
             transform: translateX(-50%);
             width: 115px;
-            height: 4px;
-            background: #000;
-            border-radius: 2px;
-            z-index: 1000000;
-            opacity: 0.85;
-          }
-
-          /* iPhone Screen Content Viewport */
-          #iphone-screen-content {
-            width: 100%;
-            height: 100%;
-            overflow-y: auto;
-            overflow-x: hidden;
-            padding-top: 48px; /* clear dynamic island layout */
-            padding-bottom: 20px; /* clear bottom home swipe indicator */
+            height: 30px;
+            background-color: #000000;
+            border-radius: 20px;
+            z-index: 100000001;
+            pointer-events: none;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.4), inset 0 0 3px rgba(255,255,255,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 0 10px;
             box-sizing: border-box;
-            background: #fff;
-            -webkit-overflow-scrolling: touch;
-          }
+          ">
+            <div style="width: 5px; height: 5px; background-color: #1a1e29; border-radius: 50%; box-shadow: inset 0 0 2px #000;"></div>
+            <div style="width: 12px; height: 12px; background-color: #000; border-radius: 50%;"></div>
+            <div style="width: 6px; height: 6px; background-color: #0d121c; border-radius: 50%;"></div>
+          </div>
 
-           #iphone-screen-content::-webkit-scrollbar {
-            width: 4px;
-          }
-          #iphone-screen-content::-webkit-scrollbar-thumb {
-            background: rgba(0,0,0,0.12);
+          <!-- iOS Status Bar -->
+          <div style="
+            position: fixed;
+            top: 15px;
+            left: 0;
+            width: 100vw;
+            padding: 0 36px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Icons', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            color: #1a1a1a;
+            z-index: 100000001;
+            pointer-events: none;
+            box-sizing: border-box;
+          ">
+            <!-- Left Side: Time -->
+            <div>9:41</div>
+            
+            <!-- Right Side: Signal, WiFi, Battery -->
+            <div style="display: flex; align-items: center; gap: 5px;">
+              <svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor">
+                <rect x="0" y="8" width="2" height="3" rx="0.5"/>
+                <rect x="3" y="6" width="2" height="5" rx="0.5"/>
+                <rect x="6" y="4" width="2" height="7" rx="0.5"/>
+                <rect x="9" y="2" width="2" height="9" rx="0.5"/>
+                <rect x="12" y="0" width="2" height="11" rx="0.5" opacity="0.3"/>
+              </svg>
+              <span>5G</span>
+              <!-- Battery Icon -->
+              <div style="
+                width: 22px;
+                height: 11px;
+                border: 1px solid currentColor;
+                border-radius: 3px;
+                padding: 1px;
+                box-sizing: border-box;
+                display: flex;
+                align-items: center;
+                position: relative;
+              ">
+                <div style="height: 100%; width: 90%; background-color: currentColor; border-radius: 1px;"></div>
+                <div style="
+                  position: absolute;
+                  right: -3px;
+                  top: 3px;
+                  width: 2px;
+                  height: 3px;
+                  background-color: currentColor;
+                  border-radius: 0 1px 1px 0;
+                "></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Home Indicator Bar -->
+          <div style="
+            position: fixed;
+            bottom: 9px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 140px;
+            height: 5px;
+            background-color: #1a1a1a;
             border-radius: 10px;
+            z-index: 100000001;
+            pointer-events: none;
+            box-shadow: 0 1px 1px rgba(255,255,255,0.2);
+          "></div>
+        `;
+        document.body.appendChild(wrapper);
+
+        // Inject page style rules to shift layout content safely out of the Dynamic Island and Bezel masks
+        const style = document.createElement('style');
+        style.id = 'iphone-style-applied';
+        style.innerHTML = `
+          body {
+            padding-top: 52px !important;
+            padding-bottom: 24px !important;
+            max-width: 480px !important;
+            margin: 0 auto !important;
+            min-height: 100vh !important;
+            background-color: #ffffff !important;
+            box-sizing: border-box !important;
           }
         `;
         document.head.appendChild(style);
-
-        // Capture all original HTML elements in body
-        const originalChildren = Array.from(document.body.children).filter(
-          child => child !== style && child.tagName !== 'SCRIPT' && child.id !== 'iphone-17-device'
-        );
-
-        // Create iPhone frame element
-        const deviceDiv = document.createElement('div');
-        deviceDiv.id = 'iphone-17-device';
-
-        // Add bezel modules
-        const island = document.createElement('div');
-        island.id = 'dynamic-island';
-        deviceDiv.appendChild(island);
-
-        const speaker = document.createElement('div');
-        speaker.id = 'speaker-grill';
-        deviceDiv.appendChild(speaker);
-
-        const homeBar = document.createElement('div');
-        homeBar.id = 'home-indicator';
-        deviceDiv.appendChild(homeBar);
-
-        // Screen wrapper
-        const screenContent = document.createElement('div');
-        screenContent.id = 'iphone-screen-content';
-
-        // Reparent body DOM elements into the screen
-        originalChildren.forEach(child => {
-          screenContent.appendChild(child);
-        });
-
-        deviceDiv.appendChild(screenContent);
-
-        // Reset document body to hold only styled iPhone layout
-        document.body.innerHTML = '';
-        document.body.appendChild(deviceDiv);
-
-        const marker = document.createElement('div');
-        marker.id = 'iphone-frame-injected';
-        marker.style.display = 'none';
-        document.body.appendChild(marker);
       });
     } catch (e) {
-      console.warn('⚠️ [Mobile] Failed to inject iPhone bezel outline:', e.message);
+      console.warn('⚠️ [Mobile] Failed to apply glossy iPhone 17 Pro mockup frame overlay:', e.message);
     }
   }
 
   /**
-   * Inject high-fidelity glossy space-gray iPad Pro frame layout.
-   * Completely visual and dynamic, centering the questionnaire inside an authentic tablet body.
+   * Inject high-fidelity glossy Space Gray iPad Pro mockup frame.
+   * Renders realistic bezel, rounded display border, status bar, and home indicator.
    */
   async injectIPadFrame() {
-    console.log('💻 [Tablet] Injecting Liquid Retina iPad Pro device outline mockup...');
+    console.log('💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...');
     try {
       await this.page.evaluate(() => {
-        if (document.getElementById('ipad-frame-injected')) return;
+        if (document.getElementById('ipad-bezel-wrapper')) return;
 
-        // Create style block
-        const style = document.createElement('style');
-        style.id = 'ipad-frame-style';
-        style.innerHTML = `
-          /* Reset body and background to desk workspace background */
-          html, body {
-            margin: 0 !important;
-            padding: 0 !important;
-            height: 100% !important;
-            width: 100% !important;
-            background: #eef1f6 !important; /* Premium desk surface gray */
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
-            overflow: hidden !important;
-          }
-
-          /* iPad Pro Device Outline Container */
-          #ipad-device {
-            position: relative;
-            height: 96%;
-            width: 94%;
-            max-width: 1024px;
-            max-height: 780px;
-            background: #fff;
-            border: 18px solid #1c1c1e; /* Space Gray Bezel */
-            border-radius: 36px;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45), 
-                        0 0 0 2px #48484a, /* Space Gray bevel rim reflection */
-                        inset 0 0 12px rgba(0,0,0,0.3);
-            overflow: hidden;
-            z-index: 999999;
+        // Bezel and Status Overlays Container
+        const wrapper = document.createElement('div');
+        wrapper.id = 'ipad-bezel-wrapper';
+        wrapper.innerHTML = `
+          <!-- Premium iPad Space Gray Bezel Overlay -->
+          <div style="
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            border: 18px solid #1c1d1e; /* Space Gray iPad Aluminum Frame */
+            border-radius: 32px;
             box-sizing: border-box;
-            transform: translate3d(0, 0, 0); /* Containing block forces fixed elements inside */
-          }
+            pointer-events: none;
+            z-index: 99999999;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.95), 0 0 30px rgba(0,0,0,0.4);
+          "></div>
+          
+          <!-- Inner Screen Bezel Border -->
+          <div style="
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 31px;
+            box-sizing: border-box;
+            pointer-events: none;
+            z-index: 100000000;
+          "></div>
 
-          /* Micro camera lens slot at the top bezel */
-          #ipad-camera {
-            position: absolute;
-            top: 5px; /* Centered in the top bezel border */
+          <!-- iPad Status Bar -->
+          <div style="
+            position: fixed;
+            top: 20px;
+            left: 0;
+            width: 100vw;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            color: #1a1a1a;
+            z-index: 100000001;
+            pointer-events: none;
+            box-sizing: border-box;
+          ">
+            <!-- Left Side: Date and Time -->
+            <div>Tue, May 12 &nbsp;&bull;&nbsp; 9:41 AM</div>
+            
+            <!-- Right Side: Wifi and Battery -->
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <svg width="15" height="11" viewBox="0 0 15 11" fill="currentColor">
+                <path d="M7.5 11C6.7 11 6 10.3 6 9.5C6 8.7 6.7 8 7.5 8C8.3 8 9 8.7 9 9.5C9 10.3 8.3 11 7.5 11ZM7.5 1C10.5 1 13.2 2.3 15 4.5L13.5 6C12 4.2 9.8 3.2 7.5 3.2C5.2 3.2 3 4.2 1.5 6L0 4.5C1.8 2.3 4.5 1 7.5 1Z"/>
+              </svg>
+              <!-- Battery Icon -->
+              <div style="
+                width: 22px;
+                height: 11px;
+                border: 1px solid currentColor;
+                border-radius: 3px;
+                padding: 1px;
+                box-sizing: border-box;
+                display: flex;
+                align-items: center;
+                position: relative;
+              ">
+                <div style="height: 100%; width: 100%; background-color: currentColor; border-radius: 1px;"></div>
+                <div style="
+                  position: absolute;
+                  right: -3px;
+                  top: 3px;
+                  width: 2px;
+                  height: 3px;
+                  background-color: currentColor;
+                  border-radius: 0 1px 1px 0;
+                "></div>
+              </div>
+              <span>100%</span>
+            </div>
+          </div>
+
+          <!-- Bottom iPad Home Bar -->
+          <div style="
+            position: fixed;
+            bottom: 10px;
             left: 50%;
             transform: translateX(-50%);
-            width: 10px;
-            height: 10px;
-            background: #051a42;
-            border-radius: 50%;
-            z-index: 1000000;
-            box-shadow: 0 0 2px #0cf;
-          }
-
-          /* Bottom Home Bar swipe indicator */
-          #ipad-home-indicator {
-            position: absolute;
-            bottom: 8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 160px;
-            height: 4px;
-            background: #000;
-            border-radius: 2px;
-            z-index: 1000000;
-            opacity: 0.8;
-          }
-
-          /* iPad Screen Content Viewport */
-          #ipad-screen-content {
-            width: 100%;
-            height: 100%;
-            overflow-y: auto;
-            overflow-x: hidden;
-            padding-top: 15px; /* clear top bezel margin slightly */
-            padding-bottom: 24px; /* clear bottom indicator layout */
-            box-sizing: border-box;
-            background: #fff;
-            -webkit-overflow-scrolling: touch;
-          }
-
-          #ipad-screen-content::-webkit-scrollbar {
-            width: 6px;
-          }
-          #ipad-screen-content::-webkit-scrollbar-thumb {
-            background: rgba(0,0,0,0.15);
+            width: 180px;
+            height: 5px;
+            background-color: #1a1a1a;
             border-radius: 10px;
+            z-index: 100000001;
+            pointer-events: none;
+          "></div>
+        `;
+        document.body.appendChild(wrapper);
+
+        // Inject page style rules for tablet margins
+        const style = document.createElement('style');
+        style.id = 'ipad-style-applied';
+        style.innerHTML = `
+          body {
+            padding-top: 52px !important;
+            padding-bottom: 28px !important;
+            max-width: 960px !important;
+            margin: 0 auto !important;
+            min-height: 100vh !important;
+            background-color: #ffffff !important;
+            box-sizing: border-box !important;
           }
-
-
         `;
         document.head.appendChild(style);
-
-        // Capture all original HTML elements in body
-        const originalChildren = Array.from(document.body.children).filter(
-          child => child !== style && child.tagName !== 'SCRIPT' && child.id !== 'ipad-device'
-        );
-
-        // Create iPad frame element
-        const deviceDiv = document.createElement('div');
-        deviceDiv.id = 'ipad-device';
-
-        // Add bezel modules
-        const camera = document.createElement('div');
-        camera.id = 'ipad-camera';
-        deviceDiv.appendChild(camera);
-
-        const homeBar = document.createElement('div');
-        homeBar.id = 'ipad-home-indicator';
-        deviceDiv.appendChild(homeBar);
-
-        // Screen wrapper
-        const screenContent = document.createElement('div');
-        screenContent.id = 'ipad-screen-content';
-
-        // Reparent body DOM elements into the screen
-        originalChildren.forEach(child => {
-          screenContent.appendChild(child);
-        });
-
-        deviceDiv.appendChild(screenContent);
-
-        // Reset document body to hold only styled iPad layout
-        document.body.innerHTML = '';
-        document.body.appendChild(deviceDiv);
-
-        const marker = document.createElement('div');
-        marker.id = 'ipad-frame-injected';
-        marker.style.display = 'none';
-        document.body.appendChild(marker);
       });
     } catch (e) {
-      console.warn('⚠️ [Tablet] Failed to inject iPad bezel outline:', e.message);
+      console.warn('⚠️ [Tablet] Failed to apply glossy iPad Pro mockup frame overlay:', e.message);
     }
   }
 
@@ -393,8 +367,12 @@ class MobileFormPage {
     await this.page.context().clearCookies();
     await this.page.context().clearPermissions();
 
-    await this.page.goto(url, { waitUntil: 'networkidle', timeout: 60000 });
-    await this.page.waitForLoadState('domcontentloaded');
+    try {
+      await this.page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 });
+    } catch (e) {
+      console.warn(`⚠️ [Mobile] Navigation warning: ${e.message}. Continuing with page execution...`);
+    }
+    await this.page.waitForLoadState('domcontentloaded').catch(() => {});
 
     // Reset local/session storage on the mobile browser context
     try {
@@ -429,6 +407,7 @@ class MobileFormPage {
     const phone = data.phone || '4012473406';
 
     try {
+      let taxDebtSelect;
       // ===== STEP 1: DEBT AMOUNT =====
       await this.waitForSpinner();
       console.log(`🔘 [Mobile] Step 1: Selecting Debt Amount (${sliderAmount})`);
@@ -436,42 +415,40 @@ class MobileFormPage {
       try {
         let selected = false;
 
-        const taxDebtSelect = this.page.locator('select#tax_debt').first();
-        if (await taxDebtSelect.isVisible({ timeout: 2000 })) {
-          console.log('🔘 [Mobile] Found select#tax_debt dropdown. Selecting option...');
-          await taxDebtSelect.evaluate((node, amountVal) => {
-            const cleanVal = amountVal.replace(/[$,\s]/g, '').toLowerCase();
-            let optionToSelect;
-            
-            if (cleanVal.includes('0-9999') || cleanVal.includes('09999') || parseInt(cleanVal) < 10000) {
-              optionToSelect = Array.from(node.options).find(opt => opt.value === '0-9999' || opt.text.includes('0 - $9,999'));
-            } else if (cleanVal.includes('10000-19999') || cleanVal.includes('1000019999') || (parseInt(cleanVal) >= 10000 && parseInt(cleanVal) < 20000)) {
-              optionToSelect = Array.from(node.options).find(opt => opt.value === '10000-19999' || opt.text.includes('10,000 - $19,999'));
-            } else if (cleanVal.includes('20000-50000') || cleanVal.includes('2000050000') || (parseInt(cleanVal) >= 20000 && parseInt(cleanVal) < 50000)) {
-              optionToSelect = Array.from(node.options).find(opt => opt.value === '20000-50000' || opt.text.includes('20,000 - $50,000'));
-            } else if (cleanVal.includes('50000') || cleanVal.includes('50000+') || parseInt(cleanVal) >= 50000) {
-              optionToSelect = Array.from(node.options).find(opt => opt.value === '50000+' || opt.text.includes('50,000 or more') || opt.text.includes('50,000+'));
+
+
+        // Check for jQuery UI Slider (#slider)
+        const jquerySlider = this.page.locator('#slider').first();
+        if (await jquerySlider.isVisible({ timeout: 1500 }).catch(() => false)) {
+          console.log('🔘 [Mobile] Found jQuery UI Slider #slider. Setting value via jQuery and DOM evaluation...');
+          await this.page.evaluate((amount) => {
+            const cleanVal = parseInt(amount.replace(/[$,\s]/g, ''));
+            const $ = window.jQuery || window.$;
+            if ($ && $.fn && $.fn.slider) {
+              const $slider = $('#slider');
+              if ($slider.length > 0) {
+                $slider.slider('value', cleanVal);
+                const handle = $slider.find('.ui-slider-handle')[0];
+                $slider.trigger('slide', [{ value: cleanVal, handle: handle }]);
+                $slider.trigger('slidechange', [{ value: cleanVal, handle: handle }]);
+              }
             }
-            
-            if (!optionToSelect) {
-              optionToSelect = Array.from(node.options).find(opt => 
-                opt.text.toLowerCase().includes(cleanVal) || opt.value.toLowerCase().includes(cleanVal)
-              );
+            // Manually sync values
+            const taxvalInput = document.querySelector('.taxval, input[name="tax_debt"], input#tax_debt');
+            if (taxvalInput) {
+              taxvalInput.value = cleanVal;
+              taxvalInput.dispatchEvent(new Event('change', { bubbles: true }));
+              taxvalInput.dispatchEvent(new Event('input', { bubbles: true }));
             }
-            
-            if (optionToSelect) {
-              node.value = optionToSelect.value;
-            } else {
-              node.selectedIndex = node.options.length - 1; // Default to last option (50000+)
+            const pricePicker = document.querySelector('.price-picker, .slider-val, .range-value');
+            if (pricePicker) {
+              pricePicker.textContent = '$' + cleanVal.toLocaleString();
             }
-            
-            node.dispatchEvent(new Event('change', { bubbles: true }));
-            node.dispatchEvent(new Event('input', { bubbles: true }));
           }, sliderAmount);
-          
-          console.log(`✅ [Mobile] Selected option from select#tax_debt dropdown for amount: ${sliderAmount}`);
+          console.log(`✅ [Mobile] Set jQuery UI Slider #slider to ${sliderAmount}`);
           selected = true;
-          await this.page.waitForTimeout(1500);
+          this.selectedSliderAmount = sliderAmount;
+          await this.page.waitForTimeout(300);
         }
 
         // Check for range input slider
@@ -486,7 +463,38 @@ class MobileFormPage {
           }, sliderAmount);
           console.log(`✅ [Mobile] Set range input slider to ${sliderAmount}`);
           selected = true;
-          await this.page.waitForTimeout(1000);
+          await this.page.waitForTimeout(300);
+        }
+
+        // Check for standard select dropdown (Prioritize for mobile/tablet responsive layouts)
+        taxDebtSelect = this.page.locator('select#tax_debt, select[name="tax_debt"], .debt-select').first();
+        if (await taxDebtSelect.isVisible({ timeout: 2000 })) {
+          console.log('🔘 [Mobile] Found dropdown menu. Performing visible selection...');
+          await taxDebtSelect.scrollIntoViewIfNeeded();
+          
+          const selectedData = await taxDebtSelect.evaluate((node, amount) => {
+            const rawVal = parseInt(amount.replace(/[$,\s]/g, ''));
+            const options = Array.from(node.options);
+            
+            // Find best matching option based on buckets
+            const match = options.find(opt => {
+                const text = opt.text.toLowerCase();
+                if (rawVal < 10000 && text.includes('9,999')) return true;
+                if (rawVal >= 10000 && rawVal < 20000 && (text.includes('19,999') || text.includes('10,000'))) return true;
+                if (rawVal >= 20000 && rawVal < 50000 && (text.includes('50,000') || text.includes('20,000'))) return true;
+                if (rawVal >= 50000 && (text.includes('50,000 or more') || text.includes('more'))) return true;
+                return false;
+            }) || options[options.length - 1];
+
+            node.value = match.value;
+            node.dispatchEvent(new Event('change', { bubbles: true }));
+            return { value: match.value, text: match.text };
+          }, sliderAmount);
+
+          this.selectedSliderAmount = selectedData.text;
+          selected = true;
+          console.log(`✅ [Mobile] Selected dropdown option: "${selectedData.text}"`);
+          await this.page.waitForTimeout(500);
         }
 
         if (!selected) {
@@ -541,11 +549,43 @@ class MobileFormPage {
             }
           }
         }
+
+        // Live-extract the actual selected/filled slider value directly from the webpage DOM
+        try {
+          taxDebtSelect = this.page.locator('select#tax_debt').first();
+          if (await taxDebtSelect.isVisible().catch(() => false)) {
+            const selectedText = await taxDebtSelect.evaluate(node => {
+              const opt = node.options[node.selectedIndex];
+              return opt ? opt.text : '';
+            }).catch(() => '');
+            if (selectedText) {
+              this.selectedSliderAmount = selectedText.trim();
+            }
+          } else {
+            const rangeInput = this.page.locator('input[type="range"]').first();
+            if (await rangeInput.isVisible().catch(() => false)) {
+              const val = await rangeInput.inputValue().catch(() => '');
+              if (val) this.selectedSliderAmount = val;
+            } else {
+              const debtInput = this.page.locator('#debt_amount, input[name="debt_amount"]').first();
+              if (await debtInput.isVisible().catch(() => false)) {
+                const val = await debtInput.inputValue().catch(() => '');
+                if (val) this.selectedSliderAmount = val;
+              } else {
+                this.selectedSliderAmount = sliderAmount;
+              }
+            }
+          }
+        } catch (err) {
+          console.warn('⚠️ [Mobile] Could not live-extract slider amount:', err.message);
+          this.selectedSliderAmount = sliderAmount;
+        }
       } catch (e) {
         console.warn('⚠️ [Mobile] Could not complete debt selection:', e.message);
       }
 
       await this.clickNextButton('.next-btn1, .btn-next');
+      const runIndex = data.runIndex || 0;
 
       // ==================================================
       // 🔹 DYNAMIC CHOICE/INTERMEDIATE STEPS TRAVERSAL
@@ -558,49 +598,26 @@ class MobileFormPage {
         const isContactVisible = await this.page.locator('#first_name:visible, input[name="first_name"]:visible').first().isVisible({ timeout: 1000 }).catch(() => false);
 
         if (isStateVisible || isContactVisible) {
-          console.log('✅ [Mobile] Reached a recognized terminal step (State or Contact). Stopping dynamic traversal.');
+          console.log('✅ [Mobile] Reached a recognized terminal step. Stopping dynamic traversal.');
           break;
         }
 
-        // Check if there are any custom/intermediate buttons visible and tap/click them!
         const choiceSelectors = [
-          '.custom-btn:visible',
-          '.choice-btn:visible',
-          '.choice-box:visible',
-          '.btn-choice:visible',
-          '.form-choice:visible',
-          '.debt-option:visible',
-          'label.custom-control-label:visible',
-          '.option-button:visible',
-          'button:not([type="submit"]):not(:has-text("NEXT")):not(:has-text("Next")):visible',
-          'a.btn:not(:has-text("NEXT")):not(:has-text("Next")):visible'
+          '.custom-btn:visible', '.choice-btn:visible', '.choice-box:visible', '.btn-choice:visible',
+          '.form-choice:visible', '.debt-option:visible', 'label.custom-control-label:visible',
+          '.option-button:visible', '.selection-item:visible', '.quiz-option:visible', '.step-choice:visible',
+          '.debt-type:visible', '.quiz-btn:visible', 'div[role="button"]:visible', 'button:not([type="submit"]):visible'
         ];
 
         let clickedChoice = false;
         for (const selector of choiceSelectors) {
-          const option = this.page.locator(selector).first();
-          if (await option.isVisible({ timeout: 1000 }).catch(() => false)) {
-            const text = await option.textContent().catch(() => 'Choice');
-            const cleanedText = text.trim().replace(/\s+/g, ' ');
-            console.log(`🔘 [Mobile] Dynamic Choice found: clicking "${cleanedText}" (${selector})`);
-            
-            // Record clicked text to step1, step2, step3 columns based on progression
-            if (choiceStepCount === 0) {
-              this.step1 = cleanedText;
-              console.log(`📝 [Mobile] step1 column set to: "${this.step1}"`);
-            } else if (choiceStepCount === 1) {
-              this.step2 = cleanedText;
-              console.log(`📝 [Mobile] step2 column set to: "${this.step2}"`);
-            } else if (choiceStepCount === 2) {
-              this.step3 = cleanedText;
-              console.log(`📝 [Mobile] step3 column set to: "${this.step3}"`);
-            }
+          const text = await this.handleChoiceRotation(selector, runIndex);
+          if (text) {
             choiceStepCount++;
-
-            await option.tap({ force: true }).catch(() => option.click({ force: true }));
+            if (choiceStepCount === 1) this.step1 = text;
+            else if (choiceStepCount === 2) this.step2 = text;
+            else if (choiceStepCount === 3) this.step3 = text;
             clickedChoice = true;
-            await this.page.waitForTimeout(1500);
-            await this.injectDeviceFrame();
             break;
           }
         }
@@ -609,8 +626,8 @@ class MobileFormPage {
           const nextBtn = this.page.locator('.btn-next:visible, .next-btn:visible, button:has-text("NEXT"):visible, button:has-text("Next"):visible').first();
           if (await nextBtn.isVisible({ timeout: 1000 }).catch(() => false)) {
             console.log('🔘 [Mobile] No choices found, but NEXT button is visible. Clicking to advance...');
-            await nextBtn.tap({ force: true }).catch(() => nextBtn.click({ force: true }));
-            await this.page.waitForTimeout(1500);
+            await nextBtn.click({ force: true }).catch(async () => { await nextBtn.tap({ force: true }); });
+            await this.page.waitForTimeout(400);
             await this.injectDeviceFrame();
           } else {
             console.log('⚠️ [Mobile] No visible dynamic choices or next buttons on this step. Ending traversal.');
@@ -622,31 +639,37 @@ class MobileFormPage {
 
       // ===== STEP 2: STATE SELECTION =====
       await this.waitForSpinner();
-      const stateSelect = this.page.locator('#state:visible, select#state:visible, select[name="state"]:visible').first();
+      const stateSelect = this.page.locator('#state, select#state, select[name="state"]').first();
       if (await stateSelect.isVisible({ timeout: 2000 })) {
         console.log('🔘 [Mobile] Step 2: Selecting State');
         try {
-          await stateSelect.selectOption({ label: state }, { timeout: 3000 }).catch(async () => {
-            await stateSelect.selectOption({ value: state }, { timeout: 3000 }).catch(async () => {
-              await stateSelect.evaluate((node, stateVal) => {
-                const matchedOption = Array.from(node.options).find(opt =>
-                  opt.text.toLowerCase().trim() === stateVal.toLowerCase().trim() ||
-                  opt.value.toLowerCase().trim() === stateVal.toLowerCase().trim()
-                );
-                if (matchedOption) {
-                  node.value = matchedOption.value;
-                } else {
-                  node.value = stateVal;
-                }
+          const selectedState = await this.page.evaluate(({ stateSelectSelector, runIndex, defaultState }) => {
+            const node = document.querySelector(stateSelectSelector);
+            if (node && node.options.length > 1) {
+              const validOptions = Array.from(node.options).filter(opt => {
+                const val = opt.value.trim();
+                const txt = opt.text.toLowerCase();
+                return val !== "" && !txt.includes("select") && !txt.includes("choose");
+              });
+
+              if (validOptions.length > 0) {
+                const selectedOpt = validOptions[runIndex % validOptions.length];
+                node.value = selectedOpt.value;
                 node.dispatchEvent(new Event('change', { bubbles: true }));
                 node.dispatchEvent(new Event('input', { bubbles: true }));
-              }, state);
-            });
-          });
-          
-          // If step3 has not been set yet, populate it with state
+                return selectedOpt.text;
+              }
+            }
+            if (node) {
+              node.value = defaultState;
+              node.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+            return defaultState;
+          }, { stateSelectSelector: '#state, select#state, select[name="state"]', runIndex, defaultState: state });
+
+          console.log(`✅ [Mobile] Selected state dynamically: "${selectedState}"`);
           if (choiceStepCount < 3) {
-            this.step3 = state;
+            this.step3 = selectedState || state;
             console.log(`📝 [Mobile] step3 column set to State: "${this.step3}"`);
           }
         } catch (e) {
@@ -666,7 +689,7 @@ class MobileFormPage {
         if (await nextBtn.isVisible({ timeout: 1000 })) {
           console.log('🔘 [Mobile] Advancing past post-state step...');
           await nextBtn.tap({ force: true }).catch(() => nextBtn.click({ force: true }));
-          await this.page.waitForTimeout(1500);
+          await this.page.waitForTimeout(400);
           await this.injectDeviceFrame();
         } else {
           break;
@@ -847,7 +870,15 @@ class MobileFormPage {
       }
       await this.injectDeviceFrame();
     } catch (e) {
-      console.warn(`⚠️ [Mobile] Button selector ${selector} action failed:`, e.message);
+      console.warn(`⚠️  [Mobile] Button ${selector} not found. Consulting FLM Agent for suggestions...`);
+      const suggestion = await flmAgent.suggestFix(this.page, 'Next button');
+      if (suggestion) {
+        console.warn(`🤖 [FLM Agent] POTENTIAL MOBILE FIX DISCOVERED: ${suggestion}`);
+        console.warn(`🔔 [Manual Approval Required] Please update the selector in MobileFormPage.js to use: ${suggestion}`);
+      } else {
+        console.warn(`❌ [FLM Agent] No suggestion available for this mobile failure.`);
+      }
+      throw new Error(`Mobile Navigation button ${selector} missing. FLM Agent suggestion provided in logs.`);
     }
   }
 
@@ -878,9 +909,16 @@ class MobileFormPage {
       console.log('⏳ [Mobile] Waiting for submission navigation to complete');
       await this.page.waitForNavigation({ waitUntil: 'networkidle', timeout: 20000 }).catch(() => { });
 
+      // Last resort: FLM Agent Self-Healing for Submit (Manual Approval Mode)
+      console.warn('⚠️ [Mobile] Standard submit buttons not found, consulting FLM Agent...');
+      const suggestion = await flmAgent.suggestFix(this.page, 'Submit button');
+      if (suggestion) {
+        console.warn(`🤖 [FLM Agent] POTENTIAL SUBMIT FIX DISCOVERED: ${suggestion}`);
+        console.warn(`🔔 [Manual Approval Required] Update MobileFormPage.js submit block with: ${suggestion}`);
+      }
+
     } catch (error) {
-      console.warn('⚠️ [Mobile] Submit timeout/error, checking URL status...');
-      await this.page.waitForTimeout(4000);
+      console.warn('⚠️ [Mobile] Form submission failure analysis complete.');
     }
   }
 
@@ -919,22 +957,53 @@ class MobileFormPage {
   /**
    * Extracts hexadecimal/numeric lead identifiers from URL
    */
-  extractLeadId(url) {
+  async extractLeadId(url) {
     try {
       const urlObj = new URL(url);
       const params = new URLSearchParams(urlObj.search);
+      console.log('📱 [Mobile Diagnostic] Full Thank You URL Parameters:', JSON.stringify(Object.fromEntries(params.entries())));
 
-      const leadId = params.get('transaction_id')
+      // Priority 1: URL Parameters
+      let leadId = params.get('transaction_id')
         || params.get('leadid')
         || params.get('lead_id')
+        || params.get('ckm_id')
+        || params.get('tid')
         || params.get('reqid')
-        || params.get('id')
-        || null;
+        || params.get('request_id')
+        || params.get('id');
+
+      // Priority 2: DOM DEEP-SCAN (Hidden inputs, Text patterns, GUIDs, Hex-8)
+      if (!leadId || (leadId.length !== 8 && leadId.length < 10)) {
+        console.log('🔍 [Mobile DOM Deep-Scan] URL ID missing or non-standard. Searching for Hex-8 or GUID IDs...');
+        const domId = await this.page.evaluate(() => {
+          // 1. Search for 8-character Hex patterns
+          const html = document.documentElement.innerHTML;
+          const hex8Match = html.match(/\b[A-F0-9]{8}\b/i);
+          if (hex8Match) return hex8Match[0];
+
+          // 2. Search for GUID patterns (32 chars hex)
+          const guidMatch = html.match(/[a-f0-9]{32}/i) || html.match(/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}/i);
+          if (guidMatch) return guidMatch[0];
+
+          // 3. Search for hidden inputs
+          const inputs = Array.from(document.querySelectorAll('input[type="hidden"]'));
+          for (const input of inputs) {
+            if (input.name.toLowerCase().includes('id') && input.value.length >= 8) return input.value;
+          }
+
+          const bodyText = document.body.innerText;
+          const longIdMatch = bodyText.match(/(?:ID|Transaction|Ref|Conf)\s*[:#-]?\s*([A-Z0-9-]{8,40})/i);
+          return longIdMatch ? longIdMatch[1] : null;
+        }).catch(() => null);
+
+        if (domId) leadId = domId;
+      }
 
       if (leadId) {
         console.log('✅ [Mobile] Extracted Lead ID:', leadId);
       } else {
-        console.warn('⚠️ [Mobile] No Lead ID found in URL');
+        console.warn('⚠️ [Mobile] No Lead ID found in URL or DOM.');
       }
 
       return leadId;
@@ -955,6 +1024,44 @@ class MobileFormPage {
         await spinner.waitFor({ state: 'hidden', timeout: 5000 }).catch(() => { });
       }
     } catch (e) { }
+  }
+
+  /**
+   * Performs rotation selection for buttons on mobile/tablet
+   */
+  async handleChoiceRotation(selector, runIndex) {
+    const locators = this.page.locator(selector);
+    const count = await locators.count().catch(() => 0);
+    if (count === 0) return null;
+
+    const visibleOptions = [];
+    for (let i = 0; i < count; i++) {
+      const option = locators.nth(i);
+      if (await option.isVisible({ timeout: 500 }).catch(() => false)) {
+        let text = await option.innerText().catch(() => '');
+        if (!text) text = await option.getAttribute('aria-label').catch(() => '');
+        if (!text) text = await option.getAttribute('value').catch(() => '');
+        if (!text) text = `Option ${i + 1}`;
+        
+        const cleaned = text.trim().replace(/\s+/g, ' ');
+        if (cleaned && !this.clickedChoiceTexts.has(cleaned)) {
+          visibleOptions.push({ option, text: cleaned });
+        }
+      }
+    }
+
+    if (visibleOptions.length > 0) {
+      const chosen = visibleOptions[runIndex % visibleOptions.length];
+      console.log(`🔘 [Mobile Rotation] Selected: "${chosen.text}"`);
+      this.clickedChoiceTexts.add(chosen.text);
+      // Support for touch/tap events on mobile
+      await chosen.option.tap({ force: true }).catch(async () => {
+        await chosen.option.click({ force: true });
+      });
+      await this.page.waitForTimeout(400);
+      return chosen.text;
+    }
+    return null;
   }
 
   getPageOrigin() {

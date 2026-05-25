@@ -1,0 +1,22 @@
+{
+  "completed": [
+    "ftd-x:mobile:chromium:Android - Chrome",
+    "ftd-x:mobile:firefox:Android - Firefox",
+    "ftd-x:mobile:chromium:iOS - Chrome",
+    "ftd-x:mobile:webkit:iOS - Safari",
+    "ftd-x:tablet:webkit:Tablet - Safari",
+    "ftd-x:tablet:chromium:Tablet - Chrome",
+    "ftd-x:desktop:chromium:Windows - Chrome",
+    "ftd-x:desktop:firefox:Windows - Firefox",
+    "ftd-x:desktop:webkit:MAC - Safari",
+    "ftd-x:desktop:chromium:MAC - Chrome",
+    "fsi-ppc2:mobile:chromium:Android - Chrome",
+    "fsi-ppc2:mobile:firefox:Android - Firefox",
+    "fsi-ppc2:mobile:chromium:iOS - Chrome",
+    "fsi-ppc2:mobile:webkit:iOS - Safari",
+    "fsi-ppc2:tablet:webkit:Tablet - Safari",
+    "fsi-ppc2:tablet:chromium:Tablet - Chrome",
+    "fsi-ppc2:desktop:chromium:Windows - Chrome",
+    "fsi-ppc2:desktop:firefox:Windows - Firefox"
+  ]
+}

@@ -1,0 +1,287 @@
+===================================================== 
+SCHEDULER STARTED AT: 18-05-2026 15:18:35.49 
+===================================================== 
+Cleaning up existing browser processes... 
+Running Playwright batch scheduler... 
+◇ injected env (17) from .env // tip: ⌘ custom filepath { path: '/custom/path/.env' }
+◇ injected env (0) from .env // tip: ⌁ auth for agents [www.vestauth.com]
+
+🤖 ================================================================
+🤖 STARTING LEADS AUTOMATION BATCH RUN [18/5/2026, 3:18:36 pm]
+🤖 Interval configured: every 3 hours
+🤖 ================================================================
+
+🤖 [FLM Agent] Starting Global URL Health Verification...
+🤖 [FLM Agent] Pre-flight check: Verifying health for FTD-X...
+✅ [FLM Agent] FTD-X URL is healthy.
+🤖 [FLM Agent] Pre-flight check: Verifying health for FSI-PPC2...
+✅ [FLM Agent] FSI-PPC2 URL is healthy.
+🤖 [FLM Agent] Pre-flight check: Verifying health for TRA-CPL...
+✅ [FLM Agent] TRA-CPL URL is healthy.
+🤖 [FLM Agent] Pre-flight check: Verifying health for TRA-D3...
+🔴 [FLM Agent] TRA-D3 is DOWN: timeout of 10000ms exceeded
+🤖 [FLM Agent] Pre-flight check: Verifying health for PPC-ST...
+✅ [FLM Agent] PPC-ST URL is healthy.
+🤖 [FLM Agent] Pre-flight check: Verifying health for PPC-ST2...
+🔴 [FLM Agent] PPC-ST2 is DOWN: timeout of 10000ms exceeded
+🤖 [FLM Agent] Pre-flight check: Verifying health for PPC-M-CA...
+✅ [FLM Agent] PPC-M-CA URL is healthy.
+🤖 [FLM Agent] Pre-flight check: Verifying health for PPC CR...
+✅ [FLM Agent] PPC CR URL is healthy.
+🤖 [FLM Agent] Pre-flight check: Verifying health for PPC FS...
+✅ [FLM Agent] PPC FS URL is healthy.
+🤖 [FLM Agent] Pre-flight check: Verifying health for PPC...
+✅ [FLM Agent] PPC URL is healthy.
+🤖 [FLM Agent] Pre-flight check: Verifying health for TRA-CPM...
+✅ [FLM Agent] TRA-CPM URL is healthy.
+🤖 [FLM Agent] Pre-flight check: Verifying health for FTH-X...
+🔴 [FLM Agent] FTH-X is DOWN: self-signed certificate; if the root CA is installed locally, try running Node.js with --use-system-ca
+🤖 [FLM Agent] Pre-flight check: Verifying health for Everest Tax Releif(X)...
+✅ [FLM Agent] Everest Tax Releif(X) URL is healthy.
+🤖 [FLM Agent] Pre-flight check: Verifying health for VTS Original...
+✅ [FLM Agent] VTS Original URL is healthy.
+🤖 [FLM Agent] Pre-flight check: Verifying health for 1800 Fresh Tax (X) Main...
+✅ [FLM Agent] 1800 Fresh Tax (X) Main URL is healthy.
+🤖 [FLM Agent] Pre-flight check: Verifying health for FSI - MAIN...
+✅ [FLM Agent] FSI - MAIN URL is healthy.
+🤖 [FLM Agent] Global Health Verification Complete.
+
+
+================================================================
+⚡ Processing Campaign Matrix: [FTD-X]
+================================================================
+⏭️  [SKIP] ftd-x [Android - Chrome] already completed.
+⏭️  [SKIP] ftd-x [Android - Firefox] already completed.
+⏭️  [SKIP] ftd-x [iOS - Chrome] already completed.
+⏭️  [SKIP] ftd-x [iOS - Safari] already completed.
+⏭️  [SKIP] ftd-x [Tablet - Safari] already completed.
+⏭️  [SKIP] ftd-x [Tablet - Chrome] already completed.
+⏭️  [SKIP] ftd-x [Windows - Chrome] already completed.
+⏭️  [SKIP] ftd-x [Windows - Firefox] already completed.
+⏭️  [SKIP] ftd-x [MAC - Safari] already completed.
+⏭️  [SKIP] ftd-x [MAC - Chrome] already completed.
+
+================================================================
+⚡ Processing Campaign Matrix: [FSI-PPC2]
+================================================================
+⏭️  [SKIP] fsi-ppc2 [Android - Chrome] already completed.
+⏭️  [SKIP] fsi-ppc2 [Android - Firefox] already completed.
+⏭️  [SKIP] fsi-ppc2 [iOS - Chrome] already completed.
+⏭️  [SKIP] fsi-ppc2 [iOS - Safari] already completed.
+⏭️  [SKIP] fsi-ppc2 [Tablet - Safari] already completed.
+⏭️  [SKIP] fsi-ppc2 [Tablet - Chrome] already completed.
+⏭️  [SKIP] fsi-ppc2 [Windows - Chrome] already completed.
+⏭️  [SKIP] fsi-ppc2 [Windows - Firefox] already completed.
+⏭️  [SKIP] fsi-ppc2 [MAC - Safari] already completed.
+⏭️  [SKIP] fsi-ppc2 [MAC - Chrome] already completed.
+
+================================================================
+⚡ Processing Campaign Matrix: [TRA-CPL]
+================================================================
+⏭️  [SKIP] tra-cpl [Android - Chrome] already completed.
+⏭️  [SKIP] tra-cpl [Android - Firefox] already completed.
+⏭️  [SKIP] tra-cpl [iOS - Chrome] already completed.
+⏭️  [SKIP] tra-cpl [iOS - Safari] already completed.
+⏭️  [SKIP] tra-cpl [Tablet - Safari] already completed.
+⏭️  [SKIP] tra-cpl [Tablet - Chrome] already completed.
+⏭️  [SKIP] tra-cpl [Windows - Chrome] already completed.
+⏭️  [SKIP] tra-cpl [Windows - Firefox] already completed.
+⏭️  [SKIP] tra-cpl [MAC - Safari] already completed.
+⏭️  [SKIP] tra-cpl [MAC - Chrome] already completed.
+
+================================================================
+⚡ Processing Campaign Matrix: [TRA-D3]
+================================================================
+⏭️  [SKIP] tra-d3 [Android - Chrome] already completed.
+⏭️  [SKIP] tra-d3 [Android - Firefox] already completed.
+⏭️  [SKIP] tra-d3 [iOS - Chrome] already completed.
+⏭️  [SKIP] tra-d3 [iOS - Safari] already completed.
+⏭️  [SKIP] tra-d3 [Tablet - Safari] already completed.
+⏭️  [SKIP] tra-d3 [Tablet - Chrome] already completed.
+⏭️  [SKIP] tra-d3 [Windows - Chrome] already completed.
+⏭️  [SKIP] tra-d3 [Windows - Firefox] already completed.
+⏭️  [SKIP] tra-d3 [MAC - Safari] already completed.
+⏭️  [SKIP] tra-d3 [MAC - Chrome] already completed.
+
+================================================================
+⚡ Processing Campaign Matrix: [PPC-ST]
+================================================================
+⏭️  [SKIP] ppc-st [Android - Chrome] already completed.
+⏭️  [SKIP] ppc-st [Android - Firefox] already completed.
+⏭️  [SKIP] ppc-st [iOS - Chrome] already completed.
+⏭️  [SKIP] ppc-st [iOS - Safari] already completed.
+⏭️  [SKIP] ppc-st [Tablet - Safari] already completed.
+⏭️  [SKIP] ppc-st [Tablet - Chrome] already completed.
+⏭️  [SKIP] ppc-st [Windows - Chrome] already completed.
+⏭️  [SKIP] ppc-st [Windows - Firefox] already completed.
+⏭️  [SKIP] ppc-st [MAC - Safari] already completed.
+⏭️  [SKIP] ppc-st [MAC - Chrome] already completed.
+
+================================================================
+⚡ Processing Campaign Matrix: [PPC-ST2]
+================================================================
+⏭️  [SKIP] ppc-st2 [Android - Chrome] already completed.
+⏭️  [SKIP] ppc-st2 [Android - Firefox] already completed.
+⏭️  [SKIP] ppc-st2 [iOS - Chrome] already completed.
+⏭️  [SKIP] ppc-st2 [iOS - Safari] already completed.
+⏭️  [SKIP] ppc-st2 [Tablet - Safari] already completed.
+⏭️  [SKIP] ppc-st2 [Tablet - Chrome] already completed.
+⏭️  [SKIP] ppc-st2 [Windows - Chrome] already completed.
+⏭️  [SKIP] ppc-st2 [Windows - Firefox] already completed.
+⏭️  [SKIP] ppc-st2 [MAC - Safari] already completed.
+⏭️  [SKIP] ppc-st2 [MAC - Chrome] already completed.
+⏭️  [SKIP] ppc-st2 [Direct API] already completed.
+
+================================================================
+⚡ Processing Campaign Matrix: [PPC-M-CA]
+================================================================
+⏭️  [SKIP] ppc-m-ca [Android - Chrome] already completed.
+⏭️  [SKIP] ppc-m-ca [Android - Firefox] already completed.
+⏭️  [SKIP] ppc-m-ca [iOS - Chrome] already completed.
+⏭️  [SKIP] ppc-m-ca [iOS - Safari] already completed.
+⏭️  [SKIP] ppc-m-ca [Tablet - Safari] already completed.
+⏭️  [SKIP] ppc-m-ca [Tablet - Chrome] already completed.
+⏭️  [SKIP] ppc-m-ca [Windows - Chrome] already completed.
+⏭️  [SKIP] ppc-m-ca [Windows - Firefox] already completed.
+⏭️  [SKIP] ppc-m-ca [MAC - Safari] already completed.
+⏭️  [SKIP] ppc-m-ca [MAC - Chrome] already completed.
+
+================================================================
+⚡ Processing Campaign Matrix: [PPC-CR]
+================================================================
+⏭️  [SKIP] ppc-cr [Android - Chrome] already completed.
+⏭️  [SKIP] ppc-cr [Android - Firefox] already completed.
+⏭️  [SKIP] ppc-cr [iOS - Chrome] already completed.
+⏭️  [SKIP] ppc-cr [iOS - Safari] already completed.
+⏭️  [SKIP] ppc-cr [Tablet - Safari] already completed.
+⏭️  [SKIP] ppc-cr [Tablet - Chrome] already completed.
+⏭️  [SKIP] ppc-cr [Windows - Chrome] already completed.
+⏭️  [SKIP] ppc-cr [Windows - Firefox] already completed.
+⏭️  [SKIP] ppc-cr [MAC - Safari] already completed.
+⏭️  [SKIP] ppc-cr [MAC - Chrome] already completed.
+
+================================================================
+⚡ Processing Campaign Matrix: [PPC-FS]
+================================================================
+⏭️  [SKIP] ppc-fs [Android - Chrome] already completed.
+⏭️  [SKIP] ppc-fs [Android - Firefox] already completed.
+⏭️  [SKIP] ppc-fs [iOS - Chrome] already completed.
+⏭️  [SKIP] ppc-fs [iOS - Safari] already completed.
+⏭️  [SKIP] ppc-fs [Tablet - Safari] already completed.
+⏭️  [SKIP] ppc-fs [Tablet - Chrome] already completed.
+⏭️  [SKIP] ppc-fs [Windows - Chrome] already completed.
+⏭️  [SKIP] ppc-fs [Windows - Firefox] already completed.
+⏭️  [SKIP] ppc-fs [MAC - Safari] already completed.
+⏭️  [SKIP] ppc-fs [MAC - Chrome] already completed.
+
+================================================================
+⚡ Processing Campaign Matrix: [PPC]
+================================================================
+⏭️  [SKIP] ppc [Android - Chrome] already completed.
+⏭️  [SKIP] ppc [Android - Firefox] already completed.
+⏭️  [SKIP] ppc [iOS - Chrome] already completed.
+⏭️  [SKIP] ppc [iOS - Safari] already completed.
+⏭️  [SKIP] ppc [Tablet - Safari] already completed.
+⏭️  [SKIP] ppc [Tablet - Chrome] already completed.
+⏭️  [SKIP] ppc [Windows - Chrome] already completed.
+⏭️  [SKIP] ppc [Windows - Firefox] already completed.
+⏭️  [SKIP] ppc [MAC - Safari] already completed.
+⏭️  [SKIP] ppc [MAC - Chrome] already completed.
+
+================================================================
+⚡ Processing Campaign Matrix: [TRA-CPM]
+================================================================
+⏭️  [SKIP] tra-cpm [Android - Chrome] already completed.
+⏭️  [SKIP] tra-cpm [Android - Firefox] already completed.
+⏭️  [SKIP] tra-cpm [iOS - Chrome] already completed.
+⏭️  [SKIP] tra-cpm [iOS - Safari] already completed.
+⏭️  [SKIP] tra-cpm [Tablet - Safari] already completed.
+⏭️  [SKIP] tra-cpm [Tablet - Chrome] already completed.
+⏭️  [SKIP] tra-cpm [Windows - Chrome] already completed.
+⏭️  [SKIP] tra-cpm [Windows - Firefox] already completed.
+⏭️  [SKIP] tra-cpm [MAC - Safari] already completed.
+⏭️  [SKIP] tra-cpm [MAC - Chrome] already completed.
+
+================================================================
+⚡ Processing Campaign Matrix: [FTH-X]
+================================================================
+⏭️  [SKIP] fth-x [Android - Chrome] already completed.
+⏭️  [SKIP] fth-x [Android - Firefox] already completed.
+⏭️  [SKIP] fth-x [iOS - Chrome] already completed.
+⏭️  [SKIP] fth-x [iOS - Safari] already completed.
+⏭️  [SKIP] fth-x [Tablet - Safari] already completed.
+⏭️  [SKIP] fth-x [Tablet - Chrome] already completed.
+⏭️  [SKIP] fth-x [Windows - Chrome] already completed.
+⏭️  [SKIP] fth-x [Windows - Firefox] already completed.
+⏭️  [SKIP] fth-x [MAC - Safari] already completed.
+⏭️  [SKIP] fth-x [MAC - Chrome] already completed.
+
+================================================================
+⚡ Processing Campaign Matrix: [EVEREST-TR-X]
+================================================================
+⏭️  [SKIP] everest-tr-x [Android - Chrome] already completed.
+⏭️  [SKIP] everest-tr-x [Android - Firefox] already completed.
+⏭️  [SKIP] everest-tr-x [iOS - Chrome] already completed.
+⏭️  [SKIP] everest-tr-x [iOS - Safari] already completed.
+⏭️  [SKIP] everest-tr-x [Tablet - Safari] already completed.
+⏭️  [SKIP] everest-tr-x [Tablet - Chrome] already completed.
+⏭️  [SKIP] everest-tr-x [Windows - Chrome] already completed.
+⏭️  [SKIP] everest-tr-x [Windows - Firefox] already completed.
+⏭️  [SKIP] everest-tr-x [MAC - Safari] already completed.
+⏭️  [SKIP] everest-tr-x [MAC - Chrome] already completed.
+
+================================================================
+⚡ Processing Campaign Matrix: [VTS-ORIGINAL]
+================================================================
+⏭️  [SKIP] vts-original [Android - Chrome] already completed.
+⏭️  [SKIP] vts-original [Android - Firefox] already completed.
+⏭️  [SKIP] vts-original [iOS - Chrome] already completed.
+⏭️  [SKIP] vts-original [iOS - Safari] already completed.
+⏭️  [SKIP] vts-original [Tablet - Safari] already completed.
+⏭️  [SKIP] vts-original [Tablet - Chrome] already completed.
+⏭️  [SKIP] vts-original [Windows - Chrome] already completed.
+⏭️  [SKIP] vts-original [Windows - Firefox] already completed.
+⏭️  [SKIP] vts-original [MAC - Safari] already completed.
+⏭️  [SKIP] vts-original [MAC - Chrome] already completed.
+
+================================================================
+⚡ Processing Campaign Matrix: [1800-FRESH-TAX-X-MAIN]
+================================================================
+⏭️  [SKIP] 1800-fresh-tax-x-main [Android - Chrome] already completed.
+⏭️  [SKIP] 1800-fresh-tax-x-main [Android - Firefox] already completed.
+⏭️  [SKIP] 1800-fresh-tax-x-main [iOS - Chrome] already completed.
+⏭️  [SKIP] 1800-fresh-tax-x-main [iOS - Safari] already completed.
+⏭️  [SKIP] 1800-fresh-tax-x-main [Tablet - Safari] already completed.
+⏭️  [SKIP] 1800-fresh-tax-x-main [Tablet - Chrome] already completed.
+⏭️  [SKIP] 1800-fresh-tax-x-main [Windows - Chrome] already completed.
+⏭️  [SKIP] 1800-fresh-tax-x-main [Windows - Firefox] already completed.
+⏭️  [SKIP] 1800-fresh-tax-x-main [MAC - Safari] already completed.
+⏭️  [SKIP] 1800-fresh-tax-x-main [MAC - Chrome] already completed.
+
+================================================================
+⚡ Processing Campaign Matrix: [FSI-MAIN]
+================================================================
+⏭️  [SKIP] fsi-main [Android - Chrome] already completed.
+⏭️  [SKIP] fsi-main [Android - Firefox] already completed.
+⏭️  [SKIP] fsi-main [iOS - Chrome] already completed.
+⏭️  [SKIP] fsi-main [iOS - Safari] already completed.
+⏭️  [SKIP] fsi-main [Tablet - Safari] already completed.
+⏭️  [SKIP] fsi-main [Tablet - Chrome] already completed.
+⏭️  [SKIP] fsi-main [Windows - Chrome] already completed.
+⏭️  [SKIP] fsi-main [Windows - Firefox] already completed.
+⏭️  [SKIP] fsi-main [MAC - Safari] already completed.
+⏭️  [SKIP] fsi-main [MAC - Chrome] already completed.
+
+📊 ================================================================
+📊 BATCH COMPLETED IN 1.16 MINUTES
+📊 Total Runners Executed: 164
+📊 Succeeded:              161
+📊 Failed:                 3
+📊 ================================================================
+🕕 [Scheduler] Dispatching Batch Intelligence Report...
+✅ Branded Daily Professional Summary Email Sent.
+
+⏳ Next automation batch will start at: 18/5/2026, 6:19:49 pm
+===================================================== 
+SCHEDULER FINISHED AT: 18-05-2026 15:19:49.41 
+===================================================== 

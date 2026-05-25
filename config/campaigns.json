@@ -1,0 +1,192 @@
+[
+  {
+    "id": "ftd-x",
+    "name": "FTD-X",
+    "url": "https://mlfftd.com/?a=659&oc=656&c=167&s1=",
+    "sheet": "FTD-X",
+    "sliderAmount": "70,000",
+    "state": "Montana",
+    "phone": "406-314-1715",
+    "skipSecondApi": false
+  },
+  {
+    "id": "fsi-ppc2",
+    "name": "FSI-PPC2",
+    "url": "https://fsimlf-trk.com/?a=659&oc=750&c=143&s1=",
+    "sheet": "FSI-PPC2",
+    "sliderAmount": "$0-$9,999",
+    "state": "South Carolina",
+    "phone": "803-612-4270",
+    "skipSecondApi": false
+  },
+  {
+    "id": "tra-cpl",
+    "name": "TRA-CPL",
+    "url": "https://flmtra.com/?a=659&oc=756&c=2210&s1=",
+    "sheet": "TRA-CPL",
+    "sliderAmount": "30,000",
+    "state": "IN",
+    "phone": "9763546781",
+    "skipSecondApi": false
+  },
+  {
+    "id": "tra-d3",
+    "name": "TRA-D3",
+    "url": "https://flmtra.com/?a=659&oc=792&c=2386&s1=",
+    "sheet": "TRA-DT3",
+    "sliderAmount": "10,000",
+    "state": "IN",
+    "phone": "843-939-2210",
+    "skipSecondApi": false
+  },
+  {
+    "id": "ppc-st",
+    "name": "PPC-ST",
+    "url": "https://flmtra.com/?a=659&oc=837&c=2210&s1=",
+    "sheet": "PPC-ST",
+    "sliderAmount": "18,000",
+    "state": "OR",
+    "phone": "503-518-1606",
+    "skipSecondApi": false
+  },
+  {
+    "id": "ppc-st2",
+    "name": "PPC-ST2",
+    "url": "https://flmtra.com/?a=659&oc=858&c=2210&s1=",
+    "sheet": "PPC-ST2",
+    "sliderAmount": "20,000",
+    "state": "Nebraska",
+    "phone": "402-919-7047",
+    "skipSecondApi": false
+  },
+  {
+    "id": "ppc-m-ca",
+    "name": "PPC-M-CA",
+    "url": "https://flmtra.com/?a=659&oc=822&c=2210&s1=",
+    "sheet": "PPC-M/CA",
+    "sliderAmount": "50,000",
+    "state": "TX",
+    "phone": "405-507-5965",
+    "skipSecondApi": false
+  },
+  {
+    "id": "ppc-cr",
+    "name": "PPC CR",
+    "url": "https://flmtra.com/?a=659&oc=848&c=2210&s1=",
+    "sheet": "PPC-CR",
+    "sliderAmount": "1000",
+    "state": "South Carolina",
+    "phone": "803-726-7050",
+    "skipSecondApi": true
+  },
+  {
+    "id": "ppc-fs",
+    "name": "PPC FS",
+    "url": "https://flmtra.com/?a=659&oc=841&c=2210&s1=",
+    "sheet": "PPC FS",
+    "sliderAmount": "50,000",
+    "state": "RI",
+    "phone": "401-739-6095",
+    "skipSecondApi": false
+  },
+  {
+    "id": "ppc",
+    "name": "PPC",
+    "url": "https://flmtra.com/?a=659&oc=782&c=2210&s1=",
+    "sheet": "PPC",
+    "sliderAmount": "30,000",
+    "state": "ID",
+    "phone": "7767899899",
+    "skipSecondApi": false
+  },
+  {
+    "id": "tra-cpm",
+    "name": "TRA-CPM",
+    "url": "https://flmtra.com/?a=659&oc=763&c=2225&s1=",
+    "sheet": "TRA-CPM",
+    "sliderAmount": "9000",
+    "state": "Rhode Island",
+    "phone": "401-453-0576",
+    "skipSecondApi": false
+  },
+  {
+    "id": "fth-x",
+    "name": "FTH-X",
+    "url": "https://fthmlf-trk.com/?a=659&oc=821&c=81&s1=",
+    "sheet": "FTH-X",
+    "sliderAmount": "9,000",
+    "state": "Rhode Island",
+    "phone": "401-453-0576",
+    "skipSecondApi": false
+  },
+  {
+    "id": "everest-tr-x",
+    "name": "Everest Tax Releif(X)",
+    "url": "https://mlf-trk.com/?a=659&oc=812&c=2498&s1=",
+    "sheet": "Everest Tax Releif(X)",
+    "sliderAmount": "70000",
+    "state": "California",
+    "phone": "406-314-1715",
+    "skipSecondApi": false
+  },
+  {
+    "id": "vts-original",
+    "name": "VTS Original",
+    "url": "https://mlfvts-trk.com/?a=659&oc=323&c=569&s1=",
+    "sheet": "VTS-Original",
+    "sliderAmount": "70000",
+    "state": "Idaho",
+    "phone": "406-314-1715",
+    "skipSecondApi": false
+  },
+  {
+    "id": "vts-ne-branded",
+    "name": "VTS-NE-Branded",
+    "url": "https://mlfvts-trk.com/?a=659&oc=830&c=569&s1=",
+    "sheet": "VTS-NE-Branded",
+    "sliderAmount": "8000",
+    "state": "West Virginia",
+    "phone": "304-279-8902",
+    "skipSecondApi": false
+  },
+  {
+    "id": "original",
+    "name": "Original",
+    "url": "https://mlf-1800-trk.com/?a=659&oc=337&c=617&s1=",
+    "sheet": "Original",
+    "sliderAmount": "500",
+    "state": "West Virginia",
+    "phone": "304-266-2863",
+    "skipSecondApi": false
+  },
+  {
+    "id": "second-chance-tax",
+    "name": "Second Chance Tax",
+    "url": "https://flm-sctr-trk.com/?a=659&oc=684&c=1818&s1=",
+    "sheet": "SCTR-Secondary",
+    "sliderAmount": "500",
+    "state": "West Virginia",
+    "phone": "304-276-7926",
+    "skipSecondApi": false
+  },
+  {
+    "id": "1800-fresh-tax-x-main",
+    "name": "1800 Fresh Tax (X) Main",
+    "url": "https://flmtrk.com/?a=659&oc=696&c=1867&s1=",
+    "sheet": "1800 Fresh Tax (X) Main",
+    "sliderAmount": "12000",
+    "state": "Maine",
+    "phone": "207-234-3082",
+    "skipSecondApi": false
+  },
+  {
+    "id": "fsi-main",
+    "name": "FSI - MAIN",
+    "url": "https://fsimlf-trk.com/?a=659&oc=159&c=111&s1=",
+    "sheet": "FSI - MAIN",
+    "sliderAmount": "25,000",
+    "state": "California",
+    "phone": "406-314-1715",
+    "skipSecondApi": false
+  }
+]

@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLM Agent | Command Center v3.0</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0e1a;
+            --bg-secondary: #111827;
+            --card-bg: rgba(17, 24, 39, 0.8);
+            --card-border: rgba(255,255,255,0.06);
+            --cyan: #06b6d4;
+            --cyan-glow: rgba(6, 182, 212, 0.15);
+            --purple: #8b5cf6;
+            --purple-glow: rgba(139, 92, 246, 0.15);
+            --green: #10b981;
+            --red: #ef4444;
+            --amber: #f59e0b;
+            --text: #f1f5f9;
+            --text-muted: #64748b;
+            --text-dim: #475569;
+            --gradient: linear-gradient(135deg, var(--cyan), var(--purple));
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            height: 100vh;
+            display: flex;
+            overflow: hidden;
+        }
+
+        /* ===== SIDEBAR ===== */
+        .sidebar {
+            width: 260px;
+            background: rgba(10, 14, 26, 0.95);
+            border-right: 1px solid var(--card-border);
+            display: flex;
+            flex-direction: column;
+            padding: 24px 16px;
+            backdrop-filter: blur(20px);
+            flex-shrink: 0;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 8px 12px;
+            margin-bottom: 36px;
+        }
+
+        .logo-area img {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            box-shadow: 0 0 25px rgba(6, 182, 212, 0.4);
+        }
+
+        .logo-area .brand {
+            font-weight: 800;
+            font-size: 16px;
+            letter-spacing: 1.5px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo-area .version {
+            font-size: 10px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .nav-section {
+            flex: 1;
+        }
+
+        .nav-label {
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 0 12px;
+            margin-bottom: 12px;
+        }
+
+        .nav-item {
+            padding: 11px 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-muted);
+            font-size: 13px;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-item:hover {
+            background: rgba(255,255,255,0.04);
+            color: var(--text);
+        }
+
+        .nav-item.active {
+            background: var(--cyan-glow);
+            color: var(--cyan);
+            font-weight: 600;
+        }
+
+        .nav-item.active::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 3px;
+            height: 20px;
+            background: var(--cyan);
+            border-radius: 0 4px 4px 0;
+        }
+
+        .nav-icon { font-size: 16px; width: 22px; text-align: center; }
+
+        .sidebar-footer {
+            padding: 16px 12px;
+            border-top: 1px solid var(--card-border);
+        }
+
+        .agent-status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--green);
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.6);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* ===== MAIN AREA ===== */
+        .main-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* ===== STATS BAR ===== */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(10, 14, 26, 0.5);
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 18px 20px;
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+        }
+
+        .stat-card:nth-child(1)::before { background: var(--gradient); }
+        .stat-card:nth-child(2)::before { background: var(--green); }
+        .stat-card:nth-child(3)::before { background: var(--cyan); }
+        .stat-card:nth-child(4)::before { background: var(--purple); }
+
+        .stat-value {
+            font-size: 28px;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== VIEW PANELS ===== */
+        .view-panel {
+            flex: 1;
+            display: none;
+            overflow: hidden;
+        }
+
+        .view-panel.active { display: flex; }
+
+        /* ===== CHAT VIEW ===== */
+        .chat-view {
+            flex-direction: column;
+        }
+
+        .chat-header {
+            padding: 16px 24px;
+            border-bottom: 1px solid var(--card-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 14, 26, 0.3);
+        }
+
+        .chat-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .chat-title .avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .chat-title-text h3 { font-size: 14px; font-weight: 700; }
+        .chat-title-text span { font-size: 11px; color: var(--green); font-weight: 600; }
+
+        .messages {
+            flex: 1;
+            padding: 20px 24px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            scroll-behavior: smooth;
+        }
+
+        .messages::-webkit-scrollbar { width: 6px; }
+        .messages::-webkit-scrollbar-track { background: transparent; }
+        .messages::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+
+        .message {
+            max-width: 75%;
+            padding: 14px 18px;
+            border-radius: 16px;
+            font-size: 13px;
+            line-height: 1.7;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .msg-agent {
+            background: rgba(17, 24, 39, 0.9);
+            color: var(--text);
+            align-self: flex-start;
+            border: 1px solid var(--card-border);
+            border-bottom-left-radius: 4px;
+        }
+
+        .msg-user {
+            background: var(--gradient);
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.2);
+        }
+
+        .msg-agent b, .msg-agent strong { color: var(--cyan); }
+
+        /* Quick Actions */
+        .quick-actions {
+            padding: 10px 24px;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            border-top: 1px solid var(--card-border);
+            background: rgba(10, 14, 26, 0.3);
+        }
+
+        .chip {
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid var(--card-border);
+            color: var(--text-muted);
+        }
+
+        .chip:hover {
+            background: var(--cyan-glow);
+            border-color: rgba(6, 182, 212, 0.3);
+            color: var(--cyan);
+        }
+
+        /* Input Area */
+        .input-area {
+            padding: 16px 24px;
+            background: rgba(10, 14, 26, 0.5);
+            border-top: 1px solid var(--card-border);
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .input-area input {
+            flex: 1;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid var(--card-border);
+            padding: 13px 20px;
+            border-radius: 12px;
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .input-area input:focus {
+            border-color: rgba(6, 182, 212, 0.4);
+            box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.08);
+        }
+
+        .input-area input::placeholder { color: var(--text-dim); }
+
+        .btn-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            border: 1px solid var(--card-border);
+            background: rgba(255,255,255,0.03);
+            color: var(--text-muted);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: all 0.2s;
+        }
+
+        .btn-icon:hover {
+            background: rgba(255,255,255,0.06);
+            color: var(--text);
+        }
+
+        .btn-send {
+            background: var(--gradient);
+            border: none;
+            color: white;
+            padding: 0 24px;
+            height: 44px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 13px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.2s;
+            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.2);
+        }
+
+        .btn-send:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(6, 182, 212, 0.3);
+        }
+
+        /* Typing Indicator */
+        .typing-indicator {
+            display: flex;
+            gap: 4px;
+            padding: 14px 18px;
+            align-self: flex-start;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--text-dim);
+            border-radius: 50%;
+            animation: typingBounce 1.4s infinite;
+        }
+
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes typingBounce {
+            0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+            30% { transform: translateY(-8px); opacity: 1; }
+        }
+
+        /* ===== CAMPAIGNS VIEW ===== */
+        .campaigns-view {
+            flex-direction: column;
+            overflow-y: auto;
+            padding: 24px;
+            gap: 16px;
+        }
+
+        .campaigns-view h2 {
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .campaign-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 14px;
+        }
+
+        .campaign-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            padding: 18px;
+            transition: all 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .campaign-card:hover {
+            border-color: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
+        }
+
+        .campaign-card.pass { border-left: 3px solid var(--green); }
+        .campaign-card.fail { border-left: 3px solid var(--red); }
+        .campaign-card.pending { border-left: 3px solid var(--text-dim); }
+
+        .campaign-name { font-weight: 700; font-size: 14px; margin-bottom: 8px; }
+        .campaign-meta { font-size: 11px; color: var(--text-muted); margin-bottom: 4px; }
+
+        .campaign-badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-top: 8px;
+        }
+
+        .badge-pass { background: rgba(16, 185, 129, 0.15); color: var(--green); }
+        .badge-fail { background: rgba(239, 68, 68, 0.15); color: var(--red); }
+        .badge-pending { background: rgba(100, 116, 139, 0.15); color: var(--text-dim); }
+
+        /* ===== LOGS VIEW ===== */
+        .logs-view {
+            flex-direction: column;
+            padding: 24px;
+            gap: 16px;
+        }
+
+        .logs-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logs-header h2 { font-size: 18px; font-weight: 800; }
+
+        .log-filters {
+            display: flex;
+            gap: 8px;
+        }
+
+        .log-filter-btn {
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid var(--card-border);
+            color: var(--text-muted);
+            font-family: 'Inter', sans-serif;
+            transition: all 0.2s;
+        }
+
+        .log-filter-btn.active, .log-filter-btn:hover {
+            background: var(--cyan-glow);
+            border-color: rgba(6, 182, 212, 0.3);
+            color: var(--cyan);
+        }
+
+        .log-terminal {
+            flex: 1;
+            background: #000;
+            border-radius: 14px;
+            padding: 20px;
+            font-family: 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+            font-size: 12px;
+            color: #00ff88;
+            overflow-y: auto;
+            line-height: 1.8;
+            border: 1px solid rgba(0, 255, 136, 0.1);
+        }
+
+        .log-terminal::-webkit-scrollbar { width: 6px; }
+        .log-terminal::-webkit-scrollbar-thumb { background: rgba(0, 255, 136, 0.2); border-radius: 3px; }
+
+        .log-line-error { color: #ff6b6b; }
+        .log-line-success { color: #00ff88; }
+        .log-line-warn { color: #ffd93d; }
+
+        /* Image Preview */
+        .image-preview-bar {
+            display: none;
+            padding: 10px 24px;
+            background: rgba(10, 14, 26, 0.5);
+            border-top: 1px solid var(--card-border);
+        }
+
+        .image-preview-bar img {
+            max-height: 80px;
+            border-radius: 10px;
+            border: 1px solid var(--cyan);
+        }
+
+        .image-preview-bar .remove-btn {
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            width: 20px;
+            height: 20px;
+            background: var(--red);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <div class="logo-area">
+            <img src="logo.png" alt="FLM">
+            <div>
+                <div class="brand">FLM AGENT</div>
+                <div class="version">Command Center v3.0</div>
+            </div>
+        </div>
+
+        <div class="nav-section">
+            <div class="nav-label">Navigation</div>
+            <div class="nav-item active" onclick="showView('chat')">
+                <span class="nav-icon">🧠</span> Intelligence Chat
+            </div>
+            <div class="nav-item" onclick="showView('campaigns')">
+                <span class="nav-icon">🛡️</span> Campaign Monitor
+            </div>
+            <div class="nav-item" onclick="showView('logs')">
+                <span class="nav-icon">📊</span> Execution Logs
+            </div>
+        </div>
+
+        <div class="sidebar-footer">
+            <div class="agent-status">
+                <div class="status-dot"></div>
+                <span>Agent Online — v3.0</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN AREA -->
+    <div class="main-area">
+        <!-- STATS BAR -->
+        <div class="stats-bar">
+            <div class="stat-card">
+                <div class="stat-value" id="stat-campaigns" style="background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">—</div>
+                <div class="stat-label">Campaigns</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="stat-runs" style="color: var(--green);">—</div>
+                <div class="stat-label">Today's Runs</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="stat-rate" style="color: var(--cyan);">—</div>
+                <div class="stat-label">Success Rate</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="stat-status" style="color: var(--green);">—</div>
+                <div class="stat-label">System Status</div>
+            </div>
+        </div>
+
+        <!-- VIEW: CHAT -->
+        <div id="view-chat" class="view-panel active chat-view">
+            <div class="chat-header">
+                <div class="chat-title">
+                    <div class="avatar">🧠</div>
+                    <div class="chat-title-text">
+                        <h3>FLM Agent Intelligence</h3>
+                        <span>● Online — Deep Project Knowledge Active</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="messages" id="chat-messages">
+                <div class="message msg-agent">
+                    👋 Welcome to the <b>FLM Agent Command Center v3.0</b>!<br><br>
+                    I have <b>deep knowledge</b> of your entire automation project — all 19 campaigns, the 6-stage pipeline, income mapping, APIs, scheduler config, and more.<br><br>
+                    Ask me anything! Try: <b>"What is the status?"</b> or <b>"Help"</b>
+                </div>
+            </div>
+
+            <div class="quick-actions">
+                <div class="chip" onclick="quickSend('What is the status?')">📊 Campaign Status</div>
+                <div class="chip" onclick="quickSend('Show errors')">🚨 Show Errors</div>
+                <div class="chip" onclick="quickSend('What is the income mapping?')">💰 Income Mapping</div>
+                <div class="chip" onclick="quickSend('What campaigns are pending?')">⏳ Pending Runs</div>
+                <div class="chip" onclick="quickSend('Explain the pipeline')">🔄 Pipeline</div>
+                <div class="chip" onclick="quickSend('List all campaigns')">📋 All Campaigns</div>
+                <div class="chip" onclick="quickSend('Help')">❓ Help</div>
+            </div>
+
+            <div class="image-preview-bar" id="image-preview-bar">
+                <div style="position: relative; display: inline-block;">
+                    <img id="image-preview" src="">
+                    <button class="remove-btn" onclick="clearImage()">✕</button>
+                </div>
+            </div>
+
+            <div class="input-area">
+                <input type="file" id="file-input" style="display: none;" accept="image/*" onchange="previewImage()">
+                <button class="btn-icon" onclick="document.getElementById('file-input').click()">📎</button>
+                <input type="text" id="user-input" placeholder="Ask FLM Agent anything about your campaigns..." onkeydown="if(event.key === 'Enter') sendMessage()">
+                <button class="btn-send" onclick="sendMessage()">Send ↗</button>
+            </div>
+        </div>
+
+        <!-- VIEW: CAMPAIGNS -->
+        <div id="view-campaigns" class="view-panel campaigns-view">
+            <h2>🛡️ Campaign Protection Grid</h2>
+            <div class="campaign-grid" id="campaign-grid">
+                <div style="color: var(--text-muted); padding: 40px; text-align: center;">Loading campaigns...</div>
+            </div>
+        </div>
+
+        <!-- VIEW: LOGS -->
+        <div id="view-logs" class="view-panel logs-view">
+            <div class="logs-header">
+                <h2>📊 Execution Logs</h2>
+                <div class="log-filters">
+                    <button class="log-filter-btn active" onclick="loadLogs('all', this)">All</button>
+                    <button class="log-filter-btn" onclick="loadLogs('errors', this)">Errors Only</button>
+                </div>
+            </div>
+            <div class="log-terminal" id="log-terminal">
+                > Initializing FLM Agent Log Viewer...<br>
+                > Loading latest scheduler logs...<br>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ===== MARKDOWN RENDERER =====
+        function renderMarkdown(text) {
+            return text
+                .replace(/\*\*(.*?)\*\*/g, '<b>$1</b>')
+                .replace(/\*(.*?)\*/g, '<i>$1</i>')
+                .replace(/`(.*?)`/g, '<code style="background:rgba(6,182,212,0.15);padding:2px 6px;border-radius:4px;font-size:12px;color:var(--cyan);">$1</code>')
+                .replace(/\n\n/g, '<br><br>')
+                .replace(/\n/g, '<br>')
+                .replace(/• /g, '&nbsp;&nbsp;• ')
+                .replace(/\| (.*?) \|/g, (match) => {
+                    return `<span style="font-family:monospace;font-size:12px;color:var(--text-muted);">${match}</span>`;
+                });
+        }
+
+        // ===== LOAD STATS =====
+        async function loadStats() {
+            try {
+                const res = await fetch('/api/stats');
+                const data = await res.json();
+                document.getElementById('stat-campaigns').textContent = data.totalCampaigns;
+                document.getElementById('stat-runs').textContent = data.todayRuns;
+                document.getElementById('stat-rate').textContent = data.successRate + '%';
+                document.getElementById('stat-status').textContent = data.systemStatus;
+
+                if (data.failed > 0) {
+                    document.getElementById('stat-status').textContent = 'ALERTS';
+                    document.getElementById('stat-status').style.color = 'var(--amber)';
+                }
+            } catch (e) {
+                console.error('Failed to load stats');
+            }
+        }
+
+        // ===== LOAD HISTORY =====
+        async function loadHistory() {
+            try {
+                const res = await fetch('/api/history');
+                const data = await res.json();
+                const messages = document.getElementById('chat-messages');
+
+                if (data.history && data.history.length > 0) {
+                    data.history.forEach(item => {
+                        const msg = document.createElement('div');
+                        msg.className = `message msg-${item.role}`;
+                        if (item.hasImage) {
+                            msg.innerHTML = `📸 [Visual Data Attached]<br>${renderMarkdown(item.message)}`;
+                        } else {
+                            msg.innerHTML = renderMarkdown(item.message);
+                        }
+                        messages.appendChild(msg);
+                    });
+                    messages.scrollTop = messages.scrollHeight;
+                }
+            } catch (e) {
+                console.error("Failed to load history");
+            }
+        }
+
+        // ===== LOAD CAMPAIGNS =====
+        async function loadCampaigns() {
+            try {
+                const res = await fetch('/api/campaigns');
+                const campaigns = await res.json();
+                const grid = document.getElementById('campaign-grid');
+                grid.innerHTML = '';
+
+                campaigns.forEach(c => {
+                    const statusClass = c.status === 'PASS' ? 'pass' : c.status === 'FAIL' ? 'fail' : 'pending';
+                    const badgeClass = c.status === 'PASS' ? 'badge-pass' : c.status === 'FAIL' ? 'badge-fail' : 'badge-pending';
+                    const statusText = c.status === 'PASS' ? 'SHIELDED' : c.status === 'FAIL' ? 'EXPOSED' : 'PENDING';
+
+                    const card = document.createElement('div');
+                    card.className = `campaign-card ${statusClass}`;
+                    card.innerHTML = `
+                        <div class="campaign-name">${c.name}</div>
+                        <div class="campaign-meta">Sheet: ${c.sheet}</div>
+                        <div class="campaign-meta">Runs: ${c.todayRuns} (✅ ${c.passed} / ❌ ${c.failed})</div>
+                        <div class="campaign-meta">Environments: ${c.completedEnvs}/${c.totalEnvs}</div>
+                        <div class="campaign-meta">Last Run: ${c.lastRunTime}</div>
+                        <span class="campaign-badge ${badgeClass}">${statusText}</span>
+                    `;
+                    grid.appendChild(card);
+                });
+            } catch (e) {
+                document.getElementById('campaign-grid').innerHTML = '<div style="color:var(--red);">Failed to load campaigns.</div>';
+            }
+        }
+
+        // ===== LOAD LOGS =====
+        async function loadLogs(filter, btn) {
+            if (btn) {
+                document.querySelectorAll('.log-filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            }
+            try {
+                const res = await fetch(`/api/logs?filter=${filter}`);
+                const data = await res.json();
+                const terminal = document.getElementById('log-terminal');
+                terminal.innerHTML = '';
+
+                data.logs.forEach(line => {
+                    const div = document.createElement('div');
+                    if (line.includes('❌') || line.includes('FAIL') || line.includes('Error')) {
+                        div.className = 'log-line-error';
+                    } else if (line.includes('✅') || line.includes('COMPLETED') || line.includes('success')) {
+                        div.className = 'log-line-success';
+                    } else if (line.includes('⚠️') || line.includes('WARN') || line.includes('SKIP')) {
+                        div.className = 'log-line-warn';
+                    }
+                    div.textContent = line;
+                    terminal.appendChild(div);
+                });
+
+                terminal.scrollTop = terminal.scrollHeight;
+            } catch (e) {
+                document.getElementById('log-terminal').innerHTML = '<div class="log-line-error">Failed to load logs.</div>';
+            }
+        }
+
+        // ===== VIEW SWITCHING =====
+        function showView(viewName) {
+            document.querySelectorAll('.view-panel').forEach(v => v.classList.remove('active'));
+            document.getElementById('view-' + viewName).classList.add('active');
+
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+            const navItems = document.querySelectorAll('.nav-item');
+            const idx = viewName === 'chat' ? 0 : viewName === 'campaigns' ? 1 : 2;
+            navItems[idx].classList.add('active');
+
+            if (viewName === 'campaigns') loadCampaigns();
+            if (viewName === 'logs') loadLogs('all');
+        }
+
+        // ===== IMAGE HANDLING =====
+        let currentImageBase64 = null;
+
+        function previewImage() {
+            const file = document.getElementById('file-input').files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                currentImageBase64 = e.target.result;
+                document.getElementById('image-preview').src = currentImageBase64;
+                document.getElementById('image-preview-bar').style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function clearImage() {
+            currentImageBase64 = null;
+            document.getElementById('file-input').value = '';
+            document.getElementById('image-preview-bar').style.display = 'none';
+        }
+
+        // ===== QUICK SEND =====
+        function quickSend(text) {
+            document.getElementById('user-input').value = text;
+            sendMessage();
+        }
+
+        // ===== SEND MESSAGE =====
+        async function sendMessage() {
+            const input = document.getElementById('user-input');
+            const messages = document.getElementById('chat-messages');
+            if (!input.value.trim() && !currentImageBase64) return;
+
+            const userText = input.value;
+            const imageToSend = currentImageBase64;
+
+            // User message bubble
+            const userMsg = document.createElement('div');
+            userMsg.className = 'message msg-user';
+            if (imageToSend) {
+                const img = document.createElement('img');
+                img.src = imageToSend;
+                img.style.cssText = 'max-width:100%;border-radius:10px;margin-bottom:5px;display:block;';
+                userMsg.appendChild(img);
+            }
+            if (userText) {
+                const span = document.createElement('span');
+                span.innerText = userText;
+                userMsg.appendChild(span);
+            }
+            messages.appendChild(userMsg);
+
+            input.value = '';
+            clearImage();
+            messages.scrollTop = messages.scrollHeight;
+
+            // Typing indicator
+            const typing = document.createElement('div');
+            typing.className = 'typing-indicator';
+            typing.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+            messages.appendChild(typing);
+            messages.scrollTop = messages.scrollHeight;
+
+            try {
+                const response = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: userText, image: imageToSend })
+                });
+                const data = await response.json();
+
+                // Remove typing, add agent response
+                typing.remove();
+                const agentMsg = document.createElement('div');
+                agentMsg.className = 'message msg-agent';
+                agentMsg.innerHTML = renderMarkdown(data.response);
+                messages.appendChild(agentMsg);
+
+                // Refresh stats after each chat
+                loadStats();
+            } catch (err) {
+                typing.remove();
+                const errorMsg = document.createElement('div');
+                errorMsg.className = 'message msg-agent';
+                errorMsg.innerHTML = '❌ Could not connect to FLM Agent. Make sure the server is running on port 3000.';
+                messages.appendChild(errorMsg);
+            }
+
+            messages.scrollTop = messages.scrollHeight;
+        }
+
+        // ===== INIT =====
+        window.onload = () => {
+            loadStats();
+            loadHistory();
+        };
+    </script>
+</body>
+</html>

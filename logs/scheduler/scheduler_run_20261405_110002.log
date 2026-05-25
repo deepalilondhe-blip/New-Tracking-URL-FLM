@@ -1,0 +1,707 @@
+===================================================== 
+SCHEDULER STARTED AT: 14-05-2026 11:00:02.04 
+===================================================== 
+Cleaning up existing browser processes... 
+Running Playwright batch scheduler... 
+◇ injected env (17) from .env // tip: ⌘ multiple files { path: ['.env.local', '.env'] }
+
+🤖 ================================================================
+🤖 STARTING LEADS AUTOMATION BATCH RUN [14/5/2026, 11:00:02 am]
+🤖 Interval configured: every 2 hours
+🤖 ================================================================
+⏭️  [SKIP] Campaign [FTD-X] was fully completed in previous runs for all browsers.
+⏭️  [SKIP] Campaign [FSI-PPC2] was fully completed in previous runs for all browsers.
+⏭️  [SKIP] Campaign [TRA-CPL] was fully completed in previous runs for all browsers.
+⏭️  [SKIP] Campaign [TRA-D3] was fully completed in previous runs for all browsers.
+⏭️  [SKIP] Campaign [PPC-ST] was fully completed in previous runs for all browsers.
+⏭️  [SKIP] Campaign [PPC-ST2] was fully completed in previous runs for all browsers.
+⏭️  [SKIP] Campaign [PPC-M-CA] was fully completed in previous runs for all browsers.
+⏭️  [SKIP] Campaign [PPC-CR] was fully completed in previous runs for all browsers.
+⏭️  [SKIP] Campaign [PPC-FS] was fully completed in previous runs for all browsers.
+⏭️  [SKIP] Campaign [PPC] was fully completed in previous runs for all browsers.
+⏭️  [SKIP] Campaign [TRA-CPM] was fully completed in previous runs for all browsers.
+⏭️  [SKIP] Campaign [FTH-X] was fully completed in previous runs for all browsers.
+⏭️  [SKIP] Campaign [EVEREST-TR-X] was fully completed in previous runs for all browsers.
+⏭️  [SKIP] Campaign [VTS-ORIGINAL] was fully completed in previous runs for all browsers.
+
+================================================================
+⚡ Running Campaign Viewports on Browser Engine: CHROMIUM - [1800-FRESH-TAX-X-MAIN]
+================================================================
+
+================================================================
+🚀 [14/5/2026, 11:00:02 am] RUNNING: 1800 Fresh Tax (X) Main (DESKTOP) on CHROMIUM
+🔗 Target URL: https://flmtrk.com/?a=659&oc=696&c=1867&s1=
+================================================================
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] ◇ injected env (0) from .env // tip: ⌘ custom filepath { path: '/custom/path/.env' }
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] ◇ injected env (0) from .env // tip: ⌘ multiple files { path: ['.env.local', '.env'] }
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] ◇ injected env (0) from .env // tip: ⌘ multiple files { path: ['.env.local', '.env'] }
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] ◇ injected env (0) from .env // tip: ⌁ auth for agents [www.vestauth.com]
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 
+🤖 ================================================================
+🤖 MASTER RUNNER: LAUNCHING 1800 FRESH TAX (X) MAIN
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 🤖 Mode:            DESKTOP
+🤖 Tracking URL:     https://flmtrk.com/?a=659&oc=696&c=1867&s1=
+🤖 Target Sheet:    1800 Fresh Tax (X) Main
+🤖 ================================================================
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 💻 Emulated Device Profile: DESKTOP
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 🔄 Processing lead for brand: 1800 Fresh Tax (X) Main
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 📊 Campaign execution run index: 8
+🎯 Enforcing dynamic credentials & parameters:
+   - First Name:   ckmtestpixel
+   - Last Name:    ckmtestpixel
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM]    - Email:        ckmtestpixel@gmail.com
+   - Phone Number: 401-247-1008
+   - Slider Value: 30,000
+   - State Value:  Florida
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 🔗 Navigating to: https://flmtrk.com/?a=659&oc=696&c=1867&s1=
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] ✅ Page loaded successfully
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 📝 Starting multi-step form filling process...
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 🔘 Step 1: Handling Debt Amount (30,000)
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 🔘 Found jQuery UI Slider #slider. Setting value via jQuery and DOM evaluation...
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] ✅ Set jQuery UI Slider #slider to 30,000
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 🔘 Attempting to click .next-btn1, .btn-next
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] ✅ Clicked .next-btn1, .btn-next
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 🔘 Dynamic Choice found: clicking "Gujarat Tax Debt" (Option 3 of 6)
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 📝 step1 column set to: "Gujarat Tax Debt"
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 🔘 Dynamic Choice found: clicking "GET HELP TODAY!" (Option 4 of 5)
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 📝 step2 column set to: "GET HELP TODAY!"
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 🔘 Dynamic Choice found: clicking "Less than $3,000" (Option 1 of 4)
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 📝 step3 column set to: "Less than $3,000"
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] ✅ Reached a recognized terminal step (State or Contact). Stopping dynamic traversal.
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 🔘 Step: Selecting State
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] ✅ Selected state dynamically: "District of Columbia"
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 🔘 Clicking generic NEXT button
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] ✅ Clicked generic NEXT button
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 🔘 Advancing past post-state step...
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 🔘 Filling Contact Info (Dynamic Loop)...
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] ✅ Filled First Name: ckmtestpixel
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] ✅ Filled Last Name: ckmtestpixel
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 🔘 Clicking active contact NEXT/SUBMIT button...
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] ✅ Filled Email: ckmtestpixel@gmail.com
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 🔘 Clicking active contact NEXT/SUBMIT button...
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] ✅ Filled Phone: 401-247-1008
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 🔘 Clicking active contact NEXT/SUBMIT button...
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 🔘 No active contact NEXT/SUBMIT button visible. Exiting loop.
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 🔘 Checking for additional submit/next buttons...
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 🔘 Submitting form
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] [STDERR] ⚠️  Submit navigation timeout or error, waiting 5s for final URL
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] ⏳ Waiting for final redirect to Thank You page...
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] ✅ Targeted final redirect URL achieved!
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] ✅ Final Thank You URL: https://www.1800freshtax.com/thankyou_ow.php?debt=30000&leadid=6975701A&reqid=26778686&affid=659&subid=#s1#
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] ✅ Extracted Lead ID: 6975701A
+📱 Device Type detected: D-CHROMIUM
+✅ Lead captured: 6975701A
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 📡 Fetching First API data for Lead ID: 6975701A...
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 📡 Raw XML Response: {
+  "lead_info_response": {
+    "$": {
+      "xmlns:xsd": "http://www.w3.org/2001/XMLSchema",
+      "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+      "xmlns": "http://cakemarketing.com/api/1/"
+    },
+    "success": "true",
+    "row_count": "1",
+    "lead_id": "6975701A",
+    "personal_info": {
+      "first_name": "CKMTESTPIXEL",
+      "last_name": "CKMTESTPIXEL",
+      "email_address": "ckmtestpixel@gmail.com",
+      "address": {
+        "street": "",
+        "city": "",
+        "state": "DC",
+        "zip_code": "",
+        "country": ""
+      },
+      "ip_address": "27.54.170.27",
+      "phone_work": "",
+      "phone_home": "401-247-1008",
+      "phone_cell": "",
+      "best_call_time": "",
+      "opt_in": "false"
+    },
+    "traffic_info": {
+      "lead_date": "2026-05-13T22:30:41.02",
+      "payout": {
+        "currency_id": "1",
+        "amount": "0.0000",
+        "formatted_amount": "$0.00"
+      },
+      "affiliate": {
+        "affiliate_id": {
+          "_": "659",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        },
+        "affiliate_name": {
+          "_": "QA affiliate",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        }
+      },
+      "campaign": {
+        "campaign_id": {
+          "_": "4071",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        },
+        "campaign_name": {
+          "_": "1800 Fresh Tax (X) - Main - CPA - $1.00",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        }
+      },
+      "creative_id": "1867",
+      "subid_1": "",
+      "subid_2": "",
+      "subid_3": "",
+      "subid_4": "",
+      "subid_5": "",
+      "referrer": "",
+      "pixel_fired": "true",
+      "returned_to_affiliate": "false",
+      "test": "true",
+      "upsell": "false"
+    },
+    "all_vertical_data": {
+      "data": {
+        "$": {
+          "xmlns": ""
+        },
+        "tax_debt": "30000",
+        "universal_leadid": "B3EBAED1-4513-F9CF-C897-5B4E7EAD04AA",
+        "affid": "659",
+        "TCPA_checkbox": "checked",
+        "reqid": "26778686",
+        "cr_price": "0.00",
+        "page": "www.1800freshtax.com/lf4/",
+        "neustar": "pass",
+        "neustar_disposition": "N,B,U,L,0",
+        "nd_odlv": "28",
+        "first_name_lower": "ckmtestpixel",
+        "last_name_lower": "ckmtestpixel",
+        "income": "2500",
+        "first_name_capital": "Ckmtestpixel",
+        "last_name_capital": "Ckmtestpixel",
+        "debt_type": "State Tax Debt",
+        "nodl_flag": "pass",
+        "ckm_campaign_id": "4337"
+      }
+    },
+    "dispositions": {
+      "disposition": [
+        {
+          "disposition_type": "Not Paid For",
+          "reason": "Unmatched Filter",
+          "filter": "income"
+        },
+        {
+          "disposition_type": "Sent to Review Queue",
+          "reason": "Income: This value is too large",
+          "filter": "Less Than Or Equal To Value"
+        }
+      ]
+    },
+    "pings": "",
+    "posts": "",
+    "sales": ""
+  }
+}
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] ✅ First API Data retrieved on attempt 1
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 📡 Fetching Second API data for Lead ID: 6975701A...
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 📡 Standard Second API Payload: cake_id=6975701A, domain_name=https://www.1800freshtax.com
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] [STDERR] (node:16220) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] [STDERR] ❌ Second API Attempt 1 failed: Request failed with status code 404
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] ⏳ Retrying in 3 seconds to allow database synchronization...
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 📡 Standard Second API Payload: cake_id=6975701A, domain_name=https://www.1800freshtax.com
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] [STDERR] ❌ Second API Attempt 2 failed: Request failed with status code 404
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] ⏳ Retrying in 3 seconds to allow database synchronization...
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 📡 Standard Second API Payload: cake_id=6975701A, domain_name=https://www.1800freshtax.com
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] [STDERR] ❌ Second API Attempt 3 failed: Request failed with status code 404
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] ⏳ Retrying in 3 seconds to allow database synchronization...
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 📡 Standard Second API Payload: cake_id=6975701A, domain_name=https://www.1800freshtax.com
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] [STDERR] ❌ Second API Attempt 4 failed: Request failed with status code 404
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] ⏳ Retrying in 3 seconds to allow database synchronization...
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 📡 Standard Second API Payload: cake_id=6975701A, domain_name=https://www.1800freshtax.com
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] [STDERR] ❌ Second API Attempt 5 failed: Request failed with status code 404
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] ✅ Row appended successfully to sheet: 1800 Fresh Tax (X) Main
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] ✨ Professional formatting applied to 1800 Fresh Tax (X) Main
+✅ Lead processed successfully for 1800 Fresh Tax (X) Main
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 🎥 Video saved successfully: traces/videos/1800 Fresh Tax (X) Main_1800_Fresh_Tax_(X)_Main.webm
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 
+✅ Execution successfully processed! { success: true, leadId: '6975701A', brand: '1800 Fresh Tax (X) Main' }
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] [STDERR] ❌ Automation Run encountered a fatal exception: tracing.stop: Target page, context or browser has been closed
+✅ [14/5/2026, 11:01:13 am] COMPLETED: 1800-fresh-tax-x-main [DESKTOP][CHROMIUM]
+
+================================================================
+🚀 [14/5/2026, 11:01:13 am] RUNNING: 1800 Fresh Tax (X) Main (TABLET) on CHROMIUM
+🔗 Target URL: https://flmtrk.com/?a=659&oc=696&c=1867&s1=
+================================================================
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] ◇ injected env (0) from .env // tip: ◈ secrets for agents [www.dotenvx.com]
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] ◇ injected env (0) from .env // tip: ⌁ auth for agents [www.vestauth.com]
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] ◇ injected env (0) from .env // tip: ◈ secrets for agents [www.dotenvx.com]
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] ◇ injected env (0) from .env // tip: ⌘ custom filepath { path: '/custom/path/.env' }
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 
+🤖 ================================================================
+🤖 MASTER RUNNER: LAUNCHING 1800 FRESH TAX (X) MAIN
+🤖 Mode:            TABLET
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 🤖 Tracking URL:     https://flmtrk.com/?a=659&oc=696&c=1867&s1=
+🤖 Target Sheet:    1800 Fresh Tax (X) Main
+🤖 ================================================================
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 📋 Emulated Device Profile: TABLET (iPad Pro 11)
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] ⏳ Delaying 200ms to allow responsive layouts to mount...
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 🔄 Processing lead for brand: 1800 Fresh Tax (X) Main Tablet
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 📊 Campaign execution run index: 10
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 🎯 Enforcing dynamic credentials & parameters:
+   - First Name:   ckmtestpixel
+   - Last Name:    ckmtestpixel
+   - Email:        ckmtestpixel@gmail.com
+   - Phone Number: 401-247-1010
+   - Slider Value: 10,000
+   - State Value:  Hawaii
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 🔗 [Mobile] Navigating to: https://flmtrk.com/?a=659&oc=696&c=1867&s1=
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] ✅ [Mobile] Page loaded successfully
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 📝 [Mobile] Starting mobile-specific form filling...
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 🔘 [Mobile] Step 1: Selecting Debt Amount (10,000)
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 🔘 [Mobile] Found jQuery UI Slider #slider. Setting value via jQuery and DOM evaluation...
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] ✅ [Mobile] Set jQuery UI Slider #slider to 10,000
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 🔘 [Mobile] Clicking active visible button: .next-btn1:visible, .btn-next:visible
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] ✅ [Mobile] Clicked: .next-btn1:visible, .btn-next:visible
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 🔘 [Mobile] Dynamic Choice found: clicking "GET HELP TODAY!" (Option 5 of 6)
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 📝 [Mobile] step1 column set to: "GET HELP TODAY!"
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 🔘 [Mobile] Dynamic Choice found: clicking "Both IRS & Gujarat Tax Debt" (Option 1 of 5)
+📝 [Mobile] step2 column set to: "Both IRS & Gujarat Tax Debt"
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 🔘 [Mobile] Dynamic Choice found: clicking "More than $5,000" (Option 3 of 4)
+📝 [Mobile] step3 column set to: "More than $5,000"
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] ✅ [Mobile] Reached a recognized terminal step (State or Contact). Stopping dynamic traversal.
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 🔘 [Mobile] Step 2: Selecting State
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] ✅ [Mobile] Selected state dynamically: "Georgia"
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 🔘 [Mobile] Clicking active visible button: .next-btn:visible, .next-btn2:visible, .btn-next:visible
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] ✅ [Mobile] Clicked: .next-btn:visible, .next-btn2:visible, .btn-next:visible
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 🔘 [Mobile] Step 3: Filling Contact Info (Dynamic Loop)...
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] ✅ [Mobile] Filled First Name: ckmtestpixel
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] ✅ [Mobile] Filled Last Name: ckmtestpixel
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 🔘 [Mobile] Clicking active contact NEXT/SUBMIT button...
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] ✅ [Mobile] Filled Email: ckmtestpixel@gmail.com
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 🔘 [Mobile] Clicking active contact NEXT/SUBMIT button...
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] ✅ [Mobile] Filled Phone: 401-247-1010
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 🔘 [Mobile] Clicking active contact NEXT/SUBMIT button...
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] [STDERR] ⚠️ [Tablet] Failed to apply glossy iPad Pro mockup frame overlay: page.evaluate: TypeError: Cannot read properties of null (reading 'appendChild')
+    at eval (eval at evaluate (:302:30), <anonymous>:104:23)
+    at UtilityScript.evaluate (<anonymous>:304:16)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 🔘 [Mobile] No active contact NEXT/SUBMIT button visible. Exiting loop.
+🔘 [Mobile] Scanning for additional dynamic steps...
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 🔘 [Mobile] Submitting form
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] ⏳ [Mobile] Waiting for submission navigation to complete
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] ⏳ [Mobile] Waiting for final Thank You page redirection...
+✅ [Mobile] Targeted final redirect URL achieved!
+✅ [Mobile] Final Thank You URL: https://www.1800freshtax.com/thankyou_ow.php?debt=10000&leadid=B8E9D2AF&reqid=26778691&affid=659&subid=#s1#
+✅ [Mobile] Extracted Lead ID: B8E9D2AF
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 📱 Device Type detected: T-CHROMIUM
+✅ Lead captured: B8E9D2AF
+📡 Fetching First API data for Lead ID: B8E9D2AF...
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 📡 Raw XML Response: {
+  "lead_info_response": {
+    "$": {
+      "xmlns:xsd": "http://www.w3.org/2001/XMLSchema",
+      "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+      "xmlns": "http://cakemarketing.com/api/1/"
+    },
+    "success": "true",
+    "row_count": "1",
+    "lead_id": "B8E9D2AF",
+    "personal_info": {
+      "first_name": "CKMTESTPIXEL",
+      "last_name": "CKMTESTPIXEL",
+      "email_address": "ckmtestpixel@gmail.com",
+      "address": {
+        "street": "",
+        "city": "",
+        "state": "GA",
+        "zip_code": "",
+        "country": ""
+      },
+      "ip_address": "27.54.170.27",
+      "phone_work": "",
+      "phone_home": "401-247-1010",
+      "phone_cell": "",
+      "best_call_time": "",
+      "opt_in": "false"
+    },
+    "traffic_info": {
+      "lead_date": "2026-05-13T22:31:55.77",
+      "payout": {
+        "currency_id": "1",
+        "amount": "0.0000",
+        "formatted_amount": "$0.00"
+      },
+      "affiliate": {
+        "affiliate_id": {
+          "_": "659",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        },
+        "affiliate_name": {
+          "_": "QA affiliate",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        }
+      },
+      "campaign": {
+        "campaign_id": {
+          "_": "4071",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        },
+        "campaign_name": {
+          "_": "1800 Fresh Tax (X) - Main - CPA - $1.00",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        }
+      },
+      "creative_id": "1867",
+      "subid_1": "",
+      "subid_2": "",
+      "subid_3": "",
+      "subid_4": "",
+      "subid_5": "",
+      "referrer": "",
+      "pixel_fired": "true",
+      "returned_to_affiliate": "false",
+      "test": "true",
+      "upsell": "false"
+    },
+    "all_vertical_data": {
+      "data": {
+        "$": {
+          "xmlns": ""
+        },
+        "tax_debt": "10000",
+        "universal_leadid": "1F96788F-7260-F7AA-E418-8555FF016E3D",
+        "affid": "659",
+        "TCPA_checkbox": "checked",
+        "reqid": "26778691",
+        "cr_price": "0.00",
+        "page": "www.1800freshtax.com/lf4/",
+        "neustar": "pass",
+        "neustar_disposition": "N,U,I1,L,0",
+        "nd_odlv": "24",
+        "first_name_lower": "ckmtestpixel",
+        "last_name_lower": "ckmtestpixel",
+        "income": "6000",
+        "first_name_capital": "Ckmtestpixel",
+        "last_name_capital": "Ckmtestpixel",
+        "debt_type": "Both",
+        "nodl_flag": "pass",
+        "ckm_campaign_id": "4337"
+      }
+    },
+    "dispositions": "",
+    "pings": "",
+    "posts": "",
+    "sales": ""
+  }
+}
+✅ First API Data retrieved on attempt 1
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 📡 Fetching Second API data for Lead ID: B8E9D2AF...
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 📡 Standard Second API Payload: cake_id=B8E9D2AF, domain_name=https://www.1800freshtax.com
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] [STDERR] (node:7144) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] [STDERR] ❌ Second API Attempt 1 failed: Request failed with status code 404
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] ⏳ Retrying in 3 seconds to allow database synchronization...
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 📡 Standard Second API Payload: cake_id=B8E9D2AF, domain_name=https://www.1800freshtax.com
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] [STDERR] ❌ Second API Attempt 2 failed: Request failed with status code 404
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] ⏳ Retrying in 3 seconds to allow database synchronization...
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 📡 Standard Second API Payload: cake_id=B8E9D2AF, domain_name=https://www.1800freshtax.com
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] [STDERR] ❌ Second API Attempt 3 failed: Request failed with status code 404
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] ⏳ Retrying in 3 seconds to allow database synchronization...
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 📡 Standard Second API Payload: cake_id=B8E9D2AF, domain_name=https://www.1800freshtax.com
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] [STDERR] ❌ Second API Attempt 4 failed: Request failed with status code 404
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] ⏳ Retrying in 3 seconds to allow database synchronization...
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 📡 Standard Second API Payload: cake_id=B8E9D2AF, domain_name=https://www.1800freshtax.com
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] [STDERR] ❌ Second API Attempt 5 failed: Request failed with status code 404
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] ✅ Row appended successfully to sheet: 1800 Fresh Tax (X) Main
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] ✨ Professional formatting applied to 1800 Fresh Tax (X) Main
+✅ Lead processed successfully for 1800 Fresh Tax (X) Main Tablet
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 🎥 Video saved successfully: traces/videos/1800 Fresh Tax (X) Main_1800_Fresh_Tax_(X)_Main_Tablet.webm
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 
+✅ Execution successfully processed! {
+  success: true,
+  leadId: 'B8E9D2AF',
+  brand: '1800 Fresh Tax (X) Main Tablet'
+}
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] [STDERR] ❌ Automation Run encountered a fatal exception: tracing.stop: Target page, context or browser has been closed
+✅ [14/5/2026, 11:02:38 am] COMPLETED: 1800-fresh-tax-x-main [TABLET][CHROMIUM]
+
+================================================================
+🚀 [14/5/2026, 11:02:38 am] RUNNING: 1800 Fresh Tax (X) Main (MOBILE) on CHROMIUM
+🔗 Target URL: https://flmtrk.com/?a=659&oc=696&c=1867&s1=
+================================================================
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ◇ injected env (0) from .env // tip: ⌘ multiple files { path: ['.env.local', '.env'] }
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ◇ injected env (0) from .env // tip: ⌘ multiple files { path: ['.env.local', '.env'] }
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ◇ injected env (0) from .env // tip: ◈ secrets for agents [www.dotenvx.com]
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ◇ injected env (0) from .env // tip: ⌘ enable debugging { debug: true }
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 
+🤖 ================================================================
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 🤖 MASTER RUNNER: LAUNCHING 1800 FRESH TAX (X) MAIN
+🤖 Mode:            MOBILE
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 🤖 Tracking URL:     https://flmtrk.com/?a=659&oc=696&c=1867&s1=
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 🤖 Target Sheet:    1800 Fresh Tax (X) Main
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 🤖 ================================================================
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 📱 Emulated Device Profile: MOBILE (iPhone 17 Pro)
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ⏳ Delaying 200ms to allow responsive layouts to mount...
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 🔄 Processing lead for brand: 1800 Fresh Tax (X) Main Mobile
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 📊 Campaign execution run index: 11
+🎯 Enforcing dynamic credentials & parameters:
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM]    - First Name:   ckmtestpixel
+   - Last Name:    ckmtestpixel
+   - Email:        ckmtestpixel@gmail.com
+   - Phone Number: 401-247-1011
+   - Slider Value: 15,000
+   - State Value:  Idaho
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 🔗 [Mobile] Navigating to: https://flmtrk.com/?a=659&oc=696&c=1867&s1=
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ✅ [Mobile] Page loaded successfully
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 📝 [Mobile] Starting mobile-specific form filling...
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 🔘 [Mobile] Step 1: Selecting Debt Amount (15,000)
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 🔘 [Mobile] Found jQuery UI Slider #slider. Setting value via jQuery and DOM evaluation...
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ✅ [Mobile] Set jQuery UI Slider #slider to 15,000
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 🔘 [Mobile] Clicking active visible button: .next-btn1:visible, .btn-next:visible
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ✅ [Mobile] Clicked: .next-btn1:visible, .btn-next:visible
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 🔘 [Mobile] Dynamic Choice found: clicking "Learn More About Your Tax Debt Relief Options" (Option 6 of 6)
+📝 [Mobile] step1 column set to: "Learn More About Your Tax Debt Relief Options"
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 🔘 [Mobile] Dynamic Choice found: clicking "IRS Tax Debt" (Option 2 of 5)
+📝 [Mobile] step2 column set to: "IRS Tax Debt"
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 🔘 [Mobile] Dynamic Choice found: clicking "GET HELP TODAY!" (Option 4 of 4)
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 📝 [Mobile] step3 column set to: "GET HELP TODAY!"
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 🔘 [Mobile] Dynamic Choice found: clicking "More than $5,000" (Option 3 of 3)
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ✅ [Mobile] Reached a recognized terminal step (State or Contact). Stopping dynamic traversal.
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 🔘 [Mobile] Step 2: Selecting State
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ✅ [Mobile] Selected state dynamically: "Hawaii"
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 🔘 [Mobile] Clicking active visible button: .next-btn:visible, .next-btn2:visible, .btn-next:visible
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ✅ [Mobile] Clicked: .next-btn:visible, .next-btn2:visible, .btn-next:visible
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 🔘 [Mobile] Step 3: Filling Contact Info (Dynamic Loop)...
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ✅ [Mobile] Filled First Name: ckmtestpixel
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ✅ [Mobile] Filled Last Name: ckmtestpixel
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 🔘 [Mobile] Clicking active contact NEXT/SUBMIT button...
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ✅ [Mobile] Filled Email: ckmtestpixel@gmail.com
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 🔘 [Mobile] Clicking active contact NEXT/SUBMIT button...
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ✅ [Mobile] Filled Phone: 401-247-1011
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 🔘 [Mobile] Clicking active contact NEXT/SUBMIT button...
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] [STDERR] ⚠️ [Mobile] Failed to apply glossy iPhone 17 Pro mockup frame overlay: page.evaluate: TypeError: Cannot read properties of null (reading 'appendChild')
+    at eval (eval at evaluate (:302:30), <anonymous>:133:23)
+    at UtilityScript.evaluate (<anonymous>:304:16)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 🔘 [Mobile] No active contact NEXT/SUBMIT button visible. Exiting loop.
+🔘 [Mobile] Scanning for additional dynamic steps...
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 🔘 [Mobile] Submitting form
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ⏳ [Mobile] Waiting for submission navigation to complete
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ⏳ [Mobile] Waiting for final Thank You page redirection...
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ✅ [Mobile] Targeted final redirect URL achieved!
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ✅ [Mobile] Final Thank You URL: https://www.1800freshtax.com/thankyou_ow.php?debt=15000&leadid=66B6C739&reqid=26778694&affid=659&subid=#s1#
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ✅ [Mobile] Extracted Lead ID: 66B6C739
+📱 Device Type detected: M-CHROMIUM
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ✅ Lead captured: 66B6C739
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 📡 Fetching First API data for Lead ID: 66B6C739...
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 📡 Raw XML Response: {
+  "lead_info_response": {
+    "$": {
+      "xmlns:xsd": "http://www.w3.org/2001/XMLSchema",
+      "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+      "xmlns": "http://cakemarketing.com/api/1/"
+    },
+    "success": "true",
+    "row_count": "1",
+    "lead_id": "66B6C739",
+    "personal_info": {
+      "first_name": "CKMTESTPIXEL",
+      "last_name": "CKMTESTPIXEL",
+      "email_address": "ckmtestpixel@gmail.com",
+      "address": {
+        "street": "",
+        "city": "",
+        "state": "HI",
+        "zip_code": "",
+        "country": ""
+      },
+      "ip_address": "27.54.170.27",
+      "phone_work": "",
+      "phone_home": "401-247-1011",
+      "phone_cell": "",
+      "best_call_time": "",
+      "opt_in": "false"
+    },
+    "traffic_info": {
+      "lead_date": "2026-05-13T22:33:06.817",
+      "payout": {
+        "currency_id": "1",
+        "amount": "0.0000",
+        "formatted_amount": "$0.00"
+      },
+      "affiliate": {
+        "affiliate_id": {
+          "_": "659",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        },
+        "affiliate_name": {
+          "_": "QA affiliate",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        }
+      },
+      "campaign": {
+        "campaign_id": {
+          "_": "4071",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        },
+        "campaign_name": {
+          "_": "1800 Fresh Tax (X) - Main - CPA - $1.00",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        }
+      },
+      "creative_id": "1867",
+      "subid_1": "",
+      "subid_2": "",
+      "subid_3": "",
+      "subid_4": "",
+      "subid_5": "",
+      "referrer": "",
+      "pixel_fired": "true",
+      "returned_to_affiliate": "false",
+      "test": "true",
+      "upsell": "false"
+    },
+    "all_vertical_data": {
+      "data": {
+        "$": {
+          "xmlns": ""
+        },
+        "tax_debt": "15000",
+        "universal_leadid": "6BC4DABF-2D34-B5D7-2C7F-33ECDF01A956",
+        "affid": "659",
+        "TCPA_checkbox": "checked",
+        "reqid": "26778694",
+        "cr_price": "0.00",
+        "page": "www.1800freshtax.com/lf4/",
+        "neustar": "fail",
+        "neustar_disposition": "N,U,I3,L,0",
+        "nd_odlv": "26",
+        "first_name_lower": "ckmtestpixel",
+        "last_name_lower": "ckmtestpixel",
+        "income": "6000",
+        "first_name_capital": "Ckmtestpixel",
+        "last_name_capital": "Ckmtestpixel",
+        "debt_type": "IRS Tax Debt",
+        "nodl_flag": "pass",
+        "ckm_campaign_id": "4337"
+      }
+    },
+    "dispositions": {
+      "disposition": [
+        {
+          "disposition_type": "Not Paid For",
+          "reason": "Unmatched Filter",
+          "filter": "Nuestar Fail"
+        },
+        {
+          "disposition_type": "Sent to Review Queue",
+          "reason": "neustar: This value is not valid",
+          "filter": "Equals Value"
+        }
+      ]
+    },
+    "pings": "",
+    "posts": "",
+    "sales": ""
+  }
+}
+✅ First API Data retrieved on attempt 1
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 📡 Fetching Second API data for Lead ID: 66B6C739...
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 📡 Standard Second API Payload: cake_id=66B6C739, domain_name=https://www.1800freshtax.com
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] [STDERR] (node:20400) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] [STDERR] ❌ Second API Attempt 1 failed: Request failed with status code 404
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ⏳ Retrying in 3 seconds to allow database synchronization...
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 📡 Standard Second API Payload: cake_id=66B6C739, domain_name=https://www.1800freshtax.com
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] [STDERR] ❌ Second API Attempt 2 failed: Request failed with status code 404
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ⏳ Retrying in 3 seconds to allow database synchronization...
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 📡 Standard Second API Payload: cake_id=66B6C739, domain_name=https://www.1800freshtax.com
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] [STDERR] ❌ Second API Attempt 3 failed: Request failed with status code 404
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ⏳ Retrying in 3 seconds to allow database synchronization...
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 📡 Standard Second API Payload: cake_id=66B6C739, domain_name=https://www.1800freshtax.com
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] [STDERR] ❌ Second API Attempt 4 failed: Request failed with status code 404
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ⏳ Retrying in 3 seconds to allow database synchronization...
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 📡 Standard Second API Payload: cake_id=66B6C739, domain_name=https://www.1800freshtax.com
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] [STDERR] ❌ Second API Attempt 5 failed: Request failed with status code 404
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ✅ Row appended successfully to sheet: 1800 Fresh Tax (X) Main
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ✨ Professional formatting applied to 1800 Fresh Tax (X) Main
+✅ Lead processed successfully for 1800 Fresh Tax (X) Main Mobile
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 🎥 Video saved successfully: traces/videos/1800 Fresh Tax (X) Main_1800_Fresh_Tax_(X)_Main_Mobile.webm
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 
+✅ Execution successfully processed! {
+  success: true,
+  leadId: '66B6C739',
+  brand: '1800 Fresh Tax (X) Main Mobile'
+}
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] [STDERR] ❌ Automation Run encountered a fatal exception: tracing.stop: Target page, context or browser has been closed
+✅ [14/5/2026, 11:03:48 am] COMPLETED: 1800-fresh-tax-x-main [MOBILE][CHROMIUM]
+
+📊 ================================================================
+📊 BATCH COMPLETED IN 3.77 MINUTES
+📊 Total Runners Executed: 46
+📊 Succeeded:              46
+📊 Failed:                 0
+📊 ================================================================
+
+📧 Sending batch status email report to deepali.londhe@magnetoitsolutions.com, ilfas.mansuri@bytestechnolab.com...
+✅ Status report email successfully sent to deepali.londhe@magnetoitsolutions.com, ilfas.mansuri@bytestechnolab.com! (Message ID: <87f65818-5738-0d75-8172-17b477e1309c@magnetoitsolutions.com>)
+✅ Generated execution-summary.md for GitHub Cloud Summary
+🧹 Reset scheduler state for the next recurrence interval.
+
+⏳ Next automation batch will start at: 14/5/2026, 1:03:52 pm
+🏁 Batch run completed in single-execution mode. Exiting.
+===================================================== 
+SCHEDULER FINISHED AT: 14-05-2026 11:03:52.49 
+===================================================== 

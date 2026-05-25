@@ -32,8 +32,7 @@ This file keeps track of all 30 lead automation campaigns, their target URLs, Go
 | 22 | **TRA-DT3** | `TRA-DT3` | `https://flmtra.com/?a=659&oc=792&c=2386&s1=` | Yes 📱 | Yes 📋 | `run-tra-d3.js` |
 | 23 | **SCTR-Main** | `SCTR-Main` | `https://secure-sctr.com/?a=659&oc=800&c=2432&s1=` | Yes 📱 | Yes 📋 | `run-fth-x.js` (universal) |
 | 24 | **1800 Fresh Tax CPC**| `1800-FTH-CPC` | `https://mlf-1800-trk.com/?a=659&oc=806&c=2464&s1=` | Yes 📱 | Yes 📋 | `run-fth-x.js` (universal) |
-| 25 | **Guardian Tax Relief**| `Guardian Tax Relief` | `https://mlf-gt.com/?a=659&oc=816&c=2521&s1=` | **Yes 📱 (Active)** | **Yes 📋 (Active)** | `run-guardian-tr.js` |
-| 26 | **Everest Tax Relief**| `Everest-TR` | `https://mlf-trk.com/?a=659&oc=812&c=2498&s1=` | Yes 📱 | Yes 📋 | `run-fth-x.js` (universal) |
+| 26 | **Everest Tax Releif(X)**| `Everest Tax Releif(X)` | `https://mlf-trk.com/?a=659&oc=812&c=2498&s1=` | **Yes 📱 (Active)** | **Yes 📋 (Active)** | `run-everest-tr-x.js` |
 | 27 | **Senior Tax Defence 2**| `SCTD-Alt` | `https://flmtrk.com/?a=659&oc=831&c=2599&s1=` | Yes 📱 | Yes 📋 | `run-fth-x.js` (universal) |
 | 28 | **Empire Tax Relief**| `Empire-TR` | `https://jsttrk.com/?a=659&oc=844&c=2689&s1=` | Yes 📱 | Yes 📋 | `run-fth-x.js` (universal) |
 | 29 | **Capital Tax Relief**| `Capital-TR` | `https://jsttrk.com/?a=659&oc=846&c=2691&s1=` | Yes 📱 | Yes 📋 | `run-fth-x.js` (universal) |
@@ -63,9 +62,6 @@ node run-ppc-fs-mobile.js
 
 # Run the PPC-CR Mobile automation:
 node run-ppc-cr-mobile.js
-
-# Run the Guardian Tax Relief Mobile automation:
-node run-guardian-tr-mobile.js
 ```
 
 ### 📋 Running on Tablet (iPad Pro Emulation with real scrolling frame):
@@ -84,7 +80,4 @@ node run-ppc-fs-tablet.js
 
 # Run the PPC-CR Tablet automation:
 node run-ppc-cr-tablet.js
-
-# Run the Guardian Tax Relief Tablet automation:
-node run-guardian-tr-tablet.js
 ```

@@ -3,16 +3,17 @@ require('dotenv').config();
 
 const SHEET_NAMES = [
   "PPC", "TRA-DT3", "TRA-CPL", "PPC-ST", "PPC-ST2",
-  "PPC-M/CA", "PPC-CR", "TRA-CPM", "Guardian Tax Relief", "PPC-FS",
-  "FSI-PPC2", "FTD-X"
+  "PPC-M/CA", "PPC-CR", "TRA-CPM", "PPC-FS",
+  "FSI-PPC2", "FTD-X", "Everest Tax Releif(X)", "VTS-Original",
+  "1800 Fresh Tax (X) Main"
 ];
 
 const HEADERS = [
-  "Date", "D/M", "Affiliate", "Campaign ID", "Link", "Step1",
-  "Cake Tax Debt", "Step2", "Cake Debt Type", "Step3",
-  "Cake Income", "State", "Phone", "Cake Home Phone", "Cake Lead",
-  "Lead ID", "DBID", "Thank You URL", "Page Origin", "CDB",
-  "CDB Email", "Neustar", "Neustar Disposition", "Pixel Fired", "Run Date"
+  "DateTime", "Type", "Affiliate", "Campaign ID", "Link",
+  "Slider Amount", "Cake Income", "State", "Phone", "Lead ID",
+  "DBID", "Page Origin", "Thank u URL", "CDB Status", "CDB Email",
+  "Neustar", "Neustar Disposition", "Pixel Fired", "Run Date",
+  "Step 1", "Step 2", "Step 3"
 ];
 
 async function authenticate() {
@@ -136,15 +137,15 @@ async function setupSheets() {
                 sheetId: sheetId,
                 startRowIndex: 1,
                 startColumnIndex: 0,
-                endColumnIndex: 25
+                endColumnIndex: 22
               }],
               booleanRule: {
                 condition: {
                   type: 'CUSTOM_FORMULA',
-                  values: [{ userEnteredValue: '=ISODD(ROW())' }]
+                  values: [{ userEnteredValue: '=ISEVEN(ROW())' }]
                 },
                 format: {
-                  backgroundColor: { red: 0.95, green: 0.97, blue: 0.99 }
+                  backgroundColor: { red: 0.933, green: 0.953, blue: 0.988 }
                 }
               }
             },

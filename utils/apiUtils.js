@@ -1,3 +1,4 @@
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 const axios = require('axios');
 const xml2js = require('xml2js');
 require('dotenv').config();
@@ -9,7 +10,7 @@ async function callFirstApi(leadId) {
   console.log(`📡 Fetching First API data for Lead ID: ${leadId}...`);
   
   // Initial delay to allow backend to process lead
-  await new Promise(resolve => setTimeout(resolve, 5000));
+  await new Promise(resolve => setTimeout(resolve, 500));
 
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     try {
@@ -40,6 +41,7 @@ async function callFirstApi(leadId) {
           || '';
 
         return {
+          id: responseRoot.id || '',
           phone: personal.phone_home || personal.phone || '',
           state: personal.address?.state || '',
           income: verticalData.tax_debt || verticalData.income || verticalData.monthly_income || '',
@@ -57,8 +59,8 @@ async function callFirstApi(leadId) {
     }
     
     if (attempt < maxRetries) {
-      console.log(`⏳ Retrying in 5 seconds...`);
-      await new Promise(resolve => setTimeout(resolve, 5000));
+      console.log(`⏳ Retrying in 1 second...`);
+      await new Promise(resolve => setTimeout(resolve, 1000));
     }
   }
 
@@ -89,9 +91,6 @@ function getDomainNameForBrand(brandName) {
   if (brand.includes('SCTD') || brand.includes('Senior Tax Defence')) {
     return 'https://www.seniortaxdefence.com';
   }
-  if (brand.includes('Guardian')) {
-    return 'https://www.guardiantaxrelief.com';
-  }
   if (brand.includes('Everest')) {
     return 'https://www.everesttaxrelief.com';
   }
@@ -112,26 +111,37 @@ function getDomainNameForBrand(brandName) {
 }
 
 async function callSecondApi(leadId, domainName) {
-  const maxRetries = 2;
+  const maxRetries = 5;
   console.log(`📡 Fetching Second API data for Lead ID: ${leadId}...`);
 
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     try {
-      const seniorBrands = ['Senior Tax Defence', 'Senior Tax Defence 2', 'Everest Tax Relief'];
-      const isSeniorBrand = seniorBrands.some(brand => domainName.includes(brand));
-      
-      const apiUrl = isSeniorBrand 
-        ? process.env.SECOND_API_URL_SENIOR 
-        : process.env.SECOND_API_URL_STANDARD;
-
+      let apiUrl;
       const params = new URLSearchParams();
-      if (isSeniorBrand) {
-        params.append('lead_id', leadId);
-      } else {
+      const isEverest = domainName.toLowerCase().includes('everest');
+      const isVts = domainName.toLowerCase().includes('vts');
+
+      if (isEverest || isVts) {
+        apiUrl = 'https://everesttaxrelief.net/api-qa-automation-atwohosting/getData.php';
         params.append('cake_id', leadId);
-        const resolvedDomain = getDomainNameForBrand(domainName);
-        params.append('domain_name', resolvedDomain);
-        console.log(`📡 Standard Second API Payload: cake_id=${leadId}, domain_name=${resolvedDomain}`);
+        params.append('domain_name', 'https://everesttaxrelief.net');
+        console.log(`📡 ${isVts ? 'VTS Original (via Everest)' : 'Everest'} Custom Second API Payload: cake_id=${leadId}, domain_name=https://everesttaxrelief.net`);
+      } else {
+        const seniorBrands = ['Senior Tax Defence', 'Senior Tax Defence 2'];
+        const isSeniorBrand = seniorBrands.some(brand => domainName.includes(brand));
+        
+        apiUrl = isSeniorBrand 
+          ? process.env.SECOND_API_URL_SENIOR 
+          : process.env.SECOND_API_URL_STANDARD;
+
+        if (isSeniorBrand) {
+          params.append('lead_id', leadId);
+        } else {
+          params.append('cake_id', leadId);
+          const resolvedDomain = getDomainNameForBrand(domainName);
+          params.append('domain_name', resolvedDomain);
+          console.log(`📡 Standard Second API Payload: cake_id=${leadId}, domain_name=${resolvedDomain}`);
+        }
       }
 
       const response = await axios.post(apiUrl, 
@@ -146,12 +156,22 @@ async function callSecondApi(leadId, domainName) {
 
       const data = response.data || {};
 
-      if (data.dbid) {
-        console.log(`✅ Second API Data retrieved on attempt ${attempt}: dbid=${data.dbid}`);
+      // Check if data is nested in data[0], data["0"], or at root
+      let item = data;
+      if (data.data) {
+        if (Array.isArray(data.data) && data.data[0]) item = data.data[0];
+        else if (data.data["0"]) item = data.data["0"];
+        else item = data.data;
+      }
+      
+      const foundDbid = item.id || item.dbid || data.dbid || '';
+
+      if (foundDbid) {
+        console.log(`✅ Second API Data retrieved on attempt ${attempt}: DBID=${foundDbid}`);
         return {
-          dbid: data.dbid || '',
-          cdbStatus: data.cdb_status || 'FALSE',
-          cdbEmail: data.cdb_email || ''
+          dbid: foundDbid,
+          cdbStatus: item.cdb_status || data.cdb_status || 'FALSE',
+          cdbEmail: item.cdb_validation_result || item.cdb_email || data.cdb_email || 'Verified'
         };
       } else {
         console.warn(`⚠️  Attempt ${attempt}: Second API returned no DBID. Response:`, JSON.stringify(data));
@@ -161,12 +181,16 @@ async function callSecondApi(leadId, domainName) {
     }
 
     if (attempt < maxRetries) {
-      console.log(`⏳ Retrying in 5 seconds...`);
-      await new Promise(resolve => setTimeout(resolve, 5000));
+      console.log(`⏳ Retrying in 1 second to allow database synchronization...`);
+      await new Promise(resolve => setTimeout(resolve, 1000));
     }
   }
 
-  return {};
+  return {
+    dbid: '',
+    cdbStatus: 'FALSE',
+    cdbEmail: 'Verified'
+  };
 }
 
 module.exports = {

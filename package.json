@@ -17,6 +17,7 @@
     "@playwright/test": "^1.59.1"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.24.1",
     "axios": "^1.15.2",
     "dotenv": "^17.4.2",
     "googleapis": "^171.4.0",

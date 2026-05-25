@@ -1,0 +1,2505 @@
+===================================================== 
+SCHEDULER STARTED AT: 13-05-2026 22:46:29.25 
+===================================================== 
+Cleaning up existing browser processes... 
+Running Playwright batch scheduler... 
+◇ injected env (17) from .env // tip: ⌘ enable debugging { debug: true }
+
+🤖 ================================================================
+🤖 STARTING LEADS AUTOMATION BATCH RUN [13/5/2026, 10:46:30 pm]
+🤖 Interval configured: every 2 hours
+🤖 ================================================================
+⏭️  [SKIP] Campaign [FTD-X] was fully completed in previous runs for all browsers.
+⏭️  [SKIP] Campaign [FSI-PPC2] was fully completed in previous runs for all browsers.
+⏭️  [SKIP] Campaign [TRA-CPL] was fully completed in previous runs for all browsers.
+⏭️  [SKIP] Campaign [TRA-D3] was fully completed in previous runs for all browsers.
+⏭️  [SKIP] Campaign [PPC-ST] was fully completed in previous runs for all browsers.
+⏭️  [SKIP] Campaign [PPC-ST2] was fully completed in previous runs for all browsers.
+⏭️  [SKIP] Campaign [PPC-M-CA] was fully completed in previous runs for all browsers.
+⏭️  [SKIP] Campaign [PPC-CR] was fully completed in previous runs for all browsers.
+⏭️  [SKIP] Campaign [PPC-FS] was fully completed in previous runs for all browsers.
+⏭️  [SKIP] Campaign [PPC] was fully completed in previous runs for all browsers.
+
+================================================================
+⚡ Running Campaign Viewports on Browser Engine: CHROMIUM - [TRA-CPM]
+================================================================
+
+================================================================
+🚀 [13/5/2026, 10:46:30 pm] RUNNING: TRA-CPM (DESKTOP) on CHROMIUM
+🔗 Target URL: https://flmtra.com/?a=659&oc=763&c=2225&s1=
+================================================================
+[tra-cpm][DESKTOP][CHROMIUM] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[tra-cpm][DESKTOP][CHROMIUM] ◇ injected env (0) from .env // tip: ◈ encrypted .env [www.dotenvx.com]
+[tra-cpm][DESKTOP][CHROMIUM] ◇ injected env (0) from .env // tip: ⌘ override existing { override: true }
+[tra-cpm][DESKTOP][CHROMIUM] ◇ injected env (0) from .env // tip: ⌁ auth for agents [www.vestauth.com]
+[tra-cpm][DESKTOP][CHROMIUM] ◇ injected env (0) from .env // tip: ⌁ auth for agents [www.vestauth.com]
+[tra-cpm][DESKTOP][CHROMIUM] 
+🤖 ================================================================
+[tra-cpm][DESKTOP][CHROMIUM] 🤖 MASTER RUNNER: LAUNCHING TRA-CPM
+🤖 Mode:            DESKTOP
+🤖 Tracking URL:     https://flmtra.com/?a=659&oc=763&c=2225&s1=
+🤖 Target Sheet:    TRA-CPM
+🤖 ================================================================
+[tra-cpm][DESKTOP][CHROMIUM] 💻 Emulated Device Profile: DESKTOP
+[tra-cpm][DESKTOP][CHROMIUM] 🔄 Processing lead for brand: TRA-CPM
+[tra-cpm][DESKTOP][CHROMIUM] 📊 Campaign execution run index: 7
+🎯 Enforcing dynamic credentials & parameters:
+[tra-cpm][DESKTOP][CHROMIUM]    - First Name:   ckmtestpixel
+   - Last Name:    ckmtestpixel
+   - Email:        ckmtestpixel@gmail.com
+   - Phone Number: 401-247-1007
+   - Slider Value: 20,000
+   - State Value:  Delaware
+[tra-cpm][DESKTOP][CHROMIUM] 🔗 Navigating to: https://flmtra.com/?a=659&oc=763&c=2225&s1=
+[tra-cpm][DESKTOP][CHROMIUM] [STDERR] ❌ Failed processing TRA-CPM: page.goto: net::ERR_NETWORK_CHANGED at https://flmtra.com/?a=659&oc=763&c=2225&s1=
+Call log:
+[2m  - navigating to "https://flmtra.com/?a=659&oc=763&c=2225&s1=", waiting until "networkidle"[22m
+
+[tra-cpm][DESKTOP][CHROMIUM] 
+✅ Execution successfully processed! {
+  success: false,
+  error: 'page.goto: net::ERR_NETWORK_CHANGED at https://flmtra.com/?a=659&oc=763&c=2225&s1=\n' +
+    'Call log:\n' +
+    '\x1B[2m  - navigating to "https://flmtra.com/?a=659&oc=763&c=2225&s1=", waiting until "networkidle"\x1B[22m\n',
+  brand: 'TRA-CPM'
+}
+[tra-cpm][DESKTOP][CHROMIUM] 📋 Trace report successfully saved: traces/tra-cpm_desktop.zip
+✅ [14/5/2026, 10:23:20 am] COMPLETED: tra-cpm [DESKTOP][CHROMIUM]
+
+================================================================
+🚀 [14/5/2026, 10:23:20 am] RUNNING: TRA-CPM (TABLET) on CHROMIUM
+🔗 Target URL: https://flmtra.com/?a=659&oc=763&c=2225&s1=
+================================================================
+[tra-cpm][TABLET][CHROMIUM] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[tra-cpm][TABLET][CHROMIUM] ◇ injected env (0) from .env // tip: ⌘ override existing { override: true }
+[tra-cpm][TABLET][CHROMIUM] ◇ injected env (0) from .env // tip: ◈ encrypted .env [www.dotenvx.com]
+[tra-cpm][TABLET][CHROMIUM] ◇ injected env (0) from .env // tip: ⌁ auth for agents [www.vestauth.com]
+[tra-cpm][TABLET][CHROMIUM] ◇ injected env (0) from .env // tip: ⌘ multiple files { path: ['.env.local', '.env'] }
+[tra-cpm][TABLET][CHROMIUM] 
+🤖 ================================================================
+[tra-cpm][TABLET][CHROMIUM] 🤖 MASTER RUNNER: LAUNCHING TRA-CPM
+🤖 Mode:            TABLET
+🤖 Tracking URL:     https://flmtra.com/?a=659&oc=763&c=2225&s1=
+[tra-cpm][TABLET][CHROMIUM] 🤖 Target Sheet:    TRA-CPM
+[tra-cpm][TABLET][CHROMIUM] 🤖 ================================================================
+[tra-cpm][TABLET][CHROMIUM] 📋 Emulated Device Profile: TABLET (iPad Pro 11)
+[tra-cpm][TABLET][CHROMIUM] ⏳ Delaying 200ms to allow responsive layouts to mount...
+[tra-cpm][TABLET][CHROMIUM] 🔄 Processing lead for brand: TRA-CPM Tablet
+[tra-cpm][TABLET][CHROMIUM] 📊 Campaign execution run index: 8
+[tra-cpm][TABLET][CHROMIUM] 🎯 Enforcing dynamic credentials & parameters:
+   - First Name:   ckmtestpixel
+   - Last Name:    ckmtestpixel
+   - Email:        ckmtestpixel@gmail.com
+   - Phone Number: 401-247-1008
+   - Slider Value: 30,000
+   - State Value:  Florida
+[tra-cpm][TABLET][CHROMIUM] 🔗 [Mobile] Navigating to: https://flmtra.com/?a=659&oc=763&c=2225&s1=
+[tra-cpm][TABLET][CHROMIUM] ✅ [Mobile] Page loaded successfully
+[tra-cpm][TABLET][CHROMIUM] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[tra-cpm][TABLET][CHROMIUM] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[tra-cpm][TABLET][CHROMIUM] 📝 [Mobile] Starting mobile-specific form filling...
+[tra-cpm][TABLET][CHROMIUM] 🔘 [Mobile] Step 1: Selecting Debt Amount (30,000)
+[tra-cpm][TABLET][CHROMIUM] 🔘 [Mobile] Clicking active visible button: .next-btn1:visible, .btn-next:visible
+[tra-cpm][TABLET][CHROMIUM] ✅ [Mobile] Clicked: .next-btn1:visible, .btn-next:visible
+[tra-cpm][TABLET][CHROMIUM] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[tra-cpm][TABLET][CHROMIUM] ✅ [Mobile] Reached a recognized terminal step (State or Contact). Stopping dynamic traversal.
+[tra-cpm][TABLET][CHROMIUM] 🔘 [Mobile] Step 2: Selecting State
+[tra-cpm][TABLET][CHROMIUM] ✅ [Mobile] Selected state dynamically: "District of Columbia"
+[tra-cpm][TABLET][CHROMIUM] 📝 [Mobile] step3 column set to State: "District of Columbia"
+[tra-cpm][TABLET][CHROMIUM] 🔘 [Mobile] Clicking active visible button: .next-btn:visible, .next-btn2:visible, .btn-next:visible
+[tra-cpm][TABLET][CHROMIUM] ✅ [Mobile] Clicked: .next-btn:visible, .next-btn2:visible, .btn-next:visible
+[tra-cpm][TABLET][CHROMIUM] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[tra-cpm][TABLET][CHROMIUM] 🔘 [Mobile] Step 3: Filling Contact Info (Dynamic Loop)...
+[tra-cpm][TABLET][CHROMIUM] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[tra-cpm][TABLET][CHROMIUM] ✅ [Mobile] Filled First Name: ckmtestpixel
+[tra-cpm][TABLET][CHROMIUM] ✅ [Mobile] Filled Last Name: ckmtestpixel
+[tra-cpm][TABLET][CHROMIUM] ✅ [Mobile] Filled Email: ckmtestpixel@gmail.com
+[tra-cpm][TABLET][CHROMIUM] ✅ [Mobile] Filled Phone: 401-247-1008
+[tra-cpm][TABLET][CHROMIUM] 🔘 [Mobile] Clicking active contact NEXT/SUBMIT button...
+[tra-cpm][TABLET][CHROMIUM] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[tra-cpm][TABLET][CHROMIUM] ✅ [Mobile] Filled Phone: 401-247-1008
+[tra-cpm][TABLET][CHROMIUM] 🔘 [Mobile] Clicking active contact NEXT/SUBMIT button...
+[tra-cpm][TABLET][CHROMIUM] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[tra-cpm][TABLET][CHROMIUM] 🔘 [Mobile] No active contact NEXT/SUBMIT button visible. Exiting loop.
+🔘 [Mobile] Scanning for additional dynamic steps...
+[tra-cpm][TABLET][CHROMIUM] 🔘 [Mobile] Submitting form
+[tra-cpm][TABLET][CHROMIUM] ⏳ [Mobile] Waiting for submission navigation to complete
+[tra-cpm][TABLET][CHROMIUM] ⏳ [Mobile] Waiting for final Thank You page redirection...
+[tra-cpm][TABLET][CHROMIUM] ✅ [Mobile] Targeted final redirect URL achieved!
+[tra-cpm][TABLET][CHROMIUM] ✅ [Mobile] Final Thank You URL: https://tra.com/thank-you?debt=10000&leadid=86C10692&reqid=26778582&affid=659&oid=136
+[tra-cpm][TABLET][CHROMIUM] ✅ [Mobile] Extracted Lead ID: 86C10692
+[tra-cpm][TABLET][CHROMIUM] 📱 Device Type detected: T-CHROMIUM
+[tra-cpm][TABLET][CHROMIUM] ✅ Lead captured: 86C10692
+[tra-cpm][TABLET][CHROMIUM] 📡 Fetching First API data for Lead ID: 86C10692...
+[tra-cpm][TABLET][CHROMIUM] 📡 Raw XML Response: {
+  "lead_info_response": {
+    "$": {
+      "xmlns:xsd": "http://www.w3.org/2001/XMLSchema",
+      "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+      "xmlns": "http://cakemarketing.com/api/1/"
+    },
+    "success": "true",
+    "row_count": "1",
+    "lead_id": "86C10692",
+    "personal_info": {
+      "first_name": "CKMTESTPIXEL",
+      "last_name": "CKMTESTPIXEL",
+      "email_address": "ckmtestpixel@gmail.com",
+      "address": {
+        "street": "",
+        "city": "",
+        "state": "DC",
+        "zip_code": "20064",
+        "country": ""
+      },
+      "ip_address": "27.54.170.27",
+      "phone_work": "",
+      "phone_home": "401-247-1008",
+      "phone_cell": "",
+      "best_call_time": "",
+      "opt_in": "false"
+    },
+    "traffic_info": {
+      "lead_date": "2026-05-13T21:53:43.603",
+      "payout": {
+        "currency_id": "1",
+        "amount": "0.0000",
+        "formatted_amount": "$0.00"
+      },
+      "affiliate": {
+        "affiliate_id": {
+          "_": "659",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        },
+        "affiliate_name": {
+          "_": "QA affiliate",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        }
+      },
+      "campaign": {
+        "campaign_id": {
+          "_": "4079",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        },
+        "campaign_name": {
+          "_": "TRA.com CPM  - CPM - CPA - $1.00",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        }
+      },
+      "creative_id": "2225",
+      "subid_1": "",
+      "subid_2": "",
+      "subid_3": "",
+      "subid_4": "",
+      "subid_5": "",
+      "referrer": "",
+      "pixel_fired": "true",
+      "returned_to_affiliate": "false",
+      "test": "true",
+      "upsell": "false"
+    },
+    "all_vertical_data": {
+      "data": {
+        "$": {
+          "xmlns": ""
+        },
+        "tax_debt": "10000",
+        "universal_leadid": "97FBB74E-5741-0A8B-35F0-F2A78886F937",
+        "affid": "659",
+        "TCPA_checkbox": "1",
+        "reqid": "26778582",
+        "page": "https://tra.com/cpm2",
+        "neustar": "pass",
+        "neustar_disposition": "N,B,U,L,0",
+        "first_name_lower": "ckmtestpixel",
+        "last_name_lower": "ckmtestpixel",
+        "opt_special_offers": "on",
+        "ckm_campaign_id": "4438"
+      }
+    },
+    "dispositions": "",
+    "pings": "",
+    "posts": "",
+    "sales": ""
+  }
+}
+[tra-cpm][TABLET][CHROMIUM] ✅ First API Data retrieved on attempt 1
+[tra-cpm][TABLET][CHROMIUM] 📡 Fetching Second API data for Lead ID: 86C10692...
+[tra-cpm][TABLET][CHROMIUM] 📡 Standard Second API Payload: cake_id=86C10692, domain_name=https://www.taxreliefadvocates.com
+[tra-cpm][TABLET][CHROMIUM] [STDERR] (node:7320) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[tra-cpm][TABLET][CHROMIUM] [STDERR] ❌ Second API Attempt 1 failed: Request failed with status code 404
+[tra-cpm][TABLET][CHROMIUM] ⏳ Retrying in 3 seconds to allow database synchronization...
+[tra-cpm][TABLET][CHROMIUM] 📡 Standard Second API Payload: cake_id=86C10692, domain_name=https://www.taxreliefadvocates.com
+[tra-cpm][TABLET][CHROMIUM] [STDERR] ❌ Second API Attempt 2 failed: Request failed with status code 404
+[tra-cpm][TABLET][CHROMIUM] ⏳ Retrying in 3 seconds to allow database synchronization...
+[tra-cpm][TABLET][CHROMIUM] 📡 Standard Second API Payload: cake_id=86C10692, domain_name=https://www.taxreliefadvocates.com
+[tra-cpm][TABLET][CHROMIUM] [STDERR] ❌ Second API Attempt 3 failed: Request failed with status code 404
+[tra-cpm][TABLET][CHROMIUM] ⏳ Retrying in 3 seconds to allow database synchronization...
+[tra-cpm][TABLET][CHROMIUM] 📡 Standard Second API Payload: cake_id=86C10692, domain_name=https://www.taxreliefadvocates.com
+[tra-cpm][TABLET][CHROMIUM] [STDERR] ❌ Second API Attempt 4 failed: Request failed with status code 404
+[tra-cpm][TABLET][CHROMIUM] ⏳ Retrying in 3 seconds to allow database synchronization...
+[tra-cpm][TABLET][CHROMIUM] 📡 Standard Second API Payload: cake_id=86C10692, domain_name=https://www.taxreliefadvocates.com
+[tra-cpm][TABLET][CHROMIUM] [STDERR] ❌ Second API Attempt 5 failed: Request failed with status code 404
+[tra-cpm][TABLET][CHROMIUM] ✅ Row appended successfully to sheet: TRA-CPM
+[tra-cpm][TABLET][CHROMIUM] ✨ Professional formatting applied to TRA-CPM
+✅ Lead processed successfully for TRA-CPM Tablet
+[tra-cpm][TABLET][CHROMIUM] 🎥 Video saved successfully: traces/videos/TRA-CPM_TRA-CPM_Tablet.webm
+[tra-cpm][TABLET][CHROMIUM] 
+✅ Execution successfully processed! { success: true, leadId: '86C10692', brand: 'TRA-CPM Tablet' }
+[tra-cpm][TABLET][CHROMIUM] [STDERR] ❌ Automation Run encountered a fatal exception: tracing.stop: Target page, context or browser has been closed
+✅ [14/5/2026, 10:25:56 am] COMPLETED: tra-cpm [TABLET][CHROMIUM]
+
+================================================================
+🚀 [14/5/2026, 10:25:56 am] RUNNING: TRA-CPM (MOBILE) on CHROMIUM
+🔗 Target URL: https://flmtra.com/?a=659&oc=763&c=2225&s1=
+================================================================
+[tra-cpm][MOBILE][CHROMIUM] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[tra-cpm][MOBILE][CHROMIUM] ◇ injected env (0) from .env // tip: ⌘ multiple files { path: ['.env.local', '.env'] }
+[tra-cpm][MOBILE][CHROMIUM] ◇ injected env (0) from .env // tip: ⌘ suppress logs { quiet: true }
+[tra-cpm][MOBILE][CHROMIUM] ◇ injected env (0) from .env // tip: ⌘ multiple files { path: ['.env.local', '.env'] }
+[tra-cpm][MOBILE][CHROMIUM] ◇ injected env (0) from .env // tip: ⌘ enable debugging { debug: true }
+[tra-cpm][MOBILE][CHROMIUM] 
+🤖 ================================================================
+[tra-cpm][MOBILE][CHROMIUM] 🤖 MASTER RUNNER: LAUNCHING TRA-CPM
+🤖 Mode:            MOBILE
+🤖 Tracking URL:     https://flmtra.com/?a=659&oc=763&c=2225&s1=
+[tra-cpm][MOBILE][CHROMIUM] 🤖 Target Sheet:    TRA-CPM
+[tra-cpm][MOBILE][CHROMIUM] 🤖 ================================================================
+[tra-cpm][MOBILE][CHROMIUM] 📱 Emulated Device Profile: MOBILE (iPhone 17 Pro)
+[tra-cpm][MOBILE][CHROMIUM] ⏳ Delaying 200ms to allow responsive layouts to mount...
+[tra-cpm][MOBILE][CHROMIUM] 🔄 Processing lead for brand: TRA-CPM Mobile
+[tra-cpm][MOBILE][CHROMIUM] 📊 Campaign execution run index: 9
+[tra-cpm][MOBILE][CHROMIUM] 🎯 Enforcing dynamic credentials & parameters:
+[tra-cpm][MOBILE][CHROMIUM]    - First Name:   ckmtestpixel
+   - Last Name:    ckmtestpixel
+   - Email:        ckmtestpixel@gmail.com
+   - Phone Number: 401-247-1009
+   - Slider Value: 50,000
+   - State Value:  Georgia
+[tra-cpm][MOBILE][CHROMIUM] 🔗 [Mobile] Navigating to: https://flmtra.com/?a=659&oc=763&c=2225&s1=
+[tra-cpm][MOBILE][CHROMIUM] ✅ [Mobile] Page loaded successfully
+[tra-cpm][MOBILE][CHROMIUM] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[tra-cpm][MOBILE][CHROMIUM] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[tra-cpm][MOBILE][CHROMIUM] 📝 [Mobile] Starting mobile-specific form filling...
+[tra-cpm][MOBILE][CHROMIUM] 🔘 [Mobile] Step 1: Selecting Debt Amount (50,000)
+[tra-cpm][MOBILE][CHROMIUM] ✅ [Mobile] Selected debt amount: span:has-text("$50k")
+[tra-cpm][MOBILE][CHROMIUM] 🔘 [Mobile] Clicking active visible button: .next-btn1:visible, .btn-next:visible
+[tra-cpm][MOBILE][CHROMIUM] ✅ [Mobile] Clicked: .next-btn1:visible, .btn-next:visible
+[tra-cpm][MOBILE][CHROMIUM] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[tra-cpm][MOBILE][CHROMIUM] ✅ [Mobile] Reached a recognized terminal step (State or Contact). Stopping dynamic traversal.
+[tra-cpm][MOBILE][CHROMIUM] 🔘 [Mobile] Step 2: Selecting State
+[tra-cpm][MOBILE][CHROMIUM] ✅ [Mobile] Selected state dynamically: "Florida"
+[tra-cpm][MOBILE][CHROMIUM] 📝 [Mobile] step3 column set to State: "Florida"
+[tra-cpm][MOBILE][CHROMIUM] 🔘 [Mobile] Clicking active visible button: .next-btn:visible, .next-btn2:visible, .btn-next:visible
+[tra-cpm][MOBILE][CHROMIUM] ✅ [Mobile] Clicked: .next-btn:visible, .next-btn2:visible, .btn-next:visible
+[tra-cpm][MOBILE][CHROMIUM] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[tra-cpm][MOBILE][CHROMIUM] 🔘 [Mobile] Step 3: Filling Contact Info (Dynamic Loop)...
+[tra-cpm][MOBILE][CHROMIUM] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[tra-cpm][MOBILE][CHROMIUM] ✅ [Mobile] Filled First Name: ckmtestpixel
+[tra-cpm][MOBILE][CHROMIUM] ✅ [Mobile] Filled Last Name: ckmtestpixel
+[tra-cpm][MOBILE][CHROMIUM] ✅ [Mobile] Filled Email: ckmtestpixel@gmail.com
+[tra-cpm][MOBILE][CHROMIUM] ✅ [Mobile] Filled Phone: 401-247-1009
+[tra-cpm][MOBILE][CHROMIUM] 🔘 [Mobile] Clicking active contact NEXT/SUBMIT button...
+[tra-cpm][MOBILE][CHROMIUM] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[tra-cpm][MOBILE][CHROMIUM] ✅ [Mobile] Filled Phone: 401-247-1009
+[tra-cpm][MOBILE][CHROMIUM] 🔘 [Mobile] No active contact NEXT/SUBMIT button visible. Exiting loop.
+🔘 [Mobile] Scanning for additional dynamic steps...
+[tra-cpm][MOBILE][CHROMIUM] 🔘 [Mobile] Submitting form
+[tra-cpm][MOBILE][CHROMIUM] ⏳ [Mobile] Waiting for submission navigation to complete
+[tra-cpm][MOBILE][CHROMIUM] ⏳ [Mobile] Waiting for final Thank You page redirection...
+[tra-cpm][MOBILE][CHROMIUM] ✅ [Mobile] Targeted final redirect URL achieved!
+[tra-cpm][MOBILE][CHROMIUM] ✅ [Mobile] Final Thank You URL: https://tra.com/thank-you?debt=10000&leadid=2F192F47&reqid=26778593&affid=659&oid=136
+[tra-cpm][MOBILE][CHROMIUM] ✅ [Mobile] Extracted Lead ID: 2F192F47
+[tra-cpm][MOBILE][CHROMIUM] 📱 Device Type detected: M-CHROMIUM
+✅ Lead captured: 2F192F47
+[tra-cpm][MOBILE][CHROMIUM] 📡 Fetching First API data for Lead ID: 2F192F47...
+[tra-cpm][MOBILE][CHROMIUM] 📡 Raw XML Response: {
+  "lead_info_response": {
+    "$": {
+      "xmlns:xsd": "http://www.w3.org/2001/XMLSchema",
+      "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+      "xmlns": "http://cakemarketing.com/api/1/"
+    },
+    "success": "true",
+    "row_count": "1",
+    "lead_id": "2F192F47",
+    "personal_info": {
+      "first_name": "CKMTESTPIXEL",
+      "last_name": "CKMTESTPIXEL",
+      "email_address": "ckmtestpixel@gmail.com",
+      "address": {
+        "street": "",
+        "city": "",
+        "state": "FL",
+        "zip_code": "32413",
+        "country": ""
+      },
+      "ip_address": "27.54.170.27",
+      "phone_work": "",
+      "phone_home": "401-247-1009",
+      "phone_cell": "",
+      "best_call_time": "",
+      "opt_in": "false"
+    },
+    "traffic_info": {
+      "lead_date": "2026-05-13T21:56:22.873",
+      "payout": {
+        "currency_id": "1",
+        "amount": "0.0000",
+        "formatted_amount": "$0.00"
+      },
+      "affiliate": {
+        "affiliate_id": {
+          "_": "659",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        },
+        "affiliate_name": {
+          "_": "QA affiliate",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        }
+      },
+      "campaign": {
+        "campaign_id": {
+          "_": "4079",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        },
+        "campaign_name": {
+          "_": "TRA.com CPM  - CPM - CPA - $1.00",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        }
+      },
+      "creative_id": "2225",
+      "subid_1": "",
+      "subid_2": "",
+      "subid_3": "",
+      "subid_4": "",
+      "subid_5": "",
+      "referrer": "",
+      "pixel_fired": "true",
+      "returned_to_affiliate": "false",
+      "test": "true",
+      "upsell": "false"
+    },
+    "all_vertical_data": {
+      "data": {
+        "$": {
+          "xmlns": ""
+        },
+        "tax_debt": "10000",
+        "universal_leadid": "C55CEA51-55AA-9B69-F1D2-BB459DD8D465",
+        "affid": "659",
+        "TCPA_checkbox": "1",
+        "reqid": "26778593",
+        "page": "https://tra.com/cpm2",
+        "neustar": "fail",
+        "neustar_disposition": "N,U,U,L,0",
+        "first_name_lower": "ckmtestpixel",
+        "last_name_lower": "ckmtestpixel",
+        "opt_special_offers": "on",
+        "ckm_campaign_id": "4438"
+      }
+    },
+    "dispositions": "",
+    "pings": "",
+    "posts": "",
+    "sales": ""
+  }
+}
+[tra-cpm][MOBILE][CHROMIUM] ✅ First API Data retrieved on attempt 1
+[tra-cpm][MOBILE][CHROMIUM] 📡 Fetching Second API data for Lead ID: 2F192F47...
+[tra-cpm][MOBILE][CHROMIUM] 📡 Standard Second API Payload: cake_id=2F192F47, domain_name=https://www.taxreliefadvocates.com
+[tra-cpm][MOBILE][CHROMIUM] [STDERR] (node:17548) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[tra-cpm][MOBILE][CHROMIUM] [STDERR] ❌ Second API Attempt 1 failed: Request failed with status code 404
+[tra-cpm][MOBILE][CHROMIUM] ⏳ Retrying in 3 seconds to allow database synchronization...
+[tra-cpm][MOBILE][CHROMIUM] 📡 Standard Second API Payload: cake_id=2F192F47, domain_name=https://www.taxreliefadvocates.com
+[tra-cpm][MOBILE][CHROMIUM] [STDERR] ❌ Second API Attempt 2 failed: Request failed with status code 404
+[tra-cpm][MOBILE][CHROMIUM] ⏳ Retrying in 3 seconds to allow database synchronization...
+[tra-cpm][MOBILE][CHROMIUM] 📡 Standard Second API Payload: cake_id=2F192F47, domain_name=https://www.taxreliefadvocates.com
+[tra-cpm][MOBILE][CHROMIUM] [STDERR] ❌ Second API Attempt 3 failed: Request failed with status code 404
+[tra-cpm][MOBILE][CHROMIUM] ⏳ Retrying in 3 seconds to allow database synchronization...
+[tra-cpm][MOBILE][CHROMIUM] 📡 Standard Second API Payload: cake_id=2F192F47, domain_name=https://www.taxreliefadvocates.com
+[tra-cpm][MOBILE][CHROMIUM] [STDERR] ❌ Second API Attempt 4 failed: Request failed with status code 404
+[tra-cpm][MOBILE][CHROMIUM] ⏳ Retrying in 3 seconds to allow database synchronization...
+[tra-cpm][MOBILE][CHROMIUM] 📡 Standard Second API Payload: cake_id=2F192F47, domain_name=https://www.taxreliefadvocates.com
+[tra-cpm][MOBILE][CHROMIUM] [STDERR] ❌ Second API Attempt 5 failed: Request failed with status code 404
+[tra-cpm][MOBILE][CHROMIUM] ✅ Row appended successfully to sheet: TRA-CPM
+[tra-cpm][MOBILE][CHROMIUM] ✨ Professional formatting applied to TRA-CPM
+[tra-cpm][MOBILE][CHROMIUM] ✅ Lead processed successfully for TRA-CPM Mobile
+[tra-cpm][MOBILE][CHROMIUM] 🎥 Video saved successfully: traces/videos/TRA-CPM_TRA-CPM_Mobile.webm
+[tra-cpm][MOBILE][CHROMIUM] 
+✅ Execution successfully processed! { success: true, leadId: '2F192F47', brand: 'TRA-CPM Mobile' }
+[tra-cpm][MOBILE][CHROMIUM] [STDERR] ❌ Automation Run encountered a fatal exception: tracing.stop: Target page, context or browser has been closed
+✅ [14/5/2026, 10:27:11 am] COMPLETED: tra-cpm [MOBILE][CHROMIUM]
+
+================================================================
+⚡ Running Campaign Viewports on Browser Engine: CHROMIUM - [FTH-X]
+================================================================
+
+================================================================
+🚀 [14/5/2026, 10:27:11 am] RUNNING: FTH-X (DESKTOP) on CHROMIUM
+🔗 Target URL: https://fthmlf-trk.com/?a=659&oc=821&c=81&s1=
+================================================================
+[fth-x][DESKTOP][CHROMIUM] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[fth-x][DESKTOP][CHROMIUM] ◇ injected env (0) from .env // tip: ⌁ auth for agents [www.vestauth.com]
+[fth-x][DESKTOP][CHROMIUM] ◇ injected env (0) from .env // tip: ◈ encrypted .env [www.dotenvx.com]
+[fth-x][DESKTOP][CHROMIUM] ◇ injected env (0) from .env // tip: ◈ encrypted .env [www.dotenvx.com]
+[fth-x][DESKTOP][CHROMIUM] ◇ injected env (0) from .env // tip: ⌘ multiple files { path: ['.env.local', '.env'] }
+[fth-x][DESKTOP][CHROMIUM] 
+🤖 ================================================================
+[fth-x][DESKTOP][CHROMIUM] 🤖 MASTER RUNNER: LAUNCHING FTH-X
+🤖 Mode:            DESKTOP
+🤖 Tracking URL:     https://fthmlf-trk.com/?a=659&oc=821&c=81&s1=
+🤖 Target Sheet:    FTH-X
+🤖 ================================================================
+[fth-x][DESKTOP][CHROMIUM] 💻 Emulated Device Profile: DESKTOP
+[fth-x][DESKTOP][CHROMIUM] 🔄 Processing lead for brand: FTH-X
+[fth-x][DESKTOP][CHROMIUM] 📊 Campaign execution run index: 9
+🎯 Enforcing dynamic credentials & parameters:
+[fth-x][DESKTOP][CHROMIUM]    - First Name:   ckmtestpixel
+   - Last Name:    ckmtestpixel
+   - Email:        ckmtestpixel@gmail.com
+   - Phone Number: 401-247-1009
+   - Slider Value: 50,000
+   - State Value:  Georgia
+[fth-x][DESKTOP][CHROMIUM] 🔗 Navigating to: https://fthmlf-trk.com/?a=659&oc=821&c=81&s1=
+[fth-x][DESKTOP][CHROMIUM] [STDERR] ❌ Failed processing FTH-X: page.goto: net::ERR_CERT_AUTHORITY_INVALID at https://fthmlf-trk.com/?a=659&oc=821&c=81&s1=
+Call log:
+[2m  - navigating to "https://fthmlf-trk.com/?a=659&oc=821&c=81&s1=", waiting until "networkidle"[22m
+
+[fth-x][DESKTOP][CHROMIUM] 
+✅ Execution successfully processed! {
+  success: false,
+  error: 'page.goto: net::ERR_CERT_AUTHORITY_INVALID at https://fthmlf-trk.com/?a=659&oc=821&c=81&s1=\n' +
+    'Call log:\n' +
+    '\x1B[2m  - navigating to "https://fthmlf-trk.com/?a=659&oc=821&c=81&s1=", waiting until "networkidle"\x1B[22m\n',
+  brand: 'FTH-X'
+}
+[fth-x][DESKTOP][CHROMIUM] 📋 Trace report successfully saved: traces/fth-x_desktop.zip
+✅ [14/5/2026, 10:27:20 am] COMPLETED: fth-x [DESKTOP][CHROMIUM]
+
+================================================================
+🚀 [14/5/2026, 10:27:20 am] RUNNING: FTH-X (TABLET) on CHROMIUM
+🔗 Target URL: https://fthmlf-trk.com/?a=659&oc=821&c=81&s1=
+================================================================
+[fth-x][TABLET][CHROMIUM] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[fth-x][TABLET][CHROMIUM] ◇ injected env (0) from .env // tip: ⌘ custom filepath { path: '/custom/path/.env' }
+[fth-x][TABLET][CHROMIUM] ◇ injected env (0) from .env // tip: ◈ secrets for agents [www.dotenvx.com]
+[fth-x][TABLET][CHROMIUM] ◇ injected env (0) from .env // tip: ⌘ enable debugging { debug: true }
+[fth-x][TABLET][CHROMIUM] ◇ injected env (0) from .env // tip: ⌘ suppress logs { quiet: true }
+[fth-x][TABLET][CHROMIUM] 
+🤖 ================================================================
+[fth-x][TABLET][CHROMIUM] 🤖 MASTER RUNNER: LAUNCHING FTH-X
+🤖 Mode:            TABLET
+🤖 Tracking URL:     https://fthmlf-trk.com/?a=659&oc=821&c=81&s1=
+🤖 Target Sheet:    FTH-X
+[fth-x][TABLET][CHROMIUM] 🤖 ================================================================
+[fth-x][TABLET][CHROMIUM] 📋 Emulated Device Profile: TABLET (iPad Pro 11)
+[fth-x][TABLET][CHROMIUM] ⏳ Delaying 200ms to allow responsive layouts to mount...
+[fth-x][TABLET][CHROMIUM] 🔄 Processing lead for brand: FTH-X Tablet
+[fth-x][TABLET][CHROMIUM] 📊 Campaign execution run index: 10
+🎯 Enforcing dynamic credentials & parameters:
+   - First Name:   ckmtestpixel
+   - Last Name:    ckmtestpixel
+   - Email:        ckmtestpixel@gmail.com
+[fth-x][TABLET][CHROMIUM]    - Phone Number: 401-247-1010
+   - Slider Value: 10,000
+   - State Value:  Hawaii
+🔗 [Mobile] Navigating to: https://fthmlf-trk.com/?a=659&oc=821&c=81&s1=
+[fth-x][TABLET][CHROMIUM] [STDERR] ❌ Failed processing FTH-X Tablet: page.goto: net::ERR_CERT_AUTHORITY_INVALID at https://fthmlf-trk.com/?a=659&oc=821&c=81&s1=
+Call log:
+[2m  - navigating to "https://fthmlf-trk.com/?a=659&oc=821&c=81&s1=", waiting until "networkidle"[22m
+
+[fth-x][TABLET][CHROMIUM] 
+✅ Execution successfully processed! {
+  success: false,
+  error: 'page.goto: net::ERR_CERT_AUTHORITY_INVALID at https://fthmlf-trk.com/?a=659&oc=821&c=81&s1=\n' +
+    'Call log:\n' +
+    '\x1B[2m  - navigating to "https://fthmlf-trk.com/?a=659&oc=821&c=81&s1=", waiting until "networkidle"\x1B[22m\n',
+  brand: 'FTH-X Tablet'
+}
+[fth-x][TABLET][CHROMIUM] 📋 Trace report successfully saved: traces/fth-x_tablet.zip
+✅ [14/5/2026, 10:27:28 am] COMPLETED: fth-x [TABLET][CHROMIUM]
+
+================================================================
+🚀 [14/5/2026, 10:27:28 am] RUNNING: FTH-X (MOBILE) on CHROMIUM
+🔗 Target URL: https://fthmlf-trk.com/?a=659&oc=821&c=81&s1=
+================================================================
+[fth-x][MOBILE][CHROMIUM] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[fth-x][MOBILE][CHROMIUM] ◇ injected env (0) from .env // tip: ⌁ auth for agents [www.vestauth.com]
+[fth-x][MOBILE][CHROMIUM] ◇ injected env (0) from .env // tip: ⌘ suppress logs { quiet: true }
+[fth-x][MOBILE][CHROMIUM] ◇ injected env (0) from .env // tip: ⌘ custom filepath { path: '/custom/path/.env' }
+[fth-x][MOBILE][CHROMIUM] ◇ injected env (0) from .env // tip: ◈ secrets for agents [www.dotenvx.com]
+[fth-x][MOBILE][CHROMIUM] 
+🤖 ================================================================
+🤖 MASTER RUNNER: LAUNCHING FTH-X
+[fth-x][MOBILE][CHROMIUM] 🤖 Mode:            MOBILE
+🤖 Tracking URL:     https://fthmlf-trk.com/?a=659&oc=821&c=81&s1=
+🤖 Target Sheet:    FTH-X
+🤖 ================================================================
+[fth-x][MOBILE][CHROMIUM] 📱 Emulated Device Profile: MOBILE (iPhone 17 Pro)
+[fth-x][MOBILE][CHROMIUM] ⏳ Delaying 200ms to allow responsive layouts to mount...
+[fth-x][MOBILE][CHROMIUM] 🔄 Processing lead for brand: FTH-X Mobile
+[fth-x][MOBILE][CHROMIUM] 📊 Campaign execution run index: 11
+[fth-x][MOBILE][CHROMIUM] 🎯 Enforcing dynamic credentials & parameters:
+   - First Name:   ckmtestpixel
+   - Last Name:    ckmtestpixel
+   - Email:        ckmtestpixel@gmail.com
+   - Phone Number: 401-247-1011
+   - Slider Value: 15,000
+   - State Value:  Idaho
+[fth-x][MOBILE][CHROMIUM] 🔗 [Mobile] Navigating to: https://fthmlf-trk.com/?a=659&oc=821&c=81&s1=
+[fth-x][MOBILE][CHROMIUM] [STDERR] ❌ Failed processing FTH-X Mobile: page.goto: net::ERR_CERT_AUTHORITY_INVALID at https://fthmlf-trk.com/?a=659&oc=821&c=81&s1=
+Call log:
+[2m  - navigating to "https://fthmlf-trk.com/?a=659&oc=821&c=81&s1=", waiting until "networkidle"[22m
+
+[fth-x][MOBILE][CHROMIUM] 
+✅ Execution successfully processed! {
+  success: false,
+  error: 'page.goto: net::ERR_CERT_AUTHORITY_INVALID at https://fthmlf-trk.com/?a=659&oc=821&c=81&s1=\n' +
+    'Call log:\n' +
+    '\x1B[2m  - navigating to "https://fthmlf-trk.com/?a=659&oc=821&c=81&s1=", waiting until "networkidle"\x1B[22m\n',
+  brand: 'FTH-X Mobile'
+}
+[fth-x][MOBILE][CHROMIUM] 📋 Trace report successfully saved: traces/fth-x_mobile.zip
+✅ [14/5/2026, 10:27:36 am] COMPLETED: fth-x [MOBILE][CHROMIUM]
+
+================================================================
+⚡ Running Campaign Viewports on Browser Engine: CHROMIUM - [EVEREST-TR-X]
+================================================================
+
+================================================================
+🚀 [14/5/2026, 10:27:37 am] RUNNING: Everest Tax Releif(X) (DESKTOP) on CHROMIUM
+🔗 Target URL: https://mlf-trk.com/?a=659&oc=812&c=2498&s1=
+================================================================
+[everest-tr-x][DESKTOP][CHROMIUM] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[everest-tr-x][DESKTOP][CHROMIUM] ◇ injected env (0) from .env // tip: ◈ encrypted .env [www.dotenvx.com]
+[everest-tr-x][DESKTOP][CHROMIUM] ◇ injected env (0) from .env // tip: ◈ secrets for agents [www.dotenvx.com]
+[everest-tr-x][DESKTOP][CHROMIUM] ◇ injected env (0) from .env // tip: ⌘ override existing { override: true }
+[everest-tr-x][DESKTOP][CHROMIUM] ◇ injected env (0) from .env // tip: ⌘ multiple files { path: ['.env.local', '.env'] }
+[everest-tr-x][DESKTOP][CHROMIUM] 
+🤖 ================================================================
+🤖 MASTER RUNNER: LAUNCHING EVEREST TAX RELEIF(X)
+[everest-tr-x][DESKTOP][CHROMIUM] 🤖 Mode:            DESKTOP
+🤖 Tracking URL:     https://mlf-trk.com/?a=659&oc=812&c=2498&s1=
+🤖 Target Sheet:    Everest Tax Releif(X)
+🤖 ================================================================
+[everest-tr-x][DESKTOP][CHROMIUM] 💻 Emulated Device Profile: DESKTOP
+[everest-tr-x][DESKTOP][CHROMIUM] 🔄 Processing lead for brand: Everest Tax Releif(X)
+[everest-tr-x][DESKTOP][CHROMIUM] 📊 Campaign execution run index: 10
+🎯 Enforcing dynamic credentials & parameters:
+[everest-tr-x][DESKTOP][CHROMIUM]    - First Name:   ckmtestpixel
+   - Last Name:    ckmtestpixel
+   - Email:        ckmtestpixel@gmail.com
+   - Phone Number: 401-247-1010
+   - Slider Value: 50,000
+   - State Value:  Hawaii
+🔗 Navigating to: https://mlf-trk.com/?a=659&oc=812&c=2498&s1=
+[everest-tr-x][DESKTOP][CHROMIUM] ✅ Page loaded successfully
+[everest-tr-x][DESKTOP][CHROMIUM] 📝 Starting multi-step form filling process...
+[everest-tr-x][DESKTOP][CHROMIUM] 🔘 Step 1: Handling Debt Amount (50,000)
+[everest-tr-x][DESKTOP][CHROMIUM] 🔘 Found jQuery UI Slider #slider. Setting value via jQuery and DOM evaluation...
+[everest-tr-x][DESKTOP][CHROMIUM] ✅ Set jQuery UI Slider #slider to 50,000
+[everest-tr-x][DESKTOP][CHROMIUM] 🔘 Attempting to click .next-btn1, .btn-next
+[everest-tr-x][DESKTOP][CHROMIUM] ✅ Clicked .next-btn1, .btn-next
+[everest-tr-x][DESKTOP][CHROMIUM] 🔘 Dynamic Choice found: clicking "Federal & State" (Option 3 of 4)
+📝 step1 column set to: "Federal & State"
+[everest-tr-x][DESKTOP][CHROMIUM] 🔘 Dynamic Choice found: clicking "$4,000 - $6,000" (Option 2 of 3)
+📝 step2 column set to: "$4,000 - $6,000"
+[everest-tr-x][DESKTOP][CHROMIUM] ✅ Reached a recognized terminal step (State or Contact). Stopping dynamic traversal.
+[everest-tr-x][DESKTOP][CHROMIUM] 🔘 Step: Selecting State
+[everest-tr-x][DESKTOP][CHROMIUM] ✅ Selected state dynamically: "Georgia"
+📝 step3 column set to State: "Georgia"
+[everest-tr-x][DESKTOP][CHROMIUM] 🔘 Clicking generic NEXT button
+[everest-tr-x][DESKTOP][CHROMIUM] ✅ Clicked generic NEXT button
+[everest-tr-x][DESKTOP][CHROMIUM] 🔘 Advancing past post-state step...
+[everest-tr-x][DESKTOP][CHROMIUM] 🔘 Filling Contact Info (Dynamic Loop)...
+[everest-tr-x][DESKTOP][CHROMIUM] ✅ Filled First Name: ckmtestpixel
+[everest-tr-x][DESKTOP][CHROMIUM] ✅ Filled Last Name: ckmtestpixel
+[everest-tr-x][DESKTOP][CHROMIUM] ✅ Filled Email: ckmtestpixel@gmail.com
+[everest-tr-x][DESKTOP][CHROMIUM] ✅ Filled Phone: 401-247-1010
+[everest-tr-x][DESKTOP][CHROMIUM] 🔘 Clicking active contact NEXT/SUBMIT button...
+[everest-tr-x][DESKTOP][CHROMIUM] 🔘 No active contact NEXT/SUBMIT button visible. Exiting loop.
+[everest-tr-x][DESKTOP][CHROMIUM] 🔘 Checking for additional submit/next buttons...
+[everest-tr-x][DESKTOP][CHROMIUM] 🔘 Submitting form
+[everest-tr-x][DESKTOP][CHROMIUM] [STDERR] ⚠️  Submit navigation timeout or error, waiting 5s for final URL
+[everest-tr-x][DESKTOP][CHROMIUM] ⏳ Waiting for final redirect to Thank You page...
+[everest-tr-x][DESKTOP][CHROMIUM] ✅ Targeted final redirect URL achieved!
+[everest-tr-x][DESKTOP][CHROMIUM] ✅ Final Thank You URL: https://www.everesttaxrelief.net/thankyou_ts.php?debt=50000&leadid=76BC9842&affid=659&reqid=26778599&sub
+[everest-tr-x][DESKTOP][CHROMIUM] ✅ Extracted Lead ID: 76BC9842
+📱 Device Type detected: D-CHROMIUM
+[everest-tr-x][DESKTOP][CHROMIUM] ✅ Lead captured: 76BC9842
+[everest-tr-x][DESKTOP][CHROMIUM] 📡 Fetching First API data for Lead ID: 76BC9842...
+[everest-tr-x][DESKTOP][CHROMIUM] 📡 Raw XML Response: {
+  "lead_info_response": {
+    "$": {
+      "xmlns:xsd": "http://www.w3.org/2001/XMLSchema",
+      "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+      "xmlns": "http://cakemarketing.com/api/1/"
+    },
+    "success": "true",
+    "row_count": "1",
+    "lead_id": "76BC9842",
+    "personal_info": {
+      "first_name": "CKMTESTPIXEL",
+      "last_name": "CKMTESTPIXEL",
+      "email_address": "ckmtestpixel@gmail.com",
+      "address": {
+        "street": "",
+        "city": "",
+        "state": "GA",
+        "zip_code": "",
+        "country": ""
+      },
+      "ip_address": "27.54.170.27",
+      "phone_work": "",
+      "phone_home": "401-247-1010",
+      "phone_cell": "",
+      "best_call_time": "",
+      "opt_in": "false"
+    },
+    "traffic_info": {
+      "lead_date": "2026-05-13T21:58:06.577",
+      "payout": {
+        "currency_id": "1",
+        "amount": "0.0000",
+        "formatted_amount": "$0.00"
+      },
+      "affiliate": {
+        "affiliate_id": {
+          "_": "659",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        },
+        "affiliate_name": {
+          "_": "QA affiliate",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        }
+      },
+      "campaign": {
+        "campaign_id": {
+          "_": "4290",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        },
+        "campaign_name": {
+          "_": "Everest Tax Relief (X) - Main - CPA - $1.00",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        }
+      },
+      "creative_id": "2498",
+      "subid_1": "",
+      "subid_2": "",
+      "subid_3": "",
+      "subid_4": "",
+      "subid_5": "",
+      "referrer": "",
+      "pixel_fired": "true",
+      "returned_to_affiliate": "false",
+      "test": "true",
+      "upsell": "false"
+    },
+    "all_vertical_data": {
+      "data": {
+        "$": {
+          "xmlns": ""
+        },
+        "tax_debt": "50000",
+        "universal_leadid": "CCC51D9D-E44B-5B97-F5D4-99821777BF31",
+        "affid": "659",
+        "TCPA_checkbox": "checked",
+        "reqid": "26778599",
+        "cr_price": "0.00",
+        "page": "everesttaxrelief.net/v5/",
+        "neustar": "fail",
+        "neustar_disposition": "N,U,I1,L,0",
+        "first_name_lower": "ckmtestpixel",
+        "last_name_lower": "ckmtestpixel",
+        "income": "5000",
+        "first_name_capital": "Ckmtestpixel",
+        "last_name_capital": "Ckmtestpixel",
+        "debt_type": "Federal & State",
+        "nodl_flag": "pass",
+        "ckm_campaign_id": "4578"
+      }
+    },
+    "dispositions": {
+      "disposition": [
+        {
+          "disposition_type": "Not Paid For",
+          "reason": "Unmatched Filter",
+          "filter": "Nuestar Fail"
+        },
+        {
+          "disposition_type": "Sent to Review Queue",
+          "reason": "neustar: This value is not valid",
+          "filter": "Equals Value"
+        }
+      ]
+    },
+    "pings": "",
+    "posts": "",
+    "sales": ""
+  }
+}
+[everest-tr-x][DESKTOP][CHROMIUM] ✅ First API Data retrieved on attempt 1
+[everest-tr-x][DESKTOP][CHROMIUM] 📡 Fetching Second API data for Lead ID: 76BC9842...
+[everest-tr-x][DESKTOP][CHROMIUM] 📡 Everest Custom Second API Payload: cake_id=76BC9842, domain_name=https://everesttaxrelief.net
+[everest-tr-x][DESKTOP][CHROMIUM] [STDERR] (node:17176) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[everest-tr-x][DESKTOP][CHROMIUM] ✅ Second API Data retrieved on attempt 1: dbid (id)=15626
+[everest-tr-x][DESKTOP][CHROMIUM] ✅ Row appended successfully to sheet: Everest Tax Releif(X)
+[everest-tr-x][DESKTOP][CHROMIUM] ✨ Professional formatting applied to Everest Tax Releif(X)
+✅ Lead processed successfully for Everest Tax Releif(X)
+[everest-tr-x][DESKTOP][CHROMIUM] 🎥 Video saved successfully: traces/videos/Everest Tax Releif(X)_Everest_Tax_Releif(X).webm
+[everest-tr-x][DESKTOP][CHROMIUM] 
+✅ Execution successfully processed! { success: true, leadId: '76BC9842', brand: 'Everest Tax Releif(X)' }
+[everest-tr-x][DESKTOP][CHROMIUM] [STDERR] ❌ Automation Run encountered a fatal exception: tracing.stop: Target page, context or browser has been closed
+✅ [14/5/2026, 10:28:25 am] COMPLETED: everest-tr-x [DESKTOP][CHROMIUM]
+
+================================================================
+🚀 [14/5/2026, 10:28:25 am] RUNNING: Everest Tax Releif(X) (TABLET) on CHROMIUM
+🔗 Target URL: https://mlf-trk.com/?a=659&oc=812&c=2498&s1=
+================================================================
+[everest-tr-x][TABLET][CHROMIUM] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[everest-tr-x][TABLET][CHROMIUM] ◇ injected env (0) from .env // tip: ◈ secrets for agents [www.dotenvx.com]
+[everest-tr-x][TABLET][CHROMIUM] ◇ injected env (0) from .env // tip: ◈ secrets for agents [www.dotenvx.com]
+[everest-tr-x][TABLET][CHROMIUM] ◇ injected env (0) from .env // tip: ◈ encrypted .env [www.dotenvx.com]
+[everest-tr-x][TABLET][CHROMIUM] ◇ injected env (0) from .env // tip: ⌘ suppress logs { quiet: true }
+[everest-tr-x][TABLET][CHROMIUM] 
+🤖 ================================================================
+[everest-tr-x][TABLET][CHROMIUM] 🤖 MASTER RUNNER: LAUNCHING EVEREST TAX RELEIF(X)
+🤖 Mode:            TABLET
+🤖 Tracking URL:     https://mlf-trk.com/?a=659&oc=812&c=2498&s1=
+🤖 Target Sheet:    Everest Tax Releif(X)
+🤖 ================================================================
+[everest-tr-x][TABLET][CHROMIUM] 📋 Emulated Device Profile: TABLET (iPad Pro 11)
+[everest-tr-x][TABLET][CHROMIUM] ⏳ Delaying 200ms to allow responsive layouts to mount...
+[everest-tr-x][TABLET][CHROMIUM] 🔄 Processing lead for brand: Everest Tax Releif(X) Tablet
+[everest-tr-x][TABLET][CHROMIUM] 📊 Campaign execution run index: 11
+[everest-tr-x][TABLET][CHROMIUM] 🎯 Enforcing dynamic credentials & parameters:
+   - First Name:   ckmtestpixel
+   - Last Name:    ckmtestpixel
+   - Email:        ckmtestpixel@gmail.com
+   - Phone Number: 401-247-1011
+   - Slider Value: 20,000
+   - State Value:  Idaho
+[everest-tr-x][TABLET][CHROMIUM] 🔗 [Mobile] Navigating to: https://mlf-trk.com/?a=659&oc=812&c=2498&s1=
+[everest-tr-x][TABLET][CHROMIUM] ✅ [Mobile] Page loaded successfully
+[everest-tr-x][TABLET][CHROMIUM] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[everest-tr-x][TABLET][CHROMIUM] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[everest-tr-x][TABLET][CHROMIUM] 📝 [Mobile] Starting mobile-specific form filling...
+[everest-tr-x][TABLET][CHROMIUM] 🔘 [Mobile] Step 1: Selecting Debt Amount (20,000)
+[everest-tr-x][TABLET][CHROMIUM] 🔘 [Mobile] Found jQuery UI Slider #slider. Setting value via jQuery and DOM evaluation...
+[everest-tr-x][TABLET][CHROMIUM] ✅ [Mobile] Set jQuery UI Slider #slider to 20,000
+[everest-tr-x][TABLET][CHROMIUM] 🔘 [Mobile] Clicking active visible button: .next-btn1:visible, .btn-next:visible
+[everest-tr-x][TABLET][CHROMIUM] ✅ [Mobile] Clicked: .next-btn1:visible, .btn-next:visible
+[everest-tr-x][TABLET][CHROMIUM] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[everest-tr-x][TABLET][CHROMIUM] 🔘 [Mobile] Dynamic Choice found: clicking "Other" (Option 4 of 4)
+📝 [Mobile] step1 column set to: "Other"
+[everest-tr-x][TABLET][CHROMIUM] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[everest-tr-x][TABLET][CHROMIUM] 🔘 [Mobile] Dynamic Choice found: clicking "Less than $4,000" (Option 3 of 3)
+📝 [Mobile] step2 column set to: "Less than $4,000"
+[everest-tr-x][TABLET][CHROMIUM] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[everest-tr-x][TABLET][CHROMIUM] 🔘 [Mobile] Dynamic Choice found: clicking "$4,000 - $6,000" (Option 2 of 2)
+📝 [Mobile] step3 column set to: "$4,000 - $6,000"
+[everest-tr-x][TABLET][CHROMIUM] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[everest-tr-x][TABLET][CHROMIUM] ✅ [Mobile] Reached a recognized terminal step (State or Contact). Stopping dynamic traversal.
+[everest-tr-x][TABLET][CHROMIUM] 🔘 [Mobile] Step 2: Selecting State
+[everest-tr-x][TABLET][CHROMIUM] ✅ [Mobile] Selected state dynamically: "Hawaii"
+[everest-tr-x][TABLET][CHROMIUM] 🔘 [Mobile] Clicking active visible button: .next-btn:visible, .next-btn2:visible, .btn-next:visible
+[everest-tr-x][TABLET][CHROMIUM] ✅ [Mobile] Clicked: .next-btn:visible, .next-btn2:visible, .btn-next:visible
+[everest-tr-x][TABLET][CHROMIUM] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[everest-tr-x][TABLET][CHROMIUM] 🔘 [Mobile] Step 3: Filling Contact Info (Dynamic Loop)...
+[everest-tr-x][TABLET][CHROMIUM] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[everest-tr-x][TABLET][CHROMIUM] ✅ [Mobile] Filled First Name: ckmtestpixel
+[everest-tr-x][TABLET][CHROMIUM] ✅ [Mobile] Filled Last Name: ckmtestpixel
+[everest-tr-x][TABLET][CHROMIUM] ✅ [Mobile] Filled Email: ckmtestpixel@gmail.com
+[everest-tr-x][TABLET][CHROMIUM] ✅ [Mobile] Filled Phone: 401-247-1011
+[everest-tr-x][TABLET][CHROMIUM] 🔘 [Mobile] Clicking active contact NEXT/SUBMIT button...
+[everest-tr-x][TABLET][CHROMIUM] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[everest-tr-x][TABLET][CHROMIUM] [STDERR] ⚠️ [Tablet] Failed to apply glossy iPad Pro mockup frame overlay: page.evaluate: TypeError: Cannot read properties of null (reading 'appendChild')
+    at eval (eval at evaluate (:302:30), <anonymous>:104:23)
+    at UtilityScript.evaluate (<anonymous>:304:16)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+[everest-tr-x][TABLET][CHROMIUM] 🔘 [Mobile] No active contact NEXT/SUBMIT button visible. Exiting loop.
+[everest-tr-x][TABLET][CHROMIUM] 🔘 [Mobile] Scanning for additional dynamic steps...
+[everest-tr-x][TABLET][CHROMIUM] 🔘 [Mobile] Submitting form
+[everest-tr-x][TABLET][CHROMIUM] ⏳ [Mobile] Waiting for submission navigation to complete
+[everest-tr-x][TABLET][CHROMIUM] ⏳ [Mobile] Waiting for final Thank You page redirection...
+[everest-tr-x][TABLET][CHROMIUM] ✅ [Mobile] Targeted final redirect URL achieved!
+[everest-tr-x][TABLET][CHROMIUM] ✅ [Mobile] Final Thank You URL: https://www.everesttaxrelief.net/thankyou_ts.php?debt=20000&leadid=8C0AAADD&affid=659&reqid=26778602&sub
+[everest-tr-x][TABLET][CHROMIUM] ✅ [Mobile] Extracted Lead ID: 8C0AAADD
+[everest-tr-x][TABLET][CHROMIUM] 📱 Device Type detected: T-CHROMIUM
+✅ Lead captured: 8C0AAADD
+[everest-tr-x][TABLET][CHROMIUM] 📡 Fetching First API data for Lead ID: 8C0AAADD...
+[everest-tr-x][TABLET][CHROMIUM] 📡 Raw XML Response: {
+  "lead_info_response": {
+    "$": {
+      "xmlns:xsd": "http://www.w3.org/2001/XMLSchema",
+      "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+      "xmlns": "http://cakemarketing.com/api/1/"
+    },
+    "success": "true",
+    "row_count": "1",
+    "lead_id": "8C0AAADD",
+    "personal_info": {
+      "first_name": "CKMTESTPIXEL",
+      "last_name": "CKMTESTPIXEL",
+      "email_address": "ckmtestpixel@gmail.com",
+      "address": {
+        "street": "",
+        "city": "",
+        "state": "HI",
+        "zip_code": "",
+        "country": ""
+      },
+      "ip_address": "27.54.170.27",
+      "phone_work": "",
+      "phone_home": "401-247-1011",
+      "phone_cell": "",
+      "best_call_time": "",
+      "opt_in": "false"
+    },
+    "traffic_info": {
+      "lead_date": "2026-05-13T21:58:50.82",
+      "payout": {
+        "currency_id": "1",
+        "amount": "0.0000",
+        "formatted_amount": "$0.00"
+      },
+      "affiliate": {
+        "affiliate_id": {
+          "_": "659",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        },
+        "affiliate_name": {
+          "_": "QA affiliate",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        }
+      },
+      "campaign": {
+        "campaign_id": {
+          "_": "4290",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        },
+        "campaign_name": {
+          "_": "Everest Tax Relief (X) - Main - CPA - $1.00",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        }
+      },
+      "creative_id": "2498",
+      "subid_1": "",
+      "subid_2": "",
+      "subid_3": "",
+      "subid_4": "",
+      "subid_5": "",
+      "referrer": "",
+      "pixel_fired": "true",
+      "returned_to_affiliate": "false",
+      "test": "true",
+      "upsell": "false"
+    },
+    "all_vertical_data": {
+      "data": {
+        "$": {
+          "xmlns": ""
+        },
+        "tax_debt": "20000",
+        "universal_leadid": "A30C5860-6EFB-5586-5F9A-9507933CF627",
+        "affid": "659",
+        "TCPA_checkbox": "checked",
+        "reqid": "26778602",
+        "cr_price": "0.00",
+        "page": "everesttaxrelief.net/v5/",
+        "neustar": "fail",
+        "neustar_disposition": "N,U,I3,L,0",
+        "first_name_lower": "ckmtestpixel",
+        "last_name_lower": "ckmtestpixel",
+        "income": "5000",
+        "first_name_capital": "Ckmtestpixel",
+        "last_name_capital": "Ckmtestpixel",
+        "debt_type": "Other",
+        "nodl_flag": "pass",
+        "ckm_campaign_id": "4578"
+      }
+    },
+    "dispositions": {
+      "disposition": [
+        {
+          "disposition_type": "Not Paid For",
+          "reason": "Unmatched Filter",
+          "filter": "Nuestar Fail"
+        },
+        {
+          "disposition_type": "Not Paid For",
+          "reason": "Unmatched Filter",
+          "filter": "Debt Type Does Not Contain"
+        },
+        {
+          "disposition_type": "Sent to Review Queue",
+          "reason": "debt_type: This value is not valid",
+          "filter": "Equals Value"
+        },
+        {
+          "disposition_type": "Sent to Review Queue",
+          "reason": "neustar: This value is not valid",
+          "filter": "Equals Value"
+        }
+      ]
+    },
+    "pings": "",
+    "posts": "",
+    "sales": ""
+  }
+}
+[everest-tr-x][TABLET][CHROMIUM] ✅ First API Data retrieved on attempt 1
+[everest-tr-x][TABLET][CHROMIUM] 📡 Fetching Second API data for Lead ID: 8C0AAADD...
+[everest-tr-x][TABLET][CHROMIUM] 📡 Everest Custom Second API Payload: cake_id=8C0AAADD, domain_name=https://everesttaxrelief.net
+[everest-tr-x][TABLET][CHROMIUM] [STDERR] (node:7980) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[everest-tr-x][TABLET][CHROMIUM] ✅ Second API Data retrieved on attempt 1: dbid (id)=15627
+[everest-tr-x][TABLET][CHROMIUM] ✅ Row appended successfully to sheet: Everest Tax Releif(X)
+[everest-tr-x][TABLET][CHROMIUM] ✨ Professional formatting applied to Everest Tax Releif(X)
+[everest-tr-x][TABLET][CHROMIUM] ✅ Lead processed successfully for Everest Tax Releif(X) Tablet
+[everest-tr-x][TABLET][CHROMIUM] 🎥 Video saved successfully: traces/videos/Everest Tax Releif(X)_Everest_Tax_Releif(X)_Tablet.webm
+[everest-tr-x][TABLET][CHROMIUM] 
+✅ Execution successfully processed! {
+  success: true,
+  leadId: '8C0AAADD',
+  brand: 'Everest Tax Releif(X) Tablet'
+}
+[everest-tr-x][TABLET][CHROMIUM] [STDERR] ❌ Automation Run encountered a fatal exception: tracing.stop: Target page, context or browser has been closed
+✅ [14/5/2026, 10:29:24 am] COMPLETED: everest-tr-x [TABLET][CHROMIUM]
+
+================================================================
+🚀 [14/5/2026, 10:29:24 am] RUNNING: Everest Tax Releif(X) (MOBILE) on CHROMIUM
+🔗 Target URL: https://mlf-trk.com/?a=659&oc=812&c=2498&s1=
+================================================================
+[everest-tr-x][MOBILE][CHROMIUM] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[everest-tr-x][MOBILE][CHROMIUM] ◇ injected env (0) from .env // tip: ◈ secrets for agents [www.dotenvx.com]
+[everest-tr-x][MOBILE][CHROMIUM] ◇ injected env (0) from .env // tip: ⌘ multiple files { path: ['.env.local', '.env'] }
+[everest-tr-x][MOBILE][CHROMIUM] ◇ injected env (0) from .env // tip: ⌘ multiple files { path: ['.env.local', '.env'] }
+[everest-tr-x][MOBILE][CHROMIUM] ◇ injected env (0) from .env // tip: ◈ encrypted .env [www.dotenvx.com]
+[everest-tr-x][MOBILE][CHROMIUM] 
+🤖 ================================================================
+[everest-tr-x][MOBILE][CHROMIUM] 🤖 MASTER RUNNER: LAUNCHING EVEREST TAX RELEIF(X)
+🤖 Mode:            MOBILE
+🤖 Tracking URL:     https://mlf-trk.com/?a=659&oc=812&c=2498&s1=
+🤖 Target Sheet:    Everest Tax Releif(X)
+[everest-tr-x][MOBILE][CHROMIUM] 🤖 ================================================================
+[everest-tr-x][MOBILE][CHROMIUM] 📱 Emulated Device Profile: MOBILE (iPhone 17 Pro)
+[everest-tr-x][MOBILE][CHROMIUM] ⏳ Delaying 200ms to allow responsive layouts to mount...
+[everest-tr-x][MOBILE][CHROMIUM] 🔄 Processing lead for brand: Everest Tax Releif(X) Mobile
+[everest-tr-x][MOBILE][CHROMIUM] 📊 Campaign execution run index: 12
+[everest-tr-x][MOBILE][CHROMIUM] 🎯 Enforcing dynamic credentials & parameters:
+   - First Name:   ckmtestpixel
+   - Last Name:    ckmtestpixel
+   - Email:        ckmtestpixel@gmail.com
+   - Phone Number: 401-247-1012
+   - Slider Value: 30,000
+   - State Value:  Illinois
+[everest-tr-x][MOBILE][CHROMIUM] 🔗 [Mobile] Navigating to: https://mlf-trk.com/?a=659&oc=812&c=2498&s1=
+[everest-tr-x][MOBILE][CHROMIUM] ✅ [Mobile] Page loaded successfully
+[everest-tr-x][MOBILE][CHROMIUM] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[everest-tr-x][MOBILE][CHROMIUM] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[everest-tr-x][MOBILE][CHROMIUM] 📝 [Mobile] Starting mobile-specific form filling...
+[everest-tr-x][MOBILE][CHROMIUM] 🔘 [Mobile] Step 1: Selecting Debt Amount (30,000)
+[everest-tr-x][MOBILE][CHROMIUM] 🔘 [Mobile] Found jQuery UI Slider #slider. Setting value via jQuery and DOM evaluation...
+[everest-tr-x][MOBILE][CHROMIUM] ✅ [Mobile] Set jQuery UI Slider #slider to 30,000
+[everest-tr-x][MOBILE][CHROMIUM] 🔘 [Mobile] Clicking active visible button: .next-btn1:visible, .btn-next:visible
+[everest-tr-x][MOBILE][CHROMIUM] ✅ [Mobile] Clicked: .next-btn1:visible, .btn-next:visible
+[everest-tr-x][MOBILE][CHROMIUM] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[everest-tr-x][MOBILE][CHROMIUM] 🔘 [Mobile] Dynamic Choice found: clicking "Federal" (Option 1 of 4)
+[everest-tr-x][MOBILE][CHROMIUM] 📝 [Mobile] step1 column set to: "Federal"
+[everest-tr-x][MOBILE][CHROMIUM] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[everest-tr-x][MOBILE][CHROMIUM] 🔘 [Mobile] Dynamic Choice found: clicking "More than $6,000" (Option 1 of 3)
+📝 [Mobile] step2 column set to: "More than $6,000"
+[everest-tr-x][MOBILE][CHROMIUM] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[everest-tr-x][MOBILE][CHROMIUM] ✅ [Mobile] Reached a recognized terminal step (State or Contact). Stopping dynamic traversal.
+[everest-tr-x][MOBILE][CHROMIUM] 🔘 [Mobile] Step 2: Selecting State
+[everest-tr-x][MOBILE][CHROMIUM] ✅ [Mobile] Selected state dynamically: "Idaho"
+📝 [Mobile] step3 column set to State: "Idaho"
+[everest-tr-x][MOBILE][CHROMIUM] 🔘 [Mobile] Clicking active visible button: .next-btn:visible, .next-btn2:visible, .btn-next:visible
+[everest-tr-x][MOBILE][CHROMIUM] ✅ [Mobile] Clicked: .next-btn:visible, .next-btn2:visible, .btn-next:visible
+[everest-tr-x][MOBILE][CHROMIUM] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[everest-tr-x][MOBILE][CHROMIUM] 🔘 [Mobile] Step 3: Filling Contact Info (Dynamic Loop)...
+[everest-tr-x][MOBILE][CHROMIUM] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[everest-tr-x][MOBILE][CHROMIUM] ✅ [Mobile] Filled First Name: ckmtestpixel
+[everest-tr-x][MOBILE][CHROMIUM] ✅ [Mobile] Filled Last Name: ckmtestpixel
+[everest-tr-x][MOBILE][CHROMIUM] ✅ [Mobile] Filled Email: ckmtestpixel@gmail.com
+[everest-tr-x][MOBILE][CHROMIUM] ✅ [Mobile] Filled Phone: 401-247-1012
+[everest-tr-x][MOBILE][CHROMIUM] 🔘 [Mobile] Clicking active contact NEXT/SUBMIT button...
+[everest-tr-x][MOBILE][CHROMIUM] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[everest-tr-x][MOBILE][CHROMIUM] [STDERR] ⚠️ [Mobile] Failed to apply glossy iPhone 17 Pro mockup frame overlay: page.evaluate: TypeError: Cannot read properties of null (reading 'appendChild')
+    at eval (eval at evaluate (:302:30), <anonymous>:133:23)
+    at UtilityScript.evaluate (<anonymous>:304:16)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+[everest-tr-x][MOBILE][CHROMIUM] 🔘 [Mobile] No active contact NEXT/SUBMIT button visible. Exiting loop.
+🔘 [Mobile] Scanning for additional dynamic steps...
+[everest-tr-x][MOBILE][CHROMIUM] 🔘 [Mobile] Submitting form
+[everest-tr-x][MOBILE][CHROMIUM] ⏳ [Mobile] Waiting for submission navigation to complete
+[everest-tr-x][MOBILE][CHROMIUM] ⏳ [Mobile] Waiting for final Thank You page redirection...
+[everest-tr-x][MOBILE][CHROMIUM] ✅ [Mobile] Targeted final redirect URL achieved!
+[everest-tr-x][MOBILE][CHROMIUM] ✅ [Mobile] Final Thank You URL: https://www.everesttaxrelief.net/thankyou_ts.php?debt=30000&leadid=82E31AFB&affid=659&reqid=26778604&sub
+[everest-tr-x][MOBILE][CHROMIUM] ✅ [Mobile] Extracted Lead ID: 82E31AFB
+📱 Device Type detected: M-CHROMIUM
+[everest-tr-x][MOBILE][CHROMIUM] ✅ Lead captured: 82E31AFB
+[everest-tr-x][MOBILE][CHROMIUM] 📡 Fetching First API data for Lead ID: 82E31AFB...
+[everest-tr-x][MOBILE][CHROMIUM] 📡 Raw XML Response: {
+  "lead_info_response": {
+    "$": {
+      "xmlns:xsd": "http://www.w3.org/2001/XMLSchema",
+      "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+      "xmlns": "http://cakemarketing.com/api/1/"
+    },
+    "success": "true",
+    "row_count": "1",
+    "lead_id": "82E31AFB",
+    "personal_info": {
+      "first_name": "CKMTESTPIXEL",
+      "last_name": "CKMTESTPIXEL",
+      "email_address": "ckmtestpixel@gmail.com",
+      "address": {
+        "street": "",
+        "city": "",
+        "state": "ID",
+        "zip_code": "",
+        "country": ""
+      },
+      "ip_address": "27.54.170.27",
+      "phone_work": "",
+      "phone_home": "401-247-1012",
+      "phone_cell": "",
+      "best_call_time": "",
+      "opt_in": "false"
+    },
+    "traffic_info": {
+      "lead_date": "2026-05-13T21:59:47.57",
+      "payout": {
+        "currency_id": "1",
+        "amount": "0.0000",
+        "formatted_amount": "$0.00"
+      },
+      "affiliate": {
+        "affiliate_id": {
+          "_": "659",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        },
+        "affiliate_name": {
+          "_": "QA affiliate",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        }
+      },
+      "campaign": {
+        "campaign_id": {
+          "_": "4290",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        },
+        "campaign_name": {
+          "_": "Everest Tax Relief (X) - Main - CPA - $1.00",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        }
+      },
+      "creative_id": "2498",
+      "subid_1": "",
+      "subid_2": "",
+      "subid_3": "",
+      "subid_4": "",
+      "subid_5": "",
+      "referrer": "",
+      "pixel_fired": "true",
+      "returned_to_affiliate": "false",
+      "test": "true",
+      "upsell": "false"
+    },
+    "all_vertical_data": {
+      "data": {
+        "$": {
+          "xmlns": ""
+        },
+        "tax_debt": "30000",
+        "universal_leadid": "F4A16B81-4EB1-84A7-3ECF-04F2452AA62A",
+        "affid": "659",
+        "TCPA_checkbox": "checked",
+        "reqid": "26778604",
+        "cr_price": "0.00",
+        "page": "everesttaxrelief.net/v5/",
+        "neustar": "fail",
+        "neustar_disposition": "N,U,I3,L,0",
+        "first_name_lower": "ckmtestpixel",
+        "last_name_lower": "ckmtestpixel",
+        "income": "6500",
+        "first_name_capital": "Ckmtestpixel",
+        "last_name_capital": "Ckmtestpixel",
+        "debt_type": "Federal",
+        "nodl_flag": "pass",
+        "ckm_campaign_id": "4578"
+      }
+    },
+    "dispositions": {
+      "disposition": [
+        {
+          "disposition_type": "Not Paid For",
+          "reason": "Unmatched Filter",
+          "filter": "Nuestar Fail"
+        },
+        {
+          "disposition_type": "Sent to Review Queue",
+          "reason": "neustar: This value is not valid",
+          "filter": "Equals Value"
+        }
+      ]
+    },
+    "pings": "",
+    "posts": "",
+    "sales": ""
+  }
+}
+[everest-tr-x][MOBILE][CHROMIUM] ✅ First API Data retrieved on attempt 1
+[everest-tr-x][MOBILE][CHROMIUM] 📡 Fetching Second API data for Lead ID: 82E31AFB...
+[everest-tr-x][MOBILE][CHROMIUM] 📡 Everest Custom Second API Payload: cake_id=82E31AFB, domain_name=https://everesttaxrelief.net
+[everest-tr-x][MOBILE][CHROMIUM] [STDERR] (node:3984) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[everest-tr-x][MOBILE][CHROMIUM] ✅ Second API Data retrieved on attempt 1: dbid (id)=15628
+[everest-tr-x][MOBILE][CHROMIUM] ✅ Row appended successfully to sheet: Everest Tax Releif(X)
+[everest-tr-x][MOBILE][CHROMIUM] ✨ Professional formatting applied to Everest Tax Releif(X)
+[everest-tr-x][MOBILE][CHROMIUM] ✅ Lead processed successfully for Everest Tax Releif(X) Mobile
+[everest-tr-x][MOBILE][CHROMIUM] 🎥 Video saved successfully: traces/videos/Everest Tax Releif(X)_Everest_Tax_Releif(X)_Mobile.webm
+[everest-tr-x][MOBILE][CHROMIUM] 
+✅ Execution successfully processed! {
+  success: true,
+  leadId: '82E31AFB',
+  brand: 'Everest Tax Releif(X) Mobile'
+}
+[everest-tr-x][MOBILE][CHROMIUM] [STDERR] ❌ Automation Run encountered a fatal exception: tracing.stop: Target page, context or browser has been closed
+✅ [14/5/2026, 10:30:23 am] COMPLETED: everest-tr-x [MOBILE][CHROMIUM]
+
+================================================================
+⚡ Running Campaign Viewports on Browser Engine: CHROMIUM - [VTS-ORIGINAL]
+================================================================
+
+================================================================
+🚀 [14/5/2026, 10:30:24 am] RUNNING: VTS Original (DESKTOP) on CHROMIUM
+🔗 Target URL: https://mlfvts-trk.com/?a=659&oc=323&c=569&s1=
+================================================================
+[vts-original][DESKTOP][CHROMIUM] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[vts-original][DESKTOP][CHROMIUM] ◇ injected env (0) from .env // tip: ⌘ multiple files { path: ['.env.local', '.env'] }
+[vts-original][DESKTOP][CHROMIUM] ◇ injected env (0) from .env // tip: ⌘ custom filepath { path: '/custom/path/.env' }
+[vts-original][DESKTOP][CHROMIUM] ◇ injected env (0) from .env // tip: ⌘ multiple files { path: ['.env.local', '.env'] }
+[vts-original][DESKTOP][CHROMIUM] ◇ injected env (0) from .env // tip: ⌁ auth for agents [www.vestauth.com]
+[vts-original][DESKTOP][CHROMIUM] 
+🤖 ================================================================
+🤖 MASTER RUNNER: LAUNCHING VTS ORIGINAL
+[vts-original][DESKTOP][CHROMIUM] 🤖 Mode:            DESKTOP
+🤖 Tracking URL:     https://mlfvts-trk.com/?a=659&oc=323&c=569&s1=
+🤖 Target Sheet:    VTS-Original
+🤖 ================================================================
+[vts-original][DESKTOP][CHROMIUM] 💻 Emulated Device Profile: DESKTOP
+[vts-original][DESKTOP][CHROMIUM] 🔄 Processing lead for brand: VTS Original
+[vts-original][DESKTOP][CHROMIUM] 📊 Campaign execution run index: 3
+🎯 Enforcing dynamic credentials & parameters:
+   - First Name:   ckmtestpixel
+   - Last Name:    ckmtestpixel
+   - Email:        ckmtestpixel@gmail.com
+   - Phone Number: 401-247-1003
+   - Slider Value: 30,000
+   - State Value:  Arkansas
+[vts-original][DESKTOP][CHROMIUM] 🔗 Navigating to: https://mlfvts-trk.com/?a=659&oc=323&c=569&s1=
+[vts-original][DESKTOP][CHROMIUM] ✅ Page loaded successfully
+[vts-original][DESKTOP][CHROMIUM] 📝 Starting multi-step form filling process...
+[vts-original][DESKTOP][CHROMIUM] 🔘 Step 1: Handling Debt Amount (30,000)
+[vts-original][DESKTOP][CHROMIUM] 🔘 Found jQuery UI Slider #slider. Setting value via jQuery and DOM evaluation...
+[vts-original][DESKTOP][CHROMIUM] ✅ Set jQuery UI Slider #slider to 30,000
+[vts-original][DESKTOP][CHROMIUM] 🔘 Attempting to click .next-btn1, .btn-next
+[vts-original][DESKTOP][CHROMIUM] ✅ Clicked .next-btn1, .btn-next
+[vts-original][DESKTOP][CHROMIUM] 🔘 Dynamic Choice found: clicking "Other" (Option 4 of 6)
+[vts-original][DESKTOP][CHROMIUM] 📝 step1 column set to: "Other"
+[vts-original][DESKTOP][CHROMIUM] ✅ Reached a recognized terminal step (State or Contact). Stopping dynamic traversal.
+[vts-original][DESKTOP][CHROMIUM] 🔘 Step: Selecting State
+[vts-original][DESKTOP][CHROMIUM] ✅ Selected state dynamically: "Arkansas"
+📝 step3 column set to State: "Arkansas"
+[vts-original][DESKTOP][CHROMIUM] 🔘 Clicking generic NEXT button
+[vts-original][DESKTOP][CHROMIUM] ✅ Clicked generic NEXT button
+[vts-original][DESKTOP][CHROMIUM] 🔘 Advancing past post-state step...
+[vts-original][DESKTOP][CHROMIUM] 🔘 Filling Contact Info (Dynamic Loop)...
+[vts-original][DESKTOP][CHROMIUM] ✅ Filled First Name: ckmtestpixel
+[vts-original][DESKTOP][CHROMIUM] ✅ Filled Last Name: ckmtestpixel
+[vts-original][DESKTOP][CHROMIUM] 🔘 Clicking active contact NEXT/SUBMIT button...
+[vts-original][DESKTOP][CHROMIUM] ✅ Filled Email: ckmtestpixel@gmail.com
+[vts-original][DESKTOP][CHROMIUM] 🔘 Clicking active contact NEXT/SUBMIT button...
+[vts-original][DESKTOP][CHROMIUM] ✅ Filled Phone: 401-247-1003
+[vts-original][DESKTOP][CHROMIUM] 🔘 Clicking active contact NEXT/SUBMIT button...
+[vts-original][DESKTOP][CHROMIUM] 🔘 No active contact NEXT/SUBMIT button visible. Exiting loop.
+[vts-original][DESKTOP][CHROMIUM] 🔘 Checking for additional submit/next buttons...
+[vts-original][DESKTOP][CHROMIUM] 🔘 Submitting form
+[vts-original][DESKTOP][CHROMIUM] [STDERR] ⚠️  Submit navigation timeout or error, waiting 5s for final URL
+[vts-original][DESKTOP][CHROMIUM] ⏳ Waiting for final redirect to Thank You page...
+[vts-original][DESKTOP][CHROMIUM] ✅ Targeted final redirect URL achieved!
+[vts-original][DESKTOP][CHROMIUM] ✅ Final Thank You URL: https://www.veteranstaxservices.com/thankyou_ts_checklist.php?debt=30000&leadid=632CC424&affid=659&reqid=26778605&subid=#s1#
+[vts-original][DESKTOP][CHROMIUM] ✅ Extracted Lead ID: 632CC424
+[vts-original][DESKTOP][CHROMIUM] 📱 Device Type detected: D-CHROMIUM
+✅ Lead captured: 632CC424
+[vts-original][DESKTOP][CHROMIUM] 📡 Fetching First API data for Lead ID: 632CC424...
+[vts-original][DESKTOP][CHROMIUM] 📡 Raw XML Response: {
+  "lead_info_response": {
+    "$": {
+      "xmlns:xsd": "http://www.w3.org/2001/XMLSchema",
+      "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+      "xmlns": "http://cakemarketing.com/api/1/"
+    },
+    "success": "true",
+    "row_count": "1",
+    "lead_id": "632CC424",
+    "personal_info": {
+      "first_name": "CKMTESTPIXEL",
+      "last_name": "CKMTESTPIXEL",
+      "email_address": "ckmtestpixel@gmail.com",
+      "address": {
+        "street": "",
+        "city": "",
+        "state": "AR",
+        "zip_code": "",
+        "country": ""
+      },
+      "ip_address": "27.54.170.27",
+      "phone_work": "",
+      "phone_home": "401-247-1003",
+      "phone_cell": "",
+      "best_call_time": "",
+      "opt_in": "false"
+    },
+    "traffic_info": {
+      "lead_date": "2026-05-13T22:00:54.483",
+      "payout": {
+        "currency_id": "1",
+        "amount": "0.0000",
+        "formatted_amount": "$0.00"
+      },
+      "affiliate": {
+        "affiliate_id": {
+          "_": "659",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        },
+        "affiliate_name": {
+          "_": "QA affiliate",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        }
+      },
+      "campaign": {
+        "campaign_id": {
+          "_": "4062",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        },
+        "campaign_name": {
+          "_": "Veterans Tax Services - VTS - Original  - CPA - $1.00",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        }
+      },
+      "creative_id": "569",
+      "subid_1": "",
+      "subid_2": "",
+      "subid_3": "",
+      "subid_4": "",
+      "subid_5": "",
+      "referrer": "",
+      "pixel_fired": "true",
+      "returned_to_affiliate": "false",
+      "test": "true",
+      "upsell": "false"
+    },
+    "all_vertical_data": {
+      "data": {
+        "$": {
+          "xmlns": ""
+        },
+        "tax_debt": "30000",
+        "universal_leadid": "06CEEC97-B1B2-8045-D583-3EF4F987CF28",
+        "affid": "659",
+        "TCPA_checkbox": "checked",
+        "reqid": "26778605",
+        "cr_price": "0.00",
+        "page": "www.veteranstaxservices.com/v5/",
+        "neustar": "pass",
+        "neustar_disposition": "N,U,I6,L,0",
+        "nd_odlv": "24",
+        "first_name_lower": "ckmtestpixel",
+        "last_name_lower": "ckmtestpixel",
+        "first_name_capital": "Ckmtestpixel",
+        "last_name_capital": "Ckmtestpixel",
+        "opt_special_offers": "checked",
+        "debt_type": "Other",
+        "nodl_flag": "pass",
+        "ckm_campaign_id": "3902"
+      }
+    },
+    "dispositions": {
+      "disposition": [
+        {
+          "disposition_type": "Not Paid For",
+          "reason": "Unmatched Filter",
+          "filter": "Debt Type Does Not Contain"
+        },
+        {
+          "disposition_type": "Sent to Review Queue",
+          "reason": "debt_type: This value is not valid",
+          "filter": "Equals Value"
+        }
+      ]
+    },
+    "pings": "",
+    "posts": "",
+    "sales": ""
+  }
+}
+[vts-original][DESKTOP][CHROMIUM] ✅ First API Data retrieved on attempt 1
+[vts-original][DESKTOP][CHROMIUM] 📡 Fetching Second API data for Lead ID: 632CC424...
+[vts-original][DESKTOP][CHROMIUM] 📡 VTS Original (via Everest) Custom Second API Payload: cake_id=632CC424, domain_name=https://everesttaxrelief.net
+[vts-original][DESKTOP][CHROMIUM] [STDERR] (node:17764) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[vts-original][DESKTOP][CHROMIUM] ✅ Second API Data retrieved on attempt 1: dbid=
+[vts-original][DESKTOP][CHROMIUM] ✅ Row appended successfully to sheet: VTS-Original
+[vts-original][DESKTOP][CHROMIUM] ✨ Professional formatting applied to VTS-Original
+✅ Lead processed successfully for VTS Original
+[vts-original][DESKTOP][CHROMIUM] 🎥 Video saved successfully: traces/videos/VTS-Original_VTS_Original.webm
+[vts-original][DESKTOP][CHROMIUM] 
+✅ Execution successfully processed! { success: true, leadId: '632CC424', brand: 'VTS Original' }
+[vts-original][DESKTOP][CHROMIUM] [STDERR] ❌ Automation Run encountered a fatal exception: tracing.stop: Target page, context or browser has been closed
+✅ [14/5/2026, 10:31:14 am] COMPLETED: vts-original [DESKTOP][CHROMIUM]
+
+================================================================
+🚀 [14/5/2026, 10:31:14 am] RUNNING: VTS Original (TABLET) on CHROMIUM
+🔗 Target URL: https://mlfvts-trk.com/?a=659&oc=323&c=569&s1=
+================================================================
+[vts-original][TABLET][CHROMIUM] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[vts-original][TABLET][CHROMIUM] ◇ injected env (0) from .env // tip: ◈ secrets for agents [www.dotenvx.com]
+[vts-original][TABLET][CHROMIUM] ◇ injected env (0) from .env // tip: ⌘ override existing { override: true }
+[vts-original][TABLET][CHROMIUM] ◇ injected env (0) from .env // tip: ◈ secrets for agents [www.dotenvx.com]
+[vts-original][TABLET][CHROMIUM] ◇ injected env (0) from .env // tip: ◈ secrets for agents [www.dotenvx.com]
+[vts-original][TABLET][CHROMIUM] 
+🤖 ================================================================
+🤖 MASTER RUNNER: LAUNCHING VTS ORIGINAL
+[vts-original][TABLET][CHROMIUM] 🤖 Mode:            TABLET
+🤖 Tracking URL:     https://mlfvts-trk.com/?a=659&oc=323&c=569&s1=
+🤖 Target Sheet:    VTS-Original
+🤖 ================================================================
+[vts-original][TABLET][CHROMIUM] 📋 Emulated Device Profile: TABLET (iPad Pro 11)
+[vts-original][TABLET][CHROMIUM] ⏳ Delaying 200ms to allow responsive layouts to mount...
+[vts-original][TABLET][CHROMIUM] 🔄 Processing lead for brand: VTS Original Tablet
+[vts-original][TABLET][CHROMIUM] 📊 Campaign execution run index: 4
+🎯 Enforcing dynamic credentials & parameters:
+[vts-original][TABLET][CHROMIUM]    - First Name:   ckmtestpixel
+   - Last Name:    ckmtestpixel
+   - Email:        ckmtestpixel@gmail.com
+   - Phone Number: 401-247-1004
+   - Slider Value: 50,000
+   - State Value:  California
+[vts-original][TABLET][CHROMIUM] 🔗 [Mobile] Navigating to: https://mlfvts-trk.com/?a=659&oc=323&c=569&s1=
+[vts-original][TABLET][CHROMIUM] ✅ [Mobile] Page loaded successfully
+[vts-original][TABLET][CHROMIUM] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[vts-original][TABLET][CHROMIUM] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[vts-original][TABLET][CHROMIUM] 📝 [Mobile] Starting mobile-specific form filling...
+[vts-original][TABLET][CHROMIUM] 🔘 [Mobile] Step 1: Selecting Debt Amount (50,000)
+[vts-original][TABLET][CHROMIUM] 🔘 [Mobile] Found jQuery UI Slider #slider. Setting value via jQuery and DOM evaluation...
+[vts-original][TABLET][CHROMIUM] ✅ [Mobile] Set jQuery UI Slider #slider to 50,000
+[vts-original][TABLET][CHROMIUM] 🔘 [Mobile] Clicking active visible button: .next-btn1:visible, .btn-next:visible
+[vts-original][TABLET][CHROMIUM] ✅ [Mobile] Clicked: .next-btn1:visible, .btn-next:visible
+[vts-original][TABLET][CHROMIUM] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[vts-original][TABLET][CHROMIUM] 🔘 [Mobile] Dynamic Choice found: clicking "GET HELP TODAY!" (Option 5 of 6)
+📝 [Mobile] step1 column set to: "GET HELP TODAY!"
+[vts-original][TABLET][CHROMIUM] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[vts-original][TABLET][CHROMIUM] 🔘 [Mobile] Dynamic Choice found: clicking "Learn More About Your Tax Debt Relief Options" (Option 5 of 5)
+📝 [Mobile] step2 column set to: "Learn More About Your Tax Debt Relief Options"
+[vts-original][TABLET][CHROMIUM] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[vts-original][TABLET][CHROMIUM] 🔘 [Mobile] Dynamic Choice found: clicking "IRS Tax Debt" (Option 1 of 4)
+[vts-original][TABLET][CHROMIUM] 📝 [Mobile] step3 column set to: "IRS Tax Debt"
+[vts-original][TABLET][CHROMIUM] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[vts-original][TABLET][CHROMIUM] ✅ [Mobile] Reached a recognized terminal step (State or Contact). Stopping dynamic traversal.
+[vts-original][TABLET][CHROMIUM] 🔘 [Mobile] Step 2: Selecting State
+[vts-original][TABLET][CHROMIUM] ✅ [Mobile] Selected state dynamically: "California"
+[vts-original][TABLET][CHROMIUM] 🔘 [Mobile] Clicking active visible button: .next-btn:visible, .next-btn2:visible, .btn-next:visible
+[vts-original][TABLET][CHROMIUM] ✅ [Mobile] Clicked: .next-btn:visible, .next-btn2:visible, .btn-next:visible
+[vts-original][TABLET][CHROMIUM] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[vts-original][TABLET][CHROMIUM] 🔘 [Mobile] Step 3: Filling Contact Info (Dynamic Loop)...
+[vts-original][TABLET][CHROMIUM] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[vts-original][TABLET][CHROMIUM] ✅ [Mobile] Filled First Name: ckmtestpixel
+[vts-original][TABLET][CHROMIUM] ✅ [Mobile] Filled Last Name: ckmtestpixel
+[vts-original][TABLET][CHROMIUM] 🔘 [Mobile] Clicking active contact NEXT/SUBMIT button...
+[vts-original][TABLET][CHROMIUM] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[vts-original][TABLET][CHROMIUM] ✅ [Mobile] Filled Email: ckmtestpixel@gmail.com
+[vts-original][TABLET][CHROMIUM] 🔘 [Mobile] Clicking active contact NEXT/SUBMIT button...
+[vts-original][TABLET][CHROMIUM] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[vts-original][TABLET][CHROMIUM] ✅ [Mobile] Filled Phone: 401-247-1004
+[vts-original][TABLET][CHROMIUM] 🔘 [Mobile] Clicking active contact NEXT/SUBMIT button...
+[vts-original][TABLET][CHROMIUM] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[vts-original][TABLET][CHROMIUM] [STDERR] ⚠️ [Tablet] Failed to apply glossy iPad Pro mockup frame overlay: page.evaluate: TypeError: Cannot read properties of null (reading 'appendChild')
+    at eval (eval at evaluate (:302:30), <anonymous>:104:23)
+    at UtilityScript.evaluate (<anonymous>:304:16)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+[vts-original][TABLET][CHROMIUM] 🔘 [Mobile] No active contact NEXT/SUBMIT button visible. Exiting loop.
+🔘 [Mobile] Scanning for additional dynamic steps...
+[vts-original][TABLET][CHROMIUM] 🔘 [Mobile] Submitting form
+[vts-original][TABLET][CHROMIUM] ⏳ [Mobile] Waiting for submission navigation to complete
+[vts-original][TABLET][CHROMIUM] ⏳ [Mobile] Waiting for final Thank You page redirection...
+[vts-original][TABLET][CHROMIUM] ✅ [Mobile] Targeted final redirect URL achieved!
+[vts-original][TABLET][CHROMIUM] ✅ [Mobile] Final Thank You URL: https://www.veteranstaxservices.com/thankyou_ts_checklist.php?debt=50000&leadid=79B9A6DF&affid=659&reqid=26778607&subid=#s1#
+[vts-original][TABLET][CHROMIUM] ✅ [Mobile] Extracted Lead ID: 79B9A6DF
+📱 Device Type detected: T-CHROMIUM
+✅ Lead captured: 79B9A6DF
+📡 Fetching First API data for Lead ID: 79B9A6DF...
+[vts-original][TABLET][CHROMIUM] 📡 Raw XML Response: {
+  "lead_info_response": {
+    "$": {
+      "xmlns:xsd": "http://www.w3.org/2001/XMLSchema",
+      "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+      "xmlns": "http://cakemarketing.com/api/1/"
+    },
+    "success": "true",
+    "row_count": "1",
+    "lead_id": "79B9A6DF",
+    "personal_info": {
+      "first_name": "CKMTESTPIXEL",
+      "last_name": "CKMTESTPIXEL",
+      "email_address": "ckmtestpixel@gmail.com",
+      "address": {
+        "street": "",
+        "city": "",
+        "state": "CA",
+        "zip_code": "",
+        "country": ""
+      },
+      "ip_address": "27.54.170.27",
+      "phone_work": "",
+      "phone_home": "401-247-1004",
+      "phone_cell": "",
+      "best_call_time": "",
+      "opt_in": "false"
+    },
+    "traffic_info": {
+      "lead_date": "2026-05-13T22:01:42.607",
+      "payout": {
+        "currency_id": "1",
+        "amount": "0.0000",
+        "formatted_amount": "$0.00"
+      },
+      "affiliate": {
+        "affiliate_id": {
+          "_": "659",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        },
+        "affiliate_name": {
+          "_": "QA affiliate",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        }
+      },
+      "campaign": {
+        "campaign_id": {
+          "_": "4062",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        },
+        "campaign_name": {
+          "_": "Veterans Tax Services - VTS - Original  - CPA - $1.00",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        }
+      },
+      "creative_id": "569",
+      "subid_1": "",
+      "subid_2": "",
+      "subid_3": "",
+      "subid_4": "",
+      "subid_5": "",
+      "referrer": "",
+      "pixel_fired": "true",
+      "returned_to_affiliate": "false",
+      "test": "true",
+      "upsell": "false"
+    },
+    "all_vertical_data": {
+      "data": {
+        "$": {
+          "xmlns": ""
+        },
+        "tax_debt": "50000",
+        "universal_leadid": "14F616F5-D427-7D18-461F-DF039849CC29",
+        "affid": "659",
+        "TCPA_checkbox": "checked",
+        "reqid": "26778607",
+        "cr_price": "0.00",
+        "page": "www.veteranstaxservices.com/v5/",
+        "neustar": "fail",
+        "neustar_disposition": "N,U,I3,L,0",
+        "nd_odlv": "26",
+        "first_name_lower": "ckmtestpixel",
+        "last_name_lower": "ckmtestpixel",
+        "first_name_capital": "Ckmtestpixel",
+        "last_name_capital": "Ckmtestpixel",
+        "opt_special_offers": "checked",
+        "debt_type": "IRS Tax Debt",
+        "nodl_flag": "pass",
+        "ckm_campaign_id": "3902"
+      }
+    },
+    "dispositions": "",
+    "pings": "",
+    "posts": "",
+    "sales": ""
+  }
+}
+[vts-original][TABLET][CHROMIUM] ✅ First API Data retrieved on attempt 1
+[vts-original][TABLET][CHROMIUM] 📡 Fetching Second API data for Lead ID: 79B9A6DF...
+[vts-original][TABLET][CHROMIUM] 📡 VTS Original (via Everest) Custom Second API Payload: cake_id=79B9A6DF, domain_name=https://everesttaxrelief.net
+[vts-original][TABLET][CHROMIUM] [STDERR] (node:17508) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[vts-original][TABLET][CHROMIUM] ✅ Second API Data retrieved on attempt 1: dbid=
+[vts-original][TABLET][CHROMIUM] ✅ Row appended successfully to sheet: VTS-Original
+[vts-original][TABLET][CHROMIUM] ✨ Professional formatting applied to VTS-Original
+✅ Lead processed successfully for VTS Original Tablet
+[vts-original][TABLET][CHROMIUM] 🎥 Video saved successfully: traces/videos/VTS-Original_VTS_Original_Tablet.webm
+[vts-original][TABLET][CHROMIUM] 
+✅ Execution successfully processed! { success: true, leadId: '79B9A6DF', brand: 'VTS Original Tablet' }
+[vts-original][TABLET][CHROMIUM] [STDERR] ❌ Automation Run encountered a fatal exception: tracing.stop: Target page, context or browser has been closed
+✅ [14/5/2026, 10:32:17 am] COMPLETED: vts-original [TABLET][CHROMIUM]
+
+================================================================
+🚀 [14/5/2026, 10:32:17 am] RUNNING: VTS Original (MOBILE) on CHROMIUM
+🔗 Target URL: https://mlfvts-trk.com/?a=659&oc=323&c=569&s1=
+================================================================
+[vts-original][MOBILE][CHROMIUM] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[vts-original][MOBILE][CHROMIUM] ◇ injected env (0) from .env // tip: ⌁ auth for agents [www.vestauth.com]
+[vts-original][MOBILE][CHROMIUM] ◇ injected env (0) from .env // tip: ⌘ override existing { override: true }
+[vts-original][MOBILE][CHROMIUM] ◇ injected env (0) from .env // tip: ⌘ custom filepath { path: '/custom/path/.env' }
+[vts-original][MOBILE][CHROMIUM] ◇ injected env (0) from .env // tip: ◈ encrypted .env [www.dotenvx.com]
+[vts-original][MOBILE][CHROMIUM] 
+🤖 ================================================================
+[vts-original][MOBILE][CHROMIUM] 🤖 MASTER RUNNER: LAUNCHING VTS ORIGINAL
+🤖 Mode:            MOBILE
+🤖 Tracking URL:     https://mlfvts-trk.com/?a=659&oc=323&c=569&s1=
+[vts-original][MOBILE][CHROMIUM] 🤖 Target Sheet:    VTS-Original
+🤖 ================================================================
+[vts-original][MOBILE][CHROMIUM] 📱 Emulated Device Profile: MOBILE (iPhone 17 Pro)
+[vts-original][MOBILE][CHROMIUM] ⏳ Delaying 200ms to allow responsive layouts to mount...
+[vts-original][MOBILE][CHROMIUM] 🔄 Processing lead for brand: VTS Original Mobile
+[vts-original][MOBILE][CHROMIUM] 📊 Campaign execution run index: 5
+🎯 Enforcing dynamic credentials & parameters:
+   - First Name:   ckmtestpixel
+   - Last Name:    ckmtestpixel
+   - Email:        ckmtestpixel@gmail.com
+   - Phone Number: 401-247-1005
+   - Slider Value: 10,000
+   - State Value:  Colorado
+🔗 [Mobile] Navigating to: https://mlfvts-trk.com/?a=659&oc=323&c=569&s1=
+[vts-original][MOBILE][CHROMIUM] ✅ [Mobile] Page loaded successfully
+[vts-original][MOBILE][CHROMIUM] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[vts-original][MOBILE][CHROMIUM] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[vts-original][MOBILE][CHROMIUM] 📝 [Mobile] Starting mobile-specific form filling...
+[vts-original][MOBILE][CHROMIUM] 🔘 [Mobile] Step 1: Selecting Debt Amount (10,000)
+[vts-original][MOBILE][CHROMIUM] 🔘 [Mobile] Found jQuery UI Slider #slider. Setting value via jQuery and DOM evaluation...
+[vts-original][MOBILE][CHROMIUM] ✅ [Mobile] Set jQuery UI Slider #slider to 10,000
+[vts-original][MOBILE][CHROMIUM] 🔘 [Mobile] Clicking active visible button: .next-btn1:visible, .btn-next:visible
+[vts-original][MOBILE][CHROMIUM] ✅ [Mobile] Clicked: .next-btn1:visible, .btn-next:visible
+[vts-original][MOBILE][CHROMIUM] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[vts-original][MOBILE][CHROMIUM] 🔘 [Mobile] Dynamic Choice found: clicking "Learn More About Your Tax Debt Relief Options" (Option 6 of 6)
+📝 [Mobile] step1 column set to: "Learn More About Your Tax Debt Relief Options"
+[vts-original][MOBILE][CHROMIUM] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[vts-original][MOBILE][CHROMIUM] 🔘 [Mobile] Dynamic Choice found: clicking "IRS Tax Debt" (Option 1 of 5)
+[vts-original][MOBILE][CHROMIUM] 📝 [Mobile] step2 column set to: "IRS Tax Debt"
+[vts-original][MOBILE][CHROMIUM] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[vts-original][MOBILE][CHROMIUM] ✅ [Mobile] Reached a recognized terminal step (State or Contact). Stopping dynamic traversal.
+[vts-original][MOBILE][CHROMIUM] 🔘 [Mobile] Step 2: Selecting State
+[vts-original][MOBILE][CHROMIUM] ✅ [Mobile] Selected state dynamically: "Colorado"
+📝 [Mobile] step3 column set to State: "Colorado"
+[vts-original][MOBILE][CHROMIUM] 🔘 [Mobile] Clicking active visible button: .next-btn:visible, .next-btn2:visible, .btn-next:visible
+[vts-original][MOBILE][CHROMIUM] ✅ [Mobile] Clicked: .next-btn:visible, .next-btn2:visible, .btn-next:visible
+[vts-original][MOBILE][CHROMIUM] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[vts-original][MOBILE][CHROMIUM] 🔘 [Mobile] Step 3: Filling Contact Info (Dynamic Loop)...
+[vts-original][MOBILE][CHROMIUM] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[vts-original][MOBILE][CHROMIUM] ✅ [Mobile] Filled First Name: ckmtestpixel
+[vts-original][MOBILE][CHROMIUM] ✅ [Mobile] Filled Last Name: ckmtestpixel
+[vts-original][MOBILE][CHROMIUM] 🔘 [Mobile] Clicking active contact NEXT/SUBMIT button...
+[vts-original][MOBILE][CHROMIUM] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[vts-original][MOBILE][CHROMIUM] ✅ [Mobile] Filled Email: ckmtestpixel@gmail.com
+[vts-original][MOBILE][CHROMIUM] 🔘 [Mobile] Clicking active contact NEXT/SUBMIT button...
+[vts-original][MOBILE][CHROMIUM] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[vts-original][MOBILE][CHROMIUM] ✅ [Mobile] Filled Phone: 401-247-1005
+[vts-original][MOBILE][CHROMIUM] 🔘 [Mobile] Clicking active contact NEXT/SUBMIT button...
+[vts-original][MOBILE][CHROMIUM] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[vts-original][MOBILE][CHROMIUM] [STDERR] ⚠️ [Mobile] Failed to apply glossy iPhone 17 Pro mockup frame overlay: page.evaluate: TypeError: Cannot read properties of null (reading 'appendChild')
+    at eval (eval at evaluate (:302:30), <anonymous>:133:23)
+    at UtilityScript.evaluate (<anonymous>:304:16)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+[vts-original][MOBILE][CHROMIUM] 🔘 [Mobile] No active contact NEXT/SUBMIT button visible. Exiting loop.
+🔘 [Mobile] Scanning for additional dynamic steps...
+[vts-original][MOBILE][CHROMIUM] 🔘 [Mobile] Submitting form
+[vts-original][MOBILE][CHROMIUM] ⏳ [Mobile] Waiting for submission navigation to complete
+[vts-original][MOBILE][CHROMIUM] ⏳ [Mobile] Waiting for final Thank You page redirection...
+[vts-original][MOBILE][CHROMIUM] ✅ [Mobile] Targeted final redirect URL achieved!
+[vts-original][MOBILE][CHROMIUM] ✅ [Mobile] Final Thank You URL: https://www.veteranstaxservices.com/thankyou_ts_checklist.php?debt=10000&leadid=14D7EA8B&affid=659&reqid=26778610&subid=#s1#
+[vts-original][MOBILE][CHROMIUM] ✅ [Mobile] Extracted Lead ID: 14D7EA8B
+[vts-original][MOBILE][CHROMIUM] 📱 Device Type detected: M-CHROMIUM
+✅ Lead captured: 14D7EA8B
+[vts-original][MOBILE][CHROMIUM] 📡 Fetching First API data for Lead ID: 14D7EA8B...
+[vts-original][MOBILE][CHROMIUM] 📡 Raw XML Response: {
+  "lead_info_response": {
+    "$": {
+      "xmlns:xsd": "http://www.w3.org/2001/XMLSchema",
+      "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+      "xmlns": "http://cakemarketing.com/api/1/"
+    },
+    "success": "true",
+    "row_count": "1",
+    "lead_id": "14D7EA8B",
+    "personal_info": {
+      "first_name": "CKMTESTPIXEL",
+      "last_name": "CKMTESTPIXEL",
+      "email_address": "ckmtestpixel@gmail.com",
+      "address": {
+        "street": "",
+        "city": "",
+        "state": "CO",
+        "zip_code": "",
+        "country": ""
+      },
+      "ip_address": "27.54.170.27",
+      "phone_work": "",
+      "phone_home": "401-247-1005",
+      "phone_cell": "",
+      "best_call_time": "",
+      "opt_in": "false"
+    },
+    "traffic_info": {
+      "lead_date": "2026-05-13T22:02:42.757",
+      "payout": {
+        "currency_id": "1",
+        "amount": "0.0000",
+        "formatted_amount": "$0.00"
+      },
+      "affiliate": {
+        "affiliate_id": {
+          "_": "659",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        },
+        "affiliate_name": {
+          "_": "QA affiliate",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        }
+      },
+      "campaign": {
+        "campaign_id": {
+          "_": "4062",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        },
+        "campaign_name": {
+          "_": "Veterans Tax Services - VTS - Original  - CPA - $1.00",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        }
+      },
+      "creative_id": "569",
+      "subid_1": "",
+      "subid_2": "",
+      "subid_3": "",
+      "subid_4": "",
+      "subid_5": "",
+      "referrer": "",
+      "pixel_fired": "true",
+      "returned_to_affiliate": "false",
+      "test": "true",
+      "upsell": "false"
+    },
+    "all_vertical_data": {
+      "data": {
+        "$": {
+          "xmlns": ""
+        },
+        "tax_debt": "10000",
+        "universal_leadid": "B9E5F709-010D-D186-B008-9CB75D6DFEE3",
+        "affid": "659",
+        "TCPA_checkbox": "checked",
+        "reqid": "26778610",
+        "cr_price": "0.00",
+        "page": "www.veteranstaxservices.com/v5/",
+        "neustar": "pass",
+        "neustar_disposition": "N,U,I4,L,0",
+        "nd_odlv": "24",
+        "first_name_lower": "ckmtestpixel",
+        "last_name_lower": "ckmtestpixel",
+        "first_name_capital": "Ckmtestpixel",
+        "last_name_capital": "Ckmtestpixel",
+        "opt_special_offers": "checked",
+        "debt_type": "IRS Tax Debt",
+        "nodl_flag": "pass",
+        "ckm_campaign_id": "3902"
+      }
+    },
+    "dispositions": "",
+    "pings": "",
+    "posts": "",
+    "sales": ""
+  }
+}
+[vts-original][MOBILE][CHROMIUM] ✅ First API Data retrieved on attempt 1
+[vts-original][MOBILE][CHROMIUM] 📡 Fetching Second API data for Lead ID: 14D7EA8B...
+[vts-original][MOBILE][CHROMIUM] 📡 VTS Original (via Everest) Custom Second API Payload: cake_id=14D7EA8B, domain_name=https://everesttaxrelief.net
+[vts-original][MOBILE][CHROMIUM] [STDERR] (node:3212) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[vts-original][MOBILE][CHROMIUM] ✅ Second API Data retrieved on attempt 1: dbid=
+[vts-original][MOBILE][CHROMIUM] ✅ Row appended successfully to sheet: VTS-Original
+[vts-original][MOBILE][CHROMIUM] ✨ Professional formatting applied to VTS-Original
+✅ Lead processed successfully for VTS Original Mobile
+[vts-original][MOBILE][CHROMIUM] 🎥 Video saved successfully: traces/videos/VTS-Original_VTS_Original_Mobile.webm
+[vts-original][MOBILE][CHROMIUM] 
+✅ Execution successfully processed! { success: true, leadId: '14D7EA8B', brand: 'VTS Original Mobile' }
+[vts-original][MOBILE][CHROMIUM] [STDERR] ❌ Automation Run encountered a fatal exception: tracing.stop: Target page, context or browser has been closed
+✅ [14/5/2026, 10:33:15 am] COMPLETED: vts-original [MOBILE][CHROMIUM]
+
+================================================================
+⚡ Running Campaign Viewports on Browser Engine: CHROMIUM - [1800-FRESH-TAX-X-MAIN]
+================================================================
+
+================================================================
+🚀 [14/5/2026, 10:33:15 am] RUNNING: 1800 Fresh Tax (X) Main (DESKTOP) on CHROMIUM
+🔗 Target URL: https://flmtrk.com/?a=659&oc=696&c=1867&s1=
+================================================================
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] ◇ injected env (0) from .env // tip: ⌘ override existing { override: true }
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] ◇ injected env (0) from .env // tip: ⌘ enable debugging { debug: true }
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] ◇ injected env (0) from .env // tip: ⌘ custom filepath { path: '/custom/path/.env' }
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] ◇ injected env (0) from .env // tip: ◈ secrets for agents [www.dotenvx.com]
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 
+🤖 ================================================================
+🤖 MASTER RUNNER: LAUNCHING 1800 FRESH TAX (X) MAIN
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 🤖 Mode:            DESKTOP
+🤖 Tracking URL:     https://flmtrk.com/?a=659&oc=696&c=1867&s1=
+🤖 Target Sheet:    1800 Fresh Tax (X) Main
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 🤖 ================================================================
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 💻 Emulated Device Profile: DESKTOP
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 🔄 Processing lead for brand: 1800 Fresh Tax (X) Main
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 📊 Campaign execution run index: 3
+🎯 Enforcing dynamic credentials & parameters:
+   - First Name:   ckmtestpixel
+   - Last Name:    ckmtestpixel
+   - Email:        ckmtestpixel@gmail.com
+   - Phone Number: 401-247-1003
+   - Slider Value: 30,000
+   - State Value:  Arkansas
+🔗 Navigating to: https://flmtrk.com/?a=659&oc=696&c=1867&s1=
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] ✅ Page loaded successfully
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 📝 Starting multi-step form filling process...
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 🔘 Step 1: Handling Debt Amount (30,000)
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 🔘 Found jQuery UI Slider #slider. Setting value via jQuery and DOM evaluation...
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] ✅ Set jQuery UI Slider #slider to 30,000
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 🔘 Attempting to click .next-btn1, .btn-next
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] ✅ Clicked .next-btn1, .btn-next
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 🔘 Dynamic Choice found: clicking "Other" (Option 4 of 6)
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 📝 step1 column set to: "Other"
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 🔘 Dynamic Choice found: clicking "GET HELP TODAY!" (Option 4 of 5)
+📝 step2 column set to: "GET HELP TODAY!"
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 🔘 Dynamic Choice found: clicking "Learn More About Your Tax Debt Relief Options" (Option 4 of 4)
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 📝 step3 column set to: "Learn More About Your Tax Debt Relief Options"
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 🔘 Dynamic Choice found: clicking "Less than $3,000" (Option 1 of 3)
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] ✅ Reached a recognized terminal step (State or Contact). Stopping dynamic traversal.
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 🔘 Step: Selecting State
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] ✅ Selected state dynamically: "Arkansas"
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 🔘 Clicking generic NEXT button
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] ✅ Clicked generic NEXT button
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 🔘 Advancing past post-state step...
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 🔘 Filling Contact Info (Dynamic Loop)...
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] ✅ Filled First Name: ckmtestpixel
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] ✅ Filled Last Name: ckmtestpixel
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 🔘 Clicking active contact NEXT/SUBMIT button...
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] ✅ Filled Email: ckmtestpixel@gmail.com
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 🔘 Clicking active contact NEXT/SUBMIT button...
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] ✅ Filled Phone: 401-247-1003
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 🔘 Clicking active contact NEXT/SUBMIT button...
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 🔘 No active contact NEXT/SUBMIT button visible. Exiting loop.
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 🔘 Checking for additional submit/next buttons...
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 🔘 Submitting form
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] [STDERR] ⚠️  Submit navigation timeout or error, waiting 5s for final URL
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] ⏳ Waiting for final redirect to Thank You page...
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] ✅ Targeted final redirect URL achieved!
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] ✅ Final Thank You URL: https://www.1800freshtax.com/thankyou_ow.php?debt=30000&leadid=7673AFC2&reqid=26778612&affid=659&subid=#s1#
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] ✅ Extracted Lead ID: 7673AFC2
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 📱 Device Type detected: D-CHROMIUM
+✅ Lead captured: 7673AFC2
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 📡 Fetching First API data for Lead ID: 7673AFC2...
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 📡 Raw XML Response: {
+  "lead_info_response": {
+    "$": {
+      "xmlns:xsd": "http://www.w3.org/2001/XMLSchema",
+      "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+      "xmlns": "http://cakemarketing.com/api/1/"
+    },
+    "success": "true",
+    "row_count": "1",
+    "lead_id": "7673AFC2",
+    "personal_info": {
+      "first_name": "CKMTESTPIXEL",
+      "last_name": "CKMTESTPIXEL",
+      "email_address": "ckmtestpixel@gmail.com",
+      "address": {
+        "street": "",
+        "city": "",
+        "state": "AR",
+        "zip_code": "",
+        "country": ""
+      },
+      "ip_address": "27.54.170.27",
+      "phone_work": "",
+      "phone_home": "401-247-1003",
+      "phone_cell": "",
+      "best_call_time": "",
+      "opt_in": "false"
+    },
+    "traffic_info": {
+      "lead_date": "2026-05-13T22:03:47.147",
+      "payout": {
+        "currency_id": "1",
+        "amount": "0.0000",
+        "formatted_amount": "$0.00"
+      },
+      "affiliate": {
+        "affiliate_id": {
+          "_": "659",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        },
+        "affiliate_name": {
+          "_": "QA affiliate",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        }
+      },
+      "campaign": {
+        "campaign_id": {
+          "_": "4071",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        },
+        "campaign_name": {
+          "_": "1800 Fresh Tax (X) - Main - CPA - $1.00",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        }
+      },
+      "creative_id": "1867",
+      "subid_1": "",
+      "subid_2": "",
+      "subid_3": "",
+      "subid_4": "",
+      "subid_5": "",
+      "referrer": "",
+      "pixel_fired": "true",
+      "returned_to_affiliate": "false",
+      "test": "true",
+      "upsell": "false"
+    },
+    "all_vertical_data": {
+      "data": {
+        "$": {
+          "xmlns": ""
+        },
+        "tax_debt": "30000",
+        "universal_leadid": "8209255D-A1AF-BE83-E926-B321AACEAD45",
+        "affid": "659",
+        "TCPA_checkbox": "checked",
+        "reqid": "26778612",
+        "cr_price": "0.00",
+        "page": "www.1800freshtax.com/lf4/",
+        "neustar": "pass",
+        "neustar_disposition": "N,U,I6,L,0",
+        "nd_odlv": "24",
+        "first_name_lower": "ckmtestpixel",
+        "last_name_lower": "ckmtestpixel",
+        "income": "2500",
+        "first_name_capital": "Ckmtestpixel",
+        "last_name_capital": "Ckmtestpixel",
+        "debt_type": "Other",
+        "nodl_flag": "pass",
+        "ckm_campaign_id": "4337"
+      }
+    },
+    "dispositions": {
+      "disposition": [
+        {
+          "disposition_type": "Not Paid For",
+          "reason": "Unmatched Filter",
+          "filter": "Debt Type Does Not Contain"
+        },
+        {
+          "disposition_type": "Not Paid For",
+          "reason": "Unmatched Filter",
+          "filter": "income"
+        },
+        {
+          "disposition_type": "Sent to Review Queue",
+          "reason": "debt_type: This value is not valid",
+          "filter": "Equals Value"
+        },
+        {
+          "disposition_type": "Sent to Review Queue",
+          "reason": "Income: This value is too large",
+          "filter": "Less Than Or Equal To Value"
+        }
+      ]
+    },
+    "pings": "",
+    "posts": "",
+    "sales": ""
+  }
+}
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] ✅ First API Data retrieved on attempt 1
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 📡 Fetching Second API data for Lead ID: 7673AFC2...
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 📡 Standard Second API Payload: cake_id=7673AFC2, domain_name=https://www.1800freshtax.com
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] [STDERR] (node:12084) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] [STDERR] ❌ Second API Attempt 1 failed: Request failed with status code 404
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] ⏳ Retrying in 3 seconds to allow database synchronization...
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 📡 Standard Second API Payload: cake_id=7673AFC2, domain_name=https://www.1800freshtax.com
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] [STDERR] ❌ Second API Attempt 2 failed: Request failed with status code 404
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] ⏳ Retrying in 3 seconds to allow database synchronization...
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 📡 Standard Second API Payload: cake_id=7673AFC2, domain_name=https://www.1800freshtax.com
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] [STDERR] ❌ Second API Attempt 3 failed: Request failed with status code 404
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] ⏳ Retrying in 3 seconds to allow database synchronization...
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 📡 Standard Second API Payload: cake_id=7673AFC2, domain_name=https://www.1800freshtax.com
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] [STDERR] ❌ Second API Attempt 4 failed: Request failed with status code 404
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] ⏳ Retrying in 3 seconds to allow database synchronization...
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 📡 Standard Second API Payload: cake_id=7673AFC2, domain_name=https://www.1800freshtax.com
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] [STDERR] ❌ Second API Attempt 5 failed: Request failed with status code 404
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] ✅ Row appended successfully to sheet: 1800 Fresh Tax (X) Main
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] ✨ Professional formatting applied to 1800 Fresh Tax (X) Main
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] ✅ Lead processed successfully for 1800 Fresh Tax (X) Main
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 🎥 Video saved successfully: traces/videos/1800 Fresh Tax (X) Main_1800_Fresh_Tax_(X)_Main.webm
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] 
+✅ Execution successfully processed! { success: true, leadId: '7673AFC2', brand: '1800 Fresh Tax (X) Main' }
+[1800-fresh-tax-x-main][DESKTOP][CHROMIUM] [STDERR] ❌ Automation Run encountered a fatal exception: tracing.stop: Target page, context or browser has been closed
+✅ [14/5/2026, 10:34:20 am] COMPLETED: 1800-fresh-tax-x-main [DESKTOP][CHROMIUM]
+
+================================================================
+🚀 [14/5/2026, 10:34:20 am] RUNNING: 1800 Fresh Tax (X) Main (TABLET) on CHROMIUM
+🔗 Target URL: https://flmtrk.com/?a=659&oc=696&c=1867&s1=
+================================================================
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] ◇ injected env (0) from .env // tip: ⌘ custom filepath { path: '/custom/path/.env' }
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] ◇ injected env (0) from .env // tip: ⌁ auth for agents [www.vestauth.com]
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] ◇ injected env (0) from .env // tip: ⌘ multiple files { path: ['.env.local', '.env'] }
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] ◇ injected env (0) from .env // tip: ⌘ custom filepath { path: '/custom/path/.env' }
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 
+🤖 ================================================================
+🤖 MASTER RUNNER: LAUNCHING 1800 FRESH TAX (X) MAIN
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 🤖 Mode:            TABLET
+🤖 Tracking URL:     https://flmtrk.com/?a=659&oc=696&c=1867&s1=
+🤖 Target Sheet:    1800 Fresh Tax (X) Main
+🤖 ================================================================
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 📋 Emulated Device Profile: TABLET (iPad Pro 11)
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] ⏳ Delaying 200ms to allow responsive layouts to mount...
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 🔄 Processing lead for brand: 1800 Fresh Tax (X) Main Tablet
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 📊 Campaign execution run index: 4
+🎯 Enforcing dynamic credentials & parameters:
+[1800-fresh-tax-x-main][TABLET][CHROMIUM]    - First Name:   ckmtestpixel
+   - Last Name:    ckmtestpixel
+   - Email:        ckmtestpixel@gmail.com
+   - Phone Number: 401-247-1004
+   - Slider Value: 50,000
+   - State Value:  California
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 🔗 [Mobile] Navigating to: https://flmtrk.com/?a=659&oc=696&c=1867&s1=
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] ✅ [Mobile] Page loaded successfully
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 📝 [Mobile] Starting mobile-specific form filling...
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 🔘 [Mobile] Step 1: Selecting Debt Amount (50,000)
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 🔘 [Mobile] Found jQuery UI Slider #slider. Setting value via jQuery and DOM evaluation...
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] ✅ [Mobile] Set jQuery UI Slider #slider to 50,000
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 🔘 [Mobile] Clicking active visible button: .next-btn1:visible, .btn-next:visible
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] ✅ [Mobile] Clicked: .next-btn1:visible, .btn-next:visible
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 🔘 [Mobile] Dynamic Choice found: clicking "GET HELP TODAY!" (Option 5 of 6)
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 📝 [Mobile] step1 column set to: "GET HELP TODAY!"
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 🔘 [Mobile] Dynamic Choice found: clicking "Learn More About Your Tax Debt Relief Options" (Option 5 of 5)
+📝 [Mobile] step2 column set to: "Learn More About Your Tax Debt Relief Options"
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 🔘 [Mobile] Dynamic Choice found: clicking "Both IRS & Gujarat Tax Debt" (Option 1 of 4)
+📝 [Mobile] step3 column set to: "Both IRS & Gujarat Tax Debt"
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 🔘 [Mobile] Dynamic Choice found: clicking "$3,000 - $5,000" (Option 2 of 3)
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] ✅ [Mobile] Reached a recognized terminal step (State or Contact). Stopping dynamic traversal.
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 🔘 [Mobile] Step 2: Selecting State
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] ✅ [Mobile] Selected state dynamically: "California"
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 🔘 [Mobile] Clicking active visible button: .next-btn:visible, .next-btn2:visible, .btn-next:visible
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] ✅ [Mobile] Clicked: .next-btn:visible, .next-btn2:visible, .btn-next:visible
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 🔘 [Mobile] Step 3: Filling Contact Info (Dynamic Loop)...
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] ✅ [Mobile] Filled First Name: ckmtestpixel
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] ✅ [Mobile] Filled Last Name: ckmtestpixel
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 🔘 [Mobile] Clicking active contact NEXT/SUBMIT button...
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] ✅ [Mobile] Filled Email: ckmtestpixel@gmail.com
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 🔘 [Mobile] Clicking active contact NEXT/SUBMIT button...
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] ✅ [Mobile] Filled Phone: 401-247-1004
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 🔘 [Mobile] Clicking active contact NEXT/SUBMIT button...
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] [STDERR] ⚠️ [Tablet] Failed to apply glossy iPad Pro mockup frame overlay: page.evaluate: TypeError: Cannot read properties of null (reading 'appendChild')
+    at eval (eval at evaluate (:302:30), <anonymous>:104:23)
+    at UtilityScript.evaluate (<anonymous>:304:16)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 🔘 [Mobile] No active contact NEXT/SUBMIT button visible. Exiting loop.
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 🔘 [Mobile] Scanning for additional dynamic steps...
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 🔘 [Mobile] Submitting form
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] ⏳ [Mobile] Waiting for submission navigation to complete
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] ⏳ [Mobile] Waiting for final Thank You page redirection...
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] ✅ [Mobile] Targeted final redirect URL achieved!
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] ✅ [Mobile] Final Thank You URL: https://www.1800freshtax.com/thankyou_ow.php?debt=50000&leadid=B5C0B22C&reqid=26778613&affid=659&subid=#s1#
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] ✅ [Mobile] Extracted Lead ID: B5C0B22C
+📱 Device Type detected: T-CHROMIUM
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] ✅ Lead captured: B5C0B22C
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 📡 Fetching First API data for Lead ID: B5C0B22C...
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 📡 Raw XML Response: {
+  "lead_info_response": {
+    "$": {
+      "xmlns:xsd": "http://www.w3.org/2001/XMLSchema",
+      "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+      "xmlns": "http://cakemarketing.com/api/1/"
+    },
+    "success": "true",
+    "row_count": "1",
+    "lead_id": "B5C0B22C",
+    "personal_info": {
+      "first_name": "CKMTESTPIXEL",
+      "last_name": "CKMTESTPIXEL",
+      "email_address": "ckmtestpixel@gmail.com",
+      "address": {
+        "street": "",
+        "city": "",
+        "state": "CA",
+        "zip_code": "",
+        "country": ""
+      },
+      "ip_address": "27.54.170.27",
+      "phone_work": "",
+      "phone_home": "401-247-1004",
+      "phone_cell": "",
+      "best_call_time": "",
+      "opt_in": "false"
+    },
+    "traffic_info": {
+      "lead_date": "2026-05-13T22:04:51.85",
+      "payout": {
+        "currency_id": "1",
+        "amount": "0.0000",
+        "formatted_amount": "$0.00"
+      },
+      "affiliate": {
+        "affiliate_id": {
+          "_": "659",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        },
+        "affiliate_name": {
+          "_": "QA affiliate",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        }
+      },
+      "campaign": {
+        "campaign_id": {
+          "_": "4071",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        },
+        "campaign_name": {
+          "_": "1800 Fresh Tax (X) - Main - CPA - $1.00",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        }
+      },
+      "creative_id": "1867",
+      "subid_1": "",
+      "subid_2": "",
+      "subid_3": "",
+      "subid_4": "",
+      "subid_5": "",
+      "referrer": "",
+      "pixel_fired": "true",
+      "returned_to_affiliate": "false",
+      "test": "true",
+      "upsell": "false"
+    },
+    "all_vertical_data": {
+      "data": {
+        "$": {
+          "xmlns": ""
+        },
+        "tax_debt": "50000",
+        "universal_leadid": "692BE6D5-43BA-E7C3-7F93-7CB599EC5075",
+        "affid": "659",
+        "TCPA_checkbox": "checked",
+        "reqid": "26778613",
+        "cr_price": "0.00",
+        "page": "www.1800freshtax.com/lf4/",
+        "neustar": "fail",
+        "neustar_disposition": "N,U,I3,L,0",
+        "nd_odlv": "26",
+        "first_name_lower": "ckmtestpixel",
+        "last_name_lower": "ckmtestpixel",
+        "income": "4500",
+        "first_name_capital": "Ckmtestpixel",
+        "last_name_capital": "Ckmtestpixel",
+        "debt_type": "Both",
+        "nodl_flag": "pass",
+        "ckm_campaign_id": "4337"
+      }
+    },
+    "dispositions": {
+      "disposition": [
+        {
+          "disposition_type": "Not Paid For",
+          "reason": "Unmatched Filter",
+          "filter": "Nuestar Fail"
+        },
+        {
+          "disposition_type": "Sent to Review Queue",
+          "reason": "neustar: This value is not valid",
+          "filter": "Equals Value"
+        }
+      ]
+    },
+    "pings": "",
+    "posts": "",
+    "sales": ""
+  }
+}
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] ✅ First API Data retrieved on attempt 1
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 📡 Fetching Second API data for Lead ID: B5C0B22C...
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 📡 Standard Second API Payload: cake_id=B5C0B22C, domain_name=https://www.1800freshtax.com
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] [STDERR] (node:18288) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] [STDERR] ❌ Second API Attempt 1 failed: Request failed with status code 404
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] ⏳ Retrying in 3 seconds to allow database synchronization...
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 📡 Standard Second API Payload: cake_id=B5C0B22C, domain_name=https://www.1800freshtax.com
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] [STDERR] ❌ Second API Attempt 2 failed: Request failed with status code 404
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] ⏳ Retrying in 3 seconds to allow database synchronization...
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 📡 Standard Second API Payload: cake_id=B5C0B22C, domain_name=https://www.1800freshtax.com
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] [STDERR] ❌ Second API Attempt 3 failed: Request failed with status code 404
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] ⏳ Retrying in 3 seconds to allow database synchronization...
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 📡 Standard Second API Payload: cake_id=B5C0B22C, domain_name=https://www.1800freshtax.com
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] [STDERR] ❌ Second API Attempt 4 failed: Request failed with status code 404
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] ⏳ Retrying in 3 seconds to allow database synchronization...
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 📡 Standard Second API Payload: cake_id=B5C0B22C, domain_name=https://www.1800freshtax.com
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] [STDERR] ❌ Second API Attempt 5 failed: Request failed with status code 404
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] ✅ Row appended successfully to sheet: 1800 Fresh Tax (X) Main
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] ✨ Professional formatting applied to 1800 Fresh Tax (X) Main
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] ✅ Lead processed successfully for 1800 Fresh Tax (X) Main Tablet
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 🎥 Video saved successfully: traces/videos/1800 Fresh Tax (X) Main_1800_Fresh_Tax_(X)_Main_Tablet.webm
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] 
+✅ Execution successfully processed! {
+  success: true,
+  leadId: 'B5C0B22C',
+  brand: '1800 Fresh Tax (X) Main Tablet'
+}
+[1800-fresh-tax-x-main][TABLET][CHROMIUM] [STDERR] ❌ Automation Run encountered a fatal exception: tracing.stop: Target page, context or browser has been closed
+✅ [14/5/2026, 10:35:38 am] COMPLETED: 1800-fresh-tax-x-main [TABLET][CHROMIUM]
+
+================================================================
+🚀 [14/5/2026, 10:35:38 am] RUNNING: 1800 Fresh Tax (X) Main (MOBILE) on CHROMIUM
+🔗 Target URL: https://flmtrk.com/?a=659&oc=696&c=1867&s1=
+================================================================
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ◇ injected env (0) from .env // tip: ⌘ enable debugging { debug: true }
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ◇ injected env (0) from .env // tip: ◈ encrypted .env [www.dotenvx.com]
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ◇ injected env (0) from .env // tip: ⌁ auth for agents [www.vestauth.com]
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ◇ injected env (0) from .env // tip: ⌘ enable debugging { debug: true }
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 
+🤖 ================================================================
+🤖 MASTER RUNNER: LAUNCHING 1800 FRESH TAX (X) MAIN
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 🤖 Mode:            MOBILE
+🤖 Tracking URL:     https://flmtrk.com/?a=659&oc=696&c=1867&s1=
+🤖 Target Sheet:    1800 Fresh Tax (X) Main
+🤖 ================================================================
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 📱 Emulated Device Profile: MOBILE (iPhone 17 Pro)
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ⏳ Delaying 200ms to allow responsive layouts to mount...
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 🔄 Processing lead for brand: 1800 Fresh Tax (X) Main Mobile
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 📊 Campaign execution run index: 5
+🎯 Enforcing dynamic credentials & parameters:
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM]    - First Name:   ckmtestpixel
+   - Last Name:    ckmtestpixel
+   - Email:        ckmtestpixel@gmail.com
+   - Phone Number: 401-247-1005
+   - Slider Value: 10,000
+   - State Value:  Colorado
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 🔗 [Mobile] Navigating to: https://flmtrk.com/?a=659&oc=696&c=1867&s1=
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ✅ [Mobile] Page loaded successfully
+📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 📝 [Mobile] Starting mobile-specific form filling...
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 🔘 [Mobile] Step 1: Selecting Debt Amount (10,000)
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 🔘 [Mobile] Found jQuery UI Slider #slider. Setting value via jQuery and DOM evaluation...
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ✅ [Mobile] Set jQuery UI Slider #slider to 10,000
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 🔘 [Mobile] Clicking active visible button: .next-btn1:visible, .btn-next:visible
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ✅ [Mobile] Clicked: .next-btn1:visible, .btn-next:visible
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 🔘 [Mobile] Dynamic Choice found: clicking "Learn More About Your Tax Debt Relief Options" (Option 6 of 6)
+📝 [Mobile] step1 column set to: "Learn More About Your Tax Debt Relief Options"
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 🔘 [Mobile] Dynamic Choice found: clicking "Both IRS & Gujarat Tax Debt" (Option 1 of 5)
+📝 [Mobile] step2 column set to: "Both IRS & Gujarat Tax Debt"
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 🔘 [Mobile] Dynamic Choice found: clicking "$3,000 - $5,000" (Option 2 of 4)
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 📝 [Mobile] step3 column set to: "$3,000 - $5,000"
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ✅ [Mobile] Reached a recognized terminal step (State or Contact). Stopping dynamic traversal.
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 🔘 [Mobile] Step 2: Selecting State
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ✅ [Mobile] Selected state dynamically: "Colorado"
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 🔘 [Mobile] Clicking active visible button: .next-btn:visible, .next-btn2:visible, .btn-next:visible
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ✅ [Mobile] Clicked: .next-btn:visible, .next-btn2:visible, .btn-next:visible
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 🔘 [Mobile] Step 3: Filling Contact Info (Dynamic Loop)...
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ✅ [Mobile] Filled First Name: ckmtestpixel
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ✅ [Mobile] Filled Last Name: ckmtestpixel
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 🔘 [Mobile] Clicking active contact NEXT/SUBMIT button...
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ✅ [Mobile] Filled Email: ckmtestpixel@gmail.com
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 🔘 [Mobile] Clicking active contact NEXT/SUBMIT button...
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ✅ [Mobile] Filled Phone: 401-247-1005
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 🔘 [Mobile] Clicking active contact NEXT/SUBMIT button...
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 🔘 [Mobile] No active contact NEXT/SUBMIT button visible. Exiting loop.
+🔘 [Mobile] Scanning for additional dynamic steps...
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 🔘 [Mobile] Submitting form
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ⏳ [Mobile] Waiting for submission navigation to complete
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ⏳ [Mobile] Waiting for final Thank You page redirection...
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ✅ [Mobile] Targeted final redirect URL achieved!
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ✅ [Mobile] Final Thank You URL: https://www.1800freshtax.com/thankyou_ow.php?debt=10000&leadid=9BDCA973&reqid=26778618&affid=659&subid=#s1#
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ✅ [Mobile] Extracted Lead ID: 9BDCA973
+📱 Device Type detected: M-CHROMIUM
+✅ Lead captured: 9BDCA973
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 📡 Fetching First API data for Lead ID: 9BDCA973...
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 📡 Raw XML Response: {
+  "lead_info_response": {
+    "$": {
+      "xmlns:xsd": "http://www.w3.org/2001/XMLSchema",
+      "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+      "xmlns": "http://cakemarketing.com/api/1/"
+    },
+    "success": "true",
+    "row_count": "1",
+    "lead_id": "9BDCA973",
+    "personal_info": {
+      "first_name": "CKMTESTPIXEL",
+      "last_name": "CKMTESTPIXEL",
+      "email_address": "ckmtestpixel@gmail.com",
+      "address": {
+        "street": "",
+        "city": "",
+        "state": "CO",
+        "zip_code": "",
+        "country": ""
+      },
+      "ip_address": "27.54.170.27",
+      "phone_work": "",
+      "phone_home": "401-247-1005",
+      "phone_cell": "",
+      "best_call_time": "",
+      "opt_in": "false"
+    },
+    "traffic_info": {
+      "lead_date": "2026-05-13T22:06:08.913",
+      "payout": {
+        "currency_id": "1",
+        "amount": "0.0000",
+        "formatted_amount": "$0.00"
+      },
+      "affiliate": {
+        "affiliate_id": {
+          "_": "659",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        },
+        "affiliate_name": {
+          "_": "QA affiliate",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        }
+      },
+      "campaign": {
+        "campaign_id": {
+          "_": "4071",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        },
+        "campaign_name": {
+          "_": "1800 Fresh Tax (X) - Main - CPA - $1.00",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        }
+      },
+      "creative_id": "1867",
+      "subid_1": "",
+      "subid_2": "",
+      "subid_3": "",
+      "subid_4": "",
+      "subid_5": "",
+      "referrer": "",
+      "pixel_fired": "true",
+      "returned_to_affiliate": "false",
+      "test": "true",
+      "upsell": "false"
+    },
+    "all_vertical_data": {
+      "data": {
+        "$": {
+          "xmlns": ""
+        },
+        "tax_debt": "10000",
+        "universal_leadid": "71C30A69-B190-B1DC-4B69-E6E930AA7B6B",
+        "affid": "659",
+        "TCPA_checkbox": "checked",
+        "reqid": "26778618",
+        "cr_price": "0.00",
+        "page": "www.1800freshtax.com/lf4/",
+        "neustar": "pass",
+        "neustar_disposition": "N,U,I4,L,0",
+        "nd_odlv": "24",
+        "first_name_lower": "ckmtestpixel",
+        "last_name_lower": "ckmtestpixel",
+        "income": "4500",
+        "first_name_capital": "Ckmtestpixel",
+        "last_name_capital": "Ckmtestpixel",
+        "debt_type": "Both",
+        "nodl_flag": "pass",
+        "ckm_campaign_id": "4337"
+      }
+    },
+    "dispositions": "",
+    "pings": "",
+    "posts": "",
+    "sales": ""
+  }
+}
+✅ First API Data retrieved on attempt 1
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 📡 Fetching Second API data for Lead ID: 9BDCA973...
+📡 Standard Second API Payload: cake_id=9BDCA973, domain_name=https://www.1800freshtax.com
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] [STDERR] (node:18212) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] [STDERR] ❌ Second API Attempt 1 failed: Request failed with status code 404
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ⏳ Retrying in 3 seconds to allow database synchronization...
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 📡 Standard Second API Payload: cake_id=9BDCA973, domain_name=https://www.1800freshtax.com
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] [STDERR] ❌ Second API Attempt 2 failed: Request failed with status code 404
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ⏳ Retrying in 3 seconds to allow database synchronization...
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 📡 Standard Second API Payload: cake_id=9BDCA973, domain_name=https://www.1800freshtax.com
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] [STDERR] ❌ Second API Attempt 3 failed: Request failed with status code 404
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ⏳ Retrying in 3 seconds to allow database synchronization...
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 📡 Standard Second API Payload: cake_id=9BDCA973, domain_name=https://www.1800freshtax.com
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] [STDERR] ❌ Second API Attempt 4 failed: Request failed with status code 404
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ⏳ Retrying in 3 seconds to allow database synchronization...
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 📡 Standard Second API Payload: cake_id=9BDCA973, domain_name=https://www.1800freshtax.com
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] [STDERR] ❌ Second API Attempt 5 failed: Request failed with status code 404
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ✅ Row appended successfully to sheet: 1800 Fresh Tax (X) Main
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] ✨ Professional formatting applied to 1800 Fresh Tax (X) Main
+✅ Lead processed successfully for 1800 Fresh Tax (X) Main Mobile
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 🎥 Video saved successfully: traces/videos/1800 Fresh Tax (X) Main_1800_Fresh_Tax_(X)_Main_Mobile.webm
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] 
+✅ Execution successfully processed! {
+  success: true,
+  leadId: '9BDCA973',
+  brand: '1800 Fresh Tax (X) Main Mobile'
+}
+[1800-fresh-tax-x-main][MOBILE][CHROMIUM] [STDERR] ❌ Automation Run encountered a fatal exception: tracing.stop: Target page, context or browser has been closed
+✅ [14/5/2026, 10:36:59 am] COMPLETED: 1800-fresh-tax-x-main [MOBILE][CHROMIUM]
+
+📊 ================================================================
+📊 BATCH COMPLETED IN 710.50 MINUTES
+📊 Total Runners Executed: 46
+📊 Succeeded:              46
+📊 Failed:                 0
+📊 ================================================================
+
+📧 Sending batch status email report to deepali.londhe@magnetoitsolutions.com, ilfas.mansuri@bytestechnolab.com...
+Failed to resolve IPv4 addresses with current network
+✅ Status report email successfully sent to deepali.londhe@magnetoitsolutions.com, ilfas.mansuri@bytestechnolab.com! (Message ID: <dbb3237b-6b51-71b1-13b1-efad78ee113e@magnetoitsolutions.com>)
+✅ Generated execution-summary.md for GitHub Cloud Summary
+🧹 Reset scheduler state for the next recurrence interval.
+
+⏳ Next automation batch will start at: 14/5/2026, 12:37:03 pm
+🏁 Batch run completed in single-execution mode. Exiting.
+===================================================== 
+SCHEDULER FINISHED AT: 14-05-2026 10:37:03.96 
+===================================================== 

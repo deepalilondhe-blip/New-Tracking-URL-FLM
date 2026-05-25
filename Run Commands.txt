@@ -1,84 +1,124 @@
 ================================================================================
-🚀 LEADS AUTOMATION RUNNER & GIT COMMAND GUIDE
+🚀 LEADS AUTOMATION - UNIFIED MANUAL RUN GUIDE
 ================================================================================
 
-This guide contains the exact commands to run the automated tracking campaign
-scripts across Chrome Desktop, Mobile (iPhone), and Tablet (iPad), followed by
-helpful Git commands to synchronize your local workspace with GitHub.
+This guide contains the exact commands to run any of the automated tracking campaigns
+manually using the unified orchestrator script ('run-master.js'). This orchestrator
+fully enforces all strict test credentials, rotating dummy phone numbers, rotating
+slider debt selections, dynamic states, and automatic Google Sheets persistence.
 
 --------------------------------------------------------------------------------
-1. 🤖 CAMPAIGN RUN COMMANDS
+📌 UNIFIED COMMAND TEMPLATE
 --------------------------------------------------------------------------------
 
-📊 FSI-PPC2 Campaign:
-  🔹 Chrome Desktop: node run-fsi-ppc2.js
-  🔹 Mobile iPhone:   node run-fsi-ppc2-mobile.js
-  🔹 Tablet iPad:     node run-fsi-ppc2-tablet.js
+To manually run any campaign, use the following template structure:
 
-📊 FTD-X Campaign (NEW):
-  🔹 Chrome Desktop: node run-ftd-x.js
-  🔹 Mobile iPhone:   node run-ftd-x-mobile.js
-  🔹 Tablet iPad:     node run-ftd-x-tablet.js
+  👉 node run-master.js --campaign <campaign-id> --viewport <desktop|tablet|mobile>
 
-*Note: All data from Desktop, Mobile, and Tablet runs will be automatically
- appended and styled in the exact same sheet tab for that campaign with professional,
- dark-black text and alternating light-blue zebra lines.
+💡 MANUALLY RUNNING VISIBILITY:
+   By default, all manual terminal commands listed below will launch a VISIBLE browser window on your screen
+   with a slight delay so you can easily watch the dynamic questionnaire actions, inputs, and state selections!
+
+   *Note: The automatic 2-hour scheduler (or '--once' run) continues to run fast and invisibly in the background.
 
 --------------------------------------------------------------------------------
-2. 🔄 RECURRING BATCH SCHEDULER (AUTOMATION)
+📋 CAMPAIGN-SPECIFIC RUN COMMANDS (ALL 15 CAMPAIGNS)
 --------------------------------------------------------------------------------
 
-To run ALL campaigns across all device modes (Desktop, Mobile, Tablet) sequentially 
-and automatically repeat every 2 hours:
+1. 📊 FTD-X (FTD-X)
+   🔹 Desktop: node run-master.js --campaign ftd-x --viewport desktop
+   🔹 Tablet:  node run-master.js --campaign ftd-x --viewport tablet
+   🔹 Mobile:  node run-master.js --campaign ftd-x --viewport mobile
 
-  🔹 Run Scheduler: node scheduler.js
+2. 📊 FSI-PPC2 (FSI-PPC2)
+   🔹 Desktop: node run-master.js --campaign fsi-ppc2 --viewport desktop
+   🔹 Tablet:  node run-master.js --campaign fsi-ppc2 --viewport tablet
+   🔹 Mobile:  node run-master.js --campaign fsi-ppc2 --viewport mobile
 
-  *The scheduler will run all active campaigns sequentially to conserve system resources
-   and memory, and will repeat at the interval specified in `.env` (SCHEDULER_INTERVAL_HOURS).
+3. 📊 TRA-CPL (TRA-CPL)
+   🔹 Desktop: node run-master.js --campaign tra-cpl --viewport desktop
+   🔹 Tablet:  node run-master.js --campaign tra-cpl --viewport tablet
+   🔹 Mobile:  node run-master.js --campaign tra-cpl --viewport mobile
+
+4. 📊 TRA-D3 (TRA-DT3)
+   🔹 Desktop: node run-master.js --campaign tra-d3 --viewport desktop
+   🔹 Tablet:  node run-master.js --campaign tra-d3 --viewport tablet
+   🔹 Mobile:  node run-master.js --campaign tra-d3 --viewport mobile
+
+5. 📊 PPC-ST (PPC-ST)
+   🔹 Desktop: node run-master.js --campaign ppc-st --viewport desktop
+   🔹 Tablet:  node run-master.js --campaign ppc-st --viewport tablet
+   🔹 Mobile:  node run-master.js --campaign ppc-st --viewport mobile
+
+6. 📊 PPC-ST2 (PPC-ST2)
+   🔹 Desktop: node run-master.js --campaign ppc-st2 --viewport desktop
+   🔹 Tablet:  node run-master.js --campaign ppc-st2 --viewport tablet
+   🔹 Mobile:  node run-master.js --campaign ppc-st2 --viewport mobile
+   🔹 Direct API: node run-master.js --campaign ppc-st2 --viewport api
+
+7. 📊 PPC-M-CA (PPC/M/CA)
+   🔹 Desktop: node run-master.js --campaign ppc-m-ca --viewport desktop
+   🔹 Tablet:  node run-master.js --campaign ppc-m-ca --viewport tablet
+   🔹 Mobile:  node run-master.js --campaign ppc-m-ca --viewport mobile
+
+8. 📊 PPC CR (PPC-CR)
+   🔹 Desktop: node run-master.js --campaign ppc-cr --viewport desktop
+   🔹 Tablet:  node run-master.js --campaign ppc-cr --viewport tablet
+   🔹 Mobile:  node run-master.js --campaign ppc-cr --viewport mobile
+
+9. 📊 PPC FS (PPC FS)
+   🔹 Desktop: node run-master.js --campaign ppc-fs --viewport desktop
+   🔹 Tablet:  node run-master.js --campaign ppc-fs --viewport tablet
+   🔹 Mobile:  node run-master.js --campaign ppc-fs --viewport mobile
+
+10. 📊 PPC (PPC)
+    🔹 Desktop: node run-master.js --campaign ppc --viewport desktop
+    🔹 Tablet:  node run-master.js --campaign ppc --viewport tablet
+    🔹 Mobile:  node run-master.js --campaign ppc --viewport mobile
+
+11. 📊 TRA-CPM (TRA-CPM)
+    🔹 Desktop: node run-master.js --campaign tra-cpm --viewport desktop
+    🔹 Tablet:  node run-master.js --campaign tra-cpm --viewport tablet
+    🔹 Mobile:  node run-master.js --campaign tra-cpm --viewport mobile
+
+12. 📊 FTH-X (FTH-X)
+    🔹 Desktop: node run-master.js --campaign fth-x --viewport desktop
+    🔹 Tablet:  node run-master.js --campaign fth-x --viewport tablet
+    🔹 Mobile:  node run-master.js --campaign fth-x --viewport mobile
+
+13. 📊 Everest Tax Releif(X) (Everest Tax Releif(X))
+    🔹 Desktop: node run-master.js --campaign everest-tr-x --viewport desktop
+    🔹 Tablet:  node run-master.js --campaign everest-tr-x --viewport tablet
+    🔹 Mobile:  node run-master.js --campaign everest-tr-x --viewport mobile
+
+14. 📊 VTS Original (VTS-Original)
+    🔹 Desktop: node run-master.js --campaign vts-original --viewport desktop
+    🔹 Tablet:  node run-master.js --campaign vts-original --viewport tablet
+    🔹 Mobile:  node run-master.js --campaign vts-original --viewport mobile
+
+15. 📊 1800 Fresh Tax (X) Main (1800 Fresh Tax (X) Main)
+    🔹 Desktop: node run-master.js --campaign 1800-fresh-tax-x-main --viewport desktop
+    🔹 Tablet:  node run-master.js --campaign 1800-fresh-tax-x-main --viewport tablet
+    🔹 Mobile:  node run-master.js --campaign 1800-fresh-tax-x-main --viewport mobile
 
 --------------------------------------------------------------------------------
-3. 🐙 GIT COMMANDS FOR SYNCHRONIZATION
+🔄 RECURRING BATCH SCHEDULER
 --------------------------------------------------------------------------------
 
-Use these commands to save your changes and upload them to your repository on GitHub:
+To run ALL campaigns across all device modes sequentially in a fully automated batch:
 
-🔹 Step 1: Stage all changes
-   git add .
+  👉 node scheduler.js --once
 
-🔹 Step 2: Commit your changes with a descriptive message
-   git commit -m "feat: setup FSI-PPC2 campaign runner and formatting self-heal"
-
-🔹 Step 3: Push changes to the remote branch
-   git push origin main
-
-🔹 Step 4: Pull the latest updates from GitHub (in case you made changes on GitHub)
-   git pull origin main
+This runs the clean, Chromium-restricted scheduler cycle on the latest dynamic logic.
 
 ================================================================================
-🎥 HOW TO ACCESS AND VIEW RUN VIDEOS & TRACES
+🎥 ACCESS RECORDED VIDEOS & PLOT TRACES
 ================================================================================
 
-All automation runs record full-length high-definition videos and tracing files of the emulated browser screen interactions!
+All manual and scheduled executions automatically record a visual video and trace file!
 
-🔹 Location of recorded videos:
-  📁 Directory: traces/videos/
-
-🔹 To view a video:
-  1. Open File Explorer and navigate to your project directory.
-  2. Open the 'traces' folder, then double-click 'videos'.
-  3. Double-click any of the '.webm' video files. 
-  4. They can be played instantly in any modern web browser (Google Chrome, Edge) or media player (VLC).
-
-🔹 Location of execution trace logs:
-  📁 Directory: traces/ (saved as zip files, e.g., FTD_X_Desktop.zip)
-
-🔹 To view the rich Playwright timeline trace:
-  Run this command in terminal to load the full visual execution timeline with screenshots:
-  👉 npx playwright show-trace traces/FTD_X_Desktop.zip
-
-================================================================================
-📁 WORKSPACE & GOOGLE SHEET INFORMATION
+🔹 Videos:  traces/videos/  (Can be opened in Chrome/Edge, e.g., PPC_PPC.webm)
+🔹 Traces:  traces/         (Zip logs, timeline view: 'npx playwright show-trace traces/<campaign_viewport>.zip')
 ================================================================================
 Spreadsheet: https://docs.google.com/spreadsheets/d/1rXIg3dMQ4APH3lHLcfWYfP45PnOAKmV9POkoSS3YWxI/edit#gid=1177143742
-Repository:  https://github.com/deepalilondhe-blip/new-tracking-url-automation.git
 ================================================================================

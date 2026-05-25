@@ -1,0 +1,17 @@
+===================================================== 
+SCHEDULER STARTED AT: 16-05-2026 12:36:04.24 
+===================================================== 
+Cleaning up existing browser processes... 
+Running Playwright batch scheduler... 
+◇ injected env (17) from .env // tip: ◈ encrypted .env [www.dotenvx.com]
+◇ injected env (0) from .env // tip: ◈ encrypted .env [www.dotenvx.com]
+
+🤖 ================================================================
+🤖 STARTING LEADS AUTOMATION BATCH RUN [16/5/2026, 12:36:05 pm]
+🤖 Interval configured: every 3 hours
+🤖 ================================================================
+
+[16/5/2026, 12:36:05 pm] 🗓️ Skipping today's run. Scheduler is configured to run ONLY on Monday, Wednesday, and Friday.
+===================================================== 
+SCHEDULER FINISHED AT: 16-05-2026 12:36:05.19 
+===================================================== 

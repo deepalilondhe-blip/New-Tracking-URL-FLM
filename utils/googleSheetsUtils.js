@@ -49,10 +49,8 @@ async function appendRowByHeader(sheetName, rowData) {
     }
 
     if (!sheetExists) {
-      // Sheet does not exist - create it with proper headers
-      console.log(`📋 Creating new sheet: ${sheetName}`);
-
-      // First create the sheet tab
+      console.log(`🆕 Sheet "${sheetName}" not found. Creating new sheet with standard headers...`);
+      // Create new sheet
       await sheets.spreadsheets.batchUpdate({
         spreadsheetId: process.env.GOOGLE_SHEET_ID,
         requestBody: {
@@ -62,7 +60,8 @@ async function appendRowByHeader(sheetName, rowData) {
                 title: sheetName,
                 gridProperties: {
                   rowCount: 1000,
-                  columnCount: 25
+                  columnCount: 22,
+                  frozenRowCount: 1
                 }
               }
             }
@@ -70,25 +69,23 @@ async function appendRowByHeader(sheetName, rowData) {
         }
       });
 
-      // Add header row
-      const headers = [
+      // Add Headers
+      const fullHeaders = [
         "DateTime", "Type", "Affiliate", "Campaign ID", "Link",
         "Slider Amount", "Cake Income", "State", "Phone", "Lead ID",
         "DBID", "Page Origin", "Thank u URL", "CDB Status", "CDB Email",
         "Neustar", "Neustar Disposition", "Pixel Fired", "Run Date",
         "Step 1", "Step 2", "Step 3"
       ];
-
       await sheets.spreadsheets.values.update({
         spreadsheetId: process.env.GOOGLE_SHEET_ID,
         range: `${sheetName}!A1:V1`,
         valueInputOption: 'USER_ENTERED',
         requestBody: {
-          values: [headers]
+          values: [fullHeaders]
         }
       });
-
-      console.log(`✅ Headers created for sheet: ${sheetName}`);
+      console.log(`✅ New sheet "${sheetName}" successfully created and initialized.`);
     }
 
     const formattedRow = [
@@ -104,16 +101,16 @@ async function appendRowByHeader(sheetName, rowData) {
       rowData.leadId,
       rowData.dbid,
       rowData.pageOrigin ? `=HYPERLINK("${rowData.pageOrigin}", "View Page Origin")` : '',
-      rowData.thankYouUrl ? `=HYPERLINK("${rowData.thankYouUrl}", "ViewThankURL")` : '',
+      rowData.thankYouUrl ? `=HYPERLINK("${rowData.thankYouUrl}", "ViewThankYou URL")` : '',
       rowData.cdbStatus,
       rowData.cdbEmail,
       rowData.neustar,
       rowData.neustarDisposition,
       rowData.pixelFired,
       rowData.runDate,
-      rowData.step1 || 'N/A',
-      rowData.step2 || 'N/A',
-      rowData.step3 || 'N/A'
+      rowData.step1 || '',
+      rowData.step2 || '',
+      rowData.step3 || ''
     ];
 
     const response = await sheets.spreadsheets.values.append({
@@ -130,78 +127,71 @@ async function appendRowByHeader(sheetName, rowData) {
     // ==================================================
     // 🔹 APPLY FULL PROFESSIONAL FORMATTING (FOR ALL SHEETS - NEW + EXISTING)
     // ==================================================
-    const spreadsheet = await sheets.spreadsheets.get({ spreadsheetId: process.env.GOOGLE_SHEET_ID });
-    const sheetId = spreadsheet.data.sheets.find(s => s.properties.title === sheetName).properties.sheetId;
+    try {
+      const spreadsheet = await sheets.spreadsheets.get({ spreadsheetId: process.env.GOOGLE_SHEET_ID });
+      const sheetId = spreadsheet.data.sheets.find(s => s.properties.title === sheetName).properties.sheetId;
 
-    await sheets.spreadsheets.batchUpdate({
-      spreadsheetId: process.env.GOOGLE_SHEET_ID,
-      requestBody: {
-        requests: [
-          // ✅ 1. Reset Data Cells to White Background + Black Text (Clearing any inherited header formats)
-          {
-            repeatCell: {
-              range: { sheetId, startRowIndex: 1, endRowIndex: 1000, startColumnIndex: 0, endColumnIndex: 22 },
-              cell: {
-                userEnteredFormat: {
-                  backgroundColor: { red: 1, green: 1, blue: 1 },
-                  textFormat: {
-                    foregroundColor: { red: 0, green: 0, blue: 0 },
-                    bold: false,
-                    fontSize: 10
-                  },
-                  horizontalAlignment: 'CENTER',
-                  verticalAlignment: 'MIDDLE'
-                }
-              },
-              fields: 'userEnteredFormat(backgroundColor,textFormat,horizontalAlignment,verticalAlignment)'
-            }
-          },
-
-          // ✅ 2. Header Row Styling (Dark Navy Blue + White Bold Text)
-          {
-            repeatCell: {
-              range: { sheetId, startRowIndex: 0, endRowIndex: 1, startColumnIndex: 0, endColumnIndex: 22 },
-              cell: {
-                userEnteredFormat: {
-                  backgroundColor: { red: 0, green: 0.125, blue: 0.376 },
-                  textFormat: {
-                    foregroundColor: { red: 1, green: 1, blue: 1 },
-                    bold: true
+      await sheets.spreadsheets.batchUpdate({
+        spreadsheetId: process.env.GOOGLE_SHEET_ID,
+        requestBody: {
+          requests: [
+            // ✅ 1. Reset Data Cells to White Background + Black Text
+            {
+              repeatCell: {
+                range: { sheetId, startRowIndex: 1, endRowIndex: 1000, startColumnIndex: 0, endColumnIndex: 22 },
+                cell: {
+                  userEnteredFormat: {
+                    backgroundColor: { red: 1, green: 1, blue: 1 },
+                    textFormat: {
+                      foregroundColor: { red: 0, green: 0, blue: 0 },
+                      bold: false,
+                      fontSize: 10
+                    },
+                    horizontalAlignment: 'CENTER',
+                    verticalAlignment: 'MIDDLE'
                   }
-                }
-              },
-              fields: 'userEnteredFormat(backgroundColor,textFormat)'
-            }
-          },
+                },
+                fields: 'userEnteredFormat(backgroundColor,textFormat,horizontalAlignment,verticalAlignment)'
+              }
+            },
 
-          // ✅ 3. Zebra Striping Pattern (Light Blue even rows)
-          {
-            addConditionalFormatRule: {
-              rule: {
-                ranges: [{
-                  sheetId,
-                  startRowIndex: 1,
-                  endRowIndex: 999,
-                  startColumnIndex: 0,
-                  endColumnIndex: 22
-                }],
-                booleanRule: {
-                  condition: {
-                    type: 'CUSTOM_FORMULA',
-                    values: [{ userEnteredValue: '=ISEVEN(ROW())' }]
-                  },
-                  format: {
-                    backgroundColor: {
-                      red: 0.91,
-                      green: 0.94,
-                      blue: 0.996
+            // ✅ 2. Header Row Styling (Dark Navy Blue + White Bold Text)
+            {
+              repeatCell: {
+                range: { sheetId, startRowIndex: 0, endRowIndex: 1, startColumnIndex: 0, endColumnIndex: 22 },
+                cell: {
+                  userEnteredFormat: {
+                    backgroundColor: { red: 0, green: 0.125, blue: 0.376 },
+                    textFormat: {
+                      foregroundColor: { red: 1, green: 1, blue: 1 },
+                      bold: true
                     }
                   }
+                },
+                fields: 'userEnteredFormat(backgroundColor,textFormat)'
+              }
+            },
+
+            // ✅ 3. Zebra Lines (Alternating Row Colors) - Wrapped in separate try if needed, but we wrap the whole batch
+            {
+              addBanding: {
+                bandedRange: {
+                  range: {
+                    sheetId,
+                    startRowIndex: 0,
+                    endRowIndex: 1000,
+                    startColumnIndex: 0,
+                    endColumnIndex: 22
+                  },
+                  rowProperties: {
+                    headerColor: { red: 0, green: 0.125, blue: 0.376 },
+                    firstBandColor: { red: 1, green: 1, blue: 1 },
+                    secondBandColor: { red: 0.96, green: 0.96, blue: 0.96 }
+                  }
                 }
-              },
-              index: 0
-            }
-          },
+              }
+            },
+            // ... (rest of requests continue)
 
           // ✅ 3. Center alignment and Font size for the entire sheet
           {
@@ -228,10 +218,14 @@ async function appendRowByHeader(sheetName, rowData) {
                     foregroundColor: { red: 0.062, green: 0.353, blue: 0.824 },
                     underline: true,
                     fontSize: 10
+                  },
+                  numberFormat: {
+                    type: 'NUMBER',
+                    pattern: ''
                   }
                 }
               },
-              fields: 'userEnteredFormat(textFormat)'
+              fields: 'userEnteredFormat(textFormat,numberFormat)'
             }
           },
           {
@@ -243,10 +237,14 @@ async function appendRowByHeader(sheetName, rowData) {
                     foregroundColor: { red: 0.062, green: 0.353, blue: 0.824 },
                     underline: true,
                     fontSize: 10
+                  },
+                  numberFormat: {
+                    type: 'NUMBER',
+                    pattern: ''
                   }
                 }
               },
-              fields: 'userEnteredFormat(textFormat)'
+              fields: 'userEnteredFormat(textFormat,numberFormat)'
             }
           },
 
@@ -260,13 +258,86 @@ async function appendRowByHeader(sheetName, rowData) {
     });
 
     console.log(`✨ Professional formatting applied to ${sheetName}`);
+    } catch (fmtError) {
+      console.log(`⚠️  Non-fatal formatting error for ${sheetName} (Banding might already exist):`, fmtError.message);
+    }
     return true;
   } catch (error) {
-    console.error('❌ Google Sheets Error:', error.message);
+    console.error('❌ Critical Google Sheets Error:', error.message);
     return false;
   }
 }
 
+/**
+ * 📊 [FLM Agent] LIVE DASHBOARD UPDATER
+ * Updates the 'SUMMARY' sheet with a color-coded status matrix.
+ */
+async function updateSummaryDashboard(campaignName, environmentLabel, status) {
+  try {
+    const client = await authenticate();
+    const sheets = google.sheets({ version: 'v4', auth: client });
+    const spreadsheetId = process.env.GOOGLE_SHEET_ID;
+    const sheetName = 'SUMMARY';
+
+    // 1. Ensure SUMMARY sheet exists with correct headers
+    const environments = [
+      'Android - Chrome', 'Android - Firefox', 'iOS - Chrome', 'iOS - Safari',
+      'Tablet - Safari', 'Tablet - Chrome', 'Windows - Chrome', 'Windows - Firefox',
+      'MAC - Safari', 'MAC - Chrome'
+    ];
+
+    let summaryData;
+    try {
+      const res = await sheets.spreadsheets.values.get({ spreadsheetId, range: `${sheetName}!A:L` });
+      summaryData = res.data.values || [];
+    } catch (e) {
+      // Create sheet if missing
+      await sheets.spreadsheets.batchUpdate({
+        spreadsheetId,
+        requestBody: { requests: [{ addSheet: { properties: { title: sheetName } } }] }
+      }).catch(() => {});
+      summaryData = [];
+    }
+
+    if (summaryData.length === 0) {
+      const headers = ['Campaign \\ Environment', ...environments];
+      await sheets.spreadsheets.values.update({
+        spreadsheetId, range: `${sheetName}!A1`,
+        valueInputOption: 'USER_ENTERED', requestBody: { values: [headers] }
+      });
+      summaryData = [headers];
+    }
+
+    // 2. Find or create row for the campaign
+    let rowIndex = summaryData.findIndex(row => row[0] === campaignName);
+    if (rowIndex === -1) {
+      rowIndex = summaryData.length;
+      await sheets.spreadsheets.values.update({
+        spreadsheetId, range: `${sheetName}!A${rowIndex + 1}`,
+        valueInputOption: 'USER_ENTERED', requestBody: { values: [[campaignName]] }
+      });
+    }
+
+    // 3. Find column for the environment
+    const colIndex = environments.indexOf(environmentLabel);
+    if (colIndex === -1) return; // Invalid environment
+
+    const cellRange = `${sheetName}!${String.fromCharCode(66 + colIndex)}${rowIndex + 1}`;
+    const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    const cellValue = status === 'PASS' ? `✅ PASS (${timestamp})` : `❌ FAIL (${timestamp})`;
+
+    await sheets.spreadsheets.values.update({
+      spreadsheetId, range: cellRange,
+      valueInputOption: 'USER_ENTERED', requestBody: { values: [[cellValue]] }
+    });
+
+    console.log(`📊 [FLM Agent] Dashboard updated: ${campaignName} [${environmentLabel}] -> ${status}`);
+  } catch (error) {
+    console.warn('⚠️ [FLM Agent] Dashboard update failed:', error.message);
+  }
+}
+
 module.exports = {
-  appendRowByHeader
+  appendRowByHeader,
+  updateSummaryDashboard
 };

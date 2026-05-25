@@ -1,12 +1,15 @@
 require('dotenv').config();
+const flmAgent = require('../utils/flmAgent');
 
 class FormPage {
   constructor(page) {
     this.page = page;
     this.originalUrl = null;
-    this.step1 = 'N/A';
-    this.step2 = 'N/A';
-    this.step3 = 'N/A';
+    this.step1 = '';
+    this.step2 = '';
+    this.step3 = '';
+    this.selectedSliderAmount = '';
+    this.clickedChoiceTexts = new Set();
   }
 
   /**
@@ -39,8 +42,12 @@ class FormPage {
     // Clear cookies/session/storage before each run for a clean state
     await this.page.context().clearCookies();
     await this.page.context().clearPermissions();
-    await this.page.goto(url, { waitUntil: 'networkidle', timeout: 60000 });
-    await this.page.waitForLoadState('domcontentloaded');
+    try {
+      await this.page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 });
+    } catch (e) {
+      console.warn(`⚠️ Navigation warning: ${e.message}. Continuing with page execution...`);
+    }
+    await this.page.waitForLoadState('domcontentloaded').catch(() => {});
 
     // Clear storage after navigation to avoid SecurityError on blank pages
     try {
@@ -60,58 +67,105 @@ class FormPage {
     console.log('✅ Page loaded successfully');
   }
 
+    // ==================================================
+    // 🧠 [INTELLIGENCE] DETERMINISTIC OPTION ROTATION
+    // ==================================================
+    async handleChoiceRotation(choicesSelector, runIndex) {
+        const choices = await this.page.$$(choicesSelector);
+        if (choices.length > 0) {
+            const indexToSelect = runIndex % choices.length;
+            const target = choices[indexToSelect];
+            const text = await target.innerText();
+            console.log(`🔘 [Rotation] Selecting Option ${indexToSelect + 1}: "${text}"`);
+            await target.click();
+            return text;
+        }
+        return null;
+    }
+
   async fillForm(data = {}) {
     console.log('📝 Starting multi-step form filling process...');
-    const sliderAmount = data.sliderAmount || '20000';
-    const state = data.state || 'RI';
-    const firstName = data.firstName || 'ckmtestpixel';
-    const lastName = data.lastName || 'ckmtestpixel';
-    const email = data.email || 'ckmtestpixel@gmail.com';
-    const phone = data.phone || '4012473406';
+    const { sliderAmount, state, firstName, lastName, email, phone, runIndex } = data;
+    this.runIndex = runIndex || 0;
+    const defaultSliderAmount = sliderAmount || '20000';
+    const defaultState = state || 'RI';
+    const defaultFirstName = firstName || 'ckmtestpixel';
+    const defaultLastName = lastName || 'ckmtestpixel';
+    const defaultEmail = email || 'ckmtestpixel@gmail.com';
+    const defaultPhone = phone || '4012473406';
 
     try {
+      let taxDebtSelect;
       // ===== STEP 1: DEBT AMOUNT / SLIDER =====
       await this.waitForSpinner();
       console.log(`🔘 Step 1: Handling Debt Amount (${sliderAmount})`);
       try {
         let selected = false;
 
-        const taxDebtSelect = this.page.locator('select#tax_debt').first();
-        if (await taxDebtSelect.isVisible({ timeout: 2000 })) {
-          console.log('🔘 Found select#tax_debt dropdown. Selecting option...');
-          await taxDebtSelect.evaluate((node, amountVal) => {
-            const cleanVal = amountVal.replace(/[$,\s]/g, '').toLowerCase();
-            let optionToSelect;
-            
-            if (cleanVal.includes('0-9999') || cleanVal.includes('09999') || parseInt(cleanVal) < 10000) {
-              optionToSelect = Array.from(node.options).find(opt => opt.value === '0-9999' || opt.text.includes('0 - $9,999'));
-            } else if (cleanVal.includes('10000-19999') || cleanVal.includes('1000019999') || (parseInt(cleanVal) >= 10000 && parseInt(cleanVal) < 20000)) {
-              optionToSelect = Array.from(node.options).find(opt => opt.value === '10000-19999' || opt.text.includes('10,000 - $19,999'));
-            } else if (cleanVal.includes('20000-50000') || cleanVal.includes('2000050000') || (parseInt(cleanVal) >= 20000 && parseInt(cleanVal) < 50000)) {
-              optionToSelect = Array.from(node.options).find(opt => opt.value === '20000-50000' || opt.text.includes('20,000 - $50,000'));
-            } else if (cleanVal.includes('50000') || cleanVal.includes('50000+') || parseInt(cleanVal) >= 50000) {
-              optionToSelect = Array.from(node.options).find(opt => opt.value === '50000+' || opt.text.includes('50,000 or more') || opt.text.includes('50,000+'));
+        // Check for jQuery UI Slider (#slider)
+        const jquerySlider = this.page.locator('#slider').first();
+        if (await jquerySlider.isVisible({ timeout: 1500 }).catch(() => false)) {
+          console.log('🔘 Found jQuery UI Slider #slider. Setting value via jQuery and DOM evaluation...');
+          await this.page.evaluate((amount) => {
+            const cleanVal = parseInt(amount.replace(/[$,\s]/g, ''));
+            const $ = window.jQuery || window.$;
+            if ($ && $.fn && $.fn.slider) {
+              const $slider = $('#slider');
+              if ($slider.length > 0) {
+                $slider.slider('value', cleanVal);
+                const handle = $slider.find('.ui-slider-handle')[0];
+                $slider.trigger('slide', [{ value: cleanVal, handle: handle }]);
+                $slider.trigger('slidechange', [{ value: cleanVal, handle: handle }]);
+              }
             }
-            
-            if (!optionToSelect) {
-              optionToSelect = Array.from(node.options).find(opt => 
-                opt.text.toLowerCase().includes(cleanVal) || opt.value.toLowerCase().includes(cleanVal)
-              );
+            // Manually sync values
+            const taxvalInput = document.querySelector('.taxval, input[name="tax_debt"], input#tax_debt');
+            if (taxvalInput) {
+              taxvalInput.value = cleanVal;
+              taxvalInput.dispatchEvent(new Event('change', { bubbles: true }));
+              taxvalInput.dispatchEvent(new Event('input', { bubbles: true }));
             }
-            
-            if (optionToSelect) {
-              node.value = optionToSelect.value;
-            } else {
-              node.selectedIndex = node.options.length - 1; // Default to last option (50000+)
+            const pricePicker = document.querySelector('.price-picker, .slider-val, .range-value');
+            if (pricePicker) {
+              pricePicker.textContent = '$' + cleanVal.toLocaleString();
             }
-            
-            node.dispatchEvent(new Event('change', { bubbles: true }));
-            node.dispatchEvent(new Event('input', { bubbles: true }));
           }, sliderAmount);
-          
-          console.log(`✅ Selected option from select#tax_debt dropdown for amount: ${sliderAmount}`);
+          console.log(`✅ Set jQuery UI Slider #slider to ${sliderAmount}`);
           selected = true;
-          await this.page.waitForTimeout(1500);
+          this.selectedSliderAmount = sliderAmount;
+          await this.page.waitForTimeout(500);
+        }
+
+        // Check for standard select dropdown (Prioritize for pages like FSI-PPC2)
+        taxDebtSelect = this.page.locator('select#tax_debt, select[name="tax_debt"], .debt-select').first();
+        if (await taxDebtSelect.isVisible({ timeout: 2000 })) {
+          console.log('🔘 Found dropdown menu. Performing visible selection...');
+          await taxDebtSelect.scrollIntoViewIfNeeded();
+          await taxDebtSelect.focus();
+          
+          const selectedData = await taxDebtSelect.evaluate((node, amount) => {
+            const rawVal = parseInt(amount.replace(/[$,\s]/g, ''));
+            const options = Array.from(node.options);
+            
+            // Find best matching option based on buckets
+            const match = options.find(opt => {
+                const text = opt.text.toLowerCase();
+                if (rawVal < 10000 && text.includes('9,999')) return true;
+                if (rawVal >= 10000 && rawVal < 20000 && (text.includes('19,999') || text.includes('10,000'))) return true;
+                if (rawVal >= 20000 && rawVal < 50000 && (text.includes('50,000') || text.includes('20,000'))) return true;
+                if (rawVal >= 50000 && (text.includes('50,000 or more') || text.includes('more'))) return true;
+                return false;
+            }) || options[options.length - 1];
+
+            node.value = match.value;
+            node.dispatchEvent(new Event('change', { bubbles: true }));
+            return { value: match.value, text: match.text };
+          }, sliderAmount);
+
+          this.selectedSliderAmount = selectedData.text;
+          selected = true;
+          console.log(`✅ Selected dropdown option: "${selectedData.text}"`);
+          await this.page.waitForTimeout(500);
         }
 
         // Check for range input slider
@@ -126,7 +180,7 @@ class FormPage {
           }, sliderAmount);
           console.log(`✅ Set range input slider to ${sliderAmount}`);
           selected = true;
-          await this.page.waitForTimeout(1000);
+          await this.page.waitForTimeout(300);
         }
 
         if (!selected) {
@@ -180,14 +234,46 @@ class FormPage {
             const debtInput = this.page.locator('#debt_amount, input[name="debt_amount"]').first();
             if (await debtInput.isVisible({ timeout: 1500 })) {
               await debtInput.fill(amountStr);
-              console.log(`✅ Filled debt_amount input with ${amountStr}`);
+              console.log(`✅ Selected debt_amount input with ${amountStr}`);
             }
           }
+        }
+
+        // Live-extract the actual selected/filled slider value directly from the webpage DOM
+        try {
+          taxDebtSelect = this.page.locator('select#tax_debt').first();
+          if (await taxDebtSelect.isVisible().catch(() => false)) {
+            const selectedText = await taxDebtSelect.evaluate(node => {
+              const opt = node.options[node.selectedIndex];
+              return opt ? opt.text : '';
+            }).catch(() => '');
+            if (selectedText) {
+              this.selectedSliderAmount = selectedText.trim();
+            }
+          } else {
+            const rangeInput = this.page.locator('input[type="range"]').first();
+            if (await rangeInput.isVisible().catch(() => false)) {
+              const val = await rangeInput.inputValue().catch(() => '');
+              if (val) this.selectedSliderAmount = val;
+            } else {
+              const debtInput = this.page.locator('#debt_amount, input[name="debt_amount"]').first();
+              if (await debtInput.isVisible().catch(() => false)) {
+                const val = await debtInput.inputValue().catch(() => '');
+                if (val) this.selectedSliderAmount = val;
+              } else {
+                this.selectedSliderAmount = sliderAmount;
+              }
+            }
+          }
+        } catch (err) {
+          console.warn('⚠️ Could not live-extract slider amount:', err.message);
+          this.selectedSliderAmount = sliderAmount;
         }
       } catch (e) {
         console.warn('⚠️ Could not select debt amount:', e.message);
       }
       await this.clickNextButton('.next-btn1, .btn-next');
+      const runIndex = data.runIndex || 0;
 
       // ==================================================
       // 🔹 DYNAMIC CHOICE/INTERMEDIATE STEPS TRAVERSAL
@@ -208,43 +294,22 @@ class FormPage {
 
         // Check if there are any custom/intermediate buttons visible and click them!
         const choiceSelectors = [
-          '.custom-btn:visible',
-          '.choice-btn:visible',
-          '.choice-box:visible',
-          '.btn-choice:visible',
-          '.form-choice:visible',
-          '.debt-option:visible',
-          'label.custom-control-label:visible',
-          '.option-button:visible',
-          'button:not([type="submit"]):not(:has-text("NEXT")):not(:has-text("Next")):visible',
-          'a.btn:not(:has-text("NEXT")):not(:has-text("Next")):visible'
+          '.custom-btn:visible', '.choice-btn:visible', '.choice-box:visible', '.btn-choice:visible',
+          '.form-choice:visible', '.debt-option:visible', 'label.custom-control-label:visible',
+          '.option-button:visible', '.selection-item:visible', '.quiz-option:visible', '.step-choice:visible',
+          '.debt-type:visible', '.quiz-btn:visible', 'div[role="button"]:visible', 'button:not([type="submit"]):visible'
         ];
 
         let clickedChoice = false;
         for (const selector of choiceSelectors) {
-          const option = this.page.locator(selector).first();
-          if (await option.isVisible({ timeout: 1000 }).catch(() => false)) {
-            const text = await option.textContent().catch(() => 'Choice');
-            const cleanedText = text.trim().replace(/\s+/g, ' ');
-            console.log(`🔘 Dynamic Choice found: clicking "${cleanedText}" (${selector})`);
-            
-            // Record clicked text to step1, step2, step3 columns based on progression
-            if (choiceStepCount === 0) {
-              this.step1 = cleanedText;
-              console.log(`📝 step1 column set to: "${this.step1}"`);
-            } else if (choiceStepCount === 1) {
-              this.step2 = cleanedText;
-              console.log(`📝 step2 column set to: "${this.step2}"`);
-            } else if (choiceStepCount === 2) {
-              this.step3 = cleanedText;
-              console.log(`📝 step3 column set to: "${this.step3}"`);
-            }
+          const text = await this.handleChoiceRotation(selector, runIndex);
+          if (text) {
             choiceStepCount++;
-
-            await option.click({ force: true }).catch(() => {});
+            if (choiceStepCount === 1) this.step1 = text;
+            else if (choiceStepCount === 2) this.step2 = text;
+            else if (choiceStepCount === 3) this.step3 = text;
             clickedChoice = true;
-            await this.page.waitForTimeout(1500);
-            break; // Break selector loop to check the step state again
+            break;
           }
         }
 
@@ -253,8 +318,8 @@ class FormPage {
           const nextBtn = this.page.locator('.btn-next:visible, .next-btn:visible, button:has-text("NEXT"):visible, button:has-text("Next"):visible').first();
           if (await nextBtn.isVisible({ timeout: 1000 }).catch(() => false)) {
             console.log('🔘 No choices found, but NEXT button is visible. Clicking to advance...');
-            await nextBtn.click().catch(() => {});
-            await this.page.waitForTimeout(1500);
+            await nextBtn.click().catch(() => { });
+            await this.page.waitForTimeout(400);
           } else {
             console.log('⚠️ No visible dynamic choices or next buttons on this step. Ending traversal.');
             break;
@@ -269,23 +334,33 @@ class FormPage {
       if (await stateSelect.isVisible({ timeout: 2000 })) {
         console.log('🔘 Step: Selecting State');
         try {
-          await stateSelect.evaluate((node, stateVal) => {
-            const matchedOption = Array.from(node.options).find(opt => 
-              opt.text.toLowerCase().trim() === stateVal.toLowerCase().trim() || 
-              opt.value.toLowerCase().trim() === stateVal.toLowerCase().trim()
-            );
-            if (matchedOption) {
-              node.value = matchedOption.value;
-            } else {
-              node.value = stateVal;
+          const selectedState = await this.page.evaluate(({ stateSelectSelector, runIndex, defaultState }) => {
+            const node = document.querySelector(stateSelectSelector);
+            if (node && node.options.length > 1) {
+              const validOptions = Array.from(node.options).filter(opt => {
+                const val = opt.value.trim();
+                const txt = opt.text.toLowerCase();
+                return val !== "" && !txt.includes("select") && !txt.includes("choose");
+              });
+
+              if (validOptions.length > 0) {
+                const selectedOpt = validOptions[runIndex % validOptions.length];
+                node.value = selectedOpt.value;
+                node.dispatchEvent(new Event('change', { bubbles: true }));
+                node.dispatchEvent(new Event('input', { bubbles: true }));
+                return selectedOpt.text;
+              }
             }
-            node.dispatchEvent(new Event('change', { bubbles: true }));
-            node.dispatchEvent(new Event('input', { bubbles: true }));
-          }, state);
-          
-          // If step3 has not been set yet, populate it with state
+            if (node) {
+              node.value = defaultState;
+              node.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+            return defaultState;
+          }, { stateSelectSelector: '#state, select#state, select[name="state"]', runIndex, defaultState: state });
+
+          console.log(`✅ Selected state dynamically: "${selectedState}"`);
           if (choiceStepCount < 3) {
-            this.step3 = state;
+            this.step3 = selectedState || state;
             console.log(`📝 step3 column set to State: "${this.step3}"`);
           }
         } catch (e) {
@@ -304,8 +379,8 @@ class FormPage {
         const nextBtn = this.page.locator('.btn-next:visible, .next-btn:visible, button:has-text("NEXT"):visible, button:has-text("Next"):visible').first();
         if (await nextBtn.isVisible({ timeout: 1000 })) {
           console.log('🔘 Advancing past post-state step...');
-          await nextBtn.click().catch(() => {});
-          await this.page.waitForTimeout(1500);
+          await nextBtn.click().catch(() => { });
+          await this.page.waitForTimeout(400);
         } else {
           break;
         }
@@ -377,21 +452,21 @@ class FormPage {
 
         // Click next/submit button if visible on this contact sub-step
         const nextBtn = this.page.locator('.btn-next:visible, .next-btn:visible, .next-btn3:visible, .next-btn4:visible, .next-btn5:visible, button:has-text("NEXT"):visible, button:has-text("Next"):visible, button:has-text("Submit"):visible, button:has-text("Continue"):visible, input[type="submit"]:visible, .emailbtn:visible, .namebtn:visible').first();
-        
+
         if (await nextBtn.isVisible({ timeout: 1000 }).catch(() => false)) {
           const btnText = await nextBtn.textContent().catch(() => 'Next');
           const currentUrl = this.page.url();
           const currentState = `${currentUrl}_${btnText}`;
-          
+
           if (!filledSomething && currentState === lastFilledState) {
             console.log('🔘 Contact form stable (no new fields to fill). Exiting contact loop.');
             break;
           }
-          
+
           lastFilledState = currentState;
           console.log(`🔘 Clicking active contact NEXT/SUBMIT button...`);
-          await nextBtn.click({ force: true }).catch(() => {});
-          await this.page.waitForTimeout(2000);
+          await nextBtn.click({ force: true }).catch(() => { });
+          await this.page.waitForTimeout(400);
         } else {
           console.log('🔘 No active contact NEXT/SUBMIT button visible. Exiting loop.');
           break;
@@ -479,7 +554,15 @@ class FormPage {
         }
       }
     } catch (e) {
-      console.warn(`⚠️  Button ${selector} not found or clickable:`, e.stack || e.message);
+      console.warn(`⚠️  Button ${selector} not found. Consulting FLM Agent for suggestions...`);
+      const suggestion = await flmAgent.suggestFix(this.page, 'Next button');
+      if (suggestion) {
+        console.warn(`🤖 [FLM Agent] POTENTIAL FIX DISCOVERED: ${suggestion}`);
+        console.warn(`🔔 [Manual Approval Required] Please update the selector in FormPage.js to use: ${suggestion}`);
+      } else {
+        console.warn(`❌ [FLM Agent] No suggestion available for this failure.`);
+      }
+      throw new Error(`Navigation button ${selector} missing. FLM Agent suggestion provided in logs.`);
     }
   }
 
@@ -507,21 +590,25 @@ class FormPage {
           break;
         }
       }
+      
+      // Last resort: FLM Agent Self-Healing for Submit (Manual Approval Mode)
+      console.warn('⚠️ Standard submit buttons not found, consulting FLM Agent...');
+      const suggestion = await flmAgent.suggestFix(this.page, 'Submit button');
+      if (suggestion) {
+        console.warn(`🤖 [FLM Agent] POTENTIAL SUBMIT FIX DISCOVERED: ${suggestion}`);
+        console.warn(`🔔 [Manual Approval Required] Update FormPage.js submit block with: ${suggestion}`);
+      }
 
-      console.log('⏳ Waiting for form submission to complete');
-      await this.page.waitForNavigation({ waitUntil: 'networkidle', timeout: 30000 });
-
-    } catch (error) {
-      console.warn('⚠️  Submit navigation timeout or error, waiting 5s for final URL');
-      await this.page.waitForTimeout(5000);
+    } catch (e) {
+      console.warn('⚠️ Form submission failure analysis complete.');
     }
   }
 
   async getThankYouUrl() {
     console.log('⏳ Waiting for final redirect to Thank You page...');
     try {
-      await this.page.waitForLoadState('domcontentloaded', { timeout: 15000 }).catch(() => {});
-      
+      await this.page.waitForLoadState('domcontentloaded', { timeout: 15000 }).catch(() => { });
+
       const startTime = Date.now();
       const timeout = 12000; // Poll for max 12 seconds
       while (Date.now() - startTime < timeout) {
@@ -530,12 +617,12 @@ class FormPage {
           const parsedUrl = new URL(currentUrl);
           const hasHexLead = parsedUrl.searchParams.has('leadid') || parsedUrl.searchParams.get('transaction_id');
           const isFinalPage = currentUrl.includes('/ty') || currentUrl.includes('/thank-you') || currentUrl.includes('/thankyou');
-          
+
           if (hasHexLead || isFinalPage) {
             console.log('✅ Targeted final redirect URL achieved!');
             break;
           }
-        } catch (e) {}
+        } catch (e) { }
         await this.page.waitForTimeout(1000); // Wait 1 second before checking again
       }
     } catch (e) {
@@ -546,22 +633,53 @@ class FormPage {
     return finalUrl;
   }
 
-  extractLeadId(url) {
+  async extractLeadId(url) {
     try {
       const urlObj = new URL(url);
       const params = new URLSearchParams(urlObj.search);
+      console.log('📋 [Diagnostic] Full Thank You URL Parameters:', JSON.stringify(Object.fromEntries(params.entries())));
 
-      const leadId = params.get('transaction_id')
+      // Priority 1: URL Parameters
+      let leadId = params.get('transaction_id')
         || params.get('leadid')
         || params.get('lead_id')
+        || params.get('ckm_id')
+        || params.get('tid')
         || params.get('reqid')
-        || params.get('id')
-        || null;
+        || params.get('request_id')
+        || params.get('id');
+
+      // Priority 2: DOM DEEP-SCAN (Hidden inputs, Text patterns, Hex-8, GUIDs)
+      if (!leadId || (leadId.length !== 8 && leadId.length < 10)) {
+        console.log('🔍 [DOM Deep-Scan] URL ID missing or non-standard. Searching for Hex-8 or GUID IDs...');
+        const domId = await this.page.evaluate(() => {
+          // 1. Search for 8-character Hex patterns (like 27D65758)
+          const html = document.documentElement.innerHTML;
+          const hex8Match = html.match(/\b[A-F0-9]{8}\b/i);
+          if (hex8Match) return hex8Match[0];
+
+          // 2. Search for GUID patterns (32 chars hex)
+          const guidMatch = html.match(/[a-f0-9]{32}/i) || html.match(/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}/i);
+          if (guidMatch) return guidMatch[0];
+
+          // 3. Search for hidden inputs with "id" in their name
+          const inputs = Array.from(document.querySelectorAll('input[type="hidden"]'));
+          for (const input of inputs) {
+            if (input.name.toLowerCase().includes('id') && input.value.length >= 8) return input.value;
+          }
+
+          const bodyText = document.body.innerText;
+          const longIdMatch = bodyText.match(/(?:ID|Transaction|Ref|Conf)\s*[:#-]?\s*([A-Z0-9-]{8,40})/i);
+          return longIdMatch ? longIdMatch[1] : null;
+        }).catch(() => null);
+
+        if (domId) leadId = domId;
+      }
 
       if (leadId) {
         console.log('✅ Extracted Lead ID:', leadId);
       } else {
-        console.warn('⚠️  No Lead ID found in URL');
+        console.warn('⚠️ No Lead ID found in URL or DOM.');
       }
 
       return leadId;

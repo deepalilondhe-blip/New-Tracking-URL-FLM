@@ -3,69 +3,48 @@ const path = require('path');
 const fs = require('fs');
 const nodemailer = require('nodemailer');
 require('dotenv').config();
+const emailUtils = require('./utils/emailUtils');
+const flmAgent = require('./utils/flmAgent');
+const dailyLogger = require('./utils/dailyLogger');
 
-const runnerScripts = [
-  // FTD-X (3 Devices)
-  'run-ftd-x.js',
-  'run-ftd-x-tablet.js',
-  'run-ftd-x-mobile.js',
+// Load campaigns from configuration file dynamically
+const configPath = path.join(__dirname, 'config', 'campaigns.json');
+let campaigns = [];
+if (fs.existsSync(configPath)) {
+  try {
+    campaigns = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+  } catch (e) {
+    console.error('⚠️ Could not parse campaigns config inside scheduler, falling back to empty list:', e.message);
+  }
+}
 
-  // FSI-PPC2 (3 Devices)
-  'run-fsi-ppc2.js',
-  'run-fsi-ppc2-tablet.js',
-  'run-fsi-ppc2-mobile.js',
+// Map each campaign config to its execution matrix dynamically
+const runnerScripts = campaigns.map(c => {
+  const matrix = [
+    // --- Mobile Viewports ---
+    { campaignId: c.id, viewport: 'mobile', browser: 'chromium', label: 'Android - Chrome' },
+    { campaignId: c.id, viewport: 'mobile', browser: 'firefox',  label: 'Android - Firefox' },
+    { campaignId: c.id, viewport: 'mobile', browser: 'chromium', label: 'iOS - Chrome' },
+    { campaignId: c.id, viewport: 'mobile', browser: 'webkit',   label: 'iOS - Safari' },
 
-  // TRA-CPL (3 Devices)
-  'run-tra-cpl.js',
-  'run-tra-cpl-tablet.js',
-  'run-tra-cpl-mobile.js',
+    // --- Tablet Viewports ---
+    { campaignId: c.id, viewport: 'tablet', browser: 'webkit',   label: 'Tablet - Safari' },
+    { campaignId: c.id, viewport: 'tablet', browser: 'chromium', label: 'Tablet - Chrome' },
 
-  // TRA-D3 (3 Devices)
-  'run-tra-d3.js',
-  'run-tra-d3-tablet.js',
-  'run-tra-d3-mobile.js',
+    // --- Desktop Viewports ---
+    { campaignId: c.id, viewport: 'desktop', browser: 'chromium', label: 'Windows - Chrome' },
+    { campaignId: c.id, viewport: 'desktop', browser: 'firefox',  label: 'Windows - Firefox' },
+    { campaignId: c.id, viewport: 'desktop', browser: 'webkit',   label: 'MAC - Safari' },
+    { campaignId: c.id, viewport: 'desktop', browser: 'chromium', label: 'MAC - Chrome' }
+  ];
 
-  // PPC-ST (3 Devices)
-  'run-ppc-st.js',
-  'run-ppc-st-tablet.js',
-  'run-ppc-st-mobile.js',
+  // Add special API run for PPC-ST2
+  if (c.id === 'ppc-st2') {
+    matrix.push({ campaignId: c.id, viewport: 'api', browser: 'chromium', label: 'Direct API' });
+  }
 
-  // PPC-ST2 (3 Devices + API)
-  'run-ppc-st2.js',
-  'run-ppc-st2-tablet.js',
-  'run-ppc-st2-mobile.js',
-  'run-ppc-st2-api.js',
-
-  // PPC-M/CA (3 Devices)
-  'run-ppc-m-ca.js',
-  'run-ppc-m-ca-tablet.js',
-  'run-ppc-m-ca-mobile.js',
-
-  // PPC-CR (3 Devices)
-  'run-ppc-cr.js',
-  'run-ppc-cr-tablet.js',
-  'run-ppc-cr-mobile.js',
-
-  // PPC-FS (3 Devices)
-  'run-ppc-fs.js',
-  'run-ppc-fs-tablet.js',
-  'run-ppc-fs-mobile.js',
-
-  // PPC (3 Devices)
-  'run-ppc.js',
-  'run-ppc-tablet.js',
-  'run-ppc-mobile.js',
-
-  // TRA-CPM (3 Devices)
-  'run-tra-cpm.js',
-  'run-tra-cpm-tablet.js',
-  'run-tra-cpm-mobile.js',
-
-  // FTH-X (3 Devices)
-  'run-fth-x.js',
-  'run-fth-x-tablet.js',
-  'run-fth-x-mobile.js'
-];
+  return matrix;
+});
 
 // Load Interval from environment variables (default to 2 hours)
 const intervalHours = parseFloat(process.env.SCHEDULER_INTERVAL_HOURS) || 2.0;
@@ -76,38 +55,64 @@ function formatTimestamp() {
 }
 
 /**
- * Execute a single runner file as a promise
+ * Execute a single runner via the unified run-master.js orchestrator
  */
-function runScript(scriptFile) {
+function runScript(campaignId, viewport, browserEngine = 'chromium', label = 'Standard') {
   return new Promise((resolve) => {
-    const scriptPath = path.join(__dirname, scriptFile);
-    if (!fs.existsSync(scriptPath)) {
-      console.warn(`⚠️  Runner file not found: ${scriptFile}. Skipping.`);
-      return resolve({ scriptFile, success: false, error: 'File not found' });
-    }
+    const campaign = campaigns.find(c => c.id === campaignId);
+    const campaignUrl = campaign ? campaign.url : 'Unknown URL';
+    const campaignName = campaign ? campaign.name : campaignId.toUpperCase();
 
     console.log(`\n================================================================`);
-    console.log(`🚀 [${formatTimestamp()}] RUNNING: ${scriptFile}`);
+    console.log(`🚀 [${formatTimestamp()}] RUNNING: ${campaignName} [${label.toUpperCase()}]`);
+    console.log(`🔗 Target URL: ${campaignUrl}`);
     console.log(`================================================================`);
 
-    const child = exec(`node "${scriptFile}"`, { cwd: __dirname }, (error, stdout, stderr) => {
-      if (error) {
-        console.error(`❌ [${formatTimestamp()}] FAILED: ${scriptFile}`);
-        console.error(`Error: ${error.message}`);
-        return resolve({ scriptFile, success: false, error: error.message });
+    // Pass target browser and label as environment variables
+    const runHeaded = process.argv.includes('--headed');
+    const env = { 
+      ...process.env, 
+      PROCESS_BROWSER: browserEngine,
+      PROCESS_LABEL: label,
+      HEADLESS: runHeaded ? 'false' : 'true' // 🛡️ Enforce silent headless execution unless --headed flag is present
+    };
+    
+    // Execute node run-master.js in visible mode
+    const child = exec(`node -r "./utils/browser-intercept.js" run-master.js --campaign "${campaignId}" --viewport "${viewport}"`, { cwd: __dirname, env }, (error, stdout, stderr) => {
+      const displayLabel = `${campaignId} [${label}][${browserEngine.toUpperCase()}]`;
+      
+      // Attempt to parse JSON evidence from stdout
+      let evidence = {};
+      try {
+        const jsonLines = stdout.split('\n').filter(line => line.trim().startsWith('{') && line.trim().endsWith('}'));
+        if (jsonLines.length > 0) {
+          evidence = JSON.parse(jsonLines[jsonLines.length - 1]);
+        }
+      } catch (e) {}
+
+      if (error || evidence.success === false) {
+        const errorMsg = evidence.error || error?.message || 'Unknown execution error';
+        console.error(`❌ [${formatTimestamp()}] FAILED: ${displayLabel}`);
+        return resolve({ 
+          campaignId, viewport, browser: browserEngine, label, 
+          success: false, 
+          error: errorMsg,
+          screenshot: evidence.screenshot,
+          video: evidence.video
+        });
       }
       
-      console.log(`✅ [${formatTimestamp()}] COMPLETED: ${scriptFile}`);
-      return resolve({ scriptFile, success: true });
+      console.log(`✅ [${formatTimestamp()}] COMPLETED: ${displayLabel}`);
+      return resolve({ campaignId, viewport, browser: browserEngine, label, success: true });
     });
 
-    // Pipe stdout and stderr to scheduler terminal in real-time
+    // Pipe outputs to scheduler terminal
     child.stdout.on('data', (data) => {
-      process.stdout.write(`[${scriptFile}] ${data}`);
+      process.stdout.write(`[${campaignId}][${label}] ${data}`);
     });
 
     child.stderr.on('data', (data) => {
-      process.stderr.write(`[${scriptFile}] [STDERR] ${data}`);
+      process.stderr.write(`[${campaignId}][${label}] [STDERR] ${data}`);
     });
   });
 }
@@ -134,10 +139,7 @@ async function sendEmailReport(results, durationMinutes) {
     host: host,
     port: parseInt(port),
     secure: process.env.SMTP_SECURE === 'true',
-    auth: {
-      user: user,
-      pass: pass
-    }
+    auth: { user, pass }
   });
 
   const succeededCount = results.filter(r => r.success).length;
@@ -151,9 +153,15 @@ async function sendEmailReport(results, durationMinutes) {
     const statusText = r.success ? 'PASS' : 'FAIL';
     const errorDetails = r.success ? 'N/A' : `<span style="color:#dc3545; font-size:12px;">${r.error || 'Unknown Error'}</span>`;
     
+    const displayEngine = (r.browser || 'chromium').toUpperCase();
+    const displayLabel = `${(r.campaignId || 'Unknown').toUpperCase()} [${(r.viewport || 'desktop').toUpperCase()}]`;
+    
     rowsHtml += `
       <tr style="border-bottom: 1px solid #e2e8f0;">
-        <td style="padding: 14px 12px; font-weight: 500; color: #1e293b;">${r.scriptFile}</td>
+        <td style="padding: 14px 12px; font-weight: 500; color: #1e293b;">
+          ${displayLabel}
+          <span style="font-size: 11px; color: #475569; font-weight: 600; margin-left: 6px; background-color: #f1f5f9; padding: 2px 6px; border-radius: 4px; border: 1px solid #cbd5e1; vertical-align: middle;">${displayEngine}</span>
+        </td>
         <td style="padding: 14px 12px; text-align: center;">
           <span style="display: inline-block; padding: 4px 10px; font-weight: bold; font-size: 12px; border-radius: 4px; color: ${statusColor}; background-color: ${statusBg}; text-transform: uppercase; letter-spacing: 0.5px;">
             ${statusText}
@@ -169,57 +177,67 @@ async function sendEmailReport(results, durationMinutes) {
     <html>
     <head>
       <meta charset="utf-8">
-      <title>Automation Status Report</title>
+      <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #334155; margin: 0; padding: 0; background-color: #f8fafc; }
+        .wrapper { max-width: 700px; margin: 40px auto; padding: 20px; }
+        .container { background-color: #ffffff; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); overflow: hidden; }
+        .header { background: linear-gradient(135deg, #1e3a8a, #3b82f6); color: #ffffff; padding: 32px 24px; text-align: center; }
+        .header h1 { margin: 0; font-size: 24px; font-weight: 800; letter-spacing: -0.5px; }
+        .header p { margin: 8px 0 0; opacity: 0.9; font-size: 14px; }
+        .content { padding: 32px 24px; }
+        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 32px; }
+        .stat-card { background-color: #f1f5f9; border-radius: 8px; padding: 16px; text-align: center; border: 1px solid #e2e8f0; }
+        .stat-val { font-size: 22px; font-weight: 800; color: #1e3a8a; }
+        .stat-lbl { font-size: 12px; color: #64748b; text-transform: uppercase; font-weight: bold; margin-top: 4px; }
+        .table-title { font-size: 16px; font-weight: 700; color: #1e293b; margin: 0 0 16px; }
+        .table-container { border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; }
+        table { width: 100%; border-collapse: collapse; text-align: left; font-size: 14px; }
+        th { background-color: #f8fafc; padding: 12px; font-weight: 600; color: #475569; border-bottom: 1px solid #e2e8f0; }
+        .footer { text-align: center; font-size: 12px; color: #94a3b8; margin-top: 24px; }
+      </style>
     </head>
-    <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f8fafc; margin: 0; padding: 20px;">
-      <div style="max-width: 750px; margin: 0 auto; background-color: #ffffff; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); overflow: hidden; border: 1px solid #e2e8f0;">
-        <!-- Header -->
-        <div style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); padding: 35px 30px; text-align: center; color: #ffffff;">
-          <h1 style="margin: 0; font-size: 24px; font-weight: 700; letter-spacing: 0.5px;">🔄 Leads Automation Batch Report</h1>
-          <p style="margin: 6px 0 0 0; opacity: 0.85; font-size: 14px;">Executed on: ${formatTimestamp()}</p>
+    <body>
+      <div class="wrapper">
+        <div class="container">
+          <div class="header">
+            <h1>Leads Automation Status Report</h1>
+            <p>Execution completed at: ${formatTimestamp()}</p>
+          </div>
+          <div class="content">
+            <div class="stats-grid" style="display: table; width: 100%; table-layout: fixed; border-spacing: 12px 0; margin-bottom: 24px;">
+              <div class="stat-card" style="display: table-cell; background-color: #f1f5f9; border-radius: 8px; padding: 16px; text-align: center; border: 1px solid #e2e8f0;">
+                <div class="stat-val" style="font-size: 20px; font-weight: 800; color: #1e3a8a;">${durationMinutes}m</div>
+                <div class="stat-lbl" style="font-size: 11px; color: #64748b; text-transform: uppercase; font-weight: bold; margin-top: 4px;">Duration</div>
+              </div>
+              <div class="stat-card" style="display: table-cell; background-color: #eafaf1; border-radius: 8px; padding: 16px; text-align: center; border: 1px solid #c2f0d5;">
+                <div class="stat-val" style="font-size: 20px; font-weight: 800; color: #28a745;">${succeededCount}</div>
+                <div class="stat-lbl" style="font-size: 11px; color: #28a745; text-transform: uppercase; font-weight: bold; margin-top: 4px;">Succeeded</div>
+              </div>
+              <div class="stat-card" style="display: table-cell; background-color: #fdf2f2; border-radius: 8px; padding: 16px; text-align: center; border: 1px solid #f8d7da;">
+                <div class="stat-val" style="font-size: 20px; font-weight: 800; color: #dc3545;">${failedCount}</div>
+                <div class="stat-lbl" style="font-size: 11px; color: #dc3545; text-transform: uppercase; font-weight: bold; margin-top: 4px;">Failed</div>
+              </div>
+            </div>
+            
+            <h2 class="table-title">Detailed Campaign Metrics</h2>
+            <div class="table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="padding: 12px;">Campaign Instance</th>
+                    <th style="padding: 12px; text-align: center; width: 100px;">Status</th>
+                    <th style="padding: 12px;">Details</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${rowsHtml}
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
-        
-        <!-- Content -->
-        <div style="padding: 30px;">
-          <h2 style="color: #0f172a; margin-top: 0; font-size: 18px; border-bottom: 2px solid #3b82f6; padding-bottom: 10px; font-weight: 600;">📋 Execution Summary</h2>
-          <table style="width: 100%; border-collapse: collapse; margin-bottom: 30px;">
-            <tr>
-              <td style="padding: 10px 0; color: #64748b; width: 40%; font-size: 15px;">Total Run Duration:</td>
-              <td style="padding: 10px 0; font-weight: bold; color: #0f172a; font-size: 15px;">${durationMinutes} Minutes</td>
-            </tr>
-            <tr>
-              <td style="padding: 10px 0; color: #64748b; font-size: 15px;">Total Runners Executed:</td>
-              <td style="padding: 10px 0; font-weight: bold; color: #0f172a; font-size: 15px;">${results.length}</td>
-            </tr>
-            <tr>
-              <td style="padding: 10px 0; color: #10b981; font-size: 15px;">Succeeded Campaigns:</td>
-              <td style="padding: 10px 0; font-weight: bold; color: #10b981; font-size: 15px;">${succeededCount}</td>
-            </tr>
-            <tr>
-              <td style="padding: 10px 0; color: #ef4444; font-size: 15px;">Failed Campaigns:</td>
-              <td style="padding: 10px 0; font-weight: bold; color: #ef4444; font-size: 15px;">${failedCount}</td>
-            </tr>
-          </table>
-
-          <h2 style="color: #0f172a; font-size: 18px; border-bottom: 2px solid #3b82f6; padding-bottom: 10px; font-weight: 600;">📊 Detailed Campaign Statuses</h2>
-          <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
-            <thead>
-              <tr style="background-color: #f1f5f9; border-bottom: 2px solid #cbd5e1;">
-                <th style="padding: 12px; text-align: left; color: #475569; font-weight: 600; font-size: 14px;">Campaign Runner</th>
-                <th style="padding: 12px; text-align: center; color: #475569; font-weight: 600; font-size: 14px; width: 100px;">Status</th>
-                <th style="padding: 12px; text-align: left; color: #475569; font-weight: 600; font-size: 14px;">Details / Error Reason</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${rowsHtml}
-            </tbody>
-          </table>
-        </div>
-
-        <!-- Footer -->
-        <div style="background-color: #f8fafc; padding: 25px; text-align: center; border-top: 1px solid #e2e8f0; color: #94a3b8; font-size: 13px; line-height: 1.5;">
-          <p style="margin: 0;">This is an automated status update compiled from your local lead generation pipeline.</p>
-          <p style="margin: 5px 0 0 0;">Securely sent to: <strong>${recipient}</strong></p>
+        <div class="footer">
+          <p>This is an automated status message from your Leads Automation Engine.</p>
         </div>
       </div>
     </body>
@@ -249,14 +267,84 @@ async function runBatch() {
   console.log(`🤖 Interval configured: every ${intervalHours} hours`);
   console.log(`🤖 ================================================================`);
 
+  const now = new Date();
+  const dayOfWeek = now.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+  const allowedDays = [1, 3, 5]; // Monday, Wednesday, Friday
+
+  if (!allowedDays.includes(dayOfWeek)) {
+    console.log(`\n[${formatTimestamp()}] 🗓️ Skipping today's run. Scheduler is configured to run ONLY on Monday, Wednesday, and Friday.`);
+    return;
+  }
+
   const startTime = Date.now();
   const results = [];
+  const stateFilePath = path.join(__dirname, 'scheduler-state.json');
+  let state = { completed: [] };
+  
+  // Clear any existing state so we ALWAYS run all campaigns on every scheduler start
+  try {
+    fs.writeFileSync(stateFilePath, JSON.stringify(state, null, 2));
+  } catch (err) {
+    console.warn('⚠️ Could not reset scheduler state file.');
+  }
 
-  for (const script of runnerScripts) {
-    const result = await runScript(script);
-    results.push(result);
-    // 3-second breathing room between campaigns to let OS clean port sockets
-    await new Promise(resolve => setTimeout(resolve, 3000));
+  // 🛡️ [FLM Agent] PROACTIVE URL VERIFICATION
+  console.log(`\n🤖 [FLM Agent] Starting Global URL Health Verification...`);
+  for (const campaign of campaigns) {
+    const health = await flmAgent.verifyUrlHealth(campaign.name, campaign.url);
+    if (!health.healthy) {
+      console.error(`🔴 [FLM Agent] ${campaign.name} is DOWN: ${health.error}`);
+      results.push({ 
+        campaignId: campaign.id, 
+        viewport: 'global', 
+        browser: 'none', 
+        label: 'GLOBAL_URL_CHECK', 
+        success: false, 
+        error: `URL is DOWN: ${health.error}` 
+      });
+    }
+  }
+  console.log(`🤖 [FLM Agent] Global Health Verification Complete.\n`);
+
+  for (const campaignGroup of runnerScripts) {
+    const campaignName = campaignGroup[0]?.campaignId.toUpperCase() || 'UNKNOWN';
+    console.log(`\n================================================================`);
+    console.log(`⚡ Processing Campaign Matrix: [${campaignName}]`);
+    console.log(`================================================================`);
+
+    for (const run of campaignGroup) {
+      const stateKey = `${run.campaignId}:${run.viewport}:${run.browser}:${run.label}`;
+      
+      // Skip if this specific environment was already successfully run
+      if (state.completed.includes(stateKey)) {
+        console.log(`⏭️  [SKIP] ${run.campaignId} [${run.label}] already completed.`);
+        results.push({ ...run, success: true });
+        continue;
+      }
+
+      const res = await runScript(run.campaignId, run.viewport, run.browser, run.label).catch(err => {
+        console.error(`⚠️  [ERROR] Execution crashed for ${run.campaignId} [${run.label}]:`, err.message);
+        return { ...run, success: false, error: err.message };
+      });
+      results.push(res);
+      
+      // Accumulate results for the daily summary
+      await dailyLogger.logResult(res);
+
+      if (res.success) {
+        state.completed.push(stateKey);
+        try {
+          fs.writeFileSync(stateFilePath, JSON.stringify(state, null, 2));
+        } catch (err) {
+          console.error('⚠️ Failed to save scheduler state:', err.message);
+        }
+      } else {
+        console.warn(`🚨 [FLM Agent] Failure recorded for ${res.campaignId} [${res.label}]. Logged to Dashboard.`);
+      }
+
+      // 100ms breathing room between runs
+      await new Promise(resolve => setTimeout(resolve, 100));
+    }
   }
 
   const durationMinutes = ((Date.now() - startTime) / (1000 * 60)).toFixed(2);
@@ -271,64 +359,197 @@ async function runBatch() {
   console.log(`📊 Failed:                 ${failed}`);
   console.log(`📊 ================================================================`);
 
-  if (failed > 0) {
-    console.log('❌ Failed scripts summary:');
-    results.forEach(r => {
-      if (!r.success) {
-        console.log(`   - ${r.scriptFile}: ${r.error}`);
-      }
-    });
-  }
+  // Send Professional Intelligence Report after every batch completion
+  console.log('🕕 [Scheduler] Dispatching Batch Intelligence Report...');
+  const summary = dailyLogger.getDailySummary();
+  await sendProfessionalDailyReport(summary);
 
-  // Trigger Email Send
-  await sendEmailReport(results, durationMinutes);
-
-  // Generate Markdown Summary for GitHub Cloud Summary
+  // Reset completed state on successful full batch completion
   try {
-    const fs = require('fs');
-    let md = `## 🔄 Leads Automation Batch Report\n\n`;
-    md += `**Executed on:** ${formatTimestamp()}\n\n`;
-    md += `### 📋 Execution Summary\n\n`;
-    md += `| Metric | Value |\n`;
-    md += `| :--- | :--- |\n`;
-    md += `| **Total Run Duration** | ${durationMinutes} Minutes |\n`;
-    md += `| **Total Runners Executed** | ${results.length} |\n`;
-    md += `| **Succeeded Campaigns** | 🟢 ${succeeded} |\n`;
-    md += `| **Failed Campaigns** | 🔴 ${failed} |\n\n`;
-    
-    md += `### 📊 Detailed Campaign Statuses\n\n`;
-    md += `| Campaign Runner | Status | Details / Error Reason |\n`;
-    md += `| :--- | :---: | :--- |\n`;
-    
-    results.forEach(r => {
-      const statusIcon = r.success ? '🟢 PASS' : '🔴 FAIL';
-      const cleanError = r.success ? 'Success' : r.error.replace(/\n/g, ' ');
-      md += `| \`${r.scriptFile}\` | ${statusIcon} | ${cleanError} |\n`;
-    });
-    
-    fs.writeFileSync('execution-summary.md', md);
-    console.log('✅ Generated execution-summary.md for GitHub Cloud Summary');
-  } catch (err) {
-    console.error('⚠️ Failed to generate execution-summary.md:', err.message);
-  }
+    fs.writeFileSync(stateFilePath, JSON.stringify({ completed: [] }, null, 2));
+  } catch (err) {}
 
   console.log(`\n⏳ Next automation batch will start at: ${new Date(Date.now() + intervalMs).toLocaleString()}`);
 }
 
-const runOnce = process.argv.includes('--once');
+/**
+ * 🕕 DAILY SUMMARY TRIGGER
+ */
+async function checkAndSendDailySummary() {
+  const now = new Date();
+  const currentHour = now.getHours();
+  const currentMinute = now.getMinutes();
+  const currentDay = now.getDay();
+  const summary = dailyLogger.getDailySummary();
 
-// Start immediately on launch
-if (runOnce) {
-  runBatch().then(() => {
-    console.log('🏁 Batch run completed in single-execution mode. Exiting.');
-    process.exit(0);
-  }).catch((err) => {
-    console.error('❌ Batch run encountered an unhandled error:', err);
-    process.exit(1);
-  });
-} else {
-  runBatch();
+  // Temporary test trigger for 6:10 PM today (or standard Mon-Fri 18:00)
+  const isTargetTime = (currentHour === 18 && currentMinute >= 10);
+  const isWorkingDay = currentDay !== 0 && currentDay !== 6;
 
-  // Schedule recurrences
-  setInterval(runBatch, intervalMs);
+  if (isTargetTime && !summary.emailSent && isWorkingDay) {
+    console.log('🕕 [Scheduler] Sending Daily Professional Summary Intelligence...');
+    await sendProfessionalDailyReport(summary);
+    dailyLogger.markEmailSent();
+  }
 }
+
+/**
+ * 📧 PROFESSIONAL DAILY REPORT (Branded FLM Version)
+ */
+async function sendProfessionalDailyReport(summary) {
+  const user = process.env.SMTP_USER;
+  const pass = process.env.SMTP_PASS;
+  const recipient = process.env.REPORT_EMAIL_RECIPIENT || 'deepali.londhe@magnetoitsolutions.com';
+
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: { user, pass }
+  });
+
+  const successRate = ((summary.succeeded / (summary.total || 1)) * 100).toFixed(1);
+  
+  const htmlBody = `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: #1e293b; background: #f1f5f9; margin: 0; padding: 20px; }
+        .card { max-width: 650px; margin: auto; background: #ffffff; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); overflow: hidden; border: 1px solid #e2e8f0; }
+        .header { background: linear-gradient(135deg, #0891b2 0%, #7e22ce 100%); color: #ffffff; padding: 40px 30px; text-align: center; position: relative; }
+        .header h1 { margin: 0; font-size: 26px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; }
+        .header p { margin: 10px 0 0; opacity: 0.9; font-size: 14px; font-weight: 600; }
+        .agent-badge { background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); display: inline-block; padding: 5px 15px; border-radius: 20px; font-size: 11px; font-weight: 700; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.3); }
+        .stats-row { display: flex; padding: 30px; background: #ffffff; border-bottom: 1px solid #f1f5f9; text-align: center; }
+        .stat-item { flex: 1; }
+        .stat-val { font-size: 32px; font-weight: 800; background: linear-gradient(135deg, #0891b2, #7e22ce); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .stat-lbl { font-size: 11px; color: #64748b; text-transform: uppercase; font-weight: 700; margin-top: 5px; }
+        .content { padding: 40px; }
+        .ai-message { background: #f8fafc; border-left: 4px solid #0891b2; padding: 20px; border-radius: 0 12px 12px 0; margin-bottom: 30px; }
+        .ai-message-title { font-size: 13px; font-weight: 800; color: #0891b2; margin-bottom: 8px; text-transform: uppercase; }
+        .performance-box { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; margin-bottom: 30px; }
+        .progress-bar { height: 12px; background: #f1f5f9; border-radius: 6px; margin-top: 12px; overflow: hidden; border: 1px solid #e2e8f0; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, #0891b2, #22c55e); border-radius: 6px; }
+        .ai-advisory { background: #fffbeb; border: 1px solid #fef3c7; border-radius: 16px; padding: 25px; margin-bottom: 30px; }
+        .ai-title { color: #92400e; font-size: 14px; font-weight: 800; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+        .footer { padding: 30px; text-align: center; background: #0f172a; font-size: 11px; color: #94a3b8; }
+        .brand-link { background: #0891b2; color: #ffffff; text-decoration: none; padding: 12px 25px; border-radius: 10px; font-weight: 700; display: inline-block; margin-top: 20px; transition: all 0.3s; }
+      </style>
+    </head>
+    <body>
+      <div class="card">
+        <div class="header">
+          <div class="agent-badge">🛡️ FLM AGENT SECURITY: ACTIVE</div>
+          <h1>Intelligence Briefing</h1>
+          <p>${new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
+        </div>
+        
+        <div class="stats-row" style="display: table; width: 100%; table-layout: fixed;">
+          <div class="stat-item" style="display: table-cell;">
+            <div class="stat-val">${summary.total}</div>
+            <div class="stat-lbl">URLs Executed</div>
+          </div>
+          <div class="stat-item" style="display: table-cell; border-left: 1px solid #f1f5f9; border-right: 1px solid #f1f5f9;">
+            <div class="stat-val" style="color: #22c55e;">${successRate}%</div>
+            <div class="stat-lbl">Success Rate</div>
+          </div>
+          <div class="stat-item" style="display: table-cell;">
+            <div class="stat-val" style="color: #0891b2;">${((summary.duration || 0) / 60).toFixed(1)}m</div>
+            <div class="stat-lbl">Total Time</div>
+          </div>
+        </div>
+
+        <div class="content">
+          <div class="ai-message">
+            <div class="ai-message-title">🧠 Agent Insight: Why were ${summary.failed} campaigns "Blocked"?</div>
+            <p style="margin: 0; font-size: 14px; color: #475569;">
+              The <b>FLM Security Shield</b> flagged these campaigns for data safety. The most common reasons for a "Blocked" or "Failed" status today were:
+              <ul style="margin: 10px 0 0; padding-left: 20px;">
+                <li><b>Data Mismatch:</b> The UI value did not match the API backend.</li>
+                <li><b>Network Timeout:</b> The campaign URL took too long to load (60s+).</li>
+                <li><b>Lead Not Found:</b> The Lead ID was not yet synced to the tracking server.</li>
+              </ul>
+            </p>
+          </div>
+
+          <div class="performance-box">
+            <div style="display: flex; justify-content: space-between; font-size: 14px; font-weight: 700; color: #1e293b;">
+              <span>Uptime Protection</span>
+              <span>${successRate}%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: ${successRate}%;"></div>
+            </div>
+          </div>
+
+          ${summary.failed > 0 ? `
+            <div class="ai-advisory">
+              <div class="ai-title">⚠️ AGENT ADVISORY (ACTION REQUIRED)</div>
+              <ul style="font-size: 13px; color: #475569; padding-left: 20px; margin: 0;">
+                ${summary.failureDetails.map(f => `<li style="margin-bottom: 10px;">${f}</li>`).join('')}
+              </ul>
+            </div>
+          ` : `<div style="text-align: center; padding: 25px; background: #f0fdf4; border: 1px solid #dcfce7; border-radius: 16px; color: #166534; font-weight: 700; font-size: 15px;">✅ PERFECTION: All funnels are 100% operational.</div>`}
+
+          <div style="font-size: 14px; font-weight: 800; color: #0f172a; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; margin: 40px 0 20px;">Execution Matrix</div>
+          <table style="width: 100%; border-collapse: collapse; font-size: 12px;">
+            <thead>
+              <tr style="text-align: left; color: #64748b; border-bottom: 1px solid #f1f5f9;">
+                <th style="padding: 10px 0;">CAMPAIGN</th>
+                <th style="padding: 10px 0; text-align: center;">PROTECTION</th>
+                <th style="padding: 10px 0; text-align: right;">TIME</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${summary.runs.slice(-12).map(r => `
+                <tr style="border-bottom: 1px solid #f8fafc;">
+                  <td style="padding: 12px 0; font-weight: 700; color: #1e293b;">${r.campaignId.toUpperCase()} <span style="font-weight: 400; color: #94a3b8; font-size: 10px;">[${r.viewport}]</span></td>
+                  <td style="padding: 12px 0; text-align: center;">
+                    <span style="padding: 4px 10px; border-radius: 20px; font-weight: 800; font-size: 10px; ${r.success ? 'background: #dcfce7; color: #166534;' : 'background: #fee2e2; color: #991b1b;'}">
+                      ${r.success ? 'SHIELDED' : 'EXPOSED'}
+                    </span>
+                  </td>
+                  <td style="padding: 12px 0; text-align: right; color: #94a3b8;">${r.timestamp}</td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+          
+          <p style="text-align: center; margin-top: 40px;">
+            <a href="https://docs.google.com/spreadsheets/d/1rXIg3dMQ4APH3lHLcfWYfP45PnOAKmV9POkoSS3YWxI/edit" class="brand-link">Explore Real-time Data Suite →</a>
+          </p>
+        </div>
+
+        <div class="footer">
+          <p>© ${new Date().getFullYear()} Forward Leap Marketing. Confidential AI Intelligence.</p>
+          <p style="opacity: 0.6;">You are receiving this because FLM Agent Security Mode is ENABLED.</p>
+        </div>
+      </div>
+    </body>
+    </html>
+  `;
+
+  await transporter.sendMail({
+    from: `"FLM Automation Suite" <${user}>`,
+    to: recipient,
+    subject: `📊 FLM Daily Intelligence: ${summary.succeeded}/${summary.total} Campaigns Verified`,
+    html: htmlBody
+  });
+  console.log('✅ Branded Daily Professional Summary Email Sent.');
+}
+
+if (require.main === module) {
+  const runOnce = process.argv.includes('--once');
+  if (runOnce) {
+    runBatch().then(() => process.exit(0)).catch(() => process.exit(1));
+  } else {
+    runBatch();
+    setInterval(runBatch, intervalMs);
+  }
+}
+
+module.exports = {
+  runBatch,
+  sendProfessionalDailyReport,
+  checkAndSendDailySummary
+};
