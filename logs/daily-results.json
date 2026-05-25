@@ -2528,6 +2528,30 @@
       "label": "Android - Chrome",
       "success": true,
       "timestamp": "2:44:44 pm"
+    },
+    {
+      "campaignId": "tra-cpm",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "2:45:32 pm"
+    },
+    {
+      "campaignId": "ppc-st",
+      "viewport": "mobile",
+      "browser": "firefox",
+      "label": "Android - Firefox",
+      "success": true,
+      "timestamp": "2:45:42 pm"
+    },
+    {
+      "campaignId": "tra-cpm",
+      "viewport": "mobile",
+      "browser": "firefox",
+      "label": "Android - Firefox",
+      "success": true,
+      "timestamp": "2:46:22 pm"
     }
   ],
   "emailSent": false

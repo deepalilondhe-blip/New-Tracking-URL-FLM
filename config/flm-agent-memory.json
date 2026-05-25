@@ -1,0 +1,25 @@
+{
+  "last_updated": "2026-05-25",
+  "execution_policy": {
+    "run_all_urls_from_campaigns_sheet": true,
+    "skip_any_url": false,
+    "required_devices": [
+      "desktop",
+      "mobile",
+      "tablet"
+    ],
+    "slider_value_must_change_each_execution": true
+  },
+  "identity_policy": {
+    "enforce_fixed_identity_for_all_urls": true,
+    "first_name": "ckmtestpixel",
+    "last_name": "ckmtestpixel",
+    "email": "ckmtestpixel@gmail.com"
+  },
+  "notes": [
+    "Scheduler must run all configured campaigns from config/campaigns.json without skipping.",
+    "Each execution must run exactly 3 devices: desktop, mobile, tablet.",
+    "Form identity is strict and must remain fixed for all campaign URLs."
+  ]
+}
+

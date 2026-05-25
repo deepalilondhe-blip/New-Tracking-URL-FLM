@@ -7,7 +7,8 @@ function runPlaywrightTests() {
 
   // Run the core scheduler script once
   const schedulerScript = path.join(__dirname, 'scheduler.js');
-  const child = exec(`node "${schedulerScript}" --once`, { cwd: __dirname });
+  const headedFlag = process.argv.includes('--headed') ? ' --headed' : '';
+  const child = exec(`node "${schedulerScript}" --once${headedFlag}`, { cwd: __dirname });
 
   child.stdout.on('data', (data) => {
     process.stdout.write(data);

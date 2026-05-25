@@ -18,30 +18,16 @@ if (fs.existsSync(configPath)) {
   }
 }
 
-// Map each campaign config to its execution matrix dynamically
+// Map each campaign config to a strict 3-device execution matrix
 const runnerScripts = campaigns.map(c => {
   const matrix = [
-    // --- Mobile Viewports ---
+    // --- Mobile ---
     { campaignId: c.id, viewport: 'mobile', browser: 'chromium', label: 'Android - Chrome' },
-    { campaignId: c.id, viewport: 'mobile', browser: 'firefox',  label: 'Android - Firefox' },
-    { campaignId: c.id, viewport: 'mobile', browser: 'chromium', label: 'iOS - Chrome' },
-    { campaignId: c.id, viewport: 'mobile', browser: 'webkit',   label: 'iOS - Safari' },
-
-    // --- Tablet Viewports ---
-    { campaignId: c.id, viewport: 'tablet', browser: 'webkit',   label: 'Tablet - Safari' },
+    // --- Tablet ---
     { campaignId: c.id, viewport: 'tablet', browser: 'chromium', label: 'Tablet - Chrome' },
-
-    // --- Desktop Viewports ---
-    { campaignId: c.id, viewport: 'desktop', browser: 'chromium', label: 'Windows - Chrome' },
-    { campaignId: c.id, viewport: 'desktop', browser: 'firefox',  label: 'Windows - Firefox' },
-    { campaignId: c.id, viewport: 'desktop', browser: 'webkit',   label: 'MAC - Safari' },
-    { campaignId: c.id, viewport: 'desktop', browser: 'chromium', label: 'MAC - Chrome' }
+    // --- Desktop ---
+    { campaignId: c.id, viewport: 'desktop', browser: 'chromium', label: 'Desktop - Chrome' }
   ];
-
-  // Add special API run for PPC-ST2
-  if (c.id === 'ppc-st2') {
-    matrix.push({ campaignId: c.id, viewport: 'api', browser: 'chromium', label: 'Direct API' });
-  }
 
   return matrix;
 });
@@ -315,13 +301,6 @@ async function runBatch() {
     for (const run of campaignGroup) {
       const stateKey = `${run.campaignId}:${run.viewport}:${run.browser}:${run.label}`;
       
-      // Skip if this specific environment was already successfully run
-      if (state.completed.includes(stateKey)) {
-        console.log(`⏭️  [SKIP] ${run.campaignId} [${run.label}] already completed.`);
-        results.push({ ...run, success: true });
-        continue;
-      }
-
       const res = await runScript(run.campaignId, run.viewport, run.browser, run.label).catch(err => {
         console.error(`⚠️  [ERROR] Execution crashed for ${run.campaignId} [${run.label}]:`, err.message);
         return { ...run, success: false, error: err.message };
@@ -407,6 +386,25 @@ async function sendProfessionalDailyReport(summary) {
   });
 
   const successRate = ((summary.succeeded / (summary.total || 1)) * 100).toFixed(1);
+  const campaignLookup = new Map(campaigns.map(c => [c.id, c]));
+  const uniqueCampaignIds = [...new Set((summary.runs || []).map(r => r.campaignId).filter(Boolean))];
+  const involvedCampaignRows = uniqueCampaignIds.map((id) => {
+    const cfg = campaignLookup.get(id);
+    return {
+      name: cfg?.name || id.toUpperCase(),
+      sheet: cfg?.sheet || 'N/A',
+      url: cfg?.url || 'N/A'
+    };
+  });
+  const involvedUrlsHtml = involvedCampaignRows.length > 0
+    ? involvedCampaignRows.map((r) => `
+                <tr style="border-bottom: 1px solid #f8fafc;">
+                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">${r.name}</td>
+                  <td style="padding: 10px 0; color: #475569;">${r.sheet}</td>
+                  <td style="padding: 10px 0;"><a href="${r.url}" style="color: #0891b2; text-decoration: none; font-size: 12px;">${r.url}</a></td>
+                </tr>
+      `).join('')
+    : `<tr><td colspan="3" style="padding: 10px 0; color: #64748b;">No campaign URLs found in today's summary.</td></tr>`;
   
   const htmlBody = `
     <!DOCTYPE html>
@@ -512,6 +510,22 @@ async function sendProfessionalDailyReport(summary) {
                   <td style="padding: 12px 0; text-align: right; color: #94a3b8;">${r.timestamp}</td>
                 </tr>
               `).join('')}
+            </tbody>
+          </table>
+
+          <div style="font-size: 14px; font-weight: 800; color: #0f172a; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; margin: 34px 0 16px;">
+            Local Scheduler URLs Involved (Today)
+          </div>
+          <table style="width: 100%; border-collapse: collapse; font-size: 12px;">
+            <thead>
+              <tr style="text-align: left; color: #64748b; border-bottom: 1px solid #f1f5f9;">
+                <th style="padding: 10px 0;">CAMPAIGN</th>
+                <th style="padding: 10px 0;">GOOGLE SHEET TAB</th>
+                <th style="padding: 10px 0;">TRACKING URL</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${involvedUrlsHtml}
             </tbody>
           </table>
           

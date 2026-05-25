@@ -45,6 +45,17 @@ function formatDate() {
   return `${day}-${month}-${year}`;
 }
 
+function isValidLeadId(leadId) {
+  if (!leadId) return false;
+  const normalized = String(leadId).trim().toUpperCase();
+  if (normalized === 'DUPLICATE') return false;
+  // Expected style: 8-char alphanumeric with at least one letter and one number (e.g., ACAAA01E)
+  if (!/^[A-Z0-9]{8}$/.test(normalized)) return false;
+  if (!/[A-Z]/.test(normalized)) return false;
+  if (!/[0-9]/.test(normalized)) return false;
+  return true;
+}
+
 /**
  * ==============================================
  * FLM API IMPLEMENTATION FLOW
@@ -198,6 +209,7 @@ async function processLead(brandConfig, page) {
 
     let leadIdToUse = leadId;
     let hasLeadId = true;
+    let leadIdFormatValid = true;
 
     if (process.env.OVERRIDE_LEAD_ID) {
       leadIdToUse = process.env.OVERRIDE_LEAD_ID;
@@ -206,6 +218,11 @@ async function processLead(brandConfig, page) {
       console.warn('⚠️ No Lead ID found. This is likely a duplicate lead submission redirected to a static thank you page. Using DUPLICATE fallback.');
       leadIdToUse = 'DUPLICATE';
       hasLeadId = false;
+    }
+
+    if (!isValidLeadId(leadIdToUse)) {
+      leadIdFormatValid = false;
+      console.error(`❌ Invalid Lead ID format detected: ${leadIdToUse}. Expected 8-char alphanumeric with letters and digits (example: ACAAA01E).`);
     }
 
     console.log(`✅ Lead captured: ${leadIdToUse}`);
@@ -324,6 +341,10 @@ async function processLead(brandConfig, page) {
 
     if (validation.status === "FAIL") {
       console.warn(`🚨 [FLM Agent] Data mismatch detected for ${brandConfig.name}. Please review Google Sheet.`);
+    }
+
+    if (!leadIdFormatValid) {
+      throw new Error(`Invalid Lead ID format: ${leadIdToUse}`);
     }
 
     console.log(`✅ Lead processed successfully for ${finalBrandConfig.name}`);
