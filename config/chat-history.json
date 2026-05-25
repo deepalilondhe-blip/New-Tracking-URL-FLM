@@ -145,5 +145,93 @@
     "role": "agent",
     "message": "🧠 I'm the FLM Agent! Currently tracking **19 campaigns**. \n\n⚠️ **You asked me to speak like Antigravity, but my AI brain is locked!**\nTo unleash my full Gemini LLM capabilities, please add a `GEMINI_API_KEY` to your `.env` file and restart me. Then I can chat with you about anything!",
     "timestamp": "1:10:22 pm"
+  },
+  {
+    "role": "user",
+    "message": "are you ready for new task",
+    "hasImage": false,
+    "timestamp": "1:20:37 pm"
+  },
+  {
+    "role": "agent",
+    "message": "🧠 I'm the FLM Agent! Currently tracking **19 campaigns**. \n\n⚠️ **You asked me to speak like Antigravity, but my AI brain is locked!**\nTo unleash my full Gemini LLM capabilities, please add a `GEMINI_API_KEY` to your `.env` file and restart me. Then I can chat with you about anything!",
+    "timestamp": "1:20:37 pm"
+  },
+  {
+    "role": "user",
+    "message": "Run PPC-FS on desktop",
+    "hasImage": false,
+    "timestamp": "1:41:33 pm"
+  },
+  {
+    "role": "agent",
+    "message": "🚀 **Launching PPC CR!**\n\n- **Mode:** Headless (Silent)\n- **Viewport:** DESKTOP\n- **Target Sheet:** PPC-CR\n- **URL:** https://flmtra.com/?a=659&oc=848&c=2210&s1=\n\nI'm executing the run now. You'll see results appear in the Google Sheet and in the execution logs shortly!",
+    "timestamp": "1:41:33 pm"
+  },
+  {
+    "role": "user",
+    "message": "still data not appended in the googlsheet",
+    "hasImage": false,
+    "timestamp": "1:53:34 pm"
+  },
+  {
+    "role": "agent",
+    "message": "🧠 I'm the FLM Agent! Currently tracking **19 campaigns**. \n\n⚠️ **You asked me to speak like Antigravity, but my AI brain is locked!**\nTo unleash my full Gemini LLM capabilities, please add a `GEMINI_API_KEY` to your `.env` file and restart me. Then I can chat with you about anything!",
+    "timestamp": "1:53:34 pm"
+  },
+  {
+    "role": "user",
+    "message": "still data not appended in the googlsheet",
+    "hasImage": false,
+    "timestamp": "1:54:01 pm"
+  },
+  {
+    "role": "agent",
+    "message": "🧠 I'm the FLM Agent! Currently tracking **19 campaigns**. \n\n⚠️ **You asked me to speak like Antigravity, but my AI brain is locked!**\nTo unleash my full Gemini LLM capabilities, please add a `GEMINI_API_KEY` to your `.env` file and restart me. Then I can chat with you about anything!",
+    "timestamp": "1:54:01 pm"
+  },
+  {
+    "role": "user",
+    "message": "are you ready new task ?",
+    "hasImage": false,
+    "timestamp": "2:10:08 pm"
+  },
+  {
+    "role": "agent",
+    "message": "🧠 I'm the FLM Agent! Currently tracking **19 campaigns**. \n\n⚠️ **You asked me to speak like Antigravity, but my AI brain is locked!**\nTo unleash my full Gemini LLM capabilities, please add a `GEMINI_API_KEY` to your `.env` file and restart me. Then I can chat with you about anything!",
+    "timestamp": "2:10:08 pm"
+  },
+  {
+    "role": "user",
+    "message": "tell me current status of schedualr",
+    "hasImage": false,
+    "timestamp": "2:13:56 pm"
+  },
+  {
+    "role": "agent",
+    "message": "📊 **Full System Status Report:**\n\n🗓️ **Date:** 2026-05-25\n✅ **Passed:** 257 | ❌ **Failed:** 0 | 📊 **Success Rate:** 100.0%\n📋 **Campaigns Executed:** 16 / 19\n🔄 **Resume State:** 70 runs in completed queue\n📧 **Daily Email:** Pending\n\n**Campaigns Executed Today:**\n• **ORIGINAL** — ✅ 9 passed, ❌ 0 failed\n• **SECOND-CHANCE-TAX** — ✅ 10 passed, ❌ 0 failed\n• **1800-FRESH-TAX-X-MAIN** — ✅ 14 passed, ❌ 0 failed\n• **FSI-MAIN** — ✅ 20 passed, ❌ 0 failed\n• **FTD-X** — ✅ 30 passed, ❌ 0 failed\n• **FSI-PPC2** — ✅ 23 passed, ❌ 0 failed\n• **TRA-CPL** — ✅ 20 passed, ❌ 0 failed\n• **TRA-D3** — ✅ 20 passed, ❌ 0 failed\n• **PPC-ST** — ✅ 20 passed, ❌ 0 failed\n• **PPC-ST2** — ✅ 22 passed, ❌ 0 failed\n• **PPC-M-CA** — ✅ 19 passed, ❌ 0 failed\n• **PPC-CR** — ✅ 10 passed, ❌ 0 failed\n• **PPC-FS** — ✅ 10 passed, ❌ 0 failed\n• **PPC** — ✅ 10 passed, ❌ 0 failed\n• **TRA-CPM** — ✅ 10 passed, ❌ 0 failed\n• **FTH-X** — ✅ 10 passed, ❌ 0 failed\n\n🎯 All systems nominal!",
+    "timestamp": "2:13:56 pm"
+  },
+  {
+    "role": "user",
+    "message": "with time",
+    "hasImage": false,
+    "timestamp": "2:14:08 pm"
+  },
+  {
+    "role": "agent",
+    "message": "🧠 I'm the FLM Agent! Currently tracking **19 campaigns**. \n\n⚠️ **You asked me to speak like Antigravity, but my AI brain is locked!**\nTo unleash my full Gemini LLM capabilities, please add a `GEMINI_API_KEY` to your `.env` file and restart me. Then I can chat with you about anything!",
+    "timestamp": "2:14:08 pm"
+  },
+  {
+    "role": "user",
+    "message": "are you ready for new task?",
+    "hasImage": false,
+    "timestamp": "2:34:47 pm"
+  },
+  {
+    "role": "agent",
+    "message": "🧠 I'm the FLM Agent! Currently tracking **19 campaigns**. \n\n⚠️ **You asked me to speak like Antigravity, but my AI brain is locked!**\nTo unleash my full Gemini LLM capabilities, please add a `GEMINI_API_KEY` to your `.env` file and restart me. Then I can chat with you about anything!",
+    "timestamp": "2:34:47 pm"
   }
 ]
