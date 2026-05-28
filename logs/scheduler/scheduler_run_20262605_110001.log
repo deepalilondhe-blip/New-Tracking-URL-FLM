@@ -1,0 +1,16 @@
+===================================================== 
+SCHEDULER STARTED AT: 26-05-2026 11:00:01.60 
+===================================================== 
+Running Playwright batch scheduler... 
+◇ injected env (17) from .env // tip: ⌘ override existing { override: true }
+◇ injected env (0) from .env // tip: ◈ encrypted .env [www.dotenvx.com]
+
+🤖 ================================================================
+🤖 STARTING LEADS AUTOMATION BATCH RUN [26/5/2026, 11:00:01 am]
+🤖 Interval configured: every 3 hours
+🤖 ================================================================
+
+[26/5/2026, 11:00:01 am] 🗓️ Skipping today's run. Scheduler is configured to run ONLY on Monday, Wednesday, and Friday.
+===================================================== 
+SCHEDULER FINISHED AT: 26-05-2026 11:00:01.77 
+===================================================== 

@@ -1,0 +1,10 @@
+[2026-05-27T06:05:35.256Z] [INFO] Cake Test Only Validation Process Started
+[2026-05-27T06:05:35.258Z] [INFO] Launching browser
+[2026-05-27T06:05:36.123Z] [INFO] Navigating to Cake CRM
+[2026-05-27T06:05:43.212Z] [INFO] Navigating to Cake Reports > Conversions
+[2026-05-27T06:05:43.262Z] [WARN] Could not find Conversions menu item
+[2026-05-27T06:05:43.263Z] [ERROR] FATAL ERROR: Failed to navigate to Conversions page
+[2026-05-27T06:05:43.264Z] [ERROR] Error: Failed to navigate to Conversions page
+    at runTestOnlyValidation (C:\Users\Deepali_Londhe\Desktop\New Tracking URL\CakeProcess.js\cake_test_only.js:542:13)
+[2026-05-27T06:05:43.506Z] [INFO] Browser closed
+[2026-05-27T06:05:43.508Z] [INFO] Process finished

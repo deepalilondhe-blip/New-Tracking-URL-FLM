@@ -1,0 +1,16 @@
+===================================================== 
+SCHEDULER STARTED AT: 26-05-2026 13:00:01.73 
+===================================================== 
+Running Playwright batch scheduler... 
+◇ injected env (25) from .env // tip: ◈ secrets for agents [www.dotenvx.com]
+◇ injected env (0) from .env // tip: ⌘ suppress logs { quiet: true }
+
+🤖 ================================================================
+🤖 STARTING LEADS AUTOMATION BATCH RUN [26/5/2026, 1:00:01 pm]
+🤖 Interval configured: every 3 hours
+🤖 ================================================================
+
+[26/5/2026, 1:00:01 pm] 🗓️ Skipping today's run. Scheduler is configured to run ONLY on Monday, Wednesday, and Friday.
+===================================================== 
+SCHEDULER FINISHED AT: 26-05-2026 13:00:01.92 
+===================================================== 

@@ -21,7 +21,7 @@ const MobileFormPage = require('../pages/MobileFormPage');
 const { callFirstApi, callSecondApi } = require('./apiUtils');
 const { appendRowByHeader } = require('./googleSheetsUtils');
 const { getRunIndexAndIncrement } = require('./runState');
-const flmAgent = require('./flmAgent');
+const aiAgent = require('./flmAgent');
 const restAssurance = require('./rest-assurance');
 
 function formatDateTime() {
@@ -74,9 +74,10 @@ async function processLead(brandConfig, page) {
     const lastName = "ckmtestpixel";
     const email = "ckmtestpixel@gmail.com";
 
-    // Dynamic Slider value overrides based on execution count (Random value within specified range)
-    const rangeIndex = runIndex % 7;
+    // Dynamic Slider value overrides based on weekly schedule (Random value within specified range)
     let rawSliderVal;
+    let targetMin = 0;
+    let targetMax = 200000;
     
     if (process.env.OVERRIDE_SLIDER) {
       rawSliderVal = parseInt(process.env.OVERRIDE_SLIDER);
@@ -88,34 +89,59 @@ async function processLead(brandConfig, page) {
       else if (bucketIdx === 2) rawSliderVal = 35000; // Represents "$20,000 - $50,000"
       else rawSliderVal = 75000; // Represents "$50,000 or more"
     } else {
-      if (rangeIndex === 0) rawSliderVal = Math.floor(Math.random() * (5000 - 1500) + 1500); // 1.5k - 5k
-      else if (rangeIndex === 1) rawSliderVal = Math.floor(Math.random() * (7500 - 5001) + 5001); // 5k - 7.5k
-      else if (rangeIndex === 2) rawSliderVal = Math.floor(Math.random() * (10000 - 7501) + 7501); // 7.5k - 10k
-      else if (rangeIndex === 3) rawSliderVal = Math.floor(Math.random() * (20000 - 10001) + 10001); // 10k - 20k
-      else if (rangeIndex === 4) rawSliderVal = Math.floor(Math.random() * (50000 - 20001) + 20001); // 20k - 50k
-      else if (rangeIndex === 5) rawSliderVal = Math.floor(Math.random() * (100000 - 50001) + 50001); // 50k - 100k
-      else rawSliderVal = Math.floor(Math.random() * (150000 - 100001) + 100001); // 100k+
+      // WEEKLY ROTATIONAL SLIDER LOGIC
+      // Parse max slider limit from campaigns config
+      let maxLimit = 200000; // default safe high limit
+      if (brandConfig.sliderAmount) {
+        let str = brandConfig.sliderAmount.toString();
+        if (str.includes('-')) str = str.split('-')[1];
+        let parsed = parseInt(str.replace(/[^0-9]/g, ''));
+        if (!isNaN(parsed) && parsed > 0) maxLimit = parsed;
+      }
+
+      // Determine week parity using ISO week calculation
+      const d = new Date();
+      const dayNum = d.getUTCDay() || 7;
+      d.setUTCDate(d.getUTCDate() + 4 - dayNum);
+      const yearStart = new Date(Date.UTC(d.getUTCFullYear(),0,1));
+      const weekNo = Math.ceil((((d - yearStart) / 86400000) + 1)/7);
+      
+      const isFirstWeek = (weekNo % 2 !== 0);
+      const dayOfWeek = new Date().getDay(); // 1=Mon, 3=Wed, 5=Fri
+
+      let min = 0, max = 0;
+      if (isFirstWeek) {
+        if (dayOfWeek === 1) { min = 0; max = 7500; }
+        else if (dayOfWeek === 3) { min = 7500; max = 10000; }
+        else if (dayOfWeek === 5) { min = 10000; max = 20000; }
+        else { min = 1000; max = 20000; }
+      } else {
+        if (dayOfWeek === 1) { min = 20000; max = 50000; }
+        else if (dayOfWeek === 3) { min = 50000; max = 100000; }
+        else if (dayOfWeek === 5) { min = 100000; max = 150000; }
+        else { min = 20000; max = 150000; }
+      }
+
+      // Cap at campaign max limit dynamically
+      if (min > maxLimit) min = maxLimit;
+      if (max > maxLimit) max = maxLimit;
+      if (min === 0) min = 1000; // forms usually fail with exactly $0
+
+      console.log(`📅 [Rotational Logic] Week ${isFirstWeek ? '1' : '2'} Day ${dayOfWeek}. Target Range: ${min}-${max} (Max allowed by URL: ${maxLimit})`);
+
+      targetMin = min;
+      targetMax = max;
+
+      if (min === max) {
+         rawSliderVal = min;
+      } else {
+         rawSliderVal = Math.floor(Math.random() * (max - min + 1)) + min;
+      }
     }
 
     const finalSlider = rawSliderVal.toLocaleString();
 
-    // Unified Cake Income Mapping Logic (matches user request EXACTLY - 7 Tiers)
-    let cakeIncomeOverride;
-    if (rawSliderVal <= 7500) {
-      cakeIncomeOverride = "5,000";
-    } else if (rawSliderVal <= 9999) {
-      cakeIncomeOverride = "7,500";
-    } else if (rawSliderVal <= 19999) {
-      cakeIncomeOverride = "10,000";
-    } else if (rawSliderVal <= 49999) {
-      cakeIncomeOverride = "20,000";
-    } else if (rawSliderVal <= 99999) {
-      cakeIncomeOverride = "50,000";
-    } else {
-      cakeIncomeOverride = "100,000";
-    }
-
-    // Dynamic State rotation (Comprehensive list of all 50 US states)
+    // Dynamic State rotation
     const rotatingStates = [
       "Alabama", "Alaska", "Arizona", "Arkansas", "California",
       "Colorado", "Connecticut", "Delaware", "Florida", "Georgia",
@@ -144,27 +170,16 @@ async function processLead(brandConfig, page) {
     let finalState = rotatingStates[runIndex % rotatingStates.length];
     if (process.env.OVERRIDE_STATE) {
       finalState = process.env.OVERRIDE_STATE;
-      console.log(`🔌 [Override] Applying custom state value: ${finalState}`);
     }
     const finalStateCode = stateToCode[finalState] || finalState;
 
-    // Dynamic dummy phone generation to prevent duplicates and ensure no real phones are contacted
+    // Dynamic dummy phone generation
     const suffixNum = String(1000 + (runIndex % 9000));
     let dummyPhone = `401-247-${suffixNum}`;
     if (process.env.OVERRIDE_PHONE) {
       dummyPhone = process.env.OVERRIDE_PHONE;
-      console.log(`🔌 [Override] Applying custom phone number: ${dummyPhone}`);
     }
 
-    console.log(`🎯 Enforcing dynamic credentials & parameters:`);
-    console.log(`   - First Name:   ${firstName}`);
-    console.log(`   - Last Name:    ${lastName}`);
-    console.log(`   - Email:        ${email}`);
-    console.log(`   - Phone Number: ${dummyPhone}`);
-    console.log(`   - Slider Value: ${finalSlider}`);
-    console.log(`   - State Value:  ${finalState} (${finalStateCode})`);
-
-    // Build brand config payload with dynamic parameters
     const finalBrandConfig = {
       ...brandConfig,
       sliderAmount: finalSlider,
@@ -176,14 +191,18 @@ async function processLead(brandConfig, page) {
     const isMobile = viewport && viewport.width < 500;
     const isTablet = viewport && viewport.width >= 500 && viewport.width < 1024;
     const isDevice = isMobile || isTablet;
-    const formPage = isDevice ? new MobileFormPage(page) : new FormPage(page);
 
     // ==================================================
     // 🔹 STAGE 1: PLAYWRIGHT FORM AUTOMATION
     // ==================================================
+    const FormPageClass = viewport === 'desktop' ? require('../pages/FormPage') : require('../pages/MobileFormPage');
+    const formPage = new FormPageClass(page);
+
     await formPage.navigate(finalBrandConfig.url);
-    await formPage.fillForm({
+    const fillResult = await formPage.fillForm({
       sliderAmount: finalBrandConfig.sliderAmount,
+      targetMin,
+      targetMax,
       state: finalBrandConfig.state,
       firstName,
       lastName,
@@ -191,12 +210,26 @@ async function processLead(brandConfig, page) {
       phone: finalBrandConfig.phone,
       runIndex
     });
+    
+    // CAKE MAPPING EXACTLY FROM UI SELECTION
+    let uiSelectedSliderStr = fillResult?.extractedSliderAmount || finalSlider;
+    const uiSelectedSliderNum = parseInt(uiSelectedSliderStr.toString().replace(/[^0-9]/g, '')) || rawSliderVal;
+    
+    let cakeIncomeOverride;
+    if (uiSelectedSliderNum <= 7500) cakeIncomeOverride = "5,000";
+    else if (uiSelectedSliderNum <= 9999) cakeIncomeOverride = "7,500";
+    else if (uiSelectedSliderNum <= 19999) cakeIncomeOverride = "10,000";
+    else if (uiSelectedSliderNum <= 49999) cakeIncomeOverride = "20,000";
+    else if (uiSelectedSliderNum <= 99999) cakeIncomeOverride = "50,000";
+    else {
+      cakeIncomeOverride = "100,000";
+      uiSelectedSliderStr = "100000 & more";
+    }
+
     await formPage.submitForm();
 
     const thankYouUrl = await formPage.getThankYouUrl();
     const leadId = await formPage.extractLeadId(thankYouUrl);
-
-    // Determine Device Type Dynamically and append active browser engine name
     const activeBrowser = (process.env.PROCESS_BROWSER || 'chromium').toUpperCase();
     let deviceType = 'D'; // Desktop
     if (isMobile) {
@@ -280,7 +313,7 @@ async function processLead(brandConfig, page) {
     const finalSliderAmount = ((formPage.selectedSliderAmount && formPage.selectedSliderAmount !== 'N/A') ? formPage.selectedSliderAmount : '') || 
                              (finalBrandConfig.sliderAmount || '');
     
-    // 🛡️ [FLM Agent] ENSURING 100K & MORE LOGIC
+    // 🛡️ [AI Agent] ENSURING 100K & MORE LOGIC
     const numericSliderVal = parseInt(finalSliderAmount.toString().replace(/[$,\s]/g, '')) || 0;
     const displaySliderAmount = (numericSliderVal >= 100000) ? "100000 & more" : finalSliderAmount;
 
@@ -297,7 +330,7 @@ async function processLead(brandConfig, page) {
       console.warn('⚠️ Could not extract fallbacks from URL:', e.message);
     }
 
-    // 🛡️ [FLM Agent] ENSURING NO "N/A" - ALL MISSING VALUES ARE BLANK
+    // 🛡️ [AI Agent] ENSURING NO "N/A" - ALL MISSING VALUES ARE BLANK
     const sanitize = (val) => (val === 'N/A' || val === undefined || val === null) ? '' : val;
 
     const rowData = {
@@ -333,14 +366,14 @@ async function processLead(brandConfig, page) {
     }
 
     // ==================================================
-    // 🔹 STAGE 6: FLM AGENT AUTOMATED AUDIT
+    // 🔹 STAGE 6: AI AGENT AUTOMATED AUDIT
     // ==================================================
-    const validation = flmAgent.validateIncomeMapping(finalSliderAmount, cakeIncomeOverride, firstApiData.income);
-    console.log(`🤖 [FLM Agent Audit] Status: ${validation.status}`);
-    console.log(`🤖 [FLM Agent Audit] Details: ${validation.details}`);
+    const validation = aiAgent.validateIncomeMapping(finalSliderAmount, cakeIncomeOverride, firstApiData.income);
+    console.log(`🤖 [AI Agent Audit] Status: ${validation.status}`);
+    console.log(`🤖 [AI Agent Audit] Details: ${validation.details}`);
 
     if (validation.status === "FAIL") {
-      console.warn(`🚨 [FLM Agent] Data mismatch detected for ${brandConfig.name}. Please review Google Sheet.`);
+      console.warn(`🚨 [AI Agent] Data mismatch detected for ${brandConfig.name}. Please review Google Sheet.`);
     }
 
     if (!leadIdFormatValid) {
@@ -365,13 +398,8 @@ async function processLead(brandConfig, page) {
           fs.mkdirSync(dir, { recursive: true });
         }
 
-        // Retrieve temp video path before closing
-        const originalPath = await video.path().catch(() => null);
-
-        // Close page & context to flush playwright video stream
-        const context = page.context();
+        // Close page to flush playwright video stream
         await page.close().catch(() => null);
-        await context.close().catch(() => null);
 
         // Copy video file to clean name
         await video.saveAs(targetPath).catch(() => null);

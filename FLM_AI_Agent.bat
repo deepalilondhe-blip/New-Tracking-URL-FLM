@@ -1,6 +1,6 @@
 @echo off
 echo =====================================================
-echo Starting FLM AI Agent Server...
+echo Starting AI Agent Server...
 echo =====================================================
 
 :: Check if server is already running on port 3000
@@ -15,6 +15,6 @@ if errorlevel 1 (
     echo Server is already running.
 )
 
-echo Opening FLM Agent...
-start "FLM Agent" http://localhost:3000/chat
+echo Opening AI Agent...
+start "AI Agent" http://localhost:3000/chat
 exit

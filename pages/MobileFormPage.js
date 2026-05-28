@@ -1,5 +1,5 @@
 require('dotenv').config();
-const flmAgent = require('../utils/flmAgent');
+const aiAgent = require('../utils/flmAgent');
 
 /**
  * =========================================================
@@ -399,12 +399,14 @@ class MobileFormPage {
   async fillForm(data = {}) {
     await this.injectDeviceFrame();
     console.log('📝 [Mobile] Starting mobile-specific form filling...');
-    const sliderAmount = data.sliderAmount || '20000';
-    const state = data.state || 'RI';
-    const firstName = data.firstName || 'ckmtestpixel';
-    const lastName = data.lastName || 'ckmtestpixel';
-    const email = data.email || 'ckmtestpixel@gmail.com';
-    const phone = data.phone || '4012473406';
+    const { sliderAmount, targetMin, targetMax, state, firstName, lastName, email, phone, runIndex } = data;
+    this.runIndex = runIndex || 0;
+    const defaultSliderAmount = sliderAmount || '20000';
+    const defaultState = state || 'RI';
+    const defaultFirstName = firstName || 'ckmtestpixel';
+    const defaultLastName = lastName || 'ckmtestpixel';
+    const defaultEmail = email || 'ckmtestpixel@gmail.com';
+    const defaultPhone = phone || '4012473406';
 
     try {
       let taxDebtSelect;
@@ -468,33 +470,55 @@ class MobileFormPage {
 
         // Check for standard select dropdown (Prioritize for mobile/tablet responsive layouts)
         taxDebtSelect = this.page.locator('select#tax_debt, select[name="tax_debt"], .debt-select').first();
-        if (await taxDebtSelect.isVisible({ timeout: 2000 })) {
-          console.log('🔘 [Mobile] Found dropdown menu. Performing visible selection...');
-          await taxDebtSelect.scrollIntoViewIfNeeded();
+        if (await taxDebtSelect.isVisible({ timeout: 1500 }).catch(() => false)) {
+          const optionsLocator = taxDebtSelect.locator('option');
+          const count = await optionsLocator.count().catch(() => 0);
           
-          const selectedData = await taxDebtSelect.evaluate((node, amount) => {
-            const rawVal = parseInt(amount.replace(/[$,\s]/g, ''));
-            const options = Array.from(node.options);
+          if (count > 0) {
+            console.log(`🔍 [Mobile Dropdown Scanner] Scanning ${count} dropdown options against daily range: ${targetMin} - ${targetMax}`);
+            const validOptions = [];
             
-            // Find best matching option based on buckets
-            const match = options.find(opt => {
-                const text = opt.text.toLowerCase();
-                if (rawVal < 10000 && text.includes('9,999')) return true;
-                if (rawVal >= 10000 && rawVal < 20000 && (text.includes('19,999') || text.includes('10,000'))) return true;
-                if (rawVal >= 20000 && rawVal < 50000 && (text.includes('50,000') || text.includes('20,000'))) return true;
-                if (rawVal >= 50000 && (text.includes('50,000 or more') || text.includes('more'))) return true;
-                return false;
-            }) || options[options.length - 1];
-
-            node.value = match.value;
-            node.dispatchEvent(new Event('change', { bubbles: true }));
-            return { value: match.value, text: match.text };
-          }, sliderAmount);
-
-          this.selectedSliderAmount = selectedData.text;
-          selected = true;
-          console.log(`✅ [Mobile] Selected dropdown option: "${selectedData.text}"`);
-          await this.page.waitForTimeout(500);
+            for (let i = 0; i < count; i++) {
+              const opt = optionsLocator.nth(i);
+              const text = await opt.textContent().catch(() => '');
+              const value = await opt.getAttribute('value').catch(() => '');
+              const clean = text.toLowerCase().replace(/[$,\s]/g, '').replace(/k/g, '000').replace(/m/g, '000000');
+              
+              if (!clean || clean.includes('select')) continue;
+              
+              let optMin = 0;
+              let optMax = 9999999;
+              
+              if (clean.includes('under') || clean.includes('less')) {
+                const m = clean.match(/\d+/);
+                if (m) { optMin = 0; optMax = parseInt(m[0]); }
+              } else if (clean.includes('+') || clean.includes('more') || clean.includes('above')) {
+                const m = clean.match(/\d+/);
+                if (m) { optMin = parseInt(m[0]); optMax = 9999999; }
+              } else {
+                const m = clean.match(/\d+/g);
+                if (m && m.length >= 2) { optMin = parseInt(m[0]); optMax = parseInt(m[1]); }
+                else if (m && m.length === 1) { optMin = parseInt(m[0]); optMax = parseInt(m[0]); }
+              }
+              
+              if ((optMin <= targetMax && optMax >= targetMin) || (targetMin === undefined)) {
+                validOptions.push({ text: text.trim(), value, index: i });
+              }
+            }
+            
+            if (validOptions.length > 0) {
+              const selectedOpt = validOptions[runIndex % validOptions.length];
+              console.log(`✅ [Mobile Rotational Logic] Selected dropdown choice: "${selectedOpt.text}"`);
+              await taxDebtSelect.selectOption(selectedOpt.value || { index: selectedOpt.index });
+              this.selectedSliderAmount = selectedOpt.text;
+              selected = true;
+            } else {
+              console.log('⚠️ [Mobile Dropdown Scanner] No options match the daily range. Attempting fallback to nearest available max tier...');
+              await taxDebtSelect.selectOption({ index: count - 1 }).catch(() => {});
+              this.selectedSliderAmount = await taxDebtSelect.locator('option').nth(count - 1).textContent().catch(() => sliderAmount);
+              selected = true;
+            }
+          }
         }
 
         if (!selected) {
@@ -526,6 +550,59 @@ class MobileFormPage {
               console.log(`✅ [Mobile] Selected debt amount: ${selector}`);
               selected = true;
               break;
+            }
+          }
+
+          if (!selected) {
+            // Find all visible options on the page (spans, divs, labels, buttons)
+            console.log(`🔍 [Mobile Smart Choice Scanner] Scanning for options matching daily range: ${targetMin} - ${targetMax}`);
+            
+            const matchData = await this.page.evaluate(({ tMin, tMax, rIndex }) => {
+              const elements = Array.from(document.querySelectorAll('span, label, div, button, li'));
+              const validChoices = [];
+              
+              for (const el of elements) {
+                const style = window.getComputedStyle(el);
+                if (style.display === 'none' || style.visibility === 'hidden' || el.offsetWidth === 0) continue;
+                
+                const text = (el.innerText || el.textContent || '').trim();
+                if (!text || text.length > 60 || text.toLowerCase().includes('select')) continue;
+                
+                const clean = text.toLowerCase().replace(/[$,\s]/g, '').replace(/k/g, '000').replace(/m/g, '000000');
+                
+                let optMin = 0;
+                let optMax = 9999999;
+                
+                if (clean.includes('under') || clean.includes('less')) {
+                  const m = clean.match(/\d+/);
+                  if (m) { optMin = 0; optMax = parseInt(m[0], 10); } else continue;
+                } else if (clean.includes('+') || clean.includes('more') || clean.includes('above')) {
+                  const m = clean.match(/\d+/);
+                  if (m) { optMin = parseInt(m[0], 10); optMax = 9999999; } else continue;
+                } else {
+                  const m = clean.match(/\d+/g);
+                  if (m && m.length >= 2) { optMin = parseInt(m[0], 10); optMax = parseInt(m[1], 10); }
+                  else if (m && m.length === 1) { optMin = parseInt(m[0], 10); optMax = parseInt(m[0], 10); }
+                  else continue;
+                }
+                
+                if ((tMin !== undefined && optMin <= tMax && optMax >= tMin) || (tMin === undefined)) {
+                  validChoices.push({ text: text.trim(), el });
+                }
+              }
+              
+              if (validChoices.length > 0) {
+                const choice = validChoices[rIndex % validChoices.length];
+                choice.el.click();
+                return { success: true, text: choice.text };
+              }
+              return { success: false };
+            }, { tMin: targetMin, tMax: targetMax, rIndex: runIndex });
+
+            if (matchData && matchData.success) {
+              console.log(`✅ [Mobile Rotational Logic] Selected Smart Choice option: "${matchData.text}"`);
+              this.selectedSliderAmount = matchData.text;
+              selected = true;
             }
           }
 
@@ -707,6 +784,13 @@ class MobileFormPage {
         await this.waitForSpinner();
         await this.injectDeviceFrame();
 
+        // Exit immediately if thank you page is detected
+        const currentUrl = this.page.url();
+        if (currentUrl.includes('/ty') || currentUrl.includes('/thank-you') || currentUrl.includes('/thankyou') || currentUrl.includes('leadid=') || currentUrl.includes('transaction_id=')) {
+          console.log('✅ [Mobile] Thank you page or lead id detected in URL during contact loop. Exiting contact loop.');
+          break;
+        }
+
         let filledSomething = false;
 
         // First Name
@@ -770,7 +854,7 @@ class MobileFormPage {
         }
 
         // Click next/submit button if visible on this contact sub-step
-        const visibleSelector = '.btn-next:visible, .next-btn:visible, .next-btn3:visible, .next-btn4:visible, .next-btn5:visible, button:has-text("NEXT"):visible, button:has-text("Next"):visible, button:has-text("Submit"):visible, button:has-text("Continue"):visible, input[type="submit"]:visible, .emailbtn:visible, .namebtn:visible';
+        const visibleSelector = '#reload-button:visible, #fakeNextBtn:visible, .btn-next:visible, .next-btn:visible, .next-btn3:visible, .next-btn4:visible, .next-btn5:visible, button:has-text("NEXT"):visible, button:has-text("Next"):visible, button:has-text("Submit"):visible, button:has-text("Continue"):visible, input[type="submit"]:visible, .emailbtn:visible, .namebtn:visible';
         const nextBtn = this.page.locator(visibleSelector).first();
         
         if (await nextBtn.isVisible({ timeout: 1000 }).catch(() => false)) {
@@ -802,7 +886,14 @@ class MobileFormPage {
       for (let i = 0; i < 3; i++) {
         await this.waitForSpinner();
 
-        const extraBtn = this.page.locator('#submitBtn, .next-btn6.submitBtn, .next-btn7.submitBtn, .next-btn-1, button:has-text("NEXT"), button:has-text("Submit"), button:has-text("Continue")').first();
+        // Check if thank you page/redirect was reached during the loop
+        const currentUrl = this.page.url();
+        if (currentUrl.includes('/ty') || currentUrl.includes('/thank-you') || currentUrl.includes('/thankyou') || currentUrl.includes('leadid=') || currentUrl.includes('transaction_id=')) {
+          console.log('✅ [Mobile] Thank you page detected during adaptive submit loop. Exiting loop.');
+          break;
+        }
+
+        const extraBtn = this.page.locator('#reload-button, #fakeNextBtn, #submitBtn, .next-btn6.submitBtn, .next-btn7.submitBtn, .next-btn-1, button:has-text("NEXT"), button:has-text("Submit"), button:has-text("Continue")').first();
         if (await extraBtn.isVisible({ timeout: 2000 })) {
           const btnClass = await extraBtn.getAttribute('class').catch(() => 'btn');
           console.log(`✅ [Mobile] Extra submit/next button found (${btnClass}), clicking (Attempt ${i + 1})...`);
@@ -813,10 +904,12 @@ class MobileFormPage {
         }
       }
 
-    } catch (err) {
-      console.error('❌ [Mobile] Error during mobile form filling:', err.message);
-      throw err;
+    } catch (error) {
+      console.error('❌ [Mobile] Error during form filling:', error.message);
+      throw error;
     }
+
+    return { extractedSliderAmount: this.selectedSliderAmount };
   }
 
   /**
@@ -870,15 +963,15 @@ class MobileFormPage {
       }
       await this.injectDeviceFrame();
     } catch (e) {
-      console.warn(`⚠️  [Mobile] Button ${selector} not found. Consulting FLM Agent for suggestions...`);
-      const suggestion = await flmAgent.suggestFix(this.page, 'Next button');
+      console.warn(`⚠️  [Mobile] Button ${selector} not found. Consulting AI Agent for suggestions...`);
+      const suggestion = await aiAgent.suggestFix(this.page, 'Next button');
       if (suggestion) {
-        console.warn(`🤖 [FLM Agent] POTENTIAL MOBILE FIX DISCOVERED: ${suggestion}`);
+        console.warn(`🤖 [AI Agent] POTENTIAL MOBILE FIX DISCOVERED: ${suggestion}`);
         console.warn(`🔔 [Manual Approval Required] Please update the selector in MobileFormPage.js to use: ${suggestion}`);
       } else {
-        console.warn(`❌ [FLM Agent] No suggestion available for this mobile failure.`);
+        console.warn(`❌ [AI Agent] No suggestion available for this mobile failure.`);
       }
-      throw new Error(`Mobile Navigation button ${selector} missing. FLM Agent suggestion provided in logs.`);
+      throw new Error(`Mobile Navigation button ${selector} missing. AI Agent suggestion provided in logs.`);
     }
   }
 
@@ -909,11 +1002,11 @@ class MobileFormPage {
       console.log('⏳ [Mobile] Waiting for submission navigation to complete');
       await this.page.waitForNavigation({ waitUntil: 'networkidle', timeout: 20000 }).catch(() => { });
 
-      // Last resort: FLM Agent Self-Healing for Submit (Manual Approval Mode)
-      console.warn('⚠️ [Mobile] Standard submit buttons not found, consulting FLM Agent...');
-      const suggestion = await flmAgent.suggestFix(this.page, 'Submit button');
+      // Last resort: AI Agent Self-Healing for Submit (Manual Approval Mode)
+      console.warn('⚠️ [Mobile] Standard submit buttons not found, consulting AI Agent...');
+      const suggestion = await aiAgent.suggestFix(this.page, 'Submit button');
       if (suggestion) {
-        console.warn(`🤖 [FLM Agent] POTENTIAL SUBMIT FIX DISCOVERED: ${suggestion}`);
+        console.warn(`🤖 [AI Agent] POTENTIAL SUBMIT FIX DISCOVERED: ${suggestion}`);
         console.warn(`🔔 [Manual Approval Required] Update MobileFormPage.js submit block with: ${suggestion}`);
       }
 
@@ -963,24 +1056,45 @@ class MobileFormPage {
       const params = new URLSearchParams(urlObj.search);
       console.log('📱 [Mobile Diagnostic] Full Thank You URL Parameters:', JSON.stringify(Object.fromEntries(params.entries())));
 
+      // Helper to strictly validate true CAKE Lead IDs (8 chars, letters + numbers)
+      const isAlphanumericHex8 = (id) => {
+        if (!id) return false;
+        const norm = id.trim().toUpperCase();
+        return /^[A-Z0-9]{8}$/.test(norm) && /[A-Z]/.test(norm) && /[0-9]/.test(norm);
+      };
+
       // Priority 1: URL Parameters
-      let leadId = params.get('transaction_id')
-        || params.get('leadid')
-        || params.get('lead_id')
-        || params.get('ckm_id')
-        || params.get('tid')
-        || params.get('reqid')
-        || params.get('request_id')
-        || params.get('id');
+      const paramKeys = ['transaction_id', 'leadid', 'lead_id', 'ckm_id', 'tid', 'reqid', 'request_id', 'id'];
+      let leadId = null;
+
+      for (const key of paramKeys) {
+        const val = params.get(key);
+        if (isAlphanumericHex8(val)) {
+          leadId = val;
+          break;
+        }
+      }
+
+      if (!leadId) {
+        leadId = params.get('transaction_id') || params.get('leadid') || params.get('lead_id') || params.get('ckm_id') || params.get('tid') || params.get('reqid') || params.get('request_id') || params.get('id');
+      }
 
       // Priority 2: DOM DEEP-SCAN (Hidden inputs, Text patterns, GUIDs, Hex-8)
-      if (!leadId || (leadId.length !== 8 && leadId.length < 10)) {
-        console.log('🔍 [Mobile DOM Deep-Scan] URL ID missing or non-standard. Searching for Hex-8 or GUID IDs...');
+      // If the extracted parameter is NOT a valid alphanumeric Hex-8 (e.g. it's a numeric reqid), we force the DOM scan.
+      if (!isAlphanumericHex8(leadId)) {
+        console.log('🔍 [Mobile DOM Deep-Scan] URL ID missing or non-standard (e.g. numeric reqid). Searching for Hex-8 or GUID IDs...');
         const domId = await this.page.evaluate(() => {
-          // 1. Search for 8-character Hex patterns
-          const html = document.documentElement.innerHTML;
-          const hex8Match = html.match(/\b[A-F0-9]{8}\b/i);
-          if (hex8Match) return hex8Match[0];
+          // Remove scripts and styles before scanning text to avoid CSS hex colors or JS hashes
+          const clone = document.body.cloneNode(true);
+          const scripts = clone.querySelectorAll('script, style');
+          scripts.forEach(s => s.remove());
+          const html = clone.innerHTML;
+          
+          // 1. Search for strictly UPPERCASE 8-character Hex patterns with at least one letter
+          const hex8Regex = /\b[0-9]*[A-F][A-F0-9]*\b/g;
+          const matches = html.match(hex8Regex) || [];
+          const validHex8 = matches.find(m => m.length === 8);
+          if (validHex8) return validHex8;
 
           // 2. Search for GUID patterns (32 chars hex)
           const guidMatch = html.match(/[a-f0-9]{32}/i) || html.match(/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}/i);
@@ -989,10 +1103,13 @@ class MobileFormPage {
           // 3. Search for hidden inputs
           const inputs = Array.from(document.querySelectorAll('input[type="hidden"]'));
           for (const input of inputs) {
-            if (input.name.toLowerCase().includes('id') && input.value.length >= 8) return input.value;
+            if (input.name.toLowerCase().includes('id') && input.value.length >= 8) {
+               const val = input.value.trim().toUpperCase();
+               if (/^[A-Z0-9]{8}$/.test(val) && /[A-Z]/.test(val)) return val;
+            }
           }
 
-          const bodyText = document.body.innerText;
+          const bodyText = clone.innerText;
           const longIdMatch = bodyText.match(/(?:ID|Transaction|Ref|Conf)\s*[:#-]?\s*([A-Z0-9-]{8,40})/i);
           return longIdMatch ? longIdMatch[1] : null;
         }).catch(() => null);

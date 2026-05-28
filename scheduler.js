@@ -253,8 +253,10 @@ async function runBatch() {
   console.log(`🤖 Interval configured: every ${intervalHours} hours`);
   console.log(`🤖 ================================================================`);
 
-  const now = new Date();
-  const dayOfWeek = now.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+  const options = { timeZone: 'Asia/Kolkata', weekday: 'long' };
+  const weekdayName = new Intl.DateTimeFormat('en-US', options).format(new Date());
+  const dayMap = { 'Sunday': 0, 'Monday': 1, 'Tuesday': 2, 'Wednesday': 3, 'Thursday': 4, 'Friday': 5, 'Saturday': 6 };
+  const dayOfWeek = dayMap[weekdayName];
   const allowedDays = [1, 3, 5]; // Monday, Wednesday, Friday
 
   if (!allowedDays.includes(dayOfWeek)) {
@@ -292,13 +294,20 @@ async function runBatch() {
   }
   console.log(`🤖 [FLM Agent] Global Health Verification Complete.\n`);
 
+  // Flatten all runs into a single queue
+  const allRuns = [];
   for (const campaignGroup of runnerScripts) {
-    const campaignName = campaignGroup[0]?.campaignId.toUpperCase() || 'UNKNOWN';
-    console.log(`\n================================================================`);
-    console.log(`⚡ Processing Campaign Matrix: [${campaignName}]`);
-    console.log(`================================================================`);
+    allRuns.push(...campaignGroup);
+  }
 
-    for (const run of campaignGroup) {
+  console.log(`\n================================================================`);
+  console.log(`⚡ Processing ${allRuns.length} Tasks in Parallel (Concurrency: 4)`);
+  console.log(`================================================================`);
+
+  let runIndex = 0;
+  async function worker() {
+    while (runIndex < allRuns.length) {
+      const run = allRuns[runIndex++];
       const stateKey = `${run.campaignId}:${run.viewport}:${run.browser}:${run.label}`;
       
       const res = await runScript(run.campaignId, run.viewport, run.browser, run.label).catch(err => {
@@ -318,13 +327,18 @@ async function runBatch() {
           console.error('⚠️ Failed to save scheduler state:', err.message);
         }
       } else {
-        console.warn(`🚨 [FLM Agent] Failure recorded for ${res.campaignId} [${res.label}]. Logged to Dashboard.`);
+        console.warn(`🚨 [AI Agent] Failure recorded for ${res.campaignId} [${res.label}]. Logged to Dashboard.`);
       }
-
-      // 100ms breathing room between runs
-      await new Promise(resolve => setTimeout(resolve, 100));
     }
   }
+
+  // Launch parallel workers
+  const CONCURRENCY = 4; // Safe limit for simultaneous headed browsers
+  const workers = [];
+  for (let i = 0; i < CONCURRENCY; i++) {
+    workers.push(worker());
+  }
+  await Promise.all(workers);
 
   const durationMinutes = ((Date.now() - startTime) / (1000 * 60)).toFixed(2);
   const total = results.length;

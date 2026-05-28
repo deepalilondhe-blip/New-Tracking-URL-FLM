@@ -20,7 +20,8 @@ class DailyLogger {
      */
     async logResult(result) {
         const data = this.readLog();
-        const today = new Date().toISOString().split('T')[0];
+        // Strictly use IST (Asia/Kolkata) to prevent appending yesterday's date during early morning runs
+        const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Kolkata' }).format(new Date());
 
         if (data.date !== today) {
             // Reset for a new day
@@ -31,7 +32,7 @@ class DailyLogger {
 
         data.runs.push({
             ...result,
-            timestamp: new Date().toLocaleTimeString()
+            timestamp: new Date().toLocaleTimeString('en-US', { timeZone: 'Asia/Kolkata' })
         });
 
         this.writeLog(data);

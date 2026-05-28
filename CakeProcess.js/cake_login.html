@@ -1,0 +1,96 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Forward Leap Marketing</title>
+<meta name="apple-itunes-app" content="app-id=487902075" />
+<link type="image/x-icon" rel="icon" href="//us1-us2.ckcdnassets.com/399/logos/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="//cakecdn.com/portals/static/resources/css/ext-all.css" />
+<link rel="stylesheet" href="//cakecdn.com/portals/2605121547/stylesheets/master.css" />
+<link type="text/css" rel="stylesheet" href="//cakecdn.com/portals/static/resources/css/global.css" />
+<link rel="stylesheet" href="//cakecdn.com/portals/2605121547/stylesheets/themes/default/theme.css?v=2605121547" />
+<link rel="stylesheet" href="//cakecdn.com/portals/2605121547/stylesheets/core/chrome.css" />
+<link rel="stylesheet" href="//cakecdn.com/portals/2605121547/stylesheets/theme.css" />
+<link rel="stylesheet" href="//cakecdn.com/portals/2605121547/stylesheets/login.css" />
+
+	
+		<link id="custom_theme_v2" rel="stylesheet" href="/colors.ashx?s=custom-theme-v2" />
+	
+<link id="custom_chrome" rel="stylesheet" href="/colors.ashx?s=custom-chrome" />
+<link id="icons" rel="stylesheet" href="/colors.ashx?s=icons" />
+<style type="text/css">
+h1 {
+    font-size: 18px;
+    font-weight: normal;
+    margin: 35px 0;
+	text-align:center;
+}
+.qrCode {
+  text-align:center;
+}
+</style>
+<script type="text/javascript">
+	var REDIR_LINK = '';
+	var tpl = '';
+    var isOKTA = false;
+    var isCAKE = true;
+	var ChallengeUrl = '';
+	var DefaultLoginTab = '1';
+	var CakeCDNDirectory = '//cakecdn.com/portals/static/';
+</script>
+</head>
+<body>
+	<div id="loading">
+		<div class="loading-indicator"><img src="//cakecdn.com/portals/static/images/24.gif" alt="" />Forward Leap Marketing<br /><span id="loading-msg">Loading Styles and Images ...</span></div>
+	</div>
+
+	<script type="text/javascript">document.getElementById('loading-msg').innerHTML = 'Loading Core API ...';</script>
+	<script type="text/javascript" src="//cakecdn.com/portals/static/ext/ext-base.js"></script>
+	<script type="text/javascript">document.getElementById('loading-msg').innerHTML = 'Loading UI Components ...';</script>
+	<script type="text/javascript" src="//cakecdn.com/portals/static/ext/ext-all.js"></script>
+	<script type="text/javascript">document.getElementById('loading-msg').innerHTML = 'Loading ...';</script>
+	<script type="text/javascript" src="//cakecdn.com/portals/2605121547/js/newlogin.js?v=5"></script>
+	<script  type="text/javascript">
+        if (isOKTA) {
+            let tabNum = getActiveLoginTab();
+            if (tabNum === '1')
+				showAdmin();
+			else
+                showOthers();
+        }
+    </script>
+
+	
+	<form action="login.ashx?tp=1" method="post" onsubmit="return false;">
+	<div id="document" class="group">
+		<div class ="imagePlaceHolder"></div>
+		<div class="MFAPlaceHolder"></div>
+		
+			<input type="text" name="u" value="" id="u" placeholder="Username" />
+			<div class="passwordWrapper">
+				<input type="password" name="p" value="" id="password" placeholder="Password" onKeyDown="if(event.keyCode==13) asubmit(false,1);" />
+				<img src="//cakecdn.com/portals/static/images/icons/visible.png" id="togglePassword" alt="Show password" title="Show password" />
+			</div>
+			<div id="error" style="color: #f00; padding:10px 5px 5px 5px;"></div>
+			<div><a href="#" style="font-size:12px; margin-left: 5px;" onclick="forgotPassword();return false;">Forgot your password?</a></div>
+		
+		<div class="MFACodePlaceHolder"></div>
+		<button id="submitButton" class="x-btn" style="border: 0px;" onclick="asubmit(false,1);">Log In</button>
+	</div>
+	</form>
+	
+
+	<div id="imageHolder" style="display:none">
+	   <img id="LoginLogo" src="//us1-us2.ckcdnassets.com/399/logos/loginlogo.png" border="0" />
+	</div>
+	<div id="mfaImageHolder" style="display:none">
+		
+	</div>
+	<div id ="mfaCodeHolder" style="display:none">
+		
+	</div>
+
+    
+</body>
+</html>

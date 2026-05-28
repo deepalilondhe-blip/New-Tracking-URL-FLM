@@ -9,9 +9,9 @@ const path = require('path');
  * understanding, and proactive campaign intelligence.
  * ====================================================================
  */
-class FlmAgent {
+class AIAgent {
     constructor() {
-        this.name = 'FLM Agent';
+        this.name = 'AI Agent';
         this.version = '3.0';
         this.memoryPath = path.join(__dirname, '..', 'config', 'healing-memory.json');
         this.projectRoot = path.join(__dirname, '..');
@@ -20,12 +20,13 @@ class FlmAgent {
         // 🧠 DEEP PROJECT KNOWLEDGE BASE
         this.knowledge = {
             pipeline: [
-                '1. PLAYWRIGHT FORM FILL — Navigate to tracking URL, set slider, select state, fill contact info, submit form',
-                '2. THANK YOU PAGE — Extract Lead ID from redirect URL',
+                '1. PLAYWRIGHT FORM FILL — Navigate to tracking URL, set slider via Smart Choice Scanner (length < 60 chars filter), select state, fill contact info, submit form',
+                '2. THANK YOU PAGE — Early Exit Detection before Step 6 or extract Lead ID from final redirect URL. NOTE: Valid CAKE Lead IDs are exactly 8 characters and MUST be alphanumeric. Purely numeric IDs (e.g. 26829587) are invalid request IDs and must be rejected.',
                 '3. FIRST API (CAKE XML) — GET to app.forwardleapmarketing.com → Affiliate, Campaign ID, Income, State, Phone, Neustar, Pixel',
                 '4. SECOND API (CDB JSON) — POST to flm-utility.com or everesttaxrelief.net → DBID, CDB Status, CDB Email Validation',
                 '5. REST-ASSURANCE — Backend verification of lead data integrity',
-                '6. GOOGLE SHEETS — Append 22-column row to campaign-specific tab + professional formatting'
+                '6. GOOGLE SHEETS — Append 22-column row to campaign-specific tab + professional formatting',
+                '7. VIDEO CAPTURE — Saving WebM trace videos without closing context prematurely'
             ],
             incomeMapping: {
                 tiers: [
@@ -214,7 +215,7 @@ class FlmAgent {
                     console.warn("Could not load chat history for AI memory.");
                 }
 
-                const systemPrompt = `You are the FLM Agent, a highly intelligent AI assistant (similar to Antigravity) managing a Playwright Lead Automation Suite. 
+                const systemPrompt = `You are the AI Agent, a highly intelligent AI assistant (similar to Antigravity) managing a Playwright Lead Automation Suite. 
 Your tone is professional, extremely knowledgeable, slightly witty, and highly helpful. You use markdown for formatting (bold, lists, etc).
                 
 CURRENT SYSTEM STATUS:
@@ -244,7 +245,7 @@ Answer the user's prompt using the real-time data above. Be direct and concise. 
 
         // 3. FALLBACK: IF NO API KEY
         if (msg.includes('help') || msg.includes('capabilities')) {
-            return `🧠 **FLM Agent v${this.version} — Capabilities:**\n\n**✨ TRUE AI MODE IS CURRENTLY LOCKED ✨**\nTo make me speak and think like Antigravity, I need a Gemini API Key!\n\n1. Go to [Google AI Studio](https://aistudio.google.com/app/apikey) to get a free key.\n2. Add \`GEMINI_API_KEY=your_key\` to your \`.env\` file.\n3. Restart the dashboard.\n\nOnce unlocked, I'll be powered by a true LLM and can analyze logs, explain architectures, and chat with you dynamically!\n\n---\n**Standard Capabilities:**\n• "What is the status?"\n• "Run FSI-Main on desktop"\n• "Show errors"\n• "Explain pipeline"`;
+            return `🧠 **AI Agent v${this.version} — Capabilities:**\n\n**✨ TRUE AI MODE IS CURRENTLY LOCKED ✨**\nTo make me speak and think like Antigravity, I need a Gemini API Key!\n\n1. Go to [Google AI Studio](https://aistudio.google.com/app/apikey) to get a free key.\n2. Add \`GEMINI_API_KEY=your_key\` to your \`.env\` file.\n3. Restart the dashboard.\n\nOnce unlocked, I'll be powered by a true LLM and can analyze logs, explain architectures, and chat with you dynamically!\n\n---\n**Standard Capabilities:**\n• "What is the status?"\n• "Run FSI-Main on desktop"\n• "Show errors"\n• "Explain pipeline"`;
         }
 
         if (hasImage) {
@@ -252,12 +253,12 @@ Answer the user's prompt using the real-time data above. Be direct and concise. 
         }
 
         if (msg.match(/^(hi|hello|hey|sup)/)) {
-            return `👋 Hello! I'm the **FLM Agent**. I'm currently running in standard mode. Add a \`GEMINI_API_KEY\` to the \`.env\` file to unlock my True AI conversational capabilities!`;
+            return `👋 Hello! I'm the **AI Agent**. I'm currently running in standard mode. Add a \`GEMINI_API_KEY\` to the \`.env\` file to unlock my True AI conversational capabilities!`;
         }
 
         if (msg.includes('status')) return this._getFullStatus();
         if (msg.includes('error') || msg.includes('fail') || msg.includes('troubleshoot')) return this._getTroubleshootingHelp(msg);
-        
+
         if (msg.includes('list') || msg.includes('all campaign')) {
             const campaigns = this.loadCampaigns();
             return `📋 **All ${campaigns.length} Configured Campaigns:**\n\n${campaigns.map((c, i) => `${i + 1}. **${c.name}** (ID: \`${c.id}\`) → Sheet: \`${c.sheet}\``).join('\n')}\n\nEach campaign runs on 10 environments per batch cycle.`;
@@ -276,7 +277,7 @@ Answer the user's prompt using the real-time data above. Be direct and concise. 
             return this._getPendingCampaigns();
         }
         
-        return `🧠 I'm the FLM Agent! Currently tracking **${this.loadCampaigns().length} campaigns**. \n\n⚠️ **You asked me to speak like Antigravity, but my AI brain is locked!**\nTo unleash my full Gemini LLM capabilities, please add a \`GEMINI_API_KEY\` to your \`.env\` file and restart me. Then I can chat with you about anything!`;
+        return `⚠️ **Conversational AI Mode is Locked!**\n\nI am tracking **${this.loadCampaigns().length} campaigns**, but my true brain is currently offline. To enable my advanced conversational capabilities and allow me to answer arbitrary prompts, you **MUST** provide a \`GEMINI_API_KEY\` in your \`.env\` file.\n\nUntil then, I can only respond to basic commands like **"status"**, **"help"**, or **"run [campaign]"**.`;
     }
 
     // =============================================
@@ -505,4 +506,4 @@ Answer the user's prompt using the real-time data above. Be direct and concise. 
     }
 }
 
-module.exports = new FlmAgent();
+module.exports = new AIAgent();

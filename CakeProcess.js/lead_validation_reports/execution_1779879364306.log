@@ -1,0 +1,29 @@
+[2026-05-27T10:56:04.306Z] [INFO] Lead Validation & CDB Verification Process Started
+[2026-05-27T10:56:04.307Z] [INFO] Extracting latest Lead ID from scheduler execution
+[2026-05-27T10:56:04.308Z] [WARN] No Lead ID found in results, using dynamic generation
+[2026-05-27T10:56:04.309Z] [INFO] Launching browser
+[2026-05-27T10:56:04.770Z] [INFO] --- STEP 1: Search Lead in Cake ---
+[2026-05-27T10:56:04.771Z] [INFO] Searching Lead ID in Cake: TEST_1779879364308
+[2026-05-27T10:56:11.385Z] [WARN] Search box not found
+[2026-05-27T10:56:11.386Z] [ERROR] Error searching Lead in Cake: ENOENT: no such file or directory, mkdir 'C:\Users\Deepali_Londhe\Desktop\New Tracking URL\CakeProcess.js\C:\Users\Deepali_Londhe\Desktop\New Tracking URL\CakeProcess.js\lead_validation_screenshots'
+[2026-05-27T10:56:11.399Z] [INFO] --- STEP 2: Verify Lead Popup Details ---
+[2026-05-27T10:56:11.400Z] [INFO] Opening Lead popup and verifying details
+[2026-05-27T10:56:11.405Z] [INFO] --- STEP 3: Search Lead in CDB ---
+[2026-05-27T10:56:11.406Z] [INFO] Searching Lead ID in CDB: TEST_1779879364308
+[2026-05-27T10:56:17.085Z] [INFO] Logging into CDB
+[2026-05-27T10:56:17.138Z] [INFO] Entered CDB email
+[2026-05-27T10:56:17.159Z] [INFO] Entered CDB password
+[2026-05-27T10:56:17.210Z] [INFO] Clicked CDB login button
+[2026-05-27T10:56:22.937Z] [INFO] Opened Lead Listing tab
+[2026-05-27T10:56:22.949Z] [INFO] CDB Status: NOT FOUND
+[2026-05-27T10:56:22.949Z] [ERROR] Error searching in CDB: ENOENT: no such file or directory, mkdir 'C:\Users\Deepali_Londhe\Desktop\New Tracking URL\CakeProcess.js\C:\Users\Deepali_Londhe\Desktop\New Tracking URL\CakeProcess.js\lead_validation_screenshots'
+[2026-05-27T10:56:22.950Z] [INFO] --- STEP 4: Update FML Project Dashboard ---
+[2026-05-27T10:56:22.950Z] [INFO] Updating FML Project dashboard
+[2026-05-27T10:56:22.967Z] [INFO] Created month folder: C:\Users\Deepali_Londhe\Desktop\New Tracking URL\FML_Project_Dashboard\May_2026
+[2026-05-27T10:56:22.967Z] [INFO] Created new dashboard sheet
+[2026-05-27T10:56:22.968Z] [INFO] ✓ Updated dashboard: C:\Users\Deepali_Londhe\Desktop\New Tracking URL\FML_Project_Dashboard\May_2026\Sheet_5_2026.csv
+[2026-05-27T10:56:22.969Z] [INFO] Generating comprehensive report
+[2026-05-27T10:56:22.971Z] [INFO] Report saved: C:\Users\Deepali_Londhe\Desktop\New Tracking URL\CakeProcess.js\lead_validation_report_TEST_1779879364308_1779879382970.json
+[2026-05-27T10:56:22.972Z] [INFO] Execution completed in 18.67 seconds
+[2026-05-27T10:56:23.259Z] [INFO] Browser closed
+[2026-05-27T10:56:23.260Z] [INFO] Process finished

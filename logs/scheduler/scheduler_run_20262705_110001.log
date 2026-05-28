@@ -1,0 +1,1406 @@
+===================================================== 
+SCHEDULER STARTED AT: 27-05-2026 11:00:01.46 
+===================================================== 
+Running Playwright batch scheduler... 
+◇ injected env (25) from .env // tip: ⌁ auth for agents [www.vestauth.com]
+◇ injected env (0) from .env // tip: ⌘ custom filepath { path: '/custom/path/.env' }
+
+🤖 ================================================================
+🤖 STARTING LEADS AUTOMATION BATCH RUN [27/5/2026, 11:00:01 am]
+🤖 Interval configured: every 3 hours
+🤖 ================================================================
+
+🤖 [FLM Agent] Starting Global URL Health Verification...
+🤖 [AI Agent] Pre-flight check: Verifying health for FTD-X...
+🔴 [FLM Agent] FTD-X is DOWN: timeout of 10000ms exceeded
+🤖 [AI Agent] Pre-flight check: Verifying health for FSI-PPC2...
+✅ [AI Agent] FSI-PPC2 URL is healthy.
+🤖 [AI Agent] Pre-flight check: Verifying health for TRA-CPL...
+✅ [AI Agent] TRA-CPL URL is healthy.
+🤖 [AI Agent] Pre-flight check: Verifying health for TRA-D3...
+✅ [AI Agent] TRA-D3 URL is healthy.
+🤖 [AI Agent] Pre-flight check: Verifying health for PPC-ST...
+✅ [AI Agent] PPC-ST URL is healthy.
+🤖 [AI Agent] Pre-flight check: Verifying health for PPC-ST2...
+✅ [AI Agent] PPC-ST2 URL is healthy.
+🤖 [AI Agent] Pre-flight check: Verifying health for PPC-M-CA...
+✅ [AI Agent] PPC-M-CA URL is healthy.
+🤖 [AI Agent] Pre-flight check: Verifying health for PPC CR...
+✅ [AI Agent] PPC CR URL is healthy.
+🤖 [AI Agent] Pre-flight check: Verifying health for PPC FS...
+✅ [AI Agent] PPC FS URL is healthy.
+🤖 [AI Agent] Pre-flight check: Verifying health for PPC...
+✅ [AI Agent] PPC URL is healthy.
+🤖 [AI Agent] Pre-flight check: Verifying health for TRA-CPM...
+✅ [AI Agent] TRA-CPM URL is healthy.
+🤖 [AI Agent] Pre-flight check: Verifying health for Everest Tax Releif(X)...
+✅ [AI Agent] Everest Tax Releif(X) URL is healthy.
+🤖 [AI Agent] Pre-flight check: Verifying health for VTS Original...
+✅ [AI Agent] VTS Original URL is healthy.
+🤖 [AI Agent] Pre-flight check: Verifying health for VTS-NE-Branded...
+✅ [AI Agent] VTS-NE-Branded URL is healthy.
+🤖 [AI Agent] Pre-flight check: Verifying health for Original...
+✅ [AI Agent] Original URL is healthy.
+🤖 [AI Agent] Pre-flight check: Verifying health for 1800 Fresh Tax (X) Main...
+✅ [AI Agent] 1800 Fresh Tax (X) Main URL is healthy.
+🤖 [AI Agent] Pre-flight check: Verifying health for FSI - MAIN...
+✅ [AI Agent] FSI - MAIN URL is healthy.
+🤖 [FLM Agent] Global Health Verification Complete.
+
+
+================================================================
+⚡ Processing Campaign Matrix: [FTD-X]
+================================================================
+
+================================================================
+🚀 [27/5/2026, 11:01:06 am] RUNNING: FTD-X [ANDROID - CHROME]
+🔗 Target URL: https://mlfftd.com/?a=659&oc=656&c=167&s1=
+================================================================
+[ftd-x][Android - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[ftd-x][Android - Chrome] [STDERR] c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\leadProcessor.js:336
+    let firstApiData = { affiliateId: '', campaignId: '', income: '', state: '', phone: '', neustar: '', neustarDisposition: '', pixelFired: 'false' };
+        ^
+
+SyntaxError: Identifier 'firstApiData' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1743:18)
+    at Module._compile (node:internal/modules/cjs/loader:1786:20)
+    at Object..js (node:internal/modules/cjs/loader:1943:10)
+    at Module.load (node:internal/modules/cjs/loader:1533:32)
+    at Module._load (node:internal/modules/cjs/loader:1335:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)
+    at Module.require (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\browser-intercept.js:81:26)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-master.js:12:25)
+
+Node.js v24.14.1
+❌ [27/5/2026, 11:01:06 am] FAILED: ftd-x [Android - Chrome][CHROMIUM]
+🚨 [FLM Agent] Failure recorded for ftd-x [Android - Chrome]. Logged to Dashboard.
+
+================================================================
+🚀 [27/5/2026, 11:01:07 am] RUNNING: FTD-X [TABLET - CHROME]
+🔗 Target URL: https://mlfftd.com/?a=659&oc=656&c=167&s1=
+================================================================
+[ftd-x][Tablet - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[ftd-x][Tablet - Chrome] [STDERR] c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\leadProcessor.js:336
+    let firstApiData = { affiliateId: '', campaignId: '', income: '', state: '', phone: '', neustar: '', neustarDisposition: '', pixelFired: 'false' };
+        ^
+
+SyntaxError: Identifier 'firstApiData' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1743:18)
+    at Module._compile (node:internal/modules/cjs/loader:1786:20)
+    at Object..js (node:internal/modules/cjs/loader:1943:10)
+    at Module.load (node:internal/modules/cjs/loader:1533:32)
+    at Module._load (node:internal/modules/cjs/loader:1335:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)
+    at Module.require (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\browser-intercept.js:81:26)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-master.js:12:25)
+
+Node.js v24.14.1
+❌ [27/5/2026, 11:01:07 am] FAILED: ftd-x [Tablet - Chrome][CHROMIUM]
+🚨 [FLM Agent] Failure recorded for ftd-x [Tablet - Chrome]. Logged to Dashboard.
+
+================================================================
+🚀 [27/5/2026, 11:01:07 am] RUNNING: FTD-X [DESKTOP - CHROME]
+🔗 Target URL: https://mlfftd.com/?a=659&oc=656&c=167&s1=
+================================================================
+[ftd-x][Desktop - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[ftd-x][Desktop - Chrome] [STDERR] c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\leadProcessor.js:336
+    let firstApiData = { affiliateId: '', campaignId: '', income: '', state: '', phone: '', neustar: '', neustarDisposition: '', pixelFired: 'false' };
+        ^
+
+SyntaxError: Identifier 'firstApiData' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1743:18)
+    at Module._compile (node:internal/modules/cjs/loader:1786:20)
+    at Object..js (node:internal/modules/cjs/loader:1943:10)
+    at Module.load (node:internal/modules/cjs/loader:1533:32)
+    at Module._load (node:internal/modules/cjs/loader:1335:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)
+    at Module.require (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\browser-intercept.js:81:26)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-master.js:12:25)
+
+Node.js v24.14.1
+❌ [27/5/2026, 11:01:08 am] FAILED: ftd-x [Desktop - Chrome][CHROMIUM]
+🚨 [FLM Agent] Failure recorded for ftd-x [Desktop - Chrome]. Logged to Dashboard.
+
+================================================================
+⚡ Processing Campaign Matrix: [FSI-PPC2]
+================================================================
+
+================================================================
+🚀 [27/5/2026, 11:01:08 am] RUNNING: FSI-PPC2 [ANDROID - CHROME]
+🔗 Target URL: https://fsimlf-trk.com/?a=659&oc=750&c=143&s1=
+================================================================
+[fsi-ppc2][Android - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[fsi-ppc2][Android - Chrome] [STDERR] c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\leadProcessor.js:336
+    let firstApiData = { affiliateId: '', campaignId: '', income: '', state: '', phone: '', neustar: '', neustarDisposition: '', pixelFired: 'false' };
+        ^
+
+SyntaxError: Identifier 'firstApiData' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1743:18)
+    at Module._compile (node:internal/modules/cjs/loader:1786:20)
+    at Object..js (node:internal/modules/cjs/loader:1943:10)
+    at Module.load (node:internal/modules/cjs/loader:1533:32)
+    at Module._load (node:internal/modules/cjs/loader:1335:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)
+    at Module.require (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\browser-intercept.js:81:26)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-master.js:12:25)
+
+Node.js v24.14.1
+❌ [27/5/2026, 11:01:09 am] FAILED: fsi-ppc2 [Android - Chrome][CHROMIUM]
+🚨 [FLM Agent] Failure recorded for fsi-ppc2 [Android - Chrome]. Logged to Dashboard.
+
+================================================================
+🚀 [27/5/2026, 11:01:09 am] RUNNING: FSI-PPC2 [TABLET - CHROME]
+🔗 Target URL: https://fsimlf-trk.com/?a=659&oc=750&c=143&s1=
+================================================================
+[fsi-ppc2][Tablet - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[fsi-ppc2][Tablet - Chrome] [STDERR] c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\leadProcessor.js:336
+    let firstApiData = { affiliateId: '', campaignId: '', income: '', state: '', phone: '', neustar: '', neustarDisposition: '', pixelFired: 'false' };
+        ^
+
+SyntaxError: Identifier 'firstApiData' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1743:18)
+    at Module._compile (node:internal/modules/cjs/loader:1786:20)
+    at Object..js (node:internal/modules/cjs/loader:1943:10)
+    at Module.load (node:internal/modules/cjs/loader:1533:32)
+    at Module._load (node:internal/modules/cjs/loader:1335:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)
+    at Module.require (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\browser-intercept.js:81:26)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-master.js:12:25)
+
+Node.js v24.14.1
+❌ [27/5/2026, 11:01:09 am] FAILED: fsi-ppc2 [Tablet - Chrome][CHROMIUM]
+🚨 [FLM Agent] Failure recorded for fsi-ppc2 [Tablet - Chrome]. Logged to Dashboard.
+
+================================================================
+🚀 [27/5/2026, 11:01:09 am] RUNNING: FSI-PPC2 [DESKTOP - CHROME]
+🔗 Target URL: https://fsimlf-trk.com/?a=659&oc=750&c=143&s1=
+================================================================
+[fsi-ppc2][Desktop - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[fsi-ppc2][Desktop - Chrome] [STDERR] c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\leadProcessor.js:336
+    let firstApiData = { affiliateId: '', campaignId: '', income: '', state: '', phone: '', neustar: '', neustarDisposition: '', pixelFired: 'false' };
+        ^
+
+SyntaxError: Identifier 'firstApiData' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1743:18)
+    at Module._compile (node:internal/modules/cjs/loader:1786:20)
+    at Object..js (node:internal/modules/cjs/loader:1943:10)
+    at Module.load (node:internal/modules/cjs/loader:1533:32)
+    at Module._load (node:internal/modules/cjs/loader:1335:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)
+    at Module.require (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\browser-intercept.js:81:26)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-master.js:12:25)
+
+Node.js v24.14.1
+❌ [27/5/2026, 11:01:10 am] FAILED: fsi-ppc2 [Desktop - Chrome][CHROMIUM]
+🚨 [FLM Agent] Failure recorded for fsi-ppc2 [Desktop - Chrome]. Logged to Dashboard.
+
+================================================================
+⚡ Processing Campaign Matrix: [TRA-CPL]
+================================================================
+
+================================================================
+🚀 [27/5/2026, 11:01:10 am] RUNNING: TRA-CPL [ANDROID - CHROME]
+🔗 Target URL: https://flmtra.com/?a=659&oc=756&c=2210&s1=
+================================================================
+[tra-cpl][Android - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[tra-cpl][Android - Chrome] [STDERR] c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\leadProcessor.js:336
+    let firstApiData = { affiliateId: '', campaignId: '', income: '', state: '', phone: '', neustar: '', neustarDisposition: '', pixelFired: 'false' };
+        ^
+
+SyntaxError: Identifier 'firstApiData' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1743:18)
+    at Module._compile (node:internal/modules/cjs/loader:1786:20)
+    at Object..js (node:internal/modules/cjs/loader:1943:10)
+    at Module.load (node:internal/modules/cjs/loader:1533:32)
+    at Module._load (node:internal/modules/cjs/loader:1335:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)
+    at Module.require (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\browser-intercept.js:81:26)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-master.js:12:25)
+
+Node.js v24.14.1
+❌ [27/5/2026, 11:01:11 am] FAILED: tra-cpl [Android - Chrome][CHROMIUM]
+🚨 [FLM Agent] Failure recorded for tra-cpl [Android - Chrome]. Logged to Dashboard.
+
+================================================================
+🚀 [27/5/2026, 11:01:11 am] RUNNING: TRA-CPL [TABLET - CHROME]
+🔗 Target URL: https://flmtra.com/?a=659&oc=756&c=2210&s1=
+================================================================
+[tra-cpl][Tablet - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[tra-cpl][Tablet - Chrome] [STDERR] c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\leadProcessor.js:336
+    let firstApiData = { affiliateId: '', campaignId: '', income: '', state: '', phone: '', neustar: '', neustarDisposition: '', pixelFired: 'false' };
+        ^
+
+SyntaxError: Identifier 'firstApiData' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1743:18)
+    at Module._compile (node:internal/modules/cjs/loader:1786:20)
+    at Object..js (node:internal/modules/cjs/loader:1943:10)
+    at Module.load (node:internal/modules/cjs/loader:1533:32)
+    at Module._load (node:internal/modules/cjs/loader:1335:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)
+    at Module.require (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\browser-intercept.js:81:26)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-master.js:12:25)
+
+Node.js v24.14.1
+❌ [27/5/2026, 11:01:11 am] FAILED: tra-cpl [Tablet - Chrome][CHROMIUM]
+🚨 [FLM Agent] Failure recorded for tra-cpl [Tablet - Chrome]. Logged to Dashboard.
+
+================================================================
+🚀 [27/5/2026, 11:01:11 am] RUNNING: TRA-CPL [DESKTOP - CHROME]
+🔗 Target URL: https://flmtra.com/?a=659&oc=756&c=2210&s1=
+================================================================
+[tra-cpl][Desktop - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[tra-cpl][Desktop - Chrome] [STDERR] c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\leadProcessor.js:336
+    let firstApiData = { affiliateId: '', campaignId: '', income: '', state: '', phone: '', neustar: '', neustarDisposition: '', pixelFired: 'false' };
+        ^
+
+SyntaxError: Identifier 'firstApiData' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1743:18)
+    at Module._compile (node:internal/modules/cjs/loader:1786:20)
+    at Object..js (node:internal/modules/cjs/loader:1943:10)
+    at Module.load (node:internal/modules/cjs/loader:1533:32)
+    at Module._load (node:internal/modules/cjs/loader:1335:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)
+    at Module.require (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\browser-intercept.js:81:26)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-master.js:12:25)
+
+Node.js v24.14.1
+❌ [27/5/2026, 11:01:12 am] FAILED: tra-cpl [Desktop - Chrome][CHROMIUM]
+🚨 [FLM Agent] Failure recorded for tra-cpl [Desktop - Chrome]. Logged to Dashboard.
+
+================================================================
+⚡ Processing Campaign Matrix: [TRA-D3]
+================================================================
+
+================================================================
+🚀 [27/5/2026, 11:01:12 am] RUNNING: TRA-D3 [ANDROID - CHROME]
+🔗 Target URL: https://flmtra.com/?a=659&oc=792&c=2386&s1=
+================================================================
+[tra-d3][Android - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[tra-d3][Android - Chrome] [STDERR] c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\leadProcessor.js:336
+    let firstApiData = { affiliateId: '', campaignId: '', income: '', state: '', phone: '', neustar: '', neustarDisposition: '', pixelFired: 'false' };
+        ^
+
+SyntaxError: Identifier 'firstApiData' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1743:18)
+    at Module._compile (node:internal/modules/cjs/loader:1786:20)
+    at Object..js (node:internal/modules/cjs/loader:1943:10)
+    at Module.load (node:internal/modules/cjs/loader:1533:32)
+    at Module._load (node:internal/modules/cjs/loader:1335:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)
+    at Module.require (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\browser-intercept.js:81:26)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-master.js:12:25)
+
+Node.js v24.14.1
+❌ [27/5/2026, 11:01:13 am] FAILED: tra-d3 [Android - Chrome][CHROMIUM]
+🚨 [FLM Agent] Failure recorded for tra-d3 [Android - Chrome]. Logged to Dashboard.
+
+================================================================
+🚀 [27/5/2026, 11:01:13 am] RUNNING: TRA-D3 [TABLET - CHROME]
+🔗 Target URL: https://flmtra.com/?a=659&oc=792&c=2386&s1=
+================================================================
+[tra-d3][Tablet - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[tra-d3][Tablet - Chrome] [STDERR] c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\leadProcessor.js:336
+    let firstApiData = { affiliateId: '', campaignId: '', income: '', state: '', phone: '', neustar: '', neustarDisposition: '', pixelFired: 'false' };
+        ^
+
+SyntaxError: Identifier 'firstApiData' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1743:18)
+    at Module._compile (node:internal/modules/cjs/loader:1786:20)
+    at Object..js (node:internal/modules/cjs/loader:1943:10)
+    at Module.load (node:internal/modules/cjs/loader:1533:32)
+    at Module._load (node:internal/modules/cjs/loader:1335:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)
+    at Module.require (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\browser-intercept.js:81:26)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-master.js:12:25)
+
+Node.js v24.14.1
+❌ [27/5/2026, 11:01:13 am] FAILED: tra-d3 [Tablet - Chrome][CHROMIUM]
+🚨 [FLM Agent] Failure recorded for tra-d3 [Tablet - Chrome]. Logged to Dashboard.
+
+================================================================
+🚀 [27/5/2026, 11:01:14 am] RUNNING: TRA-D3 [DESKTOP - CHROME]
+🔗 Target URL: https://flmtra.com/?a=659&oc=792&c=2386&s1=
+================================================================
+[tra-d3][Desktop - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[tra-d3][Desktop - Chrome] [STDERR] c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\leadProcessor.js:336
+    let firstApiData = { affiliateId: '', campaignId: '', income: '', state: '', phone: '', neustar: '', neustarDisposition: '', pixelFired: 'false' };
+        ^
+
+SyntaxError: Identifier 'firstApiData' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1743:18)
+    at Module._compile (node:internal/modules/cjs/loader:1786:20)
+    at Object..js (node:internal/modules/cjs/loader:1943:10)
+    at Module.load (node:internal/modules/cjs/loader:1533:32)
+    at Module._load (node:internal/modules/cjs/loader:1335:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)
+    at Module.require (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\browser-intercept.js:81:26)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-master.js:12:25)
+
+Node.js v24.14.1
+❌ [27/5/2026, 11:01:14 am] FAILED: tra-d3 [Desktop - Chrome][CHROMIUM]
+🚨 [FLM Agent] Failure recorded for tra-d3 [Desktop - Chrome]. Logged to Dashboard.
+
+================================================================
+⚡ Processing Campaign Matrix: [PPC-ST]
+================================================================
+
+================================================================
+🚀 [27/5/2026, 11:01:14 am] RUNNING: PPC-ST [ANDROID - CHROME]
+🔗 Target URL: https://flmtra.com/?a=659&oc=837&c=2210&s1=
+================================================================
+[ppc-st][Android - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[ppc-st][Android - Chrome] [STDERR] c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\leadProcessor.js:336
+    let firstApiData = { affiliateId: '', campaignId: '', income: '', state: '', phone: '', neustar: '', neustarDisposition: '', pixelFired: 'false' };
+        ^
+
+SyntaxError: Identifier 'firstApiData' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1743:18)
+    at Module._compile (node:internal/modules/cjs/loader:1786:20)
+    at Object..js (node:internal/modules/cjs/loader:1943:10)
+    at Module.load (node:internal/modules/cjs/loader:1533:32)
+    at Module._load (node:internal/modules/cjs/loader:1335:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)
+    at Module.require (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\browser-intercept.js:81:26)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-master.js:12:25)
+
+Node.js v24.14.1
+❌ [27/5/2026, 11:01:15 am] FAILED: ppc-st [Android - Chrome][CHROMIUM]
+🚨 [FLM Agent] Failure recorded for ppc-st [Android - Chrome]. Logged to Dashboard.
+
+================================================================
+🚀 [27/5/2026, 11:01:15 am] RUNNING: PPC-ST [TABLET - CHROME]
+🔗 Target URL: https://flmtra.com/?a=659&oc=837&c=2210&s1=
+================================================================
+[ppc-st][Tablet - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[ppc-st][Tablet - Chrome] [STDERR] c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\leadProcessor.js:336
+    let firstApiData = { affiliateId: '', campaignId: '', income: '', state: '', phone: '', neustar: '', neustarDisposition: '', pixelFired: 'false' };
+        ^
+
+SyntaxError: Identifier 'firstApiData' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1743:18)
+    at Module._compile (node:internal/modules/cjs/loader:1786:20)
+    at Object..js (node:internal/modules/cjs/loader:1943:10)
+    at Module.load (node:internal/modules/cjs/loader:1533:32)
+    at Module._load (node:internal/modules/cjs/loader:1335:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)
+    at Module.require (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\browser-intercept.js:81:26)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-master.js:12:25)
+
+Node.js v24.14.1
+❌ [27/5/2026, 11:01:16 am] FAILED: ppc-st [Tablet - Chrome][CHROMIUM]
+🚨 [FLM Agent] Failure recorded for ppc-st [Tablet - Chrome]. Logged to Dashboard.
+
+================================================================
+🚀 [27/5/2026, 11:01:16 am] RUNNING: PPC-ST [DESKTOP - CHROME]
+🔗 Target URL: https://flmtra.com/?a=659&oc=837&c=2210&s1=
+================================================================
+[ppc-st][Desktop - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[ppc-st][Desktop - Chrome] [STDERR] c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\leadProcessor.js:336
+    let firstApiData = { affiliateId: '', campaignId: '', income: '', state: '', phone: '', neustar: '', neustarDisposition: '', pixelFired: 'false' };
+        ^
+
+SyntaxError: Identifier 'firstApiData' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1743:18)
+    at Module._compile (node:internal/modules/cjs/loader:1786:20)
+    at Object..js (node:internal/modules/cjs/loader:1943:10)
+    at Module.load (node:internal/modules/cjs/loader:1533:32)
+    at Module._load (node:internal/modules/cjs/loader:1335:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)
+    at Module.require (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\browser-intercept.js:81:26)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-master.js:12:25)
+
+Node.js v24.14.1
+❌ [27/5/2026, 11:01:17 am] FAILED: ppc-st [Desktop - Chrome][CHROMIUM]
+🚨 [FLM Agent] Failure recorded for ppc-st [Desktop - Chrome]. Logged to Dashboard.
+
+================================================================
+⚡ Processing Campaign Matrix: [PPC-ST2]
+================================================================
+
+================================================================
+🚀 [27/5/2026, 11:01:17 am] RUNNING: PPC-ST2 [ANDROID - CHROME]
+🔗 Target URL: https://flmtra.com/?a=659&oc=858&c=2210&s1=
+================================================================
+[ppc-st2][Android - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[ppc-st2][Android - Chrome] [STDERR] c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\leadProcessor.js:336
+    let firstApiData = { affiliateId: '', campaignId: '', income: '', state: '', phone: '', neustar: '', neustarDisposition: '', pixelFired: 'false' };
+        ^
+
+SyntaxError: Identifier 'firstApiData' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1743:18)
+    at Module._compile (node:internal/modules/cjs/loader:1786:20)
+    at Object..js (node:internal/modules/cjs/loader:1943:10)
+    at Module.load (node:internal/modules/cjs/loader:1533:32)
+    at Module._load (node:internal/modules/cjs/loader:1335:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)
+    at Module.require (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\browser-intercept.js:81:26)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-master.js:12:25)
+
+Node.js v24.14.1
+❌ [27/5/2026, 11:01:17 am] FAILED: ppc-st2 [Android - Chrome][CHROMIUM]
+🚨 [FLM Agent] Failure recorded for ppc-st2 [Android - Chrome]. Logged to Dashboard.
+
+================================================================
+🚀 [27/5/2026, 11:01:17 am] RUNNING: PPC-ST2 [TABLET - CHROME]
+🔗 Target URL: https://flmtra.com/?a=659&oc=858&c=2210&s1=
+================================================================
+[ppc-st2][Tablet - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[ppc-st2][Tablet - Chrome] [STDERR] c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\leadProcessor.js:336
+    let firstApiData = { affiliateId: '', campaignId: '', income: '', state: '', phone: '', neustar: '', neustarDisposition: '', pixelFired: 'false' };
+        ^
+
+SyntaxError: Identifier 'firstApiData' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1743:18)
+    at Module._compile (node:internal/modules/cjs/loader:1786:20)
+    at Object..js (node:internal/modules/cjs/loader:1943:10)
+    at Module.load (node:internal/modules/cjs/loader:1533:32)
+    at Module._load (node:internal/modules/cjs/loader:1335:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)
+    at Module.require (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\browser-intercept.js:81:26)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-master.js:12:25)
+
+Node.js v24.14.1
+❌ [27/5/2026, 11:01:18 am] FAILED: ppc-st2 [Tablet - Chrome][CHROMIUM]
+🚨 [FLM Agent] Failure recorded for ppc-st2 [Tablet - Chrome]. Logged to Dashboard.
+
+================================================================
+🚀 [27/5/2026, 11:01:18 am] RUNNING: PPC-ST2 [DESKTOP - CHROME]
+🔗 Target URL: https://flmtra.com/?a=659&oc=858&c=2210&s1=
+================================================================
+[ppc-st2][Desktop - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[ppc-st2][Desktop - Chrome] [STDERR] c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\leadProcessor.js:336
+    let firstApiData = { affiliateId: '', campaignId: '', income: '', state: '', phone: '', neustar: '', neustarDisposition: '', pixelFired: 'false' };
+        ^
+
+SyntaxError: Identifier 'firstApiData' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1743:18)
+    at Module._compile (node:internal/modules/cjs/loader:1786:20)
+    at Object..js (node:internal/modules/cjs/loader:1943:10)
+    at Module.load (node:internal/modules/cjs/loader:1533:32)
+    at Module._load (node:internal/modules/cjs/loader:1335:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)
+    at Module.require (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\browser-intercept.js:81:26)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-master.js:12:25)
+
+Node.js v24.14.1
+❌ [27/5/2026, 11:01:19 am] FAILED: ppc-st2 [Desktop - Chrome][CHROMIUM]
+🚨 [FLM Agent] Failure recorded for ppc-st2 [Desktop - Chrome]. Logged to Dashboard.
+
+================================================================
+⚡ Processing Campaign Matrix: [PPC-M-CA]
+================================================================
+
+================================================================
+🚀 [27/5/2026, 11:01:19 am] RUNNING: PPC-M-CA [ANDROID - CHROME]
+🔗 Target URL: https://flmtra.com/?a=659&oc=822&c=2210&s1=
+================================================================
+[ppc-m-ca][Android - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[ppc-m-ca][Android - Chrome] [STDERR] c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\leadProcessor.js:336
+    let firstApiData = { affiliateId: '', campaignId: '', income: '', state: '', phone: '', neustar: '', neustarDisposition: '', pixelFired: 'false' };
+        ^
+
+SyntaxError: Identifier 'firstApiData' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1743:18)
+    at Module._compile (node:internal/modules/cjs/loader:1786:20)
+    at Object..js (node:internal/modules/cjs/loader:1943:10)
+    at Module.load (node:internal/modules/cjs/loader:1533:32)
+    at Module._load (node:internal/modules/cjs/loader:1335:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)
+    at Module.require (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\browser-intercept.js:81:26)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-master.js:12:25)
+
+Node.js v24.14.1
+❌ [27/5/2026, 11:01:19 am] FAILED: ppc-m-ca [Android - Chrome][CHROMIUM]
+🚨 [FLM Agent] Failure recorded for ppc-m-ca [Android - Chrome]. Logged to Dashboard.
+
+================================================================
+🚀 [27/5/2026, 11:01:19 am] RUNNING: PPC-M-CA [TABLET - CHROME]
+🔗 Target URL: https://flmtra.com/?a=659&oc=822&c=2210&s1=
+================================================================
+[ppc-m-ca][Tablet - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[ppc-m-ca][Tablet - Chrome] [STDERR] c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\leadProcessor.js:336
+    let firstApiData = { affiliateId: '', campaignId: '', income: '', state: '', phone: '', neustar: '', neustarDisposition: '', pixelFired: 'false' };
+        ^
+
+SyntaxError: Identifier 'firstApiData' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1743:18)
+    at Module._compile (node:internal/modules/cjs/loader:1786:20)
+    at Object..js (node:internal/modules/cjs/loader:1943:10)
+    at Module.load (node:internal/modules/cjs/loader:1533:32)
+    at Module._load (node:internal/modules/cjs/loader:1335:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)
+    at Module.require (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\browser-intercept.js:81:26)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-master.js:12:25)
+
+Node.js v24.14.1
+❌ [27/5/2026, 11:01:20 am] FAILED: ppc-m-ca [Tablet - Chrome][CHROMIUM]
+🚨 [FLM Agent] Failure recorded for ppc-m-ca [Tablet - Chrome]. Logged to Dashboard.
+
+================================================================
+🚀 [27/5/2026, 11:01:20 am] RUNNING: PPC-M-CA [DESKTOP - CHROME]
+🔗 Target URL: https://flmtra.com/?a=659&oc=822&c=2210&s1=
+================================================================
+[ppc-m-ca][Desktop - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[ppc-m-ca][Desktop - Chrome] [STDERR] c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\leadProcessor.js:336
+    let firstApiData = { affiliateId: '', campaignId: '', income: '', state: '', phone: '', neustar: '', neustarDisposition: '', pixelFired: 'false' };
+        ^
+
+SyntaxError: Identifier 'firstApiData' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1743:18)
+    at Module._compile (node:internal/modules/cjs/loader:1786:20)
+    at Object..js (node:internal/modules/cjs/loader:1943:10)
+    at Module.load (node:internal/modules/cjs/loader:1533:32)
+    at Module._load (node:internal/modules/cjs/loader:1335:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)
+    at Module.require (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\browser-intercept.js:81:26)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-master.js:12:25)
+
+Node.js v24.14.1
+❌ [27/5/2026, 11:01:20 am] FAILED: ppc-m-ca [Desktop - Chrome][CHROMIUM]
+🚨 [FLM Agent] Failure recorded for ppc-m-ca [Desktop - Chrome]. Logged to Dashboard.
+
+================================================================
+⚡ Processing Campaign Matrix: [PPC-CR]
+================================================================
+
+================================================================
+🚀 [27/5/2026, 11:01:21 am] RUNNING: PPC CR [ANDROID - CHROME]
+🔗 Target URL: https://flmtra.com/?a=659&oc=848&c=2210&s1=
+================================================================
+[ppc-cr][Android - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[ppc-cr][Android - Chrome] [STDERR] c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\leadProcessor.js:336
+    let firstApiData = { affiliateId: '', campaignId: '', income: '', state: '', phone: '', neustar: '', neustarDisposition: '', pixelFired: 'false' };
+        ^
+
+SyntaxError: Identifier 'firstApiData' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1743:18)
+    at Module._compile (node:internal/modules/cjs/loader:1786:20)
+    at Object..js (node:internal/modules/cjs/loader:1943:10)
+    at Module.load (node:internal/modules/cjs/loader:1533:32)
+    at Module._load (node:internal/modules/cjs/loader:1335:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)
+    at Module.require (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\browser-intercept.js:81:26)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-master.js:12:25)
+
+Node.js v24.14.1
+❌ [27/5/2026, 11:01:21 am] FAILED: ppc-cr [Android - Chrome][CHROMIUM]
+🚨 [FLM Agent] Failure recorded for ppc-cr [Android - Chrome]. Logged to Dashboard.
+
+================================================================
+🚀 [27/5/2026, 11:01:21 am] RUNNING: PPC CR [TABLET - CHROME]
+🔗 Target URL: https://flmtra.com/?a=659&oc=848&c=2210&s1=
+================================================================
+[ppc-cr][Tablet - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[ppc-cr][Tablet - Chrome] [STDERR] c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\leadProcessor.js:336
+    let firstApiData = { affiliateId: '', campaignId: '', income: '', state: '', phone: '', neustar: '', neustarDisposition: '', pixelFired: 'false' };
+        ^
+
+SyntaxError: Identifier 'firstApiData' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1743:18)
+    at Module._compile (node:internal/modules/cjs/loader:1786:20)
+    at Object..js (node:internal/modules/cjs/loader:1943:10)
+    at Module.load (node:internal/modules/cjs/loader:1533:32)
+    at Module._load (node:internal/modules/cjs/loader:1335:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)
+    at Module.require (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\browser-intercept.js:81:26)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-master.js:12:25)
+
+Node.js v24.14.1
+❌ [27/5/2026, 11:01:22 am] FAILED: ppc-cr [Tablet - Chrome][CHROMIUM]
+🚨 [FLM Agent] Failure recorded for ppc-cr [Tablet - Chrome]. Logged to Dashboard.
+
+================================================================
+🚀 [27/5/2026, 11:01:22 am] RUNNING: PPC CR [DESKTOP - CHROME]
+🔗 Target URL: https://flmtra.com/?a=659&oc=848&c=2210&s1=
+================================================================
+[ppc-cr][Desktop - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[ppc-cr][Desktop - Chrome] [STDERR] c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\leadProcessor.js:336
+    let firstApiData = { affiliateId: '', campaignId: '', income: '', state: '', phone: '', neustar: '', neustarDisposition: '', pixelFired: 'false' };
+        ^
+
+SyntaxError: Identifier 'firstApiData' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1743:18)
+    at Module._compile (node:internal/modules/cjs/loader:1786:20)
+    at Object..js (node:internal/modules/cjs/loader:1943:10)
+    at Module.load (node:internal/modules/cjs/loader:1533:32)
+    at Module._load (node:internal/modules/cjs/loader:1335:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)
+    at Module.require (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\browser-intercept.js:81:26)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-master.js:12:25)
+
+Node.js v24.14.1
+❌ [27/5/2026, 11:01:23 am] FAILED: ppc-cr [Desktop - Chrome][CHROMIUM]
+🚨 [FLM Agent] Failure recorded for ppc-cr [Desktop - Chrome]. Logged to Dashboard.
+
+================================================================
+⚡ Processing Campaign Matrix: [PPC-FS]
+================================================================
+
+================================================================
+🚀 [27/5/2026, 11:01:23 am] RUNNING: PPC FS [ANDROID - CHROME]
+🔗 Target URL: https://flmtra.com/?a=659&oc=841&c=2210&s1=
+================================================================
+[ppc-fs][Android - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[ppc-fs][Android - Chrome] [STDERR] c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\leadProcessor.js:336
+    let firstApiData = { affiliateId: '', campaignId: '', income: '', state: '', phone: '', neustar: '', neustarDisposition: '', pixelFired: 'false' };
+        ^
+
+SyntaxError: Identifier 'firstApiData' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1743:18)
+    at Module._compile (node:internal/modules/cjs/loader:1786:20)
+    at Object..js (node:internal/modules/cjs/loader:1943:10)
+    at Module.load (node:internal/modules/cjs/loader:1533:32)
+    at Module._load (node:internal/modules/cjs/loader:1335:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)
+    at Module.require (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\browser-intercept.js:81:26)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-master.js:12:25)
+
+Node.js v24.14.1
+❌ [27/5/2026, 11:01:23 am] FAILED: ppc-fs [Android - Chrome][CHROMIUM]
+🚨 [FLM Agent] Failure recorded for ppc-fs [Android - Chrome]. Logged to Dashboard.
+
+================================================================
+🚀 [27/5/2026, 11:01:23 am] RUNNING: PPC FS [TABLET - CHROME]
+🔗 Target URL: https://flmtra.com/?a=659&oc=841&c=2210&s1=
+================================================================
+[ppc-fs][Tablet - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[ppc-fs][Tablet - Chrome] [STDERR] c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\leadProcessor.js:336
+    let firstApiData = { affiliateId: '', campaignId: '', income: '', state: '', phone: '', neustar: '', neustarDisposition: '', pixelFired: 'false' };
+        ^
+
+SyntaxError: Identifier 'firstApiData' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1743:18)
+    at Module._compile (node:internal/modules/cjs/loader:1786:20)
+    at Object..js (node:internal/modules/cjs/loader:1943:10)
+    at Module.load (node:internal/modules/cjs/loader:1533:32)
+    at Module._load (node:internal/modules/cjs/loader:1335:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)
+    at Module.require (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\browser-intercept.js:81:26)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-master.js:12:25)
+
+Node.js v24.14.1
+❌ [27/5/2026, 11:01:24 am] FAILED: ppc-fs [Tablet - Chrome][CHROMIUM]
+🚨 [FLM Agent] Failure recorded for ppc-fs [Tablet - Chrome]. Logged to Dashboard.
+
+================================================================
+🚀 [27/5/2026, 11:01:24 am] RUNNING: PPC FS [DESKTOP - CHROME]
+🔗 Target URL: https://flmtra.com/?a=659&oc=841&c=2210&s1=
+================================================================
+[ppc-fs][Desktop - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[ppc-fs][Desktop - Chrome] [STDERR] c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\leadProcessor.js:336
+    let firstApiData = { affiliateId: '', campaignId: '', income: '', state: '', phone: '', neustar: '', neustarDisposition: '', pixelFired: 'false' };
+        ^
+
+SyntaxError: Identifier 'firstApiData' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1743:18)
+    at Module._compile (node:internal/modules/cjs/loader:1786:20)
+    at Object..js (node:internal/modules/cjs/loader:1943:10)
+    at Module.load (node:internal/modules/cjs/loader:1533:32)
+    at Module._load (node:internal/modules/cjs/loader:1335:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)
+    at Module.require (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\browser-intercept.js:81:26)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-master.js:12:25)
+
+Node.js v24.14.1
+❌ [27/5/2026, 11:01:25 am] FAILED: ppc-fs [Desktop - Chrome][CHROMIUM]
+🚨 [FLM Agent] Failure recorded for ppc-fs [Desktop - Chrome]. Logged to Dashboard.
+
+================================================================
+⚡ Processing Campaign Matrix: [PPC]
+================================================================
+
+================================================================
+🚀 [27/5/2026, 11:01:25 am] RUNNING: PPC [ANDROID - CHROME]
+🔗 Target URL: https://flmtra.com/?a=659&oc=782&c=2210&s1=
+================================================================
+[ppc][Android - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[ppc][Android - Chrome] [STDERR] c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\leadProcessor.js:336
+    let firstApiData = { affiliateId: '', campaignId: '', income: '', state: '', phone: '', neustar: '', neustarDisposition: '', pixelFired: 'false' };
+        ^
+
+SyntaxError: Identifier 'firstApiData' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1743:18)
+    at Module._compile (node:internal/modules/cjs/loader:1786:20)
+    at Object..js (node:internal/modules/cjs/loader:1943:10)
+    at Module.load (node:internal/modules/cjs/loader:1533:32)
+    at Module._load (node:internal/modules/cjs/loader:1335:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)
+    at Module.require (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\browser-intercept.js:81:26)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-master.js:12:25)
+
+Node.js v24.14.1
+❌ [27/5/2026, 11:01:25 am] FAILED: ppc [Android - Chrome][CHROMIUM]
+🚨 [FLM Agent] Failure recorded for ppc [Android - Chrome]. Logged to Dashboard.
+
+================================================================
+🚀 [27/5/2026, 11:01:25 am] RUNNING: PPC [TABLET - CHROME]
+🔗 Target URL: https://flmtra.com/?a=659&oc=782&c=2210&s1=
+================================================================
+[ppc][Tablet - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[ppc][Tablet - Chrome] [STDERR] c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\leadProcessor.js:336
+    let firstApiData = { affiliateId: '', campaignId: '', income: '', state: '', phone: '', neustar: '', neustarDisposition: '', pixelFired: 'false' };
+        ^
+
+SyntaxError: Identifier 'firstApiData' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1743:18)
+    at Module._compile (node:internal/modules/cjs/loader:1786:20)
+    at Object..js (node:internal/modules/cjs/loader:1943:10)
+    at Module.load (node:internal/modules/cjs/loader:1533:32)
+    at Module._load (node:internal/modules/cjs/loader:1335:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)
+    at Module.require (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\browser-intercept.js:81:26)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-master.js:12:25)
+
+Node.js v24.14.1
+❌ [27/5/2026, 11:01:26 am] FAILED: ppc [Tablet - Chrome][CHROMIUM]
+🚨 [FLM Agent] Failure recorded for ppc [Tablet - Chrome]. Logged to Dashboard.
+
+================================================================
+🚀 [27/5/2026, 11:01:26 am] RUNNING: PPC [DESKTOP - CHROME]
+🔗 Target URL: https://flmtra.com/?a=659&oc=782&c=2210&s1=
+================================================================
+[ppc][Desktop - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[ppc][Desktop - Chrome] [STDERR] c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\leadProcessor.js:336
+    let firstApiData = { affiliateId: '', campaignId: '', income: '', state: '', phone: '', neustar: '', neustarDisposition: '', pixelFired: 'false' };
+        ^
+
+SyntaxError: Identifier 'firstApiData' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1743:18)
+    at Module._compile (node:internal/modules/cjs/loader:1786:20)
+    at Object..js (node:internal/modules/cjs/loader:1943:10)
+    at Module.load (node:internal/modules/cjs/loader:1533:32)
+    at Module._load (node:internal/modules/cjs/loader:1335:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)
+    at Module.require (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\browser-intercept.js:81:26)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-master.js:12:25)
+
+Node.js v24.14.1
+❌ [27/5/2026, 11:01:27 am] FAILED: ppc [Desktop - Chrome][CHROMIUM]
+🚨 [FLM Agent] Failure recorded for ppc [Desktop - Chrome]. Logged to Dashboard.
+
+================================================================
+⚡ Processing Campaign Matrix: [TRA-CPM]
+================================================================
+
+================================================================
+🚀 [27/5/2026, 11:01:27 am] RUNNING: TRA-CPM [ANDROID - CHROME]
+🔗 Target URL: https://flmtra.com/?a=659&oc=763&c=2225&s1=
+================================================================
+[tra-cpm][Android - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[tra-cpm][Android - Chrome] [STDERR] c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\leadProcessor.js:336
+    let firstApiData = { affiliateId: '', campaignId: '', income: '', state: '', phone: '', neustar: '', neustarDisposition: '', pixelFired: 'false' };
+        ^
+
+SyntaxError: Identifier 'firstApiData' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1743:18)
+    at Module._compile (node:internal/modules/cjs/loader:1786:20)
+    at Object..js (node:internal/modules/cjs/loader:1943:10)
+    at Module.load (node:internal/modules/cjs/loader:1533:32)
+    at Module._load (node:internal/modules/cjs/loader:1335:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)
+    at Module.require (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\browser-intercept.js:81:26)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-master.js:12:25)
+
+Node.js v24.14.1
+❌ [27/5/2026, 11:01:27 am] FAILED: tra-cpm [Android - Chrome][CHROMIUM]
+🚨 [FLM Agent] Failure recorded for tra-cpm [Android - Chrome]. Logged to Dashboard.
+
+================================================================
+🚀 [27/5/2026, 11:01:28 am] RUNNING: TRA-CPM [TABLET - CHROME]
+🔗 Target URL: https://flmtra.com/?a=659&oc=763&c=2225&s1=
+================================================================
+[tra-cpm][Tablet - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[tra-cpm][Tablet - Chrome] [STDERR] c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\leadProcessor.js:336
+    let firstApiData = { affiliateId: '', campaignId: '', income: '', state: '', phone: '', neustar: '', neustarDisposition: '', pixelFired: 'false' };
+        ^
+
+SyntaxError: Identifier 'firstApiData' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1743:18)
+    at Module._compile (node:internal/modules/cjs/loader:1786:20)
+    at Object..js (node:internal/modules/cjs/loader:1943:10)
+    at Module.load (node:internal/modules/cjs/loader:1533:32)
+    at Module._load (node:internal/modules/cjs/loader:1335:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)
+    at Module.require (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\browser-intercept.js:81:26)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-master.js:12:25)
+
+Node.js v24.14.1
+❌ [27/5/2026, 11:01:28 am] FAILED: tra-cpm [Tablet - Chrome][CHROMIUM]
+🚨 [FLM Agent] Failure recorded for tra-cpm [Tablet - Chrome]. Logged to Dashboard.
+
+================================================================
+🚀 [27/5/2026, 11:01:28 am] RUNNING: TRA-CPM [DESKTOP - CHROME]
+🔗 Target URL: https://flmtra.com/?a=659&oc=763&c=2225&s1=
+================================================================
+[tra-cpm][Desktop - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[tra-cpm][Desktop - Chrome] [STDERR] c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\leadProcessor.js:336
+    let firstApiData = { affiliateId: '', campaignId: '', income: '', state: '', phone: '', neustar: '', neustarDisposition: '', pixelFired: 'false' };
+        ^
+
+SyntaxError: Identifier 'firstApiData' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1743:18)
+    at Module._compile (node:internal/modules/cjs/loader:1786:20)
+    at Object..js (node:internal/modules/cjs/loader:1943:10)
+    at Module.load (node:internal/modules/cjs/loader:1533:32)
+    at Module._load (node:internal/modules/cjs/loader:1335:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)
+    at Module.require (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\browser-intercept.js:81:26)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-master.js:12:25)
+
+Node.js v24.14.1
+❌ [27/5/2026, 11:01:29 am] FAILED: tra-cpm [Desktop - Chrome][CHROMIUM]
+🚨 [FLM Agent] Failure recorded for tra-cpm [Desktop - Chrome]. Logged to Dashboard.
+
+================================================================
+⚡ Processing Campaign Matrix: [EVEREST-TR-X]
+================================================================
+
+================================================================
+🚀 [27/5/2026, 11:01:29 am] RUNNING: Everest Tax Releif(X) [ANDROID - CHROME]
+🔗 Target URL: https://mlf-trk.com/?a=659&oc=812&c=2498&s1=
+================================================================
+[everest-tr-x][Android - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[everest-tr-x][Android - Chrome] [STDERR] c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\leadProcessor.js:336
+    let firstApiData = { affiliateId: '', campaignId: '', income: '', state: '', phone: '', neustar: '', neustarDisposition: '', pixelFired: 'false' };
+        ^
+
+SyntaxError: Identifier 'firstApiData' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1743:18)
+    at Module._compile (node:internal/modules/cjs/loader:1786:20)
+    at Object..js (node:internal/modules/cjs/loader:1943:10)
+    at Module.load (node:internal/modules/cjs/loader:1533:32)
+    at Module._load (node:internal/modules/cjs/loader:1335:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)
+    at Module.require (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\browser-intercept.js:81:26)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-master.js:12:25)
+
+Node.js v24.14.1
+❌ [27/5/2026, 11:01:29 am] FAILED: everest-tr-x [Android - Chrome][CHROMIUM]
+🚨 [FLM Agent] Failure recorded for everest-tr-x [Android - Chrome]. Logged to Dashboard.
+
+================================================================
+🚀 [27/5/2026, 11:01:30 am] RUNNING: Everest Tax Releif(X) [TABLET - CHROME]
+🔗 Target URL: https://mlf-trk.com/?a=659&oc=812&c=2498&s1=
+================================================================
+[everest-tr-x][Tablet - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[everest-tr-x][Tablet - Chrome] [STDERR] c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\leadProcessor.js:336
+    let firstApiData = { affiliateId: '', campaignId: '', income: '', state: '', phone: '', neustar: '', neustarDisposition: '', pixelFired: 'false' };
+        ^
+
+SyntaxError: Identifier 'firstApiData' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1743:18)
+    at Module._compile (node:internal/modules/cjs/loader:1786:20)
+    at Object..js (node:internal/modules/cjs/loader:1943:10)
+    at Module.load (node:internal/modules/cjs/loader:1533:32)
+    at Module._load (node:internal/modules/cjs/loader:1335:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)
+    at Module.require (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\browser-intercept.js:81:26)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-master.js:12:25)
+
+Node.js v24.14.1
+❌ [27/5/2026, 11:01:30 am] FAILED: everest-tr-x [Tablet - Chrome][CHROMIUM]
+🚨 [FLM Agent] Failure recorded for everest-tr-x [Tablet - Chrome]. Logged to Dashboard.
+
+================================================================
+🚀 [27/5/2026, 11:01:30 am] RUNNING: Everest Tax Releif(X) [DESKTOP - CHROME]
+🔗 Target URL: https://mlf-trk.com/?a=659&oc=812&c=2498&s1=
+================================================================
+[everest-tr-x][Desktop - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[everest-tr-x][Desktop - Chrome] [STDERR] c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\leadProcessor.js:336
+    let firstApiData = { affiliateId: '', campaignId: '', income: '', state: '', phone: '', neustar: '', neustarDisposition: '', pixelFired: 'false' };
+        ^
+
+SyntaxError: Identifier 'firstApiData' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1743:18)
+    at Module._compile (node:internal/modules/cjs/loader:1786:20)
+    at Object..js (node:internal/modules/cjs/loader:1943:10)
+    at Module.load (node:internal/modules/cjs/loader:1533:32)
+    at Module._load (node:internal/modules/cjs/loader:1335:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)
+    at Module.require (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\browser-intercept.js:81:26)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-master.js:12:25)
+
+Node.js v24.14.1
+❌ [27/5/2026, 11:01:31 am] FAILED: everest-tr-x [Desktop - Chrome][CHROMIUM]
+🚨 [FLM Agent] Failure recorded for everest-tr-x [Desktop - Chrome]. Logged to Dashboard.
+
+================================================================
+⚡ Processing Campaign Matrix: [VTS-ORIGINAL]
+================================================================
+
+================================================================
+🚀 [27/5/2026, 11:01:31 am] RUNNING: VTS Original [ANDROID - CHROME]
+🔗 Target URL: https://mlfvts-trk.com/?a=659&oc=323&c=569&s1=
+================================================================
+[vts-original][Android - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[vts-original][Android - Chrome] [STDERR] c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\leadProcessor.js:336
+    let firstApiData = { affiliateId: '', campaignId: '', income: '', state: '', phone: '', neustar: '', neustarDisposition: '', pixelFired: 'false' };
+        ^
+
+SyntaxError: Identifier 'firstApiData' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1743:18)
+    at Module._compile (node:internal/modules/cjs/loader:1786:20)
+    at Object..js (node:internal/modules/cjs/loader:1943:10)
+    at Module.load (node:internal/modules/cjs/loader:1533:32)
+    at Module._load (node:internal/modules/cjs/loader:1335:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)
+    at Module.require (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\browser-intercept.js:81:26)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-master.js:12:25)
+
+Node.js v24.14.1
+❌ [27/5/2026, 11:01:31 am] FAILED: vts-original [Android - Chrome][CHROMIUM]
+🚨 [FLM Agent] Failure recorded for vts-original [Android - Chrome]. Logged to Dashboard.
+
+================================================================
+🚀 [27/5/2026, 11:01:31 am] RUNNING: VTS Original [TABLET - CHROME]
+🔗 Target URL: https://mlfvts-trk.com/?a=659&oc=323&c=569&s1=
+================================================================
+[vts-original][Tablet - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[vts-original][Tablet - Chrome] [STDERR] c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\leadProcessor.js:336
+    let firstApiData = { affiliateId: '', campaignId: '', income: '', state: '', phone: '', neustar: '', neustarDisposition: '', pixelFired: 'false' };
+        ^
+
+SyntaxError: Identifier 'firstApiData' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1743:18)
+    at Module._compile (node:internal/modules/cjs/loader:1786:20)
+    at Object..js (node:internal/modules/cjs/loader:1943:10)
+    at Module.load (node:internal/modules/cjs/loader:1533:32)
+    at Module._load (node:internal/modules/cjs/loader:1335:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)
+    at Module.require (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\browser-intercept.js:81:26)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-master.js:12:25)
+
+Node.js v24.14.1
+❌ [27/5/2026, 11:01:32 am] FAILED: vts-original [Tablet - Chrome][CHROMIUM]
+🚨 [FLM Agent] Failure recorded for vts-original [Tablet - Chrome]. Logged to Dashboard.
+
+================================================================
+🚀 [27/5/2026, 11:01:32 am] RUNNING: VTS Original [DESKTOP - CHROME]
+🔗 Target URL: https://mlfvts-trk.com/?a=659&oc=323&c=569&s1=
+================================================================
+[vts-original][Desktop - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[vts-original][Desktop - Chrome] [STDERR] c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\leadProcessor.js:336
+    let firstApiData = { affiliateId: '', campaignId: '', income: '', state: '', phone: '', neustar: '', neustarDisposition: '', pixelFired: 'false' };
+        ^
+
+SyntaxError: Identifier 'firstApiData' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1743:18)
+    at Module._compile (node:internal/modules/cjs/loader:1786:20)
+    at Object..js (node:internal/modules/cjs/loader:1943:10)
+    at Module.load (node:internal/modules/cjs/loader:1533:32)
+    at Module._load (node:internal/modules/cjs/loader:1335:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)
+    at Module.require (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\browser-intercept.js:81:26)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-master.js:12:25)
+
+Node.js v24.14.1
+❌ [27/5/2026, 11:01:33 am] FAILED: vts-original [Desktop - Chrome][CHROMIUM]
+🚨 [FLM Agent] Failure recorded for vts-original [Desktop - Chrome]. Logged to Dashboard.
+
+================================================================
+⚡ Processing Campaign Matrix: [VTS-NE-BRANDED]
+================================================================
+
+================================================================
+🚀 [27/5/2026, 11:01:33 am] RUNNING: VTS-NE-Branded [ANDROID - CHROME]
+🔗 Target URL: https://mlfvts-trk.com/?a=659&oc=830&c=569&s1=
+================================================================
+[vts-ne-branded][Android - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[vts-ne-branded][Android - Chrome] [STDERR] c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\leadProcessor.js:336
+    let firstApiData = { affiliateId: '', campaignId: '', income: '', state: '', phone: '', neustar: '', neustarDisposition: '', pixelFired: 'false' };
+        ^
+
+SyntaxError: Identifier 'firstApiData' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1743:18)
+    at Module._compile (node:internal/modules/cjs/loader:1786:20)
+    at Object..js (node:internal/modules/cjs/loader:1943:10)
+    at Module.load (node:internal/modules/cjs/loader:1533:32)
+    at Module._load (node:internal/modules/cjs/loader:1335:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)
+    at Module.require (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\browser-intercept.js:81:26)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-master.js:12:25)
+
+Node.js v24.14.1
+❌ [27/5/2026, 11:01:33 am] FAILED: vts-ne-branded [Android - Chrome][CHROMIUM]
+🚨 [FLM Agent] Failure recorded for vts-ne-branded [Android - Chrome]. Logged to Dashboard.
+
+================================================================
+🚀 [27/5/2026, 11:01:33 am] RUNNING: VTS-NE-Branded [TABLET - CHROME]
+🔗 Target URL: https://mlfvts-trk.com/?a=659&oc=830&c=569&s1=
+================================================================
+[vts-ne-branded][Tablet - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[vts-ne-branded][Tablet - Chrome] [STDERR] c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\leadProcessor.js:336
+    let firstApiData = { affiliateId: '', campaignId: '', income: '', state: '', phone: '', neustar: '', neustarDisposition: '', pixelFired: 'false' };
+        ^
+
+SyntaxError: Identifier 'firstApiData' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1743:18)
+    at Module._compile (node:internal/modules/cjs/loader:1786:20)
+    at Object..js (node:internal/modules/cjs/loader:1943:10)
+    at Module.load (node:internal/modules/cjs/loader:1533:32)
+    at Module._load (node:internal/modules/cjs/loader:1335:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)
+    at Module.require (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\browser-intercept.js:81:26)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-master.js:12:25)
+
+Node.js v24.14.1
+❌ [27/5/2026, 11:01:34 am] FAILED: vts-ne-branded [Tablet - Chrome][CHROMIUM]
+🚨 [FLM Agent] Failure recorded for vts-ne-branded [Tablet - Chrome]. Logged to Dashboard.
+
+================================================================
+🚀 [27/5/2026, 11:01:34 am] RUNNING: VTS-NE-Branded [DESKTOP - CHROME]
+🔗 Target URL: https://mlfvts-trk.com/?a=659&oc=830&c=569&s1=
+================================================================
+[vts-ne-branded][Desktop - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[vts-ne-branded][Desktop - Chrome] [STDERR] c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\leadProcessor.js:336
+    let firstApiData = { affiliateId: '', campaignId: '', income: '', state: '', phone: '', neustar: '', neustarDisposition: '', pixelFired: 'false' };
+        ^
+
+SyntaxError: Identifier 'firstApiData' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1743:18)
+    at Module._compile (node:internal/modules/cjs/loader:1786:20)
+    at Object..js (node:internal/modules/cjs/loader:1943:10)
+    at Module.load (node:internal/modules/cjs/loader:1533:32)
+    at Module._load (node:internal/modules/cjs/loader:1335:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)
+    at Module.require (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\browser-intercept.js:81:26)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-master.js:12:25)
+
+Node.js v24.14.1
+❌ [27/5/2026, 11:01:35 am] FAILED: vts-ne-branded [Desktop - Chrome][CHROMIUM]
+🚨 [FLM Agent] Failure recorded for vts-ne-branded [Desktop - Chrome]. Logged to Dashboard.
+
+================================================================
+⚡ Processing Campaign Matrix: [ORIGINAL]
+================================================================
+
+================================================================
+🚀 [27/5/2026, 11:01:35 am] RUNNING: Original [ANDROID - CHROME]
+🔗 Target URL: https://mlf-1800-trk.com/?a=659&oc=337&c=617&s1=
+================================================================
+[original][Android - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[original][Android - Chrome] [STDERR] c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\leadProcessor.js:336
+    let firstApiData = { affiliateId: '', campaignId: '', income: '', state: '', phone: '', neustar: '', neustarDisposition: '', pixelFired: 'false' };
+        ^
+
+SyntaxError: Identifier 'firstApiData' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1743:18)
+    at Module._compile (node:internal/modules/cjs/loader:1786:20)
+    at Object..js (node:internal/modules/cjs/loader:1943:10)
+    at Module.load (node:internal/modules/cjs/loader:1533:32)
+    at Module._load (node:internal/modules/cjs/loader:1335:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)
+    at Module.require (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\browser-intercept.js:81:26)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-master.js:12:25)
+
+Node.js v24.14.1
+❌ [27/5/2026, 11:01:36 am] FAILED: original [Android - Chrome][CHROMIUM]
+🚨 [FLM Agent] Failure recorded for original [Android - Chrome]. Logged to Dashboard.
+
+================================================================
+🚀 [27/5/2026, 11:01:36 am] RUNNING: Original [TABLET - CHROME]
+🔗 Target URL: https://mlf-1800-trk.com/?a=659&oc=337&c=617&s1=
+================================================================
+[original][Tablet - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[original][Tablet - Chrome] [STDERR] c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\leadProcessor.js:336
+    let firstApiData = { affiliateId: '', campaignId: '', income: '', state: '', phone: '', neustar: '', neustarDisposition: '', pixelFired: 'false' };
+        ^
+
+SyntaxError: Identifier 'firstApiData' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1743:18)
+    at Module._compile (node:internal/modules/cjs/loader:1786:20)
+    at Object..js (node:internal/modules/cjs/loader:1943:10)
+    at Module.load (node:internal/modules/cjs/loader:1533:32)
+    at Module._load (node:internal/modules/cjs/loader:1335:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)
+    at Module.require (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\browser-intercept.js:81:26)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-master.js:12:25)
+
+Node.js v24.14.1
+❌ [27/5/2026, 11:01:36 am] FAILED: original [Tablet - Chrome][CHROMIUM]
+🚨 [FLM Agent] Failure recorded for original [Tablet - Chrome]. Logged to Dashboard.
+
+================================================================
+🚀 [27/5/2026, 11:01:36 am] RUNNING: Original [DESKTOP - CHROME]
+🔗 Target URL: https://mlf-1800-trk.com/?a=659&oc=337&c=617&s1=
+================================================================
+[original][Desktop - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[original][Desktop - Chrome] [STDERR] c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\leadProcessor.js:336
+    let firstApiData = { affiliateId: '', campaignId: '', income: '', state: '', phone: '', neustar: '', neustarDisposition: '', pixelFired: 'false' };
+        ^
+
+SyntaxError: Identifier 'firstApiData' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1743:18)
+    at Module._compile (node:internal/modules/cjs/loader:1786:20)
+    at Object..js (node:internal/modules/cjs/loader:1943:10)
+    at Module.load (node:internal/modules/cjs/loader:1533:32)
+    at Module._load (node:internal/modules/cjs/loader:1335:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)
+    at Module.require (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\browser-intercept.js:81:26)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-master.js:12:25)
+
+Node.js v24.14.1
+❌ [27/5/2026, 11:01:37 am] FAILED: original [Desktop - Chrome][CHROMIUM]
+🚨 [FLM Agent] Failure recorded for original [Desktop - Chrome]. Logged to Dashboard.
+
+================================================================
+⚡ Processing Campaign Matrix: [1800-FRESH-TAX-X-MAIN]
+================================================================
+
+================================================================
+🚀 [27/5/2026, 11:01:37 am] RUNNING: 1800 Fresh Tax (X) Main [ANDROID - CHROME]
+🔗 Target URL: https://flmtrk.com/?a=659&oc=696&c=1867&s1=
+================================================================
+[1800-fresh-tax-x-main][Android - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[1800-fresh-tax-x-main][Android - Chrome] [STDERR] c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\leadProcessor.js:336
+    let firstApiData = { affiliateId: '', campaignId: '', income: '', state: '', phone: '', neustar: '', neustarDisposition: '', pixelFired: 'false' };
+        ^
+
+SyntaxError: Identifier 'firstApiData' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1743:18)
+    at Module._compile (node:internal/modules/cjs/loader:1786:20)
+    at Object..js (node:internal/modules/cjs/loader:1943:10)
+    at Module.load (node:internal/modules/cjs/loader:1533:32)
+    at Module._load (node:internal/modules/cjs/loader:1335:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)
+    at Module.require (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\browser-intercept.js:81:26)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-master.js:12:25)
+
+Node.js v24.14.1
+❌ [27/5/2026, 11:01:38 am] FAILED: 1800-fresh-tax-x-main [Android - Chrome][CHROMIUM]
+🚨 [FLM Agent] Failure recorded for 1800-fresh-tax-x-main [Android - Chrome]. Logged to Dashboard.
+
+================================================================
+🚀 [27/5/2026, 11:01:38 am] RUNNING: 1800 Fresh Tax (X) Main [TABLET - CHROME]
+🔗 Target URL: https://flmtrk.com/?a=659&oc=696&c=1867&s1=
+================================================================
+[1800-fresh-tax-x-main][Tablet - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[1800-fresh-tax-x-main][Tablet - Chrome] [STDERR] c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\leadProcessor.js:336
+    let firstApiData = { affiliateId: '', campaignId: '', income: '', state: '', phone: '', neustar: '', neustarDisposition: '', pixelFired: 'false' };
+        ^
+
+SyntaxError: Identifier 'firstApiData' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1743:18)
+    at Module._compile (node:internal/modules/cjs/loader:1786:20)
+    at Object..js (node:internal/modules/cjs/loader:1943:10)
+    at Module.load (node:internal/modules/cjs/loader:1533:32)
+    at Module._load (node:internal/modules/cjs/loader:1335:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)
+    at Module.require (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\browser-intercept.js:81:26)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-master.js:12:25)
+
+Node.js v24.14.1
+❌ [27/5/2026, 11:01:38 am] FAILED: 1800-fresh-tax-x-main [Tablet - Chrome][CHROMIUM]
+🚨 [FLM Agent] Failure recorded for 1800-fresh-tax-x-main [Tablet - Chrome]. Logged to Dashboard.
+
+================================================================
+🚀 [27/5/2026, 11:01:38 am] RUNNING: 1800 Fresh Tax (X) Main [DESKTOP - CHROME]
+🔗 Target URL: https://flmtrk.com/?a=659&oc=696&c=1867&s1=
+================================================================
+[1800-fresh-tax-x-main][Desktop - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[1800-fresh-tax-x-main][Desktop - Chrome] [STDERR] c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\leadProcessor.js:336
+    let firstApiData = { affiliateId: '', campaignId: '', income: '', state: '', phone: '', neustar: '', neustarDisposition: '', pixelFired: 'false' };
+        ^
+
+SyntaxError: Identifier 'firstApiData' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1743:18)
+    at Module._compile (node:internal/modules/cjs/loader:1786:20)
+    at Object..js (node:internal/modules/cjs/loader:1943:10)
+    at Module.load (node:internal/modules/cjs/loader:1533:32)
+    at Module._load (node:internal/modules/cjs/loader:1335:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)
+    at Module.require (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\browser-intercept.js:81:26)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-master.js:12:25)
+
+Node.js v24.14.1
+❌ [27/5/2026, 11:01:39 am] FAILED: 1800-fresh-tax-x-main [Desktop - Chrome][CHROMIUM]
+🚨 [FLM Agent] Failure recorded for 1800-fresh-tax-x-main [Desktop - Chrome]. Logged to Dashboard.
+
+================================================================
+⚡ Processing Campaign Matrix: [FSI-MAIN]
+================================================================
+
+================================================================
+🚀 [27/5/2026, 11:01:39 am] RUNNING: FSI - MAIN [ANDROID - CHROME]
+🔗 Target URL: https://fsimlf-trk.com/?a=659&oc=159&c=111&s1=
+================================================================
+[fsi-main][Android - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[fsi-main][Android - Chrome] [STDERR] c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\leadProcessor.js:336
+    let firstApiData = { affiliateId: '', campaignId: '', income: '', state: '', phone: '', neustar: '', neustarDisposition: '', pixelFired: 'false' };
+        ^
+
+SyntaxError: Identifier 'firstApiData' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1743:18)
+    at Module._compile (node:internal/modules/cjs/loader:1786:20)
+    at Object..js (node:internal/modules/cjs/loader:1943:10)
+    at Module.load (node:internal/modules/cjs/loader:1533:32)
+    at Module._load (node:internal/modules/cjs/loader:1335:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)
+    at Module.require (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\browser-intercept.js:81:26)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-master.js:12:25)
+
+Node.js v24.14.1
+❌ [27/5/2026, 11:01:40 am] FAILED: fsi-main [Android - Chrome][CHROMIUM]
+🚨 [FLM Agent] Failure recorded for fsi-main [Android - Chrome]. Logged to Dashboard.
+
+================================================================
+🚀 [27/5/2026, 11:01:40 am] RUNNING: FSI - MAIN [TABLET - CHROME]
+🔗 Target URL: https://fsimlf-trk.com/?a=659&oc=159&c=111&s1=
+================================================================
+[fsi-main][Tablet - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[fsi-main][Tablet - Chrome] [STDERR] c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\leadProcessor.js:336
+    let firstApiData = { affiliateId: '', campaignId: '', income: '', state: '', phone: '', neustar: '', neustarDisposition: '', pixelFired: 'false' };
+        ^
+
+SyntaxError: Identifier 'firstApiData' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1743:18)
+    at Module._compile (node:internal/modules/cjs/loader:1786:20)
+    at Object..js (node:internal/modules/cjs/loader:1943:10)
+    at Module.load (node:internal/modules/cjs/loader:1533:32)
+    at Module._load (node:internal/modules/cjs/loader:1335:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)
+    at Module.require (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\browser-intercept.js:81:26)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-master.js:12:25)
+
+Node.js v24.14.1
+❌ [27/5/2026, 11:01:40 am] FAILED: fsi-main [Tablet - Chrome][CHROMIUM]
+🚨 [FLM Agent] Failure recorded for fsi-main [Tablet - Chrome]. Logged to Dashboard.
+
+================================================================
+🚀 [27/5/2026, 11:01:40 am] RUNNING: FSI - MAIN [DESKTOP - CHROME]
+🔗 Target URL: https://fsimlf-trk.com/?a=659&oc=159&c=111&s1=
+================================================================
+[fsi-main][Desktop - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[fsi-main][Desktop - Chrome] [STDERR] c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\leadProcessor.js:336
+    let firstApiData = { affiliateId: '', campaignId: '', income: '', state: '', phone: '', neustar: '', neustarDisposition: '', pixelFired: 'false' };
+        ^
+
+SyntaxError: Identifier 'firstApiData' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1743:18)
+    at Module._compile (node:internal/modules/cjs/loader:1786:20)
+    at Object..js (node:internal/modules/cjs/loader:1943:10)
+    at Module.load (node:internal/modules/cjs/loader:1533:32)
+    at Module._load (node:internal/modules/cjs/loader:1335:12)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)
+    at Module.require (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\browser-intercept.js:81:26)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-master.js:12:25)
+
+Node.js v24.14.1
+❌ [27/5/2026, 11:01:41 am] FAILED: fsi-main [Desktop - Chrome][CHROMIUM]
+🚨 [FLM Agent] Failure recorded for fsi-main [Desktop - Chrome]. Logged to Dashboard.
+
+📊 ================================================================
+📊 BATCH COMPLETED IN 1.66 MINUTES
+📊 Total Runners Executed: 52
+📊 Succeeded:              0
+📊 Failed:                 52
+📊 ================================================================
+🕕 [Scheduler] Dispatching Batch Intelligence Report...
+✅ Branded Daily Professional Summary Email Sent.
+
+⏳ Next automation batch will start at: 27/5/2026, 2:01:44 pm
+===================================================== 
+SCHEDULER FINISHED AT: 27-05-2026 11:01:44.85 
+===================================================== 

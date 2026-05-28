@@ -110,16 +110,6 @@
     "skipSecondApi": false
   },
   {
-    "id": "fth-x",
-    "name": "FTH-X",
-    "url": "https://fthmlf-trk.com/?a=659&oc=821&c=81&s1=",
-    "sheet": "FTH-X",
-    "sliderAmount": "9,000",
-    "state": "Rhode Island",
-    "phone": "401-453-0576",
-    "skipSecondApi": false
-  },
-  {
     "id": "everest-tr-x",
     "name": "Everest Tax Releif(X)",
     "url": "https://mlf-trk.com/?a=659&oc=812&c=2498&s1=",
@@ -157,16 +147,6 @@
     "sliderAmount": "500",
     "state": "West Virginia",
     "phone": "304-266-2863",
-    "skipSecondApi": false
-  },
-  {
-    "id": "second-chance-tax",
-    "name": "Second Chance Tax",
-    "url": "https://flm-sctr-trk.com/?a=659&oc=684&c=1818&s1=",
-    "sheet": "SCTR-Secondary",
-    "sliderAmount": "500",
-    "state": "West Virginia",
-    "phone": "304-276-7926",
     "skipSecondApi": false
   },
   {

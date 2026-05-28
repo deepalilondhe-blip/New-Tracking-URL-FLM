@@ -1,0 +1,557 @@
+================================================================================
+                      FLM AGENT - CAKE PROCESS COMMANDS
+                    Manual Execution Guide for VS Code Terminal
+================================================================================
+
+PROJECT: New Tracking URL - Cake CRM Automation
+PURPOSE: Execute Cake processes manually with clear command references
+AUTHOR: FLM Automation System
+DATE: 2026-05-27
+
+================================================================================
+                          TABLE OF CONTENTS
+================================================================================
+
+1. Non-Test & Test Process
+2. Test Only Filter Process
+3. Advanced Execution Options
+4. Batch File Shortcuts
+5. Troubleshooting & Debug Commands
+
+================================================================================
+                    1. NON-TEST & TEST PROCESS
+================================================================================
+
+Description:
+  This is the ORIGINAL Cake process that validates Test & Non-Test 
+  conversion records. It searches for red rows in QA affiliate data 
+  and sends email notifications for identified issues.
+
+File Location:
+  CakeProcess.js/cake.js
+
+COMMAND 1: Run with Visible Browser (Headed Mode)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  node CakeProcess.js\cake.js --non-test-procedure --headed --hold=180
+
+  Breakdown:
+  ├─ node                          : Execute Node.js script
+  ├─ CakeProcess.js\cake.js        : Path to the script
+  ├─ --non-test-procedure          : Run the Non-Test & Test validation
+  ├─ --headed                      : Run with visible browser (can watch)
+  └─ --hold=180                    : Hold for 180 seconds before closing
+
+  Expected Output:
+  ├─ Browser will open and show Cake CRM
+  ├─ Navigates to REPORTS > Conversions
+  ├─ Applies Tests & Non-Tests filter
+  ├─ Searches for QA Affiliate rows
+  ├─ Scans for red rows (failures)
+  └─ Generates report in CakeProcess.js/
+
+
+COMMAND 2: Run in Headless Mode (Faster)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  node CakeProcess.js\cake.js --non-test-procedure
+
+  Breakdown:
+  ├─ Removes --headed flag (runs in background)
+  ├─ Runs faster (no visual browser rendering)
+  └─ Still generates all reports and emails
+
+  When to Use:
+  ├─ Scheduled execution
+  ├─ When visual monitoring not needed
+  └─ For faster batch processing
+
+
+COMMAND 3: Manual Mode (With Manual Steps)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  node CakeProcess.js\cake.js --non-test-procedure --headed --manual-login
+
+  Features:
+  ├─ Allows manual login before automation
+  ├─ Useful if automatic login fails
+  ├─ Headed mode (visible browser)
+  └─ Proceed after manual login
+
+
+COMMAND 4: Custom Hold Time (Adjust Timeout)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  node CakeProcess.js\cake.js --non-test-procedure --headed --hold=300
+
+  Adjustment:
+  ├─ --hold=180  : Wait 180 seconds (default)
+  ├─ --hold=300  : Wait 300 seconds (5 minutes)
+  ├─ --hold=60   : Wait 60 seconds (1 minute)
+  └─ Adjust as needed for your use case
+
+
+================================================================================
+                    2. TEST ONLY FILTER PROCESS
+================================================================================
+
+Description:
+  This is the NEW INDEPENDENT script that validates "Test Only" 
+  conversion records. It verifies test user information against 
+  expected values and sends notifications on mismatch detection.
+
+File Location:
+  CakeProcess.js/cake_test_only.js
+
+COMMAND 1: Run with Visible Browser (Headed Mode - RECOMMENDED)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  node CakeProcess.js\cake_test_only.js --headed
+
+  Features:
+  ├─ Runs with visible browser (can watch process)
+  ├─ Applies "Test Only" filter
+  ├─ Extracts IP addresses
+  ├─ Validates test user information
+  ├─ Sends email on validation failure
+  └─ Generates detailed report
+
+  Expected Output:
+  ├─ Browser opens Cake CRM
+  ├─ Navigates to REPORTS > Conversions
+  ├─ Filter "Test Only" applied
+  ├─ Records extracted and validated
+  ├─ Report: CakeProcess.js/test_only_reports/
+  ├─ Screenshots: CakeProcess.js/test_only_screenshots/
+  └─ Email sent (if failures found)
+
+
+COMMAND 2: Run in Headless Mode (Faster, No Visual)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  node CakeProcess.js\cake_test_only.js
+
+  When to Use:
+  ├─ Automated/scheduled execution
+  ├─ Running in background
+  ├─ Faster processing (no browser rendering)
+  └─ Still generates all outputs and emails
+
+
+COMMAND 3: Using Batch File Launcher (Easiest)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  run_test_only_validation.bat
+
+  This executes:
+  ├─ Launches batch file directly from Explorer
+  ├─ Automatically runs: cake_test_only.js --headed
+  ├─ Sets up environment
+  ├─ Displays progress in console
+  └─ Creates output folders automatically
+
+  How to Use:
+  ├─ Double-click: run_test_only_validation.bat
+  ├─ Or from terminal: run_test_only_validation.bat
+  └─ Watch the browser automation
+
+
+================================================================================
+                    3. ADVANCED EXECUTION OPTIONS
+================================================================================
+
+COMPARING BOTH PROCESSES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Process 1: Non-Test & Test (cake.js)
+├─ Filter: Tests & Non-Tests
+├─ Focus: Red rows and QA affiliates
+├─ Output: CakeProcess.js/ directory
+├─ Command: node CakeProcess.js\cake.js --non-test-procedure --headed
+
+Process 2: Test Only (cake_test_only.js) [NEW & INDEPENDENT]
+├─ Filter: Test Only
+├─ Focus: Test user validation
+├─ Output: CakeProcess.js/test_only_*/ directories
+├─ Command: node CakeProcess.js\cake_test_only.js --headed
+
+
+RUN BOTH PROCESSES SEQUENTIALLY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Option 1: Run one after another manually
+───────────────────────────────────────
+
+  Step 1: Run Non-Test & Test Process
+  node CakeProcess.js\cake.js --non-test-procedure --headed
+
+  Wait for completion...
+
+  Step 2: Run Test Only Process
+  node CakeProcess.js\cake_test_only.js --headed
+
+  Wait for completion...
+
+  Done! Both processes completed with separate reports
+
+
+Option 2: Run both sequentially in terminal
+───────────────────────────────────────────
+
+  node CakeProcess.js\cake.js --non-test-procedure --headed && node CakeProcess.js\cake_test_only.js --headed
+
+  Note:
+  ├─ && : Run second command only if first succeeds
+  ├─ This runs both automatically in sequence
+  └─ Each generates its own report
+
+
+Option 3: Run independently in parallel (Advanced)
+──────────────────────────────────────────────────
+
+  # In Terminal 1:
+  node CakeProcess.js\cake.js --non-test-procedure --headed
+
+  # In Terminal 2 (simultaneously):
+  node CakeProcess.js\cake_test_only.js --headed
+
+  Note:
+  ├─ Requires two separate terminal windows
+  ├─ Both run at the same time
+  ├─ Independent browser instances
+  └─ No conflicts or interference
+
+
+================================================================================
+                    4. BATCH FILE SHORTCUTS
+================================================================================
+
+QUICK LAUNCH OPTIONS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Batch File 1: Test Only Validation
+───────────────────────────────────
+
+  Filename: run_test_only_validation.bat
+  Location: Project root directory
+  Usage: Double-click or: run_test_only_validation.bat
+
+  What it does:
+  ├─ Launches cake_test_only.js in --headed mode
+  ├─ Displays progress
+  ├─ Creates output directories
+  └─ Shows completion status
+
+
+Batch File 2: Non-Test & Test Process (Existing)
+──────────────────────────────────────────────────
+
+  Filename: (Use command from Section 1)
+  Command: node CakeProcess.js\cake.js --non-test-procedure --headed
+
+
+Creating Custom Batch Files
+────────────────────────────
+
+  If you want to create custom batch files, use this template:
+
+  @echo off
+  REM Description of what this batch file does
+  
+  echo Starting [PROCESS NAME]...
+  cd /d "%~dp0"
+  
+  node [SCRIPT_PATH] [ARGUMENTS]
+  
+  pause
+
+  Example: Create run_non_test.bat
+  ─────────────────────────────────
+
+  @echo off
+  REM Non-Test & Test Process
+  
+  echo Starting Non-Test & Test Process...
+  cd /d "%~dp0"
+  
+  node CakeProcess.js\cake.js --non-test-procedure --headed
+  
+  pause
+
+
+================================================================================
+                    5. TROUBLESHOOTING & DEBUG COMMANDS
+================================================================================
+
+CHECK NODE.JS INSTALLATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  node --version
+
+  Expected: v16.x.x or higher
+  If error: Install Node.js from https://nodejs.org/
+
+
+CHECK NPM & DEPENDENCIES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  npm list
+
+  This shows all installed dependencies (Playwright, Nodemailer, etc.)
+
+
+INSTALL/UPDATE DEPENDENCIES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  npm install
+
+  This installs all dependencies from package.json
+
+
+VERIFY CAKE AUTHENTICATION STATE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ls CakeProcess.js/cake-auth-state.json
+
+  If file doesn't exist: Script will prompt for manual login
+
+
+VIEW LATEST LOG FILE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  # For Test Only Process:
+  dir /od CakeProcess.js\test_only_reports\execution_*.log
+
+  # Open the latest log:
+  type [LATEST_LOG_FILE]
+
+
+VIEW LATEST REPORT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  # For Test Only Process:
+  dir /od CakeProcess.js\test_only_reports\test_only_report_*.json
+
+  # View JSON in formatted way (Windows):
+  type [LATEST_REPORT_FILE]
+
+
+RUN WITH VERBOSE LOGGING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Add DEBUG environment variable:
+
+  set DEBUG=* && node CakeProcess.js\cake_test_only.js --headed
+
+  This shows extra debugging information
+
+
+CLEAR OLD REPORTS (CLEANUP)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  # Remove Test Only reports older than current:
+  del CakeProcess.js\test_only_reports\*.log /S /Q
+
+  # Keep only latest, remove others
+  CAUTION: This will delete all old logs!
+
+
+================================================================================
+                    6. STEP-BY-STEP EXECUTION GUIDE
+================================================================================
+
+SCENARIO 1: Run Test Only Process (Most Common)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Step 1: Open VS Code Terminal
+  ├─ Ctrl + ` (backtick)
+  ├─ Or: Terminal → New Terminal
+  └─ Make sure you're in project root
+
+  Step 2: Copy & Execute Command
+  ├─ Copy: node CakeProcess.js\cake_test_only.js --headed
+  ├─ Paste into terminal
+  ├─ Press Enter
+  └─ Watch the browser open
+
+  Step 3: Monitor Execution
+  ├─ Observe browser navigation
+  ├─ Check console for log messages
+  ├─ Wait for process to complete
+  └─ Press any key to close terminal (if using batch)
+
+  Step 4: Check Results
+  ├─ Open: CakeProcess.js/test_only_reports/
+  ├─ View: execution_[timestamp].log
+  ├─ View: test_only_report_[timestamp].json
+  ├─ Open: CakeProcess.js/test_only_screenshots/
+  └─ Review: Screenshots for validation
+
+
+SCENARIO 2: Run Non-Test & Test Process
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Command: node CakeProcess.js\cake.js --non-test-procedure --headed
+
+  Same steps as Scenario 1, but:
+  ├─ Uses different script (cake.js)
+  ├─ Applies different filter (Tests & Non-Tests)
+  ├─ Outputs to CakeProcess.js/ directory
+  └─ Looks for red rows in QA data
+
+
+SCENARIO 3: Run Both Processes Back-to-Back
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Command: node CakeProcess.js\cake.js --non-test-procedure --headed && node CakeProcess.js\cake_test_only.js --headed
+
+  Step 1: Paste command into terminal
+  Step 2: Press Enter
+  Step 3: First process runs (Test & Non-Test)
+  Step 4: After completion, second process runs (Test Only)
+  Step 5: Both reports generated separately
+  Step 6: Done!
+
+  Note: This may take 1-2 minutes total
+
+
+================================================================================
+                    7. EMAIL VERIFICATION
+================================================================================
+
+CURRENT EMAIL CONFIGURATION (Temporary)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Temporary Developer Email: deepali.londhe@magnetoitsolutions.com
+  (This is temporary for verification purposes)
+
+  When Email is Sent:
+  ├─ When test user validation FAILS
+  ├─ Includes Lead ID for investigation
+  ├─ Contains mismatch details
+  └─ Shows screenshots (if attached)
+
+
+VERIFY EMAIL NOTIFICATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  After running Test Only process with validation failures:
+
+  1. Check Email Inbox
+     ├─ Look for: deepali.londhe@magnetoitsolutions.com
+     ├─ Subject: [FLM Automation] Test User Validation Failed
+     └─ Should contain Lead ID and mismatch details
+
+  2. Email Content Includes
+     ├─ Execution timestamp
+     ├─ IP address of failed record
+     ├─ Lead ID for investigation
+     ├─ Detailed mismatch information
+     ├─ Expected vs Extracted values
+     └─ Action required notice
+
+  3. If Email Not Received
+     ├─ Check spam/junk folder
+     ├─ Verify EMAIL_USER and EMAIL_PASS in .env
+     ├─ Check .env for DEVELOPER_EMAIL
+     └─ Check logs for email sending errors
+
+
+================================================================================
+                    8. QUICK REFERENCE CHEAT SHEET
+================================================================================
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        COPY & PASTE COMMANDS                               │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│ TEST ONLY PROCESS (Headed - Recommended):                                  │
+│ node CakeProcess.js\cake_test_only.js --headed                             │
+│                                                                             │
+│ TEST ONLY PROCESS (Headless - Faster):                                     │
+│ node CakeProcess.js\cake_test_only.js                                      │
+│                                                                             │
+│ NON-TEST & TEST PROCESS (Headed):                                          │
+│ node CakeProcess.js\cake.js --non-test-procedure --headed --hold=180       │
+│                                                                             │
+│ NON-TEST & TEST PROCESS (Headless):                                        │
+│ node CakeProcess.js\cake.js --non-test-procedure                           │
+│                                                                             │
+│ RUN BOTH SEQUENTIALLY:                                                      │
+│ node CakeProcess.js\cake.js --non-test-procedure --headed && node          │
+│ CakeProcess.js\cake_test_only.js --headed                                  │
+│                                                                             │
+│ CHECK NODE VERSION:                                                         │
+│ node --version                                                              │
+│                                                                             │
+│ INSTALL DEPENDENCIES:                                                       │
+│ npm install                                                                 │
+│                                                                             │
+│ BATCH FILE LAUNCHER:                                                        │
+│ run_test_only_validation.bat                                               │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+================================================================================
+                    9. IMPORTANT NOTES
+================================================================================
+
+⚠️  CONFIGURATION REQUIRED:
+    ├─ Update .env file with your Gmail credentials
+    ├─ EMAIL_USER=your_email@gmail.com
+    ├─ EMAIL_PASS=your_gmail_app_password
+    └─ DEVELOPER_EMAIL=deepali.londhe@magnetoitsolutions.com (temporary)
+
+⚠️  TEMPORARY EMAIL:
+    ├─ Current: deepali.londhe@magnetoitsolutions.com
+    ├─ Purpose: Email verification and testing
+    ├─ This can be changed back to production email later
+    └─ Check .env and script for email configuration
+
+✅  EXISTING PROCESS UNAFFECTED:
+    ├─ Original cake.js remains untouched
+    ├─ Test Only is completely independent
+    ├─ Both can run without interference
+    └─ No conflicts between processes
+
+✅  OUTPUT LOCATIONS:
+    ├─ Test Only: CakeProcess.js/test_only_reports/ & test_only_screenshots/
+    ├─ Non-Test: CakeProcess.js/
+    └─ Each keeps its own directory (no conflicts)
+
+✅  BROWSER REQUIREMENTS:
+    ├─ Requires Chrome/Chromium installed
+    ├─ Playwright handles browser management
+    ├─ --headed shows browser, without --headed runs headless
+    └─ Both modes work equally well
+
+================================================================================
+                    10. DOCUMENTATION REFERENCES
+================================================================================
+
+For detailed information, refer to:
+
+├─ TEST_ONLY_VALIDATION_README.md
+│  └─ Complete user guide with all features
+│
+├─ IMPLEMENTATION_SUMMARY.md
+│  └─ Architecture and design decisions
+│
+├─ quick-reference.md
+│  └─ Quick lookup and troubleshooting
+│
+├─ DEPLOYMENT_CHECKLIST.md
+│  └─ Deployment verification
+│
+└─ CakeProcess.js/IMPLEMENTATION_NOTES.txt
+   └─ Technical implementation details
+
+================================================================================
+
+Last Updated: 2026-05-27
+Status: ✅ PRODUCTION READY
+Version: 1.0.0
+
+For support or questions, refer to the documentation files above.
+
+================================================================================

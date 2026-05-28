@@ -1,0 +1,14 @@
+use command:  node .\CakeProcess.js\cake.js --non-test-procedure --headed --hold=180
+
+
+
+
+follow the exact order you wanted:
+
+Click REPORTS
+Click Conversions
+Set the date range automatically from the scheduler window
+Verify Tests & Non-Tests
+Search the QA affiliate row in the conversion grid
+Scan for red rows and email the extracted identifiers to urvish.patel@bytestechnolab.com
+

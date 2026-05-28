@@ -3,7 +3,6 @@ module.exports = [
   { name: "VTS Original", url: "https://mlfvts-trk.com/?a=659&oc=323&c=569&s1=", sheet: "VTS-Original" },
   { name: "VTS-NE-Branded", url: "https://mlfvts-trk.com/?a=659&oc=830&c=569&s1=", sheet: "VTS-NE-Branded" },
   { name: "Original", url: "https://mlf-1800-trk.com/?a=659&oc=337&c=617&s1=", sheet: "Original" },
-  { name: "Second Chance Tax", url: "https://flm-sctr-trk.com/?a=659&oc=684&c=1818&s1=", sheet: "SCTR-Secondary" },
   { name: "1800 Fresh Tax Main", url: "https://flmtrk.com/?a=659&oc=696&c=1867&s1=", sheet: "1800-FTH-Main" },
   { name: "1800 Fresh Tax AFR", url: "https://flmtrk.com/?a=659&oc=847&c=1867&s1=", sheet: "1800-FTH-AFR" },
   { name: "Senior Tax Defence", url: "https://flmtrk.com/?a=659&oc=714&c=1892&s1=", sheet: "SCTD-Main" },
