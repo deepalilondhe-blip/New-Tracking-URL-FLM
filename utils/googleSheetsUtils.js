@@ -172,26 +172,8 @@ async function appendRowByHeader(sheetName, rowData) {
               }
             },
 
-            // ✅ 3. Zebra Lines (Alternating Row Colors) - Wrapped in separate try if needed, but we wrap the whole batch
-            {
-              addBanding: {
-                bandedRange: {
-                  range: {
-                    sheetId,
-                    startRowIndex: 0,
-                    endRowIndex: 1000,
-                    startColumnIndex: 0,
-                    endColumnIndex: 22
-                  },
-                  rowProperties: {
-                    headerColor: { red: 0, green: 0.125, blue: 0.376 },
-                    firstBandColor: { red: 1, green: 1, blue: 1 },
-                    secondBandColor: { red: 0.96, green: 0.96, blue: 0.96 }
-                  }
-                }
-              }
-            },
-            // ... (rest of requests continue)
+            // Note: addBanding is intentionally skipped to avoid repeated
+            // "banding already exists" warnings on existing sheets.
 
           // ✅ 3. Center alignment and Font size for the entire sheet
           {

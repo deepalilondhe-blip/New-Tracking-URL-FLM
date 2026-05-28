@@ -22,7 +22,7 @@ To manually run any campaign, use the following template structure:
    *Note: The automatic 2-hour scheduler (or '--once' run) continues to run fast and invisibly in the background.
 
 --------------------------------------------------------------------------------
-📋 CAMPAIGN-SPECIFIC RUN COMMANDS (ALL 15 CAMPAIGNS)
+📋 CAMPAIGN-SPECIFIC RUN COMMANDS (ALL 14 CAMPAIGNS)
 --------------------------------------------------------------------------------
 
 1. 📊 FTD-X (FTD-X)
@@ -81,22 +81,17 @@ To manually run any campaign, use the following template structure:
     🔹 Tablet:  node run-master.js --campaign tra-cpm --viewport tablet
     🔹 Mobile:  node run-master.js --campaign tra-cpm --viewport mobile
 
-12. 📊 FTH-X (FTH-X)
-    🔹 Desktop: node run-master.js --campaign fth-x --viewport desktop
-    🔹 Tablet:  node run-master.js --campaign fth-x --viewport tablet
-    🔹 Mobile:  node run-master.js --campaign fth-x --viewport mobile
-
-13. 📊 Everest Tax Releif(X) (Everest Tax Releif(X))
+12. 📊 Everest Tax Releif(X) (Everest Tax Releif(X))
     🔹 Desktop: node run-master.js --campaign everest-tr-x --viewport desktop
     🔹 Tablet:  node run-master.js --campaign everest-tr-x --viewport tablet
     🔹 Mobile:  node run-master.js --campaign everest-tr-x --viewport mobile
 
-14. 📊 VTS Original (VTS-Original)
+13. 📊 VTS Original (VTS-Original)
     🔹 Desktop: node run-master.js --campaign vts-original --viewport desktop
     🔹 Tablet:  node run-master.js --campaign vts-original --viewport tablet
     🔹 Mobile:  node run-master.js --campaign vts-original --viewport mobile
 
-15. 📊 1800 Fresh Tax (X) Main (1800 Fresh Tax (X) Main)
+14. 📊 1800 Fresh Tax (X) Main (1800 Fresh Tax (X) Main)
     🔹 Desktop: node run-master.js --campaign 1800-fresh-tax-x-main --viewport desktop
     🔹 Tablet:  node run-master.js --campaign 1800-fresh-tax-x-main --viewport tablet
     🔹 Mobile:  node run-master.js --campaign 1800-fresh-tax-x-main --viewport mobile
@@ -122,3 +117,29 @@ All manual and scheduled executions automatically record a visual video and trac
 ================================================================================
 Spreadsheet: https://docs.google.com/spreadsheets/d/1rXIg3dMQ4APH3lHLcfWYfP45PnOAKmV9POkoSS3YWxI/edit#gid=1177143742
 ================================================================================
+
+--------------------------------------------------------------------------------
+🧪 FLM AGENT – LEAD VALIDATION COMMANDS
+--------------------------------------------------------------------------------
+
+Run the latest lead validation script (headed browser):
+
+  👉 node utils/flmAgent/validate_latest_lead.js
+  👉 npm run flm:validate-lead
+  👉 $env:FLM_SLOW_MO_MS=900; $env:FLM_REVIEW_PAUSE_MS=2500; npm run flm:validate-lead
+      npm run flm:validate-lead
+
+Optional wrapper commands:
+
+  👉 run_flm_verification.bat
+  👉 run_lead_validation.bat
+  👉 run_test_only_validation.bat
+
+Notes:
+  - Ensure `.env` has required credentials before running.
+  - For Cake login fallback support, set:
+      CAKE_USERNAME=<your_cake_username>
+      CAKE_PASSWORD=<your_cake_password>
+  - For CDB login support, set:
+      CDB_EMAIL=<your_cdb_email>
+      CDB_PASSWORD=<your_cdb_password>
