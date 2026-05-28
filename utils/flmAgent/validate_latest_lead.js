@@ -79,17 +79,54 @@ function isSameLocalDate(a, b) {
     && a.getDate() === b.getDate();
 }
 
-function findLatestLeadIdForDate(targetDate) {
+function previousOrSameTargetWeekday(now = new Date()) {
+  // Monday=1, Wednesday=3, Friday=5 in JS Date.getDay().
+  const targets = [1, 3, 5];
+  let bestDiff = Infinity;
+  let bestTarget = 5;
+  for (const t of targets) {
+    const diff = (now.getDay() - t + 7) % 7;
+    if (diff < bestDiff) {
+      bestDiff = diff;
+      bestTarget = t;
+    }
+  }
+  const target = new Date(now);
+  target.setDate(now.getDate() - bestDiff);
+  return target;
+}
+
+function isTargetSchedulerDay(date) {
+  const day = date.getDay();
+  return day === 1 || day === 3 || day === 5;
+}
+
+function findLatestLeadIdForSchedulerCycle(now = new Date()) {
+  const cycleDate = previousOrSameTargetWeekday(now);
   const logs = getSortedSchedulerLogs();
+
+  // First preference: same exact cycle date.
   for (const log of logs) {
     const logDate = new Date(log.mtime);
-    if (!isSameLocalDate(logDate, targetDate)) continue;
+    if (!isSameLocalDate(logDate, cycleDate)) continue;
     const content = fs.readFileSync(log.file, 'utf8');
     const leadId = extractLastLeadIdFromLog(content);
     if (leadId) {
-      return { leadId, logFile: log.file, logName: log.name, mtime: log.mtime };
+      return { leadId, logFile: log.file, logName: log.name, mtime: log.mtime, cycleDate };
     }
   }
+
+  // Fallback: latest available Mon/Wed/Fri log with a lead ID.
+  for (const log of logs) {
+    const logDate = new Date(log.mtime);
+    if (!isTargetSchedulerDay(logDate)) continue;
+    const content = fs.readFileSync(log.file, 'utf8');
+    const leadId = extractLastLeadIdFromLog(content);
+    if (leadId) {
+      return { leadId, logFile: log.file, logName: log.name, mtime: log.mtime, cycleDate: logDate };
+    }
+  }
+
   return null;
 }
 
@@ -127,7 +164,7 @@ function getLocalDashboardPaths() {
 function appendToLocalDashboardCsv(record) {
   const { monthDir, sheetPath } = getLocalDashboardPaths();
   if (!fs.existsSync(monthDir)) fs.mkdirSync(monthDir, { recursive: true });
-  const header = 'URL,LeadID,CDB Status,Validation Status,Date';
+  const header = 'URL,LeadID,Validation Status,CDB Status,Execution Date';
   if (!fs.existsSync(sheetPath)) {
     fs.writeFileSync(sheetPath, `${header}\n`, 'utf8');
     console.log(`✅ Created local dashboard sheet: ${sheetPath}`);
@@ -147,9 +184,9 @@ function appendToLocalDashboardCsv(record) {
   const line = [
     esc(record.url),
     esc(record.leadId),
-    esc(record.cdbStatus),
     esc(record.validationStatus),
-    esc(record.date)
+    esc(record.cdbStatus),
+    esc(record.executionDate)
   ].join(',');
   fs.appendFileSync(sheetPath, `${line}\n`, 'utf8');
   console.log(`✅ Appended local dashboard row: ${sheetPath}`);
@@ -290,21 +327,62 @@ async function openLeadPopupAndValidate(page, leadId) {
     isTest = await testCheckbox.isChecked().catch(() => false);
   }
 
-  // Validate only highlighted sections requested by user.
-  const highlightedSections = ['Personal Information', 'Sale Info', 'Vertical Specific'];
-  for (const sectionName of highlightedSections) {
-    const section = page.locator(
-      `text="${sectionName}", [role="tab"]:has-text("${sectionName}"), a:has-text("${sectionName}")`
-    ).first();
-    if (!await section.count()) continue;
+  async function openSectionWithRetry(sectionName, tabIndex) {
+    console.log(`Opening Tab ${tabIndex}`);
+    const selectors = [
+      `[role="tab"]:has-text("${sectionName}")`,
+      `a:has-text("${sectionName}")`,
+      `span:has-text("${sectionName}")`,
+      `div:has-text("${sectionName}")`
+    ];
 
-    await section.click({ timeout: 5000 }).catch(() => {});
-    await section.evaluate((el) => {
-      el.style.outline = '3px solid #ff6600';
-      el.style.outlineOffset = '1px';
-    }).catch(() => {});
-    await page.waitForLoadState('domcontentloaded', { timeout: 5000 }).catch(() => {});
-    await visiblePause(page, `Section ${sectionName} active`);
+    let opened = false;
+    let selected = null;
+    for (let attempt = 1; attempt <= 2; attempt++) {
+      for (const selector of selectors) {
+        const candidate = page.locator(selector).first();
+        if (!await candidate.count()) continue;
+        try {
+          await candidate.click({ timeout: 5000 });
+          await candidate.evaluate((el) => {
+            el.style.outline = '3px solid #ff6600';
+            el.style.outlineOffset = '1px';
+          }).catch(() => {});
+          await page.waitForLoadState('domcontentloaded', { timeout: 5000 }).catch(() => {});
+          await visiblePause(page, `Tab ${tabIndex} active (${sectionName})`);
+          opened = true;
+          selected = candidate;
+          break;
+        } catch (err) {
+          console.warn(`Tab ${tabIndex} open attempt ${attempt} failed on selector ${selector}: ${err.message}`);
+        }
+      }
+      if (opened) break;
+    }
+
+    if (!opened) {
+      await captureScreenshot(page, `cake_tab_open_fail_${leadId}_tab${tabIndex}_${sectionName.replace(/\s+/g, '_')}`);
+      console.error(`✗ Failed to open Tab ${tabIndex}: ${sectionName}`);
+      return null;
+    }
+    return selected;
+  }
+
+  // Validate all 3 highlighted tabs sequentially.
+  const highlightedSections = [
+    { tabIndex: 1, name: 'Personal Information' },
+    { tabIndex: 2, name: 'Sale Info' },
+    { tabIndex: 3, name: 'Vertical Specific' }
+  ];
+
+  for (const sectionMeta of highlightedSections) {
+    const sectionName = sectionMeta.name;
+    const tabIndex = sectionMeta.tabIndex;
+    const openedSection = await openSectionWithRetry(sectionName, tabIndex);
+    if (!openedSection) {
+      tabValidation.push({ tab: sectionName, fieldCount: 0, blankCount: 0, status: 'FAIL' });
+      continue;
+    }
 
     // Validate only visible fields in popup while section is active.
     const fields = await page.locator(
@@ -312,20 +390,40 @@ async function openLeadPopupAndValidate(page, leadId) {
     ).first().locator('input:visible, select:visible, textarea:visible').all();
 
     let blankCount = 0;
+    let checkedFields = 0;
     for (const field of fields) {
       const value = await field.inputValue().catch(() => '');
       const placeholder = await field.getAttribute('placeholder').catch(() => '');
-      const required = (await field.getAttribute('required').catch(() => '')) !== null;
-      const consideredBlank = required && (!value || !value.trim()) && !placeholder;
+      const required = (await field.getAttribute('required').catch(() => null)) !== null;
+      const name = (await field.getAttribute('name').catch(() => '') || '').toLowerCase();
+      const id = (await field.getAttribute('id').catch(() => '') || '').toLowerCase();
+      const shouldCheck = required
+        || name.includes('first')
+        || name.includes('last')
+        || name.includes('email')
+        || name.includes('state')
+        || name.includes('zip')
+        || name.includes('phone')
+        || id.includes('first')
+        || id.includes('last')
+        || id.includes('email')
+        || id.includes('state')
+        || id.includes('zip')
+        || id.includes('phone');
+      if (!shouldCheck) continue;
+      checkedFields++;
+      const consideredBlank = (!value || !value.trim()) && !placeholder;
       if (consideredBlank) blankCount++;
+      await visiblePause(page, `Field check in ${sectionName}`, 350);
     }
 
     tabValidation.push({
       tab: sectionName,
-      fieldCount: fields.length,
+      fieldCount: checkedFields,
       blankCount,
-      status: blankCount === 0 ? 'PASS' : 'FAIL'
+      status: checkedFields > 0 && blankCount === 0 ? 'PASS' : 'FAIL'
     });
+    console.log(`Tab ${tabIndex} validation completed`);
     await visiblePause(page, `Section ${sectionName} validated`, 1800);
   }
 
@@ -484,17 +582,15 @@ async function main() {
     process.exit(1);
   }
 
-  const yesterday = new Date();
-  yesterday.setDate(yesterday.getDate() - 1);
-  const leadSource = findLatestLeadIdForDate(yesterday);
+  const leadSource = findLatestLeadIdForSchedulerCycle(new Date());
   if (!leadSource) {
-    console.error(`❌ No leadid found in yesterday's scheduler logs (${yesterday.toDateString()})`);
+    console.error('❌ No leadid found in latest scheduler cycle logs (Mon/Wed/Fri)');
     console.error('ℹ️ Tip: Run scheduler first, then re-run validation.');
     process.exit(1);
   }
 
   console.log(`✓ Latest scheduler file: ${path.basename(latestLog)}`);
-  console.log(`✓ Target day for lead extraction: ${yesterday.toDateString()} (yesterday)`);
+  console.log(`✓ Target scheduler cycle day: ${leadSource.cycleDate.toDateString()} (Mon/Wed/Fri logic)`);
   console.log(`✓ Using lead source log: ${leadSource.logName}`);
   const latestScheduleDate = new Date(leadSource.mtime);
   const alternateDate = computeAlternateDay(latestScheduleDate);
@@ -526,7 +622,7 @@ async function main() {
     const cdbStatus = await verifyInCdb(latestLead, browser);
     console.log(`📊 CDB Status: ${cdbStatus}`);
 
-    const allTabsPass = cakeResult.tabValidation.length > 0 && cakeResult.tabValidation.every(t => t.status === 'PASS');
+    const allTabsPass = cakeResult.tabValidation.length === 3 && cakeResult.tabValidation.every(t => t.status === 'PASS');
     const validationStatus = cakeResult.found && allTabsPass ? 'PASS' : 'FAIL';
 
     // Step 5: Append to Google Sheet Dashboard
@@ -556,20 +652,24 @@ async function main() {
       step3: `Validation: ${validationStatus}, Tabs: ${cakeResult.tabValidation.length}, CDB: ${cdbStatus}, AltDate: ${alternateDate.toISOString()}`
     };
 
-    // Dashboard updates only after all validations finish.
-    const appended = await appendToDashboard(row);
-    if (!appended) {
-      console.warn('⚠️ Warning: Google sheet row could not be appended');
-    }
+    // Append only after full validation + CDB success.
+    if (validationStatus === 'PASS' && cdbStatus === 'PASS') {
+      const appended = await appendToDashboard(row);
+      if (!appended) {
+        console.warn('⚠️ Warning: Google sheet row could not be appended');
+      }
 
-    const localSheetPath = appendToLocalDashboardCsv({
-      url: CONFIG.CAKE_HOME_URL,
-      leadId: latestLead,
-      cdbStatus: cdbStatus === 'PASS' ? 'True' : 'False',
-      validationStatus,
-      date: new Date().toISOString()
-    });
-    console.log(`📁 Local month-wise dashboard updated: ${localSheetPath}`);
+      const localSheetPath = appendToLocalDashboardCsv({
+        url: CONFIG.CAKE_HOME_URL,
+        leadId: latestLead,
+        validationStatus,
+        cdbStatus: 'True',
+        executionDate: new Date().toISOString()
+      });
+      console.log(`📁 Local month-wise dashboard updated: ${localSheetPath}`);
+    } else {
+      console.warn('⚠️ Dashboard append skipped because validation/CDB did not fully PASS');
+    }
 
     // Step 6: Final Report
     console.log('\n═══════════════════════════════════════════════════');
