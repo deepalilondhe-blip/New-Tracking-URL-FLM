@@ -1,0 +1,27 @@
+[2026-06-01T07:43:54.325Z] [INFO] Cake Test Only Validation Process Started
+[2026-06-01T07:43:54.327Z] [INFO] Launching browser
+[2026-06-01T07:43:55.298Z] [INFO] Navigating to Cake CRM
+[2026-06-01T07:44:01.927Z] [INFO] Checking if login is required
+[2026-06-01T07:44:01.976Z] [INFO] Login form detected - attempting to log in
+[2026-06-01T07:44:04.046Z] [INFO] Entered username: urvish.patel@bytestechnolab.com
+[2026-06-01T07:44:05.370Z] [INFO] Entered password
+[2026-06-01T07:44:05.372Z] [INFO] Clicking Log In button...
+[2026-06-01T07:44:05.431Z] [INFO] Waiting for login to complete...
+[2026-06-01T07:44:08.346Z] [INFO] ✓ Login successful - navigated to: https://app.forwardleapmarketing.com/newrep.aspx
+[2026-06-01T07:44:11.349Z] [INFO] ✓ Login process completed
+[2026-06-01T07:44:11.351Z] [INFO] Navigating to Cake Reports > Conversions
+[2026-06-01T07:44:14.363Z] [INFO] Waiting for page stabilization...
+[2026-06-01T07:44:15.367Z] [INFO] Screenshot (after login): C:\Users\Deepali_Londhe\Desktop\New Tracking URL\CakeProcess.js\test_only_screenshots\00_after_login_1780299854365.png
+[2026-06-01T07:44:15.374Z] [INFO] Main frame content visible: true
+[2026-06-01T07:44:15.375Z] [INFO] Looking for REPORTS menu...
+[2026-06-01T07:44:15.406Z] [INFO] Found menu keywords: REPORTS, Conversions
+[2026-06-01T07:44:18.020Z] [INFO] ✓ Clicked REPORTS menu using: a:has-text("REPORTS")
+[2026-06-01T07:44:18.965Z] [WARN] Menu click failed - trying direct URL navigation
+[2026-06-01T07:44:18.967Z] [INFO] Navigating directly to: https://app.forwardleapmarketing.com/reports/conversion
+[2026-06-01T07:44:21.660Z] [INFO] Screenshot (after direct nav): C:\Users\Deepali_Londhe\Desktop\New Tracking URL\CakeProcess.js\test_only_screenshots\02_after_direct_navigation_1780299861596.png
+[2026-06-01T07:44:21.684Z] [ERROR] Could not navigate to Conversions - menu and direct URL both failed
+[2026-06-01T07:44:21.686Z] [ERROR] FATAL ERROR: Failed to navigate to Conversions page
+[2026-06-01T07:44:21.688Z] [ERROR] Error: Failed to navigate to Conversions page
+    at runTestOnlyValidation (C:\Users\Deepali_Londhe\Desktop\New Tracking URL\CakeProcess.js\cake_test_only.js:746:13)
+[2026-06-01T07:44:25.596Z] [INFO] Browser closed
+[2026-06-01T07:44:25.596Z] [INFO] Process finished

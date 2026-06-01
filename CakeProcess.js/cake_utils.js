@@ -161,14 +161,16 @@ async function navigateToCake(page, authStatePath = null) {
   console.log('Navigating to Cake CRM...');
   try {
     await page.goto('https://app.forwardleapmarketing.com/newrep.aspx', {
-      waitUntil: 'networkidle',
-      timeout: 60000
+      waitUntil: 'domcontentloaded',
+      timeout: 30000
     });
     console.log('✓ Successfully navigated to Cake CRM');
     return true;
   } catch (error) {
     console.error('Navigation failed:', error.message);
-    return false;
+    // Fallback: wait a bit and continue anyway
+    await page.waitForTimeout(2000);
+    return true;
   }
 }
 

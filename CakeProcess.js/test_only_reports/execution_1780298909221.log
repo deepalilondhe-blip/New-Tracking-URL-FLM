@@ -1,0 +1,15 @@
+[2026-06-01T07:28:29.221Z] [INFO] Cake Test Only Validation Process Started
+[2026-06-01T07:28:29.223Z] [INFO] Launching browser
+[2026-06-01T07:28:30.208Z] [INFO] Navigating to Cake CRM
+[2026-06-01T07:28:49.692Z] [INFO] Checking login status
+[2026-06-01T07:28:49.746Z] [INFO] Login required - entering credentials
+[2026-06-01T07:28:49.786Z] [INFO] Entered username: urvish.patel@bytestechnolab.com
+[2026-06-01T07:28:49.801Z] [INFO] Entered password
+[2026-06-01T07:28:51.818Z] [INFO] Navigating to Cake Reports > Conversions
+[2026-06-01T07:28:54.830Z] [INFO] Waiting for page stabilization...
+[2026-06-01T07:28:54.846Z] [ERROR] Navigation error: ENOENT: no such file or directory, mkdir 'C:\Users\Deepali_Londhe\Desktop\New Tracking URL\CakeProcess.js\C:\Users\Deepali_Londhe\Desktop\New Tracking URL\CakeProcess.js\test_only_screenshots'
+[2026-06-01T07:28:54.847Z] [ERROR] FATAL ERROR: Failed to navigate to Conversions page
+[2026-06-01T07:28:54.849Z] [ERROR] Error: Failed to navigate to Conversions page
+    at runTestOnlyValidation (C:\Users\Deepali_Londhe\Desktop\New Tracking URL\CakeProcess.js\cake_test_only.js:799:13)
+[2026-06-01T07:28:55.113Z] [INFO] Browser closed
+[2026-06-01T07:28:55.114Z] [INFO] Process finished

@@ -1,0 +1,14 @@
+[2026-06-01T07:05:31.469Z] [INFO] Cake Test Only Validation Process Started
+[2026-06-01T07:05:31.483Z] [INFO] Launching browser
+[2026-06-01T07:05:32.974Z] [INFO] Navigating to Cake CRM
+[2026-06-01T07:05:39.961Z] [INFO] Checking login status
+[2026-06-01T07:05:40.016Z] [INFO] Login required - entering credentials
+[2026-06-01T07:05:40.053Z] [INFO] Entered username: urvish.patel@bytestechnolab.com
+[2026-06-01T07:05:40.066Z] [INFO] Entered password
+[2026-06-01T07:05:42.089Z] [INFO] Navigating to Cake Reports > Conversions
+[2026-06-01T07:05:44.151Z] [WARN] Could not find Conversions menu item
+[2026-06-01T07:05:44.153Z] [ERROR] FATAL ERROR: Failed to navigate to Conversions page
+[2026-06-01T07:05:44.155Z] [ERROR] Error: Failed to navigate to Conversions page
+    at runTestOnlyValidation (C:\Users\Deepali_Londhe\Desktop\New Tracking URL\CakeProcess.js\cake_test_only.js:681:13)
+[2026-06-01T07:05:44.382Z] [INFO] Browser closed
+[2026-06-01T07:05:44.383Z] [INFO] Process finished

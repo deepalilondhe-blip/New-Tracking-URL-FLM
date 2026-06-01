@@ -1,0 +1,32 @@
+[2026-06-01T08:10:26.040Z] [INFO] Cake Test Only Validation Process Started
+[2026-06-01T08:10:26.041Z] [INFO] Launching browser
+[2026-06-01T08:10:26.703Z] [INFO] Navigating to Cake CRM
+[2026-06-01T08:10:33.868Z] [INFO] Checking if login is required
+[2026-06-01T08:10:33.895Z] [INFO] Login form detected - attempting to log in
+[2026-06-01T08:10:35.830Z] [INFO] Entered username: urvish.patel@bytestechnolab.com
+[2026-06-01T08:10:37.084Z] [INFO] Entered password
+[2026-06-01T08:10:37.085Z] [INFO] Clicking Log In button...
+[2026-06-01T08:10:37.114Z] [INFO] Waiting for login to complete...
+[2026-06-01T08:10:40.094Z] [INFO] ✓ Login successful - navigated to: https://app.forwardleapmarketing.com/newrep.aspx
+[2026-06-01T08:10:43.095Z] [INFO] ✓ Login process completed
+[2026-06-01T08:10:43.097Z] [INFO] Navigating to Cake Reports > Conversions
+[2026-06-01T08:10:45.103Z] [INFO] Looking for Conversions menu item...
+[2026-06-01T08:10:45.108Z] [WARN] Conversions link not directly visible - trying REPORTS menu
+[2026-06-01T08:10:47.251Z] [INFO] ✓ Clicked REPORTS menu
+[2026-06-01T08:10:47.764Z] [WARN] Menu navigation failed - trying direct URL navigation
+[2026-06-01T08:10:47.764Z] [INFO] Navigating directly to: https://app.forwardleapmarketing.com/reports/conversion
+[2026-06-01T08:10:50.645Z] [INFO] ✓ Successfully navigated to Conversions page via direct URL
+[2026-06-01T08:10:50.646Z] [INFO] Setting date range from scheduler
+[2026-06-01T08:10:50.647Z] [INFO] Date range: 2026-05-31 to 2026-06-01
+[2026-06-01T08:10:50.650Z] [WARN] Found only 0 date input fields
+[2026-06-01T08:10:51.651Z] [INFO] Applying Test Only filter
+[2026-06-01T08:10:51.660Z] [WARN] Could not apply Test Only filter - checking page state
+[2026-06-01T08:10:53.663Z] [ERROR] Error applying Test Only filter: ENOENT: no such file or directory, mkdir 'C:\Users\Deepali_Londhe\Desktop\New Tracking URL\CakeProcess.js\C:\Users\Deepali_Londhe\Desktop\New Tracking URL\CakeProcess.js\test_only_screenshots'
+[2026-06-01T08:10:53.664Z] [INFO] Extracting records from conversion grid using Ctrl+F
+[2026-06-01T08:10:53.667Z] [WARN] No test records found
+[2026-06-01T08:10:53.668Z] [INFO] Generating execution report
+[2026-06-01T08:10:53.670Z] [INFO] Report Summary: 0 total, 0 passed, 0 failed
+[2026-06-01T08:10:53.670Z] [INFO] Execution completed in 27.63 seconds
+[2026-06-01T08:10:53.671Z] [INFO] Summary: 0 passed, 0 failed
+[2026-06-01T08:10:53.914Z] [INFO] Browser closed
+[2026-06-01T08:10:53.915Z] [INFO] Process finished

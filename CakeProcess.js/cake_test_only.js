@@ -63,81 +63,76 @@ async function handleLogin(page, logFile) {
   utils.writeLog(logFile, 'Checking if login is required', 'INFO');
   
   try {
-    // Check if login form is visible
-    const loginForm = await page.$('input[type="password"], input[type="email"], input[placeholder*="Email"], input[placeholder*="Username"]');
+    // Check if login form is visible using proper ID selectors (from cake.js)
+    const loginButton = await page.$('#submitButton, button:has-text("Log In"), input[type="submit"]');
     
-    if (loginForm) {
+    if (loginButton) {
       utils.writeLog(logFile, 'Login form detected - attempting to log in', 'INFO');
       
       const username = process.env.CAKE_USERNAME || 'urvish.patel@bytestechnolab.com';
       const password = process.env.CAKE_PASSWORD || 'Urvish@123#2026-05';
       
-      // Try to find email/username input
-      const emailInputSelectors = [
-        'input[type="email"]',
-        'input[placeholder*="Email"]',
-        'input[placeholder*="Username"]',
-        'input[id*="email"], input[id*="username"]'
-      ];
+      // Use correct field identifiers from cake.js
+      const usernameField = await page.$('#u, input[name="u"], input[type="text"]');
+      const passwordField = await page.$('#password, input[name="p"], input[type="password"]');
       
-      let emailInput = null;
-      for (const selector of emailInputSelectors) {
-        emailInput = await page.$(selector);
-        if (emailInput) {
-          utils.writeLog(logFile, `Found email input with selector: ${selector}`, 'INFO');
-          break;
+      if (usernameField && passwordField && loginButton) {
+        // Wait for fields to be visible
+        await page.waitForSelector('#u, input[name="u"], input[type="text"]', { timeout: 15000 });
+        await page.waitForSelector('#password, input[name="p"], input[type="password"]', { timeout: 15000 });
+        await page.waitForSelector('#submitButton, button:has-text("Log In"), input[type="submit"]', { timeout: 15000 });
+        
+        // Fill username with typing effect
+        await usernameField.click();
+        await usernameField.fill('');
+        await page.locator('#u, input[name="u"], input[type="text"]').first().type(username, { delay: 40 });
+        await page.waitForTimeout(300);
+        utils.writeLog(logFile, `Entered username: ${username}`, 'INFO');
+        
+        // Fill password with typing effect
+        await passwordField.click();
+        await passwordField.fill('');
+        await page.locator('#password, input[name="p"], input[type="password"]').first().type(password, { delay: 40 });
+        await page.waitForTimeout(300);
+        utils.writeLog(logFile, 'Entered password', 'INFO');
+        
+        // Click login button
+        utils.writeLog(logFile, 'Clicking Log In button...', 'INFO');
+        await loginButton.click();
+        
+        // Wait for login outcome with proper timeout
+        utils.writeLog(logFile, 'Waiting for login to complete...', 'INFO');
+        let loginSuccess = false;
+        const startTime = Date.now();
+        const timeoutMs = 30000;
+        
+        while (Date.now() - startTime < timeoutMs) {
+          await page.waitForTimeout(500);
+          
+          // Check if login button is still visible (means login failed)
+          const isLoginStillVisible = await page.locator('#submitButton, button:has-text("Log In")').first().isVisible().catch(() => false);
+          const currentUrl = page.url();
+          
+          // Check if we moved away from login page
+          if (!isLoginStillVisible && !currentUrl.includes('app.forwardleapmarketing.com/?')) {
+            utils.writeLog(logFile, `✓ Login successful - navigated to: ${currentUrl}`, 'INFO');
+            loginSuccess = true;
+            break;
+          }
         }
-      }
-      
-      if (emailInput) {
-        await emailInput.fill(username);
-        await page.waitForTimeout(500);
-        utils.writeLog(logFile, `Filled username: ${username}`, 'INFO');
-      }
-      
-      // Try to find password input
-      const passwordInput = await page.$('input[type="password"]');
-      if (passwordInput) {
-        await passwordInput.fill(password);
-        await page.waitForTimeout(500);
-        utils.writeLog(logFile, 'Filled password', 'INFO');
-      }
-      
-      // Try to find and click login button
-      const loginButtonSelectors = [
-        'button:has-text("Login")',
-        'button:has-text("Sign In")',
-        'button:has-text("Submit")',
-        'button[type="submit"]'
-      ];
-      
-      let loginClicked = false;
-      for (const selector of loginButtonSelectors) {
-        const button = await page.locator(selector).first();
-        if (await button.isVisible({ timeout: 2000 }).catch(() => false)) {
-          await button.click();
-          await page.waitForTimeout(2000);
-          utils.writeLog(logFile, 'Clicked login button', 'INFO');
-          loginClicked = true;
-          break;
+        
+        if (!loginSuccess) {
+          utils.writeLog(logFile, '⚠ Login may have failed - button still visible', 'WARN');
         }
-      }
-      
-      if (!loginClicked) {
-        utils.writeLog(logFile, 'Could not find login button - trying Enter key', 'WARN');
-        await page.press('input[type="password"]', 'Enter');
-        await page.waitForTimeout(2000);
-      }
-      
-      // Wait for navigation or page load
-      try {
-        await page.waitForNavigation({ waitUntil: 'networkidle', timeout: 15000 });
-      } catch (e) {
+        
+        // Additional stabilization after login
         await page.waitForTimeout(3000);
+        utils.writeLog(logFile, '✓ Login process completed', 'INFO');
+        return true;
+      } else {
+        utils.writeLog(logFile, 'Could not find login form fields', 'ERROR');
+        return false;
       }
-      
-      utils.writeLog(logFile, '✓ Login completed', 'INFO');
-      return true;
     } else {
       utils.writeLog(logFile, 'No login form found - already logged in', 'INFO');
       return true;
@@ -155,37 +150,101 @@ async function navigateToConversions(page, logFile) {
   utils.writeLog(logFile, 'Navigating to Cake Reports > Conversions', 'INFO');
   
   try {
-    // Wait for page to load
+    // Step 1: Wait for page to fully stabilize after login
     await page.waitForTimeout(2000);
-    
-    // Click REPORTS menu
-    await page.waitForSelector('a, [role="button"]', { timeout: 5000 });
-    const reportLinks = await page.locator('a, [role="button"]').allTextContents();
-    
-    console.log('Available menu items:', reportLinks);
-    
-    // Try to find and click REPORTS
-    const reportsLink = await page.locator('a:has-text("REPORTS"), [role="button"]:has-text("REPORTS")').first();
-    if (await reportsLink.isVisible({ timeout: 3000 }).catch(() => false)) {
-      await reportsLink.click();
-      await page.waitForTimeout(1000);
-      utils.writeLog(logFile, 'Clicked REPORTS menu', 'INFO');
-    }
+    utils.writeLog(logFile, 'Looking for Conversions menu item...', 'INFO');
 
-    // Try to find and click CONVERSIONS
-    const conversionsLink = await page.locator('a:has-text("Conversions"), [role="button"]:has-text("Conversions"), a:has-text("CONVERSIONS")').first();
-    if (await conversionsLink.isVisible({ timeout: 3000 }).catch(() => false)) {
+    // Step 2: Try to directly click on "Conversions" link (it's visible on the page)
+    const conversionsLink = page.locator('a:has-text("Conversions")').first();
+    const isVisible = await conversionsLink.isVisible({ timeout: 5000 }).catch(() => false);
+    
+    if (isVisible) {
+      utils.writeLog(logFile, '✓ Found Conversions link - clicking it', 'INFO');
       await conversionsLink.click();
-      await page.waitForNavigation({ waitUntil: 'networkidle', timeout: 30000 }).catch(() => {});
+      
+      // Wait for the page to navigate
+      await page.waitForNavigation({ waitUntil: 'domcontentloaded', timeout: 15000 }).catch(() => {
+        utils.writeLog(logFile, 'Navigation timeout - continuing anyway', 'WARN');
+      });
       await page.waitForTimeout(2000);
-      utils.writeLog(logFile, 'Clicked Conversions menu', 'INFO');
+      
+      // Take screenshot to confirm navigation
+      const screenshotFile = `01_after_conversions_click_${Date.now()}.png`;
+      const screenshotPath = path.join(CONFIG.SCREENSHOT_DIR, screenshotFile);
+      await page.screenshot({ path: screenshotPath }).catch(err => {
+        utils.writeLog(logFile, `Screenshot failed: ${err.message}`, 'WARN');
+      });
+      utils.writeLog(logFile, `✓ Successfully navigated to Conversions (screenshot: ${screenshotPath})`, 'INFO');
       return true;
     }
 
-    utils.writeLog(logFile, 'Could not find Conversions menu item', 'WARN');
+    // Fallback: Try clicking REPORTS menu first
+    utils.writeLog(logFile, 'Conversions link not directly visible - trying REPORTS menu', 'WARN');
+    
+    const reportsSelectors = [
+      'button:has-text("REPORTS")',
+      'a:has-text("REPORTS")',
+      '[role="button"]:has-text("REPORTS")'
+    ];
+
+    let reportsClicked = false;
+    for (const selector of reportsSelectors) {
+      try {
+        const element = page.locator(selector).first();
+        if (await element.isVisible({ timeout: 2000 }).catch(() => false)) {
+          await element.click();
+          await page.waitForTimeout(1000);
+          utils.writeLog(logFile, `✓ Clicked REPORTS menu`, 'INFO');
+          reportsClicked = true;
+          break;
+        }
+      } catch (e) {
+        // Try next selector
+      }
+    }
+
+    if (reportsClicked) {
+      // Now try clicking Conversions again
+      await page.waitForTimeout(500);
+      const conversionsLink2 = page.locator('a:has-text("Conversions")').first();
+      if (await conversionsLink2.isVisible({ timeout: 3000 }).catch(() => false)) {
+        await conversionsLink2.click();
+        await page.waitForNavigation({ waitUntil: 'domcontentloaded', timeout: 15000 }).catch(() => {
+          utils.writeLog(logFile, 'Navigation timeout - continuing anyway', 'WARN');
+        });
+        await page.waitForTimeout(2000);
+        utils.writeLog(logFile, '✓ Successfully navigated to Conversions', 'INFO');
+        return true;
+      }
+    }
+
+    // Step 3: Fallback - Direct URL navigation
+    utils.writeLog(logFile, 'Menu navigation failed - trying direct URL navigation', 'WARN');
+    const currentUrl = page.url();
+    const baseUrl = new URL(currentUrl).origin;
+    const conversionsUrl = `${baseUrl}/reports/conversion`;
+    
+    utils.writeLog(logFile, `Navigating directly to: ${conversionsUrl}`, 'INFO');
+    await page.goto(conversionsUrl, { waitUntil: 'domcontentloaded', timeout: 15000 }).catch(err => {
+      utils.writeLog(logFile, `Direct navigation error: ${err.message}`, 'ERROR');
+    });
+    
+    await page.waitForTimeout(2000);
+
+    // Check if we successfully navigated to conversions
+    const pageContent = await page.locator('body').innerText().catch(() => '');
+    const finalUrl = page.url();
+    
+    if (pageContent.includes('Conversion') || finalUrl.includes('conversion')) {
+      utils.writeLog(logFile, '✓ Successfully navigated to Conversions page via direct URL', 'INFO');
+      return true;
+    }
+
+    utils.writeLog(logFile, 'Could not navigate to Conversions page', 'ERROR');
     return false;
+
   } catch (error) {
-    utils.writeLog(logFile, `Navigation failed: ${error.message}`, 'ERROR');
+    utils.writeLog(logFile, `Navigation error: ${error.message}`, 'ERROR');
     return false;
   }
 }
@@ -365,8 +424,10 @@ async function openUniqueIDRecord(page, ip, logFile) {
           await clickableElement.click();
           
           // Wait for navigation or modal
-          await page.waitForNavigation({ waitUntil: 'networkidle', timeout: 10000 }).catch(() => {});
-          await page.waitForTimeout(2000);
+          await page.waitForNavigation({ waitUntil: 'domcontentloaded', timeout: 8000 }).catch(() => {
+            console.log('Navigation timeout - continuing anyway');
+          });
+          await page.waitForTimeout(1500);
 
           utils.writeLog(logFile, `✓ Opened record for IP: ${ip}`, 'INFO');
 
@@ -635,45 +696,12 @@ async function runTestOnlyValidation() {
     await utils.navigateToCake(page);
     await page.waitForTimeout(3000);
 
-    // Handle login
-    utils.writeLog(logFile, 'Checking login status', 'INFO');
-    const loginForm = await page.$('input[type="password"]');
-    
-    if (loginForm) {
-      utils.writeLog(logFile, 'Login required - entering credentials', 'INFO');
-      
-      const username = process.env.CAKE_USERNAME || 'urvish.patel@bytestechnolab.com';
-      const password = process.env.CAKE_PASSWORD || 'Urvish@123#2026-05';
-      
-      // Find and fill username
-      const emailInputs = await page.$$('input[type="email"], input[type="text"]');
-      if (emailInputs.length > 0) {
-        await emailInputs[0].fill(username);
-        utils.writeLog(logFile, `Entered username: ${username}`, 'INFO');
-      }
-      
-      // Fill password
-      await loginForm.fill(password);
-      utils.writeLog(logFile, 'Entered password', 'INFO');
-      
-      // Click login button
-      const loginBtn = await page.$('button[type="submit"], button:has-text("Login"), button:has-text("Sign In")');
-      if (loginBtn) {
-        await loginBtn.click();
-        utils.writeLog(logFile, 'Clicked login button', 'INFO');
-        
-        try {
-          await page.waitForNavigation({ waitUntil: 'networkidle', timeout: 20000 });
-        } catch (e) {
-          await page.waitForTimeout(3000);
-        }
-        utils.writeLog(logFile, '✓ Login completed', 'INFO');
-      }
-    } else {
-      utils.writeLog(logFile, 'Already logged in', 'INFO');
+    // Handle login using improved logic
+    const loginSuccess = await handleLogin(page, logFile);
+    if (!loginSuccess) {
+      utils.writeLog(logFile, 'Login handling failed', 'ERROR');
+      throw new Error('Could not handle login');
     }
-    
-    await page.waitForTimeout(2000);
 
     // Navigate to Conversions
     const navigated = await navigateToConversions(page, logFile);

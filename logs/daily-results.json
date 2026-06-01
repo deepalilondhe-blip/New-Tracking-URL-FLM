@@ -1,5 +1,5 @@
 {
-  "date": "2026-05-28",
+  "date": "2026-06-01",
   "runs": [
     {
       "campaignId": "fsi-ppc2",
@@ -7,7 +7,23 @@
       "browser": "chromium",
       "label": "Android - Chrome",
       "success": true,
-      "timestamp": "10:01:28 AM"
+      "timestamp": "10:28:33 AM"
+    },
+    {
+      "campaignId": "fsi-ppc2",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "10:28:45 AM"
+    },
+    {
+      "campaignId": "fsi-ppc2",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "10:29:21 AM"
     },
     {
       "campaignId": "fsi-ppc2",
@@ -15,7 +31,31 @@
       "browser": "chromium",
       "label": "Tablet - Chrome",
       "success": true,
-      "timestamp": "10:02:28 AM"
+      "timestamp": "10:29:38 AM"
+    },
+    {
+      "campaignId": "fsi-ppc2",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "10:29:47 AM"
+    },
+    {
+      "campaignId": "fsi-ppc2",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "10:29:59 AM"
+    },
+    {
+      "campaignId": "fsi-ppc2",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "10:30:22 AM"
     },
     {
       "campaignId": "fsi-ppc2",
@@ -23,7 +63,31 @@
       "browser": "chromium",
       "label": "Desktop - Chrome",
       "success": true,
-      "timestamp": "10:03:24 AM"
+      "timestamp": "10:30:34 AM"
+    },
+    {
+      "campaignId": "fsi-ppc2",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "10:30:43 AM"
+    },
+    {
+      "campaignId": "fsi-ppc2",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "10:31:16 AM"
+    },
+    {
+      "campaignId": "fsi-ppc2",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "10:31:21 AM"
     },
     {
       "campaignId": "tra-cpl",
@@ -31,7 +95,39 @@
       "browser": "chromium",
       "label": "Android - Chrome",
       "success": true,
-      "timestamp": "10:04:22 AM"
+      "timestamp": "10:31:35 AM"
+    },
+    {
+      "campaignId": "tra-cpl",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "10:31:48 AM"
+    },
+    {
+      "campaignId": "fsi-ppc2",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "10:32:20 AM"
+    },
+    {
+      "campaignId": "tra-cpl",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "10:32:21 AM"
+    },
+    {
+      "campaignId": "tra-cpl",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "10:33:18 AM"
     },
     {
       "campaignId": "tra-cpl",
@@ -39,7 +135,7 @@
       "browser": "chromium",
       "label": "Tablet - Chrome",
       "success": true,
-      "timestamp": "10:05:21 AM"
+      "timestamp": "10:34:17 AM"
     },
     {
       "campaignId": "tra-cpl",
@@ -47,15 +143,7 @@
       "browser": "chromium",
       "label": "Desktop - Chrome",
       "success": true,
-      "timestamp": "10:06:47 AM"
-    },
-    {
-      "campaignId": "ftd-x",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Desktop - Chrome",
-      "success": true,
-      "timestamp": "10:06:49 AM"
+      "timestamp": "10:35:37 AM"
     },
     {
       "campaignId": "ftd-x",
@@ -63,7 +151,15 @@
       "browser": "chromium",
       "label": "Android - Chrome",
       "success": true,
-      "timestamp": "10:06:49 AM"
+      "timestamp": "10:35:40 AM"
+    },
+    {
+      "campaignId": "ftd-x",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "10:35:48 AM"
     },
     {
       "campaignId": "ftd-x",
@@ -71,15 +167,15 @@
       "browser": "chromium",
       "label": "Tablet - Chrome",
       "success": true,
-      "timestamp": "10:06:57 AM"
+      "timestamp": "10:35:50 AM"
     },
     {
-      "campaignId": "tra-d3",
-      "viewport": "tablet",
+      "campaignId": "fsi-ppc2",
+      "viewport": "mobile",
       "browser": "chromium",
-      "label": "Tablet - Chrome",
+      "label": "Android - Chrome",
       "success": true,
-      "timestamp": "10:07:15 AM"
+      "timestamp": "10:35:56 AM"
     },
     {
       "campaignId": "ppc-st",
@@ -87,15 +183,7 @@
       "browser": "chromium",
       "label": "Android - Chrome",
       "success": true,
-      "timestamp": "10:08:00 AM"
-    },
-    {
-      "campaignId": "tra-d3",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Desktop - Chrome",
-      "success": true,
-      "timestamp": "10:08:06 AM"
+      "timestamp": "10:36:57 AM"
     },
     {
       "campaignId": "tra-d3",
@@ -103,7 +191,39 @@
       "browser": "chromium",
       "label": "Android - Chrome",
       "success": true,
-      "timestamp": "10:08:10 AM"
+      "timestamp": "10:37:06 AM"
+    },
+    {
+      "campaignId": "fsi-ppc2",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "10:37:07 AM"
+    },
+    {
+      "campaignId": "tra-d3",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "10:37:33 AM"
+    },
+    {
+      "campaignId": "tra-d3",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "10:37:36 AM"
+    },
+    {
+      "campaignId": "fsi-ppc2",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "10:38:04 AM"
     },
     {
       "campaignId": "ppc-st",
@@ -111,7 +231,23 @@
       "browser": "chromium",
       "label": "Tablet - Chrome",
       "success": true,
-      "timestamp": "10:08:12 AM"
+      "timestamp": "10:38:05 AM"
+    },
+    {
+      "campaignId": "ppc-st2",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "10:38:33 AM"
+    },
+    {
+      "campaignId": "ppc-st2",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "10:38:40 AM"
     },
     {
       "campaignId": "ppc-st",
@@ -119,23 +255,7 @@
       "browser": "chromium",
       "label": "Desktop - Chrome",
       "success": true,
-      "timestamp": "10:08:51 AM"
-    },
-    {
-      "campaignId": "ppc-st2",
-      "viewport": "mobile",
-      "browser": "chromium",
-      "label": "Android - Chrome",
-      "success": true,
-      "timestamp": "10:09:01 AM"
-    },
-    {
-      "campaignId": "ppc-st2",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Desktop - Chrome",
-      "success": true,
-      "timestamp": "10:09:23 AM"
+      "timestamp": "10:38:42 AM"
     },
     {
       "campaignId": "ppc-m-ca",
@@ -143,7 +263,15 @@
       "browser": "chromium",
       "label": "Android - Chrome",
       "success": true,
-      "timestamp": "10:09:44 AM"
+      "timestamp": "10:39:05 AM"
+    },
+    {
+      "campaignId": "tra-cpl",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "10:39:13 AM"
     },
     {
       "campaignId": "ppc-m-ca",
@@ -151,7 +279,23 @@
       "browser": "chromium",
       "label": "Tablet - Chrome",
       "success": true,
-      "timestamp": "10:09:58 AM"
+      "timestamp": "10:39:48 AM"
+    },
+    {
+      "campaignId": "ppc-st2",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "10:39:53 AM"
+    },
+    {
+      "campaignId": "ppc-cr",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "10:40:05 AM"
     },
     {
       "campaignId": "ppc-m-ca",
@@ -159,7 +303,199 @@
       "browser": "chromium",
       "label": "Desktop - Chrome",
       "success": true,
-      "timestamp": "10:10:15 AM"
+      "timestamp": "10:40:25 AM"
+    },
+    {
+      "campaignId": "tra-cpl",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "10:40:26 AM"
+    },
+    {
+      "campaignId": "ppc-cr",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "10:41:00 AM"
+    },
+    {
+      "campaignId": "ppc-cr",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "10:41:02 AM"
+    },
+    {
+      "campaignId": "ppc-fs",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "10:41:08 AM"
+    },
+    {
+      "campaignId": "ppc-fs",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "10:41:32 AM"
+    },
+    {
+      "campaignId": "tra-cpl",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "10:41:37 AM"
+    },
+    {
+      "campaignId": "ftd-x",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "10:41:51 AM"
+    },
+    {
+      "campaignId": "ftd-x",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "10:42:04 AM"
+    },
+    {
+      "campaignId": "ftd-x",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "10:42:36 AM"
+    },
+    {
+      "campaignId": "ppc",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "10:42:41 AM"
+    },
+    {
+      "campaignId": "ppc-fs",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "10:42:54 AM"
+    },
+    {
+      "campaignId": "ppc",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "10:43:21 AM"
+    },
+    {
+      "campaignId": "tra-d3",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "10:43:22 AM"
+    },
+    {
+      "campaignId": "tra-d3",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "10:43:30 AM"
+    },
+    {
+      "campaignId": "ppc",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "10:43:32 AM"
+    },
+    {
+      "campaignId": "tra-d3",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "10:43:59 AM"
+    },
+    {
+      "campaignId": "tra-cpm",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "10:44:00 AM"
+    },
+    {
+      "campaignId": "ppc-st",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "10:44:01 AM"
+    },
+    {
+      "campaignId": "tra-cpm",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "10:44:18 AM"
+    },
+    {
+      "campaignId": "ppc-st",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "10:44:34 AM"
+    },
+    {
+      "campaignId": "everest-tr-x",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "10:44:34 AM"
+    },
+    {
+      "campaignId": "ppc-st",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "10:44:38 AM"
+    },
+    {
+      "campaignId": "tra-cpm",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "10:44:51 AM"
+    },
+    {
+      "campaignId": "everest-tr-x",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "10:45:01 AM"
     },
     {
       "campaignId": "ppc-st2",
@@ -167,119 +503,7 @@
       "browser": "chromium",
       "label": "Tablet - Chrome",
       "success": true,
-      "timestamp": "10:10:27 AM"
-    },
-    {
-      "campaignId": "ppc-cr",
-      "viewport": "mobile",
-      "browser": "chromium",
-      "label": "Android - Chrome",
-      "success": true,
-      "timestamp": "10:10:38 AM"
-    },
-    {
-      "campaignId": "ppc-cr",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": true,
-      "timestamp": "10:11:05 AM"
-    },
-    {
-      "campaignId": "ppc-fs",
-      "viewport": "mobile",
-      "browser": "chromium",
-      "label": "Android - Chrome",
-      "success": true,
-      "timestamp": "10:11:26 AM"
-    },
-    {
-      "campaignId": "ppc-fs",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": true,
-      "timestamp": "10:11:33 AM"
-    },
-    {
-      "campaignId": "ppc-cr",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Desktop - Chrome",
-      "success": true,
-      "timestamp": "10:11:33 AM"
-    },
-    {
-      "campaignId": "ppc-fs",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Desktop - Chrome",
-      "success": true,
-      "timestamp": "10:12:00 AM"
-    },
-    {
-      "campaignId": "ppc",
-      "viewport": "mobile",
-      "browser": "chromium",
-      "label": "Android - Chrome",
-      "success": true,
-      "timestamp": "10:12:18 AM"
-    },
-    {
-      "campaignId": "ppc",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": true,
-      "timestamp": "10:12:29 AM"
-    },
-    {
-      "campaignId": "ppc",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Desktop - Chrome",
-      "success": true,
-      "timestamp": "10:12:44 AM"
-    },
-    {
-      "campaignId": "tra-cpm",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": true,
-      "timestamp": "10:13:13 AM"
-    },
-    {
-      "campaignId": "tra-cpm",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Desktop - Chrome",
-      "success": true,
-      "timestamp": "10:13:22 AM"
-    },
-    {
-      "campaignId": "everest-tr-x",
-      "viewport": "mobile",
-      "browser": "chromium",
-      "label": "Android - Chrome",
-      "success": true,
-      "timestamp": "10:13:31 AM"
-    },
-    {
-      "campaignId": "tra-cpm",
-      "viewport": "mobile",
-      "browser": "chromium",
-      "label": "Android - Chrome",
-      "success": true,
-      "timestamp": "10:13:45 AM"
-    },
-    {
-      "campaignId": "everest-tr-x",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": true,
-      "timestamp": "10:13:56 AM"
+      "timestamp": "10:45:06 AM"
     },
     {
       "campaignId": "everest-tr-x",
@@ -287,7 +511,15 @@
       "browser": "chromium",
       "label": "Desktop - Chrome",
       "success": true,
-      "timestamp": "10:14:06 AM"
+      "timestamp": "10:45:08 AM"
+    },
+    {
+      "campaignId": "ppc-m-ca",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "10:45:36 AM"
     },
     {
       "campaignId": "vts-original",
@@ -295,7 +527,23 @@
       "browser": "chromium",
       "label": "Android - Chrome",
       "success": true,
-      "timestamp": "10:14:27 AM"
+      "timestamp": "10:45:37 AM"
+    },
+    {
+      "campaignId": "ppc-st2",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "10:45:51 AM"
+    },
+    {
+      "campaignId": "ppc-st2",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "10:46:04 AM"
     },
     {
       "campaignId": "vts-original",
@@ -303,7 +551,7 @@
       "browser": "chromium",
       "label": "Tablet - Chrome",
       "success": true,
-      "timestamp": "10:14:37 AM"
+      "timestamp": "10:46:07 AM"
     },
     {
       "campaignId": "vts-original",
@@ -311,7 +559,15 @@
       "browser": "chromium",
       "label": "Desktop - Chrome",
       "success": true,
-      "timestamp": "10:14:48 AM"
+      "timestamp": "10:46:07 AM"
+    },
+    {
+      "campaignId": "ppc-m-ca",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "10:46:11 AM"
     },
     {
       "campaignId": "vts-ne-branded",
@@ -319,7 +575,7 @@
       "browser": "chromium",
       "label": "Android - Chrome",
       "success": true,
-      "timestamp": "10:15:02 AM"
+      "timestamp": "10:46:19 AM"
     },
     {
       "campaignId": "vts-ne-branded",
@@ -327,7 +583,23 @@
       "browser": "chromium",
       "label": "Tablet - Chrome",
       "success": true,
-      "timestamp": "10:15:36 AM"
+      "timestamp": "10:46:43 AM"
+    },
+    {
+      "campaignId": "ppc-m-ca",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "10:46:43 AM"
+    },
+    {
+      "campaignId": "ppc-cr",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "10:47:00 AM"
     },
     {
       "campaignId": "vts-ne-branded",
@@ -335,7 +607,31 @@
       "browser": "chromium",
       "label": "Desktop - Chrome",
       "success": true,
-      "timestamp": "10:15:38 AM"
+      "timestamp": "10:47:06 AM"
+    },
+    {
+      "campaignId": "ppc-cr",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "10:47:08 AM"
+    },
+    {
+      "campaignId": "ppc-fs",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "10:47:35 AM"
+    },
+    {
+      "campaignId": "ppc-cr",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "10:47:58 AM"
     },
     {
       "campaignId": "1800-fresh-tax-x-main",
@@ -343,7 +639,39 @@
       "browser": "chromium",
       "label": "Android - Chrome",
       "success": true,
-      "timestamp": "10:16:30 AM"
+      "timestamp": "10:48:02 AM"
+    },
+    {
+      "campaignId": "ppc-fs",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "10:48:02 AM"
+    },
+    {
+      "campaignId": "ppc-fs",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "10:48:27 AM"
+    },
+    {
+      "campaignId": "ppc",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "10:48:28 AM"
+    },
+    {
+      "campaignId": "ppc",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "10:48:56 AM"
     },
     {
       "campaignId": "1800-fresh-tax-x-main",
@@ -351,7 +679,39 @@
       "browser": "chromium",
       "label": "Tablet - Chrome",
       "success": true,
-      "timestamp": "10:17:27 AM"
+      "timestamp": "10:48:57 AM"
+    },
+    {
+      "campaignId": "ppc",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "10:49:02 AM"
+    },
+    {
+      "campaignId": "tra-cpm",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "10:49:20 AM"
+    },
+    {
+      "campaignId": "everest-tr-x",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "10:49:45 AM"
+    },
+    {
+      "campaignId": "tra-cpm",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "10:49:49 AM"
     },
     {
       "campaignId": "1800-fresh-tax-x-main",
@@ -359,7 +719,39 @@
       "browser": "chromium",
       "label": "Desktop - Chrome",
       "success": true,
-      "timestamp": "10:18:20 AM"
+      "timestamp": "10:49:51 AM"
+    },
+    {
+      "campaignId": "everest-tr-x",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "10:50:05 AM"
+    },
+    {
+      "campaignId": "tra-cpm",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "10:50:11 AM"
+    },
+    {
+      "campaignId": "everest-tr-x",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "10:50:28 AM"
+    },
+    {
+      "campaignId": "vts-original",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "10:50:45 AM"
     },
     {
       "campaignId": "fsi-main",
@@ -367,7 +759,39 @@
       "browser": "chromium",
       "label": "Android - Chrome",
       "success": true,
-      "timestamp": "10:19:13 AM"
+      "timestamp": "10:50:49 AM"
+    },
+    {
+      "campaignId": "vts-original",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "10:51:04 AM"
+    },
+    {
+      "campaignId": "vts-original",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "10:51:05 AM"
+    },
+    {
+      "campaignId": "vts-ne-branded",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "10:51:20 AM"
+    },
+    {
+      "campaignId": "vts-ne-branded",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "10:51:41 AM"
     },
     {
       "campaignId": "fsi-main",
@@ -375,7 +799,31 @@
       "browser": "chromium",
       "label": "Tablet - Chrome",
       "success": true,
-      "timestamp": "10:20:05 AM"
+      "timestamp": "10:51:45 AM"
+    },
+    {
+      "campaignId": "vts-ne-branded",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "10:52:00 AM"
+    },
+    {
+      "campaignId": "original",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "10:52:39 AM"
+    },
+    {
+      "campaignId": "fsi-main",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "10:52:43 AM"
     },
     {
       "campaignId": "original",
@@ -383,15 +831,7 @@
       "browser": "chromium",
       "label": "Android - Chrome",
       "success": true,
-      "timestamp": "10:20:54 AM"
-    },
-    {
-      "campaignId": "fsi-main",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Desktop - Chrome",
-      "success": true,
-      "timestamp": "10:20:58 AM"
+      "timestamp": "10:52:45 AM"
     },
     {
       "campaignId": "original",
@@ -399,7 +839,71 @@
       "browser": "chromium",
       "label": "Tablet - Chrome",
       "success": true,
-      "timestamp": "10:21:18 AM"
+      "timestamp": "10:52:50 AM"
+    },
+    {
+      "campaignId": "1800-fresh-tax-x-main",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "10:52:53 AM"
+    },
+    {
+      "campaignId": "1800-fresh-tax-x-main",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "10:53:44 AM"
+    },
+    {
+      "campaignId": "1800-fresh-tax-x-main",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "10:54:36 AM"
+    },
+    {
+      "campaignId": "fsi-main",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "10:55:26 AM"
+    },
+    {
+      "campaignId": "fsi-main",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "10:56:16 AM"
+    },
+    {
+      "campaignId": "fsi-main",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "10:57:08 AM"
+    },
+    {
+      "campaignId": "original",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "10:57:10 AM"
+    },
+    {
+      "campaignId": "original",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "10:57:30 AM"
     },
     {
       "campaignId": "original",
@@ -407,7 +911,2455 @@
       "browser": "chromium",
       "label": "Desktop - Chrome",
       "success": true,
-      "timestamp": "10:21:45 AM"
+      "timestamp": "10:57:49 AM"
+    },
+    {
+      "campaignId": "fsi-ppc2",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "11:01:58 AM"
+    },
+    {
+      "campaignId": "fsi-ppc2",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "11:02:41 AM"
+    },
+    {
+      "campaignId": "fsi-ppc2",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "11:03:38 AM"
+    },
+    {
+      "campaignId": "tra-cpl",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "11:04:32 AM"
+    },
+    {
+      "campaignId": "tra-cpl",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "11:05:30 AM"
+    },
+    {
+      "campaignId": "tra-cpl",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "11:06:25 AM"
+    },
+    {
+      "campaignId": "tra-d3",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "11:07:27 AM"
+    },
+    {
+      "campaignId": "ftd-x",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "11:07:32 AM"
+    },
+    {
+      "campaignId": "ftd-x",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "11:07:35 AM"
+    },
+    {
+      "campaignId": "ftd-x",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "11:07:44 AM"
+    },
+    {
+      "campaignId": "ppc-st",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "11:08:34 AM"
+    },
+    {
+      "campaignId": "ppc-st",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "11:08:47 AM"
+    },
+    {
+      "campaignId": "tra-d3",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "11:09:17 AM"
+    },
+    {
+      "campaignId": "tra-d3",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "11:09:19 AM"
+    },
+    {
+      "campaignId": "ppc-st2",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "11:09:56 AM"
+    },
+    {
+      "campaignId": "ppc-st",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "11:09:57 AM"
+    },
+    {
+      "campaignId": "ppc-st2",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "11:10:12 AM"
+    },
+    {
+      "campaignId": "ppc-st2",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "11:10:20 AM"
+    },
+    {
+      "campaignId": "ppc-m-ca",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "11:11:00 AM"
+    },
+    {
+      "campaignId": "ppc-cr",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "11:11:17 AM"
+    },
+    {
+      "campaignId": "ppc-m-ca",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "11:11:38 AM"
+    },
+    {
+      "campaignId": "ppc-m-ca",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "11:11:53 AM"
+    },
+    {
+      "campaignId": "ppc-cr",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "11:12:00 AM"
+    },
+    {
+      "campaignId": "ppc-cr",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "11:12:06 AM"
+    },
+    {
+      "campaignId": "ppc-fs",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "11:12:29 AM"
+    },
+    {
+      "campaignId": "ppc",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "11:12:58 AM"
+    },
+    {
+      "campaignId": "ppc",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "11:13:22 AM"
+    },
+    {
+      "campaignId": "ppc-fs",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "11:13:40 AM"
+    },
+    {
+      "campaignId": "ppc-fs",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "11:13:44 AM"
+    },
+    {
+      "campaignId": "ppc",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "11:13:50 AM"
+    },
+    {
+      "campaignId": "everest-tr-x",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "11:14:36 AM"
+    },
+    {
+      "campaignId": "tra-cpm",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "11:14:37 AM"
+    },
+    {
+      "campaignId": "tra-cpm",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "11:15:00 AM"
+    },
+    {
+      "campaignId": "tra-cpm",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "11:15:02 AM"
+    },
+    {
+      "campaignId": "everest-tr-x",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "11:15:21 AM"
+    },
+    {
+      "campaignId": "everest-tr-x",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "11:15:38 AM"
+    },
+    {
+      "campaignId": "vts-original",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "11:15:58 AM"
+    },
+    {
+      "campaignId": "vts-original",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "11:16:16 AM"
+    },
+    {
+      "campaignId": "vts-original",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "11:16:16 AM"
+    },
+    {
+      "campaignId": "vts-ne-branded",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "11:16:30 AM"
+    },
+    {
+      "campaignId": "vts-ne-branded",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "11:16:50 AM"
+    },
+    {
+      "campaignId": "vts-ne-branded",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "11:17:07 AM"
+    },
+    {
+      "campaignId": "1800-fresh-tax-x-main",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "11:17:57 AM"
+    },
+    {
+      "campaignId": "1800-fresh-tax-x-main",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "11:18:48 AM"
+    },
+    {
+      "campaignId": "1800-fresh-tax-x-main",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "11:19:41 AM"
+    },
+    {
+      "campaignId": "fsi-main",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "11:20:33 AM"
+    },
+    {
+      "campaignId": "fsi-main",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "11:21:25 AM"
+    },
+    {
+      "campaignId": "fsi-main",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "11:22:15 AM"
+    },
+    {
+      "campaignId": "original",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "11:22:20 AM"
+    },
+    {
+      "campaignId": "original",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "11:22:43 AM"
+    },
+    {
+      "campaignId": "original",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "11:23:02 AM"
+    },
+    {
+      "campaignId": "fsi-ppc2",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "12:36:05 PM"
+    },
+    {
+      "campaignId": "fsi-ppc2",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "12:36:57 PM"
+    },
+    {
+      "campaignId": "fsi-ppc2",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "12:37:46 PM"
+    },
+    {
+      "campaignId": "tra-cpl",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "12:38:52 PM"
+    },
+    {
+      "campaignId": "tra-cpl",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "12:40:02 PM"
+    },
+    {
+      "campaignId": "tra-cpl",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "12:41:11 PM"
+    },
+    {
+      "campaignId": "ftd-x",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "12:41:58 PM"
+    },
+    {
+      "campaignId": "ftd-x",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "12:42:05 PM"
+    },
+    {
+      "campaignId": "ftd-x",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "12:42:21 PM"
+    },
+    {
+      "campaignId": "tra-d3",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "12:42:52 PM"
+    },
+    {
+      "campaignId": "ppc-st",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "12:43:27 PM"
+    },
+    {
+      "campaignId": "tra-d3",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "12:43:52 PM"
+    },
+    {
+      "campaignId": "tra-d3",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "12:43:52 PM"
+    },
+    {
+      "campaignId": "ppc-st",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "12:43:57 PM"
+    },
+    {
+      "campaignId": "ppc-st",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "12:44:30 PM"
+    },
+    {
+      "campaignId": "ppc-st2",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "12:44:59 PM"
+    },
+    {
+      "campaignId": "ppc-st2",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "12:45:00 PM"
+    },
+    {
+      "campaignId": "ppc-m-ca",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "12:45:31 PM"
+    },
+    {
+      "campaignId": "ppc-st2",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "12:45:47 PM"
+    },
+    {
+      "campaignId": "ppc-m-ca",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "12:46:05 PM"
+    },
+    {
+      "campaignId": "ppc-m-ca",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "12:46:08 PM"
+    },
+    {
+      "campaignId": "ppc-cr",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "12:46:26 PM"
+    },
+    {
+      "campaignId": "ppc-cr",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "12:46:44 PM"
+    },
+    {
+      "campaignId": "ppc-cr",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "12:46:59 PM"
+    },
+    {
+      "campaignId": "ppc-fs",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "12:47:08 PM"
+    },
+    {
+      "campaignId": "ppc-fs",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "12:47:43 PM"
+    },
+    {
+      "campaignId": "ppc",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "12:47:59 PM"
+    },
+    {
+      "campaignId": "ppc",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "12:48:43 PM"
+    },
+    {
+      "campaignId": "ppc-fs",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "12:48:45 PM"
+    },
+    {
+      "campaignId": "ppc",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "12:49:02 PM"
+    },
+    {
+      "campaignId": "tra-cpm",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "12:49:48 PM"
+    },
+    {
+      "campaignId": "tra-cpm",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "12:49:53 PM"
+    },
+    {
+      "campaignId": "everest-tr-x",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "12:49:54 PM"
+    },
+    {
+      "campaignId": "tra-cpm",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "12:50:03 PM"
+    },
+    {
+      "campaignId": "everest-tr-x",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "12:50:47 PM"
+    },
+    {
+      "campaignId": "everest-tr-x",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "12:50:53 PM"
+    },
+    {
+      "campaignId": "vts-original",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "12:51:13 PM"
+    },
+    {
+      "campaignId": "vts-original",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "12:51:14 PM"
+    },
+    {
+      "campaignId": "vts-original",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "12:51:49 PM"
+    },
+    {
+      "campaignId": "vts-ne-branded",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "12:51:52 PM"
+    },
+    {
+      "campaignId": "vts-ne-branded",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "12:52:12 PM"
+    },
+    {
+      "campaignId": "vts-ne-branded",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "12:52:13 PM"
+    },
+    {
+      "campaignId": "1800-fresh-tax-x-main",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "12:53:15 PM"
+    },
+    {
+      "campaignId": "1800-fresh-tax-x-main",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "12:54:14 PM"
+    },
+    {
+      "campaignId": "1800-fresh-tax-x-main",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "12:55:16 PM"
+    },
+    {
+      "campaignId": "fsi-main",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "12:56:17 PM"
+    },
+    {
+      "campaignId": "fsi-main",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "12:57:17 PM"
+    },
+    {
+      "campaignId": "fsi-main",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "12:58:18 PM"
+    },
+    {
+      "campaignId": "original",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "12:58:34 PM"
+    },
+    {
+      "campaignId": "original",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "12:58:54 PM"
+    },
+    {
+      "campaignId": "original",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "12:59:08 PM"
+    },
+    {
+      "campaignId": "fsi-ppc2",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "1:02:08 PM"
+    },
+    {
+      "campaignId": "fsi-ppc2",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "1:03:02 PM"
+    },
+    {
+      "campaignId": "fsi-ppc2",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "1:03:52 PM"
+    },
+    {
+      "campaignId": "tra-cpl",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "1:05:47 PM"
+    },
+    {
+      "campaignId": "tra-cpl",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "1:06:57 PM"
+    },
+    {
+      "campaignId": "tra-cpl",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "1:08:06 PM"
+    },
+    {
+      "campaignId": "ftd-x",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "1:08:12 PM"
+    },
+    {
+      "campaignId": "ftd-x",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "1:08:19 PM"
+    },
+    {
+      "campaignId": "ftd-x",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "1:08:22 PM"
+    },
+    {
+      "campaignId": "ppc-st",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "1:09:30 PM"
+    },
+    {
+      "campaignId": "tra-d3",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "1:09:35 PM"
+    },
+    {
+      "campaignId": "tra-d3",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "1:09:40 PM"
+    },
+    {
+      "campaignId": "tra-d3",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "1:10:15 PM"
+    },
+    {
+      "campaignId": "ppc-st",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "1:10:37 PM"
+    },
+    {
+      "campaignId": "ppc-st",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "1:10:42 PM"
+    },
+    {
+      "campaignId": "ppc-st2",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "1:11:01 PM"
+    },
+    {
+      "campaignId": "ppc-st2",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "1:11:27 PM"
+    },
+    {
+      "campaignId": "ppc-st2",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "1:11:55 PM"
+    },
+    {
+      "campaignId": "ppc-cr",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "1:12:52 PM"
+    },
+    {
+      "campaignId": "ppc-m-ca",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "1:12:59 PM"
+    },
+    {
+      "campaignId": "ppc-m-ca",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "1:13:00 PM"
+    },
+    {
+      "campaignId": "ppc-m-ca",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "1:13:05 PM"
+    },
+    {
+      "campaignId": "ppc-cr",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "1:13:59 PM"
+    },
+    {
+      "campaignId": "ppc-cr",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "1:14:09 PM"
+    },
+    {
+      "campaignId": "ppc-fs",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "1:14:15 PM"
+    },
+    {
+      "campaignId": "ppc-fs",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "1:14:27 PM"
+    },
+    {
+      "campaignId": "ppc",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "1:15:15 PM"
+    },
+    {
+      "campaignId": "ppc-fs",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "1:15:31 PM"
+    },
+    {
+      "campaignId": "ppc",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "1:15:33 PM"
+    },
+    {
+      "campaignId": "ppc",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "1:16:25 PM"
+    },
+    {
+      "campaignId": "tra-cpm",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "1:17:29 PM"
+    },
+    {
+      "campaignId": "tra-cpm",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "1:17:32 PM"
+    },
+    {
+      "campaignId": "tra-cpm",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "1:17:33 PM"
+    },
+    {
+      "campaignId": "everest-tr-x",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "1:18:28 PM"
+    },
+    {
+      "campaignId": "everest-tr-x",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "1:18:30 PM"
+    },
+    {
+      "campaignId": "vts-original",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "1:18:37 PM"
+    },
+    {
+      "campaignId": "everest-tr-x",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "1:19:20 PM"
+    },
+    {
+      "campaignId": "vts-original",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "1:19:43 PM"
+    },
+    {
+      "campaignId": "vts-ne-branded",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "1:19:47 PM"
+    },
+    {
+      "campaignId": "vts-original",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "1:19:55 PM"
+    },
+    {
+      "campaignId": "vts-ne-branded",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "1:20:38 PM"
+    },
+    {
+      "campaignId": "vts-ne-branded",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "1:20:54 PM"
+    },
+    {
+      "campaignId": "1800-fresh-tax-x-main",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "1:22:02 PM"
+    },
+    {
+      "campaignId": "1800-fresh-tax-x-main",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "1:23:12 PM"
+    },
+    {
+      "campaignId": "1800-fresh-tax-x-main",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "1:24:16 PM"
+    },
+    {
+      "campaignId": "fsi-main",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "1:25:25 PM"
+    },
+    {
+      "campaignId": "fsi-main",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "1:26:33 PM"
+    },
+    {
+      "campaignId": "original",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "1:27:06 PM"
+    },
+    {
+      "campaignId": "original",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "1:27:35 PM"
+    },
+    {
+      "campaignId": "fsi-main",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "1:27:47 PM"
+    },
+    {
+      "campaignId": "original",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "1:27:57 PM"
+    },
+    {
+      "campaignId": "fsi-ppc2",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "2:35:53 PM"
+    },
+    {
+      "campaignId": "fsi-ppc2",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "2:36:38 PM"
+    },
+    {
+      "campaignId": "fsi-ppc2",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "2:37:36 PM"
+    },
+    {
+      "campaignId": "tra-cpl",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "2:38:32 PM"
+    },
+    {
+      "campaignId": "tra-cpl",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "2:39:27 PM"
+    },
+    {
+      "campaignId": "tra-cpl",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "2:40:23 PM"
+    },
+    {
+      "campaignId": "ftd-x",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "2:41:24 PM"
+    },
+    {
+      "campaignId": "ftd-x",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "2:41:31 PM"
+    },
+    {
+      "campaignId": "ftd-x",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "2:41:36 PM"
+    },
+    {
+      "campaignId": "tra-d3",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "2:41:48 PM"
+    },
+    {
+      "campaignId": "ppc-st",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "2:42:33 PM"
+    },
+    {
+      "campaignId": "ppc-st",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "2:42:51 PM"
+    },
+    {
+      "campaignId": "tra-d3",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "2:43:06 PM"
+    },
+    {
+      "campaignId": "tra-d3",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "2:43:07 PM"
+    },
+    {
+      "campaignId": "ppc-st",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "2:43:33 PM"
+    },
+    {
+      "campaignId": "ppc-st2",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "2:43:44 PM"
+    },
+    {
+      "campaignId": "ppc-st2",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "2:44:02 PM"
+    },
+    {
+      "campaignId": "ppc-st2",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "2:44:04 PM"
+    },
+    {
+      "campaignId": "ppc-m-ca",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "2:44:29 PM"
+    },
+    {
+      "campaignId": "ppc-m-ca",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "2:44:35 PM"
+    },
+    {
+      "campaignId": "ppc-m-ca",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "2:44:55 PM"
+    },
+    {
+      "campaignId": "ppc-cr",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "2:45:13 PM"
+    },
+    {
+      "campaignId": "ppc-cr",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "2:45:18 PM"
+    },
+    {
+      "campaignId": "ppc-cr",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "2:45:22 PM"
+    },
+    {
+      "campaignId": "ppc-fs",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "2:45:49 PM"
+    },
+    {
+      "campaignId": "ppc-fs",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "2:46:08 PM"
+    },
+    {
+      "campaignId": "ppc-fs",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "2:46:12 PM"
+    },
+    {
+      "campaignId": "ppc",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "2:46:18 PM"
+    },
+    {
+      "campaignId": "ppc",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "2:46:45 PM"
+    },
+    {
+      "campaignId": "tra-cpm",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "2:47:04 PM"
+    },
+    {
+      "campaignId": "ppc",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "2:47:09 PM"
+    },
+    {
+      "campaignId": "tra-cpm",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "2:47:10 PM"
+    },
+    {
+      "campaignId": "tra-cpm",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "2:47:33 PM"
+    },
+    {
+      "campaignId": "everest-tr-x",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "2:47:51 PM"
+    },
+    {
+      "campaignId": "everest-tr-x",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "2:47:55 PM"
+    },
+    {
+      "campaignId": "everest-tr-x",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "2:47:56 PM"
+    },
+    {
+      "campaignId": "vts-original",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "2:48:29 PM"
+    },
+    {
+      "campaignId": "vts-original",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "2:48:54 PM"
+    },
+    {
+      "campaignId": "vts-original",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "2:48:55 PM"
+    },
+    {
+      "campaignId": "vts-ne-branded",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "2:48:56 PM"
+    },
+    {
+      "campaignId": "vts-ne-branded",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "2:49:27 PM"
+    },
+    {
+      "campaignId": "vts-ne-branded",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "2:49:53 PM"
+    },
+    {
+      "campaignId": "1800-fresh-tax-x-main",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "2:51:08 PM"
+    },
+    {
+      "campaignId": "fsi-ppc2",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "2:51:30 PM"
+    },
+    {
+      "campaignId": "1800-fresh-tax-x-main",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "2:52:08 PM"
+    },
+    {
+      "campaignId": "fsi-ppc2",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "2:52:16 PM"
+    },
+    {
+      "campaignId": "fsi-ppc2",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "2:53:07 PM"
+    },
+    {
+      "campaignId": "1800-fresh-tax-x-main",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "2:53:08 PM"
+    },
+    {
+      "campaignId": "tra-cpl",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "2:54:08 PM"
+    },
+    {
+      "campaignId": "fsi-main",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "2:54:10 PM"
+    },
+    {
+      "campaignId": "tra-cpl",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "2:55:13 PM"
+    },
+    {
+      "campaignId": "fsi-main",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "2:55:14 PM"
+    },
+    {
+      "campaignId": "original",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "2:55:50 PM"
+    },
+    {
+      "campaignId": "fsi-main",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "2:56:19 PM"
+    },
+    {
+      "campaignId": "original",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "2:56:21 PM"
+    },
+    {
+      "campaignId": "tra-cpl",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "2:56:23 PM"
+    },
+    {
+      "campaignId": "original",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "2:56:30 PM"
+    },
+    {
+      "campaignId": "ftd-x",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "2:57:09 PM"
+    },
+    {
+      "campaignId": "ftd-x",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "2:57:29 PM"
+    },
+    {
+      "campaignId": "ftd-x",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "2:57:45 PM"
+    },
+    {
+      "campaignId": "tra-d3",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "2:57:46 PM"
+    },
+    {
+      "campaignId": "tra-d3",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "2:58:35 PM"
+    },
+    {
+      "campaignId": "ppc-st",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "2:58:51 PM"
+    },
+    {
+      "campaignId": "ppc-st",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "2:58:54 PM"
+    },
+    {
+      "campaignId": "tra-d3",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "2:59:05 PM"
+    },
+    {
+      "campaignId": "ppc-st",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "2:59:29 PM"
+    },
+    {
+      "campaignId": "ppc-st2",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "2:59:54 PM"
+    },
+    {
+      "campaignId": "ppc-st2",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "3:00:06 PM"
+    },
+    {
+      "campaignId": "ppc-st2",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "3:00:10 PM"
+    },
+    {
+      "campaignId": "ppc-m-ca",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "3:01:06 PM"
+    },
+    {
+      "campaignId": "ppc-cr",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "3:01:13 PM"
+    },
+    {
+      "campaignId": "ppc-m-ca",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "3:01:14 PM"
+    },
+    {
+      "campaignId": "ppc-m-ca",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "3:01:26 PM"
+    },
+    {
+      "campaignId": "ppc-cr",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "3:02:16 PM"
+    },
+    {
+      "campaignId": "fsi-ppc2",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "3:02:37 PM"
+    },
+    {
+      "campaignId": "ppc-cr",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "3:02:41 PM"
+    },
+    {
+      "campaignId": "ppc-fs",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "3:02:48 PM"
+    },
+    {
+      "campaignId": "ppc-fs",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "3:02:56 PM"
+    },
+    {
+      "campaignId": "ppc-fs",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "3:03:13 PM"
+    },
+    {
+      "campaignId": "fsi-ppc2",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "3:03:37 PM"
+    },
+    {
+      "campaignId": "ppc",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "3:03:46 PM"
+    },
+    {
+      "campaignId": "ppc",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "3:03:54 PM"
+    },
+    {
+      "campaignId": "ppc",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "3:04:02 PM"
+    },
+    {
+      "campaignId": "tra-cpm",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "3:04:17 PM"
+    },
+    {
+      "campaignId": "everest-tr-x",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "3:04:51 PM"
+    },
+    {
+      "campaignId": "tra-cpm",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "3:04:53 PM"
+    },
+    {
+      "campaignId": "fsi-ppc2",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "3:04:59 PM"
+    },
+    {
+      "campaignId": "tra-cpm",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "3:05:02 PM"
+    },
+    {
+      "campaignId": "everest-tr-x",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "3:05:06 PM"
+    },
+    {
+      "campaignId": "everest-tr-x",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "3:05:47 PM"
+    },
+    {
+      "campaignId": "vts-original",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "3:05:55 PM"
+    },
+    {
+      "campaignId": "vts-original",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "3:06:08 PM"
+    },
+    {
+      "campaignId": "vts-original",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "3:06:09 PM"
+    },
+    {
+      "campaignId": "tra-cpl",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "3:06:26 PM"
+    },
+    {
+      "campaignId": "vts-ne-branded",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "3:06:45 PM"
+    },
+    {
+      "campaignId": "vts-ne-branded",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "3:06:54 PM"
+    },
+    {
+      "campaignId": "vts-ne-branded",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "3:07:08 PM"
+    },
+    {
+      "campaignId": "tra-cpl",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "3:07:37 PM"
+    },
+    {
+      "campaignId": "1800-fresh-tax-x-main",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "3:08:03 PM"
+    },
+    {
+      "campaignId": "tra-cpl",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "3:08:13 PM"
+    },
+    {
+      "campaignId": "ftd-x",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "3:08:40 PM"
+    },
+    {
+      "campaignId": "ftd-x",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "3:08:49 PM"
+    },
+    {
+      "campaignId": "1800-fresh-tax-x-main",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "3:09:04 PM"
+    },
+    {
+      "campaignId": "ftd-x",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "3:09:07 PM"
+    },
+    {
+      "campaignId": "tra-d3",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "3:09:32 PM"
+    },
+    {
+      "campaignId": "1800-fresh-tax-x-main",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "3:10:05 PM"
+    },
+    {
+      "campaignId": "tra-d3",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "3:10:10 PM"
+    },
+    {
+      "campaignId": "tra-d3",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "3:10:28 PM"
+    },
+    {
+      "campaignId": "ppc-st",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "3:10:44 PM"
+    },
+    {
+      "campaignId": "ppc-st",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "3:11:07 PM"
+    },
+    {
+      "campaignId": "fsi-main",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "3:11:07 PM"
+    },
+    {
+      "campaignId": "ppc-st",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "3:11:16 PM"
+    },
+    {
+      "campaignId": "ppc-st2",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "3:11:47 PM"
+    },
+    {
+      "campaignId": "fsi-main",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "3:12:03 PM"
+    },
+    {
+      "campaignId": "ppc-st2",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "3:12:19 PM"
+    },
+    {
+      "campaignId": "ppc-m-ca",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "3:12:25 PM"
+    },
+    {
+      "campaignId": "ppc-st2",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "3:12:25 PM"
+    },
+    {
+      "campaignId": "original",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "3:12:40 PM"
+    },
+    {
+      "campaignId": "ppc-m-ca",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "3:13:05 PM"
+    },
+    {
+      "campaignId": "fsi-main",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "3:13:10 PM"
+    },
+    {
+      "campaignId": "original",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "3:13:19 PM"
+    },
+    {
+      "campaignId": "original",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "3:13:21 PM"
+    },
+    {
+      "campaignId": "ppc-cr",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "3:13:28 PM"
+    },
+    {
+      "campaignId": "ppc-m-ca",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "3:13:30 PM"
+    },
+    {
+      "campaignId": "ppc-cr",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "3:13:31 PM"
+    },
+    {
+      "campaignId": "ppc-fs",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "3:14:28 PM"
+    },
+    {
+      "campaignId": "ppc-fs",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "3:14:33 PM"
+    },
+    {
+      "campaignId": "ppc-fs",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "3:14:33 PM"
+    },
+    {
+      "campaignId": "ppc-cr",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "3:14:55 PM"
+    },
+    {
+      "campaignId": "ppc",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "3:15:28 PM"
+    },
+    {
+      "campaignId": "ppc",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "3:15:47 PM"
+    },
+    {
+      "campaignId": "tra-cpm",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "3:15:56 PM"
+    },
+    {
+      "campaignId": "ppc",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "3:16:07 PM"
+    },
+    {
+      "campaignId": "tra-cpm",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "3:16:30 PM"
+    },
+    {
+      "campaignId": "tra-cpm",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "3:16:47 PM"
+    },
+    {
+      "campaignId": "everest-tr-x",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "3:16:48 PM"
+    },
+    {
+      "campaignId": "everest-tr-x",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "3:17:04 PM"
+    },
+    {
+      "campaignId": "everest-tr-x",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "3:17:20 PM"
+    },
+    {
+      "campaignId": "vts-original",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "3:17:43 PM"
+    },
+    {
+      "campaignId": "vts-original",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "3:17:44 PM"
+    },
+    {
+      "campaignId": "vts-original",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "3:17:57 PM"
+    },
+    {
+      "campaignId": "vts-ne-branded",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "3:18:14 PM"
+    },
+    {
+      "campaignId": "vts-ne-branded",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "3:18:33 PM"
+    },
+    {
+      "campaignId": "vts-ne-branded",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "3:18:34 PM"
+    },
+    {
+      "campaignId": "1800-fresh-tax-x-main",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "3:19:25 PM"
+    },
+    {
+      "campaignId": "1800-fresh-tax-x-main",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "3:20:18 PM"
+    },
+    {
+      "campaignId": "1800-fresh-tax-x-main",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "3:21:09 PM"
+    },
+    {
+      "campaignId": "fsi-main",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "3:22:02 PM"
+    },
+    {
+      "campaignId": "fsi-main",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "3:22:54 PM"
+    },
+    {
+      "campaignId": "fsi-main",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "3:23:46 PM"
+    },
+    {
+      "campaignId": "original",
+      "viewport": "mobile",
+      "browser": "chromium",
+      "label": "Android - Chrome",
+      "success": true,
+      "timestamp": "3:24:05 PM"
+    },
+    {
+      "campaignId": "original",
+      "viewport": "tablet",
+      "browser": "chromium",
+      "label": "Tablet - Chrome",
+      "success": true,
+      "timestamp": "3:24:24 PM"
+    },
+    {
+      "campaignId": "original",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Desktop - Chrome",
+      "success": true,
+      "timestamp": "3:24:44 PM"
     }
   ],
   "emailSent": false

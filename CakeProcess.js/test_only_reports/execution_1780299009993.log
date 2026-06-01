@@ -1,0 +1,23 @@
+[2026-06-01T07:30:09.994Z] [INFO] Cake Test Only Validation Process Started
+[2026-06-01T07:30:09.994Z] [INFO] Launching browser
+[2026-06-01T07:30:10.723Z] [INFO] Navigating to Cake CRM
+[2026-06-01T07:30:17.356Z] [INFO] Checking login status
+[2026-06-01T07:30:17.408Z] [INFO] Login required - entering credentials
+[2026-06-01T07:30:17.443Z] [INFO] Entered username: urvish.patel@bytestechnolab.com
+[2026-06-01T07:30:17.456Z] [INFO] Entered password
+[2026-06-01T07:30:19.479Z] [INFO] Navigating to Cake Reports > Conversions
+[2026-06-01T07:30:22.488Z] [INFO] Waiting for page stabilization...
+[2026-06-01T07:30:22.573Z] [INFO] Screenshot (after login): C:\Users\Deepali_Londhe\Desktop\New Tracking URL\CakeProcess.js\test_only_screenshots\00_after_login_1780299022499.png
+[2026-06-01T07:30:22.584Z] [INFO] Main frame content visible: true
+[2026-06-01T07:30:22.585Z] [INFO] Looking for REPORTS menu...
+[2026-06-01T07:30:22.607Z] [INFO] Found menu keywords: 
+[2026-06-01T07:30:22.632Z] [WARN] REPORTS menu not found via click - trying alternative
+[2026-06-01T07:30:23.159Z] [WARN] Menu click failed - trying direct URL navigation
+[2026-06-01T07:30:23.161Z] [INFO] Navigating directly to: https://app.forwardleapmarketing.com/reports/conversion
+[2026-06-01T07:30:28.142Z] [INFO] Screenshot (after direct nav): C:\Users\Deepali_Londhe\Desktop\New Tracking URL\CakeProcess.js\test_only_screenshots\02_after_direct_navigation_1780299028065.png
+[2026-06-01T07:30:28.158Z] [ERROR] Could not navigate to Conversions - menu and direct URL both failed
+[2026-06-01T07:30:28.159Z] [ERROR] FATAL ERROR: Failed to navigate to Conversions page
+[2026-06-01T07:30:28.160Z] [ERROR] Error: Failed to navigate to Conversions page
+    at runTestOnlyValidation (C:\Users\Deepali_Londhe\Desktop\New Tracking URL\CakeProcess.js\cake_test_only.js:799:13)
+[2026-06-01T07:30:28.378Z] [INFO] Browser closed
+[2026-06-01T07:30:28.379Z] [INFO] Process finished
