@@ -399,8 +399,9 @@ class MobileFormPage {
   async fillForm(data = {}) {
     await this.injectDeviceFrame();
     console.log('📝 [Mobile] Starting mobile-specific form filling...');
-    const { sliderAmount, targetMin, targetMax, state, firstName, lastName, email, phone, runIndex } = data;
-    this.runIndex = runIndex || 0;
+    const { sliderAmount, targetMin, targetMax, state, firstName, lastName, email, phone } = data;
+    const runIndex = data.runIndex || 0;
+    this.runIndex = runIndex;
     const defaultSliderAmount = sliderAmount || '20000';
     const defaultState = state || 'RI';
     const defaultFirstName = firstName || 'ckmtestpixel';
@@ -419,15 +420,15 @@ class MobileFormPage {
 
 
 
-        // Check for jQuery UI Slider (#slider)
-        const jquerySlider = this.page.locator('#slider').first();
+        // Check for jQuery UI Slider (#slider, #slider2, .ui-slider)
+        const jquerySlider = this.page.locator('#slider, #slider2, .ui-slider').first();
         if (await jquerySlider.isVisible({ timeout: 1500 }).catch(() => false)) {
           console.log('🔘 [Mobile] Found jQuery UI Slider #slider. Setting value via jQuery and DOM evaluation...');
           await this.page.evaluate((amount) => {
             const cleanVal = parseInt(amount.replace(/[$,\s]/g, ''));
             const $ = window.jQuery || window.$;
             if ($ && $.fn && $.fn.slider) {
-              const $slider = $('#slider');
+              const $slider = $('#slider, #slider2, .ui-slider').first();
               if ($slider.length > 0) {
                 $slider.slider('value', cleanVal);
                 const handle = $slider.find('.ui-slider-handle')[0];
@@ -566,7 +567,7 @@ class MobileFormPage {
                 if (style.display === 'none' || style.visibility === 'hidden' || el.offsetWidth === 0) continue;
                 
                 const text = (el.innerText || el.textContent || '').trim();
-                if (!text || text.length > 60 || text.toLowerCase().includes('select')) continue;
+                if (!text || text.length > 60 || text.toLowerCase().includes('select') || text.toLowerCase().includes('copyright') || text.includes('©')) continue;
                 
                 const clean = text.toLowerCase().replace(/[$,\s]/g, '').replace(/k/g, '000').replace(/m/g, '000000');
                 
@@ -662,7 +663,6 @@ class MobileFormPage {
       }
 
       await this.clickNextButton('.next-btn1, .btn-next');
-      const runIndex = data.runIndex || 0;
 
       // ==================================================
       // 🔹 DYNAMIC CHOICE/INTERMEDIATE STEPS TRAVERSAL
@@ -981,6 +981,43 @@ class MobileFormPage {
   async submitForm() {
     console.log('🔘 [Mobile] Submitting form');
     try {
+      // CRITICAL: Ensure debt value is properly set in hidden fields before submission
+      const cleanDebtVal = this.selectedSliderAmount.toString().replace(/,/g, '').replace(/[^0-9]/g, '');
+      if (cleanDebtVal) {
+        console.log(`💾 [Mobile] Setting hidden debt fields to: ${cleanDebtVal}`);
+        await this.page.evaluate((debtVal) => {
+          // Update all possible hidden debt field names with the selected slider value
+          const debtFieldNames = ['tax_debt', 'debt_amount', 'debt', 'debt_value', 'debt_range', 'slider_value', 'amount', 'debt_range_value'];
+          debtFieldNames.forEach(name => {
+            const fields = document.querySelectorAll(`input[name="${name}"], input[id="${name}"], select[name="${name}"], select[id="${name}"]`);
+            fields.forEach(field => {
+              if (field.tagName.toLowerCase() === 'select') {
+                let found = false;
+                for (let i = 0; i < field.options.length; i++) {
+                  if (field.options[i].value === debtVal || field.options[i].text.replace(/[^0-9]/g, '') === debtVal) {
+                    field.value = field.options[i].value;
+                    found = true;
+                    break;
+                  }
+                }
+                if (!found) {
+                  const opt = document.createElement('option');
+                  opt.value = debtVal;
+                  opt.text = debtVal;
+                  field.add(opt);
+                  field.value = debtVal;
+                }
+              } else {
+                field.value = debtVal;
+              }
+              field.dispatchEvent(new Event('change', { bubbles: true }));
+              field.dispatchEvent(new Event('input', { bubbles: true }));
+              console.log(`✅ Updated ${field.tagName.toLowerCase()} ${name} = ${debtVal}`);
+            });
+          });
+        }, cleanDebtVal);
+      }
+
       const submitButtons = [
         this.page.locator('#submitBtn').first(),
         this.page.locator('button:has-text("NEXT")').first(),

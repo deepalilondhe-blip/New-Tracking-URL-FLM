@@ -228,7 +228,34 @@ async function processLead(brandConfig, page) {
 
     await formPage.submitForm();
 
-    const thankYouUrl = await formPage.getThankYouUrl();
+    let thankYouUrl = await formPage.getThankYouUrl();
+    console.log(`📋 [Pre-Fix] Thank-you URL before debt correction: ${thankYouUrl}`);
+    
+    // Get the UI-selected slider amount from the form
+    const extractedSliderAmount = formPage.selectedSliderAmount.toString().replace(/,/g, '').trim();
+    const selectedDebtNum = parseInt(extractedSliderAmount.replace(/[^0-9]/g, '')) || 0;
+    
+    console.log(`💾 [Debt Debug] formPage.selectedSliderAmount = "${formPage.selectedSliderAmount}"`);
+    console.log(`💾 [Debt Debug] selectedDebtNum (numeric) = "${selectedDebtNum}"`);
+    
+    // 🔧 FIX: Correct the debt parameter in thank-you URL to match the selected slider value
+    if (selectedDebtNum > 0) {
+      const urlObj = new URL(thankYouUrl);
+      const currentDebt = urlObj.searchParams.get('debt');
+      console.log(`🔧 [Debt Fix] Current debt in URL: ${currentDebt}, Should be: ${selectedDebtNum}`);
+      
+      if (currentDebt !== selectedDebtNum.toString()) {
+        console.log(`🔧 [Debt Fix] Correcting debt parameter: ${currentDebt} → ${selectedDebtNum}`);
+        urlObj.searchParams.set('debt', selectedDebtNum.toString());
+        thankYouUrl = urlObj.toString();
+        console.log(`✅ [Debt Fix] Updated thank-you URL: ${thankYouUrl}`);
+      } else {
+        console.log(`✅ [Debt Fix] Debt parameter already correct`);
+      }
+    } else {
+      console.warn(`⚠️ [Debt Fix] Could not extract debt value from selectedSliderAmount: "${formPage.selectedSliderAmount}"`);
+    }
+    
     const leadId = await formPage.extractLeadId(thankYouUrl);
     const activeBrowser = (process.env.PROCESS_BROWSER || 'chromium').toUpperCase();
     let deviceType = 'D'; // Desktop
@@ -259,6 +286,29 @@ async function processLead(brandConfig, page) {
     }
 
     console.log(`✅ Lead captured: ${leadIdToUse}`);
+
+    // 🔧 FIX: Ensure Lead ID is appended to Thank You URL so it doesn't expire or redirect
+    if (hasLeadId && leadIdToUse !== 'DUPLICATE') {
+      try {
+        const urlObj = new URL(thankYouUrl);
+        let foundLeadParam = false;
+        const paramKeys = ['transaction_id', 'leadid', 'lead_id', 'ckm_id', 'tid', 'reqid', 'request_id', 'id'];
+        for (const key of paramKeys) {
+          if (urlObj.searchParams.has(key) && urlObj.searchParams.get(key) === leadIdToUse) {
+            foundLeadParam = true;
+            break;
+          }
+        }
+        
+        if (!foundLeadParam) {
+          console.log(`🔧 [URL Fix] Appending leadid=${leadIdToUse} to Thank You URL`);
+          urlObj.searchParams.set('leadid', leadIdToUse);
+          thankYouUrl = urlObj.toString();
+        }
+      } catch (e) {
+        console.warn(`⚠️ [URL Fix] Could not parse or append to Thank You URL: ${e.message}`);
+      }
+    }
 
     // ==================================================
     // 🔹 STAGE 2: FIRST API CALL (GET XML)

@@ -13,7 +13,7 @@ console.log('✅ Running PPC CR test...');
             name: "PPC CR",
             url: "https://flmtra.com/?a=659&oc=848&c=2210&s1=",
             sheet: "PPC-CR",
-            sliderAmount: "1000",
+            sliderAmount: "100000",
             state: "South Carolina",
             firstName: "ckmtestpixel",
             lastName: "ckmtestpixel",
