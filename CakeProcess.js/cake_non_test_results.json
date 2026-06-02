@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-06-01T09:58:50.814Z",
+  "checkedAt": "2026-06-01T12:07:06.109Z",
   "reportPage": "newrep.aspx",
   "dateRange": {
     "startDate": "5/29/2026",
@@ -10,12 +10,12 @@
     "term": "QA Affiliate"
   },
   "footerPageCount": {
-    "footerText": "Page of 2 Rows Per Page: Displaying Items 1 - 200 of 312",
+    "footerText": "Page of 3 Rows Per Page: Displaying Items 1 - 200 of 460",
     "currentPage": null,
     "totalPages": null,
     "displayingFrom": 1,
     "displayingTo": 200,
-    "totalItems": 312
+    "totalItems": 460
   },
   "qaAffiliateRowFound": true,
   "redRows": {

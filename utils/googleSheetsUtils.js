@@ -4,7 +4,7 @@ require('dotenv').config();
 async function authenticate() {
   const auth = new google.auth.GoogleAuth({
     keyFile: process.env.GOOGLE_SERVICE_ACCOUNT_FILE,
-    scopes: ['https://www.googleapis.com/auth/spreadsheets']
+    scopes: ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive']
   });
   return auth.getClient();
 }
@@ -319,7 +319,203 @@ async function updateSummaryDashboard(campaignName, environmentLabel, status) {
   }
 }
 
+const FINAL_SPREADSHEET_ID = '1fO1YFFIM-i_DRPLqdSqC4oECeAHEETPJmN6RWlTrLzU';
+
+async function appendFinalValidationRow(rowData) {
+  try {
+    const client = await authenticate();
+    const sheets = google.sheets({ version: 'v4', auth: client });
+    
+    // Default sheet name when a user creates a new Google Spreadsheet
+    const sheetName = 'Sheet1';
+
+    let sheetExists = true;
+    try {
+      const res = await sheets.spreadsheets.values.get({
+        spreadsheetId: FINAL_SPREADSHEET_ID,
+        range: `${sheetName}!A1:M1`
+      });
+      const headersRow = res.data.values && res.data.values[0] ? res.data.values[0] : [];
+      if (headersRow.length < 13 || headersRow[0] !== "Page URL") {
+        sheetExists = false; // Need to create or update headers
+      }
+    } catch (e) {
+      console.warn("⚠️ Could not read Sheet1. Error:", e.message);
+      sheetExists = false;
+    }
+
+    const spreadsheet = await sheets.spreadsheets.get({ spreadsheetId: FINAL_SPREADSHEET_ID });
+    const sheetMetadata = spreadsheet.data.sheets.find(s => s.properties.title === sheetName);
+    const sheetId = sheetMetadata ? sheetMetadata.properties.sheetId : 0;
+
+    // Initialize Headers if they don't exist
+    if (!sheetExists) {
+      console.log(`🆕 Initializing 13 headers and styling in "${sheetName}"...`);
+      
+      const fullHeaders = [
+        "Page URL", "Lead ID", "In Cake", "In CDB", "IS Test", 
+        "Pixel Fired", "Affiliate", "Tax Debt", "Neustar", "Neustar Disposition", 
+        "DBID", "Date", "Note"
+      ];
+      
+      // Add Headers
+      await sheets.spreadsheets.values.update({
+        spreadsheetId: FINAL_SPREADSHEET_ID,
+        range: `${sheetName}!A1:M1`,
+        valueInputOption: 'USER_ENTERED',
+        requestBody: { values: [fullHeaders] }
+      });
+
+      // Clear out the 14th column (N) if it exists, to clean up old headers
+      await sheets.spreadsheets.values.clear({
+        spreadsheetId: FINAL_SPREADSHEET_ID,
+        range: `${sheetName}!N1:Z`
+      });
+
+      // Apply initial header styling
+      await sheets.spreadsheets.batchUpdate({
+        spreadsheetId: FINAL_SPREADSHEET_ID,
+        requestBody: {
+          requests: [
+            {
+              repeatCell: {
+                range: { sheetId, startRowIndex: 0, endRowIndex: 1, startColumnIndex: 0, endColumnIndex: 13 },
+                cell: {
+                  userEnteredFormat: {
+                    backgroundColor: { red: 0, green: 0.125, blue: 0.376 },
+                    textFormat: { foregroundColor: { red: 1, green: 1, blue: 1 }, bold: true, fontSize: 11 },
+                    horizontalAlignment: 'CENTER',
+                    verticalAlignment: 'MIDDLE'
+                  }
+                },
+                fields: 'userEnteredFormat(backgroundColor,textFormat,horizontalAlignment,verticalAlignment)'
+              }
+            },
+            { updateDimensionProperties: { range: { sheetId, dimension: 'COLUMNS', startIndex: 0, endIndex: 1 }, properties: { pixelSize: 320 }, fields: 'pixelSize' } }, // Page URL
+            { updateDimensionProperties: { range: { sheetId, dimension: 'COLUMNS', startIndex: 1, endIndex: 11 }, properties: { pixelSize: 150 }, fields: 'pixelSize' } },
+            { updateDimensionProperties: { range: { sheetId, dimension: 'COLUMNS', startIndex: 11, endIndex: 12 }, properties: { pixelSize: 200 }, fields: 'pixelSize' } }, // Date
+            { updateDimensionProperties: { range: { sheetId, dimension: 'COLUMNS', startIndex: 12, endIndex: 13 }, properties: { pixelSize: 280 }, fields: 'pixelSize' } } // Note
+          ]
+        }
+      });
+      console.log(`✅ Headers and styling initialized successfully.`);
+    }
+
+    // Logic for Note and yellow highlighting
+    let finalNote = rowData.note || '';
+    let shouldHighlightYellow = false;
+    if (rowData.affiliate && rowData.affiliate.toLowerCase() !== 'qa affiliate') {
+      const affiliateNote = `Real Affiliate: ${rowData.affiliate}`;
+      finalNote = finalNote ? `${finalNote} | ${affiliateNote}` : affiliateNote;
+      shouldHighlightYellow = true;
+    }
+
+    const currentDateTime = new Date().toLocaleDateString('en-US'); // "6/2/2026"
+
+    const formattedRow = [
+      rowData.pageUrl ? `=HYPERLINK("${rowData.pageUrl}","View Page Origin")` : '',
+      rowData.leadId || '',
+      rowData.inCake || 'No',
+      rowData.inCdb || 'No',
+      rowData.isTest || 'No',
+      rowData.pixelFired || '',
+      rowData.affiliate || '',
+      rowData.taxDebt || '',
+      rowData.neustar || '',
+      rowData.neustarDisposition || '',
+      rowData.dbid || '',
+      currentDateTime,
+      finalNote
+    ];
+
+    // Append the row
+    const appendResponse = await sheets.spreadsheets.values.append({
+      spreadsheetId: FINAL_SPREADSHEET_ID,
+      range: `${sheetName}!A:M`,
+      valueInputOption: 'USER_ENTERED',
+      requestBody: { values: [formattedRow] }
+    });
+
+    // Extract the appended row index
+    const updatedRange = appendResponse.data.updates.updatedRange; 
+    const match = updatedRange.match(/!A(\d+)/);
+    if (!match) return true;
+    
+    const rowIndex = parseInt(match[1], 10) - 1; // 0-indexed for batchUpdate
+    const requests = [];
+
+    // Zebra striping: alternate background color based on row index
+    const isOddRow = rowIndex % 2 === 1;
+    const baseColor = isOddRow 
+      ? { red: 0.95, green: 0.95, blue: 0.95 } // Light Grey
+      : { red: 1, green: 1, blue: 1 };         // White
+
+    // Apply Zebra striping to the whole row (A to M)
+    requests.push({
+      repeatCell: {
+        range: { sheetId, startRowIndex: rowIndex, endRowIndex: rowIndex + 1, startColumnIndex: 0, endColumnIndex: 13 },
+        cell: {
+          userEnteredFormat: {
+            backgroundColor: baseColor,
+            textFormat: { foregroundColor: { red: 0, green: 0, blue: 0 }, fontSize: 10 },
+            horizontalAlignment: 'CENTER',
+            verticalAlignment: 'MIDDLE'
+          }
+        },
+        fields: 'userEnteredFormat(backgroundColor,textFormat,horizontalAlignment,verticalAlignment)'
+      }
+    });
+
+    // Make Page URL (Col A) explicitly a blue, underlined hyperlink
+    requests.push({
+      repeatCell: {
+        range: { sheetId, startRowIndex: rowIndex, endRowIndex: rowIndex + 1, startColumnIndex: 0, endColumnIndex: 1 },
+        cell: {
+          userEnteredFormat: {
+            textFormat: { foregroundColor: { red: 0.067, green: 0.333, blue: 0.8 }, underline: true, fontSize: 10 }
+          }
+        },
+        fields: 'userEnteredFormat.textFormat'
+      }
+    });
+
+    // Highlight Affiliate (col 6) and Note (col 12) in Yellow if Affiliate is not QA Affiliate
+    if (shouldHighlightYellow) {
+      const yellowBg = { red: 1, green: 1, blue: 0 };
+      requests.push({
+        repeatCell: {
+          range: { sheetId, startRowIndex: rowIndex, endRowIndex: rowIndex + 1, startColumnIndex: 6, endColumnIndex: 7 }, // Affiliate (G)
+          cell: { userEnteredFormat: { backgroundColor: yellowBg } },
+          fields: 'userEnteredFormat.backgroundColor'
+        }
+      });
+      requests.push({
+        repeatCell: {
+          range: { sheetId, startRowIndex: rowIndex, endRowIndex: rowIndex + 1, startColumnIndex: 12, endColumnIndex: 13 }, // Note (M)
+          cell: { userEnteredFormat: { backgroundColor: yellowBg } },
+          fields: 'userEnteredFormat.backgroundColor'
+        }
+      });
+    }
+
+    if (requests.length > 0) {
+      await sheets.spreadsheets.batchUpdate({
+        spreadsheetId: FINAL_SPREADSHEET_ID,
+        requestBody: { requests }
+      });
+    }
+
+    console.log(`✅ Appended and formatted row in new spreadsheet!`);
+    return true;
+
+  } catch (error) {
+    console.error('❌ Final Validation Sheet Error:', error.message);
+    return false;
+  }
+}
+
 module.exports = {
   appendRowByHeader,
-  updateSummaryDashboard
+  updateSummaryDashboard,
+  appendFinalValidationRow
 };

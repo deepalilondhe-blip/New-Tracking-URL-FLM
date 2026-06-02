@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const { chromium } = require('playwright');
 require('dotenv').config({ path: path.resolve(__dirname, '..', '..', '.env') });
-const { appendRowByHeader } = require('../googleSheetsUtils');
+const { appendFinalValidationRow } = require('../googleSheetsUtils');
 
 const CONFIG = {
   CAKE_LOGIN_URL: 'https://app.forwardleapmarketing.com/?lm_id=sessionexpired',
@@ -300,6 +300,38 @@ async function openLeadPopupAndValidate(page, leadId) {
   let foundLink = false;
   const tabValidation = [];
   let isTest = false;
+  const extractedData = {
+    pageOrigin: '',
+    pixelFired: '',
+    affiliate: '',
+    taxDebt: '',
+    neustar: '',
+    neustarDisposition: '',
+    dbid: ''
+  };
+
+  async function extractFieldValue(page, labelText) {
+    try {
+      const label = page.locator(`label:has-text("${labelText}")`).first();
+      if (await label.count()) {
+        const parent = label.locator('xpath=..');
+        const field = parent.locator('input, .x-form-display-field, .x-form-field').first();
+        if (await field.count()) {
+          const val = await field.inputValue().catch(() => null);
+          const text = val !== null ? val : await field.textContent();
+          return String(text || '').trim();
+        }
+      }
+      const tdLabel = page.locator(`td:has-text("${labelText}")`).last();
+      if (await tdLabel.count()) {
+        const nextTd = tdLabel.locator('xpath=following-sibling::td').first();
+        if (await nextTd.count()) {
+          return String(await nextTd.textContent() || '').trim();
+        }
+      }
+    } catch (e) {}
+    return '';
+  }
 
   const leadLink = page.locator(`a:has-text("${leadId}")`).first();
   if (await leadLink.count()) {
@@ -384,6 +416,29 @@ async function openLeadPopupAndValidate(page, leadId) {
       continue;
     }
 
+    if (sectionName === 'Sale Info') {
+      extractedData.pixelFired = await extractFieldValue(page, 'Pixel Fired');
+      if (!extractedData.pixelFired) extractedData.pixelFired = await extractFieldValue(page, 'pixel_fired');
+      extractedData.affiliate = await extractFieldValue(page, 'Affiliate');
+      if (!extractedData.affiliate) extractedData.affiliate = await extractFieldValue(page, 'affiliate');
+      extractedData.dbid = await extractFieldValue(page, 'DBID');
+      if (!extractedData.dbid) extractedData.dbid = await extractFieldValue(page, 'Sub ID');
+    }
+    
+    if (sectionName === 'Vertical Specific') {
+      extractedData.pageOrigin = await extractFieldValue(page, 'page origin');
+      if (!extractedData.pageOrigin) extractedData.pageOrigin = await extractFieldValue(page, 'Page Origin');
+      if (!extractedData.pageOrigin) extractedData.pageOrigin = await extractFieldValue(page, 'page_origin');
+      extractedData.taxDebt = await extractFieldValue(page, 'tax_debt');
+      if (!extractedData.taxDebt) extractedData.taxDebt = await extractFieldValue(page, 'Tax Debt');
+      extractedData.neustar = await extractFieldValue(page, 'neustar');
+      if (!extractedData.neustar) extractedData.neustar = await extractFieldValue(page, 'Neustar');
+      extractedData.neustarDisposition = await extractFieldValue(page, 'neustar_disposition');
+      if (!extractedData.neustarDisposition) extractedData.neustarDisposition = await extractFieldValue(page, 'Neustar Disposition');
+      if (!extractedData.dbid) extractedData.dbid = await extractFieldValue(page, 'dbid');
+      if (!extractedData.dbid) extractedData.dbid = await extractFieldValue(page, 'DBID');
+    }
+
     // Validate only visible fields in popup while section is active.
     const fields = await page.locator(
       '.x-window, .x-panel, body'
@@ -427,7 +482,7 @@ async function openLeadPopupAndValidate(page, leadId) {
     await visiblePause(page, `Section ${sectionName} validated`, 1800);
   }
 
-  return { found: foundLink, isTest, tabValidation, finalUrl: page.url() };
+  return { found: foundLink, isTest, tabValidation, finalUrl: page.url(), extractedData };
 }
 
 async function captureScreenshot(page, name) {
@@ -446,12 +501,12 @@ async function captureScreenshot(page, name) {
 
 async function appendToDashboard(row) {
   try {
-    const month = new Date().getMonth() + 1;
-    const year = new Date().getFullYear();
-    const sheetName = `FML Project ${year}-${String(month).padStart(2, '0')}`;
-    await appendRowByHeader(sheetName, row);
-    console.log(`✅ Row appended to dashboard: ${sheetName}`);
-    return true;
+    const appended = await appendFinalValidationRow(row);
+    if (appended) {
+      console.log(`✅ Row appended to dashboard`);
+      return true;
+    }
+    return false;
   } catch (err) {
     console.error('Failed to append to dashboard:', err.message);
     return false;
@@ -492,7 +547,7 @@ async function verifyInCake(leadId, browser) {
   } catch (err) {
     console.error('Error during Cake verification:', err.message);
     await captureScreenshot(page, `cake_error_${leadId}`);
-    return { found: false, isTest: false, tabValidation: [], finalUrl: '' };
+    return { found: false, isTest: false, tabValidation: [], finalUrl: '', extractedData: {} };
   } finally {
     try { await page.close(); } catch(e) {}
     try { await context.close(); } catch(e) {}
@@ -627,49 +682,45 @@ async function main() {
 
     // Step 5: Append to Google Sheet Dashboard
     console.log('\n📈 [Step 5] Appending results to Google Sheet dashboard...');
+    
+    // Determine note
+    let validationNote = '';
+    if (cakeResult.extractedData.affiliate && cakeResult.extractedData.affiliate.toLowerCase() !== 'qa affiliate') {
+      validationNote = `Actual Affiliate: ${cakeResult.extractedData.affiliate}`;
+    }
+
     const row = {
       dateTime: new Date().toISOString(),
-      type: 'Lead Validation',
-      affiliate: '',
-      campaignId: '',
-      trackingLink: CONFIG.CAKE_HOME_URL,
-      sliderAmount: '',
-      cakeIncome: '',
-      state: '',
-      phone: '',
+      pageUrl: cakeResult.extractedData.pageOrigin || '',
       leadId: latestLead,
-      dbid: '',
-      pageOrigin: '',
-      thankYouUrl: '',
-      cdbStatus: cdbStatus === 'PASS' ? 'True' : 'False',
-      cdbEmail: CONFIG.CDB_EMAIL,
-      neustar: '',
-      neustarDisposition: '',
-      pixelFired: '',
-      runDate: new Date().toISOString(),
-      step1: `Cake Found: ${cakeResult.found}`,
-      step2: `Is Test: ${cakeResult.isTest}`,
-      step3: `Validation: ${validationStatus}, Tabs: ${cakeResult.tabValidation.length}, CDB: ${cdbStatus}, AltDate: ${alternateDate.toISOString()}`
+      inCake: cakeResult.found ? 'Yes' : 'No',
+      inCdb: cdbStatus === 'PASS' ? 'Yes' : 'No',
+      isTest: cakeResult.isTest ? 'Yes' : 'No',
+      pixelFired: cakeResult.extractedData.pixelFired || '',
+      affiliate: cakeResult.extractedData.affiliate || '',
+      taxDebt: cakeResult.extractedData.taxDebt || '',
+      neustar: cakeResult.extractedData.neustar || '',
+      neustarDisposition: cakeResult.extractedData.neustarDisposition || '',
+      dbid: cakeResult.extractedData.dbid || '',
+      date: new Date().toISOString(),
+      note: validationNote
     };
 
-    // Append only after full validation + CDB success.
-    if (validationStatus === 'PASS' && cdbStatus === 'PASS') {
-      const appended = await appendToDashboard(row);
-      if (!appended) {
-        console.warn('⚠️ Warning: Google sheet row could not be appended');
-      }
-
-      const localSheetPath = appendToLocalDashboardCsv({
-        url: CONFIG.CAKE_HOME_URL,
-        leadId: latestLead,
-        validationStatus,
-        cdbStatus: 'True',
-        executionDate: new Date().toISOString()
-      });
-      console.log(`📁 Local month-wise dashboard updated: ${localSheetPath}`);
-    } else {
-      console.warn('⚠️ Dashboard append skipped because validation/CDB did not fully PASS');
+    // We no longer require absolute PASS on all tabs, just append the extracted data
+    // Because the new schema acts as a data-logging mechanism regardless of success/fail
+    const appended = await appendToDashboard(row);
+    if (!appended) {
+      console.warn('⚠️ Warning: Google sheet row could not be appended');
     }
+
+    const localSheetPath = appendToLocalDashboardCsv({
+      url: CONFIG.CAKE_HOME_URL,
+      leadId: latestLead,
+      validationStatus,
+      cdbStatus: cdbStatus === 'PASS' ? 'True' : 'False',
+      executionDate: new Date().toISOString()
+    });
+    console.log(`📁 Local month-wise dashboard updated: ${localSheetPath}`);
 
     // Step 6: Final Report
     console.log('\n═══════════════════════════════════════════════════');

@@ -1,0 +1,1281 @@
+===================================================== 
+SCHEDULER STARTED AT: 01-06-2026 22:21:10.58 
+===================================================== 
+Running Playwright batch scheduler... 
+◇ injected env (25) from .env // tip: ◈ encrypted .env [www.dotenvx.com]
+◇ injected env (0) from .env // tip: ⌘ multiple files { path: ['.env.local', '.env'] }
+
+🤖 ================================================================
+🤖 STARTING LEADS AUTOMATION BATCH RUN [1/6/2026, 10:21:11 pm]
+🤖 Interval configured: every 3 hours
+🤖 ================================================================
+
+🤖 [FLM Agent] Starting Global URL Health Verification...
+🤖 [AI Agent] Pre-flight check: Verifying health for FTD-X...
+🔴 [FLM Agent] FTD-X is DOWN: getaddrinfo ENOTFOUND mlfftd.com
+🤖 [AI Agent] Pre-flight check: Verifying health for FSI-PPC2...
+🔴 [FLM Agent] FSI-PPC2 is DOWN: getaddrinfo ENOTFOUND fsimlf-trk.com
+🤖 [AI Agent] Pre-flight check: Verifying health for TRA-CPL...
+🔴 [FLM Agent] TRA-CPL is DOWN: getaddrinfo ENOTFOUND flmtra.com
+🤖 [AI Agent] Pre-flight check: Verifying health for TRA-D3...
+🔴 [FLM Agent] TRA-D3 is DOWN: getaddrinfo ENOTFOUND flmtra.com
+🤖 [AI Agent] Pre-flight check: Verifying health for PPC-ST...
+🔴 [FLM Agent] PPC-ST is DOWN: getaddrinfo ENOTFOUND flmtra.com
+🤖 [AI Agent] Pre-flight check: Verifying health for PPC-ST2...
+🔴 [FLM Agent] PPC-ST2 is DOWN: getaddrinfo ENOTFOUND flmtra.com
+🤖 [AI Agent] Pre-flight check: Verifying health for PPC-M-CA...
+🔴 [FLM Agent] PPC-M-CA is DOWN: getaddrinfo ENOTFOUND flmtra.com
+🤖 [AI Agent] Pre-flight check: Verifying health for PPC CR...
+🔴 [FLM Agent] PPC CR is DOWN: getaddrinfo ENOTFOUND flmtra.com
+🤖 [AI Agent] Pre-flight check: Verifying health for PPC FS...
+🔴 [FLM Agent] PPC FS is DOWN: getaddrinfo ENOTFOUND flmtra.com
+🤖 [AI Agent] Pre-flight check: Verifying health for PPC...
+🔴 [FLM Agent] PPC is DOWN: getaddrinfo ENOTFOUND flmtra.com
+🤖 [AI Agent] Pre-flight check: Verifying health for TRA-CPM...
+🔴 [FLM Agent] TRA-CPM is DOWN: getaddrinfo ENOTFOUND flmtra.com
+🤖 [AI Agent] Pre-flight check: Verifying health for Everest Tax Releif(X)...
+🔴 [FLM Agent] Everest Tax Releif(X) is DOWN: getaddrinfo ENOTFOUND mlf-trk.com
+🤖 [AI Agent] Pre-flight check: Verifying health for VTS Original...
+🔴 [FLM Agent] VTS Original is DOWN: getaddrinfo ENOTFOUND mlfvts-trk.com
+🤖 [AI Agent] Pre-flight check: Verifying health for VTS-NE-Branded...
+🔴 [FLM Agent] VTS-NE-Branded is DOWN: getaddrinfo ENOTFOUND mlfvts-trk.com
+🤖 [AI Agent] Pre-flight check: Verifying health for Original...
+🔴 [FLM Agent] Original is DOWN: getaddrinfo ENOTFOUND mlf-1800-trk.com
+🤖 [AI Agent] Pre-flight check: Verifying health for 1800 Fresh Tax (X) Main...
+🔴 [FLM Agent] 1800 Fresh Tax (X) Main is DOWN: getaddrinfo ENOTFOUND flmtrk.com
+🤖 [AI Agent] Pre-flight check: Verifying health for FSI - MAIN...
+🔴 [FLM Agent] FSI - MAIN is DOWN: getaddrinfo ENOTFOUND fsimlf-trk.com
+🤖 [FLM Agent] Global Health Verification Complete.
+
+
+================================================================
+⚡ Processing 51 Tasks in Parallel (Concurrency: 4)
+================================================================
+
+================================================================
+🚀 [2/6/2026, 10:26:53 am] RUNNING: FTD-X [ANDROID - CHROME]
+🔗 Target URL: https://mlfftd.com/?a=659&oc=656&c=167&s1=
+================================================================
+
+================================================================
+🚀 [2/6/2026, 10:26:53 am] RUNNING: FTD-X [TABLET - CHROME]
+🔗 Target URL: https://mlfftd.com/?a=659&oc=656&c=167&s1=
+================================================================
+
+================================================================
+🚀 [2/6/2026, 10:26:54 am] RUNNING: FTD-X [DESKTOP - CHROME]
+🔗 Target URL: https://mlfftd.com/?a=659&oc=656&c=167&s1=
+================================================================
+
+================================================================
+🚀 [2/6/2026, 10:26:54 am] RUNNING: FSI-PPC2 [ANDROID - CHROME]
+🔗 Target URL: https://fsimlf-trk.com/?a=659&oc=750&c=143&s1=
+================================================================
+[ftd-x][Tablet - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[ftd-x][Desktop - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[fsi-ppc2][Android - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[ftd-x][Android - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[ftd-x][Tablet - Chrome] ◇ injected env (0) from .env // tip: ⌁ auth for agents [www.vestauth.com]
+[ftd-x][Android - Chrome] ◇ injected env (0) from .env // tip: ⌁ auth for agents [www.vestauth.com]
+[ftd-x][Desktop - Chrome] ◇ injected env (0) from .env // tip: ⌘ override existing { override: true }
+[fsi-ppc2][Android - Chrome] ◇ injected env (0) from .env // tip: ⌁ auth for agents [www.vestauth.com]
+[fsi-ppc2][Android - Chrome] ◇ injected env (0) from .env // tip: ◈ encrypted .env [www.dotenvx.com]
+[ftd-x][Desktop - Chrome] ◇ injected env (0) from .env // tip: ◈ secrets for agents [www.dotenvx.com]
+[ftd-x][Android - Chrome] ◇ injected env (0) from .env // tip: ◈ secrets for agents [www.dotenvx.com]
+[ftd-x][Tablet - Chrome] ◇ injected env (0) from .env // tip: ⌘ suppress logs { quiet: true }
+[ftd-x][Tablet - Chrome] ◇ injected env (0) from .env // tip: ⌁ auth for agents [www.vestauth.com]
+[ftd-x][Android - Chrome] ◇ injected env (0) from .env // tip: ⌘ custom filepath { path: '/custom/path/.env' }
+[ftd-x][Desktop - Chrome] ◇ injected env (0) from .env // tip: ◈ encrypted .env [www.dotenvx.com]
+[fsi-ppc2][Android - Chrome] ◇ injected env (0) from .env // tip: ⌁ auth for agents [www.vestauth.com]
+[ftd-x][Tablet - Chrome] ◇ injected env (0) from .env // tip: ⌁ auth for agents [www.vestauth.com]
+[ftd-x][Android - Chrome] ◇ injected env (0) from .env // tip: ⌁ auth for agents [www.vestauth.com]
+[ftd-x][Tablet - Chrome] ◇ injected env (0) from .env // tip: ⌘ custom filepath { path: '/custom/path/.env' }
+[ftd-x][Tablet - Chrome] 
+🤖 ================================================================
+[ftd-x][Tablet - Chrome] 🤖 MASTER RUNNER: LAUNCHING FTD-X
+🤖 Mode:            TABLET
+[ftd-x][Android - Chrome] ◇ injected env (0) from .env // tip: ⌘ override existing { override: true }
+[ftd-x][Tablet - Chrome] 🤖 Tracking URL:     https://mlfftd.com/?a=659&oc=656&c=167&s1=
+🤖 Target Sheet:    FTD-X
+🤖 ================================================================
+[ftd-x][Tablet - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[ftd-x][Android - Chrome] 
+🤖 ================================================================
+[ftd-x][Android - Chrome] 🤖 MASTER RUNNER: LAUNCHING FTD-X
+[ftd-x][Android - Chrome] 🤖 Mode:            MOBILE
+[ftd-x][Android - Chrome] 🤖 Tracking URL:     https://mlfftd.com/?a=659&oc=656&c=167&s1=
+[ftd-x][Android - Chrome] 🤖 Target Sheet:    FTD-X
+🤖 ================================================================
+[ftd-x][Android - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[ftd-x][Desktop - Chrome] ◇ injected env (0) from .env // tip: ⌘ multiple files { path: ['.env.local', '.env'] }
+[ftd-x][Desktop - Chrome] ◇ injected env (0) from .env // tip: ⌘ override existing { override: true }
+[ftd-x][Desktop - Chrome] 
+🤖 ================================================================
+[ftd-x][Desktop - Chrome] 🤖 MASTER RUNNER: LAUNCHING FTD-X
+🤖 Mode:            DESKTOP
+[ftd-x][Desktop - Chrome] 🤖 Tracking URL:     https://mlfftd.com/?a=659&oc=656&c=167&s1=
+[ftd-x][Desktop - Chrome] 🤖 Target Sheet:    FTD-X
+🤖 ================================================================
+[ftd-x][Desktop - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[fsi-ppc2][Android - Chrome] ◇ injected env (0) from .env // tip: ⌁ auth for agents [www.vestauth.com]
+[fsi-ppc2][Android - Chrome] ◇ injected env (0) from .env // tip: ⌘ suppress logs { quiet: true }
+[fsi-ppc2][Android - Chrome] 
+🤖 ================================================================
+[fsi-ppc2][Android - Chrome] 🤖 MASTER RUNNER: LAUNCHING FSI-PPC2
+[fsi-ppc2][Android - Chrome] 🤖 Mode:            MOBILE
+[fsi-ppc2][Android - Chrome] 🤖 Tracking URL:     https://fsimlf-trk.com/?a=659&oc=750&c=143&s1=
+[fsi-ppc2][Android - Chrome] 🤖 Target Sheet:    FSI-PPC2
+[fsi-ppc2][Android - Chrome] 🤖 ================================================================
+[fsi-ppc2][Android - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[ftd-x][Tablet - Chrome] 📋 Emulated Device Profile: TABLET (iPad Pro 11) - [Tablet - Chrome]
+[ftd-x][Android - Chrome] 📋 Emulated Device Profile: MOBILE (Pixel 7) - [Android - Chrome]
+[fsi-ppc2][Android - Chrome] 📋 Emulated Device Profile: MOBILE (Pixel 7) - [Android - Chrome]
+[ftd-x][Desktop - Chrome] 💻 Emulated Device Profile: DESKTOP - [Desktop - Chrome]
+[ftd-x][Android - Chrome] ⏳ Delaying 200ms to allow responsive layouts to mount...
+[ftd-x][Desktop - Chrome] 🔄 Processing lead for brand: FTD-X
+[ftd-x][Desktop - Chrome] 📊 Campaign execution run index: 44
+[ftd-x][Desktop - Chrome] 📅 [Rotational Logic] Week 1 Day 2. Target Range: 1000-20000 (Max allowed by URL: 70000)
+[ftd-x][Tablet - Chrome] ⏳ Delaying 200ms to allow responsive layouts to mount...
+[ftd-x][Desktop - Chrome] 🔗 [Mobile] Navigating to: https://mlfftd.com/?a=659&oc=656&c=167&s1=
+[fsi-ppc2][Android - Chrome] ⏳ Delaying 200ms to allow responsive layouts to mount...
+[ftd-x][Desktop - Chrome] [STDERR] ⚠️ [Mobile] Navigation warning: page.goto: net::ERR_INTERNET_DISCONNECTED at https://mlfftd.com/?a=659&oc=656&c=167&s1=
+Call log:
+[2m  - navigating to "https://mlfftd.com/?a=659&oc=656&c=167&s1=", waiting until "domcontentloaded"[22m
+. Continuing with page execution...
+[ftd-x][Desktop - Chrome] [STDERR] ⚠️ [Mobile] Could not clear localStorage/sessionStorage: page.evaluate: SecurityError: Failed to read the 'localStorage' property from 'Window': Access is denied for this document.
+    at UtilityScript.evaluate (<anonymous>:304:16)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+[ftd-x][Desktop - Chrome] ✅ [Mobile] Page loaded successfully
+[ftd-x][Desktop - Chrome] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[ftd-x][Desktop - Chrome] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[ftd-x][Desktop - Chrome] 📝 [Mobile] Starting mobile-specific form filling...
+[ftd-x][Desktop - Chrome] 🔘 [Mobile] Step 1: Selecting Debt Amount (8,792)
+[ftd-x][Android - Chrome] 🔄 Processing lead for brand: FTD-X Mobile
+[ftd-x][Android - Chrome] 📊 Campaign execution run index: 45
+[ftd-x][Android - Chrome] 📅 [Rotational Logic] Week 1 Day 2. Target Range: 1000-20000 (Max allowed by URL: 70000)
+[ftd-x][Android - Chrome] 🔗 [Mobile] Navigating to: https://mlfftd.com/?a=659&oc=656&c=167&s1=
+[ftd-x][Desktop - Chrome] 🔍 [Mobile Smart Choice Scanner] Scanning for options matching daily range: 1000 - 20000
+[ftd-x][Tablet - Chrome] 🔄 Processing lead for brand: FTD-X Tablet
+[ftd-x][Tablet - Chrome] 📊 Campaign execution run index: 46
+📅 [Rotational Logic] Week 1 Day 2. Target Range: 1000-20000 (Max allowed by URL: 70000)
+[ftd-x][Tablet - Chrome] 🔗 [Mobile] Navigating to: https://mlfftd.com/?a=659&oc=656&c=167&s1=
+[fsi-ppc2][Android - Chrome] 🔄 Processing lead for brand: FSI-PPC2 Mobile
+[fsi-ppc2][Android - Chrome] 📊 Campaign execution run index: 45
+[ftd-x][Android - Chrome] [STDERR] ⚠️ [Mobile] Navigation warning: page.goto: net::ERR_INTERNET_DISCONNECTED at https://mlfftd.com/?a=659&oc=656&c=167&s1=
+Call log:
+[2m  - navigating to "https://mlfftd.com/?a=659&oc=656&c=167&s1=", waiting until "domcontentloaded"[22m
+. Continuing with page execution...
+[ftd-x][Android - Chrome] [STDERR] ⚠️ [Mobile] Could not clear localStorage/sessionStorage: page.evaluate: SecurityError: Failed to read the 'localStorage' property from 'Window': Access is denied for this document.
+    at UtilityScript.evaluate (<anonymous>:304:16)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+[ftd-x][Android - Chrome] ✅ [Mobile] Page loaded successfully
+[ftd-x][Android - Chrome] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[fsi-ppc2][Android - Chrome] 🔗 [Mobile] Navigating to: https://fsimlf-trk.com/?a=659&oc=750&c=143&s1=
+[ftd-x][Android - Chrome] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[ftd-x][Android - Chrome] 📝 [Mobile] Starting mobile-specific form filling...
+[ftd-x][Desktop - Chrome] [STDERR] ⚠️ [Mobile] No active visible next button found for selector .next-btn1, .btn-next
+[ftd-x][Desktop - Chrome] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[ftd-x][Tablet - Chrome] [STDERR] ⚠️ [Mobile] Navigation warning: page.goto: net::ERR_INTERNET_DISCONNECTED at https://mlfftd.com/?a=659&oc=656&c=167&s1=
+Call log:
+[2m  - navigating to "https://mlfftd.com/?a=659&oc=656&c=167&s1=", waiting until "domcontentloaded"[22m
+. Continuing with page execution...
+[ftd-x][Android - Chrome] 🔘 [Mobile] Step 1: Selecting Debt Amount (15,034)
+[ftd-x][Tablet - Chrome] [STDERR] ⚠️ [Mobile] Could not clear localStorage/sessionStorage: page.evaluate: SecurityError: Failed to read the 'localStorage' property from 'Window': Access is denied for this document.
+    at UtilityScript.evaluate (<anonymous>:304:16)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+[ftd-x][Tablet - Chrome] ✅ [Mobile] Page loaded successfully
+💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[ftd-x][Tablet - Chrome] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[ftd-x][Tablet - Chrome] 📝 [Mobile] Starting mobile-specific form filling...
+[fsi-ppc2][Android - Chrome] [STDERR] ⚠️ [Mobile] Navigation warning: page.goto: net::ERR_INTERNET_DISCONNECTED at https://fsimlf-trk.com/?a=659&oc=750&c=143&s1=
+Call log:
+[2m  - navigating to "https://fsimlf-trk.com/?a=659&oc=750&c=143&s1=", waiting until "domcontentloaded"[22m
+. Continuing with page execution...
+[fsi-ppc2][Android - Chrome] [STDERR] ⚠️ [Mobile] Could not clear localStorage/sessionStorage: page.evaluate: SecurityError: Failed to read the 'localStorage' property from 'Window': Access is denied for this document.
+    at UtilityScript.evaluate (<anonymous>:304:16)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+[fsi-ppc2][Android - Chrome] ✅ [Mobile] Page loaded successfully
+📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[ftd-x][Tablet - Chrome] 🔘 [Mobile] Step 1: Selecting Debt Amount (19,153)
+[ftd-x][Android - Chrome] 🔍 [Mobile Smart Choice Scanner] Scanning for options matching daily range: 1000 - 20000
+[fsi-ppc2][Android - Chrome] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[fsi-ppc2][Android - Chrome] 📝 [Mobile] Starting mobile-specific form filling...
+[ftd-x][Desktop - Chrome] ⚠️ [Mobile] No visible dynamic choices or next buttons on this step. Ending traversal.
+[fsi-ppc2][Android - Chrome] 🔘 [Mobile] Step 1: Selecting Debt Amount (15,000)
+[ftd-x][Desktop - Chrome] 🔘 [Mobile] Step 3: Filling Contact Info (Dynamic Loop)...
+[ftd-x][Desktop - Chrome] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[ftd-x][Tablet - Chrome] 🔍 [Mobile Smart Choice Scanner] Scanning for options matching daily range: 1000 - 20000
+[ftd-x][Android - Chrome] [STDERR] ⚠️ [Mobile] No active visible next button found for selector .next-btn1, .btn-next
+[ftd-x][Android - Chrome] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[ftd-x][Desktop - Chrome] 🔘 [Mobile] No active contact NEXT/SUBMIT button visible. Exiting loop.
+[ftd-x][Desktop - Chrome] 🔘 [Mobile] Scanning for additional dynamic steps...
+[fsi-ppc2][Android - Chrome] 🔍 [Mobile Smart Choice Scanner] Scanning for options matching daily range: 0 - 200000
+[fsi-ppc2][Android - Chrome] ✅ [Mobile Rotational Logic] Selected Smart Choice option: "9:41
+5G"
+[ftd-x][Desktop - Chrome] 🔘 [Mobile] Submitting form
+[ftd-x][Desktop - Chrome] 💾 [Mobile] Setting hidden debt fields to: 8792
+[ftd-x][Tablet - Chrome] [STDERR] ⚠️ [Mobile] No active visible next button found for selector .next-btn1, .btn-next
+[ftd-x][Tablet - Chrome] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[ftd-x][Desktop - Chrome] ⏳ [Mobile] Waiting for submission navigation to complete
+[ftd-x][Android - Chrome] ⚠️ [Mobile] No visible dynamic choices or next buttons on this step. Ending traversal.
+[fsi-ppc2][Android - Chrome] [STDERR] ⚠️ [Mobile] No active visible next button found for selector .next-btn1, .btn-next
+[fsi-ppc2][Android - Chrome] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[ftd-x][Android - Chrome] 🔘 [Mobile] Step 3: Filling Contact Info (Dynamic Loop)...
+[ftd-x][Android - Chrome] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[ftd-x][Tablet - Chrome] ⚠️ [Mobile] No visible dynamic choices or next buttons on this step. Ending traversal.
+[ftd-x][Android - Chrome] 🔘 [Mobile] No active contact NEXT/SUBMIT button visible. Exiting loop.
+🔘 [Mobile] Scanning for additional dynamic steps...
+[ftd-x][Tablet - Chrome] 🔘 [Mobile] Step 3: Filling Contact Info (Dynamic Loop)...
+[ftd-x][Android - Chrome] 🔘 [Mobile] Submitting form
+[fsi-ppc2][Android - Chrome] ⚠️ [Mobile] No visible dynamic choices or next buttons on this step. Ending traversal.
+[ftd-x][Tablet - Chrome] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[ftd-x][Android - Chrome] 💾 [Mobile] Setting hidden debt fields to: 15034
+[ftd-x][Android - Chrome] ⏳ [Mobile] Waiting for submission navigation to complete
+[fsi-ppc2][Android - Chrome] 🔘 [Mobile] Step 3: Filling Contact Info (Dynamic Loop)...
+[ftd-x][Tablet - Chrome] 🔘 [Mobile] No active contact NEXT/SUBMIT button visible. Exiting loop.
+🔘 [Mobile] Scanning for additional dynamic steps...
+[fsi-ppc2][Android - Chrome] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[ftd-x][Tablet - Chrome] 🔘 [Mobile] Submitting form
+[ftd-x][Tablet - Chrome] 💾 [Mobile] Setting hidden debt fields to: 19153
+[fsi-ppc2][Android - Chrome] 🔘 [Mobile] No active contact NEXT/SUBMIT button visible. Exiting loop.
+🔘 [Mobile] Scanning for additional dynamic steps...
+[ftd-x][Tablet - Chrome] ⏳ [Mobile] Waiting for submission navigation to complete
+[fsi-ppc2][Android - Chrome] 🔘 [Mobile] Submitting form
+[fsi-ppc2][Android - Chrome] 💾 [Mobile] Setting hidden debt fields to: 15000
+[fsi-ppc2][Android - Chrome] ⏳ [Mobile] Waiting for submission navigation to complete
+[ftd-x][Desktop - Chrome] [STDERR] ⚠️ [Mobile] Standard submit buttons not found, consulting AI Agent...
+[ftd-x][Desktop - Chrome] 🤖 [AI Agent] Analyzing Submit button for global...
+[ftd-x][Desktop - Chrome] ⏳ [Mobile] Waiting for final Thank You page redirection...
+[ftd-x][Android - Chrome] [STDERR] ⚠️ [Mobile] Standard submit buttons not found, consulting AI Agent...
+[ftd-x][Android - Chrome] 🤖 [AI Agent] Analyzing Submit button for global...
+[ftd-x][Android - Chrome] ⏳ [Mobile] Waiting for final Thank You page redirection...
+[ftd-x][Tablet - Chrome] [STDERR] ⚠️ [Mobile] Standard submit buttons not found, consulting AI Agent...
+[ftd-x][Tablet - Chrome] 🤖 [AI Agent] Analyzing Submit button for global...
+[ftd-x][Tablet - Chrome] ⏳ [Mobile] Waiting for final Thank You page redirection...
+[fsi-ppc2][Android - Chrome] [STDERR] ⚠️ [Mobile] Standard submit buttons not found, consulting AI Agent...
+[fsi-ppc2][Android - Chrome] 🤖 [AI Agent] Analyzing Submit button for global...
+[fsi-ppc2][Android - Chrome] ⏳ [Mobile] Waiting for final Thank You page redirection...
+[ftd-x][Desktop - Chrome] ✅ [Mobile] Final Thank You URL: chrome-error://chromewebdata/
+[ftd-x][Desktop - Chrome] 📋 [Pre-Fix] Thank-you URL before debt correction: chrome-error://chromewebdata/
+💾 [Debt Debug] formPage.selectedSliderAmount = "8,792"
+💾 [Debt Debug] selectedDebtNum (numeric) = "8792"
+[ftd-x][Desktop - Chrome] 🔧 [Debt Fix] Current debt in URL: null, Should be: 8792
+🔧 [Debt Fix] Correcting debt parameter: null → 8792
+[ftd-x][Desktop - Chrome] ✅ [Debt Fix] Updated thank-you URL: chrome-error://chromewebdata/?debt=8792
+[ftd-x][Desktop - Chrome] 📱 [Mobile Diagnostic] Full Thank You URL Parameters: {"debt":"8792"}
+[ftd-x][Desktop - Chrome] 🔍 [Mobile DOM Deep-Scan] URL ID missing or non-standard (e.g. numeric reqid). Searching for Hex-8 or GUID IDs...
+[ftd-x][Desktop - Chrome] [STDERR] ⚠️ [Mobile] No Lead ID found in URL or DOM.
+⚠️ No Lead ID found. This is likely a duplicate lead submission redirected to a static thank you page. Using DUPLICATE fallback.
+[ftd-x][Desktop - Chrome] 📱 Device Type detected: Desktop - Chrome
+✅ Lead captured: DUPLICATE
+[ftd-x][Desktop - Chrome] [STDERR] ❌ Invalid Lead ID format detected: DUPLICATE. Expected 8-char alphanumeric with letters and digits (example: ACAAA01E).
+[ftd-x][Desktop - Chrome] [STDERR] (node:27428) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[ftd-x][Android - Chrome] ✅ [Mobile] Final Thank You URL: chrome-error://chromewebdata/
+[ftd-x][Android - Chrome] 📋 [Pre-Fix] Thank-you URL before debt correction: chrome-error://chromewebdata/
+💾 [Debt Debug] formPage.selectedSliderAmount = "15,034"
+💾 [Debt Debug] selectedDebtNum (numeric) = "15034"
+🔧 [Debt Fix] Current debt in URL: null, Should be: 15034
+🔧 [Debt Fix] Correcting debt parameter: null → 15034
+[ftd-x][Android - Chrome] ✅ [Debt Fix] Updated thank-you URL: chrome-error://chromewebdata/?debt=15034
+[ftd-x][Android - Chrome] 📱 [Mobile Diagnostic] Full Thank You URL Parameters: {"debt":"15034"}
+[ftd-x][Android - Chrome] 🔍 [Mobile DOM Deep-Scan] URL ID missing or non-standard (e.g. numeric reqid). Searching for Hex-8 or GUID IDs...
+[ftd-x][Android - Chrome] [STDERR] ⚠️ [Mobile] No Lead ID found in URL or DOM.
+⚠️ No Lead ID found. This is likely a duplicate lead submission redirected to a static thank you page. Using DUPLICATE fallback.
+❌ Invalid Lead ID format detected: DUPLICATE. Expected 8-char alphanumeric with letters and digits (example: ACAAA01E).
+[ftd-x][Android - Chrome] 📱 Device Type detected: Android - Chrome
+✅ Lead captured: DUPLICATE
+[ftd-x][Tablet - Chrome] ✅ [Mobile] Final Thank You URL: chrome-error://chromewebdata/
+📋 [Pre-Fix] Thank-you URL before debt correction: chrome-error://chromewebdata/
+[ftd-x][Tablet - Chrome] 💾 [Debt Debug] formPage.selectedSliderAmount = "19,153"
+💾 [Debt Debug] selectedDebtNum (numeric) = "19153"
+🔧 [Debt Fix] Current debt in URL: null, Should be: 19153
+🔧 [Debt Fix] Correcting debt parameter: null → 19153
+[ftd-x][Tablet - Chrome] ✅ [Debt Fix] Updated thank-you URL: chrome-error://chromewebdata/?debt=19153
+[ftd-x][Tablet - Chrome] 📱 [Mobile Diagnostic] Full Thank You URL Parameters: {"debt":"19153"}
+[ftd-x][Tablet - Chrome] 🔍 [Mobile DOM Deep-Scan] URL ID missing or non-standard (e.g. numeric reqid). Searching for Hex-8 or GUID IDs...
+[ftd-x][Tablet - Chrome] [STDERR] ⚠️ [Mobile] No Lead ID found in URL or DOM.
+[ftd-x][Tablet - Chrome] 📱 Device Type detected: Tablet - Chrome
+✅ Lead captured: DUPLICATE
+[ftd-x][Tablet - Chrome] [STDERR] ⚠️ No Lead ID found. This is likely a duplicate lead submission redirected to a static thank you page. Using DUPLICATE fallback.
+❌ Invalid Lead ID format detected: DUPLICATE. Expected 8-char alphanumeric with letters and digits (example: ACAAA01E).
+[fsi-ppc2][Android - Chrome] ✅ [Mobile] Final Thank You URL: chrome-error://chromewebdata/
+[fsi-ppc2][Android - Chrome] 📋 [Pre-Fix] Thank-you URL before debt correction: chrome-error://chromewebdata/
+💾 [Debt Debug] formPage.selectedSliderAmount = "15,000"
+💾 [Debt Debug] selectedDebtNum (numeric) = "15000"
+🔧 [Debt Fix] Current debt in URL: null, Should be: 15000
+🔧 [Debt Fix] Correcting debt parameter: null → 15000
+[fsi-ppc2][Android - Chrome] ✅ [Debt Fix] Updated thank-you URL: chrome-error://chromewebdata/?debt=15000
+[fsi-ppc2][Android - Chrome] 📱 [Mobile Diagnostic] Full Thank You URL Parameters: {"debt":"15000"}
+[fsi-ppc2][Android - Chrome] 🔍 [Mobile DOM Deep-Scan] URL ID missing or non-standard (e.g. numeric reqid). Searching for Hex-8 or GUID IDs...
+[fsi-ppc2][Android - Chrome] [STDERR] ⚠️ [Mobile] No Lead ID found in URL or DOM.
+[fsi-ppc2][Android - Chrome] 📱 Device Type detected: Android - Chrome
+✅ Lead captured: DUPLICATE
+[fsi-ppc2][Android - Chrome] [STDERR] ⚠️ No Lead ID found. This is likely a duplicate lead submission redirected to a static thank you page. Using DUPLICATE fallback.
+❌ Invalid Lead ID format detected: DUPLICATE. Expected 8-char alphanumeric with letters and digits (example: ACAAA01E).
+[ftd-x][Android - Chrome] [STDERR] (node:13196) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[ftd-x][Tablet - Chrome] [STDERR] (node:25664) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[fsi-ppc2][Android - Chrome] [STDERR] (node:32588) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[ftd-x][Desktop - Chrome] ✅ Row appended successfully to sheet: FTD-X
+[fsi-ppc2][Android - Chrome] ✅ Row appended successfully to sheet: FSI-PPC2
+[ftd-x][Tablet - Chrome] ✅ Row appended successfully to sheet: FTD-X
+[fsi-ppc2][Android - Chrome] ✨ Professional formatting applied to FSI-PPC2
+[fsi-ppc2][Android - Chrome] [STDERR] 🚨 [AI Agent] Data mismatch detected for FSI-PPC2 Mobile. Please review Google Sheet.
+[fsi-ppc2][Android - Chrome] 🤖 [AI Agent Audit] Status: FAIL
+🤖 [AI Agent Audit] Details: MISMATCH DETECTED: UI 15,000 Expected 10,000 but API got 
+[fsi-ppc2][Android - Chrome] [STDERR] ❌ Failed processing FSI-PPC2 Mobile: Invalid Lead ID format: DUPLICATE
+[fsi-ppc2][Android - Chrome] 
+✅ Execution successfully processed! {
+  success: false,
+  error: 'Invalid Lead ID format: DUPLICATE',
+  brand: 'FSI-PPC2 Mobile'
+}
+[fsi-ppc2][Android - Chrome] 📋 Trace report successfully saved: traces/fsi-ppc2_mobile.zip
+[ftd-x][Android - Chrome] ✅ Row appended successfully to sheet: FTD-X
+[ftd-x][Tablet - Chrome] ✨ Professional formatting applied to FTD-X
+[ftd-x][Tablet - Chrome] 🤖 [AI Agent Audit] Status: FAIL
+[ftd-x][Tablet - Chrome] 🤖 [AI Agent Audit] Details: MISMATCH DETECTED: UI 19,153 Expected 10,000 but API got 
+[ftd-x][Tablet - Chrome] [STDERR] 🚨 [AI Agent] Data mismatch detected for FTD-X Tablet. Please review Google Sheet.
+[ftd-x][Tablet - Chrome] [STDERR] ❌ Failed processing FTD-X Tablet: Invalid Lead ID format: DUPLICATE
+[ftd-x][Tablet - Chrome] 
+✅ Execution successfully processed! {
+  success: false,
+  error: 'Invalid Lead ID format: DUPLICATE',
+  brand: 'FTD-X Tablet'
+}
+[ftd-x][Desktop - Chrome] ✨ Professional formatting applied to FTD-X
+[ftd-x][Desktop - Chrome] 🤖 [AI Agent Audit] Status: FAIL
+🤖 [AI Agent Audit] Details: MISMATCH DETECTED: UI 8,792 Expected 7,500 but API got 
+[ftd-x][Desktop - Chrome] [STDERR] 🚨 [AI Agent] Data mismatch detected for FTD-X. Please review Google Sheet.
+❌ Failed processing FTD-X: Invalid Lead ID format: DUPLICATE
+[ftd-x][Desktop - Chrome] 
+✅ Execution successfully processed! {
+  success: false,
+  error: 'Invalid Lead ID format: DUPLICATE',
+  brand: 'FTD-X'
+}
+[ftd-x][Tablet - Chrome] 📋 Trace report successfully saved: traces/ftd-x_tablet.zip
+[ftd-x][Desktop - Chrome] 📋 Trace report successfully saved: traces/ftd-x_desktop.zip
+[ftd-x][Android - Chrome] ✨ Professional formatting applied to FTD-X
+[ftd-x][Android - Chrome] 🤖 [AI Agent Audit] Status: FAIL
+🤖 [AI Agent Audit] Details: MISMATCH DETECTED: UI 15,034 Expected 10,000 but API got 
+[ftd-x][Android - Chrome] [STDERR] 🚨 [AI Agent] Data mismatch detected for FTD-X Mobile. Please review Google Sheet.
+❌ Failed processing FTD-X Mobile: Invalid Lead ID format: DUPLICATE
+[ftd-x][Android - Chrome] 
+✅ Execution successfully processed! {
+  success: false,
+  error: 'Invalid Lead ID format: DUPLICATE',
+  brand: 'FTD-X Mobile'
+}
+[ftd-x][Android - Chrome] 📋 Trace report successfully saved: traces/ftd-x_mobile.zip
+✅ [2/6/2026, 10:27:45 am] COMPLETED: fsi-ppc2 [Android - Chrome][CHROMIUM]
+
+================================================================
+🚀 [2/6/2026, 10:27:45 am] RUNNING: FSI-PPC2 [TABLET - CHROME]
+🔗 Target URL: https://fsimlf-trk.com/?a=659&oc=750&c=143&s1=
+================================================================
+[fsi-ppc2][Tablet - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[fsi-ppc2][Tablet - Chrome] ◇ injected env (0) from .env // tip: ⌘ suppress logs { quiet: true }
+[fsi-ppc2][Tablet - Chrome] ◇ injected env (0) from .env // tip: ⌁ auth for agents [www.vestauth.com]
+[fsi-ppc2][Tablet - Chrome] ◇ injected env (0) from .env // tip: ⌁ auth for agents [www.vestauth.com]
+✅ [2/6/2026, 10:27:45 am] COMPLETED: ftd-x [Android - Chrome][CHROMIUM]
+
+================================================================
+🚀 [2/6/2026, 10:27:45 am] RUNNING: FSI-PPC2 [DESKTOP - CHROME]
+🔗 Target URL: https://fsimlf-trk.com/?a=659&oc=750&c=143&s1=
+================================================================
+✅ [2/6/2026, 10:27:46 am] COMPLETED: ftd-x [Tablet - Chrome][CHROMIUM]
+
+================================================================
+🚀 [2/6/2026, 10:27:46 am] RUNNING: TRA-CPL [ANDROID - CHROME]
+🔗 Target URL: https://flmtra.com/?a=659&oc=756&c=2210&s1=
+================================================================
+✅ [2/6/2026, 10:27:46 am] COMPLETED: ftd-x [Desktop - Chrome][CHROMIUM]
+
+================================================================
+🚀 [2/6/2026, 10:27:46 am] RUNNING: TRA-CPL [TABLET - CHROME]
+🔗 Target URL: https://flmtra.com/?a=659&oc=756&c=2210&s1=
+================================================================
+[fsi-ppc2][Desktop - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[fsi-ppc2][Desktop - Chrome] ◇ injected env (0) from .env // tip: ⌘ suppress logs { quiet: true }
+[fsi-ppc2][Desktop - Chrome] ◇ injected env (0) from .env // tip: ⌘ suppress logs { quiet: true }
+[fsi-ppc2][Desktop - Chrome] ◇ injected env (0) from .env // tip: ◈ encrypted .env [www.dotenvx.com]
+[tra-cpl][Android - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[tra-cpl][Android - Chrome] ◇ injected env (0) from .env // tip: ⌁ auth for agents [www.vestauth.com]
+[tra-cpl][Android - Chrome] ◇ injected env (0) from .env // tip: ⌁ auth for agents [www.vestauth.com]
+[tra-cpl][Android - Chrome] ◇ injected env (0) from .env // tip: ⌘ custom filepath { path: '/custom/path/.env' }
+[tra-cpl][Tablet - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[tra-cpl][Tablet - Chrome] ◇ injected env (0) from .env // tip: ⌘ enable debugging { debug: true }
+[tra-cpl][Tablet - Chrome] ◇ injected env (0) from .env // tip: ⌘ enable debugging { debug: true }
+[tra-cpl][Tablet - Chrome] ◇ injected env (0) from .env // tip: ⌘ enable debugging { debug: true }
+[fsi-ppc2][Tablet - Chrome] ◇ injected env (0) from .env // tip: ⌘ enable debugging { debug: true }
+[fsi-ppc2][Tablet - Chrome] ◇ injected env (0) from .env // tip: ⌘ override existing { override: true }
+[fsi-ppc2][Tablet - Chrome] 
+🤖 ================================================================
+[fsi-ppc2][Tablet - Chrome] 🤖 MASTER RUNNER: LAUNCHING FSI-PPC2
+🤖 Mode:            TABLET
+🤖 Tracking URL:     https://fsimlf-trk.com/?a=659&oc=750&c=143&s1=
+🤖 Target Sheet:    FSI-PPC2
+[fsi-ppc2][Tablet - Chrome] 🤖 ================================================================
+[fsi-ppc2][Tablet - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[fsi-ppc2][Tablet - Chrome] 📋 Emulated Device Profile: TABLET (iPad Pro 11) - [Tablet - Chrome]
+[fsi-ppc2][Tablet - Chrome] ⏳ Delaying 200ms to allow responsive layouts to mount...
+[fsi-ppc2][Tablet - Chrome] 🔄 Processing lead for brand: FSI-PPC2 Tablet
+[fsi-ppc2][Tablet - Chrome] 📊 Campaign execution run index: 48
+[fsi-ppc2][Tablet - Chrome] 🔗 [Mobile] Navigating to: https://fsimlf-trk.com/?a=659&oc=750&c=143&s1=
+[fsi-ppc2][Desktop - Chrome] ◇ injected env (0) from .env // tip: ⌘ multiple files { path: ['.env.local', '.env'] }
+[fsi-ppc2][Desktop - Chrome] ◇ injected env (0) from .env // tip: ⌘ suppress logs { quiet: true }
+[fsi-ppc2][Desktop - Chrome] 
+🤖 ================================================================
+[fsi-ppc2][Desktop - Chrome] 🤖 MASTER RUNNER: LAUNCHING FSI-PPC2
+🤖 Mode:            DESKTOP
+[fsi-ppc2][Desktop - Chrome] 🤖 Tracking URL:     https://fsimlf-trk.com/?a=659&oc=750&c=143&s1=
+[fsi-ppc2][Desktop - Chrome] 🤖 Target Sheet:    FSI-PPC2
+[fsi-ppc2][Desktop - Chrome] 🤖 ================================================================
+[fsi-ppc2][Desktop - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[fsi-ppc2][Desktop - Chrome] 💻 Emulated Device Profile: DESKTOP - [Desktop - Chrome]
+[fsi-ppc2][Desktop - Chrome] 🔄 Processing lead for brand: FSI-PPC2
+[fsi-ppc2][Desktop - Chrome] 📊 Campaign execution run index: 49
+[tra-cpl][Android - Chrome] ◇ injected env (0) from .env // tip: ⌘ multiple files { path: ['.env.local', '.env'] }
+[tra-cpl][Android - Chrome] ◇ injected env (0) from .env // tip: ⌘ multiple files { path: ['.env.local', '.env'] }
+[tra-cpl][Android - Chrome] 
+🤖 ================================================================
+[tra-cpl][Android - Chrome] 🤖 MASTER RUNNER: LAUNCHING TRA-CPL
+🤖 Mode:            MOBILE
+🤖 Tracking URL:     https://flmtra.com/?a=659&oc=756&c=2210&s1=
+[tra-cpl][Android - Chrome] 🤖 Target Sheet:    TRA-CPL
+🤖 ================================================================
+[tra-cpl][Android - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[fsi-ppc2][Desktop - Chrome] 🔗 [Mobile] Navigating to: https://fsimlf-trk.com/?a=659&oc=750&c=143&s1=
+[tra-cpl][Android - Chrome] 📋 Emulated Device Profile: MOBILE (Pixel 7) - [Android - Chrome]
+[tra-cpl][Android - Chrome] ⏳ Delaying 200ms to allow responsive layouts to mount...
+[tra-cpl][Tablet - Chrome] ◇ injected env (0) from .env // tip: ⌘ enable debugging { debug: true }
+[tra-cpl][Tablet - Chrome] ◇ injected env (0) from .env // tip: ◈ secrets for agents [www.dotenvx.com]
+[tra-cpl][Tablet - Chrome] 
+🤖 ================================================================
+[tra-cpl][Tablet - Chrome] 🤖 MASTER RUNNER: LAUNCHING TRA-CPL
+[tra-cpl][Tablet - Chrome] 🤖 Mode:            TABLET
+[tra-cpl][Android - Chrome] 🔄 Processing lead for brand: TRA-CPL Mobile
+[tra-cpl][Android - Chrome] 📊 Campaign execution run index: 43
+📅 [Rotational Logic] Week 1 Day 2. Target Range: 1000-20000 (Max allowed by URL: 30000)
+[tra-cpl][Tablet - Chrome] 🤖 Tracking URL:     https://flmtra.com/?a=659&oc=756&c=2210&s1=
+[tra-cpl][Tablet - Chrome] 🤖 Target Sheet:    TRA-CPL
+[tra-cpl][Tablet - Chrome] 🤖 ================================================================
+[tra-cpl][Tablet - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[tra-cpl][Android - Chrome] 🔗 [Mobile] Navigating to: https://flmtra.com/?a=659&oc=756&c=2210&s1=
+[tra-cpl][Tablet - Chrome] 📋 Emulated Device Profile: TABLET (iPad Pro 11) - [Tablet - Chrome]
+[tra-cpl][Tablet - Chrome] ⏳ Delaying 200ms to allow responsive layouts to mount...
+[tra-cpl][Tablet - Chrome] 🔄 Processing lead for brand: TRA-CPL Tablet
+[tra-cpl][Tablet - Chrome] 📊 Campaign execution run index: 44
+[tra-cpl][Tablet - Chrome] 📅 [Rotational Logic] Week 1 Day 2. Target Range: 1000-20000 (Max allowed by URL: 30000)
+[tra-cpl][Tablet - Chrome] 🔗 [Mobile] Navigating to: https://flmtra.com/?a=659&oc=756&c=2210&s1=
+[fsi-ppc2][Desktop - Chrome] ✅ [Mobile] Page loaded successfully
+[fsi-ppc2][Desktop - Chrome] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[fsi-ppc2][Desktop - Chrome] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[fsi-ppc2][Desktop - Chrome] 📝 [Mobile] Starting mobile-specific form filling...
+[fsi-ppc2][Desktop - Chrome] 🔘 [Mobile] Step 1: Selecting Debt Amount (15,000)
+[fsi-ppc2][Desktop - Chrome] 🔍 [Mobile Dropdown Scanner] Scanning 5 dropdown options against daily range: 0 - 200000
+[fsi-ppc2][Desktop - Chrome] ✅ [Mobile Rotational Logic] Selected dropdown choice: "$10,000 - $19,999"
+[fsi-ppc2][Desktop - Chrome] 🔘 [Mobile] Clicking active visible button: .next-btn1:visible, .btn-next:visible
+[fsi-ppc2][Desktop - Chrome] ✅ [Mobile] Clicked: .next-btn1:visible, .btn-next:visible
+[tra-cpl][Tablet - Chrome] ✅ [Mobile] Page loaded successfully
+[tra-cpl][Tablet - Chrome] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[tra-cpl][Tablet - Chrome] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[tra-cpl][Tablet - Chrome] 📝 [Mobile] Starting mobile-specific form filling...
+[tra-cpl][Tablet - Chrome] 🔘 [Mobile] Step 1: Selecting Debt Amount (16,185)
+[tra-cpl][Tablet - Chrome] 🔘 [Mobile] Found jQuery UI Slider #slider. Setting value via jQuery and DOM evaluation...
+[tra-cpl][Tablet - Chrome] ✅ [Mobile] Set jQuery UI Slider #slider to 16,185
+[fsi-ppc2][Desktop - Chrome] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[fsi-ppc2][Desktop - Chrome] ✅ [Mobile] Reached a recognized terminal step. Stopping dynamic traversal.
+[fsi-ppc2][Desktop - Chrome] 🔘 [Mobile] Step 2: Selecting State
+[fsi-ppc2][Tablet - Chrome] ✅ [Mobile] Page loaded successfully
+💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[fsi-ppc2][Tablet - Chrome] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[fsi-ppc2][Tablet - Chrome] 📝 [Mobile] Starting mobile-specific form filling...
+[fsi-ppc2][Tablet - Chrome] 🔘 [Mobile] Step 1: Selecting Debt Amount (5,000)
+[fsi-ppc2][Tablet - Chrome] 🔍 [Mobile Dropdown Scanner] Scanning 5 dropdown options against daily range: 0 - 200000
+[tra-cpl][Tablet - Chrome] 🔘 [Mobile] Clicking active visible button: .next-btn1:visible, .btn-next:visible
+[tra-cpl][Tablet - Chrome] ✅ [Mobile] Clicked: .next-btn1:visible, .btn-next:visible
+[fsi-ppc2][Tablet - Chrome] ✅ [Mobile Rotational Logic] Selected dropdown choice: "$0 - $9,999"
+[tra-cpl][Android - Chrome] ✅ [Mobile] Page loaded successfully
+[tra-cpl][Android - Chrome] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[fsi-ppc2][Desktop - Chrome] ✅ [Mobile] Selected state dynamically: "Wisconsin"
+[fsi-ppc2][Desktop - Chrome] 📝 [Mobile] step3 column set to State: "Wisconsin"
+[fsi-ppc2][Desktop - Chrome] 🔘 [Mobile] Clicking active visible button: .next-btn:visible, .next-btn2:visible, .btn-next:visible
+[fsi-ppc2][Desktop - Chrome] ✅ [Mobile] Clicked: .next-btn:visible, .next-btn2:visible, .btn-next:visible
+[tra-cpl][Android - Chrome] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[tra-cpl][Tablet - Chrome] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[tra-cpl][Tablet - Chrome] ✅ [Mobile] Reached a recognized terminal step. Stopping dynamic traversal.
+[tra-cpl][Android - Chrome] 📝 [Mobile] Starting mobile-specific form filling...
+[tra-cpl][Tablet - Chrome] 🔘 [Mobile] Step 2: Selecting State
+[tra-cpl][Tablet - Chrome] ✅ [Mobile] Selected state dynamically: "Utah"
+[tra-cpl][Tablet - Chrome] 📝 [Mobile] step3 column set to State: "Utah"
+[tra-cpl][Tablet - Chrome] 🔘 [Mobile] Clicking active visible button: .next-btn:visible, .next-btn2:visible, .btn-next:visible
+[tra-cpl][Android - Chrome] 🔘 [Mobile] Step 1: Selecting Debt Amount (7,752)
+[tra-cpl][Tablet - Chrome] ✅ [Mobile] Clicked: .next-btn:visible, .next-btn2:visible, .btn-next:visible
+[tra-cpl][Android - Chrome] 🔘 [Mobile] Found jQuery UI Slider #slider. Setting value via jQuery and DOM evaluation...
+[tra-cpl][Android - Chrome] ✅ [Mobile] Set jQuery UI Slider #slider to 7,752
+[fsi-ppc2][Tablet - Chrome] 🔘 [Mobile] Clicking active visible button: .next-btn1:visible, .btn-next:visible
+[fsi-ppc2][Desktop - Chrome] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[fsi-ppc2][Tablet - Chrome] ✅ [Mobile] Clicked: .next-btn1:visible, .btn-next:visible
+[fsi-ppc2][Desktop - Chrome] 🔘 [Mobile] Step 3: Filling Contact Info (Dynamic Loop)...
+[fsi-ppc2][Desktop - Chrome] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[fsi-ppc2][Desktop - Chrome] ✅ [Mobile] Filled First Name: ckmtestpixel
+[fsi-ppc2][Desktop - Chrome] ✅ [Mobile] Filled Last Name: ckmtestpixel
+[fsi-ppc2][Desktop - Chrome] ✅ [Mobile] Filled Email: ckmtestpixel@gmail.com
+[fsi-ppc2][Desktop - Chrome] ✅ [Mobile] Filled Phone: 401-247-1049
+[fsi-ppc2][Desktop - Chrome] 🔘 [Mobile] Clicking active contact NEXT/SUBMIT button...
+[tra-cpl][Android - Chrome] 🔘 [Mobile] Clicking active visible button: .next-btn1:visible, .btn-next:visible
+[tra-cpl][Tablet - Chrome] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[tra-cpl][Android - Chrome] ✅ [Mobile] Clicked: .next-btn1:visible, .btn-next:visible
+[tra-cpl][Tablet - Chrome] 🔘 [Mobile] Step 3: Filling Contact Info (Dynamic Loop)...
+[tra-cpl][Tablet - Chrome] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[fsi-ppc2][Tablet - Chrome] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[fsi-ppc2][Tablet - Chrome] ✅ [Mobile] Reached a recognized terminal step. Stopping dynamic traversal.
+[fsi-ppc2][Tablet - Chrome] 🔘 [Mobile] Step 2: Selecting State
+[fsi-ppc2][Tablet - Chrome] ✅ [Mobile] Selected state dynamically: "West Virginia"
+[fsi-ppc2][Tablet - Chrome] 📝 [Mobile] step3 column set to State: "West Virginia"
+[fsi-ppc2][Tablet - Chrome] 🔘 [Mobile] Clicking active visible button: .next-btn:visible, .next-btn2:visible, .btn-next:visible
+[fsi-ppc2][Tablet - Chrome] ✅ [Mobile] Clicked: .next-btn:visible, .next-btn2:visible, .btn-next:visible
+[tra-cpl][Tablet - Chrome] ✅ [Mobile] Filled First Name: ckmtestpixel
+[tra-cpl][Android - Chrome] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[tra-cpl][Android - Chrome] ✅ [Mobile] Reached a recognized terminal step. Stopping dynamic traversal.
+[tra-cpl][Tablet - Chrome] ✅ [Mobile] Filled Last Name: ckmtestpixel
+[tra-cpl][Android - Chrome] 🔘 [Mobile] Step 2: Selecting State
+[tra-cpl][Android - Chrome] ✅ [Mobile] Selected state dynamically: "Texas"
+[tra-cpl][Android - Chrome] 📝 [Mobile] step3 column set to State: "Texas"
+[tra-cpl][Android - Chrome] 🔘 [Mobile] Clicking active visible button: .next-btn:visible, .next-btn2:visible, .btn-next:visible
+[tra-cpl][Android - Chrome] ✅ [Mobile] Clicked: .next-btn:visible, .next-btn2:visible, .btn-next:visible
+[tra-cpl][Tablet - Chrome] 🔘 [Mobile] Clicking active contact NEXT/SUBMIT button...
+[fsi-ppc2][Tablet - Chrome] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[fsi-ppc2][Tablet - Chrome] 🔘 [Mobile] Step 3: Filling Contact Info (Dynamic Loop)...
+[fsi-ppc2][Tablet - Chrome] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[fsi-ppc2][Tablet - Chrome] ✅ [Mobile] Filled First Name: ckmtestpixel
+[fsi-ppc2][Desktop - Chrome] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[fsi-ppc2][Desktop - Chrome] [STDERR] ⚠️ [Tablet] Failed to apply glossy iPad Pro mockup frame overlay: page.evaluate: TypeError: Cannot read properties of null (reading 'appendChild')
+    at eval (eval at evaluate (:302:30), <anonymous>:104:23)
+    at UtilityScript.evaluate (<anonymous>:304:16)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+[fsi-ppc2][Desktop - Chrome] ✅ [Mobile] Thank you page or lead id detected in URL during contact loop. Exiting contact loop.
+[fsi-ppc2][Desktop - Chrome] 🔘 [Mobile] Scanning for additional dynamic steps...
+[fsi-ppc2][Desktop - Chrome] ✅ [Mobile] Thank you page detected during adaptive submit loop. Exiting loop.
+[fsi-ppc2][Desktop - Chrome] 🔘 [Mobile] Submitting form
+💾 [Mobile] Setting hidden debt fields to: 1000019999
+[fsi-ppc2][Tablet - Chrome] ✅ [Mobile] Filled Last Name: ckmtestpixel
+[fsi-ppc2][Desktop - Chrome] ⏳ [Mobile] Waiting for submission navigation to complete
+[fsi-ppc2][Tablet - Chrome] ✅ [Mobile] Filled Email: ckmtestpixel@gmail.com
+[fsi-ppc2][Tablet - Chrome] ✅ [Mobile] Filled Phone: 401-247-1048
+[fsi-ppc2][Tablet - Chrome] 🔘 [Mobile] Clicking active contact NEXT/SUBMIT button...
+[tra-cpl][Android - Chrome] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[tra-cpl][Android - Chrome] 🔘 [Mobile] Step 3: Filling Contact Info (Dynamic Loop)...
+[tra-cpl][Android - Chrome] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[tra-cpl][Tablet - Chrome] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[tra-cpl][Android - Chrome] ✅ [Mobile] Filled First Name: ckmtestpixel
+[tra-cpl][Android - Chrome] ✅ [Mobile] Filled Last Name: ckmtestpixel
+[tra-cpl][Tablet - Chrome] ✅ [Mobile] Filled Email: ckmtestpixel@gmail.com
+[tra-cpl][Android - Chrome] 🔘 [Mobile] Clicking active contact NEXT/SUBMIT button...
+[tra-cpl][Tablet - Chrome] 🔘 [Mobile] Clicking active contact NEXT/SUBMIT button...
+[fsi-ppc2][Tablet - Chrome] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[fsi-ppc2][Tablet - Chrome] [STDERR] ⚠️ [Tablet] Failed to apply glossy iPad Pro mockup frame overlay: page.evaluate: TypeError: Cannot read properties of null (reading 'appendChild')
+    at eval (eval at evaluate (:302:30), <anonymous>:104:23)
+    at UtilityScript.evaluate (<anonymous>:304:16)
+    at UtilityScript.<anonymous> (<anonymous>:1:44)
+[fsi-ppc2][Tablet - Chrome] ✅ [Mobile] Thank you page or lead id detected in URL during contact loop. Exiting contact loop.
+🔘 [Mobile] Scanning for additional dynamic steps...
+[fsi-ppc2][Tablet - Chrome] ✅ [Mobile] Thank you page detected during adaptive submit loop. Exiting loop.
+[fsi-ppc2][Tablet - Chrome] 🔘 [Mobile] Submitting form
+[fsi-ppc2][Tablet - Chrome] 💾 [Mobile] Setting hidden debt fields to: 5000
+[fsi-ppc2][Tablet - Chrome] ⏳ [Mobile] Waiting for submission navigation to complete
+[tra-cpl][Android - Chrome] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[tra-cpl][Tablet - Chrome] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[tra-cpl][Android - Chrome] ✅ [Mobile] Filled Email: ckmtestpixel@gmail.com
+[tra-cpl][Android - Chrome] 🔘 [Mobile] Clicking active contact NEXT/SUBMIT button...
+[tra-cpl][Tablet - Chrome] ✅ [Mobile] Filled Phone: 401-247-1044
+[tra-cpl][Tablet - Chrome] 🔘 [Mobile] Clicking active contact NEXT/SUBMIT button...
+[tra-cpl][Android - Chrome] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[tra-cpl][Tablet - Chrome] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[tra-cpl][Android - Chrome] ✅ [Mobile] Filled Phone: 401-247-1043
+[tra-cpl][Android - Chrome] 🔘 [Mobile] Clicking active contact NEXT/SUBMIT button...
+[tra-cpl][Tablet - Chrome] ✅ [Mobile] Filled Phone: 401-247-1044
+[tra-cpl][Tablet - Chrome] 🔘 [Mobile] No active contact NEXT/SUBMIT button visible. Exiting loop.
+🔘 [Mobile] Scanning for additional dynamic steps...
+[tra-cpl][Tablet - Chrome] ✅ [Mobile] Thank you page detected during adaptive submit loop. Exiting loop.
+[tra-cpl][Tablet - Chrome] 🔘 [Mobile] Submitting form
+💾 [Mobile] Setting hidden debt fields to: 16185
+[tra-cpl][Tablet - Chrome] ⏳ [Mobile] Waiting for submission navigation to complete
+[tra-cpl][Android - Chrome] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[tra-cpl][Android - Chrome] 🔘 [Mobile] No active contact NEXT/SUBMIT button visible. Exiting loop.
+🔘 [Mobile] Scanning for additional dynamic steps...
+[tra-cpl][Android - Chrome] ✅ [Mobile] Thank you page detected during adaptive submit loop. Exiting loop.
+[tra-cpl][Android - Chrome] 🔘 [Mobile] Submitting form
+💾 [Mobile] Setting hidden debt fields to: 7752
+[tra-cpl][Android - Chrome] ⏳ [Mobile] Waiting for submission navigation to complete
+[fsi-ppc2][Desktop - Chrome] [STDERR] ⚠️ [Mobile] Standard submit buttons not found, consulting AI Agent...
+[fsi-ppc2][Desktop - Chrome] 🤖 [AI Agent] Analyzing Submit button for global...
+[fsi-ppc2][Desktop - Chrome] ⏳ [Mobile] Waiting for final Thank You page redirection...
+[fsi-ppc2][Desktop - Chrome] ✅ [Mobile] Targeted final redirect URL achieved!
+[fsi-ppc2][Desktop - Chrome] ✅ [Mobile] Final Thank You URL: https://www.fresh-start-initiative.com/ty_next/?debt=10000&leadid=185677FE&reqid=26852478&affid=659&subid=#s1#
+📋 [Pre-Fix] Thank-you URL before debt correction: https://www.fresh-start-initiative.com/ty_next/?debt=10000&leadid=185677FE&reqid=26852478&affid=659&subid=#s1#
+💾 [Debt Debug] formPage.selectedSliderAmount = "$10,000 - $19,999"
+💾 [Debt Debug] selectedDebtNum (numeric) = "1000019999"
+[fsi-ppc2][Desktop - Chrome] 🔧 [Debt Fix] Current debt in URL: 10000, Should be: 1000019999
+🔧 [Debt Fix] Correcting debt parameter: 10000 → 1000019999
+[fsi-ppc2][Desktop - Chrome] ✅ [Debt Fix] Updated thank-you URL: https://www.fresh-start-initiative.com/ty_next/?debt=1000019999&leadid=185677FE&reqid=26852478&affid=659&subid=#s1#
+[fsi-ppc2][Desktop - Chrome] 📱 [Mobile Diagnostic] Full Thank You URL Parameters: {"debt":"1000019999","leadid":"185677FE","reqid":"26852478","affid":"659","subid":""}
+[fsi-ppc2][Desktop - Chrome] ✅ [Mobile] Extracted Lead ID: 185677FE
+[fsi-ppc2][Desktop - Chrome] 📱 Device Type detected: Desktop - Chrome
+[fsi-ppc2][Desktop - Chrome] ✅ Lead captured: 185677FE
+[fsi-ppc2][Desktop - Chrome] 📡 Fetching First API data for Lead ID: 185677FE...
+[fsi-ppc2][Desktop - Chrome] 📡 Raw XML Response: {
+  "lead_info_response": {
+    "$": {
+      "xmlns:xsd": "http://www.w3.org/2001/XMLSchema",
+      "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+      "xmlns": "http://cakemarketing.com/api/1/"
+    },
+    "success": "true",
+    "row_count": "1",
+    "lead_id": "185677FE",
+    "personal_info": {
+      "first_name": "CKMTESTPIXEL",
+      "last_name": "CKMTESTPIXEL",
+      "email_address": "ckmtestpixel@gmail.com",
+      "address": {
+        "street": "",
+        "city": "",
+        "state": "WI",
+        "zip_code": "",
+        "country": ""
+      },
+      "ip_address": "27.54.170.27",
+      "phone_work": "",
+      "phone_home": "401-247-1049",
+      "phone_cell": "",
+      "best_call_time": "",
+      "opt_in": "true"
+    },
+    "traffic_info": {
+      "lead_date": "2026-06-01T21:58:15.167",
+      "payout": {
+        "currency_id": "1",
+        "amount": "0.0000",
+        "formatted_amount": "$0.00"
+      },
+      "affiliate": {
+        "affiliate_id": {
+          "_": "659",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        },
+        "affiliate_name": {
+          "_": "QA affiliate",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        }
+      },
+      "campaign": {
+        "campaign_id": {
+          "_": "4069",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        },
+        "campaign_name": {
+          "_": "Fresh Start Initiative (PPC) - PPC NEW - CPA - $1.00",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        }
+      },
+      "creative_id": "143",
+      "subid_1": "",
+      "subid_2": "",
+      "subid_3": "",
+      "subid_4": "",
+      "subid_5": "",
+      "referrer": "",
+      "pixel_fired": "true",
+      "returned_to_affiliate": "false",
+      "test": "true",
+      "upsell": "false"
+    },
+    "all_vertical_data": {
+      "data": {
+        "$": {
+          "xmlns": ""
+        },
+        "tax_debt": "10000",
+        "universal_leadid": "B7EC53BE-E22D-B5BC-A9D4-625ECBA474A5",
+        "affid": "659",
+        "TCPA_checkbox": "checked",
+        "reqid": "26852478",
+        "cr_price": "0.00",
+        "page": "fresh-start-initiative.comfresh-start-initiative.com/ppc2/index.php",
+        "neustar": "pass",
+        "neustar_disposition": "N,U,I2,L,0",
+        "nd_odlv": "28",
+        "first_name_lower": "ckmtestpixel",
+        "last_name_lower": "ckmtestpixel",
+        "first_name_capital": "Ckmtestpixel",
+        "last_name_capital": "Ckmtestpixel",
+        "nodl_flag": "pass",
+        "ckm_campaign_id": "4297",
+        "email_oversight": "Verified"
+      }
+    },
+    "dispositions": "",
+    "pings": "",
+    "posts": "",
+    "sales": ""
+  }
+}
+[fsi-ppc2][Desktop - Chrome] ✅ First API Data retrieved on attempt 1
+[fsi-ppc2][Desktop - Chrome] 📡 Fetching Second API data for Lead ID: 185677FE...
+[fsi-ppc2][Desktop - Chrome] 📡 Standard Second API Payload: cake_id=185677FE, domain_name=https://www.freshstartinitiative.com
+[fsi-ppc2][Desktop - Chrome] [STDERR] (node:34024) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[fsi-ppc2][Desktop - Chrome] [STDERR] ⚠️  Attempt 1: Second API returned no DBID. Response: {"status":false,"message":"Domain not found in configuration: freshstartinitiative.com"}
+[fsi-ppc2][Desktop - Chrome] ⏳ Retrying in 1 second to allow database synchronization...
+[fsi-ppc2][Tablet - Chrome] [STDERR] ⚠️ [Mobile] Standard submit buttons not found, consulting AI Agent...
+[fsi-ppc2][Tablet - Chrome] 🤖 [AI Agent] Analyzing Submit button for global...
+[fsi-ppc2][Tablet - Chrome] ⏳ [Mobile] Waiting for final Thank You page redirection...
+[fsi-ppc2][Tablet - Chrome] ✅ [Mobile] Targeted final redirect URL achieved!
+[fsi-ppc2][Tablet - Chrome] ✅ [Mobile] Final Thank You URL: https://www.fresh-start-initiative.com/ty_next/?debt=5000&leadid=23B88E97&reqid=26852477&affid=659&subid=#s1#
+📋 [Pre-Fix] Thank-you URL before debt correction: https://www.fresh-start-initiative.com/ty_next/?debt=5000&leadid=23B88E97&reqid=26852477&affid=659&subid=#s1#
+💾 [Debt Debug] formPage.selectedSliderAmount = "5,000"
+[fsi-ppc2][Tablet - Chrome] 💾 [Debt Debug] selectedDebtNum (numeric) = "5000"
+[fsi-ppc2][Tablet - Chrome] 🔧 [Debt Fix] Current debt in URL: 5000, Should be: 5000
+✅ [Debt Fix] Debt parameter already correct
+[fsi-ppc2][Tablet - Chrome] 📱 [Mobile Diagnostic] Full Thank You URL Parameters: {"debt":"5000","leadid":"23B88E97","reqid":"26852477","affid":"659","subid":""}
+[fsi-ppc2][Tablet - Chrome] ✅ [Mobile] Extracted Lead ID: 23B88E97
+[fsi-ppc2][Tablet - Chrome] 📱 Device Type detected: Tablet - Chrome
+[fsi-ppc2][Tablet - Chrome] ✅ Lead captured: 23B88E97
+[fsi-ppc2][Tablet - Chrome] 📡 Fetching First API data for Lead ID: 23B88E97...
+[fsi-ppc2][Desktop - Chrome] 📡 Standard Second API Payload: cake_id=185677FE, domain_name=https://www.freshstartinitiative.com
+[fsi-ppc2][Desktop - Chrome] [STDERR] ⚠️  Attempt 2: Second API returned no DBID. Response: {"status":false,"message":"Domain not found in configuration: freshstartinitiative.com"}
+[fsi-ppc2][Desktop - Chrome] ⏳ Retrying in 1 second to allow database synchronization...
+[fsi-ppc2][Desktop - Chrome] 📡 Standard Second API Payload: cake_id=185677FE, domain_name=https://www.freshstartinitiative.com
+[fsi-ppc2][Desktop - Chrome] [STDERR] ⚠️  Attempt 3: Second API returned no DBID. Response: {"status":false,"message":"Domain not found in configuration: freshstartinitiative.com"}
+[fsi-ppc2][Desktop - Chrome] ⏳ Retrying in 1 second to allow database synchronization...
+[fsi-ppc2][Tablet - Chrome] 📡 Raw XML Response: {
+  "lead_info_response": {
+    "$": {
+      "xmlns:xsd": "http://www.w3.org/2001/XMLSchema",
+      "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+      "xmlns": "http://cakemarketing.com/api/1/"
+    },
+    "success": "true",
+    "row_count": "1",
+    "lead_id": "23B88E97",
+    "personal_info": {
+      "first_name": "CKMTESTPIXEL",
+      "last_name": "CKMTESTPIXEL",
+      "email_address": "ckmtestpixel@gmail.com",
+      "address": {
+        "street": "",
+        "city": "",
+        "state": "WV",
+        "zip_code": "",
+        "country": ""
+      },
+      "ip_address": "27.54.170.27",
+      "phone_work": "",
+      "phone_home": "401-247-1048",
+      "phone_cell": "",
+      "best_call_time": "",
+      "opt_in": "true"
+    },
+    "traffic_info": {
+      "lead_date": "2026-06-01T21:58:18.74",
+      "payout": {
+        "currency_id": "1",
+        "amount": "0.0000",
+        "formatted_amount": "$0.00"
+      },
+      "affiliate": {
+        "affiliate_id": {
+          "_": "659",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        },
+        "affiliate_name": {
+          "_": "QA affiliate",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        }
+      },
+      "campaign": {
+        "campaign_id": {
+          "_": "4069",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        },
+        "campaign_name": {
+          "_": "Fresh Start Initiative (PPC) - PPC NEW - CPA - $1.00",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        }
+      },
+      "creative_id": "143",
+      "subid_1": "",
+      "subid_2": "",
+      "subid_3": "",
+      "subid_4": "",
+      "subid_5": "",
+      "referrer": "",
+      "pixel_fired": "true",
+      "returned_to_affiliate": "false",
+      "test": "true",
+      "upsell": "false"
+    },
+    "all_vertical_data": {
+      "data": {
+        "$": {
+          "xmlns": ""
+        },
+        "tax_debt": "5000",
+        "universal_leadid": "C6FD5EE9-DEF8-9BE4-CC29-339CF1C14F70",
+        "affid": "659",
+        "TCPA_checkbox": "checked",
+        "reqid": "26852477",
+        "cr_price": "3",
+        "page": "fresh-start-initiative.comfresh-start-initiative.com/ppc2/index.php",
+        "neustar": "under",
+        "first_name_lower": "ckmtestpixel",
+        "last_name_lower": "ckmtestpixel",
+        "first_name_capital": "Ckmtestpixel",
+        "last_name_capital": "Ckmtestpixel",
+        "nodl_flag": "pass",
+        "ckm_campaign_id": "4297",
+        "email_oversight": "Verified"
+      }
+    },
+    "dispositions": {
+      "disposition": [
+        {
+          "disposition_type": "Not Paid For",
+          "reason": "Unmatched Filter",
+          "filter": "Min Tax Debt"
+        },
+        {
+          "disposition_type": "Not Paid For",
+          "reason": "Unmatched Filter",
+          "filter": "Nuestar Fail"
+        }
+      ]
+    },
+    "pings": "",
+    "posts": "",
+    "sales": ""
+  }
+}
+[fsi-ppc2][Tablet - Chrome] ✅ First API Data retrieved on attempt 1
+[fsi-ppc2][Tablet - Chrome] 📡 Fetching Second API data for Lead ID: 23B88E97...
+[fsi-ppc2][Tablet - Chrome] 📡 Standard Second API Payload: cake_id=23B88E97, domain_name=https://www.freshstartinitiative.com
+[fsi-ppc2][Tablet - Chrome] [STDERR] (node:32016) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[fsi-ppc2][Tablet - Chrome] [STDERR] ⚠️  Attempt 1: Second API returned no DBID. Response: {"status":false,"message":"Domain not found in configuration: freshstartinitiative.com"}
+[fsi-ppc2][Tablet - Chrome] ⏳ Retrying in 1 second to allow database synchronization...
+[fsi-ppc2][Desktop - Chrome] 📡 Standard Second API Payload: cake_id=185677FE, domain_name=https://www.freshstartinitiative.com
+[fsi-ppc2][Desktop - Chrome] [STDERR] ⚠️  Attempt 4: Second API returned no DBID. Response: {"status":false,"message":"Domain not found in configuration: freshstartinitiative.com"}
+[fsi-ppc2][Desktop - Chrome] ⏳ Retrying in 1 second to allow database synchronization...
+[fsi-ppc2][Tablet - Chrome] 📡 Standard Second API Payload: cake_id=23B88E97, domain_name=https://www.freshstartinitiative.com
+[fsi-ppc2][Tablet - Chrome] [STDERR] ⚠️  Attempt 2: Second API returned no DBID. Response: {"status":false,"message":"Domain not found in configuration: freshstartinitiative.com"}
+[fsi-ppc2][Tablet - Chrome] ⏳ Retrying in 1 second to allow database synchronization...
+[fsi-ppc2][Desktop - Chrome] 📡 Standard Second API Payload: cake_id=185677FE, domain_name=https://www.freshstartinitiative.com
+[fsi-ppc2][Desktop - Chrome] [STDERR] ⚠️  Attempt 5: Second API returned no DBID. Response: {"status":false,"message":"Domain not found in configuration: freshstartinitiative.com"}
+[fsi-ppc2][Desktop - Chrome] 📡 [Rest-Assurance] Verifying Lead ID: 185677FE via Backend...
+[fsi-ppc2][Tablet - Chrome] 📡 Standard Second API Payload: cake_id=23B88E97, domain_name=https://www.freshstartinitiative.com
+[fsi-ppc2][Desktop - Chrome] 🛡️  [Rest-Assurance] VERIFIED (Backend Debt: 10000)
+[fsi-ppc2][Tablet - Chrome] [STDERR] ⚠️  Attempt 3: Second API returned no DBID. Response: {"status":false,"message":"Domain not found in configuration: freshstartinitiative.com"}
+[fsi-ppc2][Tablet - Chrome] ⏳ Retrying in 1 second to allow database synchronization...
+[fsi-ppc2][Tablet - Chrome] 📡 Standard Second API Payload: cake_id=23B88E97, domain_name=https://www.freshstartinitiative.com
+[fsi-ppc2][Tablet - Chrome] [STDERR] ⚠️  Attempt 4: Second API returned no DBID. Response: {"status":false,"message":"Domain not found in configuration: freshstartinitiative.com"}
+[fsi-ppc2][Tablet - Chrome] ⏳ Retrying in 1 second to allow database synchronization...
+[tra-cpl][Tablet - Chrome] [STDERR] ⚠️ [Mobile] Standard submit buttons not found, consulting AI Agent...
+[tra-cpl][Tablet - Chrome] 🤖 [AI Agent] Analyzing Submit button for global...
+[fsi-ppc2][Desktop - Chrome] ✅ Row appended successfully to sheet: FSI-PPC2
+[tra-cpl][Tablet - Chrome] ⏳ [Mobile] Waiting for final Thank You page redirection...
+[tra-cpl][Tablet - Chrome] ✅ [Mobile] Targeted final redirect URL achieved!
+✅ [Mobile] Final Thank You URL: https://tra.com/thank-you?debt=16185&leadid=4485CE73&reqid=26852480&affid=659&oid=133
+📋 [Pre-Fix] Thank-you URL before debt correction: https://tra.com/thank-you?debt=16185&leadid=4485CE73&reqid=26852480&affid=659&oid=133
+[tra-cpl][Tablet - Chrome] 💾 [Debt Debug] formPage.selectedSliderAmount = "16,185"
+💾 [Debt Debug] selectedDebtNum (numeric) = "16185"
+[tra-cpl][Tablet - Chrome] 🔧 [Debt Fix] Current debt in URL: 16185, Should be: 16185
+✅ [Debt Fix] Debt parameter already correct
+[tra-cpl][Tablet - Chrome] 📱 [Mobile Diagnostic] Full Thank You URL Parameters: {"debt":"16185","leadid":"4485CE73","reqid":"26852480","affid":"659","oid":"133"}
+[tra-cpl][Tablet - Chrome] ✅ [Mobile] Extracted Lead ID: 4485CE73
+[tra-cpl][Tablet - Chrome] 📱 Device Type detected: Tablet - Chrome
+✅ Lead captured: 4485CE73
+[tra-cpl][Tablet - Chrome] 📡 Fetching First API data for Lead ID: 4485CE73...
+[fsi-ppc2][Tablet - Chrome] 📡 Standard Second API Payload: cake_id=23B88E97, domain_name=https://www.freshstartinitiative.com
+[fsi-ppc2][Tablet - Chrome] [STDERR] ⚠️  Attempt 5: Second API returned no DBID. Response: {"status":false,"message":"Domain not found in configuration: freshstartinitiative.com"}
+[fsi-ppc2][Tablet - Chrome] 📡 [Rest-Assurance] Verifying Lead ID: 23B88E97 via Backend...
+[fsi-ppc2][Desktop - Chrome] ✨ Professional formatting applied to FSI-PPC2
+[fsi-ppc2][Desktop - Chrome] 🤖 [AI Agent Audit] Status: FAIL
+🤖 [AI Agent Audit] Details: MISMATCH DETECTED: UI $10,000 - $19,999 Expected 10,000 but API got 10000
+[fsi-ppc2][Desktop - Chrome] [STDERR] 🚨 [AI Agent] Data mismatch detected for FSI-PPC2. Please review Google Sheet.
+[fsi-ppc2][Desktop - Chrome] ✅ Lead processed successfully for FSI-PPC2
+[tra-cpl][Android - Chrome] [STDERR] ⚠️ [Mobile] Standard submit buttons not found, consulting AI Agent...
+[tra-cpl][Android - Chrome] 🤖 [AI Agent] Analyzing Submit button for global...
+[fsi-ppc2][Tablet - Chrome] 🛡️  [Rest-Assurance] VERIFIED (Backend Debt: 5000)
+[tra-cpl][Tablet - Chrome] 📡 Raw XML Response: {
+  "lead_info_response": {
+    "$": {
+      "xmlns:xsd": "http://www.w3.org/2001/XMLSchema",
+      "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+      "xmlns": "http://cakemarketing.com/api/1/"
+    },
+    "success": "true",
+    "row_count": "1",
+    "lead_id": "4485CE73",
+    "personal_info": {
+      "first_name": "CKMTESTPIXEL",
+      "last_name": "CKMTESTPIXEL",
+      "email_address": "ckmtestpixel@gmail.com",
+      "address": {
+        "street": "",
+        "city": "",
+        "state": "UT",
+        "zip_code": "84094",
+        "country": ""
+      },
+      "ip_address": "27.54.170.27",
+      "phone_work": "",
+      "phone_home": "401-247-1044",
+      "phone_cell": "",
+      "best_call_time": "",
+      "opt_in": "false"
+    },
+    "traffic_info": {
+      "lead_date": "2026-06-01T21:58:24.637",
+      "payout": {
+        "currency_id": "1",
+        "amount": "0.0000",
+        "formatted_amount": "$0.00"
+      },
+      "affiliate": {
+        "affiliate_id": {
+          "_": "659",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        },
+        "affiliate_name": {
+          "_": "QA affiliate",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        }
+      },
+      "campaign": {
+        "campaign_id": {
+          "_": "4075",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        },
+        "campaign_name": {
+          "_": "TRA.com CPL - CPL - CPA - $1.00",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        }
+      },
+      "creative_id": "2210",
+      "subid_1": "",
+      "subid_2": "",
+      "subid_3": "",
+      "subid_4": "",
+      "subid_5": "",
+      "referrer": "",
+      "pixel_fired": "true",
+      "returned_to_affiliate": "false",
+      "test": "true",
+      "upsell": "false"
+    },
+    "all_vertical_data": {
+      "data": {
+        "$": {
+          "xmlns": ""
+        },
+        "tax_debt": "16185",
+        "universal_leadid": "B94DBEAE-C4BE-A0CF-3153-C788B4C4CD5B",
+        "affid": "659",
+        "TCPA_checkbox": "1",
+        "reqid": "26852480",
+        "page": "https://tra.com/list",
+        "neustar": "pass",
+        "neustar_disposition": "N,U,A1,L,0",
+        "first_name_lower": "ckmtestpixel",
+        "last_name_lower": "ckmtestpixel",
+        "opt_special_offers": "on",
+        "ckm_campaign_id": "3953"
+      }
+    },
+    "dispositions": "",
+    "pings": "",
+    "posts": "",
+    "sales": ""
+  }
+}
+[tra-cpl][Tablet - Chrome] ✅ First API Data retrieved on attempt 1
+[tra-cpl][Tablet - Chrome] 📡 Fetching Second API data for Lead ID: 4485CE73...
+[tra-cpl][Tablet - Chrome] 📡 Standard Second API Payload: cake_id=4485CE73, domain_name=https://www.taxreliefadvocates.com
+[tra-cpl][Android - Chrome] ⏳ [Mobile] Waiting for final Thank You page redirection...
+[tra-cpl][Android - Chrome] ✅ [Mobile] Targeted final redirect URL achieved!
+[tra-cpl][Android - Chrome] ✅ [Mobile] Final Thank You URL: https://tra.com/thank-you?debt=7752&leadid=7B450195&reqid=26852479&affid=659&oid=133
+[tra-cpl][Android - Chrome] 📋 [Pre-Fix] Thank-you URL before debt correction: https://tra.com/thank-you?debt=7752&leadid=7B450195&reqid=26852479&affid=659&oid=133
+[tra-cpl][Android - Chrome] 💾 [Debt Debug] formPage.selectedSliderAmount = "7,752"
+[tra-cpl][Android - Chrome] 💾 [Debt Debug] selectedDebtNum (numeric) = "7752"
+[tra-cpl][Android - Chrome] 🔧 [Debt Fix] Current debt in URL: 7752, Should be: 7752
+[tra-cpl][Android - Chrome] ✅ [Debt Fix] Debt parameter already correct
+[tra-cpl][Android - Chrome] 📱 [Mobile Diagnostic] Full Thank You URL Parameters: {"debt":"7752","leadid":"7B450195","reqid":"26852479","affid":"659","oid":"133"}
+[tra-cpl][Android - Chrome] ✅ [Mobile] Extracted Lead ID: 7B450195
+[tra-cpl][Android - Chrome] 📱 Device Type detected: Android - Chrome
+[tra-cpl][Android - Chrome] ✅ Lead captured: 7B450195
+[tra-cpl][Android - Chrome] 📡 Fetching First API data for Lead ID: 7B450195...
+[tra-cpl][Tablet - Chrome] [STDERR] (node:9944) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[tra-cpl][Tablet - Chrome] [STDERR] ⚠️  Attempt 1: Second API returned no DBID. Response: {"status":false,"message":"Domain not found in configuration: taxreliefadvocates.com"}
+[tra-cpl][Tablet - Chrome] ⏳ Retrying in 1 second to allow database synchronization...
+[tra-cpl][Tablet - Chrome] 📡 Standard Second API Payload: cake_id=4485CE73, domain_name=https://www.taxreliefadvocates.com
+[tra-cpl][Tablet - Chrome] [STDERR] ⚠️  Attempt 2: Second API returned no DBID. Response: {"status":false,"message":"Domain not found in configuration: taxreliefadvocates.com"}
+[tra-cpl][Tablet - Chrome] ⏳ Retrying in 1 second to allow database synchronization...
+[tra-cpl][Android - Chrome] 📡 Raw XML Response: {
+  "lead_info_response": {
+    "$": {
+      "xmlns:xsd": "http://www.w3.org/2001/XMLSchema",
+      "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+      "xmlns": "http://cakemarketing.com/api/1/"
+    },
+    "success": "true",
+    "row_count": "1",
+    "lead_id": "7B450195",
+    "personal_info": {
+      "first_name": "CKMTESTPIXEL",
+      "last_name": "CKMTESTPIXEL",
+      "email_address": "ckmtestpixel@gmail.com",
+      "address": {
+        "street": "",
+        "city": "",
+        "state": "TX",
+        "zip_code": "75218",
+        "country": ""
+      },
+      "ip_address": "27.54.170.27",
+      "phone_work": "",
+      "phone_home": "401-247-1043",
+      "phone_cell": "",
+      "best_call_time": "",
+      "opt_in": "false"
+    },
+    "traffic_info": {
+      "lead_date": "2026-06-01T21:58:27.293",
+      "payout": {
+        "currency_id": "1",
+        "amount": "0.0000",
+        "formatted_amount": "$0.00"
+      },
+      "affiliate": {
+        "affiliate_id": {
+          "_": "659",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        },
+        "affiliate_name": {
+          "_": "QA affiliate",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        }
+      },
+      "campaign": {
+        "campaign_id": {
+          "_": "4075",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        },
+        "campaign_name": {
+          "_": "TRA.com CPL - CPL - CPA - $1.00",
+          "$": {
+            "xmlns": "API:id_name_store"
+          }
+        }
+      },
+      "creative_id": "2210",
+      "subid_1": "",
+      "subid_2": "",
+      "subid_3": "",
+      "subid_4": "",
+      "subid_5": "",
+      "referrer": "",
+      "pixel_fired": "true",
+      "returned_to_affiliate": "false",
+      "test": "true",
+      "upsell": "false"
+    },
+    "all_vertical_data": {
+      "data": {
+        "$": {
+          "xmlns": ""
+        },
+        "tax_debt": "7752",
+        "universal_leadid": "1957B96D-CE95-A27E-4127-6D2B07B89119",
+        "affid": "659",
+        "TCPA_checkbox": "1",
+        "reqid": "26852479",
+        "page": "https://tra.com/list",
+        "neustar": "under",
+        "first_name_lower": "ckmtestpixel",
+        "last_name_lower": "ckmtestpixel",
+        "opt_special_offers": "on",
+        "ckm_campaign_id": "3953"
+      }
+    },
+    "dispositions": {
+      "disposition": [
+        {
+          "disposition_type": "Not Paid For",
+          "reason": "Unmatched Filter",
+          "filter": "Min Tax Debt"
+        },
+        {
+          "disposition_type": "Not Paid For",
+          "reason": "Unmatched Filter",
+          "filter": "Nuestar Fail"
+        }
+      ]
+    },
+    "pings": "",
+    "posts": "",
+    "sales": ""
+  }
+}
+[tra-cpl][Android - Chrome] ✅ First API Data retrieved on attempt 1
+[tra-cpl][Android - Chrome] 📡 Fetching Second API data for Lead ID: 7B450195...
+[tra-cpl][Android - Chrome] 📡 Standard Second API Payload: cake_id=7B450195, domain_name=https://www.taxreliefadvocates.com
+[tra-cpl][Android - Chrome] [STDERR] (node:18636) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[tra-cpl][Android - Chrome] [STDERR] ⚠️  Attempt 1: Second API returned no DBID. Response: {"status":false,"message":"Domain not found in configuration: taxreliefadvocates.com"}
+[tra-cpl][Android - Chrome] ⏳ Retrying in 1 second to allow database synchronization...
+[tra-cpl][Tablet - Chrome] 📡 Standard Second API Payload: cake_id=4485CE73, domain_name=https://www.taxreliefadvocates.com
+[fsi-ppc2][Tablet - Chrome] ✅ Row appended successfully to sheet: FSI-PPC2
+[tra-cpl][Tablet - Chrome] [STDERR] ⚠️  Attempt 3: Second API returned no DBID. Response: {"status":false,"message":"Domain not found in configuration: taxreliefadvocates.com"}
+[tra-cpl][Tablet - Chrome] ⏳ Retrying in 1 second to allow database synchronization...
+[tra-cpl][Android - Chrome] 📡 Standard Second API Payload: cake_id=7B450195, domain_name=https://www.taxreliefadvocates.com
+[tra-cpl][Android - Chrome] [STDERR] ⚠️  Attempt 2: Second API returned no DBID. Response: {"status":false,"message":"Domain not found in configuration: taxreliefadvocates.com"}
+[tra-cpl][Android - Chrome] ⏳ Retrying in 1 second to allow database synchronization...
+[tra-cpl][Tablet - Chrome] 📡 Standard Second API Payload: cake_id=4485CE73, domain_name=https://www.taxreliefadvocates.com
+[tra-cpl][Tablet - Chrome] [STDERR] ⚠️  Attempt 4: Second API returned no DBID. Response: {"status":false,"message":"Domain not found in configuration: taxreliefadvocates.com"}
+[tra-cpl][Tablet - Chrome] ⏳ Retrying in 1 second to allow database synchronization...
+[fsi-ppc2][Tablet - Chrome] ✨ Professional formatting applied to FSI-PPC2
+[fsi-ppc2][Tablet - Chrome] 🤖 [AI Agent Audit] Status: PASS
+🤖 [AI Agent Audit] Details: Mapping verified: UI 5,000 -> Cake 5,000
+[fsi-ppc2][Tablet - Chrome] ✅ Lead processed successfully for FSI-PPC2 Tablet
+[tra-cpl][Android - Chrome] 📡 Standard Second API Payload: cake_id=7B450195, domain_name=https://www.taxreliefadvocates.com
+[tra-cpl][Tablet - Chrome] 📡 Standard Second API Payload: cake_id=4485CE73, domain_name=https://www.taxreliefadvocates.com
+[tra-cpl][Android - Chrome] [STDERR] ⚠️  Attempt 3: Second API returned no DBID. Response: {"status":false,"message":"Domain not found in configuration: taxreliefadvocates.com"}
+[tra-cpl][Android - Chrome] ⏳ Retrying in 1 second to allow database synchronization...
+[tra-cpl][Tablet - Chrome] [STDERR] ⚠️  Attempt 5: Second API returned no DBID. Response: {"status":false,"message":"Domain not found in configuration: taxreliefadvocates.com"}
+[tra-cpl][Tablet - Chrome] 📡 [Rest-Assurance] Verifying Lead ID: 4485CE73 via Backend...
+[tra-cpl][Android - Chrome] 📡 Standard Second API Payload: cake_id=7B450195, domain_name=https://www.taxreliefadvocates.com
+[tra-cpl][Tablet - Chrome] 🛡️  [Rest-Assurance] VERIFIED (Backend Debt: 16185)
+[tra-cpl][Android - Chrome] [STDERR] ⚠️  Attempt 4: Second API returned no DBID. Response: {"status":false,"message":"Domain not found in configuration: taxreliefadvocates.com"}
+[tra-cpl][Android - Chrome] ⏳ Retrying in 1 second to allow database synchronization...
+[tra-cpl][Android - Chrome] 📡 Standard Second API Payload: cake_id=7B450195, domain_name=https://www.taxreliefadvocates.com
+[tra-cpl][Android - Chrome] [STDERR] ⚠️  Attempt 5: Second API returned no DBID. Response: {"status":false,"message":"Domain not found in configuration: taxreliefadvocates.com"}
+[tra-cpl][Android - Chrome] 📡 [Rest-Assurance] Verifying Lead ID: 7B450195 via Backend...
+[tra-cpl][Android - Chrome] 🛡️  [Rest-Assurance] VERIFIED (Backend Debt: 7752)
+[tra-cpl][Tablet - Chrome] ✅ Row appended successfully to sheet: TRA-CPL
+[tra-cpl][Tablet - Chrome] ✨ Professional formatting applied to TRA-CPL
+[tra-cpl][Tablet - Chrome] 🤖 [AI Agent Audit] Status: FAIL
+[tra-cpl][Tablet - Chrome] 🤖 [AI Agent Audit] Details: MISMATCH DETECTED: UI 16,185 Expected 10,000 but API got 16185
+[tra-cpl][Tablet - Chrome] [STDERR] 🚨 [AI Agent] Data mismatch detected for TRA-CPL Tablet. Please review Google Sheet.
+[tra-cpl][Tablet - Chrome] ✅ Lead processed successfully for TRA-CPL Tablet
+[tra-cpl][Android - Chrome] ✅ Row appended successfully to sheet: TRA-CPL
+[tra-cpl][Android - Chrome] ✨ Professional formatting applied to TRA-CPL
+[tra-cpl][Android - Chrome] 🤖 [AI Agent Audit] Status: FAIL
+[tra-cpl][Android - Chrome] [STDERR] 🚨 [AI Agent] Data mismatch detected for TRA-CPL Mobile. Please review Google Sheet.
+[tra-cpl][Android - Chrome] 🤖 [AI Agent Audit] Details: MISMATCH DETECTED: UI 7,752 Expected 7,500 but API got 7752
+✅ Lead processed successfully for TRA-CPL Mobile
+[fsi-ppc2][Desktop - Chrome] 🎥 Video saved successfully: traces/videos/FSI-PPC2_FSI-PPC2.webm
+[fsi-ppc2][Desktop - Chrome] 
+✅ Execution successfully processed! { success: true, leadId: '185677FE', brand: 'FSI-PPC2' }
+[fsi-ppc2][Desktop - Chrome] 📋 Trace report successfully saved: traces/fsi-ppc2_desktop.zip
+✅ [2/6/2026, 10:29:24 am] COMPLETED: fsi-ppc2 [Desktop - Chrome][CHROMIUM]
+
+================================================================
+🚀 [2/6/2026, 10:29:24 am] RUNNING: TRA-CPL [DESKTOP - CHROME]
+🔗 Target URL: https://flmtra.com/?a=659&oc=756&c=2210&s1=
+================================================================
+[tra-cpl][Desktop - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[tra-cpl][Desktop - Chrome] ◇ injected env (0) from .env // tip: ⌘ override existing { override: true }
+[tra-cpl][Desktop - Chrome] ◇ injected env (0) from .env // tip: ◈ secrets for agents [www.dotenvx.com]
+[tra-cpl][Desktop - Chrome] ◇ injected env (0) from .env // tip: ⌘ multiple files { path: ['.env.local', '.env'] }
+❌ [2/6/2026, 10:29:27 am] FAILED: tra-cpl [Desktop - Chrome][CHROMIUM]
+🚨 [AI Agent] Failure recorded for tra-cpl [Desktop - Chrome]. Logged to Dashboard.
+
+================================================================
+🚀 [2/6/2026, 10:29:27 am] RUNNING: TRA-D3 [ANDROID - CHROME]
+🔗 Target URL: https://flmtra.com/?a=659&oc=792&c=2386&s1=
+================================================================
+[tra-d3][Android - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[tra-d3][Android - Chrome] ◇ injected env (0) from .env // tip: ⌘ override existing { override: true }
+[tra-d3][Android - Chrome] ◇ injected env (0) from .env // tip: ⌘ suppress logs { quiet: true }
+[tra-d3][Android - Chrome] ◇ injected env (0) from .env // tip: ◈ encrypted .env [www.dotenvx.com]
+[fsi-ppc2][Tablet - Chrome] 🎥 Video saved successfully: traces/videos/FSI-PPC2_FSI-PPC2_Tablet.webm
+[fsi-ppc2][Tablet - Chrome] 
+✅ Execution successfully processed! { success: true, leadId: '23B88E97', brand: 'FSI-PPC2 Tablet' }
+[tra-d3][Android - Chrome] ◇ injected env (0) from .env // tip: ⌘ multiple files { path: ['.env.local', '.env'] }
+[tra-d3][Android - Chrome] ◇ injected env (0) from .env // tip: ⌘ override existing { override: true }
+[tra-d3][Android - Chrome] 
+🤖 ================================================================
+🤖 MASTER RUNNER: LAUNCHING TRA-D3
+[tra-d3][Android - Chrome] 🤖 Mode:            MOBILE
+[tra-d3][Android - Chrome] 🤖 Tracking URL:     https://flmtra.com/?a=659&oc=792&c=2386&s1=
+[tra-d3][Android - Chrome] 🤖 Target Sheet:    TRA-DT3
+🤖 ================================================================
+[tra-d3][Android - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[tra-d3][Android - Chrome] 📋 Emulated Device Profile: MOBILE (Pixel 7) - [Android - Chrome]
+[tra-d3][Android - Chrome] ⏳ Delaying 200ms to allow responsive layouts to mount...
+[tra-d3][Android - Chrome] 🔄 Processing lead for brand: TRA-D3 Mobile
+[tra-d3][Android - Chrome] 📊 Campaign execution run index: 39
+[tra-d3][Android - Chrome] 📅 [Rotational Logic] Week 1 Day 2. Target Range: 1000-10000 (Max allowed by URL: 10000)
+[tra-d3][Android - Chrome] 🔗 [Mobile] Navigating to: https://flmtra.com/?a=659&oc=792&c=2386&s1=
+[tra-cpl][Android - Chrome] 🎥 Video saved successfully: traces/videos/TRA-CPL_TRA-CPL_Mobile.webm
+[tra-cpl][Android - Chrome] 
+✅ Execution successfully processed! { success: true, leadId: '7B450195', brand: 'TRA-CPL Mobile' }
+[fsi-ppc2][Tablet - Chrome] 📋 Trace report successfully saved: traces/fsi-ppc2_tablet.zip
+[tra-cpl][Tablet - Chrome] 🎥 Video saved successfully: traces/videos/TRA-CPL_TRA-CPL_Tablet.webm
+[tra-cpl][Tablet - Chrome] 
+✅ Execution successfully processed! { success: true, leadId: '4485CE73', brand: 'TRA-CPL Tablet' }
+✅ [2/6/2026, 10:29:32 am] COMPLETED: fsi-ppc2 [Tablet - Chrome][CHROMIUM]
+
+================================================================
+🚀 [2/6/2026, 10:29:32 am] RUNNING: TRA-D3 [TABLET - CHROME]
+🔗 Target URL: https://flmtra.com/?a=659&oc=792&c=2386&s1=
+================================================================
+[tra-d3][Tablet - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[tra-d3][Tablet - Chrome] ◇ injected env (0) from .env // tip: ⌘ enable debugging { debug: true }
+[tra-d3][Tablet - Chrome] ◇ injected env (0) from .env // tip: ⌁ auth for agents [www.vestauth.com]
+[tra-d3][Tablet - Chrome] ◇ injected env (0) from .env // tip: ⌘ custom filepath { path: '/custom/path/.env' }
+[tra-cpl][Android - Chrome] 📋 Trace report successfully saved: traces/tra-cpl_mobile.zip
+✅ [2/6/2026, 10:29:34 am] COMPLETED: tra-cpl [Android - Chrome][CHROMIUM]
+
+================================================================
+🚀 [2/6/2026, 10:29:34 am] RUNNING: TRA-D3 [DESKTOP - CHROME]
+🔗 Target URL: https://flmtra.com/?a=659&oc=792&c=2386&s1=
+================================================================
+[tra-cpl][Tablet - Chrome] 📋 Trace report successfully saved: traces/tra-cpl_tablet.zip

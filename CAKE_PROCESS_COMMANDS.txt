@@ -14,9 +14,10 @@ DATE: 2026-05-27
 
 1. Non-Test & Test Process
 2. Test Only Filter Process
-3. Advanced Execution Options
-4. Batch File Shortcuts
-5. Troubleshooting & Debug Commands
+3. Latest Lead Validation Process (Isolated Dashboard Update)
+4. Advanced Execution Options
+5. Batch File Shortcuts
+6. Troubleshooting & Debug Commands
 
 ================================================================================
                     1. NON-TEST & TEST PROCESS
@@ -157,7 +158,32 @@ COMMAND 3: Using Batch File Launcher (Easiest)
 
 
 ================================================================================
-                    3. ADVANCED EXECUTION OPTIONS
+                    3. LATEST LEAD VALIDATION PROCESS (ISOLATED)
+================================================================================
+
+Description:
+  This script specifically extracts the latest Lead ID from the local scheduler logs,
+  searches it in Cake, performs deep tab-wise validation (extracting fields like 
+  Page Origin, Affiliate, etc.), searches for it in CDB, and appends a single 
+  live row to the centralized Google Sheets Dashboard.
+
+File Location:
+  utils/flmAgent/validate_latest_lead.js
+
+COMMAND 1: Run with Visible Browser (Headed Mode)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  node utils/flmAgent/validate_latest_lead.js
+
+  Features:
+  ├─ Completely independent of the older cake.js scripts
+  ├─ Reads scheduler logs to find the most recent execution
+  ├─ Extracts Page Origin URL from the Vertical Specific tab
+  ├─ Appends direct live result to Google Sheets
+  └─ Shows Yellow Highlighting for bad Affiliate rows
+
+================================================================================
+                    4. ADVANCED EXECUTION OPTIONS
 ================================================================================
 
 COMPARING BOTH PROCESSES
