@@ -4,12 +4,21 @@ const { chromium } = require('playwright');
 require('dotenv').config({ path: path.resolve(__dirname, '..', '..', '.env') });
 const { appendFinalValidationRow } = require('../googleSheetsUtils');
 
+// Path to store the last processed Lead ID (optional)
+const lastLeadIdFile = path.join(__dirname, '..', '..', 'logs', 'scheduler', '.last_processed_lead.txt');
+
 const CONFIG = {
+  // URL to export the tracking sheet as CSV (public or shared with service account)
+  // Adjust the sheet ID and gid as needed.
+  SHEET_BASE_URL: 'https://docs.google.com/spreadsheets/d/1rXIg3dMQ4APH3lHLcfWYfP45PnOAKmV9POkoSS3YWxI/export?format=csv',
+  SHEET_GIDS: ['822824778','1','2','1234567890'], // add other tab GIDs as needed
+  // ... existing config fields will be appended below
+
   CAKE_LOGIN_URL: 'https://app.forwardleapmarketing.com/?lm_id=sessionexpired',
   CAKE_HOME_URL: 'https://app.forwardleapmarketing.com/newaffl.aspx',
   CDB_LOGIN_URL: 'https://www.flmreporting.com/flm_central_leads/auth/login.php',
-  SLOW_MO_MS: Number(process.env.FLM_SLOW_MO_MS || 700),
-  REVIEW_PAUSE_MS: Number(process.env.FLM_REVIEW_PAUSE_MS || 2500),
+  SLOW_MO_MS: Number(process.env.FLM_SLOW_MO_MS || 1500), // Increased for slower run
+  REVIEW_PAUSE_MS: Number(process.env.FLM_REVIEW_PAUSE_MS || 5000), // Increased for slower run
   CAKE_USERNAME: process.env.CAKE_USERNAME || 'urvish.patel@bytestechnolab.com',
   CAKE_PASSWORD: process.env.CAKE_PASSWORD || 'Urvish@123#2026-05',
   CDB_EMAIL: process.env.CDB_EMAIL || 'nirav.dobariya@bytestechnolab.com',
@@ -52,8 +61,9 @@ function getSortedSchedulerLogs() {
 }
 
 function extractLastLeadIdFromLog(content) {
-  // Match leadid from JSON logs or URL parameters
-  const regex = /leadid\"\s*:\s*\"([A-Z0-9]+)\"/ig;
+  // Match leadId from JSON logs, console logs, or URL parameters
+  // Supports formats like: "leadId": "F942A764" or leadId: 'F942A764'
+  const regex = /leadid['"]?\s*:\s*['"]([A-F0-9]{8})['"]/ig;
   let match, last = null;
   while ((match = regex.exec(content)) !== null) {
     last = match[1];
@@ -112,8 +122,11 @@ function findLatestLeadIdForSchedulerCycle(now = new Date()) {
     const content = fs.readFileSync(log.file, 'utf8');
     const leadId = extractLastLeadIdFromLog(content);
     if (leadId) {
+      // Save new lead ID for future runs
+      fs.writeFileSync(lastLeadIdFile, leadId, 'utf8');
       return { leadId, logFile: log.file, logName: log.name, mtime: log.mtime, cycleDate };
     }
+    // If no lead ID, continue to next log
   }
 
   // Fallback: latest available Mon/Wed/Fri log with a lead ID.
@@ -130,10 +143,32 @@ function findLatestLeadIdForSchedulerCycle(now = new Date()) {
   return null;
 }
 
+function findNextLeadIdExcluding(excludeId) {
+  const logs = getSortedSchedulerLogs();
+  for (const log of logs) {
+    const content = fs.readFileSync(log.file, 'utf8');
+    const leadId = extractLastLeadIdFromLog(content);
+    if (leadId && leadId !== excludeId) {
+      return { leadId, logFile: log.file, logName: log.name, mtime: log.mtime };
+    }
+  }
+  return null;
+}
 function computeAlternateDay(date) {
   const result = new Date(date);
   result.setDate(result.getDate() + 2);
   return result;
+}
+
+// Format a Date as "d/m/yyyy HH:MM:SS"
+function formatDateTime(dt) {
+  const d = dt.getDate();
+  const m = dt.getMonth() + 1; // months are zero‑based
+  const y = dt.getFullYear();
+  const hh = String(dt.getHours()).padStart(2, '0');
+  const mm = String(dt.getMinutes()).padStart(2, '0');
+  const ss = String(dt.getSeconds()).padStart(2, '0');
+  return `${d}/${m}/${y} ${hh}:${mm}:${ss}`;
 }
 
 async function waitForAny(page, selectors, timeout = 10000) {
@@ -312,7 +347,9 @@ async function openLeadPopupAndValidate(page, leadId) {
 
   async function extractFieldValue(page, labelText) {
     try {
-      const label = page.locator(`label:has-text("${labelText}")`).first();
+      // Use exact regex match to avoid matching "Sub Affiliate" when searching for "Affiliate"
+      const labelRegex = new RegExp(`^\\s*${labelText}\\s*:?\\s*$`, 'i');
+      const label = page.locator('label').filter({ hasText: labelRegex }).first();
       if (await label.count()) {
         const parent = label.locator('xpath=..');
         const field = parent.locator('input, .x-form-display-field, .x-form-field').first();
@@ -322,7 +359,7 @@ async function openLeadPopupAndValidate(page, leadId) {
           return String(text || '').trim();
         }
       }
-      const tdLabel = page.locator(`td:has-text("${labelText}")`).last();
+      const tdLabel = page.locator('td').filter({ hasText: labelRegex }).last();
       if (await tdLabel.count()) {
         const nextTd = tdLabel.locator('xpath=following-sibling::td').first();
         if (await nextTd.count()) {
@@ -624,6 +661,108 @@ async function verifyInCdb(leadId, browser) {
   }
 }
 
+async function fetchLeadIdFromSheet() {
+  try {
+    // Try each GID until a valid, new Lead ID is found
+    for (const gid of CONFIG.SHEET_GIDS) {
+      const url = `${CONFIG.SHEET_BASE_URL}&gid=${gid}`;
+      try {
+        const resp = await fetch(url);
+        if (!resp.ok) continue;
+        const csv = await resp.text();
+        const lines = csv.split(/\r?\n/).filter(l => l.trim());
+        const headers = parseCSVLine(lines[0]);
+        const leadIdx = headers.findIndex(h => h.toLowerCase() === 'lead id');
+        if (leadIdx === -1) continue;
+        for (let i = lines.length - 1; i > 0; i--) {
+          const cols = parseCSVLine(lines[i]);
+          const id = (cols[leadIdx] || '').trim();
+          if (id && /^[A-F0-9]{8}$/i.test(id) && /[A-F]/i.test(id)) {
+            // Check against last processed lead ID
+            let lastId = null;
+            try { lastId = fs.readFileSync(lastLeadIdFile, 'utf8').trim(); } catch (e) {}
+            if (id !== lastId) {
+              console.log(`📋 Using Lead ID ${id} from sheet gid=${gid}`);
+              // Save as last processed
+              fs.writeFileSync(lastLeadIdFile, id, 'utf8');
+              return id;
+            } else {
+              console.log(`⚠️ Lead ID ${id} from gid=${gid} was already processed, skipping`);
+            }
+          }
+        }
+      } catch (e) {
+        console.warn(`Failed to fetch/process sheet gid=${gid}: ${e.message}`);
+      }
+    }
+    console.warn('⚠️ No new valid Lead ID found in any configured sheet tabs');
+    return null;
+
+    // Proper CSV line parser that handles quoted fields with commas inside
+    function parseCSVLine(line) {
+      const result = [];
+      let current = '';
+      let inQuotes = false;
+      for (let i = 0; i < line.length; i++) {
+        const ch = line[i];
+        if (inQuotes) {
+          if (ch === '"') {
+            if (i + 1 < line.length && line[i + 1] === '"') {
+              current += '"';
+              i++; // skip escaped quote
+            } else {
+              inQuotes = false;
+            }
+          } else {
+            current += ch;
+          }
+        } else {
+          if (ch === '"') {
+            inQuotes = true;
+          } else if (ch === ',') {
+            result.push(current.trim());
+            current = '';
+          } else {
+            current += ch;
+          }
+        }
+      }
+      result.push(current.trim());
+      return result;
+    }
+
+    // Lead IDs are strictly 8-character HEX strings (e.g. F85471CF or F942A764)
+    function isValidLeadId(val) {
+      return /^[A-F0-9]{8}$/i.test(val) && /[A-F]/i.test(val);
+    }
+
+    const headers = parseCSVLine(lines[0]);
+    const leadIdx = headers.findIndex(h => h.toLowerCase() === 'lead id');
+    if (leadIdx === -1) {
+      console.warn('⚠️ "Lead ID" column not found in sheet headers. Headers found:', headers.join(' | '));
+      return null;
+    }
+    console.log(`📋 Sheet headers parsed. "Lead ID" is at column index ${leadIdx}`);
+
+    // Take the last non-empty row with a valid Lead ID
+    for (let i = lines.length - 1; i > 0; i--) {
+      const cols = parseCSVLine(lines[i]);
+      const id = (cols[leadIdx] || '').trim();
+      if (id && isValidLeadId(id)) {
+        console.log(`✓ Found valid Lead ID from sheet: ${id}`);
+        return id;
+      } else if (id) {
+        console.log(`⚠️ Skipping invalid Lead ID value at row ${i + 1}: "${id}" (looks like a phone number or other field)`);
+      }
+    }
+    console.warn('⚠️ No valid Lead ID found in sheet');
+    return null;
+  } catch (e) {
+    console.warn('Failed to fetch Lead ID from Google Sheet:', e.message);
+    return null;
+  }
+}
+
 async function main() {
   console.log('\n═══════════════════════════════════════════════════');
   console.log('🚀 FLM Agent – Validate Latest Lead (Isolated)');
@@ -631,30 +770,42 @@ async function main() {
 
   // Step 1: Extract latest Lead ID from scheduler logs
   console.log('📂 [Step 1] Extracting latest Lead ID from scheduler logs...');
-  const latestLog = await findLatestSchedulerLog();
-  if (!latestLog) {
-    console.error('❌ No scheduler logs found under logs/scheduler');
-    process.exit(1);
-  }
+    // Step 1: Determine which Lead ID to validate
+    // Extract the latest Lead ID from the Google Sheet as requested.
+    const sheetLeadId = await fetchLeadIdFromSheet();
+    let latestLead = sheetLeadId;
 
-  const leadSource = findLatestLeadIdForSchedulerCycle(new Date());
-  if (!leadSource) {
-    console.error('❌ No leadid found in latest scheduler cycle logs (Mon/Wed/Fri)');
-    console.error('ℹ️ Tip: Run scheduler first, then re-run validation.');
-    process.exit(1);
-  }
+    // If no new Lead ID from sheet, try scheduler logs but avoid reuse of the last processed Lead ID
+    if (!latestLead) {
+      console.log('⚠️ Fetching Lead ID strictly from scheduler logs (Google Sheet fetch bypassed)');
+      const lastProcessed = (() => { try { return fs.readFileSync(lastLeadIdFile, 'utf8').trim(); } catch (e) { return null; } })();
+      const leadSource = findLatestLeadIdForSchedulerCycle(new Date());
+      if (!leadSource) {
+        console.error('❌ No leadid found in latest scheduler cycle logs (Mon/Wed/Fri)');
+        process.exit(1);
+      }
+      // If the found lead ID matches the last processed one, search for an alternate log entry
+      if (leadSource.leadId === lastProcessed) {
+        console.log(`⚠️ Scheduler returned previously processed Lead ID ${leadSource.leadId}, searching for next available ID`);
+        const altLead = findNextLeadIdExcluding(lastProcessed);
+        if (!altLead) {
+          console.error('❌ No alternative Lead ID found in scheduler logs');
+          process.exit(1);
+        }
+        latestLead = altLead.leadId;
+        console.log(`✓ Using alternative Lead ID ${latestLead} from log ${altLead.logName}`);
+      } else {
+        latestLead = leadSource.leadId;
+        console.log(`✓ Using Lead ID ${latestLead} from scheduler log ${leadSource.logName}`);
+      }
+    }
 
-  console.log(`✓ Latest scheduler file: ${path.basename(latestLog)}`);
-  console.log(`✓ Target scheduler cycle day: ${leadSource.cycleDate.toDateString()} (Mon/Wed/Fri logic)`);
-  console.log(`✓ Using lead source log: ${leadSource.logName}`);
-  const latestScheduleDate = new Date(leadSource.mtime);
-  const alternateDate = computeAlternateDay(latestScheduleDate);
-  console.log(`✓ Latest scheduler date: ${latestScheduleDate.toISOString()}`);
-  console.log(`✓ Alternate-day date selected: ${alternateDate.toISOString()}`);
-  const latestLead = leadSource.leadId;
-  console.log(`✓ Latest Lead ID extracted: ${latestLead}\n`);
 
-  // Step 2: Launch browser
+    console.log(`✓ Lead ID to validate: ${latestLead}\n`);
+    // Proceed to launch browser and continue workflow
+
+  // Step 2: Launch browser (only after Lead ID is determined)
+
   console.log('🌐 [Step 2] Launching browser in headed mode...');
   let browser;
   try {
@@ -683,28 +834,28 @@ async function main() {
     // Step 5: Append to Google Sheet Dashboard
     console.log('\n📈 [Step 5] Appending results to Google Sheet dashboard...');
     
-    // Determine note
-    let validationNote = '';
-    if (cakeResult.extractedData.affiliate && cakeResult.extractedData.affiliate.toLowerCase() !== 'qa affiliate') {
-      validationNote = `Actual Affiliate: ${cakeResult.extractedData.affiliate}`;
-    }
-
-    const row = {
-      dateTime: new Date().toISOString(),
-      pageUrl: cakeResult.extractedData.pageOrigin || '',
-      leadId: latestLead,
-      inCake: cakeResult.found ? 'Yes' : 'No',
-      inCdb: cdbStatus === 'PASS' ? 'Yes' : 'No',
-      isTest: cakeResult.isTest ? 'Yes' : 'No',
-      pixelFired: cakeResult.extractedData.pixelFired || '',
-      affiliate: cakeResult.extractedData.affiliate || '',
-      taxDebt: cakeResult.extractedData.taxDebt || '',
-      neustar: cakeResult.extractedData.neustar || '',
-      neustarDisposition: cakeResult.extractedData.neustarDisposition || '',
-      dbid: cakeResult.extractedData.dbid || '',
-      date: new Date().toISOString(),
-      note: validationNote
-    };
+      // Determine note based on Affiliate value
+      const rawAffiliate = (cakeResult.extractedData.affiliate || '').trim();
+      const affiliate = rawAffiliate; // raw value stored
+      const note = rawAffiliate.toLowerCase() === 'qa affiliate' ? '' : 'Real Affiliate';
+      
+// Build row for Google Sheet
+const row = {
+  dateTime: formatDateTime(new Date()),
+  pageUrl: cakeResult.extractedData.pageOrigin || '',
+  leadId: latestLead,
+  inCake: cakeResult.found ? 'True' : 'False',
+  inCdb: cdbStatus === 'PASS' ? 'Found' : 'Not Found',
+  isTest: cakeResult.isTest ? 'True' : 'False',
+  pixelFired: cakeResult.extractedData.pixelFired || '',
+  affiliate: affiliate,
+  taxDebt: cakeResult.extractedData.taxDebt || '',
+  neustar: cakeResult.extractedData.neustar || '',
+  neustarDisposition: cakeResult.extractedData.neustarDisposition || '',
+  dbid: cakeResult.extractedData.dbid || '',
+  date: formatDateTime(new Date()),
+  note: note
+};
 
     // We no longer require absolute PASS on all tabs, just append the extracted data
     // Because the new schema acts as a data-logging mechanism regardless of success/fail
@@ -718,7 +869,7 @@ async function main() {
       leadId: latestLead,
       validationStatus,
       cdbStatus: cdbStatus === 'PASS' ? 'True' : 'False',
-      executionDate: new Date().toISOString()
+      executionDate: formatDateTime(new Date())
     });
     console.log(`📁 Local month-wise dashboard updated: ${localSheetPath}`);
 

@@ -729,6 +729,20 @@ class MobileFormPage {
                 return val !== "" && !txt.includes("select") && !txt.includes("choose");
               });
 
+              if (defaultState) {
+                const target = defaultState.trim().toLowerCase();
+                const matchedOpt = validOptions.find(opt => 
+                  opt.text.trim().toLowerCase() === target || 
+                  opt.value.trim().toLowerCase() === target
+                );
+                if (matchedOpt) {
+                  node.value = matchedOpt.value;
+                  node.dispatchEvent(new Event('change', { bubbles: true }));
+                  node.dispatchEvent(new Event('input', { bubbles: true }));
+                  return matchedOpt.text;
+                }
+              }
+
               if (validOptions.length > 0) {
                 const selectedOpt = validOptions[runIndex % validOptions.length];
                 node.value = selectedOpt.value;

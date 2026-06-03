@@ -1,4 +1,5 @@
 service-account-creds.json
+service_account.json
 .env
 node_modules/
 test-results/

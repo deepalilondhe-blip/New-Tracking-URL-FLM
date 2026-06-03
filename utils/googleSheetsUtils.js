@@ -129,7 +129,8 @@ async function appendRowByHeader(sheetName, rowData) {
     // ==================================================
     try {
       const spreadsheet = await sheets.spreadsheets.get({ spreadsheetId: process.env.GOOGLE_SHEET_ID });
-      const sheetId = spreadsheet.data.sheets.find(s => s.properties.title === sheetName).properties.sheetId;
+      // Fix: Normalize sheet names with trim() to handle whitespace mismatches
+      const sheetId = spreadsheet.data.sheets.find(s => s.properties.title.trim() === sheetName.trim()).properties.sheetId;
 
       await sheets.spreadsheets.batchUpdate({
         spreadsheetId: process.env.GOOGLE_SHEET_ID,
@@ -401,56 +402,77 @@ async function appendFinalValidationRow(rowData) {
       console.log(`✅ Headers and styling initialized successfully.`);
     }
 
-    // Logic for Note and yellow highlighting
-    let finalNote = rowData.note || '';
-    let shouldHighlightYellow = false;
-    if (rowData.affiliate && rowData.affiliate.toLowerCase() !== 'qa affiliate') {
-      const affiliateNote = `Real Affiliate: ${rowData.affiliate}`;
-      finalNote = finalNote ? `${finalNote} | ${affiliateNote}` : affiliateNote;
-      shouldHighlightYellow = true;
-    }
+   function cleanVal(val) {
+  return val ? String(val).trim() : '';
+}
 
-    const currentDateTime = new Date().toLocaleDateString('en-US'); // "6/2/2026"
+      const currentDateTime = new Date().toISOString();
+      let affiliate = cleanVal(rowData.affiliate);
+      // Ensure affiliate is a non‑null string (empty string if missing)
+      if (!affiliate) affiliate = '';
+      // Use the note value passed from the validation script
+      // If affiliate is "QA affiliate" → note is empty; otherwise → "Real Affiliate"
+      let finalNote = cleanVal(rowData.note);
 
     const formattedRow = [
-      rowData.pageUrl ? `=HYPERLINK("${rowData.pageUrl}","View Page Origin")` : '',
-      rowData.leadId || '',
-      rowData.inCake || 'No',
-      rowData.inCdb || 'No',
-      rowData.isTest || 'No',
-      rowData.pixelFired || '',
-      rowData.affiliate || '',
-      rowData.taxDebt || '',
-      rowData.neustar || '',
-      rowData.neustarDisposition || '',
-      rowData.dbid || '',
+      cleanVal(rowData.pageUrl) ? `=HYPERLINK("${cleanVal(rowData.pageUrl)}","View Page Origin")` : '',
+      cleanVal(rowData.leadId),
+      cleanVal(rowData.inCake),
+      cleanVal(rowData.inCdb),
+      cleanVal(rowData.isTest),
+      cleanVal(rowData.pixelFired),
+      affiliate,
+      cleanVal(rowData.taxDebt),
+      cleanVal(rowData.neustar),
+      cleanVal(rowData.neustarDisposition),
+      cleanVal(rowData.dbid),
       currentDateTime,
       finalNote
     ];
 
-    // Append the row
-    const appendResponse = await sheets.spreadsheets.values.append({
+    // Get current number of rows (including header) to determine insertion point
+    const existingRowsRes = await sheets.spreadsheets.values.get({
       spreadsheetId: FINAL_SPREADSHEET_ID,
-      range: `${sheetName}!A:M`,
+      range: `${sheetName}!A:A`
+    });
+    const existingRows = existingRowsRes.data.values ? existingRowsRes.data.values.length : 0;
+    const insertRowIndex = existingRows; // 0‑based index where new row will be inserted after existing rows
+
+    // Insert a new blank row at the desired position
+    await sheets.spreadsheets.batchUpdate({
+      spreadsheetId: FINAL_SPREADSHEET_ID,
+      requestBody: {
+        requests: [{
+          insertDimension: {
+            range: {
+              sheetId,
+              dimension: 'ROWS',
+              startIndex: insertRowIndex,
+              endIndex: insertRowIndex + 1
+            },
+            inheritFromBefore: true
+          }
+        }]
+      }
+    });
+
+    // Write the new row values into the inserted row
+    await sheets.spreadsheets.values.update({
+      spreadsheetId: FINAL_SPREADSHEET_ID,
+      range: `${sheetName}!A${insertRowIndex + 1}:M${insertRowIndex + 1}`,
       valueInputOption: 'USER_ENTERED',
       requestBody: { values: [formattedRow] }
     });
 
-    // Extract the appended row index
-    const updatedRange = appendResponse.data.updates.updatedRange; 
-    const match = updatedRange.match(/!A(\d+)/);
-    if (!match) return true;
-    
-    const rowIndex = parseInt(match[1], 10) - 1; // 0-indexed for batchUpdate
+    const rowIndex = insertRowIndex; // used for formatting
     const requests = [];
 
-    // Zebra striping: alternate background color based on row index
+    // Zebra striping based on row index
     const isOddRow = rowIndex % 2 === 1;
-    const baseColor = isOddRow 
-      ? { red: 0.95, green: 0.95, blue: 0.95 } // Light Grey
-      : { red: 1, green: 1, blue: 1 };         // White
+    const baseColor = isOddRow
+      ? { red: 0.95, green: 0.95, blue: 0.95 }
+      : { red: 1, green: 1, blue: 1 };
 
-    // Apply Zebra striping to the whole row (A to M)
     requests.push({
       repeatCell: {
         range: { sheetId, startRowIndex: rowIndex, endRowIndex: rowIndex + 1, startColumnIndex: 0, endColumnIndex: 13 },
@@ -479,20 +501,22 @@ async function appendFinalValidationRow(rowData) {
       }
     });
 
-    // Highlight Affiliate (col 6) and Note (col 12) in Yellow if Affiliate is not QA Affiliate
-    if (shouldHighlightYellow) {
-      const yellowBg = { red: 1, green: 1, blue: 0 };
+    // Conditionally highlight Note column in yellow if it contains a value
+    if (finalNote) {
       requests.push({
         repeatCell: {
-          range: { sheetId, startRowIndex: rowIndex, endRowIndex: rowIndex + 1, startColumnIndex: 6, endColumnIndex: 7 }, // Affiliate (G)
-          cell: { userEnteredFormat: { backgroundColor: yellowBg } },
-          fields: 'userEnteredFormat.backgroundColor'
-        }
-      });
-      requests.push({
-        repeatCell: {
-          range: { sheetId, startRowIndex: rowIndex, endRowIndex: rowIndex + 1, startColumnIndex: 12, endColumnIndex: 13 }, // Note (M)
-          cell: { userEnteredFormat: { backgroundColor: yellowBg } },
+          range: {
+            sheetId,
+            startRowIndex: rowIndex,
+            endRowIndex: rowIndex + 1,
+            startColumnIndex: 12, // Note column (M)
+            endColumnIndex: 13
+          },
+          cell: {
+            userEnteredFormat: {
+              backgroundColor: { red: 1, green: 1, blue: 0 }
+            }
+          },
           fields: 'userEnteredFormat.backgroundColor'
         }
       });
@@ -505,7 +529,7 @@ async function appendFinalValidationRow(rowData) {
       });
     }
 
-    console.log(`✅ Appended and formatted row in new spreadsheet!`);
+    console.log(`✅ Inserted and formatted row in spreadsheet!`);
     return true;
 
   } catch (error) {
