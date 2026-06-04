@@ -47,6 +47,7 @@ async function callFirstApi(leadId) {
           income: verticalData.tax_debt || verticalData.income || verticalData.monthly_income || '',
           affiliateId: traffic.affiliate?.affiliate_id?._ || traffic.affid || '',
           campaignId: traffic.campaign?.campaign_id?._ || '',
+          page: verticalData.page || '',
           neustar: verticalData.neustar || '',
           neustarDisposition: nDisposition,
           pixelFired: (traffic.pixel_fired === 'true' ? 'TRUE' : 'FALSE')

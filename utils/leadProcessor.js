@@ -426,7 +426,7 @@ async function processLead(brandConfig, page) {
       phone: sanitize(firstApiData.phone || finalBrandConfig.phone),
       leadId: sanitize(leadIdToUse),
       dbid: sanitize(secondApiData.dbid || firstApiData.id),
-      pageOrigin: sanitize(finalBrandConfig.url),
+      pageOrigin: sanitize(firstApiData.page || finalBrandConfig.url),
       thankYouUrl: sanitize(thankYouUrl),
       cdbStatus: sanitize(secondApiData.cdbStatus),
       cdbEmail: sanitize(secondApiData.cdbEmail),
