@@ -138,38 +138,16 @@ async function processLead(brandConfig, page) {
          rawSliderVal = Math.floor(Math.random() * (max - min + 1)) + min;
       }
 
-      // Map slider values strictly to clean thousand thresholds to avoid values like 4581
-      if (rawSliderVal < 5000) {
-        rawSliderVal = 5000;
-      } else if (rawSliderVal < 10000) {
-        rawSliderVal = 7500;
-      } else if (rawSliderVal < 20000) {
-        rawSliderVal = 10000;
-      } else if (rawSliderVal < 50000) {
-        rawSliderVal = 20000;
-      } else if (rawSliderVal < 100000) {
-        rawSliderVal = 50000;
-      } else {
-        rawSliderVal = 100000;
+      // Round rawSliderVal to the nearest thousand to keep in thousand format (e.g., 4,000, 9,000, 15,000, 20,000)
+      rawSliderVal = Math.round(rawSliderVal / 1000) * 1000;
+      if (rawSliderVal === 0) {
+        rawSliderVal = 1000; // forms usually fail with exactly $0
       }
 
       // Ensure we cap it by the campaign's specific maximum limit so it doesn't break the slider
       if (rawSliderVal > maxLimit) {
-        if (maxLimit >= 100000) {
-          rawSliderVal = 100000;
-        } else if (maxLimit >= 50000) {
-          rawSliderVal = 50000;
-        } else if (maxLimit >= 20000) {
-          rawSliderVal = 20000;
-        } else if (maxLimit >= 10000) {
-          rawSliderVal = 10000;
-        } else if (maxLimit >= 7500) {
-          rawSliderVal = 7500;
-        } else {
-          rawSliderVal = 5000;
-        }
-        // Safety check fallback (e.g. if campaign maxLimit is less than 5000 like Original at 500)
-        if (rawSliderVal > maxLimit) {
+        rawSliderVal = Math.floor(maxLimit / 1000) * 1000;
+        if (rawSliderVal === 0) {
           rawSliderVal = maxLimit;
         }
       }
