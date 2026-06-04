@@ -318,7 +318,7 @@ class FormPage {
 
         // Live-extract the actual selected/filled slider value directly from the webpage DOM
         try {
-          taxDebtSelect = this.page.locator('select#tax_debt').first();
+          taxDebtSelect = this.page.locator('select#tax_debt, select[name="tax_debt"], select[name="debt_amount"], select.debt-select, select.taxval, select:visible').first();
           if (await taxDebtSelect.isVisible().catch(() => false)) {
             const selectedText = await taxDebtSelect.evaluate(node => {
               const opt = node.options[node.selectedIndex];
@@ -336,9 +336,10 @@ class FormPage {
               const debtInput = this.page.locator('#debt_amount, input[name="debt_amount"]').first();
               if (await debtInput.isVisible().catch(() => false)) {
                 const val = await debtInput.inputValue().catch(() => '');
-                if (val) this.selectedSliderAmount = val;
               } else {
-                this.selectedSliderAmount = sliderAmount;
+                if (!this.selectedSliderAmount) {
+                  this.selectedSliderAmount = sliderAmount;
+                }
               }
             }
           }
