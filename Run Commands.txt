@@ -147,6 +147,10 @@ All manual and scheduled executions automatically record a visual video and trac
 ================================================================================
 Spreadsheet: https://docs.google.com/spreadsheets/d/1rXIg3dMQ4APH3lHLcfWYfP45PnOAKmV9POkoSS3YWxI/edit#gid=1177143742
 ================================================================================
+18. 📊 Fresh Tax Help (Questionnaire) (FTH-quesstionnarie)
+    🔹 Desktop: node run-master.js --campaign fth-questionnaire --viewport desktop
+    🔹 Tablet:  node run-master.js --campaign fth-questionnaire --viewport tablet
+    🔹 Mobile:  node run-master.js --campaign fth-questionnaire --viewport mobile
 
 --------------------------------------------------------------------------------
 🧪 FLM AGENT – LEAD VALIDATION COMMANDS
