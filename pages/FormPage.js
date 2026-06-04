@@ -8,6 +8,13 @@ class FormPage {
     this.step1 = '';
     this.step2 = '';
     this.step3 = '';
+    this.step4 = '';
+    this.step5 = '';
+    this.step6 = '';
+    this.step7 = '';
+    this.step8 = '';
+    this.step9 = '';
+    this.step10 = '';
     this.selectedSliderAmount = '';
     this.clickedChoiceTexts = new Set();
   }
@@ -421,9 +428,9 @@ class FormPage {
             await target.click({ force: true }).catch(() => {});
             
             choiceStepCount++;
-            if (choiceStepCount === 1) this.step1 = text;
-            else if (choiceStepCount === 2) this.step2 = text;
-            else if (choiceStepCount === 3) this.step3 = text;
+            if (choiceStepCount >= 1 && choiceStepCount <= 10) {
+              this[`step${choiceStepCount}`] = text ? text.trim() : '';
+            }
             clickedChoice = true;
 
             // Wait after clicking choice

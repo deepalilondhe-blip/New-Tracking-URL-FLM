@@ -433,10 +433,18 @@ async function processLead(brandConfig, page) {
       neustar: sanitize(firstApiData.neustar),
       neustarDisposition: sanitize(firstApiData.neustarDisposition),
       pixelFired: sanitize(firstApiData.pixelFired),
+      taxDebt: '',
       runDate: sanitize(formatDateTime().split(',')[0]), // Extract date part
       step1: sanitize(formPage.step1),
       step2: sanitize(formPage.step2),
-      step3: sanitize(formPage.step3)
+      step3: sanitize(formPage.step3),
+      step4: sanitize(formPage.step4),
+      step5: sanitize(formPage.step5),
+      step6: sanitize(formPage.step6),
+      step7: sanitize(formPage.step7),
+      step8: sanitize(formPage.step8),
+      step9: sanitize(formPage.step9),
+      step10: sanitize(formPage.step10)
     };
 
     // Step 5: Write to Google Sheets
