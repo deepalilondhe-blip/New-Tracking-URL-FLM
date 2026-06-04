@@ -657,7 +657,9 @@ class MobileFormPage {
           }
         } catch (err) {
           console.warn('⚠️ [Mobile] Could not live-extract slider amount:', err.message);
-          this.selectedSliderAmount = sliderAmount;
+          if (!this.selectedSliderAmount) {
+            this.selectedSliderAmount = sliderAmount;
+          }
         }
       } catch (e) {
         console.warn('⚠️ [Mobile] Could not complete debt selection:', e.message);

@@ -345,7 +345,9 @@ class FormPage {
           }
         } catch (err) {
           console.warn('⚠️ Could not live-extract slider amount:', err.message);
-          this.selectedSliderAmount = sliderAmount;
+          if (!this.selectedSliderAmount) {
+            this.selectedSliderAmount = sliderAmount;
+          }
         }
       } catch (e) {
         console.warn('⚠️ Could not select debt amount:', e.message);
