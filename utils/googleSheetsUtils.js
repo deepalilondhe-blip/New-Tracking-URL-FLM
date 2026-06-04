@@ -46,7 +46,7 @@ async function appendRowByHeader(sheetName, rowData) {
         ];
           await sheets.spreadsheets.values.update({
             spreadsheetId,
-            range: `${sheetName}!A1:V1`,
+            range: `${sheetName}!A1:AC1`,
             valueInputOption: 'USER_ENTERED',
             requestBody: {
               values: [fullHeaders]
@@ -70,7 +70,7 @@ async function appendRowByHeader(sheetName, rowData) {
                   title: sheetName,
                   gridProperties: {
                     rowCount: 1000,
-                    columnCount: 22,
+                    columnCount: 29,
                     frozenRowCount: 1
                   }
                 }
@@ -83,13 +83,13 @@ async function appendRowByHeader(sheetName, rowData) {
         const fullHeaders = [
           "DateTime", "Type", "Affiliate", "Campaign ID", "Link",
           "Slider Amount", "Cake Income", "State", "Phone", "Lead ID",
-          "DBID", "Page Origin", "Thank u URL", "CDB Status", "CDB Email",
-          "Neustar", "Neustar Disposition", "Pixel Fired", "Run Date",
-          "Step 1", "Step 2", "Step 3"
+          "DBID", "Page Origin", "Thank U URL", "CDB Status", "CDB Email",
+          "Neustar", "Neustar Disposition", "Pixel Fired", "Tax Debt",
+          "Step 1", "Step 2", "Step 3", "Step 4", "Step 5", "Step 6", "Step 7", "Step 8", "Step 9", "Step 10"
         ];
         await sheets.spreadsheets.values.update({
           spreadsheetId,
-          range: `${sheetName}!A1:V1`,
+          range: `${sheetName}!A1:AC1`,
           valueInputOption: 'USER_ENTERED',
           requestBody: {
             values: [fullHeaders]
@@ -110,7 +110,7 @@ async function appendRowByHeader(sheetName, rowData) {
               // ✅ Header Row Dark Blue Background + White Bold Text
               {
                 repeatCell: {
-                  range: { sheetId: newSheetId, startRowIndex: 0, endRowIndex: 1, startColumnIndex: 0, endColumnIndex: 22 },
+                  range: { sheetId: newSheetId, startRowIndex: 0, endRowIndex: 1, startColumnIndex: 0, endColumnIndex: 29 },
                   cell: {
                     userEnteredFormat: {
                       backgroundColor: { red: 0, green: 0.125, blue: 0.376 },
@@ -126,7 +126,7 @@ async function appendRowByHeader(sheetName, rowData) {
               {
                 addConditionalFormatRule: {
                   rule: {
-                    ranges: [{ sheetId: newSheetId, startRowIndex: 1, endRowIndex: 1000, startColumnIndex: 0, endColumnIndex: 22 }],
+                    ranges: [{ sheetId: newSheetId, startRowIndex: 1, endRowIndex: 1000, startColumnIndex: 0, endColumnIndex: 29 }],
                     booleanRule: {
                       condition: {
                         type: 'CUSTOM_FORMULA',
@@ -141,11 +141,11 @@ async function appendRowByHeader(sheetName, rowData) {
                 }
               },
               // ✅ Column Widths
-              { updateDimensionProperties: { range: { sheetId: newSheetId, dimension: 'COLUMNS', startIndex: 0, endIndex: 22 }, properties: { pixelSize: 130 }, fields: 'pixelSize' } },
+              { updateDimensionProperties: { range: { sheetId: newSheetId, dimension: 'COLUMNS', startIndex: 0, endIndex: 29 }, properties: { pixelSize: 130 }, fields: 'pixelSize' } },
               { updateDimensionProperties: { range: { sheetId: newSheetId, dimension: 'COLUMNS', startIndex: 4, endIndex: 5 }, properties: { pixelSize: 180 }, fields: 'pixelSize' } },
               { updateDimensionProperties: { range: { sheetId: newSheetId, dimension: 'COLUMNS', startIndex: 11, endIndex: 13 }, properties: { pixelSize: 220 }, fields: 'pixelSize' } },
-              // ✅ Set sheet view direction to Right-To-Left (RTL)
-              { updateSheetProperties: { properties: { sheetId: newSheetId, rightToLeft: true }, fields: 'rightToLeft' } }
+              // ✅ Set sheet view direction to Left-To-Right (LTR)
+              { updateSheetProperties: { properties: { sheetId: newSheetId, rightToLeft: false }, fields: 'rightToLeft' } }
             ]
           }
         });
@@ -180,15 +180,22 @@ async function appendRowByHeader(sheetName, rowData) {
       rowData.neustar,
       rowData.neustarDisposition,
       rowData.pixelFired,
-      rowData.runDate,
+      rowData.taxDebt || '',
       rowData.step1 || '',
       rowData.step2 || '',
-      rowData.step3 || ''
+      rowData.step3 || '',
+      rowData.step4 || '',
+      rowData.step5 || '',
+      rowData.step6 || '',
+      rowData.step7 || '',
+      rowData.step8 || '',
+      rowData.step9 || '',
+      rowData.step10 || ''
     ];
 
     const response = await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: `${sheetName}!A:V`,
+      range: `${sheetName}!A:AC`,
       valueInputOption: 'USER_ENTERED',
       requestBody: {
         values: [formattedRow]
@@ -214,7 +221,7 @@ async function appendRowByHeader(sheetName, rowData) {
               // ✅ 1. Format the newly appended row (White Background + Black Text + Alignment)
               {
                 repeatCell: {
-                  range: { sheetId, startRowIndex: rowIndex, endRowIndex: rowIndex + 1, startColumnIndex: 0, endColumnIndex: 22 },
+                  range: { sheetId, startRowIndex: rowIndex, endRowIndex: rowIndex + 1, startColumnIndex: 0, endColumnIndex: 29 },
                   cell: {
                     userEnteredFormat: {
                       backgroundColor: { red: 1, green: 1, blue: 1 },
