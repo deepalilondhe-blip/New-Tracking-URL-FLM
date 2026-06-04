@@ -137,6 +137,21 @@ async function processLead(brandConfig, page) {
       } else {
          rawSliderVal = Math.floor(Math.random() * (max - min + 1)) + min;
       }
+
+      // Map slider values strictly to clean thousand thresholds to avoid values like 4581
+      if (rawSliderVal < 5000) {
+        rawSliderVal = 5000;
+      } else if (rawSliderVal < 10000) {
+        rawSliderVal = 7500;
+      } else if (rawSliderVal < 20000) {
+        rawSliderVal = 10000;
+      } else if (rawSliderVal < 50000) {
+        rawSliderVal = 20000;
+      } else if (rawSliderVal < 100000) {
+        rawSliderVal = 50000;
+      } else {
+        rawSliderVal = 100000;
+      }
     }
 
     const finalSlider = rawSliderVal.toLocaleString();
