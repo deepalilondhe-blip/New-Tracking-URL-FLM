@@ -425,13 +425,16 @@ async function processLead(brandConfig, page) {
     // 🛡️ [AI Agent] ENSURING NO "N/A" - ALL MISSING VALUES ARE BLANK
     const sanitize = (val) => (val === 'N/A' || val === undefined || val === null) ? '' : val;
 
+    // If this is the questionnaire, keep sliderAmount blank because it's recorded in the Step columns
+    const isQuestionnaire = finalBrandConfig.name.toLowerCase().includes('questionnaire') || finalBrandConfig.name.toLowerCase().includes('quesstionnarie');
+    
     const rowData = {
       dateTime: sanitize(formatDateTime()),
       type: sanitize(process.env.PROCESS_LABEL || finalDeviceType),
       affiliate: sanitize(firstApiData.affiliateId || fallbackAffid),
       campaignId: sanitize(firstApiData.campaignId || fallbackCampaignId),
       trackingLink: sanitize(finalBrandConfig.url),
-      sliderAmount: sanitize(displaySliderAmount),
+      sliderAmount: isQuestionnaire ? '' : sanitize(displaySliderAmount),
       cakeIncome: sanitize(cakeIncomeOverride || firstApiData.income || displaySliderAmount),
       state: sanitize(firstApiData.state || finalStateCode),
       phone: sanitize(firstApiData.phone || finalBrandConfig.phone),
