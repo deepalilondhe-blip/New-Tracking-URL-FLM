@@ -308,10 +308,33 @@ class FormPage {
           }
 
           if (!selected) {
+            console.log('⚠️ [Desktop] Attempting FTH-specific card select fallback...');
+            const fthCards = [
+              'div:has-text("5,000")', 'span:has-text("5,000")',
+              'div:has-text("10,000")', 'span:has-text("10,000")',
+              'div:has-text("20,000")', 'span:has-text("20,000")',
+              'div:has-text("50,000")', 'span:has-text("50,000")',
+              'div:has-text("Under")', 'div:has-text("More")'
+            ];
+            for (const selector of fthCards) {
+              const option = this.page.locator(selector).first();
+              if (await option.isVisible({ timeout: 1000 }).catch(() => false)) {
+                await option.click({ force: true });
+                const textVal = await option.textContent().catch(() => '');
+                this.selectedSliderAmount = textVal ? textVal.trim() : sliderAmount;
+                console.log(`✅ [Desktop] Selected FTH fallback choice card: ${selector} ("${this.selectedSliderAmount}")`);
+                selected = true;
+                break;
+              }
+            }
+          }
+
+          if (!selected) {
             const debtInput = this.page.locator('#debt_amount, input[name="debt_amount"]').first();
             if (await debtInput.isVisible({ timeout: 1500 })) {
               await debtInput.fill(amountStr);
               console.log(`✅ Selected debt_amount input with ${amountStr}`);
+              selected = true;
             }
           }
         }
@@ -361,7 +384,7 @@ class FormPage {
       // until we land on the State or Contact form page!
       let safetyCounter = 0;
       let choiceStepCount = 0;
-      while (safetyCounter < 8) {
+      while (safetyCounter < 15) {
         await this.waitForSpinner();
         const isStateVisible = await this.page.locator('#state:visible, select#state:visible').first().isVisible({ timeout: 1000 }).catch(() => false);
         const isContactVisible = await this.page.locator('#first_name:visible, input[name="first_name"]:visible').first().isVisible({ timeout: 1000 }).catch(() => false);
@@ -373,6 +396,9 @@ class FormPage {
 
         // Check if there are any custom/intermediate buttons visible and click them!
         const choiceSelectors = [
+          'label:visible',
+          'input[type="checkbox"]:visible', 'input[type="radio"]:visible',
+          'label:has(input[type="checkbox"]):visible', 'label:has(input[type="radio"]):visible',
           '.custom-btn:visible', '.choice-btn:visible', '.choice-box:visible', '.btn-choice:visible',
           '.form-choice:visible', '.debt-option:visible', 'label.custom-control-label:visible',
           '.option-button:visible', '.selection-item:visible', '.quiz-option:visible', '.step-choice:visible',
@@ -381,24 +407,54 @@ class FormPage {
 
         let clickedChoice = false;
         for (const selector of choiceSelectors) {
-          const text = await this.handleChoiceRotation(selector, runIndex);
-          if (text) {
+          const choices = await this.page.$$(selector);
+          if (choices.length > 0) {
+            const indexToSelect = runIndex % choices.length;
+            const target = choices[indexToSelect];
+            
+            // Get text before clicking
+            const text = await target.innerText().catch(() => '');
+            console.log(`🔘 [Rotation] Selecting Option ${indexToSelect + 1}: "${text}"`);
+            
+            // Click the element
+            await target.click({ force: true }).catch(() => {});
+            
             choiceStepCount++;
             if (choiceStepCount === 1) this.step1 = text;
             else if (choiceStepCount === 2) this.step2 = text;
             else if (choiceStepCount === 3) this.step3 = text;
             clickedChoice = true;
+
+            // Wait after clicking choice
+            console.log('⏳ Waiting 2 seconds after choice selection...');
+            await this.page.waitForTimeout(2000);
+
+            // Check if the choice (or options) is still visible (indicating no auto-advance)
+            const stillVisible = await target.isVisible().catch(() => false);
+            if (stillVisible) {
+              console.log('🔘 Choice is still visible (no auto-advance). Clicking NEXT button...');
+              const nextBtn = this.page.locator('.next-btn:visible, .btn-next:visible, button:has-text("NEXT"):visible, button:has-text("Next"):visible, .next:visible').first();
+              if (await nextBtn.isVisible({ timeout: 1500 }).catch(() => false)) {
+                await nextBtn.click({ force: true }).catch(() => {});
+                console.log('✅ Clicked NEXT button after selecting checkbox/radio.');
+                await this.page.waitForTimeout(2000);
+              } else {
+                console.log('⚠️ NEXT button not visible after checkbox selection.');
+              }
+            } else {
+              console.log('✅ Page auto-advanced after option selection.');
+            }
             break;
           }
         }
 
         if (!clickedChoice) {
           // If no custom button is found, check if a generic Next button is visible to skip/advance
-          const nextBtn = this.page.locator('.btn-next:visible, .next-btn:visible, button:has-text("NEXT"):visible, button:has-text("Next"):visible').first();
+          const nextBtn = this.page.locator('.btn-next:visible, .next-btn:visible, button:has-text("NEXT"):visible, button:has-text("Next"):visible, .next:visible').first();
           if (await nextBtn.isVisible({ timeout: 1000 }).catch(() => false)) {
             console.log('🔘 No choices found, but NEXT button is visible. Clicking to advance...');
             await nextBtn.click().catch(() => { });
-            await this.page.waitForTimeout(400);
+            await this.page.waitForTimeout(2000);
           } else {
             console.log('⚠️ No visible dynamic choices or next buttons on this step. Ending traversal.');
             break;
@@ -684,6 +740,13 @@ class FormPage {
 
   async submitForm() {
     console.log('🔘 Submitting form');
+
+    // Bypass if already submitted/on thank you page to prevent timeout delays
+    const currentUrl = this.page.url();
+    if (currentUrl.includes('/ty') || currentUrl.includes('/thank-you') || currentUrl.includes('/thankyou') || currentUrl.includes('leadid=') || currentUrl.includes('transaction_id=')) {
+      console.log('✅ Form already submitted. Bypassing submitForm logic.');
+      return;
+    }
 
     try {
       // CRITICAL: Ensure debt value is properly set in hidden fields before submission

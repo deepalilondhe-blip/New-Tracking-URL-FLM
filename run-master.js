@@ -137,7 +137,7 @@ if (viewportArg === 'api') {
 
     const browser = await browserEngine.launch({
       headless: isHeadless,
-      slowMo: 0
+      slowMo: isHeadless ? 0 : 2000
     });
 
     let contextOptions = {

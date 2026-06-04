@@ -168,5 +168,65 @@
     "state": "California",
     "phone": "406-314-1715",
     "skipSecondApi": false
+  },
+  {
+    "id": "1803-fresh-tax-afr",
+    "name": "1803 Fresh Tax - AFR cobranded",
+    "url": "https://flmtrk.com/?a=659&oc=696&c=1867&s1=",
+    "sheet": "1803 Fresh Tax - AFR cobranded",
+    "sliderAmount": "12000",
+    "state": "Maine",
+    "phone": "207-234-3082",
+    "skipSecondApi": false
+  },
+  {
+    "id": "senior-tax-defence-main",
+    "name": "Senior Tax Defence-Main",
+    "url": "https://flmtrk.com/?a=659&oc=714&c=1892&s1=",
+    "sheet": "Senior Tax Defence-Main",
+    "sliderAmount": "30000",
+    "state": "Florida",
+    "phone": "305-555-1234",
+    "skipSecondApi": false
+  },
+  {
+    "id": "fresh-start-initiative-x-main",
+    "name": "Fresh Start Initiative (X) Main",
+    "url": "https://flmtrk.com/?a=659&oc=729&c=1940&s1=",
+    "sheet": "Fresh Start Initiative (X) Main",
+    "sliderAmount": "25000",
+    "state": "Texas",
+    "phone": "512-555-6789",
+    "skipSecondApi": false
+  },
+  {
+    "id": "aftr-main",
+    "name": "America's First Tax Relief (AFTR)",
+    "url": "https://mlf-trk.com/?a=659&oc=759&c=2211&s1=",
+    "sheet": "America's First Tax Relief (AFTR)",
+    "sliderAmount": "35000",
+    "state": "California",
+    "phone": "415-555-1234",
+    "skipSecondApi": false
+  },
+  {
+    "id": "ptr-main",
+    "name": "Premier Tax Relief (PTR)",
+    "url": "https://flmtra.com/?a=659&oc=763&c=2225&s1=",
+    "sheet": "Premier Tax Relief (PTR)",
+    "sliderAmount": "40000",
+    "state": "New York",
+    "phone": "212-555-1234",
+    "skipSecondApi": false
+  },
+  {
+    "id": "fth-questionnaire",
+    "name": "FTH-quesstionnarie",
+    "url": "https://fthmlf-trk.com/?a=659&oc=786&c=2385&s1=",
+    "sheet": "FTH-quesstionnarie",
+    "sliderAmount": "50000",
+    "state": "Florida",
+    "phone": "305-555-1234",
+    "skipSecondApi": false
   }
 ]

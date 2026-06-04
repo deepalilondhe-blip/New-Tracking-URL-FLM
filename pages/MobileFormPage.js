@@ -619,11 +619,34 @@ class MobileFormPage {
           }
 
           if (!selected) {
+            console.log('⚠️ [Mobile] Attempting FTH-specific card select fallback...');
+            const fthCards = [
+              'div:has-text("5,000")', 'span:has-text("5,000")',
+              'div:has-text("10,000")', 'span:has-text("10,000")',
+              'div:has-text("20,000")', 'span:has-text("20,000")',
+              'div:has-text("50,000")', 'span:has-text("50,000")',
+              'div:has-text("Under")', 'div:has-text("More")'
+            ];
+            for (const selector of fthCards) {
+              const option = this.page.locator(selector).first();
+              if (await option.isVisible({ timeout: 1000 }).catch(() => false)) {
+                await option.tap({ force: true }).catch(() => option.click({ force: true }));
+                const textVal = await option.textContent().catch(() => '');
+                this.selectedSliderAmount = textVal ? textVal.trim() : sliderAmount;
+                console.log(`✅ [Mobile] Selected FTH fallback choice card: ${selector} ("${this.selectedSliderAmount}")`);
+                selected = true;
+                break;
+              }
+            }
+          }
+
+          if (!selected) {
             const debtInput = this.page.locator('#debt_amount, input[name="debt_amount"]').first();
             if (await debtInput.isVisible({ timeout: 1500 })) {
               await debtInput.tap().catch(() => debtInput.click());
               await debtInput.fill(amountStr);
               console.log(`✅ [Mobile] Inputted debt amount directly: ${amountStr}`);
+              selected = true;
             }
           }
         }
@@ -682,7 +705,11 @@ class MobileFormPage {
           break;
         }
 
+        // ✅ FIX: Added checkbox/radio button selectors for "Do you owe tax debt?" and other question steps
         const choiceSelectors = [
+          'label:visible',
+          'input[type="checkbox"]:visible', 'input[type="radio"]:visible',
+          'label:has(input[type="checkbox"]):visible', 'label:has(input[type="radio"]):visible',
           '.custom-btn:visible', '.choice-btn:visible', '.choice-box:visible', '.btn-choice:visible',
           '.form-choice:visible', '.debt-option:visible', 'label.custom-control-label:visible',
           '.option-button:visible', '.selection-item:visible', '.quiz-option:visible', '.step-choice:visible',
@@ -691,23 +718,55 @@ class MobileFormPage {
 
         let clickedChoice = false;
         for (const selector of choiceSelectors) {
-          const text = await this.handleChoiceRotation(selector, runIndex);
-          if (text) {
+          const choices = await this.page.$$(selector);
+          if (choices.length > 0) {
+            const indexToSelect = runIndex % choices.length;
+            const target = choices[indexToSelect];
+            
+            // Get text before clicking
+            const text = await target.innerText().catch(() => '');
+            console.log(`🔘 [Rotation-Mobile] Selecting Option ${indexToSelect + 1}: "${text}"`);
+            
+            // Click/tap the element
+            await target.click({ force: true }).catch(async () => { await target.tap({ force: true }).catch(() => {}); });
+            
             choiceStepCount++;
             if (choiceStepCount === 1) this.step1 = text;
             else if (choiceStepCount === 2) this.step2 = text;
             else if (choiceStepCount === 3) this.step3 = text;
             clickedChoice = true;
+
+            // Wait after selection
+            console.log('⏳ Waiting 2 seconds after choice selection on Mobile...');
+            await this.page.waitForTimeout(2000);
+
+            // Check if the choice (or options) is still visible (indicating no auto-advance)
+            const stillVisible = await target.isVisible().catch(() => false);
+            if (stillVisible) {
+              console.log('🔘 Choice is still visible (no auto-advance). Clicking/tapping NEXT button on Mobile...');
+              const nextBtn = this.page.locator('.next-btn:visible, .btn-next:visible, button:has-text("NEXT"):visible, button:has-text("Next"):visible, .next:visible').first();
+              if (await nextBtn.isVisible({ timeout: 1500 }).catch(() => false)) {
+                await nextBtn.click({ force: true }).catch(async () => { await nextBtn.tap({ force: true }).catch(() => {}); });
+                console.log('✅ Clicked/tapped NEXT button after selecting checkbox/radio on Mobile.');
+                await this.page.waitForTimeout(2000);
+                await this.injectDeviceFrame();
+              } else {
+                console.log('⚠️ NEXT button not visible after checkbox selection on Mobile.');
+              }
+            } else {
+              console.log('✅ Page auto-advanced after option selection on Mobile.');
+              await this.injectDeviceFrame();
+            }
             break;
           }
         }
 
         if (!clickedChoice) {
-          const nextBtn = this.page.locator('.btn-next:visible, .next-btn:visible, button:has-text("NEXT"):visible, button:has-text("Next"):visible').first();
+          const nextBtn = this.page.locator('.btn-next:visible, .next-btn:visible, button:has-text("NEXT"):visible, button:has-text("Next"):visible, .next:visible').first();
           if (await nextBtn.isVisible({ timeout: 1000 }).catch(() => false)) {
             console.log('🔘 [Mobile] No choices found, but NEXT button is visible. Clicking to advance...');
             await nextBtn.click({ force: true }).catch(async () => { await nextBtn.tap({ force: true }); });
-            await this.page.waitForTimeout(400);
+            await this.page.waitForTimeout(2000);
             await this.injectDeviceFrame();
           } else {
             console.log('⚠️ [Mobile] No visible dynamic choices or next buttons on this step. Ending traversal.');
@@ -997,6 +1056,14 @@ class MobileFormPage {
    */
   async submitForm() {
     console.log('🔘 [Mobile] Submitting form');
+
+    // Bypass if already submitted/on thank you page to prevent timeout delays
+    const currentUrl = this.page.url();
+    if (currentUrl.includes('/ty') || currentUrl.includes('/thank-you') || currentUrl.includes('/thankyou') || currentUrl.includes('leadid=') || currentUrl.includes('transaction_id=')) {
+      console.log('✅ [Mobile] Form already submitted. Bypassing submitForm logic.');
+      return;
+    }
+
     try {
       // CRITICAL: Ensure debt value is properly set in hidden fields before submission
       const cleanDebtVal = this.selectedSliderAmount.toString().replace(/,/g, '').replace(/[^0-9]/g, '');

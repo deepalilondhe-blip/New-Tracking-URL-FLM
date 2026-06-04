@@ -1,6 +1,11 @@
 const { google } = require('googleapis');
 require('dotenv').config();
 
+const sheetCache = {
+  initialized: {}, // sheetName -> true
+  ids: {}          // sheetName -> sheetId
+};
+
 async function authenticate() {
   const auth = new google.auth.GoogleAuth({
     keyFile: process.env.GOOGLE_SERVICE_ACCOUNT_FILE,
@@ -13,20 +18,68 @@ async function appendRowByHeader(sheetName, rowData) {
   try {
     const client = await authenticate();
     const sheets = google.sheets({ version: 'v4', auth: client });
+    const spreadsheetId = process.env.GOOGLE_SHEET_ID;
+
+    // Normalize sheetName for checking in cache
+    const normalizedSheetName = sheetName.trim();
 
     // ==================================================
-    // 🔹 AUTO CREATE SHEET + HEADERS IF NOT EXISTS
+    // 🔹 AUTO CREATE SHEET + HEADERS IF NOT EXISTS (RUN ONCE PER SESSION/SHEET)
     // ==================================================
-    let sheetExists = true;
-    try {
-      // Check if sheet exists and retrieve headers
-      const res = await sheets.spreadsheets.values.get({
-        spreadsheetId: process.env.GOOGLE_SHEET_ID,
-        range: `${sheetName}!A1:V1`
-      });
-      const headersRow = res.data.values && res.data.values[0] ? res.data.values[0] : [];
-      if (headersRow.length > 0 && !headersRow.includes("Step 1")) {
-        console.log(`📋 Existing sheet ${sheetName} is missing "Step 1" column. Upgrading headers row...`);
+    if (!sheetCache.initialized[normalizedSheetName]) {
+      let sheetExists = true;
+      try {
+        // Check if sheet exists and retrieve headers
+        const res = await sheets.spreadsheets.values.get({
+          spreadsheetId,
+          range: `${sheetName}!A1:V1`
+        });
+        const headersRow = res.data.values && res.data.values[0] ? res.data.values[0] : [];
+        if (headersRow.length > 0 && !headersRow.includes("Step 1")) {
+          console.log(`📋 Existing sheet ${sheetName} is missing "Step 1" column. Upgrading headers row...`);
+          const fullHeaders = [
+            "DateTime", "Type", "Affiliate", "Campaign ID", "Link",
+            "Slider Amount", "Cake Income", "State", "Phone", "Lead ID",
+            "DBID", "Page Origin", "Thank u URL", "CDB Status", "CDB Email",
+            "Neustar", "Neustar Disposition", "Pixel Fired", "Run Date",
+            "Step 1", "Step 2", "Step 3"
+          ];
+          await sheets.spreadsheets.values.update({
+            spreadsheetId,
+            range: `${sheetName}!A1:V1`,
+            valueInputOption: 'USER_ENTERED',
+            requestBody: {
+              values: [fullHeaders]
+            }
+          });
+          console.log(`✅ Sheet headers successfully upgraded for ${sheetName}`);
+        }
+      } catch (e) {
+        sheetExists = false;
+      }
+
+      if (!sheetExists) {
+        console.log(`🆕 Sheet "${sheetName}" not found. Creating new sheet with standard headers...`);
+        // Create new sheet
+        await sheets.spreadsheets.batchUpdate({
+          spreadsheetId,
+          requestBody: {
+            requests: [{
+              addSheet: {
+                properties: {
+                  title: sheetName,
+                  gridProperties: {
+                    rowCount: 1000,
+                    columnCount: 22,
+                    frozenRowCount: 1
+                  }
+                }
+              }
+            }]
+          }
+        });
+
+        // Add Headers
         const fullHeaders = [
           "DateTime", "Type", "Affiliate", "Campaign ID", "Link",
           "Slider Amount", "Cake Income", "State", "Phone", "Lead ID",
@@ -35,57 +88,77 @@ async function appendRowByHeader(sheetName, rowData) {
           "Step 1", "Step 2", "Step 3"
         ];
         await sheets.spreadsheets.values.update({
-          spreadsheetId: process.env.GOOGLE_SHEET_ID,
+          spreadsheetId,
           range: `${sheetName}!A1:V1`,
           valueInputOption: 'USER_ENTERED',
           requestBody: {
             values: [fullHeaders]
           }
         });
-        console.log(`✅ Sheet headers successfully upgraded for ${sheetName}`);
-      }
-    } catch (e) {
-      sheetExists = false;
-    }
-
-    if (!sheetExists) {
-      console.log(`🆕 Sheet "${sheetName}" not found. Creating new sheet with standard headers...`);
-      // Create new sheet
-      await sheets.spreadsheets.batchUpdate({
-        spreadsheetId: process.env.GOOGLE_SHEET_ID,
-        requestBody: {
-          requests: [{
-            addSheet: {
-              properties: {
-                title: sheetName,
-                gridProperties: {
-                  rowCount: 1000,
-                  columnCount: 22,
-                  frozenRowCount: 1
+        console.log(`✅ New sheet "${sheetName}" successfully created and initialized.`);
+        
+        // ✅ Fetch spreadsheet metadata first
+        const spreadsheet = await sheets.spreadsheets.get({ spreadsheetId });
+        
+        // ✅ Apply Header Colors and Zebra Striping for new sheets
+        const newSheetId = spreadsheet.data.sheets.find(s => s.properties.title.trim() === normalizedSheetName).properties.sheetId;
+        
+        await sheets.spreadsheets.batchUpdate({
+          spreadsheetId,
+          requestBody: {
+            requests: [
+              // ✅ Header Row Dark Blue Background + White Bold Text
+              {
+                repeatCell: {
+                  range: { sheetId: newSheetId, startRowIndex: 0, endRowIndex: 1, startColumnIndex: 0, endColumnIndex: 22 },
+                  cell: {
+                    userEnteredFormat: {
+                      backgroundColor: { red: 0, green: 0.125, blue: 0.376 },
+                      textFormat: { foregroundColor: { red: 1, green: 1, blue: 1 }, bold: true, fontSize: 11 },
+                      horizontalAlignment: 'CENTER',
+                      verticalAlignment: 'MIDDLE'
+                    }
+                  },
+                  fields: 'userEnteredFormat(backgroundColor,textFormat,horizontalAlignment,verticalAlignment)'
                 }
-              }
-            }
-          }]
-        }
-      });
+              },
+              // ✅ Auto Zebra Striping for first 1000 rows
+              {
+                addConditionalFormatRule: {
+                  rule: {
+                    ranges: [{ sheetId: newSheetId, startRowIndex: 1, endRowIndex: 1000, startColumnIndex: 0, endColumnIndex: 22 }],
+                    booleanRule: {
+                      condition: {
+                        type: 'CUSTOM_FORMULA',
+                        values: [{ userEnteredValue: '=MOD(ROW(),2)=0' }]
+                      },
+                      format: {
+                        backgroundColor: { red: 0.95, green: 0.95, blue: 0.95 }
+                      }
+                    }
+                  },
+                  index: 0
+                }
+              },
+              // ✅ Column Widths
+              { updateDimensionProperties: { range: { sheetId: newSheetId, dimension: 'COLUMNS', startIndex: 0, endIndex: 22 }, properties: { pixelSize: 130 }, fields: 'pixelSize' } },
+              { updateDimensionProperties: { range: { sheetId: newSheetId, dimension: 'COLUMNS', startIndex: 4, endIndex: 5 }, properties: { pixelSize: 180 }, fields: 'pixelSize' } },
+              { updateDimensionProperties: { range: { sheetId: newSheetId, dimension: 'COLUMNS', startIndex: 11, endIndex: 13 }, properties: { pixelSize: 220 }, fields: 'pixelSize' } },
+              // ✅ Set sheet view direction to Right-To-Left (RTL)
+              { updateSheetProperties: { properties: { sheetId: newSheetId, rightToLeft: true }, fields: 'rightToLeft' } }
+            ]
+          }
+        });
+        
+        console.log(`✅ Header colors and zebra striping applied to new sheet "${sheetName}"`);
+      }
 
-      // Add Headers
-      const fullHeaders = [
-        "DateTime", "Type", "Affiliate", "Campaign ID", "Link",
-        "Slider Amount", "Cake Income", "State", "Phone", "Lead ID",
-        "DBID", "Page Origin", "Thank u URL", "CDB Status", "CDB Email",
-        "Neustar", "Neustar Disposition", "Pixel Fired", "Run Date",
-        "Step 1", "Step 2", "Step 3"
-      ];
-      await sheets.spreadsheets.values.update({
-        spreadsheetId: process.env.GOOGLE_SHEET_ID,
-        range: `${sheetName}!A1:V1`,
-        valueInputOption: 'USER_ENTERED',
-        requestBody: {
-          values: [fullHeaders]
-        }
+      // Fetch spreadsheet metadata to populate all sheet IDs in the cache
+      const spreadsheet = await sheets.spreadsheets.get({ spreadsheetId });
+      spreadsheet.data.sheets.forEach(s => {
+        sheetCache.ids[s.properties.title.trim()] = s.properties.sheetId;
       });
-      console.log(`✅ New sheet "${sheetName}" successfully created and initialized.`);
+      sheetCache.initialized[normalizedSheetName] = true;
     }
 
     const formattedRow = [
@@ -93,15 +166,15 @@ async function appendRowByHeader(sheetName, rowData) {
       rowData.type || 'D',
       rowData.affiliate,
       rowData.campaignId,
-      rowData.trackingLink ? `=HYPERLINK("${rowData.trackingLink}", "Open Tracking")` : '',
+      rowData.trackingLink ? `=HYPERLINK("${rowData.trackingLink}"; "Open Tracking")` : '',
       rowData.sliderAmount,
       rowData.cakeIncome,
       rowData.state,
       rowData.phone,
       rowData.leadId,
       rowData.dbid,
-      rowData.pageOrigin ? `=HYPERLINK("${rowData.pageOrigin}", "View Page Origin")` : '',
-      rowData.thankYouUrl ? `=HYPERLINK("${rowData.thankYouUrl}", "ViewThankYou URL")` : '',
+      rowData.pageOrigin ? `=HYPERLINK("${rowData.pageOrigin}"; "View Page Origin")` : '',
+      rowData.thankYouUrl ? `=HYPERLINK("${rowData.thankYouUrl}"; "View Thank You URL")` : '',
       rowData.cdbStatus,
       rowData.cdbEmail,
       rowData.neustar,
@@ -114,7 +187,7 @@ async function appendRowByHeader(sheetName, rowData) {
     ];
 
     const response = await sheets.spreadsheets.values.append({
-      spreadsheetId: process.env.GOOGLE_SHEET_ID,
+      spreadsheetId,
       range: `${sheetName}!A:V`,
       valueInputOption: 'USER_ENTERED',
       requestBody: {
@@ -125,124 +198,77 @@ async function appendRowByHeader(sheetName, rowData) {
     console.log(`✅ Row appended successfully to sheet: ${sheetName}`);
 
     // ==================================================
-    // 🔹 APPLY FULL PROFESSIONAL FORMATTING (FOR ALL SHEETS - NEW + EXISTING)
+    // 🔹 APPLY FAST FORMATTING ONLY TO THE NEW ROW
     // ==================================================
     try {
-      const spreadsheet = await sheets.spreadsheets.get({ spreadsheetId: process.env.GOOGLE_SHEET_ID });
-      // Fix: Normalize sheet names with trim() to handle whitespace mismatches
-      const sheetId = spreadsheet.data.sheets.find(s => s.properties.title.trim() === sheetName.trim()).properties.sheetId;
+      const sheetId = sheetCache.ids[normalizedSheetName];
+      const updatedRange = response.data.updates?.updatedRange || '';
+      const match = updatedRange.match(/A(\d+):/);
+      const rowIndex = match ? parseInt(match[1], 10) - 1 : null; // 0-based index
 
-      await sheets.spreadsheets.batchUpdate({
-        spreadsheetId: process.env.GOOGLE_SHEET_ID,
-        requestBody: {
-          requests: [
-            // ✅ 1. Reset Data Cells to White Background + Black Text
-            {
-              repeatCell: {
-                range: { sheetId, startRowIndex: 1, endRowIndex: 1000, startColumnIndex: 0, endColumnIndex: 22 },
-                cell: {
-                  userEnteredFormat: {
-                    backgroundColor: { red: 1, green: 1, blue: 1 },
-                    textFormat: {
-                      foregroundColor: { red: 0, green: 0, blue: 0 },
-                      bold: false,
-                      fontSize: 10
-                    },
-                    horizontalAlignment: 'CENTER',
-                    verticalAlignment: 'MIDDLE'
-                  }
-                },
-                fields: 'userEnteredFormat(backgroundColor,textFormat,horizontalAlignment,verticalAlignment)'
-              }
-            },
-
-            // ✅ 2. Header Row Styling (Dark Navy Blue + White Bold Text)
-            {
-              repeatCell: {
-                range: { sheetId, startRowIndex: 0, endRowIndex: 1, startColumnIndex: 0, endColumnIndex: 22 },
-                cell: {
-                  userEnteredFormat: {
-                    backgroundColor: { red: 0, green: 0.125, blue: 0.376 },
-                    textFormat: {
-                      foregroundColor: { red: 1, green: 1, blue: 1 },
-                      bold: true
+      if (sheetId !== undefined && rowIndex !== null) {
+        await sheets.spreadsheets.batchUpdate({
+          spreadsheetId,
+          requestBody: {
+            requests: [
+              // ✅ 1. Format the newly appended row (White Background + Black Text + Alignment)
+              {
+                repeatCell: {
+                  range: { sheetId, startRowIndex: rowIndex, endRowIndex: rowIndex + 1, startColumnIndex: 0, endColumnIndex: 22 },
+                  cell: {
+                    userEnteredFormat: {
+                      backgroundColor: { red: 1, green: 1, blue: 1 },
+                      textFormat: {
+                        foregroundColor: { red: 0, green: 0, blue: 0 },
+                        bold: false,
+                        fontSize: 10
+                      },
+                      horizontalAlignment: 'CENTER',
+                      verticalAlignment: 'MIDDLE'
                     }
-                  }
-                },
-                fields: 'userEnteredFormat(backgroundColor,textFormat)'
+                  },
+                  fields: 'userEnteredFormat(backgroundColor,textFormat,horizontalAlignment,verticalAlignment)'
+                }
+              },
+
+              // ✅ 2. Hyperlink Text Color and Underline Styling (Explicit Blue color + Underline for Link columns E, L, M)
+              {
+                repeatCell: {
+                  range: { sheetId, startRowIndex: rowIndex, endRowIndex: rowIndex + 1, startColumnIndex: 4, endColumnIndex: 5 },
+                  cell: {
+                    userEnteredFormat: {
+                      textFormat: {
+                        foregroundColor: { red: 0.062, green: 0.353, blue: 0.824 },
+                        underline: true,
+                        fontSize: 10
+                      }
+                    }
+                  },
+                  fields: 'userEnteredFormat(textFormat)'
+                }
+              },
+              {
+                repeatCell: {
+                  range: { sheetId, startRowIndex: rowIndex, endRowIndex: rowIndex + 1, startColumnIndex: 11, endColumnIndex: 13 },
+                  cell: {
+                    userEnteredFormat: {
+                      textFormat: {
+                        foregroundColor: { red: 0.062, green: 0.353, blue: 0.824 },
+                        underline: true,
+                        fontSize: 10
+                      }
+                    }
+                  },
+                  fields: 'userEnteredFormat(textFormat)'
+                }
               }
-            },
-
-            // Note: addBanding is intentionally skipped to avoid repeated
-            // "banding already exists" warnings on existing sheets.
-
-          // ✅ 3. Center alignment and Font size for the entire sheet
-          {
-            repeatCell: {
-              range: { sheetId, startRowIndex: 0, endRowIndex: 1000, startColumnIndex: 0, endColumnIndex: 22 },
-              cell: {
-                userEnteredFormat: {
-                  horizontalAlignment: 'CENTER',
-                  verticalAlignment: 'MIDDLE',
-                  textFormat: { fontSize: 10 }
-                }
-              },
-              fields: 'userEnteredFormat(horizontalAlignment,verticalAlignment,textFormat.fontSize)'
-            }
-          },
-
-          // ✅ 4. Hyperlink Text Color and Underline Styling (Explicit Blue color + Underline for Link columns)
-          {
-            repeatCell: {
-              range: { sheetId, startRowIndex: 1, endRowIndex: 1000, startColumnIndex: 4, endColumnIndex: 5 },
-              cell: {
-                userEnteredFormat: {
-                  textFormat: {
-                    foregroundColor: { red: 0.062, green: 0.353, blue: 0.824 },
-                    underline: true,
-                    fontSize: 10
-                  },
-                  numberFormat: {
-                    type: 'NUMBER',
-                    pattern: ''
-                  }
-                }
-              },
-              fields: 'userEnteredFormat(textFormat,numberFormat)'
-            }
-          },
-          {
-            repeatCell: {
-              range: { sheetId, startRowIndex: 1, endRowIndex: 1000, startColumnIndex: 11, endColumnIndex: 13 },
-              cell: {
-                userEnteredFormat: {
-                  textFormat: {
-                    foregroundColor: { red: 0.062, green: 0.353, blue: 0.824 },
-                    underline: true,
-                    fontSize: 10
-                  },
-                  numberFormat: {
-                    type: 'NUMBER',
-                    pattern: ''
-                  }
-                }
-              },
-              fields: 'userEnteredFormat(textFormat,numberFormat)'
-            }
-          },
-
-          // ✅ 5. Set Column Widths
-          { updateDimensionProperties: { range: { sheetId, dimension: 'COLUMNS', startIndex: 0, endIndex: 22 }, properties: { pixelSize: 140 }, fields: 'pixelSize' } },
-          { updateDimensionProperties: { range: { sheetId, dimension: 'COLUMNS', startIndex: 4, endIndex: 5 }, properties: { pixelSize: 180 }, fields: 'pixelSize' } }, // Link column
-          { updateDimensionProperties: { range: { sheetId, dimension: 'COLUMNS', startIndex: 11, endIndex: 12 }, properties: { pixelSize: 240 }, fields: 'pixelSize' } }, // Thank u URL
-          { updateDimensionProperties: { range: { sheetId, dimension: 'COLUMNS', startIndex: 12, endIndex: 13 }, properties: { pixelSize: 320 }, fields: 'pixelSize' } }  // Page Origin
-        ]
+            ]
+          }
+        });
+        console.log(`✨ Fast formatting applied to newly appended row ${rowIndex + 1} of ${sheetName}`);
       }
-    });
-
-    console.log(`✨ Professional formatting applied to ${sheetName}`);
     } catch (fmtError) {
-      console.log(`⚠️  Non-fatal formatting error for ${sheetName} (Banding might already exist):`, fmtError.message);
+      console.log(`⚠️ Non-fatal row formatting error for ${sheetName}:`, fmtError.message);
     }
     return true;
   } catch (error) {

@@ -66,7 +66,8 @@ async function processLead(brandConfig, page) {
   console.log(`🔄 Processing lead for brand: ${brandConfig.name}`);
 
   try {
-    const runIndex = getRunIndexAndIncrement(brandConfig.id || 'unknown-id');
+    const brandId = brandConfig.id || brandConfig.name?.toLowerCase().replace(/[^a-z0-9]/g, '-') || 'unknown-id';
+    const runIndex = getRunIndexAndIncrement(brandId);
     console.log(`📊 Campaign execution run index: ${runIndex}`);
 
     // Strictly enforce valid testing credentials
@@ -82,7 +83,7 @@ async function processLead(brandConfig, page) {
     if (process.env.OVERRIDE_SLIDER) {
       rawSliderVal = parseInt(process.env.OVERRIDE_SLIDER);
       console.log(`🔌 [Override] Applying custom slider value: ${rawSliderVal}`);
-    } else if (brandConfig.id === 'fsi-ppc2') {
+    } else if (brandId === 'fsi-ppc2') {
       const bucketIdx = runIndex % 4;
       if (bucketIdx === 0) rawSliderVal = 5000;  // Represents "$0 - $9,999"
       else if (bucketIdx === 1) rawSliderVal = 15000; // Represents "$10,000 - $19,999"
@@ -110,7 +111,14 @@ async function processLead(brandConfig, page) {
       const dayOfWeek = new Date().getDay(); // 1=Mon, 3=Wed, 5=Fri
 
       let min = 0, max = 0;
-      if (isFirstWeek) {
+      const todayDate = new Date();
+      const isJune5 = (todayDate.getMonth() === 5 && todayDate.getDate() === 5 && todayDate.getFullYear() === 2026);
+
+      if (isJune5) {
+        min = 0;
+        max = 7500;
+        console.log("📅 [Forced Override] Friday, June 5th forced to Week 1 Monday range: 0 - 7,500");
+      } else if (isFirstWeek) {
         if (dayOfWeek === 1) { min = 0; max = 7500; }
         else if (dayOfWeek === 3) { min = 7500; max = 10000; }
         else if (dayOfWeek === 5) { min = 10000; max = 20000; }
@@ -135,7 +143,16 @@ async function processLead(brandConfig, page) {
       if (min === max) {
          rawSliderVal = min;
       } else {
-         rawSliderVal = Math.floor(Math.random() * (max - min + 1)) + min;
+         // Generate a deterministic rotational value within the [min, max] range in thousands
+         const minThousands = Math.ceil(min / 1000);
+         const maxThousands = Math.floor(max / 1000);
+         const rangeSize = maxThousands - minThousands;
+         if (rangeSize <= 0) {
+           rawSliderVal = min;
+         } else {
+           const step = runIndex % (rangeSize + 1);
+           rawSliderVal = (minThousands + step) * 1000;
+         }
       }
 
       // Round rawSliderVal to the nearest thousand to keep in thousand format (e.g., 4,000, 9,000, 15,000, 20,000)
@@ -209,7 +226,7 @@ async function processLead(brandConfig, page) {
     // ==================================================
     // 🔹 STAGE 1: PLAYWRIGHT FORM AUTOMATION
     // ==================================================
-    const FormPageClass = viewport === 'desktop' ? require('../pages/FormPage') : require('../pages/MobileFormPage');
+    const FormPageClass = !isDevice ? require('../pages/FormPage') : require('../pages/MobileFormPage');
     const formPage = new FormPageClass(page);
 
     await formPage.navigate(finalBrandConfig.url);

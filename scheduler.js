@@ -18,13 +18,9 @@ if (fs.existsSync(configPath)) {
   }
 }
 
-// Map each campaign config to a strict 3-device execution matrix
+// Map each campaign config to a Desktop-only execution matrix
 const runnerScripts = campaigns.map(c => {
   const matrix = [
-    // --- Mobile ---
-    { campaignId: c.id, viewport: 'mobile', browser: 'chromium', label: 'Android - Chrome' },
-    // --- Tablet ---
-    { campaignId: c.id, viewport: 'tablet', browser: 'chromium', label: 'Tablet - Chrome' },
     // --- Desktop ---
     { campaignId: c.id, viewport: 'desktop', browser: 'chromium', label: 'Desktop - Chrome' }
   ];

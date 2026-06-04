@@ -6,11 +6,11 @@ require('dotenv').config();
 const parser = new xml2js.Parser({ explicitArray: false });
 
 async function callFirstApi(leadId) {
-  const maxRetries = 3;
+  const maxRetries = 6;
   console.log(`📡 Fetching First API data for Lead ID: ${leadId}...`);
   
-  // Initial delay to allow backend to process lead
-  await new Promise(resolve => setTimeout(resolve, 500));
+  // Initial delay to allow backend to process lead properly
+  await new Promise(resolve => setTimeout(resolve, 2000));
 
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     try {
@@ -59,8 +59,8 @@ async function callFirstApi(leadId) {
     }
     
     if (attempt < maxRetries) {
-      console.log(`⏳ Retrying in 1 second...`);
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      console.log(`⏳ Retrying in 1.5 seconds...`);
+      await new Promise(resolve => setTimeout(resolve, 1500));
     }
   }
 

@@ -508,5 +508,126 @@
     "role": "agent",
     "message": "🧠 I'm the FLM Agent! Currently tracking **17 campaigns**. \n\n⚠️ **You asked me to speak like Antigravity, but my AI brain is locked!**\nTo unleash my full Gemini LLM capabilities, please add a `GEMINI_API_KEY` to your `.env` file and restart me. Then I can chat with you about anything!",
     "timestamp": "5:12:40 pm"
+  },
+  {
+    "role": "user",
+    "message": "run FSI-PPC2 Chrome",
+    "hasImage": false,
+    "timestamp": "12:42:23 pm"
+  },
+  {
+    "role": "agent",
+    "message": "🚀 **Launching FSI-PPC2!**\n\n- **Mode:** Headless (Silent)\n- **Viewport:** DESKTOP\n- **Target Sheet:** FSI-PPC2\n- **URL:** https://fsimlf-trk.com/?a=659&oc=750&c=143&s1=\n\nI'm executing the run now. You'll see results appear in the Google Sheet and in the execution logs shortly!",
+    "timestamp": "12:42:23 pm"
+  },
+  {
+    "role": "user",
+    "message": "please run in slow motion headed mode",
+    "hasImage": false,
+    "timestamp": "12:49:51 pm"
+  },
+  {
+    "role": "agent",
+    "message": "⚠️ **Conversational AI Mode is Locked!**\n\nI am tracking **17 campaigns**, but my true brain is currently offline. To enable my advanced conversational capabilities and allow me to answer arbitrary prompts, you **MUST** provide a `GEMINI_API_KEY` in your `.env` file.\n\nUntil then, I can only respond to basic commands like **\"status\"**, **\"help\"**, or **\"run [campaign]\"**.",
+    "timestamp": "12:49:51 pm"
+  },
+  {
+    "role": "user",
+    "message": "run FSI-PPC2",
+    "hasImage": false,
+    "timestamp": "12:54:58 pm"
+  },
+  {
+    "role": "agent",
+    "message": "🚀 **Launching FSI-PPC2!**\n\n- **Mode:** Headless (Silent)\n- **Viewport:** DESKTOP\n- **Target Sheet:** FSI-PPC2\n- **URL:** https://fsimlf-trk.com/?a=659&oc=750&c=143&s1=\n\nI'm executing the run now. You'll see results appear in the Google Sheet and in the execution logs shortly!",
+    "timestamp": "12:54:58 pm"
+  },
+  {
+    "role": "user",
+    "message": "run ppc st",
+    "hasImage": false,
+    "timestamp": "1:49:47 pm"
+  },
+  {
+    "role": "agent",
+    "message": "🚀 **Launching PPC CR!**\n\n- **Mode:** Headless (Silent)\n- **Viewport:** DESKTOP\n- **Target Sheet:** PPC-CR\n- **URL:** https://flmtra.com/?a=659&oc=848&c=2210&s1=\n\nI'm executing the run now. You'll see results appear in the Google Sheet and in the execution logs shortly!",
+    "timestamp": "1:49:47 pm"
+  },
+  {
+    "role": "user",
+    "message": "run PPC-ST",
+    "hasImage": false,
+    "timestamp": "2:01:59 pm"
+  },
+  {
+    "role": "agent",
+    "message": "🚀 **Launching PPC-ST!**\n\n- **Mode:** Headless (Silent)\n- **Viewport:** DESKTOP\n- **Target Sheet:** PPC-ST\n- **URL:** https://flmtra.com/?a=659&oc=837&c=2210&s1=\n\nI'm executing the run now. You'll see results appear in the Google Sheet and in the execution logs shortly!",
+    "timestamp": "2:01:59 pm"
+  },
+  {
+    "role": "user",
+    "message": "run America's First Tax Relief (AFTR)",
+    "hasImage": false,
+    "timestamp": "2:41:39 pm"
+  },
+  {
+    "role": "agent",
+    "message": "🚀 **Launching America's First Tax Relief (AFTR)!**\n\n- **Mode:** Headless (Silent)\n- **Viewport:** DESKTOP\n- **Target Sheet:** America's First Tax Relief (AFTR)\n- **URL:** https://mlf-trk.com/?a=659&oc=759&c=2211&s1=\n\nI'm executing the run now. You'll see results appear in the Google Sheet and in the execution logs shortly!",
+    "timestamp": "2:41:39 pm"
+  },
+  {
+    "role": "user",
+    "message": "run Premier Tax Relief (PTR)",
+    "hasImage": false,
+    "timestamp": "3:02:23 pm"
+  },
+  {
+    "role": "agent",
+    "message": "🚀 **Launching Premier Tax Relief (PTR)!**\n\n- **Mode:** Headless (Silent)\n- **Viewport:** DESKTOP\n- **Target Sheet:** Premier Tax Relief (PTR)\n- **URL:** https://flmtra.com/?a=659&oc=763&c=2225&s1=\n\nI'm executing the run now. You'll see results appear in the Google Sheet and in the execution logs shortly!",
+    "timestamp": "3:02:23 pm"
+  },
+  {
+    "role": "user",
+    "message": "run Premier Tax Relief (PTR)",
+    "hasImage": false,
+    "timestamp": "3:12:04 pm"
+  },
+  {
+    "role": "agent",
+    "message": "🚀 **Launching Premier Tax Relief (PTR)!**\n\n- **Mode:** Headless (Silent)\n- **Viewport:** DESKTOP\n- **Target Sheet:** Premier Tax Relief (PTR)\n- **URL:** https://flmtra.com/?a=659&oc=763&c=2225&s1=\n\nI'm executing the run now. You'll see results appear in the Google Sheet and in the execution logs shortly!",
+    "timestamp": "3:12:04 pm"
+  },
+  {
+    "role": "user",
+    "message": "are you ready to run the url ?",
+    "hasImage": false,
+    "timestamp": "3:32:28 pm"
+  },
+  {
+    "role": "agent",
+    "message": "⚠️ **Conversational AI Mode is Locked!**\n\nI am tracking **23 campaigns**, but my true brain is currently offline. To enable my advanced conversational capabilities and allow me to answer arbitrary prompts, you **MUST** provide a `GEMINI_API_KEY` in your `.env` file.\n\nUntil then, I can only respond to basic commands like **\"status\"**, **\"help\"**, or **\"run [campaign]\"**.",
+    "timestamp": "3:32:28 pm"
+  },
+  {
+    "role": "user",
+    "message": "are you redy ?",
+    "hasImage": false,
+    "timestamp": "3:35:12 pm"
+  },
+  {
+    "role": "agent",
+    "message": "⚠️ **Conversational AI Mode is Locked!**\n\nTo enable advanced conversational capabilities and allow me to answer arbitrary prompts, you **MUST** provide a `GEMINI_API_KEY` in your `.env` file.\n\nUntil then, I can only respond to basic commands like **\"status\"**, **\"help\"**, or **\"run [campaign]\"**.",
+    "timestamp": "3:35:15 pm"
+  },
+  {
+    "role": "user",
+    "message": "are you ready",
+    "hasImage": false,
+    "timestamp": "3:37:15 pm"
+  },
+  {
+    "role": "agent",
+    "message": "⚠️ **Conversational AI Mode is Locked!**\n\nTo enable advanced conversational capabilities and allow me to answer arbitrary prompts, you **MUST** provide a `GEMINI_API_KEY` in your `.env` file.\n\nUntil then, I can only respond to basic commands like **\"status\"**, **\"help\"**, or **\"run [campaign]\"**.",
+    "timestamp": "3:37:17 pm"
   }
 ]

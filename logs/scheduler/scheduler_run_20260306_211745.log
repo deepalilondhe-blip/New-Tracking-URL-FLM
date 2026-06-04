@@ -1,0 +1,336 @@
+===================================================== 
+SCHEDULER STARTED AT: 03-06-2026 21:17:45.63 
+===================================================== 
+Running Playwright batch scheduler... 
+◇ injected env (4) from .env // tip: ⌘ enable debugging { debug: true }
+◇ injected env (0) from .env // tip: ⌘ multiple files { path: ['.env.local', '.env'] }
+
+🤖 ================================================================
+🤖 STARTING LEADS AUTOMATION BATCH RUN [3/6/2026, 11:17:49 pm]
+🤖 Interval configured: every 2 hours
+🤖 ================================================================
+
+🤖 [FLM Agent] Starting Global URL Health Verification...
+🤖 [AI Agent] Pre-flight check: Verifying health for FTD-X...
+🔴 [FLM Agent] FTD-X is DOWN: getaddrinfo ENOTFOUND mlfftd.com
+🤖 [AI Agent] Pre-flight check: Verifying health for FSI-PPC2...
+🔴 [FLM Agent] FSI-PPC2 is DOWN: getaddrinfo ENOTFOUND fsimlf-trk.com
+🤖 [AI Agent] Pre-flight check: Verifying health for TRA-CPL...
+🔴 [FLM Agent] TRA-CPL is DOWN: getaddrinfo ENOTFOUND flmtra.com
+🤖 [AI Agent] Pre-flight check: Verifying health for TRA-D3...
+🔴 [FLM Agent] TRA-D3 is DOWN: getaddrinfo ENOTFOUND flmtra.com
+🤖 [AI Agent] Pre-flight check: Verifying health for PPC-ST...
+🔴 [FLM Agent] PPC-ST is DOWN: getaddrinfo ENOTFOUND flmtra.com
+🤖 [AI Agent] Pre-flight check: Verifying health for PPC-ST2...
+🔴 [FLM Agent] PPC-ST2 is DOWN: getaddrinfo ENOTFOUND flmtra.com
+🤖 [AI Agent] Pre-flight check: Verifying health for PPC-M-CA...
+🔴 [FLM Agent] PPC-M-CA is DOWN: getaddrinfo ENOTFOUND flmtra.com
+🤖 [AI Agent] Pre-flight check: Verifying health for PPC CR...
+🔴 [FLM Agent] PPC CR is DOWN: getaddrinfo ENOTFOUND flmtra.com
+🤖 [AI Agent] Pre-flight check: Verifying health for PPC FS...
+🔴 [FLM Agent] PPC FS is DOWN: getaddrinfo ENOTFOUND flmtra.com
+🤖 [AI Agent] Pre-flight check: Verifying health for PPC...
+🔴 [FLM Agent] PPC is DOWN: getaddrinfo ENOTFOUND flmtra.com
+🤖 [AI Agent] Pre-flight check: Verifying health for TRA-CPM...
+🔴 [FLM Agent] TRA-CPM is DOWN: getaddrinfo ENOTFOUND flmtra.com
+🤖 [AI Agent] Pre-flight check: Verifying health for Everest Tax Releif(X)...
+🔴 [FLM Agent] Everest Tax Releif(X) is DOWN: getaddrinfo ENOTFOUND mlf-trk.com
+🤖 [AI Agent] Pre-flight check: Verifying health for VTS Original...
+🔴 [FLM Agent] VTS Original is DOWN: getaddrinfo ENOTFOUND mlfvts-trk.com
+🤖 [AI Agent] Pre-flight check: Verifying health for VTS-NE-Branded...
+🔴 [FLM Agent] VTS-NE-Branded is DOWN: getaddrinfo ENOTFOUND mlfvts-trk.com
+🤖 [AI Agent] Pre-flight check: Verifying health for Original...
+🔴 [FLM Agent] Original is DOWN: getaddrinfo ENOTFOUND mlf-1800-trk.com
+🤖 [AI Agent] Pre-flight check: Verifying health for 1800 Fresh Tax (X) Main...
+🔴 [FLM Agent] 1800 Fresh Tax (X) Main is DOWN: getaddrinfo ENOTFOUND flmtrk.com
+🤖 [AI Agent] Pre-flight check: Verifying health for FSI - MAIN...
+🔴 [FLM Agent] FSI - MAIN is DOWN: getaddrinfo ENOTFOUND fsimlf-trk.com
+🤖 [FLM Agent] Global Health Verification Complete.
+
+
+================================================================
+⚡ Processing 51 Tasks in Parallel (Concurrency: 4)
+================================================================
+
+================================================================
+🚀 [3/6/2026, 11:17:49 pm] RUNNING: FTD-X [ANDROID - CHROME]
+🔗 Target URL: https://mlfftd.com/?a=659&oc=656&c=167&s1=
+================================================================
+
+================================================================
+🚀 [3/6/2026, 11:17:49 pm] RUNNING: FTD-X [TABLET - CHROME]
+🔗 Target URL: https://mlfftd.com/?a=659&oc=656&c=167&s1=
+================================================================
+
+================================================================
+🚀 [3/6/2026, 11:17:49 pm] RUNNING: FTD-X [DESKTOP - CHROME]
+🔗 Target URL: https://mlfftd.com/?a=659&oc=656&c=167&s1=
+================================================================
+
+================================================================
+🚀 [3/6/2026, 11:17:49 pm] RUNNING: FSI-PPC2 [ANDROID - CHROME]
+🔗 Target URL: https://fsimlf-trk.com/?a=659&oc=750&c=143&s1=
+================================================================
+[ftd-x][Tablet - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[ftd-x][Tablet - Chrome] ◇ injected env (0) from .env // tip: ⌘ override existing { override: true }
+[ftd-x][Android - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[ftd-x][Tablet - Chrome] ◇ injected env (0) from .env // tip: ⌘ enable debugging { debug: true }
+[ftd-x][Android - Chrome] ◇ injected env (0) from .env // tip: ⌘ override existing { override: true }
+[ftd-x][Desktop - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[ftd-x][Android - Chrome] ◇ injected env (0) from .env // tip: ◈ encrypted .env [www.dotenvx.com]
+[ftd-x][Desktop - Chrome] ◇ injected env (0) from .env // tip: ◈ encrypted .env [www.dotenvx.com]
+[ftd-x][Desktop - Chrome] ◇ injected env (0) from .env // tip: ⌘ enable debugging { debug: true }
+[fsi-ppc2][Android - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[fsi-ppc2][Android - Chrome] ◇ injected env (0) from .env // tip: ⌘ override existing { override: true }
+[fsi-ppc2][Android - Chrome] ◇ injected env (0) from .env // tip: ⌘ multiple files { path: ['.env.local', '.env'] }
+[ftd-x][Tablet - Chrome] ◇ injected env (0) from .env // tip: ⌁ auth for agents [www.vestauth.com]
+[ftd-x][Android - Chrome] ◇ injected env (0) from .env // tip: ⌁ auth for agents [www.vestauth.com]
+[ftd-x][Desktop - Chrome] ◇ injected env (0) from .env // tip: ◈ encrypted .env [www.dotenvx.com]
+[fsi-ppc2][Android - Chrome] ◇ injected env (0) from .env // tip: ⌘ enable debugging { debug: true }
+[ftd-x][Android - Chrome] ◇ injected env (0) from .env // tip: ⌘ multiple files { path: ['.env.local', '.env'] }
+[ftd-x][Android - Chrome] ◇ injected env (0) from .env // tip: ◈ secrets for agents [www.dotenvx.com]
+[ftd-x][Tablet - Chrome] ◇ injected env (0) from .env // tip: ⌘ multiple files { path: ['.env.local', '.env'] }
+[ftd-x][Android - Chrome] 
+🤖 ================================================================
+[ftd-x][Android - Chrome] 🤖 MASTER RUNNER: LAUNCHING FTD-X
+[ftd-x][Android - Chrome] 🤖 Mode:            MOBILE
+[ftd-x][Android - Chrome] 🤖 Tracking URL:     https://mlfftd.com/?a=659&oc=656&c=167&s1=
+[ftd-x][Android - Chrome] 🤖 Target Sheet:    FTD-X
+🤖 ================================================================
+[ftd-x][Android - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[ftd-x][Tablet - Chrome] ◇ injected env (0) from .env // tip: ⌘ suppress logs { quiet: true }
+[fsi-ppc2][Android - Chrome] ◇ injected env (0) from .env // tip: ⌘ enable debugging { debug: true }
+[ftd-x][Tablet - Chrome] 
+🤖 ================================================================
+[ftd-x][Tablet - Chrome] 🤖 MASTER RUNNER: LAUNCHING FTD-X
+[ftd-x][Tablet - Chrome] 🤖 Mode:            TABLET
+[ftd-x][Tablet - Chrome] 🤖 Tracking URL:     https://mlfftd.com/?a=659&oc=656&c=167&s1=
+[ftd-x][Tablet - Chrome] 🤖 Target Sheet:    FTD-X
+[ftd-x][Tablet - Chrome] 🤖 ================================================================
+[ftd-x][Tablet - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[fsi-ppc2][Android - Chrome] ◇ injected env (0) from .env // tip: ◈ secrets for agents [www.dotenvx.com]
+[ftd-x][Desktop - Chrome] ◇ injected env (0) from .env // tip: ⌘ suppress logs { quiet: true }
+[fsi-ppc2][Android - Chrome] 
+🤖 ================================================================
+[fsi-ppc2][Android - Chrome] 🤖 MASTER RUNNER: LAUNCHING FSI-PPC2
+[fsi-ppc2][Android - Chrome] 🤖 Mode:            MOBILE
+[fsi-ppc2][Android - Chrome] 🤖 Tracking URL:     https://fsimlf-trk.com/?a=659&oc=750&c=143&s1=
+[fsi-ppc2][Android - Chrome] 🤖 Target Sheet:    FSI-PPC2
+🤖 ================================================================
+[fsi-ppc2][Android - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[ftd-x][Desktop - Chrome] ◇ injected env (0) from .env // tip: ⌘ custom filepath { path: '/custom/path/.env' }
+[ftd-x][Desktop - Chrome] 
+🤖 ================================================================
+[ftd-x][Desktop - Chrome] 🤖 MASTER RUNNER: LAUNCHING FTD-X
+🤖 Mode:            DESKTOP
+[ftd-x][Desktop - Chrome] 🤖 Tracking URL:     https://mlfftd.com/?a=659&oc=656&c=167&s1=
+[ftd-x][Desktop - Chrome] 🤖 Target Sheet:    FTD-X
+🤖 ================================================================
+[ftd-x][Desktop - Chrome] 🔌 [Browser Interceptor] Intercepting and optimizing engine: CHROMIUM
+[ftd-x][Tablet - Chrome] 📋 Emulated Device Profile: TABLET (iPad Pro 11) - [Tablet - Chrome]
+[ftd-x][Desktop - Chrome] 💻 Emulated Device Profile: DESKTOP - [Desktop - Chrome]
+[ftd-x][Android - Chrome] 📋 Emulated Device Profile: MOBILE (Pixel 7) - [Android - Chrome]
+[ftd-x][Tablet - Chrome] ⏳ Delaying 200ms to allow responsive layouts to mount...
+[ftd-x][Android - Chrome] ⏳ Delaying 200ms to allow responsive layouts to mount...
+[ftd-x][Desktop - Chrome] 🔄 Processing lead for brand: FTD-X
+[ftd-x][Desktop - Chrome] 📊 Campaign execution run index: 80
+[ftd-x][Desktop - Chrome] 📅 [Rotational Logic] Week 1 Day 4. Target Range: 1000-20000 (Max allowed by URL: 70000)
+[ftd-x][Desktop - Chrome] 🔗 [Mobile] Navigating to: https://mlfftd.com/?a=659&oc=656&c=167&s1=
+[ftd-x][Tablet - Chrome] 🔄 Processing lead for brand: FTD-X Tablet
+[ftd-x][Tablet - Chrome] 📊 Campaign execution run index: 81
+[ftd-x][Tablet - Chrome] 📅 [Rotational Logic] Week 1 Day 4. Target Range: 1000-20000 (Max allowed by URL: 70000)
+[fsi-ppc2][Android - Chrome] 📋 Emulated Device Profile: MOBILE (Pixel 7) - [Android - Chrome]
+[ftd-x][Tablet - Chrome] 🔗 [Mobile] Navigating to: https://mlfftd.com/?a=659&oc=656&c=167&s1=
+[ftd-x][Android - Chrome] 🔄 Processing lead for brand: FTD-X Mobile
+[ftd-x][Android - Chrome] 📊 Campaign execution run index: 82
+[ftd-x][Android - Chrome] 📅 [Rotational Logic] Week 1 Day 4. Target Range: 1000-20000 (Max allowed by URL: 70000)
+[ftd-x][Android - Chrome] 🔗 [Mobile] Navigating to: https://mlfftd.com/?a=659&oc=656&c=167&s1=
+[fsi-ppc2][Android - Chrome] ⏳ Delaying 200ms to allow responsive layouts to mount...
+[fsi-ppc2][Android - Chrome] 🔄 Processing lead for brand: FSI-PPC2 Mobile
+[fsi-ppc2][Android - Chrome] 📊 Campaign execution run index: 82
+[fsi-ppc2][Android - Chrome] 🔗 [Mobile] Navigating to: https://fsimlf-trk.com/?a=659&oc=750&c=143&s1=
+[ftd-x][Tablet - Chrome] ✅ [Mobile] Page loaded successfully
+[ftd-x][Tablet - Chrome] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[ftd-x][Android - Chrome] ✅ [Mobile] Page loaded successfully
+[ftd-x][Android - Chrome] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[ftd-x][Android - Chrome] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[ftd-x][Desktop - Chrome] ✅ [Mobile] Page loaded successfully
+💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[ftd-x][Android - Chrome] 📝 [Mobile] Starting mobile-specific form filling...
+[ftd-x][Android - Chrome] 🔘 [Mobile] Step 1: Selecting Debt Amount (1,031)
+[ftd-x][Tablet - Chrome] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[ftd-x][Tablet - Chrome] 📝 [Mobile] Starting mobile-specific form filling...
+[ftd-x][Desktop - Chrome] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[ftd-x][Tablet - Chrome] 🔘 [Mobile] Step 1: Selecting Debt Amount (12,361)
+[ftd-x][Desktop - Chrome] 📝 [Mobile] Starting mobile-specific form filling...
+[ftd-x][Tablet - Chrome] 🔘 [Mobile] Found jQuery UI Slider #slider. Setting value via jQuery and DOM evaluation...
+[ftd-x][Android - Chrome] 🔘 [Mobile] Found jQuery UI Slider #slider. Setting value via jQuery and DOM evaluation...
+[ftd-x][Tablet - Chrome] ✅ [Mobile] Set jQuery UI Slider #slider to 12,361
+[ftd-x][Desktop - Chrome] 🔘 [Mobile] Step 1: Selecting Debt Amount (15,213)
+[ftd-x][Android - Chrome] ✅ [Mobile] Set jQuery UI Slider #slider to 1,031
+[ftd-x][Desktop - Chrome] 🔘 [Mobile] Found jQuery UI Slider #slider. Setting value via jQuery and DOM evaluation...
+[fsi-ppc2][Android - Chrome] ✅ [Mobile] Page loaded successfully
+[fsi-ppc2][Android - Chrome] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[ftd-x][Desktop - Chrome] ✅ [Mobile] Set jQuery UI Slider #slider to 15,213
+[fsi-ppc2][Android - Chrome] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[fsi-ppc2][Android - Chrome] 📝 [Mobile] Starting mobile-specific form filling...
+[fsi-ppc2][Android - Chrome] 🔘 [Mobile] Step 1: Selecting Debt Amount (35,000)
+[fsi-ppc2][Android - Chrome] 🔍 [Mobile Dropdown Scanner] Scanning 5 dropdown options against daily range: 0 - 200000
+[ftd-x][Tablet - Chrome] 🔘 [Mobile] Clicking active visible button: .next-btn1:visible, .btn-next:visible
+[ftd-x][Android - Chrome] 🔘 [Mobile] Clicking active visible button: .next-btn1:visible, .btn-next:visible
+[ftd-x][Desktop - Chrome] 🔘 [Mobile] Clicking active visible button: .next-btn1:visible, .btn-next:visible
+[ftd-x][Tablet - Chrome] ✅ [Mobile] Clicked: .next-btn1:visible, .btn-next:visible
+[ftd-x][Android - Chrome] ✅ [Mobile] Clicked: .next-btn1:visible, .btn-next:visible
+[ftd-x][Desktop - Chrome] ✅ [Mobile] Clicked: .next-btn1:visible, .btn-next:visible
+[fsi-ppc2][Android - Chrome] ✅ [Mobile Rotational Logic] Selected dropdown choice: "$20,000 - $50,000"
+[fsi-ppc2][Android - Chrome] [STDERR] ⚠️ [Mobile] No active visible next button found for selector .next-btn1, .btn-next
+[fsi-ppc2][Android - Chrome] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[fsi-ppc2][Android - Chrome] ✅ [Mobile] Reached a recognized terminal step. Stopping dynamic traversal.
+[fsi-ppc2][Android - Chrome] 🔘 [Mobile] Step 2: Selecting State
+[fsi-ppc2][Android - Chrome] ✅ [Mobile] Selected state dynamically: "North Carolina"
+[fsi-ppc2][Android - Chrome] 📝 [Mobile] step3 column set to State: "North Carolina"
+[fsi-ppc2][Android - Chrome] 🔘 [Mobile] Clicking active visible button: .next-btn:visible, .next-btn2:visible, .btn-next:visible
+[fsi-ppc2][Android - Chrome] ✅ [Mobile] Clicked: .next-btn:visible, .next-btn2:visible, .btn-next:visible
+[ftd-x][Tablet - Chrome] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[ftd-x][Android - Chrome] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[ftd-x][Desktop - Chrome] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[ftd-x][Tablet - Chrome] 🔘 [Mobile Rotation] Selected: "State Tax Debt"
+[ftd-x][Android - Chrome] 🔘 [Mobile Rotation] Selected: "Both IRS & State Tax Debt"
+[ftd-x][Desktop - Chrome] 🔘 [Mobile Rotation] Selected: "IRS Tax Debt"
+[fsi-ppc2][Android - Chrome] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[fsi-ppc2][Android - Chrome] 🔘 [Mobile] Step 3: Filling Contact Info (Dynamic Loop)...
+[fsi-ppc2][Android - Chrome] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[ftd-x][Android - Chrome] 🔘 [Mobile Rotation] Selected: "$4,000 - $6,000"
+[ftd-x][Tablet - Chrome] 🔘 [Mobile Rotation] Selected: "Less than $4,000"
+[ftd-x][Desktop - Chrome] 🔘 [Mobile Rotation] Selected: "More than $6,000"
+[ftd-x][Android - Chrome] ✅ [Mobile] Reached a recognized terminal step. Stopping dynamic traversal.
+[ftd-x][Tablet - Chrome] ✅ [Mobile] Reached a recognized terminal step. Stopping dynamic traversal.
+[ftd-x][Android - Chrome] 🔘 [Mobile] Step 2: Selecting State
+[ftd-x][Android - Chrome] ✅ [Mobile] Selected state dynamically: "North Carolina"
+[ftd-x][Android - Chrome] 📝 [Mobile] step3 column set to State: "North Carolina"
+[ftd-x][Android - Chrome] 🔘 [Mobile] Clicking active visible button: .next-btn:visible, .next-btn2:visible, .btn-next:visible
+[ftd-x][Tablet - Chrome] 🔘 [Mobile] Step 2: Selecting State
+[ftd-x][Tablet - Chrome] ✅ [Mobile] Selected state dynamically: "New York"
+[ftd-x][Tablet - Chrome] 📝 [Mobile] step3 column set to State: "New York"
+[ftd-x][Android - Chrome] ✅ [Mobile] Clicked: .next-btn:visible, .next-btn2:visible, .btn-next:visible
+[ftd-x][Tablet - Chrome] 🔘 [Mobile] Clicking active visible button: .next-btn:visible, .next-btn2:visible, .btn-next:visible
+[ftd-x][Tablet - Chrome] ✅ [Mobile] Clicked: .next-btn:visible, .next-btn2:visible, .btn-next:visible
+[fsi-ppc2][Android - Chrome] ✅ [Mobile] Filled First Name: ckmtestpixel
+[ftd-x][Desktop - Chrome] ✅ [Mobile] Reached a recognized terminal step. Stopping dynamic traversal.
+[ftd-x][Desktop - Chrome] 🔘 [Mobile] Step 2: Selecting State
+[ftd-x][Desktop - Chrome] ✅ [Mobile] Selected state dynamically: "New Mexico"
+[ftd-x][Desktop - Chrome] 📝 [Mobile] step3 column set to State: "New Mexico"
+[ftd-x][Desktop - Chrome] 🔘 [Mobile] Clicking active visible button: .next-btn:visible, .next-btn2:visible, .btn-next:visible
+[ftd-x][Desktop - Chrome] ✅ [Mobile] Clicked: .next-btn:visible, .next-btn2:visible, .btn-next:visible
+[fsi-ppc2][Android - Chrome] ✅ [Mobile] Filled Last Name: ckmtestpixel
+[fsi-ppc2][Android - Chrome] ✅ [Mobile] Filled Email: ckmtestpixel@gmail.com
+[fsi-ppc2][Android - Chrome] ✅ [Mobile] Filled Phone: 401-247-1082
+[fsi-ppc2][Android - Chrome] 🔘 [Mobile] Clicking active contact NEXT/SUBMIT button...
+[ftd-x][Android - Chrome] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[ftd-x][Android - Chrome] 🔘 [Mobile] Step 3: Filling Contact Info (Dynamic Loop)...
+[ftd-x][Android - Chrome] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[ftd-x][Android - Chrome] ✅ [Mobile] Filled First Name: ckmtestpixel
+[ftd-x][Tablet - Chrome] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[ftd-x][Android - Chrome] ✅ [Mobile] Filled Last Name: ckmtestpixel
+[ftd-x][Android - Chrome] ✅ [Mobile] Filled Email: ckmtestpixel@gmail.com
+[ftd-x][Tablet - Chrome] 🔘 [Mobile] Step 3: Filling Contact Info (Dynamic Loop)...
+[ftd-x][Android - Chrome] ✅ [Mobile] Filled Phone: 401-247-1082
+[ftd-x][Tablet - Chrome] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[ftd-x][Android - Chrome] 🔘 [Mobile] Clicking active contact NEXT/SUBMIT button...
+[ftd-x][Tablet - Chrome] ✅ [Mobile] Filled First Name: ckmtestpixel
+[ftd-x][Tablet - Chrome] ✅ [Mobile] Filled Last Name: ckmtestpixel
+[ftd-x][Desktop - Chrome] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[ftd-x][Tablet - Chrome] ✅ [Mobile] Filled Email: ckmtestpixel@gmail.com
+[ftd-x][Tablet - Chrome] ✅ [Mobile] Filled Phone: 401-247-1081
+[ftd-x][Desktop - Chrome] 🔘 [Mobile] Step 3: Filling Contact Info (Dynamic Loop)...
+[ftd-x][Desktop - Chrome] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[ftd-x][Tablet - Chrome] 🔘 [Mobile] Clicking active contact NEXT/SUBMIT button...
+[ftd-x][Desktop - Chrome] ✅ [Mobile] Filled First Name: ckmtestpixel
+[ftd-x][Desktop - Chrome] ✅ [Mobile] Filled Last Name: ckmtestpixel
+[ftd-x][Desktop - Chrome] ✅ [Mobile] Filled Email: ckmtestpixel@gmail.com
+[ftd-x][Desktop - Chrome] ✅ [Mobile] Filled Phone: 401-247-1080
+[ftd-x][Desktop - Chrome] 🔘 [Mobile] Clicking active contact NEXT/SUBMIT button...
+[fsi-ppc2][Android - Chrome] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[fsi-ppc2][Android - Chrome] ✅ [Mobile] Thank you page or lead id detected in URL during contact loop. Exiting contact loop.
+🔘 [Mobile] Scanning for additional dynamic steps...
+[ftd-x][Desktop - Chrome] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[fsi-ppc2][Android - Chrome] ✅ [Mobile] Thank you page detected during adaptive submit loop. Exiting loop.
+[fsi-ppc2][Android - Chrome] 🔘 [Mobile] Submitting form
+💾 [Mobile] Setting hidden debt fields to: 2000050000
+[ftd-x][Tablet - Chrome] 💻 [Tablet] Injecting high-fidelity glossy iPad Pro mockup frame...
+[fsi-ppc2][Android - Chrome] ⏳ [Mobile] Waiting for submission navigation to complete
+[fsi-ppc2][Android - Chrome] [STDERR] ⚠️ [Mobile] Standard submit buttons not found, consulting AI Agent...
+[fsi-ppc2][Android - Chrome] 🤖 [AI Agent] Analyzing Submit button for global...
+[fsi-ppc2][Android - Chrome] ⏳ [Mobile] Waiting for final Thank You page redirection...
+[fsi-ppc2][Android - Chrome] ✅ [Mobile] Targeted final redirect URL achieved!
+[fsi-ppc2][Android - Chrome] ✅ [Mobile] Final Thank You URL: https://www.fresh-start-initiative.com/ty_next/?debt=20000&leadid=D0F87C32&reqid=26861514&affid=659&subid=#s1#
+📋 [Pre-Fix] Thank-you URL before debt correction: https://www.fresh-start-initiative.com/ty_next/?debt=20000&leadid=D0F87C32&reqid=26861514&affid=659&subid=#s1#
+[fsi-ppc2][Android - Chrome] 💾 [Debt Debug] formPage.selectedSliderAmount = "$20,000 - $50,000"
+💾 [Debt Debug] selectedDebtNum (numeric) = "2000050000"
+[fsi-ppc2][Android - Chrome] 🔧 [Debt Fix] Current debt in URL: 20000, Should be: 2000050000
+[fsi-ppc2][Android - Chrome] 🔧 [Debt Fix] Correcting debt parameter: 20000 → 2000050000
+[fsi-ppc2][Android - Chrome] ✅ [Debt Fix] Updated thank-you URL: https://www.fresh-start-initiative.com/ty_next/?debt=2000050000&leadid=D0F87C32&reqid=26861514&affid=659&subid=#s1#
+[fsi-ppc2][Android - Chrome] 📱 [Mobile Diagnostic] Full Thank You URL Parameters: {"debt":"2000050000","leadid":"D0F87C32","reqid":"26861514","affid":"659","subid":""}
+[fsi-ppc2][Android - Chrome] ✅ [Mobile] Extracted Lead ID: D0F87C32
+[fsi-ppc2][Android - Chrome] 📱 Device Type detected: Android - Chrome
+✅ Lead captured: D0F87C32
+[fsi-ppc2][Android - Chrome] 📡 Fetching First API data for Lead ID: D0F87C32...
+[fsi-ppc2][Android - Chrome] [STDERR] ❌ First API Attempt 1 failed: Invalid URL
+[fsi-ppc2][Android - Chrome] ⏳ Retrying in 1 second...
+[fsi-ppc2][Android - Chrome] [STDERR] ❌ First API Attempt 2 failed: Invalid URL
+[fsi-ppc2][Android - Chrome] ⏳ Retrying in 1 second...
+[fsi-ppc2][Android - Chrome] [STDERR] ❌ First API Attempt 3 failed: Invalid URL
+[fsi-ppc2][Android - Chrome] 📡 Fetching Second API data for Lead ID: D0F87C32...
+📡 Standard Second API Payload: cake_id=D0F87C32, domain_name=https://www.freshstartinitiative.com
+⏳ Retrying in 1 second to allow database synchronization...
+[fsi-ppc2][Android - Chrome] [STDERR] ❌ Second API Attempt 1 failed: Invalid URL
+[fsi-ppc2][Android - Chrome] 📡 Standard Second API Payload: cake_id=D0F87C32, domain_name=https://www.freshstartinitiative.com
+⏳ Retrying in 1 second to allow database synchronization...
+[fsi-ppc2][Android - Chrome] [STDERR] ❌ Second API Attempt 2 failed: Invalid URL
+[fsi-ppc2][Android - Chrome] 📡 Standard Second API Payload: cake_id=D0F87C32, domain_name=https://www.freshstartinitiative.com
+⏳ Retrying in 1 second to allow database synchronization...
+[fsi-ppc2][Android - Chrome] [STDERR] ❌ Second API Attempt 3 failed: Invalid URL
+[fsi-ppc2][Android - Chrome] 📡 Standard Second API Payload: cake_id=D0F87C32, domain_name=https://www.freshstartinitiative.com
+⏳ Retrying in 1 second to allow database synchronization...
+[fsi-ppc2][Android - Chrome] [STDERR] ❌ Second API Attempt 4 failed: Invalid URL
+[fsi-ppc2][Android - Chrome] 📡 Standard Second API Payload: cake_id=D0F87C32, domain_name=https://www.freshstartinitiative.com
+📡 [Rest-Assurance] Verifying Lead ID: D0F87C32 via Backend...
+[fsi-ppc2][Android - Chrome] [STDERR] ❌ Second API Attempt 5 failed: Invalid URL
+🛡️  [Rest-Assurance] VERIFICATION_FAILED: Invalid URL
+[ftd-x][Desktop - Chrome] ✅ [Mobile] Thank you page or lead id detected in URL during contact loop. Exiting contact loop.
+🔘 [Mobile] Scanning for additional dynamic steps...
+[ftd-x][Android - Chrome] 📱 [Mobile] Injecting high-fidelity glossy Natural Titanium iPhone 17 Pro mockup frame...
+[ftd-x][Tablet - Chrome] ✅ [Mobile] Thank you page or lead id detected in URL during contact loop. Exiting contact loop.
+🔘 [Mobile] Scanning for additional dynamic steps...
+[fsi-ppc2][Android - Chrome] [STDERR] (node:13884) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[ftd-x][Desktop - Chrome] ✅ [Mobile] Thank you page detected during adaptive submit loop. Exiting loop.
+[ftd-x][Desktop - Chrome] 🔘 [Mobile] Submitting form
+💾 [Mobile] Setting hidden debt fields to: 15213
+[ftd-x][Android - Chrome] ✅ [Mobile] Thank you page or lead id detected in URL during contact loop. Exiting contact loop.
+[ftd-x][Android - Chrome] 🔘 [Mobile] Scanning for additional dynamic steps...
+[fsi-ppc2][Android - Chrome] 🆕 Sheet "FSI-PPC2" not found. Creating new sheet with standard headers...
+[fsi-ppc2][Android - Chrome] [STDERR] ❌ Critical Google Sheets Error: request to https://oauth2.googleapis.com/token failed, reason: socket hang up
+[fsi-ppc2][Android - Chrome] [STDERR] ❌ Failed processing FSI-PPC2 Mobile: Failed to write to Google Sheets
+[fsi-ppc2][Android - Chrome] 
+✅ Execution successfully processed! {
+  success: false,
+  error: 'Failed to write to Google Sheets',
+  brand: 'FSI-PPC2 Mobile'
+}
+[ftd-x][Tablet - Chrome] ✅ [Mobile] Thank you page detected during adaptive submit loop. Exiting loop.
+[ftd-x][Tablet - Chrome] 🔘 [Mobile] Submitting form
+💾 [Mobile] Setting hidden debt fields to: 12361
+[ftd-x][Android - Chrome] ✅ [Mobile] Thank you page detected during adaptive submit loop. Exiting loop.
+[ftd-x][Android - Chrome] 🔘 [Mobile] Submitting form
+💾 [Mobile] Setting hidden debt fields to: 1031
+[ftd-x][Tablet - Chrome] ⏳ [Mobile] Waiting for submission navigation to complete
+[ftd-x][Tablet - Chrome] [STDERR] ⚠️ [Mobile] Standard submit buttons not found, consulting AI Agent...
+[ftd-x][Tablet - Chrome] 🤖 [AI Agent] Analyzing Submit button for global...
+[ftd-x][Desktop - Chrome] ⏳ [Mobile] Waiting for submission navigation to complete
+[ftd-x][Android - Chrome] ⏳ [Mobile] Waiting for submission navigation to complete
+[ftd-x][Desktop - Chrome] [STDERR] ⚠️ [Mobile] Standard submit buttons not found, consulting AI Agent...
+[ftd-x][Desktop - Chrome] 🤖 [AI Agent] Analyzing Submit button for global...
+[ftd-x][Android - Chrome] [STDERR] ⚠️ [Mobile] Standard submit buttons not found, consulting AI Agent...
+[ftd-x][Android - Chrome] 🤖 [AI Agent] Analyzing Submit button for global...
+[ftd-x][Tablet - Chrome] ⏳ [Mobile] Waiting for final Thank You page redirection...

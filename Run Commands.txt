@@ -96,6 +96,36 @@ To manually run any campaign, use the following template structure:
     🔹 Tablet:  node run-master.js --campaign 1800-fresh-tax-x-main --viewport tablet
     🔹 Mobile:  node run-master.js --campaign 1800-fresh-tax-x-main --viewport mobile
 
+15. 📊 1803 Fresh Tax - AFR cobranded (1803 Fresh Tax - AFR cobranded)
+    🔹 Desktop: node run-master.js --campaign 1803-fresh-tax-afr --viewport desktop
+    🔹 Tablet:  node run-master.js --campaign 1803-fresh-tax-afr --viewport tablet
+    🔹 Mobile:  node run-master.js --campaign 1803-fresh-tax-afr --viewport mobile
+
+16. 📊 Senior Tax Defence-Main (Senior Tax Defence-Main)
+    🔹 Desktop: node run-master.js --campaign senior-tax-defence-main --viewport desktop
+    🔹 Tablet:  node run-master.js --campaign senior-tax-defence-main --viewport tablet
+    🔹 Mobile:  node run-master.js --campaign senior-tax-defence-main --viewport mobile
+
+17. 📊 Fresh Start Initiative (X) Main (Fresh Start Initiative (X) Main)
+    🔹 Desktop: node run-master.js --campaign fresh-start-initiative-x-main --viewport desktop
+    🔹 Tablet:  node run-master.js --campaign fresh-start-initiative-x-main --viewport tablet
+    🔹 Mobile:  node run-master.js --campaign fresh-start-initiative-x-main --viewport mobile
+
+18. 📊 America's First Tax Relief (AFTR) (America's First Tax Relief (AFTR))
+    🔹 Desktop: node run-master.js --campaign aftr-main --viewport desktop
+    🔹 Tablet:  node run-master.js --campaign aftr-main --viewport tablet
+    🔹 Mobile:  node run-master.js --campaign aftr-main --viewport mobile
+
+19. 📊 Premier Tax Relief (PTR) (Premier Tax Relief (PTR))
+    🔹 Desktop: node run-master.js --campaign ptr-main --viewport desktop
+    🔹 Tablet:  node run-master.js --campaign ptr-main --viewport tablet
+    🔹 Mobile:  node run-master.js --campaign ptr-main --viewport mobile
+
+20. 📊 Fresh Tax Help Questionnaire (FTH-questionnaire)
+    🔹 Desktop: node run-master.js --campaign fth-questionnaire --viewport desktop
+    🔹 Tablet:  node run-master.js --campaign fth-questionnaire --viewport tablet
+    🔹 Mobile:  node run-master.js --campaign fth-questionnaire --viewport mobile
+
 --------------------------------------------------------------------------------
 🔄 RECURRING BATCH SCHEDULER
 --------------------------------------------------------------------------------

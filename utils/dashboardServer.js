@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const url = require('url');
 const { exec } = require('child_process');
+require('dotenv').config();
 
 const PORT = 3000;
 const PUBLIC_DIR = path.join(__dirname, '..', 'public');
@@ -220,9 +221,9 @@ const server = http.createServer((req, res) => {
                     const env = { ...process.env, HEADLESS: isHeaded ? 'false' : 'true' };
 
                     if (targetCampaign) {
-                        const isSingleDevice = msg.includes('desktop') || msg.includes('mobile') || msg.includes('tablet');
+                        const isMultiDevice = msg.includes('3 device') || msg.includes('multi') || msg.includes('all device');
 
-                        if (!isSingleDevice || msg.includes('3 device') || msg.includes('multi') || msg.includes('all device')) {
+                        if (isMultiDevice) {
                             ['desktop', 'mobile', 'tablet'].forEach(v => {
                                 exec(`node run-master.js --campaign "${targetCampaign.id}" --viewport "${v}"`, { cwd: PROJECT_ROOT, env });
                             });
