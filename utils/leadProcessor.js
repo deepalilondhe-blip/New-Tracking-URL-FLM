@@ -152,6 +152,27 @@ async function processLead(brandConfig, page) {
       } else {
         rawSliderVal = 100000;
       }
+
+      // Ensure we cap it by the campaign's specific maximum limit so it doesn't break the slider
+      if (rawSliderVal > maxLimit) {
+        if (maxLimit >= 100000) {
+          rawSliderVal = 100000;
+        } else if (maxLimit >= 50000) {
+          rawSliderVal = 50000;
+        } else if (maxLimit >= 20000) {
+          rawSliderVal = 20000;
+        } else if (maxLimit >= 10000) {
+          rawSliderVal = 10000;
+        } else if (maxLimit >= 7500) {
+          rawSliderVal = 7500;
+        } else {
+          rawSliderVal = 5000;
+        }
+        // Safety check fallback (e.g. if campaign maxLimit is less than 5000 like Original at 500)
+        if (rawSliderVal > maxLimit) {
+          rawSliderVal = maxLimit;
+        }
+      }
     }
 
     const finalSlider = rawSliderVal.toLocaleString();
