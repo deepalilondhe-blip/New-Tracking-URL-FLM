@@ -37,13 +37,13 @@ async function appendRowByHeader(sheetName, rowData) {
         const headersRow = res.data.values && res.data.values[0] ? res.data.values[0] : [];
         if (headersRow.length > 0 && !headersRow.includes("Step 1")) {
           console.log(`📋 Existing sheet ${sheetName} is missing "Step 1" column. Upgrading headers row...`);
-          const fullHeaders = [
-            "DateTime", "Type", "Affiliate", "Campaign ID", "Link",
-            "Slider Amount", "Cake Income", "State", "Phone", "Lead ID",
-            "DBID", "Page Origin", "Thank u URL", "CDB Status", "CDB Email",
-            "Neustar", "Neustar Disposition", "Pixel Fired", "Run Date",
-            "Step 1", "Step 2", "Step 3"
-          ];
+        const fullHeaders = [
+          "DateTime", "Type", "Affiliate", "Campaign ID", "Link",
+          "Slider Amount", "Cake Income", "State", "Phone", "Lead ID",
+          "DBID", "Page Origin", "Thank U URL", "CDB Status", "CDB Email",
+          "Neustar", "Neustar Disposition", "Pixel Fired", "Tax Debt",
+          "Step 1", "Step 2", "Step 3", "Step 4", "Step 5", "Step 6", "Step 7", "Step 8", "Step 9", "Step 10"
+        ];
           await sheets.spreadsheets.values.update({
             spreadsheetId,
             range: `${sheetName}!A1:V1`,

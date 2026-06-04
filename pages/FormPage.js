@@ -320,8 +320,9 @@ class FormPage {
               const option = this.page.locator(selector).first();
               if (await option.isVisible({ timeout: 1000 }).catch(() => false)) {
                 await option.click({ force: true });
-                const textVal = await option.textContent().catch(() => '');
-                this.selectedSliderAmount = textVal ? textVal.trim() : sliderAmount;
+                let textVal = await option.textContent().catch(() => '');
+                textVal = textVal ? textVal.trim() : '';
+                this.selectedSliderAmount = (textVal && textVal.length < 50) ? textVal : sliderAmount;
                 console.log(`✅ [Desktop] Selected FTH fallback choice card: ${selector} ("${this.selectedSliderAmount}")`);
                 selected = true;
                 break;
