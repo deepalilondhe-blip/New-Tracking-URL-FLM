@@ -264,10 +264,21 @@ async function processLead(brandConfig, page) {
     
     // Get the UI-selected slider amount from the form
     const extractedSliderAmount = formPage.selectedSliderAmount.toString().replace(/,/g, '').trim();
-    const selectedDebtNum = parseInt(extractedSliderAmount.replace(/[^0-9]/g, '')) || 0;
+    
+    // Safely extract the FIRST number if there's a range (e.g. "5000 - 9999" -> 5000)
+    let selectedDebtNum = 0;
+    const match = extractedSliderAmount.match(/\d+/);
+    if (match) selectedDebtNum = parseInt(match[0]);
+    
+    // Map to specific required values
+    if (extractedSliderAmount.includes('Less than') && extractedSliderAmount.includes('5000')) selectedDebtNum = 5000;
+    else if (selectedDebtNum === 5000 && extractedSliderAmount.includes('9999')) selectedDebtNum = 7500;
+    else if (selectedDebtNum === 10000) selectedDebtNum = 10000;
+    else if (selectedDebtNum === 20000) selectedDebtNum = 20000;
+    else if (selectedDebtNum === 50000) selectedDebtNum = 50000;
     
     console.log(`💾 [Debt Debug] formPage.selectedSliderAmount = "${formPage.selectedSliderAmount}"`);
-    console.log(`💾 [Debt Debug] selectedDebtNum (numeric) = "${selectedDebtNum}"`);
+    console.log(`💾 [Debt Debug] selectedDebtNum (mapped value) = "${selectedDebtNum}"`);
     
     // 🔧 FIX: Correct the debt parameter in thank-you URL to match the selected slider value
     if (selectedDebtNum > 0) {

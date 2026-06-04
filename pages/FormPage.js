@@ -758,7 +758,17 @@ class FormPage {
 
     try {
       // CRITICAL: Ensure debt value is properly set in hidden fields before submission
-      const cleanDebtVal = this.selectedSliderAmount.toString().replace(/,/g, '').replace(/[^0-9]/g, '');
+      let cleanDebtVal = this.selectedSliderAmount.toString().replace(/,/g, '').trim();
+      const match = cleanDebtVal.match(/\d+/);
+      let numericDebt = match ? parseInt(match[0]) : 0;
+      
+      if (cleanDebtVal.includes('Less than') && cleanDebtVal.includes('5000')) cleanDebtVal = "5000";
+      else if (numericDebt === 5000 && cleanDebtVal.includes('9999')) cleanDebtVal = "7500";
+      else if (numericDebt === 10000) cleanDebtVal = "10000";
+      else if (numericDebt === 20000) cleanDebtVal = "20000";
+      else if (numericDebt === 50000) cleanDebtVal = "50000";
+      else cleanDebtVal = numericDebt.toString();
+
       if (cleanDebtVal) {
         console.log(`💾 Setting hidden debt fields to: ${cleanDebtVal}`);
         await this.page.evaluate((debtVal) => {
