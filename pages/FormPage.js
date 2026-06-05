@@ -138,9 +138,11 @@ class FormPage {
               pricePicker.textContent = '$' + cleanVal.toLocaleString();
             }
           }, sliderAmount);
-          console.log(`✅ Set jQuery UI Slider #slider to ${sliderAmount}`);
+          // ✅ Store the clean numeric value we actually set (NOT raw pixel position)
+          const cleanNumericVal = parseInt(sliderAmount.replace(/[$,\s]/g, ''));
+          this.selectedSliderAmount = cleanNumericVal.toLocaleString();
+          console.log(`✅ Set jQuery UI Slider #slider to ${this.selectedSliderAmount}`);
           selected = true;
-          this.selectedSliderAmount = sliderAmount;
           await this.page.waitForTimeout(500);
         }
 
@@ -361,8 +363,13 @@ class FormPage {
           } else {
             const rangeInput = this.page.locator('input[type="range"]').first();
             if (await rangeInput.isVisible().catch(() => false)) {
-              const val = await rangeInput.inputValue().catch(() => '');
-              if (val) this.selectedSliderAmount = val;
+              // ✅ Only read range input if we don't already have a clean value (prevents jQuery slider pixel-position override)
+              if (!this.selectedSliderAmount) {
+                const val = await rangeInput.inputValue().catch(() => '');
+                if (val) this.selectedSliderAmount = val;
+              } else {
+                console.log(`✅ [Live-Extract] Keeping already-captured value: "${this.selectedSliderAmount}" (skipping raw range input read)`);
+              }
             } else {
               const debtInput = this.page.locator('#debt_amount, input[name="debt_amount"]').first();
               if (await debtInput.isVisible().catch(() => false)) {
