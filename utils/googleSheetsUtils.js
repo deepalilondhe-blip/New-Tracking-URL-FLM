@@ -161,36 +161,45 @@ async function appendRowByHeader(sheetName, rowData) {
       sheetCache.initialized[normalizedSheetName] = true;
     }
 
+    function makeHyperlink(url) {
+      if (!url) return '';
+      const strUrl = String(url).trim();
+      if (strUrl.startsWith('http')) {
+        return strUrl;
+      }
+      return strUrl;
+    }
+
     const formattedRow = [
       rowData.dateTime,
       rowData.type || 'D',
       rowData.affiliate,
       rowData.campaignId,
-      rowData.trackingLink ? `=HYPERLINK("${rowData.trackingLink}", "Open Tracking")` : '',
+      makeHyperlink(rowData.trackingLink),
       rowData.sliderAmount,
       rowData.cakeIncome,
       rowData.state,
       rowData.phone,
       rowData.leadId,
       rowData.dbid,
-      rowData.pageOrigin ? `=HYPERLINK("${rowData.pageOrigin}", "View Page Origin")` : '',
-      rowData.thankYouUrl ? `=HYPERLINK("${rowData.thankYouUrl}", "ViewThankURL")` : '',
+      makeHyperlink(rowData.pageOrigin),
+      makeHyperlink(rowData.thankYouUrl),
       rowData.cdbStatus,
       rowData.cdbEmail,
       rowData.neustar,
       rowData.neustarDisposition,
       rowData.pixelFired,
       rowData.taxDebt || '',
-      rowData.step1 || '',
-      rowData.step2 || '',
-      rowData.step3 || '',
-      rowData.step4 || '',
-      rowData.step5 || '',
-      rowData.step6 || '',
-      rowData.step7 || '',
-      rowData.step8 || '',
-      rowData.step9 || '',
-      rowData.step10 || ''
+      makeHyperlink(rowData.step1),
+      makeHyperlink(rowData.step2),
+      makeHyperlink(rowData.step3),
+      makeHyperlink(rowData.step4),
+      makeHyperlink(rowData.step5),
+      makeHyperlink(rowData.step6),
+      makeHyperlink(rowData.step7),
+      makeHyperlink(rowData.step8),
+      makeHyperlink(rowData.step9),
+      makeHyperlink(rowData.step10)
     ];
 
     const response = await sheets.spreadsheets.values.append({
@@ -238,7 +247,7 @@ async function appendRowByHeader(sheetName, rowData) {
                 }
               },
 
-              // ✅ 2. Hyperlink Text Color and Underline Styling (Explicit Blue color + Underline for Link columns E, L, M)
+              // ✅ 2. Hyperlink Text Color and Underline Styling (Explicit Blue color + Underline for Link columns E, L, M and Steps T-AC)
               {
                 repeatCell: {
                   range: { sheetId, startRowIndex: rowIndex, endRowIndex: rowIndex + 1, startColumnIndex: 4, endColumnIndex: 5 },
@@ -257,6 +266,21 @@ async function appendRowByHeader(sheetName, rowData) {
               {
                 repeatCell: {
                   range: { sheetId, startRowIndex: rowIndex, endRowIndex: rowIndex + 1, startColumnIndex: 11, endColumnIndex: 13 },
+                  cell: {
+                    userEnteredFormat: {
+                      textFormat: {
+                        foregroundColor: { red: 0.062, green: 0.353, blue: 0.824 },
+                        underline: true,
+                        fontSize: 10
+                      }
+                    }
+                  },
+                  fields: 'userEnteredFormat(textFormat)'
+                }
+              },
+              {
+                repeatCell: {
+                  range: { sheetId, startRowIndex: rowIndex, endRowIndex: rowIndex + 1, startColumnIndex: 19, endColumnIndex: 29 },
                   cell: {
                     userEnteredFormat: {
                       textFormat: {
@@ -448,7 +472,7 @@ async function appendFinalValidationRow(rowData) {
       let finalNote = cleanVal(rowData.note);
 
     const formattedRow = [
-      cleanVal(rowData.pageUrl) ? `=HYPERLINK("${cleanVal(rowData.pageUrl)}","View Page Origin")` : '',
+      cleanVal(rowData.pageUrl) ? `=HYPERLINK("${cleanVal(rowData.pageUrl)}","Open Link")` : '',
       cleanVal(rowData.leadId),
       cleanVal(rowData.inCake),
       cleanVal(rowData.inCdb),

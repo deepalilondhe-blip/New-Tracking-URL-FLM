@@ -247,11 +247,11 @@ async function processLead(brandConfig, page) {
     const uiSelectedSliderNum = parseInt(uiSelectedSliderStr.toString().replace(/[^0-9]/g, '')) || rawSliderVal;
     
     let cakeIncomeOverride;
-    if (uiSelectedSliderNum <= 7500) cakeIncomeOverride = "5,000";
-    else if (uiSelectedSliderNum <= 9999) cakeIncomeOverride = "7,500";
-    else if (uiSelectedSliderNum <= 19999) cakeIncomeOverride = "10,000";
-    else if (uiSelectedSliderNum <= 49999) cakeIncomeOverride = "20,000";
-    else if (uiSelectedSliderNum <= 99999) cakeIncomeOverride = "50,000";
+    if (uiSelectedSliderNum < 5000) cakeIncomeOverride = "5,000";
+    else if (uiSelectedSliderNum < 10000) cakeIncomeOverride = "7,500";
+    else if (uiSelectedSliderNum < 20000) cakeIncomeOverride = "10,000";
+    else if (uiSelectedSliderNum < 50000) cakeIncomeOverride = "20,000";
+    else if (uiSelectedSliderNum < 100000) cakeIncomeOverride = "50,000";
     else {
       cakeIncomeOverride = "100,000";
       uiSelectedSliderStr = "100000 & more";
@@ -271,11 +271,11 @@ async function processLead(brandConfig, page) {
     if (match) selectedDebtNum = parseInt(match[0]);
     
     // Map to specific required values
-    if (extractedSliderAmount.includes('Less than') && extractedSliderAmount.includes('5000')) selectedDebtNum = 5000;
-    else if (selectedDebtNum === 5000 && extractedSliderAmount.includes('9999')) selectedDebtNum = 7500;
-    else if (selectedDebtNum === 10000) selectedDebtNum = 10000;
-    else if (selectedDebtNum === 20000) selectedDebtNum = 20000;
-    else if (selectedDebtNum === 50000) selectedDebtNum = 50000;
+    if (selectedDebtNum < 5000) selectedDebtNum = 5000;
+    else if (selectedDebtNum < 10000) selectedDebtNum = 7500;
+    else if (selectedDebtNum < 20000) selectedDebtNum = 10000;
+    else if (selectedDebtNum < 50000) selectedDebtNum = 20000;
+    else selectedDebtNum = 50000;
     
     console.log(`💾 [Debt Debug] formPage.selectedSliderAmount = "${formPage.selectedSliderAmount}"`);
     console.log(`💾 [Debt Debug] selectedDebtNum (mapped value) = "${selectedDebtNum}"`);
@@ -463,6 +463,31 @@ async function processLead(brandConfig, page) {
 
     // Step 5: Write to Google Sheets
     const sheetSuccess = await appendRowByHeader(finalBrandConfig.sheet, rowData);
+
+// ---------------------------------------------------
+// 📄 Generate or update lead_links.html with URL summaries
+// ---------------------------------------------------
+if (sheetSuccess) {
+  const fs = require('fs');
+  const path = require('path');
+  const htmlFilePath = path.join(__dirname, '..', 'lead_links.html');
+  const pageOrigin = finalBrandConfig.url || '';
+  const trackingUrl = finalBrandConfig.trackingUrl || '';
+  const thankYou = thankYouUrl || '';
+  const linkLine = `<a href="${pageOrigin}" target="_blank" style="color:#0000EE; text-decoration:none;">View Page Origin</a> |
+<a href="${trackingUrl}" target="_blank" style="color:#0000EE; text-decoration:none;">Open Tracking</a> |
+<a href="${thankYou}" target="_blank" style="color:#0000EE; text-decoration:none;">View Thank You URL</a>`;
+  try {
+    if (fs.existsSync(htmlFilePath)) {
+      fs.appendFileSync(htmlFilePath, `\n${linkLine}`);
+    } else {
+      fs.writeFileSync(htmlFilePath, `${linkLine}`);
+    }
+    console.log('✅ Lead links HTML updated at', htmlFilePath);
+  } catch (e) {
+    console.warn('⚠️ Failed to write lead_links.html:', e.message);
+  }
+}
 
     if (!sheetSuccess) {
       throw new Error('Failed to write to Google Sheets');
