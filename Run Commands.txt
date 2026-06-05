@@ -127,14 +127,25 @@ To manually run any campaign, use the following template structure:
     🔹 Mobile:  node run-master.js --campaign fth-questionnaire --viewport mobile
 
 --------------------------------------------------------------------------------
-🔄 RECURRING BATCH SCHEDULER
+🔄 RECURRING BATCH SCHEDULER (HEADED MODE - VISIBLE BROWSER)
 --------------------------------------------------------------------------------
 
-To run ALL campaigns across all device modes sequentially in a fully automated batch:
+The scheduler now runs ALL campaigns with a VISIBLE browser window by default.
+Every 2 hours, browser windows will automatically open for each campaign.
 
+Start the scheduler (runs every 2 hours, HEADED/visible by default):
+  👉 node scheduler.js
+
+Run all campaigns once immediately (HEADED/visible):
   👉 node scheduler.js --once
 
-This runs the clean, Chromium-restricted scheduler cycle on the latest dynamic logic.
+Run in HEADLESS (invisible/background) mode only if explicitly needed:
+  👉 node scheduler.js --headless
+  👉 node scheduler.js --once --headless
+
+⏰ TIMING: The scheduler runs IMMEDIATELY on start, then repeats every 2 hours.
+   Example: If started at 10:00 AM → next runs at 12:00 PM, 2:00 PM, 4:00 PM...
+   The terminal will always show: "Next automation batch will start at: [time]"
 
 ================================================================================
 🎥 ACCESS RECORDED VIDEOS & PLOT TRACES

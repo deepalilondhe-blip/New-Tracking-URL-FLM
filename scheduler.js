@@ -51,12 +51,12 @@ function runScript(campaignId, viewport, browserEngine = 'chromium', label = 'St
     console.log(`================================================================`);
 
     // Pass target browser and label as environment variables
-    const runHeaded = process.argv.includes('--headed');
+    const runHeadless = process.argv.includes('--headless'); // Only go headless if explicitly asked
     const env = { 
       ...process.env, 
       PROCESS_BROWSER: browserEngine,
       PROCESS_LABEL: label,
-      HEADLESS: runHeaded ? 'false' : 'true' // 🛡️ Enforce silent headless execution unless --headed flag is present
+      HEADLESS: runHeadless ? 'true' : 'false' // ✅ Scheduler always runs HEADED (visible) by default
     };
     
     // Execute node run-master.js in visible mode
