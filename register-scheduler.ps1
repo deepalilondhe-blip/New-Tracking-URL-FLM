@@ -8,10 +8,10 @@ $WorkDir = "c:\Users\Deepali_Londhe\Desktop\New Tracking URL"
 # 1. Define the action to run the batch script
 $Action = New-ScheduledTaskAction -Execute "cmd.exe" -Argument "/c `"$BatchPath`"" -WorkingDirectory $WorkDir
 
-# 2. Define a recurring trigger that runs on Monday, Wednesday, and Friday
-# Starts at 11:00 AM and repeats every 2 hours for that day
-$Trigger = New-ScheduledTaskTrigger -Weekly -DaysOfWeek @('Monday', 'Wednesday', 'Friday') -At "11:00 AM"
-$Trigger.Repetition = (New-ScheduledTaskTrigger -Once -At "11:00 AM" -RepetitionInterval (New-TimeSpan -Hours 2) -RepetitionDuration (New-TimeSpan -Hours 24)).Repetition
+# 2. Define recurring triggers that run on Monday, Wednesday, and Friday at 11:00 AM and 5:00 PM
+$Trigger1 = New-ScheduledTaskTrigger -Weekly -DaysOfWeek @('Monday', 'Wednesday', 'Friday') -At "11:00 AM"
+$Trigger2 = New-ScheduledTaskTrigger -Weekly -DaysOfWeek @('Monday', 'Wednesday', 'Friday') -At "5:00 PM"
+$Triggers = @($Trigger1, $Trigger2)
 
 
 
@@ -31,9 +31,9 @@ if (Get-ScheduledTask -TaskName $TaskName -ErrorAction SilentlyContinue) {
 }
 
 # 6. Register the scheduled task under the current user context
-Write-Host "Registering scheduled task '$TaskName' to run Weekly (Mon, Wed, Fri), repeating every 2 hours..." -ForegroundColor Green
+Write-Host "Registering scheduled task '$TaskName' to run Weekly (Mon, Wed, Fri) at 11:00 AM and 5:00 PM..." -ForegroundColor Green
 
-Register-ScheduledTask -TaskName $TaskName -Action $Action -Trigger $Trigger -Settings $Settings
+Register-ScheduledTask -TaskName $TaskName -Action $Action -Trigger $Triggers -Settings $Settings
 
 $NextRun = (Get-ScheduledTask -TaskName $TaskName | Get-ScheduledTaskInfo).NextRunTime
 Write-Host "First execution scheduled for: $NextRun" -ForegroundColor Green

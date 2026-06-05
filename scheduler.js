@@ -390,11 +390,6 @@ async function sendProfessionalDailyReport(summary) {
   const pass = process.env.SMTP_PASS;
   const recipient = process.env.REPORT_EMAIL_RECIPIENT || 'deepali.londhe@magnetoitsolutions.com';
 
-  const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: { user, pass }
-  });
-
   const successRate = ((summary.succeeded / (summary.total || 1)) * 100).toFixed(1);
   const campaignLookup = new Map(campaigns.map(c => [c.id, c]));
   const uniqueCampaignIds = [...new Set((summary.runs || []).map(r => r.campaignId).filter(Boolean))];
@@ -552,6 +547,26 @@ async function sendProfessionalDailyReport(summary) {
     </body>
     </html>
   `;
+
+  // Save the report HTML locally first
+  const reportPath = path.join(__dirname, 'logs', 'flm-agent-email-today.html');
+  try {
+    fs.writeFileSync(reportPath, htmlBody, 'utf8');
+    console.log(`💾 Branded Daily Professional Summary saved locally to: ${reportPath}`);
+  } catch (err) {
+    console.error(`⚠️ Failed to save email HTML locally:`, err.message);
+  }
+
+  if (!user || !pass) {
+    console.log('\n⚠️ SMTP credentials (SMTP_USER, SMTP_PASS) not configured in .env.');
+    console.log(`⚠️ Skipping sending daily report email to ${recipient}. Preview available in logs/flm-agent-email-today.html.`);
+    return;
+  }
+
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: { user, pass }
+  });
 
   await transporter.sendMail({
     from: `"FLM Automation Suite" <${user}>`,
