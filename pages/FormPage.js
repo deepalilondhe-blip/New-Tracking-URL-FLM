@@ -205,13 +205,16 @@ class FormPage {
         const rangeInput = this.page.locator('input[type="range"]').first();
         if (await rangeInput.isVisible({ timeout: 1500 })) {
           console.log('🔘 Found range input slider. Setting value via DOM evaluation...');
-          await rangeInput.evaluate((node, amountVal) => {
-            const cleanVal = amountVal.replace(/[$,\s]/g, '');
-            node.value = cleanVal;
+          // Parse clean value and round to nearest 1000 for a clean display
+          const rangeCleanNum = Math.round(parseInt(sliderAmount.replace(/[$,\s]/g, '')) / 1000) * 1000 || 1000;
+          await rangeInput.evaluate((node, val) => {
+            node.value = val;
             node.dispatchEvent(new Event('change', { bubbles: true }));
             node.dispatchEvent(new Event('input', { bubbles: true }));
-          }, sliderAmount);
-          console.log(`✅ Set range input slider to ${sliderAmount}`);
+          }, String(rangeCleanNum));
+          // ✅ Store clean rounded value immediately — prevents live-extract from overwriting with raw pixel value (e.g. 10447)
+          this.selectedSliderAmount = rangeCleanNum.toLocaleString();
+          console.log(`✅ Set range input slider to ${this.selectedSliderAmount}`);
           selected = true;
           await this.page.waitForTimeout(300);
         }
