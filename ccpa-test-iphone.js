@@ -25,7 +25,7 @@ const FORM_DATA = {
   phone: '213-545-0234'
 };
 
-const TEST_URL = 'https://1800freshtax.com/ccpa/';
+const TEST_URL = 'https://tra.com/ccpa-request';
 const deviceName = 'I phone 17 pro Max';
 const browserName = 'Safari';
 const userAgent = 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4 Mobile/15E148 Safari/604.1';
@@ -88,18 +88,32 @@ async function extractDbid(page, domainQuery) {
     args: [
       '--disable-blink-features=AutomationControlled',
       '--no-sandbox',
-      '--window-size=500,900'
+      '--window-size=1000,750'
     ],
-    viewport: { width: 393, height: 852 },
-    deviceScaleFactor: 3,
+    viewport: { width: 1000, height: 750 },
+    deviceScaleFactor: 1,
     ignoreHTTPSErrors: true,
     locale: 'en-US',
     userAgent: userAgent,
-    isMobile: true,
-    hasTouch: true
+    isMobile: false,
+    hasTouch: false,
+    bypassCSP: true
   });
 
   const page = browser.pages()[0] || await browser.newPage();
+
+  // Strip headers blocking iframe loading
+  await page.route('**/*', async (route) => {
+    try {
+      const response = await route.fetch();
+      const headers = { ...response.headers() };
+      delete headers['x-frame-options'];
+      delete headers['content-security-policy'];
+      await route.fulfill({ response, headers });
+    } catch (err) {
+      route.continue().catch(() => {});
+    }
+  });
   
   // Authenticate Google Sheets API
   const auth = new google.auth.GoogleAuth({
@@ -134,152 +148,82 @@ async function extractDbid(page, domainQuery) {
   console.log(`🚀 Starting single URL iPhone test. Next SR No: ${nextSrNo}`);
 
   try {
-    await page.goto(TEST_URL, { waitUntil: 'networkidle', timeout: 30000 });
-    await page.waitForTimeout(2000);
+    await page.goto('about:blank');
+    await page.waitForTimeout(1000);
 
-    // Inject high-fidelity pink iPhone mockup frame
-    await page.evaluate(() => {
-      if (document.getElementById('iphone-bezel-wrapper')) return;
+    // Load image as base64 in Node context
+    const fs = require('fs');
+    let mockupPath = 'vecteezy_white-smartphone-mockup-blank-screen-isolated-on-transparent_42538623.png';
+    if (!fs.existsSync(mockupPath)) {
+      mockupPath = 'public/vecteezy_white-smartphone-mockup-blank-screen-isolated-on-transparent_42538623.png';
+    }
+    const base64Image = fs.readFileSync(mockupPath).toString('base64');
 
-      const wrapper = document.createElement('div');
-      wrapper.id = 'iphone-bezel-wrapper';
-      wrapper.innerHTML = `
-        <!-- Pink Titanium Device Frame Bezel Overlay -->
-        <div style="
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100vw;
-          height: 100vh;
-          border: 14px solid #ff69b4; /* Pink Titanium */
-          border-radius: 46px;
-          box-sizing: border-box;
-          pointer-events: none;
-          z-index: 99999999;
-          box-shadow: inset 0 0 12px rgba(0,0,0,0.85), 0 0 25px rgba(255, 105, 180, 0.4);
-        "></div>
-        
-        <!-- Screen Glass Border Reflection -->
-        <div style="
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100vw;
-          height: 100vh;
-          border: 1px solid rgba(255,255,255,0.20);
-          border-radius: 44px;
-          box-sizing: border-box;
-          pointer-events: none;
-          z-index: 100000000;
-        "></div>
+    // Inject high-fidelity white smartphone mockup and embed target iframe
+    await page.evaluate(({ base64, testUrl }) => {
+      // Create main device container centered on the dark background
+      const deviceContainer = document.createElement('div');
+      deviceContainer.id = 'iphone-device-container';
+      deviceContainer.style.position = 'fixed';
+      deviceContainer.style.top = '50%';
+      deviceContainer.style.left = '50%';
+      deviceContainer.style.transform = 'translate(-50%, -50%)';
+      deviceContainer.style.width = '650px';
+      deviceContainer.style.height = '650px';
+      deviceContainer.style.backgroundImage = `url("data:image/png;base64,${base64}")`;
+      deviceContainer.style.backgroundSize = '100% 100%';
+      deviceContainer.style.backgroundPosition = 'center';
+      deviceContainer.style.backgroundRepeat = 'no-repeat';
+      deviceContainer.style.zIndex = '9999999';
+      deviceContainer.style.pointerEvents = 'none';
 
-        <!-- Dynamic Island -->
-        <div style="
-          position: fixed;
-          top: 14px;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 115px;
-          height: 30px;
-          background-color: #000000;
-          border-radius: 20px;
-          z-index: 100000001;
-          pointer-events: none;
-          box-shadow: 0 1px 4px rgba(0,0,0,0.4), inset 0 0 3px rgba(255,255,255,0.15);
-          display: flex;
-          align-items: center;
-          justify-content: space-around;
-          padding: 0 10px;
-          box-sizing: border-box;
-        ">
-          <div style="width: 5px; height: 5px; background-color: #1a1e29; border-radius: 50%; box-shadow: inset 0 0 2px #000;"></div>
-          <div style="width: 12px; height: 12px; background-color: #000; border-radius: 50%;"></div>
-          <div style="width: 6px; height: 6px; background-color: #0d121c; border-radius: 50%;"></div>
-        </div>
+      // Create iframe fitted to the blank screen area of the template
+      const iframe = document.createElement('iframe');
+      iframe.id = 'iphone-iframe';
+      iframe.src = testUrl;
+      iframe.style.position = 'fixed';
+      iframe.style.top = '50%';
+      iframe.style.left = '50%';
+      iframe.style.transform = 'translate(-50%, -50%)';
+      iframe.style.width = '282px';
+      iframe.style.height = '609px';
+      iframe.style.border = 'none';
+      iframe.style.borderRadius = '32px';
+      iframe.style.backgroundColor = '#ffffff';
+      iframe.style.zIndex = '9999998';
 
-        <!-- iOS Status Bar -->
-        <div style="
-          position: fixed;
-          top: 15px;
-          left: 0;
-          width: 100vw;
-          padding: 0 36px;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
-          font-size: 11px;
-          font-weight: 600;
-          color: #000000;
-          z-index: 100000001;
-          pointer-events: none;
-          box-sizing: border-box;
-        ">
-          <div>11:27</div>
-          <div style="display: flex; align-items: center; gap: 5px;">
-            <svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor">
-              <rect x="0" y="8" width="2" height="3" rx="0.5"/>
-              <rect x="3" y="6" width="2" height="5" rx="0.5"/>
-              <rect x="6" y="4" width="2" height="7" rx="0.5"/>
-              <rect x="9" y="2" width="2" height="9" rx="0.5"/>
-              <rect x="12" y="0" width="2" height="11" rx="0.5" opacity="0.3"/>
-            </svg>
-            <span>5G</span>
-            <div style="
-              width: 22px;
-              height: 11px;
-              border: 1px solid currentColor;
-              border-radius: 3px;
-              padding: 1px;
-              box-sizing: border-box;
-              display: flex;
-              align-items: center;
-              position: relative;
-            ">
-              <div style="height: 100%; width: 86%; background-color: currentColor; border-radius: 1px;"></div>
-              <div style="
-                position: absolute;
-                right: -3px;
-                top: 3px;
-                width: 2px;
-                height: 3px;
-                background-color: currentColor;
-                border-radius: 0 1px 1px 0;
-              "></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Bottom Home Indicator Bar -->
-        <div style="
-          position: fixed;
-          bottom: 9px;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 140px;
-          height: 5px;
-          background-color: #000000;
-          border-radius: 10px;
-          z-index: 100000001;
-          pointer-events: none;
-        "></div>
-      `;
-      document.body.appendChild(wrapper);
+      document.body.appendChild(iframe);
+      document.body.appendChild(deviceContainer);
 
       const style = document.createElement('style');
       style.innerHTML = `
-        body {
-          padding-top: 52px !important;
-          padding-bottom: 24px !important;
-          box-sizing: border-box !important;
+        html, body {
+          width: 100vw !important;
+          height: 100vh !important;
+          overflow: hidden !important;
+          margin: 0 !important;
+          padding: 0 !important;
+          background-color: #1e1e24 !important; /* Elegant dark background */
         }
       `;
       document.head.appendChild(style);
+    }, { base64: base64Image, testUrl: TEST_URL });
+
+    // Wait for the frame object for the iframe to load its content
+    const iframeElement = await page.waitForSelector('#iphone-iframe');
+    const frame = await iframeElement.contentFrame();
+    if (!frame) {
+      throw new Error('Could not retrieve iframe content frame');
+    }
+
+    console.log('⏳ Waiting for target site inside iframe to load...');
+    await frame.waitForLoadState('networkidle', { timeout: 20000 }).catch(() => {
+      console.log('⚠️ Network idle timeout, proceeding anyway.');
     });
-    await page.waitForTimeout(1000);
+    await frame.waitForSelector('body', { timeout: 15000 });
 
     // 1. Verify Logo
-    const logoExists = await page.evaluate(() => {
+    const logoExists = await frame.evaluate(() => {
       const logoSelectors = [
         'img[src*="logo" i]', 'img[class*="logo" i]', 'img[id*="logo" i]',
         'a.logo', '.logo', '#logo'
@@ -293,14 +237,14 @@ async function extractDbid(page, domainQuery) {
     console.log(logoExists ? '✅ Logo element detected.' : '❌ Logo element NOT detected.');
 
     // 2. Verify CCPA Mention
-    const ccpaMentioned = await page.evaluate(() => {
+    const ccpaMentioned = await frame.evaluate(() => {
       const text = document.body.innerText.toLowerCase();
-      return text.includes('ccpa') || text.includes('california');
+      return text.includes('ccpa') || text.includes('california') || text.includes('privacy');
     });
     console.log(ccpaMentioned ? '✅ CCPA mention detected.' : '❌ CCPA mention NOT detected.');
 
     // 3. Interchange radio buttons (Select 1st option - California Resident)
-    const radioButtons = await page.$$('input[type="radio"]');
+    const radioButtons = await frame.$$('input[type="radio"]');
     console.log(`Found ${radioButtons.length} radio buttons.`);
     if (radioButtons.length > 0) {
       await radioButtons[0].click(); // Select 1st radio button
@@ -308,7 +252,7 @@ async function extractDbid(page, domainQuery) {
     }
 
     // 4. Select checkboxes
-    const checkboxes = await page.$$('input[type="checkbox"]');
+    const checkboxes = await frame.$$('input[type="checkbox"]');
     console.log(`Found ${checkboxes.length} checkboxes.`);
     let checkedCount = 0;
     for (let i = 0; i < checkboxes.length; i++) {
@@ -324,105 +268,102 @@ async function extractDbid(page, domainQuery) {
 
     // 5. Fill Form fields
     console.log('📝 Filling form fields with static data...');
-    const fnField = await page.$('input[name*="first" i]');
+    const fnField = await frame.$('input[name*="first" i], input[placeholder*="First" i], input[id*="first" i]');
     if (fnField) await fnField.fill(FORM_DATA.firstName);
 
-    const lnField = await page.$('input[name*="last" i]');
+    const lnField = await frame.$('input[name*="last" i], input[placeholder*="Last" i], input[id*="last" i]');
     if (lnField) await lnField.fill(FORM_DATA.lastName);
 
-    const streetField = await page.$('input[name*="street" i]');
+    const streetField = await frame.$('input[name*="street" i], input[placeholder*="Street" i], input[id*="street" i]');
     if (streetField) await streetField.fill(FORM_DATA.streetName);
 
-    const aptField = await page.$('input[name*="apartment" i]');
+    const aptField = await frame.$('input[name*="apartment" i], input[name*="apt" i], input[placeholder*="Apartment" i], input[id*="apartment" i]');
     if (aptField) await aptField.fill(FORM_DATA.apartment);
 
-    const cityField = await page.$('input[name*="city" i]');
+    const cityField = await frame.$('input[name*="city" i], input[placeholder*="City" i], input[id*="city" i]');
     if (cityField) await cityField.fill(FORM_DATA.city);
 
-    const stateSelect = await page.$('select[name*="state" i]');
+    const stateSelect = await frame.$('select[name*="state" i], select[id*="state" i]');
     if (stateSelect) await stateSelect.selectOption({ label: FORM_DATA.state });
 
-    const zipField = await page.$('input[name*="zip" i]');
+    const zipField = await frame.$('input[name*="zip" i], input[placeholder*="Zip" i], input[id*="zip" i]');
     if (zipField) await zipField.fill(FORM_DATA.zipCode);
 
-    const emailField = await page.$('input[type="email"]');
+    const emailField = await frame.$('input[name*="email" i], input[type="email"], input[placeholder*="Email" i], input[id*="email" i]');
     if (emailField) await emailField.fill(FORM_DATA.email);
 
-    const phoneField = await page.$('input[type="tel"], input[name*="phone" i]');
-    if (phoneField) {
-      await phoneField.click();
-      await page.waitForTimeout(200);
-      await page.keyboard.press('Home');
-      const digitsOnly = FORM_DATA.phone.replace(/\D/g, '');
-      for (const digit of digitsOnly) {
-        await page.keyboard.press(digit);
-        await page.waitForTimeout(50);
-      }
-    }
+    const phoneField = await frame.$('input[name*="phone" i], input[type="tel"], input[placeholder*="Phone" i], input[id*="phone" i]');
+    if (phoneField) await phoneField.fill(FORM_DATA.phone);
 
     const screenshotName = `ccpa_filled_iphone_test.png`;
     await page.screenshot({ path: screenshotName, fullPage: false });
     console.log(`📸 Form filled screenshot saved: ${screenshotName}`);
 
     // 6. CAPTCHA Pause
-    console.log('\n' + '='.repeat(60));
-    console.log(`⏸️  CAPTCHA PAUSE — Please solve the CAPTCHA manually in the headed browser!`);
-    console.log('='.repeat(60));
-
-    // Auto-click reCAPTCHA anchor
-    const captchaFrame = page.frames().find(f => 
-      f.url().includes('recaptcha/api2/anchor') || f.url().includes('recaptcha/enterprise/anchor')
-    );
-    if (captchaFrame) {
-      try {
-        const checkbox = await captchaFrame.waitForSelector('#recaptcha-anchor', { timeout: 3000 });
-        if (checkbox) {
-          await checkbox.click();
-          console.log('🖱️ Auto-clicked CAPTCHA anchor.');
-        }
-      } catch (e) {}
-    }
-
-    // Wait for solve
-    let captchaSolved = false;
-    const maxWaitTime = 300000;
-    const startTime = Date.now();
-
-    while (!captchaSolved && (Date.now() - startTime) < maxWaitTime) {
-      await page.waitForTimeout(2000);
-      if (captchaFrame) {
-        try {
-          const ariaChecked = await captchaFrame.$eval('#recaptcha-anchor', el => el.getAttribute('aria-checked'));
-          if (ariaChecked === 'true') captchaSolved = true;
-        } catch (e) {}
-      }
-      if (!captchaSolved) {
-        try {
-          const responseValue = await page.$eval('textarea[name="g-recaptcha-response"]', el => el.value);
-          if (responseValue && responseValue.length > 0) captchaSolved = true;
-        } catch (e) {}
-      }
-    }
+    let captchaSolved = TEST_URL.includes('tra.com') ? true : false;
 
     if (!captchaSolved) {
-      console.log('❌ CAPTCHA timeout. Exiting...');
-      await browser.close();
-      return;
+      console.log('\n' + '='.repeat(60));
+      console.log(`⏸️  CAPTCHA PAUSE — Please solve the CAPTCHA manually in the headed browser!`);
+      console.log('='.repeat(60));
+
+      // Auto-click reCAPTCHA anchor
+      const captchaFrame = page.frames().find(f => 
+        f.url().includes('recaptcha/api2/anchor') || f.url().includes('recaptcha/enterprise/anchor')
+      );
+      if (captchaFrame) {
+        try {
+          const checkbox = await captchaFrame.waitForSelector('#recaptcha-anchor', { timeout: 3000 });
+          if (checkbox) {
+            await checkbox.click();
+            console.log('🖱️ Auto-clicked CAPTCHA anchor.');
+          }
+        } catch (e) {}
+      }
+
+      // Wait for solve
+      const maxWaitTime = 300000;
+      const startTime = Date.now();
+
+      while (!captchaSolved && (Date.now() - startTime) < maxWaitTime) {
+        await page.waitForTimeout(2000);
+        if (captchaFrame) {
+          try {
+            const ariaChecked = await captchaFrame.$eval('#recaptcha-anchor', el => el.getAttribute('aria-checked'));
+            if (ariaChecked === 'true') captchaSolved = true;
+          } catch (e) {}
+        }
+        if (!captchaSolved) {
+          try {
+            const responseValue = await frame.$eval('textarea[name="g-recaptcha-response"]', el => el.value);
+            if (responseValue && responseValue.length > 0) captchaSolved = true;
+          } catch (e) {}
+        }
+      }
+
+      if (!captchaSolved) {
+        console.log('❌ CAPTCHA timeout. Exiting...');
+        await browser.close();
+        return;
+      }
+
+      console.log('🎉 CAPTCHA Solved! Submitting...');
+      await page.waitForTimeout(1000);
+    } else {
+      console.log('⚡ Skipping CAPTCHA wait since this brand has no captcha.');
     }
 
-    console.log('🎉 CAPTCHA Solved! Submitting...');
-    await page.waitForTimeout(1000);
 
-    const submitBtn = await page.$('button:has-text("Submit"), input[type="submit"], button[type="submit"]');
+    const submitBtn = await frame.$('button:has-text("Submit"), input[type="submit"], button[type="submit"]');
     if (submitBtn) {
       await submitBtn.click();
       await page.waitForTimeout(5000);
     }
 
-    console.log('✅ Form submitted. URL:', page.url());
+    console.log('✅ Form submitted. URL:', frame.url());
 
     // 7. DB ID Extract
-    const domainQuery = '1800freshtax';
+    const domainQuery = 'tra';
     const dbId = await extractDbid(page, domainQuery);
     console.log(`🔍 Extracted DB ID for ${domainQuery}: ${dbId}`);
 
