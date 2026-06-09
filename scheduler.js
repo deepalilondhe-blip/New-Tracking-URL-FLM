@@ -255,7 +255,8 @@ async function runBatch() {
   const dayOfWeek = dayMap[weekdayName];
   const allowedDays = [1, 3, 5]; // Monday, Wednesday, Friday
 
-  if (!allowedDays.includes(dayOfWeek)) {
+  const runOnce = process.argv.includes('--once');
+  if (!runOnce && !allowedDays.includes(dayOfWeek)) {
     console.log(`\n[${formatTimestamp()}] 🗓️ Skipping today's run. Scheduler is configured to run ONLY on Monday, Wednesday, and Friday.`);
     return;
   }

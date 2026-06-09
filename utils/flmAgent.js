@@ -421,21 +421,30 @@ Answer the user's prompt using the real-time data above. Be direct, clear, and c
         }
     }
 
-    validateIncomeMapping(sliderVal, cakeIncome, apiVal) {
+    validateIncomeMapping(sliderVal, cakeIncome, apiVal, brand = '') {
         const raw = parseInt(sliderVal.toString().replace(/[$,\s]/g, '')) || 0;
-        let expectedCake;
+        let expectedCake = "N/A";
+        if (raw >= 5000) {
+            expectedCake = raw.toString();
+        } else {
+            expectedCake = "5000";
+        }
 
-        if (raw <= 7500) expectedCake = "5,000";
-        else if (raw <= 9999) expectedCake = "7,500";
-        else if (raw <= 19999) expectedCake = "10,000";
-        else if (raw <= 49999) expectedCake = "20,000";
-        else if (raw <= 99999) expectedCake = "50,000";
-        else expectedCake = "100,000";
+        let maxLimit = 200000;
+        const campaigns = this.loadCampaigns();
+        const campaignConfig = campaigns.find(c => c.id === brand);
+        if (campaignConfig && campaignConfig.sliderAmount) {
+            let str = campaignConfig.sliderAmount.toString();
+            if (str.includes('-')) str = str.split('-')[1];
+            let parsed = parseInt(str.replace(/[^0-9]/g, ''));
+            if (!isNaN(parsed) && parsed > 0) maxLimit = parsed;
+        }
 
-        const apiMatch = (apiVal && apiVal.toString().replace(/[$,\s]/g, '') === expectedCake.replace(',', ''));
-        const sheetMatch = (cakeIncome && cakeIncome.toString().replace(/[$,\s]/g, '') === expectedCake.replace(',', ''));
+        const apiMatch = (apiVal && apiVal.toString().replace(/[$,\s]/g, '') === expectedCake.replace(/,/g, ''));
+        const sheetMatch = (cakeIncome && cakeIncome.toString().replace(/[$,\s]/g, '') === expectedCake.replace(/,/g, ''));
+        const withinLimit = raw <= maxLimit;
 
-        const status = (apiMatch && sheetMatch) ? "PASS" : "FAIL";
+        const status = (apiMatch && sheetMatch && withinLimit) ? "PASS" : "FAIL";
 
         return {
             status,
@@ -445,7 +454,7 @@ Answer the user's prompt using the real-time data above. Be direct, clear, and c
             uiValue: sliderVal,
             details: status === "PASS" ?
                 `Mapping verified: UI ${sliderVal} -> Cake ${expectedCake}` :
-                `MISMATCH DETECTED: UI ${sliderVal} Expected ${expectedCake} but API got ${apiVal}`
+                (!withinLimit ? `LIMIT EXCEEDED: UI ${sliderVal} exceeds URL maximum of ${maxLimit}` : `MISMATCH DETECTED: UI ${sliderVal} Expected ${expectedCake} but API got ${apiVal}`)
         };
     }
 

@@ -1,0 +1,16 @@
+{
+  "executionTime": "2026-06-08T10:17:09.992Z",
+  "urlNameProcessed": "TRA",
+  "dateRangeProcessed": {
+    "startDate": "06/08/2026",
+    "endDate": "06/08/2026",
+    "displayStart": "2026-06-08",
+    "displayEnd": "2026-06-08"
+  },
+  "summary": {
+    "totalLeadsProcessed": 0,
+    "passedLeads": 0,
+    "failedLeads": 0
+  },
+  "results": []
+}

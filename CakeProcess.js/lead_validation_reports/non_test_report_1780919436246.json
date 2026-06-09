@@ -1,0 +1,52 @@
+{
+  "executionTime": "2026-06-08T11:50:36.247Z",
+  "urlNameProcessed": "TRA",
+  "dateRangeProcessed": {
+    "startDate": "06/05/2026",
+    "endDate": "06/08/2026",
+    "displayStart": "2026-06-05",
+    "displayEnd": "2026-06-08"
+  },
+  "summary": {
+    "totalLeadsProcessed": 5,
+    "passedLeads": 0,
+    "failedLeads": 5
+  },
+  "results": [
+    {
+      "overallStatus": "Failed",
+      "reasons": [
+        "Failed to open lead card iframe"
+      ],
+      "urlName": "TRA"
+    },
+    {
+      "overallStatus": "Failed",
+      "reasons": [
+        "Failed to open lead card iframe"
+      ],
+      "urlName": "TRA"
+    },
+    {
+      "overallStatus": "Failed",
+      "reasons": [
+        "Failed to open lead card iframe"
+      ],
+      "urlName": "TRA"
+    },
+    {
+      "overallStatus": "Failed",
+      "reasons": [
+        "Failed to open lead card iframe"
+      ],
+      "urlName": "TRA"
+    },
+    {
+      "overallStatus": "Failed",
+      "reasons": [
+        "Failed to open lead card iframe"
+      ],
+      "urlName": "TRA"
+    }
+  ]
+}

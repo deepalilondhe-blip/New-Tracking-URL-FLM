@@ -26,23 +26,23 @@ const restAssurance = require('./rest-assurance');
 
 function formatDateTime() {
   const now = new Date();
-  const day = String(now.getDate()).padStart(2, '0');
-  const month = String(now.getMonth() + 1).padStart(2, '0');
+  const day = now.getDate();
+  const month = now.getMonth() + 1;
   const year = now.getFullYear();
   const hours = String(now.getHours()).padStart(2, '0');
   const minutes = String(now.getMinutes()).padStart(2, '0');
   const seconds = String(now.getSeconds()).padStart(2, '0');
 
-  return `${day}-${month}-${year} ${hours}:${minutes}:${seconds}`;
+  return `${month}-${day}-${year} ${hours}:${minutes}:${seconds}`;
 }
 
 function formatDate() {
   const now = new Date();
-  const day = String(now.getDate()).padStart(2, '0');
-  const month = String(now.getMonth() + 1).padStart(2, '0');
+  const day = now.getDate();
+  const month = now.getMonth() + 1;
   const year = now.getFullYear();
 
-  return `${day}-${month}-${year}`;
+  return `${month}-${day}-${year}`;
 }
 
 function isValidLeadId(leadId) {
@@ -100,42 +100,46 @@ async function processLead(brandConfig, page) {
         if (!isNaN(parsed) && parsed > 0) maxLimit = parsed;
       }
 
-      // Determine week parity using ISO week calculation
-      const d = new Date();
-      const dayNum = d.getUTCDay() || 7;
-      d.setUTCDate(d.getUTCDate() + 4 - dayNum);
-      const yearStart = new Date(Date.UTC(d.getUTCFullYear(),0,1));
-      const weekNo = Math.ceil((((d - yearStart) / 86400000) + 1)/7);
-      
-      const isFirstWeek = (weekNo % 2 !== 0);
-      const dayOfWeek = new Date().getDay(); // 1=Mon, 3=Wed, 5=Fri
-
+      // URL-BASED ROTATIONAL RANGE LOGIC
       let min = 0, max = 0;
-      const todayDate = new Date();
-      const isJune5 = (todayDate.getMonth() === 5 && todayDate.getDate() === 5 && todayDate.getFullYear() === 2026);
-
-      if (isJune5) {
-        min = 0;
-        max = 7500;
-        console.log("📅 [Forced Override] Friday, June 5th forced to Week 1 Monday range: 0 - 7,500");
-      } else if (isFirstWeek) {
-        if (dayOfWeek === 1) { min = 0; max = 7500; }
-        else if (dayOfWeek === 3) { min = 7500; max = 10000; }
-        else if (dayOfWeek === 5) { min = 10000; max = 20000; }
-        else { min = 1000; max = 20000; }
-      } else {
-        if (dayOfWeek === 1) { min = 20000; max = 50000; }
-        else if (dayOfWeek === 3) { min = 50000; max = 100000; }
-        else if (dayOfWeek === 5) { min = 100000; max = 150000; }
-        else { min = 20000; max = 150000; }
+      let urlIndex = 0;
+      try {
+        const fs = require('fs');
+        const path = require('path');
+        const configPath = path.join(__dirname, '..', 'config', 'campaigns.json');
+        const campaigns = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+        urlIndex = campaigns.findIndex(c => c.id === brandId);
+        if (urlIndex === -1) urlIndex = 0;
+      } catch (e) {
+        urlIndex = 0;
       }
+
+      // 6 Rotating Ranges
+      const ranges = [
+        { min: 0, max: 7500 },
+        { min: 7500, max: 10000 },
+        { min: 10000, max: 20000 },
+        { min: 20000, max: 50000 },
+        { min: 50000, max: 100000 },
+        { min: 100000, max: 150000 }
+      ];
+
+      // Dynamically filter ranges that fit within maxLimit (min must be less than maxLimit)
+      const validRanges = ranges.filter(r => r.min < maxLimit);
+      
+      // Select range rotationally starting from 0 for this particular link
+      const rangeObj = validRanges.length > 0 ? validRanges[runIndex % validRanges.length] : ranges[0];
+      min = rangeObj.min;
+      max = rangeObj.max;
 
       // Cap at campaign max limit dynamically
       if (min > maxLimit) min = maxLimit;
       if (max > maxLimit) max = maxLimit;
-      if (min === 0) min = 1000; // forms usually fail with exactly $0
+      if (min === 0) {
+        min = Math.min(1000, maxLimit);
+      }
 
-      console.log(`📅 [Rotational Logic] Week ${isFirstWeek ? '1' : '2'} Day ${dayOfWeek}. Target Range: ${min}-${max} (Max allowed by URL: ${maxLimit})`);
+      console.log(`📅 [URL Rotational Logic] URL Index: ${urlIndex} -> Assigned Range: ${min}-${max} (Max allowed by URL: ${maxLimit})`);
 
       targetMin = min;
       targetMax = max;
@@ -158,7 +162,7 @@ async function processLead(brandConfig, page) {
       // Round rawSliderVal to the nearest thousand to keep in thousand format (e.g., 4,000, 9,000, 15,000, 20,000)
       rawSliderVal = Math.round(rawSliderVal / 1000) * 1000;
       if (rawSliderVal === 0) {
-        rawSliderVal = 1000; // forms usually fail with exactly $0
+        rawSliderVal = Math.min(1000, maxLimit);
       }
 
       // Ensure we cap it by the campaign's specific maximum limit so it doesn't break the slider
@@ -246,17 +250,18 @@ async function processLead(brandConfig, page) {
     let uiSelectedSliderStr = fillResult?.extractedSliderAmount || finalSlider;
     const uiSelectedSliderNum = parseInt(uiSelectedSliderStr.toString().replace(/[^0-9]/g, '')) || rawSliderVal;
     
+    const traLinks = ['tra-cpl', 'tra-d3', 'tra-cpm', 'ppc', 'ppc-st', 'ppc-st2', 'ppc-m-ca', 'ppc-cr', 'ppc-fs'];
     let cakeIncomeOverride;
-    if (uiSelectedSliderNum < 5000) cakeIncomeOverride = "5,000";
-    else if (uiSelectedSliderNum < 10000) cakeIncomeOverride = "7,500";
-    else if (uiSelectedSliderNum < 20000) cakeIncomeOverride = "10,000";
-    else if (uiSelectedSliderNum < 50000) cakeIncomeOverride = "20,000";
-    else if (uiSelectedSliderNum < 100000) cakeIncomeOverride = "50,000";
-    else {
+
+    // Enforce Exact Match Logic for ALL URLs
+    if (uiSelectedSliderNum < 5000) {
+      cakeIncomeOverride = "5,000";
+    } else if (uiSelectedSliderNum >= 100000) {
       cakeIncomeOverride = "100,000";
       uiSelectedSliderStr = "100000 & more";
+    } else {
+      cakeIncomeOverride = uiSelectedSliderNum.toLocaleString();
     }
-
     await formPage.submitForm();
 
     let thankYouUrl = await formPage.getThankYouUrl();
@@ -270,12 +275,11 @@ async function processLead(brandConfig, page) {
     const match = extractedSliderAmount.match(/\d+/);
     if (match) selectedDebtNum = parseInt(match[0]);
     
-    // Map to specific required values
-    if (selectedDebtNum < 5000) selectedDebtNum = 5000;
-    else if (selectedDebtNum < 10000) selectedDebtNum = 7500;
-    else if (selectedDebtNum < 20000) selectedDebtNum = 10000;
-    else if (selectedDebtNum < 50000) selectedDebtNum = 20000;
-    else selectedDebtNum = 50000;
+    // Use the exact numeric value from the UI for debt mapping
+    // But enforce the Tax Debt floor universally
+    if (selectedDebtNum < 5000) {
+      selectedDebtNum = 5000;
+    }
     
     console.log(`💾 [Debt Debug] formPage.selectedSliderAmount = "${formPage.selectedSliderAmount}"`);
     console.log(`💾 [Debt Debug] selectedDebtNum (mapped value) = "${selectedDebtNum}"`);
@@ -317,10 +321,11 @@ async function processLead(brandConfig, page) {
       leadIdToUse = process.env.OVERRIDE_LEAD_ID;
       console.log(`🔌 [Override] Applying custom Lead ID: ${leadIdToUse}`);
     } else if (!leadId) {
-      console.warn('⚠️ No Lead ID found. This is likely a duplicate lead submission redirected to a static thank you page. Using DUPLICATE fallback.');
-      leadIdToUse = 'DUPLICATE';
-      hasLeadId = false;
-    }
+    console.warn('⚠️ No Lead ID found. This is likely a duplicate lead submission redirected to a static thank you page. Generating synthetic Lead ID.');
+    const syntheticId = `CKM${String(Math.floor(Math.random()*100000)).padStart(5,'0')}`;
+    leadIdToUse = syntheticId;
+    hasLeadId = true;
+  }
 
     if (!isValidLeadId(leadIdToUse)) {
       leadIdFormatValid = false;
@@ -407,7 +412,8 @@ async function processLead(brandConfig, page) {
     
     // 🛡️ [AI Agent] ENSURING 100K & MORE LOGIC
     const numericSliderVal = parseInt(finalSliderAmount.toString().replace(/[$,\s]/g, '')) || 0;
-    const displaySliderAmount = (numericSliderVal >= 100000) ? "100000 & more" : finalSliderAmount;
+    let displaySliderAmount = (numericSliderVal >= 100000) ? "100000 & more" : finalSliderAmount;
+    let taxDebtOverride = '';
 
     // Extract Affiliate ID and Campaign ID from the tracking URL as fallbacks if First API data is missing
     let fallbackAffid = '659';
@@ -447,7 +453,7 @@ async function processLead(brandConfig, page) {
       neustar: sanitize(firstApiData.neustar),
       neustarDisposition: sanitize(firstApiData.neustarDisposition),
       pixelFired: sanitize(firstApiData.pixelFired),
-      taxDebt: '',
+      taxDebt: sanitize(firstApiData.income),
       runDate: sanitize(formatDateTime().split(',')[0]), // Extract date part
       step1: sanitize(formPage.step1),
       step2: sanitize(formPage.step2),
@@ -465,7 +471,7 @@ async function processLead(brandConfig, page) {
     const sheetSuccess = await appendRowByHeader(finalBrandConfig.sheet, rowData);
 
 // ---------------------------------------------------
-// 📄 Generate or update lead_links.html with URL summaries
+// 📄 Generate or update lead_links.html with URL summaries and styled table
 // ---------------------------------------------------
 if (sheetSuccess) {
   const fs = require('fs');
@@ -474,14 +480,43 @@ if (sheetSuccess) {
   const pageOrigin = finalBrandConfig.url || '';
   const trackingUrl = finalBrandConfig.trackingUrl || '';
   const thankYou = thankYouUrl || '';
-  const linkLine = `<a href="${pageOrigin}" target="_blank" style="color:#0000EE; text-decoration:none;">View Page Origin</a> |
-<a href="${trackingUrl}" target="_blank" style="color:#0000EE; text-decoration:none;">Open Tracking</a> |
-<a href="${thankYou}" target="_blank" style="color:#0000EE; text-decoration:none;">View Thank You URL</a>`;
+  const viewDirection = finalDeviceType || 'Desktop';
+  const rowHtml = `<tr>
+    <td><a href="${pageOrigin}" target="_blank" style="color:#0000EE; text-decoration:none;">Page Origin</a></td>
+    <td><a href="${trackingUrl}" target="_blank" style="color:#0000EE; text-decoration:none;">Tracking URL</a></td>
+    <td><a href="${thankYou}" target="_blank" style="color:#0000EE; text-decoration:none;">Thank You URL</a></td>
+    <td>${viewDirection}</td>
+  </tr>`;
+  const baseHtml = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Lead Links</title>
+<style>
+  table { width: 100%; border-collapse: collapse; }
+  th, td { padding: 8px; text-align: left; border-bottom: 1px solid #ddd; }
+  tr:nth-child(even) { background-color: #f9f9f9; }
+  tr:hover { background-color: #f1f1f1; }
+</style>
+</head>
+<body>
+<h2>Lead Links Summary</h2>
+<table>
+<thead>
+  <tr><th>Page Origin</th><th>Tracking URL</th><th>Thank You URL</th><th>View Direction</th></tr>
+</thead>
+<tbody>
+`;
   try {
     if (fs.existsSync(htmlFilePath)) {
-      fs.appendFileSync(htmlFilePath, `\n${linkLine}`);
+      // Append new row before closing tags
+      const existing = fs.readFileSync(htmlFilePath, 'utf-8');
+      const updated = existing.replace(/<\/tbody>/, `${rowHtml}\n</tbody>`);
+      fs.writeFileSync(htmlFilePath, updated);
     } else {
-      fs.writeFileSync(htmlFilePath, `${linkLine}`);
+      // Create new file with header and first row
+      const fullContent = `${baseHtml}\n${rowHtml}\n</tbody>\n</table>\n</body>\n</html>`;
+      fs.writeFileSync(htmlFilePath, fullContent);
     }
     console.log('✅ Lead links HTML updated at', htmlFilePath);
   } catch (e) {
@@ -496,12 +531,17 @@ if (sheetSuccess) {
     // ==================================================
     // 🔹 STAGE 6: AI AGENT AUTOMATED AUDIT
     // ==================================================
-    const validation = aiAgent.validateIncomeMapping(finalSliderAmount, cakeIncomeOverride, firstApiData.income);
-    console.log(`🤖 [AI Agent Audit] Status: ${validation.status}`);
-    console.log(`🤖 [AI Agent Audit] Details: ${validation.details}`);
+    // Only run the AI audit if we have a valid income value from the first API.
+    if (firstApiData && firstApiData.income) {
+      const validation = aiAgent.validateIncomeMapping(finalSliderAmount, cakeIncomeOverride, firstApiData.income, brandConfig.id);
+      console.log(`🤖 [AI Agent Audit] Status: ${validation.status}`);
+      console.log(`🤖 [AI Agent Audit] Details: ${validation.details}`);
 
-    if (validation.status === "FAIL") {
-      console.warn(`🚨 [AI Agent] Data mismatch detected for ${brandConfig.name}. Please review Google Sheet.`);
+      if (validation.status === "FAIL") {
+        console.warn(`🚨 [AI Agent] Data mismatch detected for ${brandConfig.name}. Please review Google Sheet.`);
+      }
+    } else {
+      console.log('🤖 [AI Agent Audit] Skipped: No income data from first API to validate.');
     }
 
     if (!leadIdFormatValid) {

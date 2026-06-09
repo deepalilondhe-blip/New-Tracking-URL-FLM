@@ -629,5 +629,16 @@
     "role": "agent",
     "message": "⚠️ **Conversational AI Mode is Locked!**\n\nTo enable advanced conversational capabilities and allow me to answer arbitrary prompts, you **MUST** provide a `GEMINI_API_KEY` in your `.env` file.\n\nUntil then, I can only respond to basic commands like **\"status\"**, **\"help\"**, or **\"run [campaign]\"**.",
     "timestamp": "3:37:17 pm"
+  },
+  {
+    "role": "user",
+    "message": "run FSIPPC2",
+    "hasImage": false,
+    "timestamp": "6:56:18 pm"
+  },
+  {
+    "role": "agent",
+    "message": "🚀 **Launching PPC CR!**\n\n- **Mode:** Headless (Silent)\n- **Viewport:** DESKTOP\n- **Target Sheet:** PPC-CR\n- **URL:** https://flmtra.com/?a=659&oc=848&c=2210&s1=\n\nI'm executing the run now. You'll see results appear in the Google Sheet and in the execution logs shortly!",
+    "timestamp": "6:56:18 pm"
   }
 ]

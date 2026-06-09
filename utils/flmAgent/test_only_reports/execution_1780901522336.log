@@ -1,0 +1,89 @@
+[2026-06-08T06:52:02.336Z] [INFO] ======================================================================
+[2026-06-08T06:52:02.339Z] [INFO] 🚀 PROCESS START: FLM_TestOnly_IP_Validation (Dynamic Date & 200 Rows Mode)
+[2026-06-08T06:52:02.341Z] [INFO] ======================================================================
+[2026-06-08T06:52:02.341Z] [INFO] Processed Dynamic Date Range: Start = 06/05/2026, End = 06/08/2026
+[2026-06-08T06:52:02.342Z] [INFO] Launching Playwright Browser in HEADED mode (Chrome channel)...
+[2026-06-08T06:52:03.128Z] [INFO] Navigating to Cake CRM...
+[2026-06-08T06:52:17.384Z] [INFO] ✓ Already logged in via session state.
+[2026-06-08T06:52:17.385Z] [INFO] Navigating to Reports > Conversions...
+[2026-06-08T06:52:22.560Z] [INFO] Waiting for Conversion Report page to load...
+[2026-06-08T06:52:23.632Z] [INFO] ✓ Navigated to Conversions Report Page.
+[2026-06-08T06:52:23.633Z] [INFO] Applying Tests Only filter dropdown option...
+[2026-06-08T06:52:23.641Z] [INFO] ✓ Tests dropdown updated via ExtJS API.
+[2026-06-08T06:52:26.653Z] [INFO] Setting Rows Per Page to 200...
+[2026-06-08T06:52:26.658Z] [INFO] ✓ Set Rows Per Page = 200.
+[2026-06-08T06:52:31.661Z] [INFO] Applying date range inputs...
+[2026-06-08T06:52:33.350Z] [INFO] Clicking the "Filter" button...
+[2026-06-08T06:52:33.359Z] [INFO] ✓ Filter button clicked.
+[2026-06-08T06:52:38.363Z] [INFO] ✓ Date range set successfully: 06/05/2026 to 06/08/2026
+[2026-06-08T06:52:38.541Z] [INFO] ✓ Report grid is visible.
+[2026-06-08T06:52:38.543Z] [INFO] Waiting for grid data to load...
+[2026-06-08T06:52:38.614Z] [INFO] ✓ Grid data loaded successfully.
+[2026-06-08T06:52:38.615Z] [INFO] Aggregating unique IP addresses page-by-page...
+[2026-06-08T06:52:38.616Z] [INFO] Processing page 1...
+[2026-06-08T06:52:40.668Z] [INFO] Found 201 rows on page 1.
+[2026-06-08T07:01:56.609Z] [INFO] Reached last page of report.
+[2026-06-08T07:01:56.609Z] [INFO] Total unique IP addresses found: 42
+[2026-06-08T07:01:56.610Z] [INFO]  - IP: 174.249.251.214 : 1 occurrences
+[2026-06-08T07:01:56.610Z] [INFO]  - IP: 27.54.170.27 : 69 occurrences
+[2026-06-08T07:01:56.610Z] [INFO]  - IP: 12.75.115.101 : 1 occurrences
+[2026-06-08T07:01:56.611Z] [INFO]  - IP: 174.235.164.39 : 1 occurrences
+[2026-06-08T07:01:56.611Z] [INFO]  - IP: 172.56.165.236 : 1 occurrences
+[2026-06-08T07:01:56.611Z] [INFO]  - IP: 172.59.71.162 : 1 occurrences
+[2026-06-08T07:01:56.612Z] [INFO]  - IP: 74.8.216.140 : 1 occurrences
+[2026-06-08T07:01:56.613Z] [INFO]  - IP: 172.56.192.251 : 1 occurrences
+[2026-06-08T07:01:56.613Z] [INFO]  - IP: 147.135.70.175 : 2 occurrences
+[2026-06-08T07:01:56.613Z] [INFO]  - IP: 198.163.189.39 : 1 occurrences
+[2026-06-08T07:01:56.614Z] [INFO]  - IP: 38.101.202.120 : 1 occurrences
+[2026-06-08T07:01:56.614Z] [INFO]  - IP: 209.165.171.104 : 1 occurrences
+[2026-06-08T07:01:56.614Z] [INFO]  - IP: 98.61.230.174 : 1 occurrences
+[2026-06-08T07:01:56.615Z] [INFO]  - IP: 173.20.45.110 : 1 occurrences
+[2026-06-08T07:01:56.615Z] [INFO]  - IP: 47.205.147.190 : 1 occurrences
+[2026-06-08T07:01:56.615Z] [INFO]  - IP: 20.118.245.162 : 86 occurrences
+[2026-06-08T07:01:56.616Z] [INFO]  - IP: 76.39.242.89 : 1 occurrences
+[2026-06-08T07:01:56.616Z] [INFO]  - IP: 172.56.160.12 : 1 occurrences
+[2026-06-08T07:01:56.616Z] [INFO]  - IP: 68.168.226.222 : 1 occurrences
+[2026-06-08T07:01:56.617Z] [INFO]  - IP: 207.244.71.79 : 2 occurrences
+[2026-06-08T07:01:56.617Z] [INFO]  - IP: 172.56.92.100 : 1 occurrences
+[2026-06-08T07:01:56.617Z] [INFO]  - IP: 107.122.97.79 : 1 occurrences
+[2026-06-08T07:01:56.617Z] [INFO]  - IP: 174.199.162.162 : 1 occurrences
+[2026-06-08T07:01:56.618Z] [INFO]  - IP: 13.57.127.120 : 1 occurrences
+[2026-06-08T07:01:56.618Z] [INFO]  - IP: 45.20.192.179 : 1 occurrences
+[2026-06-08T07:01:56.618Z] [INFO]  - IP: 174.247.80.28 : 1 occurrences
+[2026-06-08T07:01:56.618Z] [INFO]  - IP: 12.75.180.21 : 1 occurrences
+[2026-06-08T07:01:56.619Z] [INFO]  - IP: 73.54.138.179 : 1 occurrences
+[2026-06-08T07:01:56.619Z] [INFO]  - IP: 173.48.165.8 : 1 occurrences
+[2026-06-08T07:01:56.619Z] [INFO]  - IP: 76.99.208.226 : 1 occurrences
+[2026-06-08T07:01:56.620Z] [INFO]  - IP: 98.192.100.199 : 1 occurrences
+[2026-06-08T07:01:56.620Z] [INFO]  - IP: 172.58.0.247 : 1 occurrences
+[2026-06-08T07:01:56.620Z] [INFO]  - IP: 173.89.161.48 : 1 occurrences
+[2026-06-08T07:01:56.621Z] [INFO]  - IP: 107.116.157.41 : 1 occurrences
+[2026-06-08T07:01:56.621Z] [INFO]  - IP: 122.167.187.68 : 4 occurrences
+[2026-06-08T07:01:56.621Z] [INFO]  - IP: 172.56.103.136 : 1 occurrences
+[2026-06-08T07:01:56.622Z] [INFO]  - IP: 172.58.253.118 : 1 occurrences
+[2026-06-08T07:01:56.622Z] [INFO]  - IP: 172.58.167.112 : 1 occurrences
+[2026-06-08T07:01:56.622Z] [INFO]  - IP: 174.238.50.58 : 1 occurrences
+[2026-06-08T07:01:56.623Z] [INFO]  - IP: 70.224.198.190 : 1 occurrences
+[2026-06-08T07:01:56.623Z] [INFO]  - IP: 166.205.151.25 : 1 occurrences
+[2026-06-08T07:01:56.623Z] [INFO]  - IP: 98.79.139.4 : 1 occurrences
+[2026-06-08T07:01:56.624Z] [INFO] Selected 3 unique IP(s) for validation.
+[2026-06-08T07:01:56.624Z] [INFO] 🔎 Validating Lead ID: 0E91171A for IP: 174.249.251.214
+[2026-06-08T07:01:56.870Z] [INFO] Clicking lead link for Lead ID: 0E91171A
+[2026-06-08T07:02:02.427Z] [INFO] Extracted: First="DONTARIO", Last="LUCAS", Email="dontariolucas54@gmail.com", IsTest=false
+[2026-06-08T07:02:02.428Z] [INFO] Returning to Conversions report grid...
+[2026-06-08T07:02:05.443Z] [INFO] 🔎 Validating Lead ID: 976F7BAF for IP: 27.54.170.27
+[2026-06-08T07:02:05.810Z] [INFO] Clicking lead link for Lead ID: 976F7BAF
+[2026-06-08T07:02:11.397Z] [INFO] Extracted: First="DONTARIO", Last="LUCAS", Email="dontariolucas54@gmail.com", IsTest=false
+[2026-06-08T07:02:11.398Z] [INFO] Returning to Conversions report grid...
+[2026-06-08T07:02:14.421Z] [INFO] 🔎 Validating Lead ID: 659B60EE for IP: 12.75.115.101
+[2026-06-08T07:02:16.705Z] [INFO] Clicking lead link for Lead ID: 659B60EE
+[2026-06-08T07:02:22.289Z] [INFO] Extracted: First="DONTARIO", Last="LUCAS", Email="dontariolucas54@gmail.com", IsTest=false
+[2026-06-08T07:02:22.290Z] [INFO] Returning to Conversions report grid...
+[2026-06-08T07:02:25.305Z] [INFO] Appending 3 row(s) to local CSV Dashboard at C:\Users\Deepali_Londhe\Desktop\New Tracking URL\FML_Project_Dashboard\Test_Only_IP_Validation_Dashboard.csv...
+[2026-06-08T07:02:25.306Z] [INFO] Appended to CSV: 06/08/2026,0E91171A,174.249.251.214 : 1,False,Incorrect
+[2026-06-08T07:02:25.308Z] [INFO] Appended to CSV: 06/08/2026,976F7BAF,27.54.170.27 : 69,False,Incorrect
+[2026-06-08T07:02:25.308Z] [INFO] Appended to CSV: 06/08/2026,659B60EE,12.75.115.101 : 1,False,Incorrect
+[2026-06-08T07:02:25.309Z] [INFO] Connecting to Google Sheet ID: 1fO1YFFIM-i_DRPLqdSqC4oECeAHEETPJmN6RWlTrLzU, Tab: Test Only IP Data...
+[2026-06-08T07:02:26.849Z] [INFO] ✓ Google Sheet updated successfully.
+[2026-06-08T07:02:27.150Z] [INFO] Browser closed. Process complete.
+[2026-06-08T07:02:27.151Z] [INFO] ======================================================================

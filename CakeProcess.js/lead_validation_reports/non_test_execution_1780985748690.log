@@ -1,0 +1,163 @@
+[2026-06-09T06:15:48.705Z] [INFO] Process Started - Date Range: 2026-06-08 to 2026-06-09
+[2026-06-09T06:15:48.706Z] [INFO] Using URL Name from CLI: "TRA"
+[2026-06-09T06:15:48.707Z] [INFO] Target URL Name for this run: "TRA"
+[2026-06-09T06:15:48.707Z] [INFO] Launching browser (headed: true)
+[2026-06-09T06:15:49.399Z] [INFO] Navigating to Cake login page...
+[2026-06-09T06:15:56.201Z] [INFO] Already logged in or redirect completed
+[2026-06-09T06:15:56.377Z] [INFO] Navigating to Cake Reports > Conversions
+[2026-06-09T06:16:01.715Z] [INFO] Frame search attempt 1/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_say5qmvd7", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T06:16:02.731Z] [INFO] Frame search attempt 2/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_say5qmvd7", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T06:16:03.741Z] [INFO] Frame search attempt 3/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_say5qmvd7", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T06:16:04.751Z] [INFO] Frame search attempt 4/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_say5qmvd7", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T06:16:05.760Z] [INFO] Frame search attempt 5/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_say5qmvd7", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T06:16:06.766Z] [INFO] Frame search attempt 6/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_say5qmvd7", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T06:16:07.775Z] [INFO] Frame search attempt 7/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_say5qmvd7", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T06:16:08.779Z] [INFO] Frame search attempt 8/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_say5qmvd7", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T06:16:09.793Z] [INFO] Frame search attempt 9/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_say5qmvd7", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T06:16:10.807Z] [INFO] Frame search attempt 10/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_say5qmvd7", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T06:16:11.816Z] [INFO] Frame search attempt 11/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_say5qmvd7", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T06:16:12.831Z] [INFO] Frame search attempt 12/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_say5qmvd7", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T06:16:13.845Z] [INFO] Frame search attempt 13/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_say5qmvd7", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T06:16:14.849Z] [INFO] Frame search attempt 14/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_say5qmvd7", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T06:16:15.852Z] [INFO] Frame search attempt 15/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_say5qmvd7", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T06:16:16.867Z] [INFO] Using frame for report controls: main page
+[2026-06-09T06:16:16.868Z] [INFO] Setting date range: 06/08/2026 to 06/09/2026
+[2026-06-09T06:16:17.882Z] [INFO] Applying "Non-Tests" filter...
+[2026-06-09T06:16:18.913Z] [INFO] ✓ Successfully applied Non-Tests filter via UI dropdown click.
+[2026-06-09T06:16:18.913Z] [INFO] Clicking search/filter button...
+[2026-06-09T06:16:18.923Z] [INFO] ✓ Filter button clicked successfully.
+[2026-06-09T06:16:24.925Z] [INFO] Frame search attempt 1/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_say5qmvd7", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T06:16:25.932Z] [INFO] Frame search attempt 2/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_say5qmvd7", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T06:16:26.940Z] [INFO] Frame search attempt 3/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_say5qmvd7", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T06:16:27.944Z] [INFO] Frame search attempt 4/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_say5qmvd7", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T06:16:28.947Z] [INFO] Frame search attempt 5/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_say5qmvd7", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T06:16:29.959Z] [INFO] Frame search attempt 6/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_say5qmvd7", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T06:16:30.968Z] [INFO] Frame search attempt 7/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_say5qmvd7", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T06:16:31.975Z] [INFO] Frame search attempt 8/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_say5qmvd7", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T06:16:32.988Z] [INFO] Frame search attempt 9/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_say5qmvd7", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T06:16:34.007Z] [INFO] Frame search attempt 10/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_say5qmvd7", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T06:16:35.021Z] [INFO] Frame search attempt 11/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_say5qmvd7", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T06:16:36.032Z] [INFO] Frame search attempt 12/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_say5qmvd7", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T06:16:37.042Z] [INFO] Frame search attempt 13/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_say5qmvd7", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T06:16:38.055Z] [INFO] Frame search attempt 14/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_say5qmvd7", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T06:16:39.068Z] [INFO] Frame search attempt 15/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_say5qmvd7", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T06:16:40.074Z] [INFO] Using frame for row scanning: main page
+[2026-06-09T06:16:42.109Z] [INFO] Rows count detected: 200
+[2026-06-09T06:16:42.111Z] [INFO] Conversion grid loaded. Scanning rows...
+[2026-06-09T06:16:42.135Z] [INFO] Found 200 rows in total. Filtering by URL Name: "TRA"
+[2026-06-09T06:16:42.151Z] [INFO] Found 140 matching leads for "TRA"
+[2026-06-09T06:16:42.153Z] [INFO] Limiting check to 5 leads dynamically.
+[2026-06-09T06:16:42.154Z] [INFO] Processing matching lead #1 (Row Index: 3)
+[2026-06-09T06:16:42.266Z] [INFO] Extracted Lead ID from link onclick: "2380603"
+[2026-06-09T06:16:42.267Z] [INFO] Triggering details link click natively...
+[2026-06-09T06:16:42.331Z] [INFO] Waiting for lead card elements to load...
+[2026-06-09T06:16:44.540Z] [INFO] Lead card elements detected on main page context.
+[2026-06-09T06:16:44.542Z] [INFO] ✓ Lead card context resolved: main page.
+[2026-06-09T06:16:46.867Z] [INFO] Validating Lead ID: 
+[2026-06-09T06:16:46.869Z] [INFO] Selecting tab: Personal Info
+[2026-06-09T06:16:48.534Z] [INFO] Personal Info - First Name: "WALTER", Last Name: "IRVIN", Email: "godchosenson82@gmail.com"
+[2026-06-09T06:16:48.631Z] [INFO] Selecting tab: Sale Info
+[2026-06-09T06:16:50.281Z] [INFO] Sale Info - Pixel Fired: ""
+[2026-06-09T06:16:50.283Z] [INFO] Selecting tab: Vertical Specific
+[2026-06-09T06:16:52.084Z] [INFO] Vertical Specific - Tax Debt: "1", Neustar: "", Neustar Disposition: ""
+[2026-06-09T06:16:52.172Z] [INFO] Selecting tab: Pixel Log
+[2026-06-09T06:16:53.831Z] [INFO] Pixel Log - Disposition: "1"
+[2026-06-09T06:16:53.832Z] [INFO] Email Oversight status: ""
+[2026-06-09T06:16:53.833Z] [INFO] Using fallback Lead ID from link onclick: "2380603"
+[2026-06-09T06:16:53.834Z] [INFO] Closing lead card window...
+[2026-06-09T06:16:55.963Z] [INFO] Processing matching lead #2 (Row Index: 4)
+[2026-06-09T06:16:56.039Z] [INFO] Extracted Lead ID from link onclick: "2380604"
+[2026-06-09T06:16:56.040Z] [INFO] Triggering details link click natively...
+[2026-06-09T06:16:56.070Z] [INFO] Waiting for lead card elements to load...
+[2026-06-09T06:16:58.249Z] [INFO] Lead card elements detected on main page context.
+[2026-06-09T06:16:58.250Z] [INFO] ✓ Lead card context resolved: main page.
+[2026-06-09T06:17:00.484Z] [INFO] Validating Lead ID: 
+[2026-06-09T06:17:00.485Z] [INFO] Selecting tab: Personal Info
+[2026-06-09T06:17:02.106Z] [INFO] Personal Info - First Name: "ALBERT", Last Name: "HAMILTON", Email: "alhamilton134@gmail.com"
+[2026-06-09T06:17:02.214Z] [INFO] Selecting tab: Sale Info
+[2026-06-09T06:17:03.870Z] [INFO] Sale Info - Pixel Fired: ""
+[2026-06-09T06:17:03.871Z] [INFO] Selecting tab: Vertical Specific
+[2026-06-09T06:17:05.704Z] [INFO] Vertical Specific - Tax Debt: "1", Neustar: "", Neustar Disposition: ""
+[2026-06-09T06:17:05.810Z] [INFO] Selecting tab: Pixel Log
+[2026-06-09T06:17:07.440Z] [INFO] Pixel Log - Disposition: "1"
+[2026-06-09T06:17:07.442Z] [INFO] Email Oversight status: ""
+[2026-06-09T06:17:07.443Z] [INFO] Using fallback Lead ID from link onclick: "2380604"
+[2026-06-09T06:17:07.444Z] [INFO] Closing lead card window...
+[2026-06-09T06:17:09.561Z] [INFO] Processing matching lead #3 (Row Index: 5)
+[2026-06-09T06:17:09.659Z] [INFO] Extracted Lead ID from link onclick: "2380607"
+[2026-06-09T06:17:09.661Z] [INFO] Triggering details link click natively...
+[2026-06-09T06:17:09.693Z] [INFO] Waiting for lead card elements to load...
+[2026-06-09T06:17:12.917Z] [INFO] Lead card elements detected on main page context.
+[2026-06-09T06:17:12.919Z] [INFO] ✓ Lead card context resolved: main page.
+[2026-06-09T06:17:15.149Z] [INFO] Validating Lead ID: 
+[2026-06-09T06:17:15.151Z] [INFO] Selecting tab: Personal Info
+[2026-06-09T06:17:16.763Z] [INFO] Personal Info - First Name: "JAVIER", Last Name: "MARQUEZ JIMENEZ", Email: "ab.mj0205208@gmail.com"
+[2026-06-09T06:17:16.861Z] [INFO] Selecting tab: Sale Info
+[2026-06-09T06:17:18.516Z] [INFO] Sale Info - Pixel Fired: ""
+[2026-06-09T06:17:18.518Z] [INFO] Selecting tab: Vertical Specific
+[2026-06-09T06:17:20.338Z] [INFO] Vertical Specific - Tax Debt: "1", Neustar: "", Neustar Disposition: ""
+[2026-06-09T06:17:20.419Z] [INFO] Selecting tab: Pixel Log
+[2026-06-09T06:17:22.050Z] [INFO] Pixel Log - Disposition: "1"
+[2026-06-09T06:17:22.052Z] [INFO] Email Oversight status: ""
+[2026-06-09T06:17:22.053Z] [INFO] Using fallback Lead ID from link onclick: "2380607"
+[2026-06-09T06:17:22.054Z] [INFO] Closing lead card window...
+[2026-06-09T06:17:24.181Z] [INFO] Processing matching lead #4 (Row Index: 6)
+[2026-06-09T06:17:24.270Z] [INFO] Extracted Lead ID from link onclick: "2380610"
+[2026-06-09T06:17:24.271Z] [INFO] Triggering details link click natively...
+[2026-06-09T06:17:24.300Z] [INFO] Waiting for lead card elements to load...
+[2026-06-09T06:17:25.412Z] [INFO] Lead card elements detected on main page context.
+[2026-06-09T06:17:25.414Z] [INFO] ✓ Lead card context resolved: main page.
+[2026-06-09T06:17:27.645Z] [INFO] Validating Lead ID: 
+[2026-06-09T06:17:27.646Z] [INFO] Selecting tab: Personal Info
+[2026-06-09T06:17:29.241Z] [INFO] Personal Info - First Name: "JENNY", Last Name: "NGUYEN", Email: "jeanniebear8@gmail.com"
+[2026-06-09T06:17:29.346Z] [INFO] Selecting tab: Sale Info
+[2026-06-09T06:17:31.031Z] [INFO] Sale Info - Pixel Fired: ""
+[2026-06-09T06:17:31.033Z] [INFO] Selecting tab: Vertical Specific
+[2026-06-09T06:17:32.853Z] [INFO] Vertical Specific - Tax Debt: "1", Neustar: "", Neustar Disposition: ""
+[2026-06-09T06:17:32.945Z] [INFO] Selecting tab: Pixel Log
+[2026-06-09T06:17:34.581Z] [INFO] Pixel Log - Disposition: "1"
+[2026-06-09T06:17:34.583Z] [INFO] Email Oversight status: ""
+[2026-06-09T06:17:34.584Z] [INFO] Using fallback Lead ID from link onclick: "2380610"
+[2026-06-09T06:17:34.585Z] [INFO] Closing lead card window...
+[2026-06-09T06:17:36.694Z] [INFO] Processing matching lead #5 (Row Index: 7)
+[2026-06-09T06:17:36.772Z] [INFO] Extracted Lead ID from link onclick: "2380614"
+[2026-06-09T06:17:36.773Z] [INFO] Triggering details link click natively...
+[2026-06-09T06:17:36.805Z] [INFO] Waiting for lead card elements to load...
+[2026-06-09T06:17:37.932Z] [INFO] Lead card elements detected on main page context.
+[2026-06-09T06:17:37.934Z] [INFO] ✓ Lead card context resolved: main page.
+[2026-06-09T06:17:40.158Z] [INFO] Validating Lead ID: 
+[2026-06-09T06:17:40.159Z] [INFO] Selecting tab: Personal Info
+[2026-06-09T06:17:41.794Z] [INFO] Personal Info - First Name: "CHARLES", Last Name: "NELSON", Email: "charlesnelsonlance@gmail.com"
+[2026-06-09T06:17:41.894Z] [INFO] Selecting tab: Sale Info
+[2026-06-09T06:17:43.557Z] [INFO] Sale Info - Pixel Fired: ""
+[2026-06-09T06:17:43.558Z] [INFO] Selecting tab: Vertical Specific
+[2026-06-09T06:17:45.380Z] [INFO] Vertical Specific - Tax Debt: "1", Neustar: "", Neustar Disposition: ""
+[2026-06-09T06:17:45.482Z] [INFO] Selecting tab: Pixel Log
+[2026-06-09T06:17:47.167Z] [INFO] Pixel Log - Disposition: "1"
+[2026-06-09T06:17:47.169Z] [INFO] Email Oversight status: ""
+[2026-06-09T06:17:47.171Z] [INFO] Using fallback Lead ID from link onclick: "2380614"
+[2026-06-09T06:17:47.172Z] [INFO] Closing lead card window...
+[2026-06-09T06:17:49.303Z] [INFO] --- CDB Verification for 5 extracted Lead IDs ---
+[2026-06-09T06:17:49.304Z] [INFO] Opening browser Tab 2 for CDB verification...
+[2026-06-09T06:17:54.367Z] [INFO] CDB Login required on Tab 2. Submitting credentials...
+[2026-06-09T06:17:59.102Z] [INFO] Navigating to Listing menu item: "TRA Listing"
+[2026-06-09T06:18:02.012Z] [INFO] Searching CDB for Lead ID: "2380603"
+[2026-06-09T06:18:05.096Z] [ERROR] ✗ Lead ID "2380603" NOT FOUND in CDB Listing
+[2026-06-09T06:18:05.098Z] [INFO] Updating CSV Dashboard...
+[2026-06-09T06:18:05.285Z] [INFO] ✓ CSV Dashboard updated successfully at: C:\Users\Deepali_Londhe\Desktop\New Tracking URL\FML_Project_Dashboard\June_2026\Non_Test_Validation_Dashboard.csv
+[2026-06-09T06:18:10.552Z] [INFO] Searching CDB for Lead ID: "2380604"
+[2026-06-09T06:18:13.613Z] [ERROR] ✗ Lead ID "2380604" NOT FOUND in CDB Listing
+[2026-06-09T06:18:13.614Z] [INFO] Updating CSV Dashboard...
+[2026-06-09T06:18:13.617Z] [INFO] ✓ CSV Dashboard updated successfully at: C:\Users\Deepali_Londhe\Desktop\New Tracking URL\FML_Project_Dashboard\June_2026\Non_Test_Validation_Dashboard.csv
+[2026-06-09T06:18:14.618Z] [INFO] Searching CDB for Lead ID: "2380607"
+[2026-06-09T06:18:17.681Z] [ERROR] ✗ Lead ID "2380607" NOT FOUND in CDB Listing
+[2026-06-09T06:18:17.682Z] [INFO] Updating CSV Dashboard...
+[2026-06-09T06:18:17.697Z] [INFO] ✓ CSV Dashboard updated successfully at: C:\Users\Deepali_Londhe\Desktop\New Tracking URL\FML_Project_Dashboard\June_2026\Non_Test_Validation_Dashboard.csv
+[2026-06-09T06:18:18.662Z] [INFO] Searching CDB for Lead ID: "2380610"
+[2026-06-09T06:18:21.727Z] [ERROR] ✗ Lead ID "2380610" NOT FOUND in CDB Listing
+[2026-06-09T06:18:21.728Z] [INFO] Updating CSV Dashboard...
+[2026-06-09T06:18:21.731Z] [INFO] ✓ CSV Dashboard updated successfully at: C:\Users\Deepali_Londhe\Desktop\New Tracking URL\FML_Project_Dashboard\June_2026\Non_Test_Validation_Dashboard.csv
+[2026-06-09T06:18:22.676Z] [INFO] Searching CDB for Lead ID: "2380614"
+[2026-06-09T06:18:25.746Z] [ERROR] ✗ Lead ID "2380614" NOT FOUND in CDB Listing
+[2026-06-09T06:18:25.747Z] [INFO] Updating CSV Dashboard...
+[2026-06-09T06:18:25.749Z] [INFO] ✓ CSV Dashboard updated successfully at: C:\Users\Deepali_Londhe\Desktop\New Tracking URL\FML_Project_Dashboard\June_2026\Non_Test_Validation_Dashboard.csv

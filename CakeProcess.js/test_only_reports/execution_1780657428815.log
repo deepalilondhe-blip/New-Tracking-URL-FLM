@@ -1,0 +1,9 @@
+[2026-06-05T11:03:48.815Z] [INFO] Cake Test Only Validation Process Started
+[2026-06-05T11:03:48.816Z] [INFO] Launching browser
+[2026-06-05T11:03:49.631Z] [INFO] Navigating to Cake CRM
+[2026-06-05T11:03:55.916Z] [INFO] Checking if login is required
+[2026-06-05T11:03:55.979Z] [INFO] Login form detected - attempting to log in
+[2026-06-05T11:03:58.156Z] [INFO] Entered username: urvish.patel@bytestechnolab.com
+[2026-06-05T11:03:59.066Z] [INFO] Entered password
+[2026-06-05T11:03:59.068Z] [INFO] Clicking Log In button...
+[2026-06-05T11:03:59.119Z] [INFO] Waiting for login to complete...

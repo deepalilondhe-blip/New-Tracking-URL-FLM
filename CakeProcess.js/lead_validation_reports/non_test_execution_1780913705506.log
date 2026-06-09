@@ -1,0 +1,10 @@
+[2026-06-08T10:15:05.507Z] [INFO] Process Started - Date Range: 2026-06-08 to 2026-06-08
+[2026-06-08T10:15:05.508Z] [INFO] Selected URL Name via rotation: "Top Money" (index: 1)
+[2026-06-08T10:15:05.509Z] [INFO] Target URL Name for this run: "Top Money"
+[2026-06-08T10:15:05.510Z] [INFO] Launching browser (headed: true)
+[2026-06-08T10:15:06.240Z] [INFO] Navigating to Cake login page...
+[2026-06-08T10:15:21.567Z] [INFO] Already logged in or redirect completed
+[2026-06-08T10:15:21.706Z] [INFO] Navigating to Cake Reports > Conversions
+[2026-06-08T10:15:36.740Z] [INFO] Setting date range: 06/08/2026 to 06/08/2026
+[2026-06-08T10:15:38.940Z] [INFO] Applying "Non-Tests" filter...
+[2026-06-08T10:15:39.006Z] [INFO] Found 0 matching leads for "Top Money"

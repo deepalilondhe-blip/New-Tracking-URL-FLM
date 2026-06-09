@@ -2,27 +2,27 @@
   "cookies": [
     {
       "name": "_ga",
-      "value": "GA1.1.130477510.1779788339",
+      "value": "GA1.1.915215180.1780895539",
       "domain": ".forwardleapmarketing.com",
       "path": "/",
-      "expires": 1814875543.351731,
+      "expires": 1815544560.214258,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"
     },
     {
       "name": ".auth8",
-      "value": "678A50036B44870B9FBF8F79EBD7D1CF6B420F81B8A0744976FC7A579A55763EB5C683E02D5988A9D53E6EA804A915C6CC57B086BAE2B4FD5DE614DB4690517A802B3987E740DDFF126C1B6D6FB2A41B39BA92ADB28D340EB92184279BB4074531F72F90C0A16B7628C698C23C321AA57CCD699C27EE5BA7604F4C43577DDD39A1BA5EDCEE84837614F69DD1E82102E13163E065D5F10BFA620B019B7034AFC10C0464A006817BFA90E658E5EBC4914D0D24A9760D90B44745FBD5E8CBD606472E0A518078EAA71F51AEB98EB94BB24BBA273121",
+      "value": "587D3E5D2DE6260C5A52C553BCFCB1DB3CFFC977ADC917AD17947A56B8B5B088D35411665EC6C60F4675BE5A6D5310B7735D78A7A4FBBFF7B7D8DB4D5905DD25F89622E380E948812F9E4299CB174372747790186E92FEE73B0DD8DBAD023F99A6BC46BF53F19E444FBCEC44532C1BBD92CDCD7F1324381D4790F21F51ECACAFB519880B4CC24F8310D3CB5FFB169EE8A726C591574A55C4CE5C25B771E4D488E238B838A178FE137C10AC98F4E2C8630105E089C968A3DA3296CBB1834C95BADE9DFE471B5A0606AB71BED092994A905F2BC5C9",
       "domain": "app.forwardleapmarketing.com",
       "path": "/",
-      "expires": 1780319137.941802,
+      "expires": 1780988156.987848,
       "httpOnly": true,
       "secure": false,
       "sameSite": "Lax"
     },
     {
       "name": ".llt",
-      "value": "1780315536465",
+      "value": "1780984554685",
       "domain": "app.forwardleapmarketing.com",
       "path": "/",
       "expires": -1,
@@ -32,27 +32,27 @@
     },
     {
       "name": "_ga_7EX8T5JL3J",
-      "value": "GS2.1.s1780315543$o10$g1$t1780315560$j43$l0$h0",
+      "value": "GS2.1.s1780984560$o5$g0$t1780984562$j58$l0$h0",
       "domain": ".forwardleapmarketing.com",
       "path": "/",
-      "expires": 1814875560.800531,
+      "expires": 1815544563.001174,
       "httpOnly": false,
       "secure": false,
       "sameSite": "Lax"
     },
     {
       "name": "__cf_bm",
-      "value": "Va_OCw8QdfoKoKkC3Gwdp5YcD8heoAy_lWMUSRN6FPQ-1780315559.6253707-1.0.1.1-8AYde9.hTKghj1tH8wm2fbywwoZhoFQS4frjnFfSxnMbzHY7dUwHejprtEdI0swWLSykpw9gOeexnnHI7Gz4o.FTNqrUlql7AsvPEECuMDvaW4EPBvVRC020D9ixCCAY",
+      "value": "G3eLFfDMYC7fO1hJrooQqijF1z2M8V5Ue62EFaPmqK4-1780984561.9219363-1.0.1.1-PYqQZRI2BMGJGB8ku41GXdi8UVfune05W1Uiko1uio.SQKenLp8LqmMRwva02lszE5Nyu4Y9mDXm4JBWLlO7qWbjsies6t9Cf_fqc0ckwPJ2A3LHLskMtiv2gejvwzjs",
       "domain": ".freshchat.com",
       "path": "/",
-      "expires": 1780317360.84254,
+      "expires": 1780986363.061994,
       "httpOnly": true,
       "secure": true,
       "sameSite": "None"
     },
     {
       "name": ".lat",
-      "value": "1780315561779",
+      "value": "1780984563929",
       "domain": "app.forwardleapmarketing.com",
       "path": "/",
       "expires": -1,
@@ -75,11 +75,11 @@
         },
         {
           "name": "86d666e9-5336-4ef2-967b-fa71e1ddc9e5_399-1364",
-          "value": "{\"isUserCreateSent\":false,\"lastActivitySent\":\"2026-06-01T08:21:42.920Z\",\"subDomainName\":349287594119899}"
+          "value": "{\"isUserCreateSent\":false,\"lastActivitySent\":\"2026-06-09T05:56:05.132Z\",\"subDomainName\":349287594119899}"
         },
         {
           "name": "tmstmp",
-          "value": "1780302088274"
+          "value": "1780984552496"
         }
       ]
     },
@@ -88,7 +88,7 @@
       "localStorage": [
         {
           "name": "beacon_sid",
-          "value": "5ae539c1e9f3fe8f277f9ad1f51f3bb4"
+          "value": "f95427ef6dedaf5ffb17d5f149a6125f"
         },
         {
           "name": "boostersViewsMap",
@@ -105,11 +105,11 @@
         },
         {
           "name": "86d666e9-5336-4ef2-967b-fa71e1ddc9e5_399-1364",
-          "value": "{\"isUserCreateSent\":false,\"lastActivitySent\":\"2026-06-01T08:21:42.920Z\",\"subDomainName\":349287594119899}"
+          "value": "{\"isUserCreateSent\":false,\"lastActivitySent\":\"2026-06-09T05:56:05.132Z\",\"subDomainName\":349287594119899}"
         },
         {
           "name": "hop-86d666e9-5336-4ef2-967b-fa71e1ddc9e5-399-1364",
-          "value": "{\"hop\":\"1780315561968\"}"
+          "value": "{\"hop\":\"1780984564212\"}"
         }
       ]
     }

@@ -49,7 +49,7 @@ console.log('📱 Optimized viewport, custom styled headers, and timing values')
             name: "PPC-CR Mobile",
             url: "https://flmtra.com/?a=659&oc=848&c=2210&s1=",
             sheet: "PPC-CR",
-            sliderAmount: "20,000",
+            sliderAmount: "24,000",
             state: "Nebraska",
             firstName: "ckmtestpixel",
             lastName: "ckmtestpixel",

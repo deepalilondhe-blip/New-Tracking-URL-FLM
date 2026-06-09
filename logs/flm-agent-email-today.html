@@ -1,0 +1,425 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: #1e293b; background: #f1f5f9; margin: 0; padding: 20px; }
+        .card { max-width: 650px; margin: auto; background: #ffffff; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); overflow: hidden; border: 1px solid #e2e8f0; }
+        .header { background: linear-gradient(135deg, #0891b2 0%, #7e22ce 100%); color: #ffffff; padding: 40px 30px; text-align: center; position: relative; }
+        .header h1 { margin: 0; font-size: 26px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; }
+        .header p { margin: 10px 0 0; opacity: 0.9; font-size: 14px; font-weight: 600; }
+        .agent-badge { background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); display: inline-block; padding: 5px 15px; border-radius: 20px; font-size: 11px; font-weight: 700; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.3); }
+        .stats-row { display: flex; padding: 30px; background: #ffffff; border-bottom: 1px solid #f1f5f9; text-align: center; }
+        .stat-item { flex: 1; }
+        .stat-val { font-size: 32px; font-weight: 800; background: linear-gradient(135deg, #0891b2, #7e22ce); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .stat-lbl { font-size: 11px; color: #64748b; text-transform: uppercase; font-weight: 700; margin-top: 5px; }
+        .content { padding: 40px; }
+        .ai-message { background: #f8fafc; border-left: 4px solid #0891b2; padding: 20px; border-radius: 0 12px 12px 0; margin-bottom: 30px; }
+        .ai-message-title { font-size: 13px; font-weight: 800; color: #0891b2; margin-bottom: 8px; text-transform: uppercase; }
+        .performance-box { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; margin-bottom: 30px; }
+        .progress-bar { height: 12px; background: #f1f5f9; border-radius: 6px; margin-top: 12px; overflow: hidden; border: 1px solid #e2e8f0; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, #0891b2, #22c55e); border-radius: 6px; }
+        .ai-advisory { background: #fffbeb; border: 1px solid #fef3c7; border-radius: 16px; padding: 25px; margin-bottom: 30px; }
+        .ai-title { color: #92400e; font-size: 14px; font-weight: 800; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+        .footer { padding: 30px; text-align: center; background: #0f172a; font-size: 11px; color: #94a3b8; }
+        .brand-link { background: #0891b2; color: #ffffff; text-decoration: none; padding: 12px 25px; border-radius: 10px; font-weight: 700; display: inline-block; margin-top: 20px; transition: all 0.3s; }
+      </style>
+    </head>
+    <body>
+      <div class="card">
+        <div class="header">
+          <div class="agent-badge">🛡️ FLM AGENT SECURITY: ACTIVE</div>
+          <h1>Intelligence Briefing</h1>
+          <p>Monday, June 8, 2026</p>
+        </div>
+        
+        <div class="stats-row" style="display: table; width: 100%; table-layout: fixed;">
+          <div class="stat-item" style="display: table-cell;">
+            <div class="stat-val">31</div>
+            <div class="stat-lbl">URLs Executed</div>
+          </div>
+          <div class="stat-item" style="display: table-cell; border-left: 1px solid #f1f5f9; border-right: 1px solid #f1f5f9;">
+            <div class="stat-val" style="color: #22c55e;">100.0%</div>
+            <div class="stat-lbl">Success Rate</div>
+          </div>
+          <div class="stat-item" style="display: table-cell;">
+            <div class="stat-val" style="color: #0891b2;">0.0m</div>
+            <div class="stat-lbl">Total Time</div>
+          </div>
+        </div>
+
+        <div class="content">
+          <div class="ai-message">
+            <div class="ai-message-title">🧠 Agent Insight: Why were 0 campaigns "Blocked"?</div>
+            <p style="margin: 0; font-size: 14px; color: #475569;">
+              The <b>FLM Security Shield</b> flagged these campaigns for data safety. The most common reasons for a "Blocked" or "Failed" status today were:
+              <ul style="margin: 10px 0 0; padding-left: 20px;">
+                <li><b>Data Mismatch:</b> The UI value did not match the API backend.</li>
+                <li><b>Network Timeout:</b> The campaign URL took too long to load (60s+).</li>
+                <li><b>Lead Not Found:</b> The Lead ID was not yet synced to the tracking server.</li>
+              </ul>
+            </p>
+          </div>
+
+          <div class="performance-box">
+            <div style="display: flex; justify-content: space-between; font-size: 14px; font-weight: 700; color: #1e293b;">
+              <span>Uptime Protection</span>
+              <span>100.0%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 100.0%;"></div>
+            </div>
+          </div>
+
+          <div style="text-align: center; padding: 25px; background: #f0fdf4; border: 1px solid #dcfce7; border-radius: 16px; color: #166534; font-weight: 700; font-size: 15px;">✅ PERFECTION: All funnels are 100% operational.</div>
+
+          <div style="font-size: 14px; font-weight: 800; color: #0f172a; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; margin: 40px 0 20px;">Execution Matrix</div>
+          <table style="width: 100%; border-collapse: collapse; font-size: 12px;">
+            <thead>
+              <tr style="text-align: left; color: #64748b; border-bottom: 1px solid #f1f5f9;">
+                <th style="padding: 10px 0;">CAMPAIGN</th>
+                <th style="padding: 10px 0; text-align: center;">PROTECTION</th>
+                <th style="padding: 10px 0; text-align: right;">TIME</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+                <tr style="border-bottom: 1px solid #f8fafc;">
+                  <td style="padding: 12px 0; font-weight: 700; color: #1e293b;">FTD-X <span style="font-weight: 400; color: #94a3b8; font-size: 10px;">[desktop]</span></td>
+                  <td style="padding: 12px 0; text-align: center;">
+                    <span style="padding: 4px 10px; border-radius: 20px; font-weight: 800; font-size: 10px; background: #dcfce7; color: #166534;">
+                      SHIELDED
+                    </span>
+                  </td>
+                  <td style="padding: 12px 0; text-align: right; color: #94a3b8;">11:08:04 AM</td>
+                </tr>
+              
+                <tr style="border-bottom: 1px solid #f8fafc;">
+                  <td style="padding: 12px 0; font-weight: 700; color: #1e293b;">PTR-MAIN <span style="font-weight: 400; color: #94a3b8; font-size: 10px;">[desktop]</span></td>
+                  <td style="padding: 12px 0; text-align: center;">
+                    <span style="padding: 4px 10px; border-radius: 20px; font-weight: 800; font-size: 10px; background: #dcfce7; color: #166534;">
+                      SHIELDED
+                    </span>
+                  </td>
+                  <td style="padding: 12px 0; text-align: right; color: #94a3b8;">11:08:06 AM</td>
+                </tr>
+              
+                <tr style="border-bottom: 1px solid #f8fafc;">
+                  <td style="padding: 12px 0; font-weight: 700; color: #1e293b;">FTH-X <span style="font-weight: 400; color: #94a3b8; font-size: 10px;">[desktop]</span></td>
+                  <td style="padding: 12px 0; text-align: center;">
+                    <span style="padding: 4px 10px; border-radius: 20px; font-weight: 800; font-size: 10px; background: #dcfce7; color: #166534;">
+                      SHIELDED
+                    </span>
+                  </td>
+                  <td style="padding: 12px 0; text-align: right; color: #94a3b8;">11:08:45 AM</td>
+                </tr>
+              
+                <tr style="border-bottom: 1px solid #f8fafc;">
+                  <td style="padding: 12px 0; font-weight: 700; color: #1e293b;">SECOND-CHANCE-TAX-RELIEF-X <span style="font-weight: 400; color: #94a3b8; font-size: 10px;">[desktop]</span></td>
+                  <td style="padding: 12px 0; text-align: center;">
+                    <span style="padding: 4px 10px; border-radius: 20px; font-weight: 800; font-size: 10px; background: #dcfce7; color: #166534;">
+                      SHIELDED
+                    </span>
+                  </td>
+                  <td style="padding: 12px 0; text-align: right; color: #94a3b8;">11:08:45 AM</td>
+                </tr>
+              
+                <tr style="border-bottom: 1px solid #f8fafc;">
+                  <td style="padding: 12px 0; font-weight: 700; color: #1e293b;">FTH-QUESTIONNAIRE <span style="font-weight: 400; color: #94a3b8; font-size: 10px;">[desktop]</span></td>
+                  <td style="padding: 12px 0; text-align: center;">
+                    <span style="padding: 4px 10px; border-radius: 20px; font-weight: 800; font-size: 10px; background: #dcfce7; color: #166534;">
+                      SHIELDED
+                    </span>
+                  </td>
+                  <td style="padding: 12px 0; text-align: right; color: #94a3b8;">11:08:55 AM</td>
+                </tr>
+              
+                <tr style="border-bottom: 1px solid #f8fafc;">
+                  <td style="padding: 12px 0; font-weight: 700; color: #1e293b;">1800-FRESH-TAX-CPC <span style="font-weight: 400; color: #94a3b8; font-size: 10px;">[desktop]</span></td>
+                  <td style="padding: 12px 0; text-align: center;">
+                    <span style="padding: 4px 10px; border-radius: 20px; font-weight: 800; font-size: 10px; background: #dcfce7; color: #166534;">
+                      SHIELDED
+                    </span>
+                  </td>
+                  <td style="padding: 12px 0; text-align: right; color: #94a3b8;">11:09:23 AM</td>
+                </tr>
+              
+                <tr style="border-bottom: 1px solid #f8fafc;">
+                  <td style="padding: 12px 0; font-weight: 700; color: #1e293b;">SCTR-MAIN <span style="font-weight: 400; color: #94a3b8; font-size: 10px;">[desktop]</span></td>
+                  <td style="padding: 12px 0; text-align: center;">
+                    <span style="padding: 4px 10px; border-radius: 20px; font-weight: 800; font-size: 10px; background: #dcfce7; color: #166534;">
+                      SHIELDED
+                    </span>
+                  </td>
+                  <td style="padding: 12px 0; text-align: right; color: #94a3b8;">11:09:29 AM</td>
+                </tr>
+              
+                <tr style="border-bottom: 1px solid #f8fafc;">
+                  <td style="padding: 12px 0; font-weight: 700; color: #1e293b;">EMPIRE-TAX-RELIEF-X <span style="font-weight: 400; color: #94a3b8; font-size: 10px;">[desktop]</span></td>
+                  <td style="padding: 12px 0; text-align: center;">
+                    <span style="padding: 4px 10px; border-radius: 20px; font-weight: 800; font-size: 10px; background: #dcfce7; color: #166534;">
+                      SHIELDED
+                    </span>
+                  </td>
+                  <td style="padding: 12px 0; text-align: right; color: #94a3b8;">11:10:04 AM</td>
+                </tr>
+              
+                <tr style="border-bottom: 1px solid #f8fafc;">
+                  <td style="padding: 12px 0; font-weight: 700; color: #1e293b;">CAPITAL-TAX-RELIEF-X <span style="font-weight: 400; color: #94a3b8; font-size: 10px;">[desktop]</span></td>
+                  <td style="padding: 12px 0; text-align: center;">
+                    <span style="padding: 4px 10px; border-radius: 20px; font-weight: 800; font-size: 10px; background: #dcfce7; color: #166534;">
+                      SHIELDED
+                    </span>
+                  </td>
+                  <td style="padding: 12px 0; text-align: right; color: #94a3b8;">11:10:38 AM</td>
+                </tr>
+              
+                <tr style="border-bottom: 1px solid #f8fafc;">
+                  <td style="padding: 12px 0; font-weight: 700; color: #1e293b;">ORIGINAL <span style="font-weight: 400; color: #94a3b8; font-size: 10px;">[desktop]</span></td>
+                  <td style="padding: 12px 0; text-align: center;">
+                    <span style="padding: 4px 10px; border-radius: 20px; font-weight: 800; font-size: 10px; background: #dcfce7; color: #166534;">
+                      SHIELDED
+                    </span>
+                  </td>
+                  <td style="padding: 12px 0; text-align: right; color: #94a3b8;">11:11:08 AM</td>
+                </tr>
+              
+                <tr style="border-bottom: 1px solid #f8fafc;">
+                  <td style="padding: 12px 0; font-weight: 700; color: #1e293b;">SENIOR-TAX-DEFENSE-X <span style="font-weight: 400; color: #94a3b8; font-size: 10px;">[desktop]</span></td>
+                  <td style="padding: 12px 0; text-align: center;">
+                    <span style="padding: 4px 10px; border-radius: 20px; font-weight: 800; font-size: 10px; background: #dcfce7; color: #166534;">
+                      SHIELDED
+                    </span>
+                  </td>
+                  <td style="padding: 12px 0; text-align: right; color: #94a3b8;">11:15:06 AM</td>
+                </tr>
+              
+                <tr style="border-bottom: 1px solid #f8fafc;">
+                  <td style="padding: 12px 0; font-weight: 700; color: #1e293b;">GUARDIAN-TAX-RELIEF-PPC <span style="font-weight: 400; color: #94a3b8; font-size: 10px;">[desktop]</span></td>
+                  <td style="padding: 12px 0; text-align: center;">
+                    <span style="padding: 4px 10px; border-radius: 20px; font-weight: 800; font-size: 10px; background: #dcfce7; color: #166534;">
+                      SHIELDED
+                    </span>
+                  </td>
+                  <td style="padding: 12px 0; text-align: right; color: #94a3b8;">11:15:23 AM</td>
+                </tr>
+              
+            </tbody>
+          </table>
+
+          <div style="font-size: 14px; font-weight: 800; color: #0f172a; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; margin: 34px 0 16px;">
+            Local Scheduler URLs Involved (Today)
+          </div>
+          <table style="width: 100%; border-collapse: collapse; font-size: 12px;">
+            <thead>
+              <tr style="text-align: left; color: #64748b; border-bottom: 1px solid #f1f5f9;">
+                <th style="padding: 10px 0;">CAMPAIGN</th>
+                <th style="padding: 10px 0;">GOOGLE SHEET TAB</th>
+                <th style="padding: 10px 0;">TRACKING URL</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+                <tr style="border-bottom: 1px solid #f8fafc;">
+                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">FSI-PPC2</td>
+                  <td style="padding: 10px 0; color: #475569;">FSI-PPC2</td>
+                  <td style="padding: 10px 0;"><a href="https://fsimlf-trk.com/?a=659&oc=750&c=143&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://fsimlf-trk.com/?a=659&oc=750&c=143&s1=</a></td>
+                </tr>
+      
+                <tr style="border-bottom: 1px solid #f8fafc;">
+                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">TRA-CPL</td>
+                  <td style="padding: 10px 0; color: #475569;">TRA-CPL</td>
+                  <td style="padding: 10px 0;"><a href="https://flmtra.com/?a=659&oc=756&c=2210&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://flmtra.com/?a=659&oc=756&c=2210&s1=</a></td>
+                </tr>
+      
+                <tr style="border-bottom: 1px solid #f8fafc;">
+                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">TRA-D3</td>
+                  <td style="padding: 10px 0; color: #475569;">TRA-DT3</td>
+                  <td style="padding: 10px 0;"><a href="https://flmtra.com/?a=659&oc=792&c=2386&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://flmtra.com/?a=659&oc=792&c=2386&s1=</a></td>
+                </tr>
+      
+                <tr style="border-bottom: 1px solid #f8fafc;">
+                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">PPC-ST</td>
+                  <td style="padding: 10px 0; color: #475569;">PPC-ST</td>
+                  <td style="padding: 10px 0;"><a href="https://flmtra.com/?a=659&oc=837&c=2210&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://flmtra.com/?a=659&oc=837&c=2210&s1=</a></td>
+                </tr>
+      
+                <tr style="border-bottom: 1px solid #f8fafc;">
+                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">PPC-ST2</td>
+                  <td style="padding: 10px 0; color: #475569;">PPC-ST2</td>
+                  <td style="padding: 10px 0;"><a href="https://flmtra.com/?a=659&oc=858&c=2210&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://flmtra.com/?a=659&oc=858&c=2210&s1=</a></td>
+                </tr>
+      
+                <tr style="border-bottom: 1px solid #f8fafc;">
+                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">PPC CR</td>
+                  <td style="padding: 10px 0; color: #475569;">PPC-CR</td>
+                  <td style="padding: 10px 0;"><a href="https://flmtra.com/?a=659&oc=848&c=2210&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://flmtra.com/?a=659&oc=848&c=2210&s1=</a></td>
+                </tr>
+      
+                <tr style="border-bottom: 1px solid #f8fafc;">
+                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">PPC-M-CA</td>
+                  <td style="padding: 10px 0; color: #475569;">PPC-M/CA</td>
+                  <td style="padding: 10px 0;"><a href="https://flmtra.com/?a=659&oc=822&c=2210&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://flmtra.com/?a=659&oc=822&c=2210&s1=</a></td>
+                </tr>
+      
+                <tr style="border-bottom: 1px solid #f8fafc;">
+                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">PPC FS</td>
+                  <td style="padding: 10px 0; color: #475569;">PPC-FS</td>
+                  <td style="padding: 10px 0;"><a href="https://flmtra.com/?a=659&oc=841&c=2210&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://flmtra.com/?a=659&oc=841&c=2210&s1=</a></td>
+                </tr>
+      
+                <tr style="border-bottom: 1px solid #f8fafc;">
+                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">PPC</td>
+                  <td style="padding: 10px 0; color: #475569;">PPC</td>
+                  <td style="padding: 10px 0;"><a href="https://flmtra.com/?a=659&oc=782&c=2210&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://flmtra.com/?a=659&oc=782&c=2210&s1=</a></td>
+                </tr>
+      
+                <tr style="border-bottom: 1px solid #f8fafc;">
+                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">TRA-CPM</td>
+                  <td style="padding: 10px 0; color: #475569;">TRA-CPM</td>
+                  <td style="padding: 10px 0;"><a href="https://flmtra.com/?a=659&oc=763&c=2225&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://flmtra.com/?a=659&oc=763&c=2225&s1=</a></td>
+                </tr>
+      
+                <tr style="border-bottom: 1px solid #f8fafc;">
+                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">Everest Tax Releif(X)</td>
+                  <td style="padding: 10px 0; color: #475569;">Everest Tax Releif(X)</td>
+                  <td style="padding: 10px 0;"><a href="https://mlf-trk.com/?a=659&oc=812&c=2498&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://mlf-trk.com/?a=659&oc=812&c=2498&s1=</a></td>
+                </tr>
+      
+                <tr style="border-bottom: 1px solid #f8fafc;">
+                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">VTS Original</td>
+                  <td style="padding: 10px 0; color: #475569;">VTS-Original</td>
+                  <td style="padding: 10px 0;"><a href="https://mlfvts-trk.com/?a=659&oc=323&c=569&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://mlfvts-trk.com/?a=659&oc=323&c=569&s1=</a></td>
+                </tr>
+      
+                <tr style="border-bottom: 1px solid #f8fafc;">
+                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">VTS-NE-Branded</td>
+                  <td style="padding: 10px 0; color: #475569;">VTS-NE-Branded</td>
+                  <td style="padding: 10px 0;"><a href="https://mlfvts-trk.com/?a=659&oc=830&c=569&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://mlfvts-trk.com/?a=659&oc=830&c=569&s1=</a></td>
+                </tr>
+      
+                <tr style="border-bottom: 1px solid #f8fafc;">
+                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">1800 Fresh Tax (X) Main</td>
+                  <td style="padding: 10px 0; color: #475569;">1800 Fresh Tax (X) Main</td>
+                  <td style="padding: 10px 0;"><a href="https://flmtrk.com/?a=659&oc=696&c=1867&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://flmtrk.com/?a=659&oc=696&c=1867&s1=</a></td>
+                </tr>
+      
+                <tr style="border-bottom: 1px solid #f8fafc;">
+                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">FSI - MAIN</td>
+                  <td style="padding: 10px 0; color: #475569;">FSI - MAIN</td>
+                  <td style="padding: 10px 0;"><a href="https://fsimlf-trk.com/?a=659&oc=159&c=111&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://fsimlf-trk.com/?a=659&oc=159&c=111&s1=</a></td>
+                </tr>
+      
+                <tr style="border-bottom: 1px solid #f8fafc;">
+                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">1803 Fresh Tax - AFR cobranded</td>
+                  <td style="padding: 10px 0; color: #475569;">1803 Fresh Tax - AFR cobranded</td>
+                  <td style="padding: 10px 0;"><a href="https://flmtrk.com/?a=659&oc=696&c=1867&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://flmtrk.com/?a=659&oc=696&c=1867&s1=</a></td>
+                </tr>
+      
+                <tr style="border-bottom: 1px solid #f8fafc;">
+                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">Senior Tax Defence-Main</td>
+                  <td style="padding: 10px 0; color: #475569;">Senior Tax Defence-Main</td>
+                  <td style="padding: 10px 0;"><a href="https://flmtrk.com/?a=659&oc=714&c=1892&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://flmtrk.com/?a=659&oc=714&c=1892&s1=</a></td>
+                </tr>
+      
+                <tr style="border-bottom: 1px solid #f8fafc;">
+                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">Fresh Start Initiative (X) Main</td>
+                  <td style="padding: 10px 0; color: #475569;">Fresh Start Initiative (X) Main</td>
+                  <td style="padding: 10px 0;"><a href="https://flmtrk.com/?a=659&oc=729&c=1940&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://flmtrk.com/?a=659&oc=729&c=1940&s1=</a></td>
+                </tr>
+      
+                <tr style="border-bottom: 1px solid #f8fafc;">
+                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">America's First Tax Relief (AFTR)</td>
+                  <td style="padding: 10px 0; color: #475569;">America's First Tax Relief (AFTR)</td>
+                  <td style="padding: 10px 0;"><a href="https://mlf-trk.com/?a=659&oc=759&c=2211&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://mlf-trk.com/?a=659&oc=759&c=2211&s1=</a></td>
+                </tr>
+      
+                <tr style="border-bottom: 1px solid #f8fafc;">
+                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">FTD-X</td>
+                  <td style="padding: 10px 0; color: #475569;">FTD-X</td>
+                  <td style="padding: 10px 0;"><a href="https://mlfftd.com/?a=659&oc=656&c=167&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://mlfftd.com/?a=659&oc=656&c=167&s1=</a></td>
+                </tr>
+      
+                <tr style="border-bottom: 1px solid #f8fafc;">
+                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">Premier Tax Relief (PTR)</td>
+                  <td style="padding: 10px 0; color: #475569;">Premier Tax Relief (PTR)</td>
+                  <td style="padding: 10px 0;"><a href="https://flmtra.com/?a=659&oc=763&c=2225&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://flmtra.com/?a=659&oc=763&c=2225&s1=</a></td>
+                </tr>
+      
+                <tr style="border-bottom: 1px solid #f8fafc;">
+                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">FTH-X</td>
+                  <td style="padding: 10px 0; color: #475569;">FTH-X</td>
+                  <td style="padding: 10px 0;"><a href="https://fthmlf-trk.com/?a=659&oc=821&c=81&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://fthmlf-trk.com/?a=659&oc=821&c=81&s1=</a></td>
+                </tr>
+      
+                <tr style="border-bottom: 1px solid #f8fafc;">
+                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">Second Chance Tax Relief (X)</td>
+                  <td style="padding: 10px 0; color: #475569;">Second Chance Tax Relief (X)</td>
+                  <td style="padding: 10px 0;"><a href="https://flm-sctr-trk.com/?a=659&oc=684&c=1818&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://flm-sctr-trk.com/?a=659&oc=684&c=1818&s1=</a></td>
+                </tr>
+      
+                <tr style="border-bottom: 1px solid #f8fafc;">
+                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">FTH-quesstionnarie</td>
+                  <td style="padding: 10px 0; color: #475569;">FTH-quesstionnarie</td>
+                  <td style="padding: 10px 0;"><a href="https://fthmlf-trk.com/?a=659&oc=786&c=2385&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://fthmlf-trk.com/?a=659&oc=786&c=2385&s1=</a></td>
+                </tr>
+      
+                <tr style="border-bottom: 1px solid #f8fafc;">
+                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">1800 Fresh Tax (CPC)</td>
+                  <td style="padding: 10px 0; color: #475569;">1800 Fresh Tax (CPC)</td>
+                  <td style="padding: 10px 0;"><a href="https://mlf-1800-trk.com/?a=659&oc=806&c=2464&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://mlf-1800-trk.com/?a=659&oc=806&c=2464&s1=</a></td>
+                </tr>
+      
+                <tr style="border-bottom: 1px solid #f8fafc;">
+                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">SCTR-Main</td>
+                  <td style="padding: 10px 0; color: #475569;">SCTR-Main</td>
+                  <td style="padding: 10px 0;"><a href="https://secure-sctr.com/?a=659&oc=800&c=2432&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://secure-sctr.com/?a=659&oc=800&c=2432&s1=</a></td>
+                </tr>
+      
+                <tr style="border-bottom: 1px solid #f8fafc;">
+                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">Empire Tax Relief (X)</td>
+                  <td style="padding: 10px 0; color: #475569;">Empire Tax Relief (X)</td>
+                  <td style="padding: 10px 0;"><a href="https://jsttrk.com/?a=659&oc=844&c=2689&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://jsttrk.com/?a=659&oc=844&c=2689&s1=</a></td>
+                </tr>
+      
+                <tr style="border-bottom: 1px solid #f8fafc;">
+                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">Capital Tax Relief (X)</td>
+                  <td style="padding: 10px 0; color: #475569;">Capital Tax Relief (X)</td>
+                  <td style="padding: 10px 0;"><a href="https://jsttrk.com/?a=659&oc=846&c=2691&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://jsttrk.com/?a=659&oc=846&c=2691&s1=</a></td>
+                </tr>
+      
+                <tr style="border-bottom: 1px solid #f8fafc;">
+                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">Original</td>
+                  <td style="padding: 10px 0; color: #475569;">Original</td>
+                  <td style="padding: 10px 0;"><a href="https://mlf-1800-trk.com/?a=659&oc=337&c=617&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://mlf-1800-trk.com/?a=659&oc=337&c=617&s1=</a></td>
+                </tr>
+      
+                <tr style="border-bottom: 1px solid #f8fafc;">
+                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">Senior Tax Defense (X)</td>
+                  <td style="padding: 10px 0; color: #475569;">Senior Tax Defense (X)</td>
+                  <td style="padding: 10px 0;"><a href="https://flmtrk.com/?a=659&oc=831&c=2599&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://flmtrk.com/?a=659&oc=831&c=2599&s1=</a></td>
+                </tr>
+      
+                <tr style="border-bottom: 1px solid #f8fafc;">
+                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">Guardian Tax Relief</td>
+                  <td style="padding: 10px 0; color: #475569;">Guardian Tax Relief</td>
+                  <td style="padding: 10px 0;"><a href="https://flmtrk.com/?a=659&oc=831&c=2599&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://flmtrk.com/?a=659&oc=831&c=2599&s1=</a></td>
+                </tr>
+      
+            </tbody>
+          </table>
+          
+          <p style="text-align: center; margin-top: 40px;">
+            <a href="https://docs.google.com/spreadsheets/d/1rXIg3dMQ4APH3lHLcfWYfP45PnOAKmV9POkoSS3YWxI/edit" class="brand-link">Explore Real-time Data Suite →</a>
+          </p>
+        </div>
+
+        <div class="footer">
+          <p>© 2026 Forward Leap Marketing. Confidential AI Intelligence.</p>
+          <p style="opacity: 0.6;">You are receiving this because FLM Agent Security Mode is ENABLED.</p>
+        </div>
+      </div>
+    </body>
+    </html>
+  

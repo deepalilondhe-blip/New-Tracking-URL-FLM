@@ -1,0 +1,36 @@
+[2026-06-05T10:29:47.266Z] [INFO] Cake Test Only Validation Process Started
+[2026-06-05T10:29:47.267Z] [INFO] Launching browser
+[2026-06-05T10:29:48.096Z] [INFO] Navigating to Cake CRM
+[2026-06-05T10:29:54.418Z] [INFO] Checking if login is required
+[2026-06-05T10:29:54.467Z] [INFO] Login form detected - attempting to log in
+[2026-06-05T10:29:56.489Z] [INFO] Entered username: urvish.patel@bytestechnolab.com
+[2026-06-05T10:29:57.369Z] [INFO] Entered password
+[2026-06-05T10:29:57.370Z] [INFO] Clicking Log In button...
+[2026-06-05T10:29:57.411Z] [INFO] Waiting for login to complete...
+[2026-06-05T10:30:27.725Z] [WARN] ⚠ Login may have failed - button still visible
+[2026-06-05T10:30:30.737Z] [INFO] ✓ Login process completed
+[2026-06-05T10:30:30.740Z] [INFO] Navigating to Cake Reports > Conversions
+[2026-06-05T10:30:32.743Z] [INFO] Looking for Conversions menu item...
+[2026-06-05T10:30:32.749Z] [WARN] Conversions link not directly visible - trying REPORTS menu
+[2026-06-05T10:30:32.764Z] [WARN] Menu navigation failed - trying direct URL navigation
+[2026-06-05T10:30:32.765Z] [INFO] Navigating directly to: https://app.forwardleapmarketing.com/reports/conversion
+[2026-06-05T10:30:37.303Z] [INFO] ✓ Successfully navigated to Conversions page via direct URL
+[2026-06-05T10:30:37.304Z] [INFO] Setting date range from scheduler
+[2026-06-05T10:30:37.306Z] [INFO] Date range: 2026-06-04 to 2026-06-05
+[2026-06-05T10:30:37.324Z] [WARN] Found only 0 date input fields
+[2026-06-05T10:30:38.331Z] [INFO] Applying Test Only filter
+[2026-06-05T10:30:38.351Z] [WARN] Could not apply Test Only filter - checking page state
+[2026-06-05T10:30:40.359Z] [ERROR] Error applying Test Only filter: ENOENT: no such file or directory, mkdir 'c:\Users\Deepali_Londhe\Desktop\New Tracking URL\CakeProcess.js\c:\Users\Deepali_Londhe\Desktop\New Tracking URL\CakeProcess.js\test_only_screenshots'
+[2026-06-05T10:30:40.361Z] [INFO] Extracting IP counts across ALL pages
+[2026-06-05T10:30:40.369Z] [WARN] Could not detect page count, assuming 1 page
+[2026-06-05T10:30:40.376Z] [INFO] Page 1 processed, found 0 IPs
+[2026-06-05T10:30:40.379Z] [INFO] ✓ Completed processing 1 pages
+[2026-06-05T10:30:40.381Z] [INFO] ✓ Total unique IPs found: 0
+[2026-06-05T10:30:40.382Z] [WARN] No test records found
+[2026-06-05T10:30:40.383Z] [INFO] Generating execution report
+[2026-06-05T10:30:40.385Z] [INFO] Report Summary: 0 total IPs processed
+[2026-06-05T10:30:40.386Z] [INFO]   Is Test Passed: 0
+[2026-06-05T10:30:40.387Z] [INFO]   Name & Email Passed: 0
+[2026-06-05T10:30:40.388Z] [INFO] Execution completed in 53.12 seconds
+[2026-06-05T10:30:40.669Z] [INFO] Browser closed
+[2026-06-05T10:30:40.670Z] [INFO] Process finished

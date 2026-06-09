@@ -1,0 +1,9 @@
+[2026-06-08T10:26:53.848Z] [INFO] Process Started - Date Range: 2026-06-05 to 2026-06-08
+[2026-06-08T10:26:53.849Z] [INFO] Using URL Name from CLI: "TRA"
+[2026-06-08T10:26:53.850Z] [INFO] Target URL Name for this run: "TRA"
+[2026-06-08T10:26:53.850Z] [INFO] Launching browser (headed: true)
+[2026-06-08T10:26:54.740Z] [INFO] Navigating to Cake login page...
+[2026-06-08T10:27:24.761Z] [ERROR] FATAL ERROR: page.goto: Timeout 30000ms exceeded.
+Call log:
+[2m  - navigating to "https://app.forwardleapmarketing.com/newaff.aspx", waiting until "networkidle"[22m
+

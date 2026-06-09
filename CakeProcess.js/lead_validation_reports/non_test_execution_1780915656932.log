@@ -1,0 +1,24 @@
+[2026-06-08T10:47:36.932Z] [INFO] Process Started - Date Range: 2026-06-05 to 2026-06-08
+[2026-06-08T10:47:36.933Z] [INFO] Using URL Name from CLI: "TRA"
+[2026-06-08T10:47:36.934Z] [INFO] Target URL Name for this run: "TRA"
+[2026-06-08T10:47:36.935Z] [INFO] Launching browser (headed: true)
+[2026-06-08T10:47:37.683Z] [INFO] Navigating to Cake login page...
+[2026-06-08T10:47:47.455Z] [INFO] Already logged in or redirect completed
+[2026-06-08T10:47:47.614Z] [INFO] Navigating to Cake Reports > Conversions
+[2026-06-08T10:47:53.609Z] [INFO] Setting date range: 06/05/2026 to 06/08/2026
+[2026-06-08T10:47:54.620Z] [INFO] Applying "Non-Tests" filter via ExtJS...
+[2026-06-08T10:47:54.624Z] [INFO] ✓ Successfully applied Non-Tests filter via ExtJS combo box.
+[2026-06-08T10:47:54.625Z] [INFO] Clicking search/filter button...
+[2026-06-08T10:47:54.630Z] [INFO] ✓ Filter button clicked successfully.
+[2026-06-08T10:48:02.696Z] [INFO] Rows count detected: 473
+[2026-06-08T10:48:02.697Z] [INFO] Conversion grid loaded. Scanning rows...
+[2026-06-08T10:48:02.742Z] [INFO] Found 473 rows in total. Filtering by URL Name: "TRA"
+[2026-06-08T10:48:02.772Z] [INFO] Found 183 matching leads for "TRA"
+[2026-06-08T10:48:02.772Z] [INFO] Processing matching lead #1 (Row Index: 37)
+[2026-06-08T10:48:32.969Z] [ERROR] FATAL ERROR: locator.click: Element is not visible
+Call log:
+[2m  - waiting for locator('.x-grid3-row, tr.x-grid3-row, table tr, [role="row"]').nth(37).locator('a, [role="button"], a[style*="color"]').first()[22m
+[2m    - locator resolved to <a href="#">…</a>[22m
+[2m  - attempting click action[22m
+[2m    - scrolling into view if needed[22m
+

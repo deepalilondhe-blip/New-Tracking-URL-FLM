@@ -1,0 +1,37 @@
+[2026-06-05T12:02:34.837Z] [INFO] ======================================================================
+[2026-06-05T12:02:34.838Z] [INFO] 🚀 PROCESS START: FLM_TestOnly_IP_Validation (CSV Dashboard Mode)
+[2026-06-05T12:02:34.838Z] [INFO] ======================================================================
+[2026-06-05T12:02:34.839Z] [INFO] Starting CSV Dashboard Configuration & Data Isolation Validation...
+[2026-06-05T12:02:34.839Z] [INFO] CSV dashboard headers verified successfully.
+[2026-06-05T12:02:34.853Z] [INFO] Ref: FLM_TestOnly_IP_Validation process verified.
+[2026-06-05T12:02:34.853Z] [INFO] ✅ CSV Dashboard Configuration & Fail-Safe Validation Passed.
+[2026-06-05T12:02:34.854Z] [INFO] Processing Date Range: 6/4/2026 to 6/5/2026
+[2026-06-05T12:02:34.854Z] [INFO] Launching Playwright Browser in HEADED mode...
+[2026-06-05T12:02:35.292Z] [INFO] Navigating to Cake CRM...
+[2026-06-05T12:02:40.624Z] [INFO] Login page detected. Attempting login...
+[2026-06-05T12:02:40.710Z] [INFO] Clicked Login button. Waiting for dashboard page redirect...
+[2026-06-05T12:03:07.614Z] [INFO] ✓ Login Successful.
+[2026-06-05T12:03:07.615Z] [INFO] Navigating to Reports > Conversions...
+[2026-06-05T12:03:12.735Z] [INFO] Waiting for Conversion Report page to load...
+[2026-06-05T12:03:13.825Z] [INFO] ✓ Navigated to Conversions Report Page.
+[2026-06-05T12:03:13.826Z] [INFO] Applying Include Tests filter checkbox option...
+[2026-06-05T12:03:28.841Z] [WARN] ⚠️ Could not find or toggle "Include Tests" checkbox toggle: locator.waitFor: Timeout 15000ms exceeded.
+Call log:
+[2m  - waiting for locator('.toggle.editor-toggle, label.switch, label').filter({ hasText: 'Include Tests' }).first() to be visible[22m
+[2m    33 × locator resolved to hidden <div class="toggle editor-toggle ckm-combobox-label">…</div>[22m
+
+[2026-06-05T12:03:28.842Z] [INFO] Applying date range inputs...
+[2026-06-05T12:03:31.626Z] [INFO] ✓ Date range set successfully: 6/4/2026 to 6/5/2026
+[2026-06-05T12:03:31.627Z] [INFO] Waiting for report grid to update...
+[2026-06-05T12:03:36.639Z] [INFO] Aggregating unique IP addresses from report pages...
+[2026-06-05T12:04:06.642Z] [WARN] ⚠️ Grid wait error: locator.waitFor: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('table, [role="grid"], [role="table"]').first() to be visible[22m
+[2m    56 × locator resolved to hidden <div role="grid" ref="gridPanel" class="ag-root ag-font-style ag-layout-auto-height">…</div>[22m
+
+[2026-06-05T12:04:06.644Z] [WARN] Conversion report grid not visible. The report may be empty for this date range.
+[2026-06-05T12:04:06.644Z] [INFO] Total unique IP addresses found: 0
+[2026-06-05T12:04:06.645Z] [INFO] Selected 0 unique IP(s) for validation.
+[2026-06-05T12:04:06.645Z] [WARN] No rows prepared for CSV Dashboard writing.
+[2026-06-05T12:04:06.881Z] [INFO] Browser closed. Process complete.
+[2026-06-05T12:04:06.881Z] [INFO] ======================================================================

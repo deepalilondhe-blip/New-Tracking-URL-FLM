@@ -1,0 +1,36 @@
+[2026-06-08T11:16:57.312Z] [INFO] Process Started - Date Range: 2026-06-05 to 2026-06-08
+[2026-06-08T11:16:57.313Z] [INFO] Using URL Name from CLI: "TRA"
+[2026-06-08T11:16:57.313Z] [INFO] Target URL Name for this run: "TRA"
+[2026-06-08T11:16:57.314Z] [INFO] Launching browser (headed: false)
+[2026-06-08T11:16:58.063Z] [INFO] Navigating to Cake login page...
+[2026-06-08T11:17:06.058Z] [INFO] Already logged in or redirect completed
+[2026-06-08T11:17:06.201Z] [INFO] Navigating to Cake Reports > Conversions
+[2026-06-08T11:17:11.410Z] [INFO] Using frame for report controls: main page
+[2026-06-08T11:17:11.424Z] [INFO] Setting date range: 06/05/2026 to 06/08/2026
+[2026-06-08T11:17:12.437Z] [INFO] Applying "Non-Tests" filter via ExtJS...
+[2026-06-08T11:17:12.441Z] [INFO] ✓ Successfully applied Non-Tests filter via ExtJS combo box.
+[2026-06-08T11:17:12.442Z] [INFO] Clicking search/filter button...
+[2026-06-08T11:17:12.447Z] [INFO] ✓ Filter button clicked successfully.
+[2026-06-08T11:17:18.462Z] [INFO] Using frame for row scanning: main page
+[2026-06-08T11:17:20.484Z] [INFO] Rows count detected: 200
+[2026-06-08T11:17:20.484Z] [INFO] Conversion grid loaded. Scanning rows...
+[2026-06-08T11:17:20.497Z] [INFO] Found 200 rows in total. Filtering by URL Name: "TRA"
+[2026-06-08T11:17:20.516Z] [INFO] Found 89 matching leads for "TRA"
+[2026-06-08T11:17:20.516Z] [INFO] Processing matching lead #1 (Row Index: 0)
+[2026-06-08T11:17:20.601Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379573);}});return false;
+[2026-06-08T11:17:20.607Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:17:35.743Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:17:35.743Z] [WARN] Skipping CDB verification due to missing Lead ID
+[2026-06-08T11:17:35.744Z] [INFO] Processing matching lead #2 (Row Index: 3)
+[2026-06-08T11:17:35.819Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379576);}});return false;
+[2026-06-08T11:17:35.831Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:17:50.960Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:17:50.960Z] [WARN] Skipping CDB verification due to missing Lead ID
+[2026-06-08T11:17:50.961Z] [INFO] Processing matching lead #3 (Row Index: 4)
+[2026-06-08T11:17:51.059Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379577);}});return false;
+[2026-06-08T11:17:51.067Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:18:06.225Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:18:06.225Z] [WARN] Skipping CDB verification due to missing Lead ID
+[2026-06-08T11:18:06.226Z] [INFO] Processing matching lead #4 (Row Index: 5)
+[2026-06-08T11:18:06.326Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379578);}});return false;
+[2026-06-08T11:18:06.334Z] [INFO] Waiting for lead card iframe to load...

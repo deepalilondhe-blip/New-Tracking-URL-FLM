@@ -66,8 +66,8 @@ node CakeProcess.js\cake_test_only.js
    ├─ Identify unique IP addresses
    └─ Log statistics
 
-5. ✓ Validate Test User (for first IP)
-   ├─ Open Unique ID record
+5. ✓ Validate Test User (for all unique IPs dynamically)
+   ├─ Open a random associated Lead ID record for each IP
    ├─ Extract user information
    ├─ Verify against expected values
    └─ Capture screenshot

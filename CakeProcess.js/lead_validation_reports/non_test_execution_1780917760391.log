@@ -1,0 +1,7 @@
+[2026-06-08T11:22:40.391Z] [INFO] Process Started - Date Range: 2026-06-05 to 2026-06-08
+[2026-06-08T11:22:40.392Z] [INFO] Using URL Name from CLI: "TRA"
+[2026-06-08T11:22:40.393Z] [INFO] Target URL Name for this run: "TRA"
+[2026-06-08T11:22:40.393Z] [INFO] Launching browser (headed: false)
+[2026-06-08T11:22:41.443Z] [INFO] Navigating to Cake login page...
+[2026-06-08T11:22:49.224Z] [INFO] Already logged in or redirect completed
+[2026-06-08T11:22:49.355Z] [INFO] Navigating to Cake Reports > Conversions

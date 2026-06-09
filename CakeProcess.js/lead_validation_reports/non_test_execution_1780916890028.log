@@ -1,0 +1,172 @@
+[2026-06-08T11:08:10.029Z] [INFO] Process Started - Date Range: 2026-06-05 to 2026-06-08
+[2026-06-08T11:08:10.043Z] [INFO] Using URL Name from CLI: "TRA"
+[2026-06-08T11:08:10.044Z] [INFO] Target URL Name for this run: "TRA"
+[2026-06-08T11:08:10.045Z] [INFO] Launching browser (headed: false)
+[2026-06-08T11:08:10.799Z] [INFO] Navigating to Cake login page...
+[2026-06-08T11:08:19.325Z] [INFO] Already logged in or redirect completed
+[2026-06-08T11:08:19.456Z] [INFO] Navigating to Cake Reports > Conversions
+[2026-06-08T11:08:24.644Z] [INFO] Using frame for report controls: main page
+[2026-06-08T11:08:24.645Z] [INFO] Setting date range: 06/05/2026 to 06/08/2026
+[2026-06-08T11:08:25.662Z] [INFO] Applying "Non-Tests" filter via ExtJS...
+[2026-06-08T11:08:25.666Z] [INFO] ✓ Successfully applied Non-Tests filter via ExtJS combo box.
+[2026-06-08T11:08:25.666Z] [INFO] Clicking search/filter button...
+[2026-06-08T11:08:25.671Z] [INFO] ✓ Filter button clicked successfully.
+[2026-06-08T11:08:31.679Z] [INFO] Using frame for row scanning: main page
+[2026-06-08T11:08:33.709Z] [INFO] Rows count detected: 200
+[2026-06-08T11:08:33.710Z] [INFO] Conversion grid loaded. Scanning rows...
+[2026-06-08T11:08:33.723Z] [INFO] Found 200 rows in total. Filtering by URL Name: "TRA"
+[2026-06-08T11:08:33.739Z] [INFO] Found 89 matching leads for "TRA"
+[2026-06-08T11:08:33.739Z] [INFO] Processing matching lead #1 (Row Index: 0)
+[2026-06-08T11:08:33.974Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:08:49.088Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:08:49.089Z] [WARN] Skipping CDB verification due to missing Lead ID
+[2026-06-08T11:08:49.089Z] [INFO] Processing matching lead #2 (Row Index: 3)
+[2026-06-08T11:08:49.331Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:09:04.460Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:09:04.461Z] [WARN] Skipping CDB verification due to missing Lead ID
+[2026-06-08T11:09:04.461Z] [INFO] Processing matching lead #3 (Row Index: 4)
+[2026-06-08T11:09:04.623Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:09:19.791Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:09:19.792Z] [WARN] Skipping CDB verification due to missing Lead ID
+[2026-06-08T11:09:19.792Z] [INFO] Processing matching lead #4 (Row Index: 5)
+[2026-06-08T11:09:19.942Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:09:35.055Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:09:35.055Z] [WARN] Skipping CDB verification due to missing Lead ID
+[2026-06-08T11:09:35.056Z] [INFO] Processing matching lead #5 (Row Index: 6)
+[2026-06-08T11:09:35.223Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:09:50.360Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:09:50.361Z] [WARN] Skipping CDB verification due to missing Lead ID
+[2026-06-08T11:09:50.361Z] [INFO] Processing matching lead #6 (Row Index: 7)
+[2026-06-08T11:09:50.517Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:10:05.659Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:10:05.660Z] [WARN] Skipping CDB verification due to missing Lead ID
+[2026-06-08T11:10:05.661Z] [INFO] Processing matching lead #7 (Row Index: 8)
+[2026-06-08T11:10:05.854Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:10:20.955Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:10:20.955Z] [WARN] Skipping CDB verification due to missing Lead ID
+[2026-06-08T11:10:20.956Z] [INFO] Processing matching lead #8 (Row Index: 9)
+[2026-06-08T11:10:21.125Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:10:36.263Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:10:36.264Z] [WARN] Skipping CDB verification due to missing Lead ID
+[2026-06-08T11:10:36.265Z] [INFO] Processing matching lead #9 (Row Index: 10)
+[2026-06-08T11:10:36.485Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:10:51.613Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:10:51.614Z] [WARN] Skipping CDB verification due to missing Lead ID
+[2026-06-08T11:10:51.614Z] [INFO] Processing matching lead #10 (Row Index: 18)
+[2026-06-08T11:10:51.788Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:11:06.916Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:11:06.916Z] [WARN] Skipping CDB verification due to missing Lead ID
+[2026-06-08T11:11:06.917Z] [INFO] Processing matching lead #11 (Row Index: 20)
+[2026-06-08T11:11:07.108Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:11:22.241Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:11:22.242Z] [WARN] Skipping CDB verification due to missing Lead ID
+[2026-06-08T11:11:22.243Z] [INFO] Processing matching lead #12 (Row Index: 24)
+[2026-06-08T11:11:22.426Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:11:37.594Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:11:37.595Z] [WARN] Skipping CDB verification due to missing Lead ID
+[2026-06-08T11:11:37.595Z] [INFO] Processing matching lead #13 (Row Index: 25)
+[2026-06-08T11:11:37.760Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:11:52.902Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:11:52.903Z] [WARN] Skipping CDB verification due to missing Lead ID
+[2026-06-08T11:11:52.903Z] [INFO] Processing matching lead #14 (Row Index: 26)
+[2026-06-08T11:11:53.149Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:12:08.275Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:12:08.276Z] [WARN] Skipping CDB verification due to missing Lead ID
+[2026-06-08T11:12:08.277Z] [INFO] Processing matching lead #15 (Row Index: 29)
+[2026-06-08T11:12:08.528Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:12:23.670Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:12:23.670Z] [WARN] Skipping CDB verification due to missing Lead ID
+[2026-06-08T11:12:23.671Z] [INFO] Processing matching lead #16 (Row Index: 30)
+[2026-06-08T11:12:23.853Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:12:38.954Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:12:38.955Z] [WARN] Skipping CDB verification due to missing Lead ID
+[2026-06-08T11:12:38.955Z] [INFO] Processing matching lead #17 (Row Index: 32)
+[2026-06-08T11:12:39.098Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:12:54.272Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:12:54.273Z] [WARN] Skipping CDB verification due to missing Lead ID
+[2026-06-08T11:12:54.273Z] [INFO] Processing matching lead #18 (Row Index: 35)
+[2026-06-08T11:12:54.450Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:13:09.583Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:13:09.583Z] [WARN] Skipping CDB verification due to missing Lead ID
+[2026-06-08T11:13:09.583Z] [INFO] Processing matching lead #19 (Row Index: 41)
+[2026-06-08T11:13:09.746Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:13:24.884Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:13:24.884Z] [WARN] Skipping CDB verification due to missing Lead ID
+[2026-06-08T11:13:24.885Z] [INFO] Processing matching lead #20 (Row Index: 43)
+[2026-06-08T11:13:25.103Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:13:40.222Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:13:40.223Z] [WARN] Skipping CDB verification due to missing Lead ID
+[2026-06-08T11:13:40.223Z] [INFO] Processing matching lead #21 (Row Index: 49)
+[2026-06-08T11:13:40.419Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:13:55.539Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:13:55.540Z] [WARN] Skipping CDB verification due to missing Lead ID
+[2026-06-08T11:13:55.541Z] [INFO] Processing matching lead #22 (Row Index: 55)
+[2026-06-08T11:13:55.681Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:14:10.836Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:14:10.837Z] [WARN] Skipping CDB verification due to missing Lead ID
+[2026-06-08T11:14:10.837Z] [INFO] Processing matching lead #23 (Row Index: 56)
+[2026-06-08T11:14:11.000Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:14:26.165Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:14:26.166Z] [WARN] Skipping CDB verification due to missing Lead ID
+[2026-06-08T11:14:26.167Z] [INFO] Processing matching lead #24 (Row Index: 57)
+[2026-06-08T11:14:26.387Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:14:41.515Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:14:41.515Z] [WARN] Skipping CDB verification due to missing Lead ID
+[2026-06-08T11:14:41.516Z] [INFO] Processing matching lead #25 (Row Index: 58)
+[2026-06-08T11:14:41.666Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:14:56.804Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:14:56.804Z] [WARN] Skipping CDB verification due to missing Lead ID
+[2026-06-08T11:14:56.805Z] [INFO] Processing matching lead #26 (Row Index: 59)
+[2026-06-08T11:14:56.979Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:15:12.110Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:15:12.111Z] [WARN] Skipping CDB verification due to missing Lead ID
+[2026-06-08T11:15:12.111Z] [INFO] Processing matching lead #27 (Row Index: 60)
+[2026-06-08T11:15:12.262Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:15:27.436Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:15:27.437Z] [WARN] Skipping CDB verification due to missing Lead ID
+[2026-06-08T11:15:27.438Z] [INFO] Processing matching lead #28 (Row Index: 61)
+[2026-06-08T11:15:27.600Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:15:42.753Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:15:42.753Z] [WARN] Skipping CDB verification due to missing Lead ID
+[2026-06-08T11:15:42.754Z] [INFO] Processing matching lead #29 (Row Index: 62)
+[2026-06-08T11:15:42.900Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:15:58.018Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:15:58.019Z] [WARN] Skipping CDB verification due to missing Lead ID
+[2026-06-08T11:15:58.019Z] [INFO] Processing matching lead #30 (Row Index: 63)
+[2026-06-08T11:15:58.181Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:16:13.303Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:16:13.303Z] [WARN] Skipping CDB verification due to missing Lead ID
+[2026-06-08T11:16:13.303Z] [INFO] Processing matching lead #31 (Row Index: 64)
+[2026-06-08T11:16:13.543Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:16:28.653Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:16:28.653Z] [WARN] Skipping CDB verification due to missing Lead ID
+[2026-06-08T11:16:28.654Z] [INFO] Processing matching lead #32 (Row Index: 66)
+[2026-06-08T11:16:28.842Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:16:43.972Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:16:43.973Z] [WARN] Skipping CDB verification due to missing Lead ID
+[2026-06-08T11:16:43.973Z] [INFO] Processing matching lead #33 (Row Index: 68)
+[2026-06-08T11:16:44.133Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:16:59.272Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:16:59.273Z] [WARN] Skipping CDB verification due to missing Lead ID
+[2026-06-08T11:16:59.273Z] [INFO] Processing matching lead #34 (Row Index: 69)
+[2026-06-08T11:16:59.427Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:17:14.565Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:17:14.566Z] [WARN] Skipping CDB verification due to missing Lead ID
+[2026-06-08T11:17:14.566Z] [INFO] Processing matching lead #35 (Row Index: 70)
+[2026-06-08T11:17:14.719Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:17:29.847Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:17:29.848Z] [WARN] Skipping CDB verification due to missing Lead ID
+[2026-06-08T11:17:29.848Z] [INFO] Processing matching lead #36 (Row Index: 71)
+[2026-06-08T11:17:30.074Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:17:45.204Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:17:45.205Z] [WARN] Skipping CDB verification due to missing Lead ID
+[2026-06-08T11:17:45.206Z] [INFO] Processing matching lead #37 (Row Index: 72)
+[2026-06-08T11:17:45.380Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:18:00.549Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:18:00.550Z] [WARN] Skipping CDB verification due to missing Lead ID
+[2026-06-08T11:18:00.551Z] [INFO] Processing matching lead #38 (Row Index: 73)
+[2026-06-08T11:18:00.727Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:18:15.866Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:18:15.866Z] [WARN] Skipping CDB verification due to missing Lead ID
+[2026-06-08T11:18:15.866Z] [INFO] Processing matching lead #39 (Row Index: 75)
+[2026-06-08T11:18:16.061Z] [INFO] Waiting for lead card iframe to load...

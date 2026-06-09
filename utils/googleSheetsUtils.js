@@ -107,13 +107,13 @@ async function appendRowByHeader(sheetName, rowData) {
           spreadsheetId,
           requestBody: {
             requests: [
-              // ✅ Header Row Dark Blue Background + White Bold Text
+              // ✅ Header Row Navy Blue Background + White Bold Text
               {
                 repeatCell: {
                   range: { sheetId: newSheetId, startRowIndex: 0, endRowIndex: 1, startColumnIndex: 0, endColumnIndex: 29 },
                   cell: {
                     userEnteredFormat: {
-                      backgroundColor: { red: 0, green: 0.125, blue: 0.376 },
+                      backgroundColor: { red: 0, green: 0, blue: 128/255 },
                       textFormat: { foregroundColor: { red: 1, green: 1, blue: 1 }, bold: true, fontSize: 11 },
                       horizontalAlignment: 'CENTER',
                       verticalAlignment: 'MIDDLE'
@@ -122,7 +122,7 @@ async function appendRowByHeader(sheetName, rowData) {
                   fields: 'userEnteredFormat(backgroundColor,textFormat,horizontalAlignment,verticalAlignment)'
                 }
               },
-              // ✅ Auto Zebra Striping for first 1000 rows
+              // ✅ Auto Zebra Striping for first 1000 rows (Even rows = Light Blue #E8F0FE)
               {
                 addConditionalFormatRule: {
                   rule: {
@@ -130,20 +130,21 @@ async function appendRowByHeader(sheetName, rowData) {
                     booleanRule: {
                       condition: {
                         type: 'CUSTOM_FORMULA',
-                        values: [{ userEnteredValue: '=MOD(ROW(),2)=0' }]
+                        values: [{ userEnteredValue: '=ISEVEN(ROW())' }]
                       },
                       format: {
-                        backgroundColor: { red: 0.95, green: 0.95, blue: 0.95 }
+                        backgroundColor: { red: 232/255, green: 240/255, blue: 254/255 }
                       }
                     }
                   },
                   index: 0
                 }
               },
-              // ✅ Column Widths
-              { updateDimensionProperties: { range: { sheetId: newSheetId, dimension: 'COLUMNS', startIndex: 0, endIndex: 29 }, properties: { pixelSize: 130 }, fields: 'pixelSize' } },
+              // ✅ Column Widths (Standard 140px, specific larger)
+              { updateDimensionProperties: { range: { sheetId: newSheetId, dimension: 'COLUMNS', startIndex: 0, endIndex: 29 }, properties: { pixelSize: 140 }, fields: 'pixelSize' } },
               { updateDimensionProperties: { range: { sheetId: newSheetId, dimension: 'COLUMNS', startIndex: 4, endIndex: 5 }, properties: { pixelSize: 180 }, fields: 'pixelSize' } },
-              { updateDimensionProperties: { range: { sheetId: newSheetId, dimension: 'COLUMNS', startIndex: 11, endIndex: 13 }, properties: { pixelSize: 220 }, fields: 'pixelSize' } },
+              { updateDimensionProperties: { range: { sheetId: newSheetId, dimension: 'COLUMNS', startIndex: 11, endIndex: 12 }, properties: { pixelSize: 320 }, fields: 'pixelSize' } },
+              { updateDimensionProperties: { range: { sheetId: newSheetId, dimension: 'COLUMNS', startIndex: 12, endIndex: 13 }, properties: { pixelSize: 240 }, fields: 'pixelSize' } },
               // ✅ Set sheet view direction to Left-To-Right (LTR)
               { updateSheetProperties: { properties: { sheetId: newSheetId, rightToLeft: false }, fields: 'rightToLeft' } }
             ]
@@ -161,45 +162,38 @@ async function appendRowByHeader(sheetName, rowData) {
       sheetCache.initialized[normalizedSheetName] = true;
     }
 
-    function makeHyperlink(url) {
-      if (!url) return '';
-      const strUrl = String(url).trim();
-      if (strUrl.startsWith('http')) {
-        return strUrl;
-      }
-      return strUrl;
-    }
+    // Removed makeHyperlink to use native updateCells links instead
 
     const formattedRow = [
       rowData.dateTime,
       rowData.type || 'D',
       rowData.affiliate,
       rowData.campaignId,
-      makeHyperlink(rowData.trackingLink),
+      rowData.trackingLink, // Will be overwritten by native link
       rowData.sliderAmount,
       rowData.cakeIncome,
       rowData.state,
       rowData.phone,
       rowData.leadId,
       rowData.dbid,
-      makeHyperlink(rowData.pageOrigin),
-      makeHyperlink(rowData.thankYouUrl),
+      rowData.pageOrigin, // Will be overwritten
+      rowData.thankYouUrl, // Will be overwritten
       rowData.cdbStatus,
       rowData.cdbEmail,
       rowData.neustar,
       rowData.neustarDisposition,
       rowData.pixelFired,
       rowData.taxDebt || '',
-      makeHyperlink(rowData.step1),
-      makeHyperlink(rowData.step2),
-      makeHyperlink(rowData.step3),
-      makeHyperlink(rowData.step4),
-      makeHyperlink(rowData.step5),
-      makeHyperlink(rowData.step6),
-      makeHyperlink(rowData.step7),
-      makeHyperlink(rowData.step8),
-      makeHyperlink(rowData.step9),
-      makeHyperlink(rowData.step10)
+      rowData.step1,
+      rowData.step2,
+      rowData.step3,
+      rowData.step4,
+      rowData.step5,
+      rowData.step6,
+      rowData.step7,
+      rowData.step8,
+      rowData.step9,
+      rowData.step10
     ];
 
     const response = await sheets.spreadsheets.values.append({
@@ -227,13 +221,12 @@ async function appendRowByHeader(sheetName, rowData) {
           spreadsheetId,
           requestBody: {
             requests: [
-              // ✅ 1. Format the newly appended row (White Background + Black Text + Alignment)
+              // ✅ 1. Format the newly appended row (Alignment and font, NO background color to preserve Zebra)
               {
                 repeatCell: {
                   range: { sheetId, startRowIndex: rowIndex, endRowIndex: rowIndex + 1, startColumnIndex: 0, endColumnIndex: 29 },
                   cell: {
                     userEnteredFormat: {
-                      backgroundColor: { red: 1, green: 1, blue: 1 },
                       textFormat: {
                         foregroundColor: { red: 0, green: 0, blue: 0 },
                         bold: false,
@@ -243,60 +236,78 @@ async function appendRowByHeader(sheetName, rowData) {
                       verticalAlignment: 'MIDDLE'
                     }
                   },
-                  fields: 'userEnteredFormat(backgroundColor,textFormat,horizontalAlignment,verticalAlignment)'
+                  fields: 'userEnteredFormat(textFormat,horizontalAlignment,verticalAlignment)'
                 }
               },
-
-              // ✅ 2. Hyperlink Text Color and Underline Styling (Explicit Blue color + Underline for Link columns E, L, M and Steps T-AC)
+              // ✅ 1.5. Explicitly format Column A (DateTime) so it displays as M-D-YYYY HH:mm:ss
               {
                 repeatCell: {
-                  range: { sheetId, startRowIndex: rowIndex, endRowIndex: rowIndex + 1, startColumnIndex: 4, endColumnIndex: 5 },
+                  range: { sheetId, startRowIndex: rowIndex, endRowIndex: rowIndex + 1, startColumnIndex: 0, endColumnIndex: 1 },
                   cell: {
                     userEnteredFormat: {
-                      textFormat: {
-                        foregroundColor: { red: 0.062, green: 0.353, blue: 0.824 },
-                        underline: true,
-                        fontSize: 10
+                      numberFormat: {
+                        type: 'DATE_TIME',
+                        pattern: 'M-D-YYYY HH:mm:ss'
                       }
                     }
                   },
-                  fields: 'userEnteredFormat(textFormat)'
-                }
-              },
-              {
-                repeatCell: {
-                  range: { sheetId, startRowIndex: rowIndex, endRowIndex: rowIndex + 1, startColumnIndex: 11, endColumnIndex: 13 },
-                  cell: {
-                    userEnteredFormat: {
-                      textFormat: {
-                        foregroundColor: { red: 0.062, green: 0.353, blue: 0.824 },
-                        underline: true,
-                        fontSize: 10
-                      }
-                    }
-                  },
-                  fields: 'userEnteredFormat(textFormat)'
-                }
-              },
-              {
-                repeatCell: {
-                  range: { sheetId, startRowIndex: rowIndex, endRowIndex: rowIndex + 1, startColumnIndex: 19, endColumnIndex: 29 },
-                  cell: {
-                    userEnteredFormat: {
-                      textFormat: {
-                        foregroundColor: { red: 0.062, green: 0.353, blue: 0.824 },
-                        underline: true,
-                        fontSize: 10
-                      }
-                    }
-                  },
-                  fields: 'userEnteredFormat(textFormat)'
+                  fields: 'userEnteredFormat.numberFormat'
                 }
               }
             ]
           }
         });
-        console.log(`✨ Fast formatting applied to newly appended row ${rowIndex + 1} of ${sheetName}`);
+
+        // ✅ 3. Convert all URLs to Native Links (No formulas!)
+        const linkRequests = [];
+        function addLinkRequest(colIndex, url, displayText) {
+          if (!url || !String(url).startsWith('http')) {
+            linkRequests.push({
+              updateCells: {
+                range: { sheetId, startRowIndex: rowIndex, endRowIndex: rowIndex + 1, startColumnIndex: colIndex, endColumnIndex: colIndex + 1 },
+                rows: [{ values: [{ userEnteredValue: { stringValue: String(url || '') } }] }],
+                fields: 'userEnteredValue'
+              }
+            });
+            return;
+          }
+          linkRequests.push({
+            updateCells: {
+              range: { sheetId, startRowIndex: rowIndex, endRowIndex: rowIndex + 1, startColumnIndex: colIndex, endColumnIndex: colIndex + 1 },
+              rows: [{
+                values: [{
+                  userEnteredValue: { stringValue: displayText },
+                  userEnteredFormat: {
+                    textFormat: {
+                      link: { uri: String(url) },
+                      foregroundColor: { red: 0.062, green: 0.353, blue: 0.824 },
+                      underline: true,
+                      fontSize: 10
+                    }
+                  }
+                }]
+              }],
+              fields: 'userEnteredValue,userEnteredFormat.textFormat'
+            }
+          });
+        }
+
+        addLinkRequest(4, rowData.trackingLink, "Open Tracking");
+        addLinkRequest(11, rowData.pageOrigin, "View Page Origin");
+        addLinkRequest(12, rowData.thankYouUrl, "ViewThankURL");
+
+        for(let i=0; i<10; i++) {
+          addLinkRequest(19 + i, rowData[`step${i+1}`], `Step ${i+1}`);
+        }
+
+        if (linkRequests.length > 0) {
+          await sheets.spreadsheets.batchUpdate({
+            spreadsheetId,
+            requestBody: { requests: linkRequests }
+          });
+        }
+
+        console.log(`✨ Fast formatting & Native Links applied to newly appended row ${rowIndex + 1} of ${sheetName}`);
       }
     } catch (fmtError) {
       console.log(`⚠️ Non-fatal row formatting error for ${sheetName}:`, fmtError.message);
@@ -595,8 +606,82 @@ async function appendFinalValidationRow(rowData) {
   }
 }
 
+async function appendNonTestRow(urlName, leadId, cdbStatus, allCondition) {
+  try {
+    const client = await authenticate();
+    const sheets = google.sheets({ version: 'v4', auth: client });
+    const spreadsheetId = process.env.GOOGLE_SHEET_ID;
+    const sheetName = 'Non Test';
+
+    // 1. Ensure sheet exists with correct headers
+    let sheetExists = true;
+    try {
+      await sheets.spreadsheets.values.get({
+        spreadsheetId,
+        range: `${sheetName}!A1:D1`
+      });
+    } catch (e) {
+      sheetExists = false;
+    }
+
+    if (!sheetExists) {
+      console.log(`🆕 Creating "${sheetName}" sheet tab...`);
+      await sheets.spreadsheets.batchUpdate({
+        spreadsheetId,
+        requestBody: {
+          requests: [{
+            addSheet: {
+              properties: {
+                title: sheetName,
+                gridProperties: {
+                  rowCount: 1000,
+                  columnCount: 4,
+                  frozenRowCount: 1
+                }
+              }
+            }
+          }]
+        }
+      }).catch(() => {});
+
+      const headers = ["Search URL Name", "Lead ID", "CDB Status", "All Condition"];
+      await sheets.spreadsheets.values.update({
+        spreadsheetId,
+        range: `${sheetName}!A1:D1`,
+        valueInputOption: 'USER_ENTERED',
+        requestBody: {
+          values: [headers]
+        }
+      });
+    }
+
+    const formattedRow = [
+      urlName,
+      leadId,
+      cdbStatus,
+      allCondition
+    ];
+
+    await sheets.spreadsheets.values.append({
+      spreadsheetId,
+      range: `${sheetName}!A:D`,
+      valueInputOption: 'USER_ENTERED',
+      requestBody: {
+        values: [formattedRow]
+      }
+    });
+
+    console.log(`✅ Row appended successfully to Google Sheet: ${sheetName}`);
+    return true;
+  } catch (error) {
+    console.error('❌ Google Sheets Non Test Tab Error:', error.message);
+    return false;
+  }
+}
+
 module.exports = {
   appendRowByHeader,
   updateSummaryDashboard,
-  appendFinalValidationRow
+  appendFinalValidationRow,
+  appendNonTestRow
 };

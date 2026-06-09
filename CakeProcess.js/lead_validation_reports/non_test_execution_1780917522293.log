@@ -1,0 +1,376 @@
+[2026-06-08T11:18:42.293Z] [INFO] Process Started - Date Range: 2026-06-05 to 2026-06-08
+[2026-06-08T11:18:42.294Z] [INFO] Using URL Name from CLI: "TRA"
+[2026-06-08T11:18:42.294Z] [INFO] Target URL Name for this run: "TRA"
+[2026-06-08T11:18:42.295Z] [INFO] Launching browser (headed: false)
+[2026-06-08T11:18:43.023Z] [INFO] Navigating to Cake login page...
+[2026-06-08T11:18:51.444Z] [INFO] Already logged in or redirect completed
+[2026-06-08T11:18:51.661Z] [INFO] Navigating to Cake Reports > Conversions
+[2026-06-08T11:18:58.187Z] [INFO] Using frame for report controls: main page
+[2026-06-08T11:18:58.202Z] [INFO] Setting date range: 06/05/2026 to 06/08/2026
+[2026-06-08T11:18:59.220Z] [INFO] Applying "Non-Tests" filter via ExtJS...
+[2026-06-08T11:18:59.230Z] [INFO] ✓ Successfully applied Non-Tests filter via ExtJS combo box.
+[2026-06-08T11:18:59.231Z] [INFO] Clicking search/filter button...
+[2026-06-08T11:18:59.236Z] [INFO] ✓ Filter button clicked successfully.
+[2026-06-08T11:19:05.254Z] [INFO] Using frame for row scanning: main page
+[2026-06-08T11:19:07.294Z] [INFO] Rows count detected: 200
+[2026-06-08T11:19:07.295Z] [INFO] Conversion grid loaded. Scanning rows...
+[2026-06-08T11:19:07.309Z] [INFO] Found 200 rows in total. Filtering by URL Name: "TRA"
+[2026-06-08T11:19:07.335Z] [INFO] Found 89 matching leads for "TRA"
+[2026-06-08T11:19:07.336Z] [INFO] Processing matching lead #1 (Row Index: 0)
+[2026-06-08T11:19:07.461Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379573);}});return false;
+[2026-06-08T11:19:07.493Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:19:22.617Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:19:22.617Z] [INFO] Processing matching lead #2 (Row Index: 3)
+[2026-06-08T11:19:22.685Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379576);}});return false;
+[2026-06-08T11:19:22.694Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:19:37.817Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:19:37.818Z] [INFO] Processing matching lead #3 (Row Index: 4)
+[2026-06-08T11:19:37.903Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379577);}});return false;
+[2026-06-08T11:19:37.911Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:19:53.063Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:19:53.064Z] [INFO] Processing matching lead #4 (Row Index: 5)
+[2026-06-08T11:19:53.185Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379578);}});return false;
+[2026-06-08T11:19:53.196Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:20:08.318Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:20:08.319Z] [INFO] Processing matching lead #5 (Row Index: 6)
+[2026-06-08T11:20:08.391Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379579);}});return false;
+[2026-06-08T11:20:08.398Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:20:23.527Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:20:23.527Z] [INFO] Processing matching lead #6 (Row Index: 7)
+[2026-06-08T11:20:23.601Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379580);}});return false;
+[2026-06-08T11:20:23.611Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:20:38.736Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:20:38.737Z] [INFO] Processing matching lead #7 (Row Index: 8)
+[2026-06-08T11:20:38.818Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379581);}});return false;
+[2026-06-08T11:20:38.827Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:20:53.928Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:20:53.929Z] [INFO] Processing matching lead #8 (Row Index: 9)
+[2026-06-08T11:20:54.005Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379582);}});return false;
+[2026-06-08T11:20:54.013Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:21:09.140Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:21:09.141Z] [INFO] Processing matching lead #9 (Row Index: 10)
+[2026-06-08T11:21:09.216Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379583);}});return false;
+[2026-06-08T11:21:09.226Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:21:24.335Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:21:24.335Z] [INFO] Processing matching lead #10 (Row Index: 18)
+[2026-06-08T11:21:24.419Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379591);}});return false;
+[2026-06-08T11:21:24.429Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:21:39.575Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:21:39.575Z] [INFO] Processing matching lead #11 (Row Index: 20)
+[2026-06-08T11:21:39.653Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379593);}});return false;
+[2026-06-08T11:21:39.661Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:21:54.784Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:21:54.784Z] [INFO] Processing matching lead #12 (Row Index: 24)
+[2026-06-08T11:21:54.865Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379597);}});return false;
+[2026-06-08T11:21:54.874Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:22:10.022Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:22:10.022Z] [INFO] Processing matching lead #13 (Row Index: 25)
+[2026-06-08T11:22:10.099Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379598);}});return false;
+[2026-06-08T11:22:10.118Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:22:25.257Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:22:25.258Z] [INFO] Processing matching lead #14 (Row Index: 26)
+[2026-06-08T11:22:25.335Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379599);}});return false;
+[2026-06-08T11:22:25.359Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:22:40.498Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:22:40.499Z] [INFO] Processing matching lead #15 (Row Index: 29)
+[2026-06-08T11:22:40.603Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379602);}});return false;
+[2026-06-08T11:22:40.656Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:22:55.775Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:22:55.776Z] [INFO] Processing matching lead #16 (Row Index: 30)
+[2026-06-08T11:22:55.870Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379603);}});return false;
+[2026-06-08T11:22:55.879Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:23:10.982Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:23:10.983Z] [INFO] Processing matching lead #17 (Row Index: 32)
+[2026-06-08T11:23:11.072Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379605);}});return false;
+[2026-06-08T11:23:11.080Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:23:26.206Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:23:26.206Z] [INFO] Processing matching lead #18 (Row Index: 35)
+[2026-06-08T11:23:26.283Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379608);}});return false;
+[2026-06-08T11:23:26.292Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:23:41.396Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:23:41.397Z] [INFO] Processing matching lead #19 (Row Index: 41)
+[2026-06-08T11:23:41.465Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379614);}});return false;
+[2026-06-08T11:23:41.474Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:23:56.566Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:23:56.567Z] [INFO] Processing matching lead #20 (Row Index: 43)
+[2026-06-08T11:23:56.653Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379616);}});return false;
+[2026-06-08T11:23:56.678Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:24:11.798Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:24:11.799Z] [INFO] Processing matching lead #21 (Row Index: 49)
+[2026-06-08T11:24:11.888Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379622);}});return false;
+[2026-06-08T11:24:11.896Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:24:27.007Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:24:27.008Z] [INFO] Processing matching lead #22 (Row Index: 55)
+[2026-06-08T11:24:27.104Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379628);}});return false;
+[2026-06-08T11:24:27.111Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:24:42.183Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:24:42.183Z] [INFO] Processing matching lead #23 (Row Index: 56)
+[2026-06-08T11:24:42.264Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379629);}});return false;
+[2026-06-08T11:24:42.273Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:24:57.398Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:24:57.399Z] [INFO] Processing matching lead #24 (Row Index: 57)
+[2026-06-08T11:24:57.482Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379630);}});return false;
+[2026-06-08T11:24:57.511Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:25:12.616Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:25:12.617Z] [INFO] Processing matching lead #25 (Row Index: 58)
+[2026-06-08T11:25:12.702Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379631);}});return false;
+[2026-06-08T11:25:12.711Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:25:27.813Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:25:27.814Z] [INFO] Processing matching lead #26 (Row Index: 59)
+[2026-06-08T11:25:27.944Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379632);}});return false;
+[2026-06-08T11:25:27.957Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:25:43.095Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:25:43.096Z] [INFO] Processing matching lead #27 (Row Index: 60)
+[2026-06-08T11:25:43.231Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379633);}});return false;
+[2026-06-08T11:25:43.243Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:25:58.318Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:25:58.319Z] [INFO] Processing matching lead #28 (Row Index: 61)
+[2026-06-08T11:25:58.432Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379634);}});return false;
+[2026-06-08T11:25:58.445Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:26:13.565Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:26:13.566Z] [INFO] Processing matching lead #29 (Row Index: 62)
+[2026-06-08T11:26:13.669Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379635);}});return false;
+[2026-06-08T11:26:13.678Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:26:28.796Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:26:28.797Z] [INFO] Processing matching lead #30 (Row Index: 63)
+[2026-06-08T11:26:28.904Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379636);}});return false;
+[2026-06-08T11:26:28.912Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:26:44.080Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:26:44.081Z] [INFO] Processing matching lead #31 (Row Index: 64)
+[2026-06-08T11:26:44.170Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379637);}});return false;
+[2026-06-08T11:26:44.179Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:26:59.313Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:26:59.314Z] [INFO] Processing matching lead #32 (Row Index: 66)
+[2026-06-08T11:26:59.405Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379639);}});return false;
+[2026-06-08T11:26:59.413Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:27:14.553Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:27:14.554Z] [INFO] Processing matching lead #33 (Row Index: 68)
+[2026-06-08T11:27:14.655Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379641);}});return false;
+[2026-06-08T11:27:14.663Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:27:29.763Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:27:29.764Z] [INFO] Processing matching lead #34 (Row Index: 69)
+[2026-06-08T11:27:29.856Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379642);}});return false;
+[2026-06-08T11:27:29.865Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:27:44.977Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:27:44.977Z] [INFO] Processing matching lead #35 (Row Index: 70)
+[2026-06-08T11:27:45.072Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379643);}});return false;
+[2026-06-08T11:27:45.082Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:28:00.219Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:28:00.220Z] [INFO] Processing matching lead #36 (Row Index: 71)
+[2026-06-08T11:28:00.308Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379644);}});return false;
+[2026-06-08T11:28:00.344Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:28:15.445Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:28:15.446Z] [INFO] Processing matching lead #37 (Row Index: 72)
+[2026-06-08T11:28:15.534Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379645);}});return false;
+[2026-06-08T11:28:15.542Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:28:30.659Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:28:30.660Z] [INFO] Processing matching lead #38 (Row Index: 73)
+[2026-06-08T11:28:30.772Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379646);}});return false;
+[2026-06-08T11:28:30.782Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:28:45.899Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:28:45.900Z] [INFO] Processing matching lead #39 (Row Index: 75)
+[2026-06-08T11:28:46.003Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379648);}});return false;
+[2026-06-08T11:28:46.011Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:29:01.143Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:29:01.145Z] [INFO] Processing matching lead #40 (Row Index: 76)
+[2026-06-08T11:29:01.291Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379649);}});return false;
+[2026-06-08T11:29:01.305Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:29:16.377Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:29:16.378Z] [INFO] Processing matching lead #41 (Row Index: 77)
+[2026-06-08T11:29:16.481Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379650);}});return false;
+[2026-06-08T11:29:16.490Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:29:31.604Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:29:31.604Z] [INFO] Processing matching lead #42 (Row Index: 78)
+[2026-06-08T11:29:31.701Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379651);}});return false;
+[2026-06-08T11:29:31.709Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:29:46.845Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:29:46.846Z] [INFO] Processing matching lead #43 (Row Index: 80)
+[2026-06-08T11:29:46.938Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379653);}});return false;
+[2026-06-08T11:29:46.947Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:30:02.041Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:30:02.042Z] [INFO] Processing matching lead #44 (Row Index: 81)
+[2026-06-08T11:30:02.132Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379654);}});return false;
+[2026-06-08T11:30:02.141Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:30:17.247Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:30:17.248Z] [INFO] Processing matching lead #45 (Row Index: 84)
+[2026-06-08T11:30:17.350Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379657);}});return false;
+[2026-06-08T11:30:17.359Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:30:32.505Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:30:32.506Z] [INFO] Processing matching lead #46 (Row Index: 85)
+[2026-06-08T11:30:32.603Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379658);}});return false;
+[2026-06-08T11:30:32.645Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:30:47.734Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:30:47.734Z] [INFO] Processing matching lead #47 (Row Index: 86)
+[2026-06-08T11:30:47.834Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379659);}});return false;
+[2026-06-08T11:30:47.843Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:31:02.962Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:31:02.963Z] [INFO] Processing matching lead #48 (Row Index: 87)
+[2026-06-08T11:31:03.066Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379660);}});return false;
+[2026-06-08T11:31:03.075Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:31:18.192Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:31:18.192Z] [INFO] Processing matching lead #49 (Row Index: 88)
+[2026-06-08T11:31:18.287Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379661);}});return false;
+[2026-06-08T11:31:18.297Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:31:33.411Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:31:33.411Z] [INFO] Processing matching lead #50 (Row Index: 89)
+[2026-06-08T11:31:33.519Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379662);}});return false;
+[2026-06-08T11:31:33.528Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:31:48.656Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:31:48.656Z] [INFO] Processing matching lead #51 (Row Index: 90)
+[2026-06-08T11:31:48.771Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379663);}});return false;
+[2026-06-08T11:31:48.781Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:32:03.925Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:32:03.926Z] [INFO] Processing matching lead #52 (Row Index: 91)
+[2026-06-08T11:32:04.016Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379664);}});return false;
+[2026-06-08T11:32:04.025Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:32:19.137Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:32:19.138Z] [INFO] Processing matching lead #53 (Row Index: 92)
+[2026-06-08T11:32:19.254Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379665);}});return false;
+[2026-06-08T11:32:19.263Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:32:34.340Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:32:34.340Z] [INFO] Processing matching lead #54 (Row Index: 93)
+[2026-06-08T11:32:34.450Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379666);}});return false;
+[2026-06-08T11:32:34.459Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:32:49.612Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:32:49.612Z] [INFO] Processing matching lead #55 (Row Index: 94)
+[2026-06-08T11:32:49.716Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379667);}});return false;
+[2026-06-08T11:32:49.726Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:33:04.860Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:33:04.861Z] [INFO] Processing matching lead #56 (Row Index: 95)
+[2026-06-08T11:33:04.967Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379668);}});return false;
+[2026-06-08T11:33:04.977Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:33:20.061Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:33:20.061Z] [INFO] Processing matching lead #57 (Row Index: 96)
+[2026-06-08T11:33:20.163Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379669);}});return false;
+[2026-06-08T11:33:20.173Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:33:35.326Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:33:35.327Z] [INFO] Processing matching lead #58 (Row Index: 97)
+[2026-06-08T11:33:35.433Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379670);}});return false;
+[2026-06-08T11:33:35.442Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:33:50.572Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:33:50.572Z] [INFO] Processing matching lead #59 (Row Index: 98)
+[2026-06-08T11:33:50.662Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379671);}});return false;
+[2026-06-08T11:33:50.670Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:34:05.758Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:34:05.759Z] [INFO] Processing matching lead #60 (Row Index: 99)
+[2026-06-08T11:34:05.864Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379672);}});return false;
+[2026-06-08T11:34:05.909Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:34:21.028Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:34:21.028Z] [INFO] Processing matching lead #61 (Row Index: 101)
+[2026-06-08T11:34:21.116Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379674);}});return false;
+[2026-06-08T11:34:21.125Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:34:36.256Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:34:36.257Z] [INFO] Processing matching lead #62 (Row Index: 102)
+[2026-06-08T11:34:36.365Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379675);}});return false;
+[2026-06-08T11:34:36.376Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:34:51.510Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:34:51.511Z] [INFO] Processing matching lead #63 (Row Index: 104)
+[2026-06-08T11:34:51.611Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379677);}});return false;
+[2026-06-08T11:34:51.621Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:35:06.754Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:35:06.755Z] [INFO] Processing matching lead #64 (Row Index: 105)
+[2026-06-08T11:35:06.864Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379678);}});return false;
+[2026-06-08T11:35:06.873Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:35:22.008Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:35:22.008Z] [INFO] Processing matching lead #65 (Row Index: 107)
+[2026-06-08T11:35:22.119Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379680);}});return false;
+[2026-06-08T11:35:22.127Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:35:37.257Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:35:37.258Z] [INFO] Processing matching lead #66 (Row Index: 108)
+[2026-06-08T11:35:37.366Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379681);}});return false;
+[2026-06-08T11:35:37.377Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:35:52.493Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:35:52.493Z] [INFO] Processing matching lead #67 (Row Index: 110)
+[2026-06-08T11:35:52.598Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379683);}});return false;
+[2026-06-08T11:35:52.607Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:36:07.741Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:36:07.742Z] [INFO] Processing matching lead #68 (Row Index: 118)
+[2026-06-08T11:36:07.849Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379691);}});return false;
+[2026-06-08T11:36:07.892Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:36:23.008Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:36:23.008Z] [INFO] Processing matching lead #69 (Row Index: 121)
+[2026-06-08T11:36:23.131Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379694);}});return false;
+[2026-06-08T11:36:23.141Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:36:38.255Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:36:38.256Z] [INFO] Processing matching lead #70 (Row Index: 123)
+[2026-06-08T11:36:38.344Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379696);}});return false;
+[2026-06-08T11:36:38.354Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:36:53.454Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:36:53.455Z] [INFO] Processing matching lead #71 (Row Index: 124)
+[2026-06-08T11:36:53.564Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379697);}});return false;
+[2026-06-08T11:36:53.573Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:37:08.696Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:37:08.697Z] [INFO] Processing matching lead #72 (Row Index: 136)
+[2026-06-08T11:37:08.805Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379709);}});return false;
+[2026-06-08T11:37:08.862Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:37:23.992Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:37:23.993Z] [INFO] Processing matching lead #73 (Row Index: 146)
+[2026-06-08T11:37:24.111Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379719);}});return false;
+[2026-06-08T11:37:24.122Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:37:39.242Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:37:39.243Z] [INFO] Processing matching lead #74 (Row Index: 147)
+[2026-06-08T11:37:39.348Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379720);}});return false;
+[2026-06-08T11:37:39.360Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:37:54.468Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:37:54.468Z] [INFO] Processing matching lead #75 (Row Index: 149)
+[2026-06-08T11:37:54.584Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379722);}});return false;
+[2026-06-08T11:37:54.603Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:38:09.739Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:38:09.740Z] [INFO] Processing matching lead #76 (Row Index: 151)
+[2026-06-08T11:38:09.848Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379724);}});return false;
+[2026-06-08T11:38:09.898Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:38:25.002Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:38:25.002Z] [INFO] Processing matching lead #77 (Row Index: 153)
+[2026-06-08T11:38:25.117Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379726);}});return false;
+[2026-06-08T11:38:25.126Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:38:40.253Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:38:40.253Z] [INFO] Processing matching lead #78 (Row Index: 154)
+[2026-06-08T11:38:40.365Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379727);}});return false;
+[2026-06-08T11:38:40.376Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:38:55.513Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:38:55.514Z] [INFO] Processing matching lead #79 (Row Index: 156)
+[2026-06-08T11:38:55.617Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379729);}});return false;
+[2026-06-08T11:38:55.626Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:39:10.769Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:39:10.770Z] [INFO] Processing matching lead #80 (Row Index: 159)
+[2026-06-08T11:39:10.901Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379732);}});return false;
+[2026-06-08T11:39:10.913Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:39:26.018Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:39:26.018Z] [INFO] Processing matching lead #81 (Row Index: 160)
+[2026-06-08T11:39:26.127Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379733);}});return false;
+[2026-06-08T11:39:26.138Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:39:41.290Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:39:41.291Z] [INFO] Processing matching lead #82 (Row Index: 161)
+[2026-06-08T11:39:41.402Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379734);}});return false;
+[2026-06-08T11:39:41.416Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:39:56.567Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:39:56.568Z] [INFO] Processing matching lead #83 (Row Index: 187)
+[2026-06-08T11:39:56.682Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379760);}});return false;
+[2026-06-08T11:39:56.735Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:40:11.836Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:40:11.837Z] [INFO] Processing matching lead #84 (Row Index: 190)
+[2026-06-08T11:40:11.970Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379763);}});return false;
+[2026-06-08T11:40:11.980Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:40:27.118Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:40:27.119Z] [INFO] Processing matching lead #85 (Row Index: 191)
+[2026-06-08T11:40:27.246Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379764);}});return false;
+[2026-06-08T11:40:27.258Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:40:42.362Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:40:42.363Z] [INFO] Processing matching lead #86 (Row Index: 192)
+[2026-06-08T11:40:42.481Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379765);}});return false;
+[2026-06-08T11:40:42.492Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:40:57.643Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:40:57.643Z] [INFO] Processing matching lead #87 (Row Index: 195)
+[2026-06-08T11:40:57.750Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379768);}});return false;
+[2026-06-08T11:40:57.761Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:41:12.883Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:41:12.883Z] [INFO] Processing matching lead #88 (Row Index: 198)
+[2026-06-08T11:41:12.994Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379771);}});return false;
+[2026-06-08T11:41:13.005Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:41:28.120Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:41:28.121Z] [INFO] Processing matching lead #89 (Row Index: 199)
+[2026-06-08T11:41:28.256Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379772);}});return false;
+[2026-06-08T11:41:28.267Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:41:43.375Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:41:43.376Z] [INFO] --- CDB Verification for 0 extracted Lead IDs ---
+[2026-06-08T11:41:43.377Z] [WARN] No Lead IDs found to verify in CDB.

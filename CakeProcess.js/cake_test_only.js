@@ -70,7 +70,7 @@ async function handleLogin(page, logFile) {
       utils.writeLog(logFile, 'Login form detected - attempting to log in', 'INFO');
       
       const username = process.env.CAKE_USERNAME || 'urvish.patel@bytestechnolab.com';
-      const password = process.env.CAKE_PASSWORD || 'Urvish@123#2026-05';
+      const password = process.env.CAKE_PASSWORD || 'Urvish@123#2026-06';
       
       // Use correct field identifiers from cake.js
       const usernameField = await page.$('#u, input[name="u"], input[type="text"]');

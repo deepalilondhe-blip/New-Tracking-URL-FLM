@@ -1,0 +1,122 @@
+[2026-06-08T08:20:02.755Z] [INFO] ======================================================================
+[2026-06-08T08:20:02.770Z] [INFO] 🚀 PROCESS START: FLM_TestOnly_IP_Validation (Dynamic Date & 200 Rows Mode)
+[2026-06-08T08:20:02.770Z] [INFO] ======================================================================
+[2026-06-08T08:20:02.771Z] [INFO] Processed Dynamic Date Range: Start = 06/05/2026, End = 06/08/2026
+[2026-06-08T08:20:02.771Z] [INFO] Launching Playwright Browser in HEADED mode (Chrome channel)...
+[2026-06-08T08:20:03.613Z] [INFO] Navigating to Cake CRM...
+[2026-06-08T08:20:09.438Z] [INFO] Login page detected. Attempting login...
+[2026-06-08T08:20:09.556Z] [INFO] Clicked Login. Waiting for dashboard page redirect...
+[2026-06-08T08:20:42.641Z] [INFO] ✓ Login Successful.
+[2026-06-08T08:20:42.783Z] [INFO] ✓ Session state saved to: C:\Users\Deepali_Londhe\Desktop\New Tracking URL\CakeProcess.js\cake-auth-state.json
+[2026-06-08T08:20:42.784Z] [INFO] Navigating to Reports > Conversions...
+[2026-06-08T08:20:48.000Z] [INFO] Waiting for Conversion Report page to load...
+[2026-06-08T08:20:49.209Z] [INFO] ✓ Navigated to Conversions Report Page.
+[2026-06-08T08:20:49.211Z] [INFO] Applying Tests Only filter dropdown option...
+[2026-06-08T08:20:49.219Z] [INFO] ✓ Tests dropdown updated via ExtJS API.
+[2026-06-08T08:20:52.221Z] [INFO] Setting Rows Per Page to 200...
+[2026-06-08T08:20:52.225Z] [INFO] ✓ Set Rows Per Page = 200.
+[2026-06-08T08:20:57.240Z] [INFO] Applying date range inputs...
+[2026-06-08T08:20:58.996Z] [INFO] Clicking the "Filter" button...
+[2026-06-08T08:20:59.005Z] [INFO] ✓ Filter button clicked.
+[2026-06-08T08:21:04.018Z] [INFO] ✓ Date range set successfully: 06/05/2026 to 06/08/2026
+[2026-06-08T08:21:04.145Z] [INFO] ✓ Report grid is visible.
+[2026-06-08T08:21:04.145Z] [INFO] Waiting for grid data to load...
+[2026-06-08T08:21:04.242Z] [INFO] ✓ Grid data loaded successfully.
+[2026-06-08T08:21:04.243Z] [INFO] Aggregating unique IP addresses page-by-page...
+[2026-06-08T08:21:04.244Z] [INFO] Processing page 1...
+[2026-06-08T08:21:06.288Z] [INFO] Found 200 valid data rows on page 1.
+[2026-06-08T08:21:06.373Z] [INFO] Navigating to next page...
+[2026-06-08T08:21:08.500Z] [INFO] Waiting for grid data to load...
+[2026-06-08T08:21:08.585Z] [INFO] ✓ Grid data loaded successfully.
+[2026-06-08T08:21:08.586Z] [INFO] Processing page 2...
+[2026-06-08T08:21:10.881Z] [INFO] Found 144 valid data rows on page 2.
+[2026-06-08T08:21:10.996Z] [INFO] Reached last page of report.
+[2026-06-08T08:21:10.997Z] [INFO] Total unique IP addresses found: 12
+[2026-06-08T08:21:10.998Z] [INFO]  - IP: 27.54.170.27 : 129 occurrences
+[2026-06-08T08:21:10.999Z] [INFO]  - IP: 147.135.70.175 : 2 occurrences
+[2026-06-08T08:21:11.000Z] [INFO]  - IP: 20.118.245.162 : 86 occurrences
+[2026-06-08T08:21:11.001Z] [INFO]  - IP: 207.244.71.79 : 2 occurrences
+[2026-06-08T08:21:11.002Z] [INFO]  - IP: 122.167.187.68 : 4 occurrences
+[2026-06-08T08:21:11.003Z] [INFO]  - IP: 20.168.159.163 : 5 occurrences
+[2026-06-08T08:21:11.003Z] [INFO]  - IP: 103.85.10.145 : 1 occurrences
+[2026-06-08T08:21:11.004Z] [INFO]  - IP: 20.29.52.243 : 5 occurrences
+[2026-06-08T08:21:11.004Z] [INFO]  - IP: 52.234.40.32 : 5 occurrences
+[2026-06-08T08:21:11.005Z] [INFO]  - IP: 172.182.226.214 : 87 occurrences
+[2026-06-08T08:21:11.006Z] [INFO]  - IP: 135.119.132.152 : 17 occurrences
+[2026-06-08T08:21:11.007Z] [INFO]  - IP: 162.210.194.37 : 1 occurrences
+[2026-06-08T08:21:11.007Z] [INFO] Selected all 12 unique IP(s) for validation.
+[2026-06-08T08:21:11.008Z] [INFO] 🔎 Validating Lead ID: F7285A16 (randomly selected from 129 leads) for IP: 27.54.170.27
+[2026-06-08T08:21:11.097Z] [INFO] Navigating back to page 1 to search for Lead ID...
+[2026-06-08T08:21:13.257Z] [INFO] Waiting for grid data to load...
+[2026-06-08T08:21:13.310Z] [INFO] ✓ Grid data loaded successfully.
+[2026-06-08T08:21:13.323Z] [INFO] ✓ Clicked lead link in DOM for Lead ID: F7285A16
+[2026-06-08T08:21:18.646Z] [INFO] Extracted: First="CKMTESTPIXEL", Last="CKMTESTPIXEL", Email="ckmtestpixel@gmail.com", IsTest=true
+[2026-06-08T08:21:18.648Z] [INFO] Returning to Conversions report grid...
+[2026-06-08T08:21:21.662Z] [INFO] 🔎 Validating Lead ID: 88A74756 (randomly selected from 2 leads) for IP: 147.135.70.175
+[2026-06-08T08:21:21.783Z] [INFO] ✓ Clicked lead link in DOM for Lead ID: 88A74756
+[2026-06-08T08:21:27.091Z] [INFO] Extracted: First="CKMTESTPIXEL", Last="CKMTESTPIXEL", Email="ckmtestpixel@gmail.com", IsTest=true
+[2026-06-08T08:21:27.092Z] [INFO] Returning to Conversions report grid...
+[2026-06-08T08:21:30.109Z] [INFO] 🔎 Validating Lead ID: 8ABFD20A (randomly selected from 86 leads) for IP: 20.118.245.162
+[2026-06-08T08:21:30.213Z] [INFO] ✓ Clicked lead link in DOM for Lead ID: 8ABFD20A
+[2026-06-08T08:21:35.530Z] [INFO] Extracted: First="CKMTESTPIXEL", Last="CKMTESTPIXEL", Email="ckmtestpixel@gmail.com", IsTest=true
+[2026-06-08T08:21:35.531Z] [INFO] Returning to Conversions report grid...
+[2026-06-08T08:21:38.551Z] [INFO] 🔎 Validating Lead ID: E664FA0C (randomly selected from 2 leads) for IP: 207.244.71.79
+[2026-06-08T08:21:38.646Z] [INFO] ✓ Clicked lead link in DOM for Lead ID: E664FA0C
+[2026-06-08T08:21:43.934Z] [INFO] Extracted: First="CKMTESTPIXEL", Last="CKMTESTPIXEL", Email="ckmtestpixel@gmail.com", IsTest=true
+[2026-06-08T08:21:43.936Z] [INFO] Returning to Conversions report grid...
+[2026-06-08T08:21:46.950Z] [INFO] 🔎 Validating Lead ID: F9179B77 (randomly selected from 4 leads) for IP: 122.167.187.68
+[2026-06-08T08:21:47.047Z] [INFO] ✓ Clicked lead link in DOM for Lead ID: F9179B77
+[2026-06-08T08:21:52.384Z] [INFO] Extracted: First="CKMTESTPIXEL", Last="CKMTESTPIXEL", Email="ckmtestpixel@gmail.com", IsTest=true
+[2026-06-08T08:21:52.385Z] [INFO] Returning to Conversions report grid...
+[2026-06-08T08:21:55.404Z] [INFO] 🔎 Validating Lead ID: A710BD8E (randomly selected from 5 leads) for IP: 20.168.159.163
+[2026-06-08T08:21:55.500Z] [INFO] ✓ Clicked lead link in DOM for Lead ID: A710BD8E
+[2026-06-08T08:22:00.859Z] [INFO] Extracted: First="CKMTESTPIXEL", Last="CKMTESTPIXEL", Email="ckmtestpixel@gmail.com", IsTest=true
+[2026-06-08T08:22:00.860Z] [INFO] Returning to Conversions report grid...
+[2026-06-08T08:22:03.876Z] [INFO] 🔎 Validating Lead ID: C9B24299 (randomly selected from 1 leads) for IP: 103.85.10.145
+[2026-06-08T08:22:03.976Z] [INFO] ✓ Clicked lead link in DOM for Lead ID: C9B24299
+[2026-06-08T08:22:09.330Z] [INFO] Extracted: First="CKMTESTPIXEL", Last="CKMTESTPIXEL", Email="ckmtestpixel@gmail.com", IsTest=true
+[2026-06-08T08:22:09.331Z] [INFO] Returning to Conversions report grid...
+[2026-06-08T08:22:12.346Z] [INFO] 🔎 Validating Lead ID: BE1FE8A6 (randomly selected from 5 leads) for IP: 20.29.52.243
+[2026-06-08T08:22:12.450Z] [INFO] ✓ Clicked lead link in DOM for Lead ID: BE1FE8A6
+[2026-06-08T08:22:17.908Z] [INFO] Extracted: First="CKMTESTPIXEL", Last="CKMTESTPIXEL", Email="ckmtestpixel@gmail.com", IsTest=true
+[2026-06-08T08:22:17.909Z] [INFO] Returning to Conversions report grid...
+[2026-06-08T08:22:20.924Z] [INFO] 🔎 Validating Lead ID: 0102FF96 (randomly selected from 5 leads) for IP: 52.234.40.32
+[2026-06-08T08:22:21.058Z] [INFO] ✓ Clicked lead link in DOM for Lead ID: 0102FF96
+[2026-06-08T08:22:26.496Z] [INFO] Extracted: First="CKMTESTPIXEL", Last="CKMTESTPIXEL", Email="ckmtestpixel@gmail.com", IsTest=true
+[2026-06-08T08:22:26.497Z] [INFO] Returning to Conversions report grid...
+[2026-06-08T08:22:29.541Z] [INFO] 🔎 Validating Lead ID: 28C3A855 (randomly selected from 87 leads) for IP: 172.182.226.214
+[2026-06-08T08:22:29.683Z] [INFO] ✓ Clicked lead link in DOM for Lead ID: 28C3A855
+[2026-06-08T08:22:35.009Z] [INFO] Extracted: First="CKMTESTPIXEL", Last="CKMTESTPIXEL", Email="ckmtestpixel@gmail.com", IsTest=true
+[2026-06-08T08:22:35.010Z] [INFO] Returning to Conversions report grid...
+[2026-06-08T08:22:38.028Z] [INFO] 🔎 Validating Lead ID: 7549BD7B (randomly selected from 17 leads) for IP: 135.119.132.152
+[2026-06-08T08:22:40.504Z] [INFO] Waiting for grid data to load...
+[2026-06-08T08:22:40.585Z] [INFO] ✓ Grid data loaded successfully.
+[2026-06-08T08:22:42.854Z] [INFO] Waiting for grid data to load...
+[2026-06-08T08:22:42.940Z] [INFO] ✓ Grid data loaded successfully.
+[2026-06-08T08:22:42.966Z] [INFO] ✓ Clicked lead link in DOM for Lead ID: 7549BD7B
+[2026-06-08T08:22:48.257Z] [INFO] Extracted: First="CKMTESTPIXEL", Last="CKMTESTPIXEL", Email="ckmtestpixel@gmail.com", IsTest=true
+[2026-06-08T08:22:48.258Z] [INFO] Returning to Conversions report grid...
+[2026-06-08T08:22:51.280Z] [INFO] 🔎 Validating Lead ID: AB7A754D (randomly selected from 1 leads) for IP: 162.210.194.37
+[2026-06-08T08:22:51.360Z] [INFO] Navigating back to page 1 to search for Lead ID...
+[2026-06-08T08:22:53.494Z] [INFO] Waiting for grid data to load...
+[2026-06-08T08:22:53.556Z] [INFO] ✓ Grid data loaded successfully.
+[2026-06-08T08:22:53.574Z] [INFO] ✓ Clicked lead link in DOM for Lead ID: AB7A754D
+[2026-06-08T08:22:58.932Z] [INFO] Extracted: First="CKMTESTPIXEL", Last="CKMTESTPIXEL", Email="ckmtestpixel@gmail.com", IsTest=true
+[2026-06-08T08:22:58.933Z] [INFO] Returning to Conversions report grid...
+[2026-06-08T08:23:01.958Z] [INFO] Appending 12 row(s) to local CSV Dashboard at C:\Users\Deepali_Londhe\Desktop\New Tracking URL\FML_Project_Dashboard\Test_Only_IP_Validation_Dashboard.csv...
+[2026-06-08T08:23:01.975Z] [INFO] Appended to CSV: 06/08/2026,F7285A16,27.54.170.27 : 129,True,Correct
+[2026-06-08T08:23:01.976Z] [INFO] Appended to CSV: 06/08/2026,88A74756,147.135.70.175 : 2,True,Correct
+[2026-06-08T08:23:01.978Z] [INFO] Appended to CSV: 06/08/2026,8ABFD20A,20.118.245.162 : 86,True,Correct
+[2026-06-08T08:23:01.979Z] [INFO] Appended to CSV: 06/08/2026,E664FA0C,207.244.71.79 : 2,True,Correct
+[2026-06-08T08:23:01.981Z] [INFO] Appended to CSV: 06/08/2026,F9179B77,122.167.187.68 : 4,True,Correct
+[2026-06-08T08:23:01.982Z] [INFO] Appended to CSV: 06/08/2026,A710BD8E,20.168.159.163 : 5,True,Correct
+[2026-06-08T08:23:01.984Z] [INFO] Appended to CSV: 06/08/2026,C9B24299,103.85.10.145 : 1,True,Correct
+[2026-06-08T08:23:01.986Z] [INFO] Appended to CSV: 06/08/2026,BE1FE8A6,20.29.52.243 : 5,True,Correct
+[2026-06-08T08:23:01.987Z] [INFO] Appended to CSV: 06/08/2026,0102FF96,52.234.40.32 : 5,True,Correct
+[2026-06-08T08:23:01.988Z] [INFO] Appended to CSV: 06/08/2026,28C3A855,172.182.226.214 : 87,True,Correct
+[2026-06-08T08:23:01.989Z] [INFO] Appended to CSV: 06/08/2026,7549BD7B,135.119.132.152 : 17,True,Correct
+[2026-06-08T08:23:01.991Z] [INFO] Appended to CSV: 06/08/2026,AB7A754D,162.210.194.37 : 1,True,Correct
+[2026-06-08T08:23:01.992Z] [INFO] Connecting to Google Sheet ID: 1fO1YFFIM-i_DRPLqdSqC4oECeAHEETPJmN6RWlTrLzU, Tab: Test Only IP Data...
+[2026-06-08T08:23:03.740Z] [INFO] ✓ Google Sheet updated successfully.
+[2026-06-08T08:23:04.159Z] [INFO] Browser closed. Process complete.
+[2026-06-08T08:23:04.159Z] [INFO] ======================================================================

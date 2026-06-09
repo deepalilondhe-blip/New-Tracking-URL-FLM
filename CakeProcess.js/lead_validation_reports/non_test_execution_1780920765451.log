@@ -1,0 +1,90 @@
+[2026-06-08T12:12:45.452Z] [INFO] Process Started - Date Range: 2026-06-05 to 2026-06-08
+[2026-06-08T12:12:45.453Z] [INFO] Using URL Name from CLI: "TRA"
+[2026-06-08T12:12:45.453Z] [INFO] Target URL Name for this run: "TRA"
+[2026-06-08T12:12:45.454Z] [INFO] Launching browser (headed: true)
+[2026-06-08T12:12:46.337Z] [INFO] Navigating to Cake login page...
+[2026-06-08T12:12:55.018Z] [INFO] Already logged in or redirect completed
+[2026-06-08T12:12:55.280Z] [INFO] Navigating to Cake Reports > Conversions
+[2026-06-08T12:13:02.578Z] [INFO] Frame search attempt 1/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_vmj8gjf5s", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-08T12:13:03.592Z] [INFO] Frame search attempt 2/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_vmj8gjf5s", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-08T12:13:04.606Z] [INFO] Frame search attempt 3/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_vmj8gjf5s", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-08T12:13:05.613Z] [INFO] Frame search attempt 4/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_vmj8gjf5s", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-08T12:13:06.629Z] [INFO] Frame search attempt 5/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_vmj8gjf5s", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-08T12:13:07.645Z] [INFO] Frame search attempt 6/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_vmj8gjf5s", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-08T12:13:08.658Z] [INFO] Frame search attempt 7/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_vmj8gjf5s", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-08T12:13:09.670Z] [INFO] Frame search attempt 8/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_vmj8gjf5s", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-08T12:13:10.689Z] [INFO] Frame search attempt 9/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_vmj8gjf5s", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-08T12:13:11.696Z] [INFO] Frame search attempt 10/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_vmj8gjf5s", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-08T12:13:12.701Z] [INFO] Frame search attempt 11/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_vmj8gjf5s", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-08T12:13:13.712Z] [INFO] Frame search attempt 12/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_vmj8gjf5s", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-08T12:13:14.718Z] [INFO] Frame search attempt 13/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_vmj8gjf5s", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-08T12:13:15.733Z] [INFO] Frame search attempt 14/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_vmj8gjf5s", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-08T12:13:16.750Z] [INFO] Frame search attempt 15/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_vmj8gjf5s", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-08T12:13:17.753Z] [INFO] Using frame for report controls: main page
+[2026-06-08T12:13:17.755Z] [INFO] Setting date range: 06/05/2026 to 06/08/2026
+[2026-06-08T12:13:18.769Z] [INFO] Applying "Non-Tests" filter...
+[2026-06-08T12:13:19.822Z] [INFO] ✓ Successfully applied Non-Tests filter via UI dropdown click.
+[2026-06-08T12:13:19.823Z] [INFO] Clicking search/filter button...
+[2026-06-08T12:13:19.854Z] [INFO] ✓ Filter button clicked successfully.
+[2026-06-08T12:13:25.858Z] [INFO] Frame search attempt 1/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_vmj8gjf5s", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-08T12:13:26.871Z] [INFO] Frame search attempt 2/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_vmj8gjf5s", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-08T12:13:27.874Z] [INFO] Frame search attempt 3/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_vmj8gjf5s", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-08T12:13:28.884Z] [INFO] Frame search attempt 4/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_vmj8gjf5s", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-08T12:13:29.889Z] [INFO] Frame search attempt 5/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_vmj8gjf5s", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-08T12:13:30.897Z] [INFO] Frame search attempt 6/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_vmj8gjf5s", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-08T12:13:31.913Z] [INFO] Frame search attempt 7/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_vmj8gjf5s", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-08T12:13:32.915Z] [INFO] Frame search attempt 8/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_vmj8gjf5s", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-08T12:13:33.925Z] [INFO] Frame search attempt 9/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_vmj8gjf5s", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-08T12:13:34.935Z] [INFO] Frame search attempt 10/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_vmj8gjf5s", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-08T12:13:35.941Z] [INFO] Frame search attempt 11/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_vmj8gjf5s", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-08T12:13:36.948Z] [INFO] Frame search attempt 12/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_vmj8gjf5s", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-08T12:13:37.955Z] [INFO] Frame search attempt 13/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_vmj8gjf5s", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-08T12:13:38.969Z] [INFO] Frame search attempt 14/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_vmj8gjf5s", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-08T12:13:39.978Z] [INFO] Frame search attempt 15/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_vmj8gjf5s", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-08T12:13:40.981Z] [INFO] Using frame for row scanning: main page
+[2026-06-08T12:13:43.036Z] [INFO] Rows count detected: 200
+[2026-06-08T12:13:43.037Z] [INFO] Conversion grid loaded. Scanning rows...
+[2026-06-08T12:13:43.097Z] [INFO] Found 200 rows in total. Filtering by URL Name: "TRA"
+[2026-06-08T12:13:43.135Z] [INFO] Found 108 matching leads for "TRA"
+[2026-06-08T12:13:43.137Z] [INFO] Limiting check to 5 leads dynamically.
+[2026-06-08T12:13:43.138Z] [INFO] Processing matching lead #1 (Row Index: 0)
+[2026-06-08T12:13:43.346Z] [INFO] Triggering details link click natively...
+[2026-06-08T12:13:43.549Z] [INFO] Waiting for lead card elements to load...
+[2026-06-08T12:13:46.204Z] [INFO] Lead card elements detected on main page context.
+[2026-06-08T12:13:46.205Z] [INFO] ✓ Lead card context resolved: main page.
+[2026-06-08T12:13:49.006Z] [INFO] Validating Lead ID: 
+[2026-06-08T12:13:49.009Z] [INFO] Selecting tab: Personal Info
+[2026-06-08T12:14:51.264Z] [INFO] Personal Info - First Name: "", Last Name: "", Email: "dontariolucas54@gmail.com"
+[2026-06-08T12:15:13.700Z] [INFO] Selecting tab: Sale Info
+[2026-06-08T12:15:37.650Z] [INFO] Sale Info - Pixel Fired: ""
+[2026-06-08T12:15:37.651Z] [INFO] Selecting tab: Vertical Specific
+[2026-06-08T12:16:35.574Z] [INFO] Vertical Specific - Tax Debt: "", Neustar: "", Neustar Disposition: ""
+[2026-06-08T12:16:54.703Z] [WARN] ⚠ Could not parse Tax Debt numeric value: ""
+[2026-06-08T12:16:54.705Z] [INFO] Selecting tab: Pixel Log
+[2026-06-08T12:17:16.098Z] [INFO] Pixel Log - Disposition: ""
+[2026-06-08T12:17:16.100Z] [INFO] Email Oversight status: ""
+[2026-06-08T12:17:16.101Z] [INFO] Closing lead card window...
+[2026-06-08T12:17:19.846Z] [INFO] Processing matching lead #2 (Row Index: 1)
+[2026-06-08T12:17:21.781Z] [INFO] Triggering details link click natively...
+[2026-06-08T12:17:21.865Z] [INFO] Waiting for lead card elements to load...
+[2026-06-08T12:17:23.167Z] [INFO] Lead card elements detected on main page context.
+[2026-06-08T12:17:23.169Z] [INFO] ✓ Lead card context resolved: main page.
+[2026-06-08T12:17:25.887Z] [INFO] Validating Lead ID: 
+[2026-06-08T12:17:25.889Z] [INFO] Selecting tab: Personal Info
+[2026-06-08T12:18:19.471Z] [INFO] Personal Info - First Name: "", Last Name: "", Email: "ddeliberto0@gmail.com"
+[2026-06-08T12:18:40.209Z] [INFO] Selecting tab: Sale Info
+[2026-06-08T12:19:02.269Z] [INFO] Sale Info - Pixel Fired: ""
+[2026-06-08T12:19:02.270Z] [INFO] Selecting tab: Vertical Specific
+[2026-06-08T12:20:04.975Z] [INFO] Vertical Specific - Tax Debt: "", Neustar: "", Neustar Disposition: ""
+[2026-06-08T12:20:25.767Z] [WARN] ⚠ Could not parse Tax Debt numeric value: ""
+[2026-06-08T12:20:25.768Z] [INFO] Selecting tab: Pixel Log
+[2026-06-08T12:20:43.920Z] [INFO] Pixel Log - Disposition: ""
+[2026-06-08T12:20:43.922Z] [INFO] Email Oversight status: ""
+[2026-06-08T12:20:43.924Z] [INFO] Closing lead card window...
+[2026-06-08T12:20:46.144Z] [INFO] Processing matching lead #3 (Row Index: 2)
+[2026-06-08T12:20:46.258Z] [INFO] Triggering details link click natively...
+[2026-06-08T12:20:46.319Z] [INFO] Waiting for lead card elements to load...
+[2026-06-08T12:20:47.562Z] [INFO] Lead card elements detected on main page context.
+[2026-06-08T12:20:47.564Z] [INFO] ✓ Lead card context resolved: main page.
+[2026-06-08T12:20:50.109Z] [INFO] Validating Lead ID: 
+[2026-06-08T12:20:50.110Z] [INFO] Selecting tab: Personal Info

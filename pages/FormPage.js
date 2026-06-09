@@ -393,6 +393,7 @@ class FormPage {
       } catch (e) {
         console.warn('⚠️ Could not select debt amount:', e.message);
       }
+      await this.syncHiddenDebtFields();
       await this.clickNextButton('.next-btn1, .btn-next');
 
       // ==================================================
@@ -533,7 +534,7 @@ class FormPage {
         } catch (e) {
           console.warn('⚠️ State selection DOM evaluation failed:', e.message);
         }
-        await this.clickNextButton('.next-btn, .next-btn2, .btn-next');
+        await this.clickNextButton('.next-btn, .next-btn2, .btn-next, button:has-text("NEXT"), button:has-text("Next"), .next');
       }
 
       // ===== POST-STATE DYNAMIC STEPS (If any) =====
@@ -562,6 +563,7 @@ class FormPage {
       let lastFilledState = "";
       while (contactSafetyCounter < 10) {
         await this.waitForSpinner();
+        await this.syncHiddenDebtFields();
 
         // Exit immediately if thank you page is detected
         const currentUrl = this.page.url();
@@ -573,8 +575,8 @@ class FormPage {
         let filledSomething = false;
 
         // First Name
-        const fName = this.page.locator('#first_name:visible, input[name="first_name"]:visible, input[placeholder*="First Name" i]:visible').first();
-        if (await fName.isVisible({ timeout: 500 }).catch(() => false)) {
+        const fName = this.page.locator('#first_name, input[name="first_name"], input[placeholder*="First Name" i]').first();
+        if (await fName.isVisible({ timeout: 3000 }).catch(() => false)) {
           const currentVal = await fName.inputValue().catch(() => '');
           if (!currentVal || currentVal !== firstName) {
             await fName.click({ timeout: 3000 }).catch(() => {});
@@ -586,8 +588,8 @@ class FormPage {
         }
 
         // Last Name
-        const lName = this.page.locator('#last_name:visible, input[name="last_name"]:visible, input[placeholder*="Last Name" i]:visible').first();
-        if (await lName.isVisible({ timeout: 500 }).catch(() => false)) {
+        const lName = this.page.locator('#last_name, input[name="last_name"], input[placeholder*="Last Name" i]').first();
+        if (await lName.isVisible({ timeout: 3000 }).catch(() => false)) {
           const currentVal = await lName.inputValue().catch(() => '');
           if (!currentVal || currentVal !== lastName) {
             await lName.click({ timeout: 3000 }).catch(() => {});
@@ -599,8 +601,8 @@ class FormPage {
         }
 
         // Email
-        const emailField = this.page.locator('#email:visible, #email_address:visible, input[name="email"]:visible, input[name="email_address"]:visible, input[type="email"]:visible, input[placeholder*="Email" i]:visible').first();
-        if (await emailField.isVisible({ timeout: 500 }).catch(() => false)) {
+        const emailField = this.page.locator('#email, #email_address, input[name="email"], input[name="email_address"], input[type="email"], input[placeholder*="Email" i]').first();
+        if (await emailField.isVisible({ timeout: 3000 }).catch(() => false)) {
           const currentVal = await emailField.inputValue().catch(() => '');
           if (!currentVal || currentVal !== email) {
             await emailField.click({ timeout: 3000 }).catch(() => {});
@@ -612,8 +614,8 @@ class FormPage {
         }
 
         // Phone
-        const phoneField = this.page.locator('#primary_phone:visible, #phone:visible, #phone_home:visible, input[name="phone"]:visible, input[name="phone_home"]:visible, input[name="primary_phone"]:visible, input[type="tel"]:visible').first();
-        if (await phoneField.isVisible({ timeout: 500 }).catch(() => false)) {
+        const phoneField = this.page.locator('#primary_phone, #phone, #phone_home, input[name="phone"], input[name="phone_home"], input[name="primary_phone"], input[type="tel"]').first();
+        if (await phoneField.isVisible({ timeout: 3000 }).catch(() => false)) {
           const currentVal = await phoneField.inputValue().catch(() => '');
           if (!currentVal || currentVal !== phone) {
             await phoneField.click({ timeout: 3000 }).catch(() => {});
@@ -625,7 +627,7 @@ class FormPage {
         }
 
         // Click next/submit button if visible on this contact sub-step
-        const nextBtn = this.page.locator('.btn-next:visible, .next-btn:visible, .next-btn3:visible, .next-btn4:visible, .next-btn5:visible, button:has-text("NEXT"):visible, button:has-text("Next"):visible, button:has-text("Submit"):visible, button:has-text("Continue"):visible, input[type="submit"]:visible, .emailbtn:visible, .namebtn:visible').first();
+        const nextBtn = this.page.locator('.btn-next:visible, .next-btn:visible, .next-btn3:visible, .next-btn4:visible, .next-btn5:visible, button:has-text("NEXT"):visible, button:has-text("Next"):visible, button:has-text("Submit"):visible, button:has-text("Continue"):visible, input[type="submit"]:visible, .emailbtn:visible, .namebtn:visible, .next:visible, a:has-text("NEXT"):visible, a:has-text("Next"):visible, .step4btn:visible, .step5btn:visible').first();
 
         if (await nextBtn.isVisible({ timeout: 1000 }).catch(() => false)) {
           const btnText = await nextBtn.textContent().catch(() => 'Next');
@@ -722,25 +724,45 @@ class FormPage {
 
   async clickNextButton(selector) {
     try {
-      const btn = this.page.locator(selector).first();
-      if (await btn.isVisible({ timeout: 5000 })) {
-        console.log(`🔘 Attempting to click ${selector}`);
+      // Split selectors by comma and append :visible to each to ensure we only target the active visible button
+      const visibleSelector = selector.split(',').map(s => `${s.trim()}:visible`).join(', ');
+      const btn = this.page.locator(visibleSelector).first();
+      const count = await btn.count();
+      
+      if (count > 0) {
+        console.log(`🔘 Clicking active visible button: ${visibleSelector}`);
         await btn.click({ timeout: 5000 }).catch(async () => {
           console.log('⚠️ Standard click failed, using dispatchEvent...');
           await btn.evaluate(node => node.dispatchEvent(new MouseEvent('click', { bubbles: true })));
         });
-        console.log(`✅ Clicked ${selector}`);
+        console.log(`✅ Clicked: ${visibleSelector}`);
         await this.page.waitForTimeout(1500);
       } else {
-        // Fallback to generic next if specific class not found
-        const genericNext = this.page.locator('button:has-text("NEXT"), button:has-text("Next"), a:has-text("NEXT"), a:has-text("Next"), div:has-text("NEXT"), div:has-text("Next"), .next-btn, .next-btn1, .next-btn2, .next-btn3, .next-btn4, .next-btn5, .btn-next').first();
-        if (await genericNext.isVisible({ timeout: 2000 })) {
-          console.log('🔘 Clicking generic NEXT button');
-          await genericNext.click().catch(async () => {
-            await genericNext.evaluate(node => node.click());
-          });
-          console.log('✅ Clicked generic NEXT button');
-          await this.page.waitForTimeout(1500);
+        // Fallback list of specific next buttons evaluated sequentially and strictly with :visible filter
+        const genericSelectors = [
+          'button:has-text("NEXT"):visible', 'button:has-text("Next"):visible',
+          'a:has-text("NEXT"):visible', 'a:has-text("Next"):visible',
+          'div:has-text("NEXT"):visible', 'div:has-text("Next"):visible',
+          '.next-btn:visible', '.next-btn1:visible', '.next-btn2:visible', '.next-btn3:visible', '.next-btn4:visible', '.next-btn5:visible', '.btn-next:visible', '.next:visible'
+        ];
+        
+        let fallbackClicked = false;
+        for (const sel of genericSelectors) {
+          const fallbackBtn = this.page.locator(sel).first();
+          if (await fallbackBtn.isVisible({ timeout: 1000 })) {
+            console.log(`🔘 Clicking fallback button: ${sel}`);
+            await fallbackBtn.click({ force: true }).catch(async () => {
+              await fallbackBtn.evaluate(node => node.click());
+            });
+            console.log(`✅ Clicked fallback: ${sel}`);
+            await this.page.waitForTimeout(1500);
+            fallbackClicked = true;
+            break;
+          }
+        }
+        
+        if (!fallbackClicked) {
+          console.warn(`⚠️ No active visible next button found for selector ${selector}`);
         }
       }
     } catch (e) {
@@ -756,31 +778,16 @@ class FormPage {
     }
   }
 
-  async submitForm() {
-    console.log('🔘 Submitting form');
-
-    // Bypass if already submitted/on thank you page to prevent timeout delays
-    const currentUrl = this.page.url();
-    if (currentUrl.includes('/ty') || currentUrl.includes('/thank-you') || currentUrl.includes('/thankyou') || currentUrl.includes('leadid=') || currentUrl.includes('transaction_id=')) {
-      console.log('✅ Form already submitted. Bypassing submitForm logic.');
-      return;
-    }
-
+  async syncHiddenDebtFields() {
     try {
-      // CRITICAL: Ensure debt value is properly set in hidden fields before submission
       let cleanDebtVal = this.selectedSliderAmount.toString().replace(/,/g, '').trim();
       const match = cleanDebtVal.match(/\d+/);
       let numericDebt = match ? parseInt(match[0]) : 0;
       
-      if (cleanDebtVal.includes('Less than') && cleanDebtVal.includes('5000')) cleanDebtVal = "5000";
-      else if (numericDebt === 5000 && cleanDebtVal.includes('9999')) cleanDebtVal = "7500";
-      else if (numericDebt === 10000) cleanDebtVal = "10000";
-      else if (numericDebt === 20000) cleanDebtVal = "20000";
-      else if (numericDebt === 50000) cleanDebtVal = "50000";
-      else cleanDebtVal = numericDebt.toString();
+      cleanDebtVal = numericDebt > 0 ? numericDebt.toString() : cleanDebtVal;
 
       if (cleanDebtVal) {
-        console.log(`💾 Setting hidden debt fields to: ${cleanDebtVal}`);
+        console.log(`💾 Syncing hidden debt fields to: ${cleanDebtVal}`);
         await this.page.evaluate((debtVal) => {
           // Update all possible hidden debt field names with the selected slider value
           const debtFieldNames = ['tax_debt', 'debt_amount', 'debt', 'debt_value', 'debt_range', 'slider_value', 'amount', 'debt_range_value'];
@@ -813,6 +820,25 @@ class FormPage {
           });
         }, cleanDebtVal);
       }
+    } catch (e) {
+      console.warn('⚠️ Could not sync hidden debt fields:', e.message);
+    }
+  }
+
+  async submitForm() {
+    console.log('🔘 Submitting form');
+
+    // Bypass if already submitted/on thank you page to prevent timeout delays
+    const currentUrl = this.page.url();
+    if (currentUrl.includes('/ty') || currentUrl.includes('/thank-you') || currentUrl.includes('/thankyou') || currentUrl.includes('leadid=') || currentUrl.includes('transaction_id=')) {
+      console.log('✅ Form already submitted. Bypassing submitForm logic.');
+      return;
+    }
+
+    try {
+      await this.syncHiddenDebtFields();
+
+
 
       const submitButtons = [
         this.page.locator('#submitBtn').first(),
@@ -827,20 +853,43 @@ class FormPage {
         this.page.locator('button[type="submit"]').first()
       ];
 
+      let submitClicked = false;
+      
       for (const btn of submitButtons) {
         if (await btn.isVisible({ timeout: 2000 })) {
           console.log('✅ Submit button found, clicking...');
           await btn.click();
+          submitClicked = true;
+          
+          // Wait for navigation after submit click
+          try {
+            await this.page.waitForNavigation({ waitUntil: 'domcontentloaded', timeout: 10000 });
+            console.log('✅ Navigation completed after submit');
+          } catch (navErr) {
+            console.log('⏳ Waiting for page load after submit...');
+            await this.page.waitForLoadState('domcontentloaded').catch(() => {});
+          }
+          
+          // Verify we actually left the form page
+          const newUrl = this.page.url();
+          if (newUrl.includes('/ty') || newUrl.includes('/thank-you') || newUrl.includes('/thankyou') || newUrl.includes('leadid=') || newUrl.includes('transaction_id=')) {
+            console.log('✅ Successfully navigated to Thank You page');
+          } else {
+            console.log('⚠️ Still on form page after submit click');
+          }
+          
           break;
         }
       }
       
-      // Last resort: AI Agent Self-Healing for Submit (Manual Approval Mode)
-      console.warn('⚠️ Standard submit buttons not found, consulting AI Agent...');
-      const suggestion = await aiAgent.suggestFix(this.page, 'Submit button');
-      if (suggestion) {
-        console.warn(`🤖 [AI Agent] POTENTIAL SUBMIT FIX DISCOVERED: ${suggestion}`);
-        console.warn(`🔔 [Manual Approval Required] Update FormPage.js submit block with: ${suggestion}`);
+      if (!submitClicked) {
+        // Last resort: AI Agent Self-Healing for Submit (Manual Approval Mode)
+        console.warn('⚠️ Standard submit buttons not found, consulting AI Agent...');
+        const suggestion = await aiAgent.suggestFix(this.page, 'Submit button');
+        if (suggestion) {
+          console.warn(`🤖 [AI Agent] POTENTIAL SUBMIT FIX DISCOVERED: ${suggestion}`);
+          console.warn(`🔔 [Manual Approval Required] Update FormPage.js submit block with: ${suggestion}`);
+        }
       }
 
     } catch (e) {

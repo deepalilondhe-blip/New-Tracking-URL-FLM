@@ -1,0 +1,35 @@
+[2026-06-08T10:46:19.283Z] [INFO] Process Started - Date Range: 2026-06-05 to 2026-06-08
+[2026-06-08T10:46:19.284Z] [INFO] Using URL Name from CLI: "TRA"
+[2026-06-08T10:46:19.285Z] [INFO] Target URL Name for this run: "TRA"
+[2026-06-08T10:46:19.285Z] [INFO] Launching browser (headed: true)
+[2026-06-08T10:46:20.488Z] [INFO] Navigating to Cake login page...
+[2026-06-08T10:46:34.364Z] [INFO] Already logged in or redirect completed
+[2026-06-08T10:46:34.528Z] [INFO] Navigating to Cake Reports > Conversions
+[2026-06-08T10:46:40.253Z] [INFO] Setting date range: 06/05/2026 to 06/08/2026
+[2026-06-08T10:46:41.265Z] [INFO] Applying "Non-Tests" filter via ExtJS...
+[2026-06-08T10:46:41.271Z] [INFO] ✓ Successfully applied Non-Tests filter via ExtJS combo box.
+[2026-06-08T10:46:41.273Z] [INFO] Clicking search/filter button...
+[2026-06-08T10:46:41.281Z] [INFO] ✓ Filter button clicked successfully.
+[2026-06-08T10:46:49.345Z] [INFO] Rows count detected: 473
+[2026-06-08T10:46:49.345Z] [INFO] Conversion grid loaded. Scanning rows...
+[2026-06-08T10:46:49.386Z] [INFO] Found 473 rows in total. Filtering by URL Name: "TRA"
+[2026-06-08T10:46:49.411Z] [INFO] Found 183 matching leads for "TRA"
+[2026-06-08T10:46:49.412Z] [INFO] Processing matching lead #1 (Row Index: 37)
+[2026-06-08T10:47:19.483Z] [ERROR] FATAL ERROR: locator.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('.x-grid3-row, tr.x-grid3-row, table tr, [role="row"]').nth(37).locator('a, [role="button"], a[style*="color"]').first()[22m
+[2m    - locator resolved to <a href="#">…</a>[22m
+[2m  - attempting click action[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is not visible[22m
+[2m    - retrying click action[22m
+[2m    - waiting 20ms[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is not visible[22m
+[2m    - retrying click action[22m
+[2m      - waiting 100ms[22m
+[2m    55 × waiting for element to be visible, enabled and stable[22m
+[2m       - element is not visible[22m
+[2m     - retrying click action[22m
+[2m       - waiting 500ms[22m
+

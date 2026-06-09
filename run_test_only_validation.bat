@@ -12,7 +12,7 @@ echo ===========================================================
 echo FLM Agent - Cake Test Only Validation Process
 echo ===========================================================
 echo.
-echo Script: cake_test_only.js (INDEPENDENT)
+echo Script: utils/flmAgent/test_only_ip_validation.js (INDEPENDENT)
 echo Purpose: Validate Test Only conversion records
 echo Status: ISOLATED - Does not affect existing cake.js process
 echo.
@@ -35,13 +35,13 @@ REM Run the Test Only validation script with headed browser (visible)
 echo Starting Test Only validation process...
 echo.
 
-node CakeProcess.js\cake_test_only.js --headed
+node utils/flmAgent/test_only_ip_validation.js --headed
 
 echo.
 echo ===========================================================
-echo Process completed. Check the CakeProcess.js folder for:
-echo  - test_only_reports\       (JSON reports and logs)
-echo  - test_only_screenshots\   (Screenshots of validation)
+echo Process completed. Check the reports folder for:
+echo  - utils/flmAgent/test_only_reports/       (JSON reports and logs)
+echo  - utils/flmAgent/test_only_screenshots/   (Screenshots of validation)
 echo ===========================================================
 echo.
 

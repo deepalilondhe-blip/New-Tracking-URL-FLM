@@ -46,7 +46,7 @@ const CONFIG = {
   },
   CAKE_CREDENTIALS: {
     username: process.env.CAKE_USERNAME || 'urvish.patel@bytestechnolab.com',
-    password: process.env.CAKE_PASSWORD || 'Urvish@123#2026-05'
+    password: process.env.CAKE_PASSWORD || 'Urvish@123#2026-06'
   },
   REPORT_DIR: path.join(__dirname, 'lead_validation_reports'),
   SCREENSHOT_DIR: path.join(__dirname, 'lead_validation_screenshots'),

@@ -1,0 +1,10 @@
+[2026-06-08T10:16:38.659Z] [INFO] Process Started - Date Range: 2026-06-08 to 2026-06-08
+[2026-06-08T10:16:38.661Z] [INFO] Selected URL Name via rotation: "TRA" (index: 3)
+[2026-06-08T10:16:38.662Z] [INFO] Target URL Name for this run: "TRA"
+[2026-06-08T10:16:38.663Z] [INFO] Launching browser (headed: true)
+[2026-06-08T10:16:39.394Z] [INFO] Navigating to Cake login page...
+[2026-06-08T10:16:54.658Z] [INFO] Already logged in or redirect completed
+[2026-06-08T10:16:54.803Z] [INFO] Navigating to Cake Reports > Conversions
+[2026-06-08T10:17:07.752Z] [INFO] Setting date range: 06/08/2026 to 06/08/2026
+[2026-06-08T10:17:09.922Z] [INFO] Applying "Non-Tests" filter...
+[2026-06-08T10:17:09.990Z] [INFO] Found 0 matching leads for "TRA"

@@ -1,0 +1,10 @@
+[2026-06-08T10:15:59.319Z] [INFO] Process Started - Date Range: 2026-06-08 to 2026-06-08
+[2026-06-08T10:15:59.320Z] [INFO] Selected URL Name via rotation: "White Collar" (index: 2)
+[2026-06-08T10:15:59.321Z] [INFO] Target URL Name for this run: "White Collar"
+[2026-06-08T10:15:59.321Z] [INFO] Launching browser (headed: true)
+[2026-06-08T10:16:00.066Z] [INFO] Navigating to Cake login page...
+[2026-06-08T10:16:14.205Z] [INFO] Already logged in or redirect completed
+[2026-06-08T10:16:14.355Z] [INFO] Navigating to Cake Reports > Conversions
+[2026-06-08T10:16:26.647Z] [INFO] Setting date range: 06/08/2026 to 06/08/2026
+[2026-06-08T10:16:28.844Z] [INFO] Applying "Non-Tests" filter...
+[2026-06-08T10:16:28.921Z] [INFO] Found 0 matching leads for "White Collar"

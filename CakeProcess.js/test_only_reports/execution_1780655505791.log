@@ -1,0 +1,16 @@
+[2026-06-05T10:31:45.791Z] [INFO] Cake Test Only Validation Process Started
+[2026-06-05T10:31:45.793Z] [INFO] Launching browser
+[2026-06-05T10:31:46.553Z] [INFO] Navigating to Cake CRM
+[2026-06-05T10:31:52.879Z] [INFO] Checking if login is required
+[2026-06-05T10:31:52.945Z] [INFO] Login form detected - attempting to log in
+[2026-06-05T10:31:55.061Z] [INFO] Entered username: urvish.patel@bytestechnolab.com
+[2026-06-05T10:31:55.943Z] [INFO] Entered password
+[2026-06-05T10:31:55.945Z] [INFO] Clicking Log In button...
+[2026-06-05T10:31:55.991Z] [INFO] Waiting for login to complete...
+[2026-06-05T10:32:17.730Z] [ERROR] Login error: page.waitForTimeout: Target page, context or browser has been closed
+[2026-06-05T10:32:17.731Z] [ERROR] Login handling failed
+[2026-06-05T10:32:17.732Z] [ERROR] FATAL ERROR: Could not handle login
+[2026-06-05T10:32:17.732Z] [ERROR] Error: Could not handle login
+    at runTestOnlyValidation (c:\Users\Deepali_Londhe\Desktop\New Tracking URL\CakeProcess.js\cake_test_only_updated.js:892:13)
+[2026-06-05T10:32:17.973Z] [INFO] Browser closed
+[2026-06-05T10:32:17.974Z] [INFO] Process finished

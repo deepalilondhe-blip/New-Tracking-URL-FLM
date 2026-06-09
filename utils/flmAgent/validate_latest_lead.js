@@ -20,7 +20,7 @@ const CONFIG = {
   SLOW_MO_MS: Number(process.env.FLM_SLOW_MO_MS || 1500), // Increased for slower run
   REVIEW_PAUSE_MS: Number(process.env.FLM_REVIEW_PAUSE_MS || 5000), // Increased for slower run
   CAKE_USERNAME: process.env.CAKE_USERNAME || 'urvish.patel@bytestechnolab.com',
-  CAKE_PASSWORD: process.env.CAKE_PASSWORD || 'Urvish@123#2026-05',
+  CAKE_PASSWORD: process.env.CAKE_PASSWORD || 'Urvish@123#2026-06',
   CDB_EMAIL: process.env.CDB_EMAIL || 'nirav.dobariya@bytestechnolab.com',
   CDB_PASSWORD: process.env.CDB_PASSWORD || 'Nirav@1234'
 };

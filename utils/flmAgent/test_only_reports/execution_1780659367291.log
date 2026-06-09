@@ -1,0 +1,17 @@
+[2026-06-05T11:36:07.291Z] [INFO] ======================================================================
+[2026-06-05T11:36:07.293Z] [INFO] 🚀 PROCESS START: FLM_TestOnly_IP_Validation (CSV Dashboard Mode)
+[2026-06-05T11:36:07.294Z] [INFO] ======================================================================
+[2026-06-05T11:36:07.295Z] [INFO] Starting CSV Dashboard Configuration & Data Isolation Validation...
+[2026-06-05T11:36:07.296Z] [INFO] Created new CSV dashboard with headers at: C:\Users\Deepali_Londhe\Desktop\New Tracking URL\FML_Project_Dashboard\Test_Only_IP_Validation_Dashboard.csv
+[2026-06-05T11:36:07.297Z] [INFO] Ref: FLM_TestOnly_IP_Validation process verified.
+[2026-06-05T11:36:07.297Z] [INFO] ✅ CSV Dashboard Configuration & Fail-Safe Validation Passed.
+[2026-06-05T11:36:07.299Z] [INFO] Processing Date Range: 2026-06-04 to 2026-06-05
+[2026-06-05T11:36:07.299Z] [INFO] Launching Playwright Browser in HEADED mode...
+[2026-06-05T11:36:10.725Z] [INFO] Navigating to Cake CRM...
+[2026-06-05T11:36:16.379Z] [INFO] Login page detected. Attempting login...
+[2026-06-05T11:36:16.470Z] [INFO] Clicked Login button. Waiting for page load...
+[2026-06-05T11:36:21.485Z] [ERROR] FATAL ERROR: Login failed: redirected back to login or login form still visible.
+[2026-06-05T11:36:21.486Z] [ERROR] Error: Login failed: redirected back to login or login form still visible.
+    at C:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\flmAgent\test_only_ip_validation.js:179:13
+[2026-06-05T11:36:21.700Z] [INFO] Browser closed. Process complete.
+[2026-06-05T11:36:21.701Z] [INFO] ======================================================================

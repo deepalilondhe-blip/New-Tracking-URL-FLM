@@ -1,0 +1,19 @@
+[2026-06-05T11:40:08.737Z] [INFO] ======================================================================
+[2026-06-05T11:40:08.738Z] [INFO] 🚀 PROCESS START: FLM_TestOnly_IP_Validation (CSV Dashboard Mode)
+[2026-06-05T11:40:08.739Z] [INFO] ======================================================================
+[2026-06-05T11:40:08.739Z] [INFO] Starting CSV Dashboard Configuration & Data Isolation Validation...
+[2026-06-05T11:40:08.740Z] [INFO] CSV dashboard headers verified successfully.
+[2026-06-05T11:40:08.754Z] [INFO] Ref: FLM_TestOnly_IP_Validation process verified.
+[2026-06-05T11:40:08.754Z] [INFO] ✅ CSV Dashboard Configuration & Fail-Safe Validation Passed.
+[2026-06-05T11:40:08.755Z] [INFO] Processing Date Range: 6/4/2026 to 6/5/2026
+[2026-06-05T11:40:08.756Z] [INFO] Launching Playwright Browser in HEADED mode...
+[2026-06-05T11:40:09.202Z] [INFO] Navigating to Cake CRM...
+[2026-06-05T11:40:14.481Z] [INFO] Login page detected. Attempting login...
+[2026-06-05T11:40:14.563Z] [INFO] Clicked Login button. Waiting for page load...
+[2026-06-05T11:40:19.586Z] [INFO] ✓ Login Successful.
+[2026-06-05T11:40:19.587Z] [INFO] Navigating to Reports > Conversions...
+[2026-06-05T11:40:19.592Z] [ERROR] FATAL ERROR: Could not find REPORTS link on dashboard page.
+[2026-06-05T11:40:19.592Z] [ERROR] Error: Could not find REPORTS link on dashboard page.
+    at C:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\flmAgent\test_only_ip_validation.js:199:13
+[2026-06-05T11:40:19.810Z] [INFO] Browser closed. Process complete.
+[2026-06-05T11:40:19.811Z] [INFO] ======================================================================

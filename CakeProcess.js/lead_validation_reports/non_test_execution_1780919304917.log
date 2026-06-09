@@ -1,0 +1,41 @@
+[2026-06-08T11:48:24.917Z] [INFO] Process Started - Date Range: 2026-06-05 to 2026-06-08
+[2026-06-08T11:48:24.918Z] [INFO] Using URL Name from CLI: "TRA"
+[2026-06-08T11:48:24.920Z] [INFO] Target URL Name for this run: "TRA"
+[2026-06-08T11:48:24.921Z] [INFO] Launching browser (headed: true)
+[2026-06-08T11:48:25.955Z] [INFO] Navigating to Cake login page...
+[2026-06-08T11:48:35.040Z] [INFO] Already logged in or redirect completed
+[2026-06-08T11:48:35.173Z] [INFO] Navigating to Cake Reports > Conversions
+[2026-06-08T11:48:55.728Z] [INFO] Using frame for report controls: main page
+[2026-06-08T11:48:55.742Z] [INFO] Setting date range: 06/05/2026 to 06/08/2026
+[2026-06-08T11:48:56.763Z] [INFO] Applying "Non-Tests" filter via ExtJS...
+[2026-06-08T11:48:56.767Z] [INFO] ✓ Successfully applied Non-Tests filter via ExtJS combo box.
+[2026-06-08T11:48:56.767Z] [INFO] Clicking search/filter button...
+[2026-06-08T11:48:56.772Z] [INFO] ✓ Filter button clicked successfully.
+[2026-06-08T11:49:17.928Z] [INFO] Using frame for row scanning: main page
+[2026-06-08T11:49:19.949Z] [INFO] Rows count detected: 200
+[2026-06-08T11:49:19.950Z] [INFO] Conversion grid loaded. Scanning rows...
+[2026-06-08T11:49:19.965Z] [INFO] Found 200 rows in total. Filtering by URL Name: "TRA"
+[2026-06-08T11:49:19.982Z] [INFO] Found 89 matching leads for "TRA"
+[2026-06-08T11:49:19.982Z] [INFO] Limiting check to 5 leads dynamically.
+[2026-06-08T11:49:19.983Z] [INFO] Processing matching lead #1 (Row Index: 0)
+[2026-06-08T11:49:20.081Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379573);}});return false;
+[2026-06-08T11:49:20.113Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:49:35.239Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:49:35.240Z] [INFO] Processing matching lead #2 (Row Index: 3)
+[2026-06-08T11:49:35.329Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379576);}});return false;
+[2026-06-08T11:49:35.337Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:49:50.465Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:49:50.465Z] [INFO] Processing matching lead #3 (Row Index: 4)
+[2026-06-08T11:49:50.613Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379577);}});return false;
+[2026-06-08T11:49:50.625Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:50:05.781Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:50:05.782Z] [INFO] Processing matching lead #4 (Row Index: 5)
+[2026-06-08T11:50:05.870Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379578);}});return false;
+[2026-06-08T11:50:05.877Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:50:21.012Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:50:21.012Z] [INFO] Processing matching lead #5 (Row Index: 6)
+[2026-06-08T11:50:21.113Z] [INFO] Executing onclick action: LazyLoader({js:'/js/lead.js?v=' + VERSION,load:function(){showLead(2379579);}});return false;
+[2026-06-08T11:50:21.122Z] [INFO] Waiting for lead card iframe to load...
+[2026-06-08T11:50:36.244Z] [ERROR] ✗ Lead card iframe not found after click.
+[2026-06-08T11:50:36.245Z] [INFO] --- CDB Verification for 0 extracted Lead IDs ---
+[2026-06-08T11:50:36.245Z] [WARN] No Lead IDs found to verify in CDB.

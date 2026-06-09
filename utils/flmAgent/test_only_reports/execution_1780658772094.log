@@ -1,0 +1,11 @@
+[2026-06-05T11:26:12.095Z] [INFO] ======================================================================
+[2026-06-05T11:26:12.102Z] [INFO] 🚀 PROCESS START: FLM_TestOnly_IP_Validation
+[2026-06-05T11:26:12.102Z] [INFO] ======================================================================
+[2026-06-05T11:26:12.103Z] [INFO] Starting Google Sheet Configuration & Data Isolation Validation...
+[2026-06-05T11:26:12.109Z] [INFO] Google account verified using service credentials email: Default Service Account
+[2026-06-05T11:26:13.386Z] [INFO] Successfully opened Spreadsheet. Title: "FLM Final Cake & CDB Data"
+[2026-06-05T11:26:13.387Z] [WARN] ⚠️ Spreadsheet Title: "FLM Final Cake & CDB Data" does not explicitly contain FLM Verification keywords, but continuing validation checks...
+[2026-06-05T11:26:13.388Z] [INFO] Target tab "Test Only IP Data" verified.
+[2026-06-05T11:26:13.845Z] [INFO] Retrieved headers: []
+[2026-06-05T11:26:13.846Z] [INFO] Headers are missing. Writing expected headers...
+[2026-06-05T11:26:14.353Z] [ERROR] Fail-Safe Validation Failed! Execution Stopped: The caller does not have permission

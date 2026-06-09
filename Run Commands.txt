@@ -126,6 +126,64 @@ To manually run any campaign, use the following template structure:
     🔹 Tablet:  node run-master.js --campaign fth-questionnaire --viewport tablet
     🔹 Mobile:  node run-master.js --campaign fth-questionnaire --viewport mobile
 
+21. 📊 FTH-X (FTH-X)
+    🔹 Desktop: node run-master.js --campaign fth-x --viewport desktop
+    🔹 Tablet:  node run-master.js --campaign fth-x --viewport tablet
+    🔹 Mobile:  node run-master.js --campaign fth-x --viewport mobile
+
+22. 📊 Second Chance Tax Relief (X)
+    🔹 Desktop: node run-master.js --campaign second-chance-tax-relief-x --viewport desktop
+    🔹 Tablet:  node run-master.js --campaign second-chance-tax-relief-x --viewport tablet
+    🔹 Mobile:  node run-master.js --campaign second-chance-tax-relief-x --viewport mobile
+
+23. 📊 Senior Tax Defense (X)
+    🔹 Desktop: node run-master.js --campaign senior-tax-defense-x --viewport desktop
+    🔹 Tablet:  node run-master.js --campaign senior-tax-defense-x --viewport tablet
+    🔹 Mobile:  node run-master.js --campaign senior-tax-defense-x --viewport mobile
+
+24. 📊 Guardian Tax Relief
+    🔹 Desktop: node run-master.js --campaign guardian-tax-relief-ppc --viewport desktop
+    🔹 Tablet:  node run-master.js --campaign guardian-tax-relief-ppc --viewport tablet
+    🔹 Mobile:  node run-master.js --campaign guardian-tax-relief-ppc --viewport mobile
+
+25. 📊 Empire Tax Relief (X)
+    🔹 Desktop: node run-master.js --campaign empire-tax-relief-x --viewport desktop
+    🔹 Tablet:  node run-master.js --campaign empire-tax-relief-x --viewport tablet
+    🔹 Mobile:  node run-master.js --campaign empire-tax-relief-x --viewport mobile
+
+26. 📊 Capital Tax Relief (X)
+    🔹 Desktop: node run-master.js --campaign capital-tax-relief-x --viewport desktop
+    🔹 Tablet:  node run-master.js --campaign capital-tax-relief-x --viewport tablet
+    🔹 Mobile:  node run-master.js --campaign capital-tax-relief-x --viewport mobile
+
+# 👉 Manual run command for Second Chance Tax Relief (X) – Desktop (visible browser)
+node run-master.js --campaign second-chance-tax-relief-x --viewport desktop
+
+# 👉 Open the SCTR-Main URLs directly (Windows `start` command)
+start https://secure-sctr.com/?a=659&oc=800&c=2432&s1=
+start https://flm-sctr-trk.com/?a=659&oc=684&c=1818&s1=
+
+# 👉 Manual run command for Senior Tax Defense (X) – Desktop (visible browser)
+node run-master.js --campaign senior-tax-defense-x --viewport desktop
+
+# 👉 Manual run command for Guardian Tax Relief – Desktop (visible browser)
+node run-master.js --campaign guardian-tax-relief-ppc --viewport desktop
+
+# 👉 Open Senior Tax Defense (X) URL directly
+start https://flmtrk.com/?a=659&oc=831&c=2599&s1=
+
+# 👉 Manual run command for Empire Tax Relief (X) – Desktop (visible browser)
+node run-master.js --campaign empire-tax-relief-x --viewport desktop
+
+# 👉 Open Empire Tax Relief (X) URL directly
+start https://jsttrk.com/?a=659&oc=844&c=2689&s1=
+
+# 👉 Manual run command for Capital Tax Relief (X) – Desktop (visible browser)
+node run-master.js --campaign capital-tax-relief-x --viewport desktop
+
+# 👉 Open Capital Tax Relief (X) URL directly
+start https://jsttrk.com/?a=659&oc=846&c=2691&s1=
+
 --------------------------------------------------------------------------------
 🔄 RECURRING BATCH SCHEDULER (HEADED MODE - VISIBLE BROWSER)
 --------------------------------------------------------------------------------
@@ -164,7 +222,7 @@ Spreadsheet: https://docs.google.com/spreadsheets/d/1rXIg3dMQ4APH3lHLcfWYfP45PnO
     🔹 Mobile:  node run-master.js --campaign fth-questionnaire --viewport mobile
 
 --------------------------------------------------------------------------------
-🧪 FLM AGENT – LEAD VALIDATION COMMANDS
+🧪 FLM AGENT – LEAD & IP VALIDATION COMMANDS
 --------------------------------------------------------------------------------
 
 Run the latest lead validation script (headed browser):
@@ -173,6 +231,11 @@ Run the latest lead validation script (headed browser):
   👉 npm run flm:validate-lead
   👉 $env:FLM_SLOW_MO_MS=900; $env:FLM_REVIEW_PAUSE_MS=2500; npm run flm:validate-lead
       npm run flm:validate-lead
+
+Run the "Test Only" IP validation script (headed browser):
+
+  👉 node utils/flmAgent/test_only_ip_validation.js
+  👉 run_test_only_validation.bat
 
 Optional wrapper commands:
 
@@ -183,8 +246,13 @@ Optional wrapper commands:
 Notes:
   - Ensure `.env` has required credentials before running.
   - For Cake login fallback support, set:
-      CAKE_USERNAME=<your_cake_username>
-      CAKE_PASSWORD=<your_cake_password>
+      CAKE_USERNAME=urvish.patel@bytestechnolab.com
+      CAKE_PASSWORD=Urvish@123#2026-06
+
+
+
   - For CDB login support, set:
-      CDB_EMAIL=<your_cdb_email>
-      CDB_PASSWORD=<your_cdb_password>
+    
+     CDB_URL = "https://www.flmreporting.com/flm_central_leads/auth/login.php"
+     CDB_EMAIL = "nirav.dobariya@bytestechnolab.com"
+     CDB_PASSWORD = "Nirav@1234"

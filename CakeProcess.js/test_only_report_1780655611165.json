@@ -1,0 +1,17 @@
+{
+  "executionTime": "2026-06-05T10:33:31.164Z",
+  "dateRange": {
+    "start": "2026-06-04",
+    "end": "2026-06-05"
+  },
+  "totalPages": 1,
+  "totalIPs": 0,
+  "ipCounts": {},
+  "validationResults": [],
+  "summary": {
+    "total": 0,
+    "isTestPassed": 0,
+    "nameEmailPassed": 0,
+    "failedLeadIds": []
+  }
+}

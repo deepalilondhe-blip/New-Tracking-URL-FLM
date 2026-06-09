@@ -1,0 +1,52 @@
+[2026-06-09T05:51:02.151Z] [INFO] Process Started - Date Range: 2026-06-08 to 2026-06-09
+[2026-06-09T05:51:02.152Z] [INFO] Selected URL Name via rotation: "Premier Tax Relief (PTR)" (index: 4)
+[2026-06-09T05:51:02.153Z] [INFO] Target URL Name for this run: "Premier Tax Relief (PTR)"
+[2026-06-09T05:51:02.153Z] [INFO] Launching browser (headed: true)
+[2026-06-09T05:51:02.758Z] [INFO] Navigating to Cake login page...
+[2026-06-09T05:51:10.106Z] [INFO] Login page loaded. Entering credentials...
+[2026-06-09T05:51:10.673Z] [INFO] Waiting for authentication...
+[2026-06-09T05:51:31.580Z] [ERROR] ✗ Cake login failed - credentials incorrect or MFA block
+[2026-06-09T05:51:31.697Z] [INFO] Navigating to Cake Reports > Conversions
+[2026-06-09T05:51:38.700Z] [INFO] Frame search attempt 1/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_7zsd25rgn", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T05:51:39.715Z] [INFO] Frame search attempt 2/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_7zsd25rgn", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T05:51:40.728Z] [INFO] Frame search attempt 3/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_7zsd25rgn", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T05:51:41.744Z] [INFO] Frame search attempt 4/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_7zsd25rgn", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T05:51:42.760Z] [INFO] Frame search attempt 5/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_7zsd25rgn", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T05:51:43.772Z] [INFO] Frame search attempt 6/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_7zsd25rgn", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T05:51:44.786Z] [INFO] Frame search attempt 7/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_7zsd25rgn", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T05:51:45.801Z] [INFO] Frame search attempt 8/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_7zsd25rgn", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T05:51:46.806Z] [INFO] Frame search attempt 9/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_7zsd25rgn", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T05:51:47.820Z] [INFO] Frame search attempt 10/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_7zsd25rgn", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T05:51:48.826Z] [INFO] Frame search attempt 11/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_7zsd25rgn", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T05:51:49.836Z] [INFO] Frame search attempt 12/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_7zsd25rgn", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T05:51:50.840Z] [INFO] Frame search attempt 13/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_7zsd25rgn", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T05:51:51.852Z] [INFO] Frame search attempt 14/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_7zsd25rgn", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T05:51:52.862Z] [INFO] Frame search attempt 15/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_7zsd25rgn", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T05:51:53.878Z] [INFO] Using frame for report controls: main page
+[2026-06-09T05:51:53.878Z] [INFO] Setting date range: 06/08/2026 to 06/09/2026
+[2026-06-09T05:51:54.887Z] [INFO] Applying "Non-Tests" filter...
+[2026-06-09T05:51:55.913Z] [INFO] ✓ Successfully applied Non-Tests filter via UI dropdown click.
+[2026-06-09T05:51:55.914Z] [INFO] Clicking search/filter button...
+[2026-06-09T05:51:55.919Z] [INFO] ✓ Filter button clicked successfully.
+[2026-06-09T05:52:01.921Z] [INFO] Frame search attempt 1/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_7zsd25rgn", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T05:52:02.927Z] [INFO] Frame search attempt 2/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_7zsd25rgn", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T05:52:03.937Z] [INFO] Frame search attempt 3/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_7zsd25rgn", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T05:52:04.951Z] [INFO] Frame search attempt 4/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_7zsd25rgn", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T05:52:05.962Z] [INFO] Frame search attempt 5/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_7zsd25rgn", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T05:52:06.974Z] [INFO] Frame search attempt 6/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_7zsd25rgn", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T05:52:07.989Z] [INFO] Frame search attempt 7/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_7zsd25rgn", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T05:52:08.998Z] [INFO] Frame search attempt 8/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_7zsd25rgn", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T05:52:10.010Z] [INFO] Frame search attempt 9/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_7zsd25rgn", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T05:52:11.019Z] [INFO] Frame search attempt 10/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_7zsd25rgn", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T05:52:12.021Z] [INFO] Frame search attempt 11/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_7zsd25rgn", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T05:52:13.038Z] [INFO] Frame search attempt 12/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_7zsd25rgn", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T05:52:14.053Z] [INFO] Frame search attempt 13/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_7zsd25rgn", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T05:52:15.057Z] [INFO] Frame search attempt 14/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_7zsd25rgn", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T05:52:16.067Z] [INFO] Frame search attempt 15/15. Current frames: [Name: "", URL: "https://app.forwardleapmarketing.com/newrep.aspx"], [Name: "ank_widget_7zsd25rgn", URL: "https://announcekit.co/widgets/v2/0BWKs/view"], [Name: "fc_widget", URL: "https://wchat.freshchat.com/home"]
+[2026-06-09T05:52:17.077Z] [INFO] Using frame for row scanning: main page
+[2026-06-09T05:52:19.101Z] [INFO] Rows count detected: 200
+[2026-06-09T05:52:19.101Z] [INFO] Conversion grid loaded. Scanning rows...
+[2026-06-09T05:52:19.118Z] [INFO] Found 200 rows in total. Filtering by URL Name: "Premier Tax Relief (PTR)"
+[2026-06-09T05:52:19.136Z] [INFO] Found 0 matching leads for "Premier Tax Relief (PTR)"
+[2026-06-09T05:52:19.136Z] [INFO] --- CDB Verification for 0 extracted Lead IDs ---
+[2026-06-09T05:52:19.137Z] [WARN] No Lead IDs found to verify in CDB.

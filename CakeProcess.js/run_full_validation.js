@@ -32,7 +32,7 @@ const DASHBOARD_DIR = path.join(__dirname, '..', 'FML_Project_Dashboard');
     
     const passField = await page.$('input[type="password"]');
     if (passField) {
-      await passField.fill('Urvish@123#2026-05');
+      await passField.fill('Urvish@123#2026-06');
       console.log('✅ Password entered');
     }
     

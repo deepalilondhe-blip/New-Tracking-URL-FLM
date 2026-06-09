@@ -1074,7 +1074,12 @@ class MobileFormPage {
 
     try {
       // CRITICAL: Ensure debt value is properly set in hidden fields before submission
-      const cleanDebtVal = this.selectedSliderAmount.toString().replace(/,/g, '').replace(/[^0-9]/g, '');
+      let cleanDebtVal = this.selectedSliderAmount.toString().replace(/,/g, '').trim();
+      const match = cleanDebtVal.match(/\d+/);
+      let numericDebt = match ? parseInt(match[0]) : 0;
+      
+      cleanDebtVal = numericDebt > 0 ? numericDebt.toString() : cleanDebtVal;
+
       if (cleanDebtVal) {
         console.log(`💾 [Mobile] Setting hidden debt fields to: ${cleanDebtVal}`);
         await this.page.evaluate((debtVal) => {

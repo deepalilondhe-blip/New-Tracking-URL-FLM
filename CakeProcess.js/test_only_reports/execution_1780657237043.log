@@ -1,0 +1,31 @@
+[2026-06-05T11:00:37.043Z] [INFO] Cake Test Only Validation Process Started
+[2026-06-05T11:00:37.045Z] [INFO] Launching browser
+[2026-06-05T11:00:37.854Z] [INFO] Navigating to Cake CRM
+[2026-06-05T11:00:44.625Z] [INFO] Checking if login is required
+[2026-06-05T11:00:44.689Z] [INFO] Login form detected - attempting to log in
+[2026-06-05T11:00:46.759Z] [INFO] Entered username: urvish.patel@bytestechnolab.com
+[2026-06-05T11:00:47.641Z] [INFO] Entered password
+[2026-06-05T11:00:47.642Z] [INFO] Clicking Log In button...
+[2026-06-05T11:00:47.688Z] [INFO] Waiting for login to complete...
+[2026-06-05T11:01:17.890Z] [WARN] ⚠ Login may have failed - button still visible
+[2026-06-05T11:01:20.907Z] [INFO] ✓ Login process completed
+[2026-06-05T11:01:20.911Z] [INFO] Navigating to Cake Reports > Conversions
+[2026-06-05T11:01:22.917Z] [INFO] Looking for Conversions menu item...
+[2026-06-05T11:01:22.924Z] [WARN] Conversions link not directly visible - trying REPORTS menu
+[2026-06-05T11:01:22.940Z] [WARN] Menu navigation failed - trying direct URL navigation
+[2026-06-05T11:01:22.942Z] [INFO] Navigating directly to: https://app.forwardleapmarketing.com/reports/conversion
+[2026-06-05T11:01:27.439Z] [INFO] ✓ Successfully navigated to Conversions page via direct URL
+[2026-06-05T11:01:27.441Z] [INFO] Setting date range from scheduler
+[2026-06-05T11:01:27.442Z] [INFO] Date range: 2026-06-04 to 2026-06-05
+[2026-06-05T11:01:27.454Z] [WARN] Found only 0 date input fields
+[2026-06-05T11:01:28.470Z] [INFO] Applying Test Only filter
+[2026-06-05T11:01:28.493Z] [WARN] Could not apply Test Only filter - checking page state
+[2026-06-05T11:01:30.508Z] [ERROR] Error applying Test Only filter: ENOENT: no such file or directory, mkdir 'c:\Users\Deepali_Londhe\Desktop\New Tracking URL\CakeProcess.js\c:\Users\Deepali_Londhe\Desktop\New Tracking URL\CakeProcess.js\test_only_screenshots'
+[2026-06-05T11:01:30.512Z] [INFO] Running report
+[2026-06-05T11:01:30.530Z] [WARN] ⚠ Could not find Run Report button - assuming report auto-runs
+[2026-06-05T11:01:33.542Z] [INFO] Extracting records and counting IP occurrences
+[2026-06-05T11:01:33.551Z] [INFO] Selected 0 IP(s) for validation
+[2026-06-05T11:01:33.552Z] [INFO] Execution completed in 56.51 seconds
+[2026-06-05T11:01:33.553Z] [INFO] Processed 0 IP records
+[2026-06-05T11:01:34.013Z] [INFO] Browser closed
+[2026-06-05T11:01:34.014Z] [INFO] Process finished
