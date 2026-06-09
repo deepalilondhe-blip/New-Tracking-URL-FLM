@@ -12,7 +12,7 @@ const HEADERS = [
   "DateTime", "Type", "Affiliate", "Campaign ID", "Link",
   "Slider Amount", "Cake Income", "State", "Phone", "Lead ID",
   "DBID", "Page Origin", "Thank u URL", "CDB Status", "CDB Email",
-  "Neustar", "Neustar Disposition", "Pixel Fired", "Run Date",
+  "Neustar", "Neustar Disposition", "Pixel Fired", "Tax Debt",
   "Step 1", "Step 2", "Step 3"
 ];
 

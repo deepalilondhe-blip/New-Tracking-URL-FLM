@@ -26,23 +26,23 @@ const restAssurance = require('./rest-assurance');
 
 function formatDateTime() {
   const now = new Date();
-  const day = now.getDate();
-  const month = now.getMonth() + 1;
-  const year = now.getFullYear();
+  const day = String(now.getDate()).padStart(2, '0');
+  const month = String(now.getMonth() + 1).padStart(2, '0');
+  const year = String(now.getFullYear()).slice(-2);
   const hours = String(now.getHours()).padStart(2, '0');
   const minutes = String(now.getMinutes()).padStart(2, '0');
   const seconds = String(now.getSeconds()).padStart(2, '0');
 
-  return `${month}-${day}-${year} ${hours}:${minutes}:${seconds}`;
+  return `${day}-${month}-${year} ${hours}:${minutes}:${seconds}`;
 }
 
 function formatDate() {
   const now = new Date();
-  const day = now.getDate();
-  const month = now.getMonth() + 1;
-  const year = now.getFullYear();
+  const day = String(now.getDate()).padStart(2, '0');
+  const month = String(now.getMonth() + 1).padStart(2, '0');
+  const year = String(now.getFullYear()).slice(-2);
 
-  return `${month}-${day}-${year}`;
+  return `${day}-${month}-${year}`;
 }
 
 function isValidLeadId(leadId) {
@@ -83,7 +83,7 @@ async function processLead(brandConfig, page) {
     if (process.env.OVERRIDE_SLIDER) {
       rawSliderVal = parseInt(process.env.OVERRIDE_SLIDER);
       console.log(`🔌 [Override] Applying custom slider value: ${rawSliderVal}`);
-    } else if (brandId === 'fsi-ppc2') {
+    } else if (brandId === 'fsi-ppc2' || brandId === 'ftd-ppc2') {
       const bucketIdx = runIndex % 4;
       if (bucketIdx === 0) rawSliderVal = 5000;  // Represents "$0 - $9,999"
       else if (bucketIdx === 1) rawSliderVal = 15000; // Represents "$10,000 - $19,999"
@@ -248,7 +248,9 @@ async function processLead(brandConfig, page) {
     
     // CAKE MAPPING EXACTLY FROM UI SELECTION
     let uiSelectedSliderStr = fillResult?.extractedSliderAmount || finalSlider;
-    const uiSelectedSliderNum = parseInt(uiSelectedSliderStr.toString().replace(/[^0-9]/g, '')) || rawSliderVal;
+    const cleanSliderStr = uiSelectedSliderStr.toString().replace(/,/g, '');
+    const firstNumMatch = cleanSliderStr.match(/\d+/);
+    const uiSelectedSliderNum = firstNumMatch ? parseInt(firstNumMatch[0]) : rawSliderVal;
     
     const traLinks = ['tra-cpl', 'tra-d3', 'tra-cpm', 'ppc', 'ppc-st', 'ppc-st2', 'ppc-m-ca', 'ppc-cr', 'ppc-fs'];
     let cakeIncomeOverride;
@@ -407,8 +409,22 @@ async function processLead(brandConfig, page) {
     // 🔹 STAGE 5: GOOGLE SHEETS PERSISTENCE
     // ==================================================
     // Step 4: Prepare sheet data
-    const finalSliderAmount = ((formPage.selectedSliderAmount && formPage.selectedSliderAmount !== 'N/A') ? formPage.selectedSliderAmount : '') || 
+    let finalSliderAmount = ((formPage.selectedSliderAmount && formPage.selectedSliderAmount !== 'N/A') ? formPage.selectedSliderAmount : '') || 
                              (finalBrandConfig.sliderAmount || '');
+
+    // If it is a dropdown campaign, ensure it logs the dropdown range string instead of the selected numeric slider value
+    if (brandId === 'fsi-ppc2' || brandId === 'ftd-ppc2') {
+      const cleanNum = parseInt(finalSliderAmount.toString().replace(/[$,\s]/g, '')) || rawSliderVal;
+      if (cleanNum <= 9999) {
+        finalSliderAmount = "$0 - $9,999";
+      } else if (cleanNum <= 19999) {
+        finalSliderAmount = "$10,000 - $19,999";
+      } else if (cleanNum < 50000) {
+        finalSliderAmount = "$20,000 - $50,000";
+      } else {
+        finalSliderAmount = "$50,000 or more";
+      }
+    }
     
     // 🛡️ [AI Agent] ENSURING 100K & MORE LOGIC
     const numericSliderVal = parseInt(finalSliderAmount.toString().replace(/[$,\s]/g, '')) || 0;
@@ -446,7 +462,7 @@ async function processLead(brandConfig, page) {
       phone: sanitize(firstApiData.phone || finalBrandConfig.phone),
       leadId: sanitize(leadIdToUse),
       dbid: sanitize(secondApiData.dbid || firstApiData.id),
-      pageOrigin: sanitize(firstApiData.page || finalBrandConfig.url),
+      pageOrigin: sanitize(firstApiData.page || formPage.getPageOrigin() || finalBrandConfig.url),
       thankYouUrl: sanitize(thankYouUrl),
       cdbStatus: sanitize(secondApiData.cdbStatus),
       cdbEmail: sanitize(secondApiData.cdbEmail),

@@ -247,7 +247,7 @@ async function appendRowByHeader(sheetName, rowData) {
                     userEnteredFormat: {
                       numberFormat: {
                         type: 'DATE_TIME',
-                        pattern: 'M-D-YYYY HH:mm:ss'
+                        pattern: 'dd-mm-yy HH:mm:ss'
                       }
                     }
                   },
@@ -261,36 +261,42 @@ async function appendRowByHeader(sheetName, rowData) {
         // ✅ 3. Convert all URLs to Native Links (No formulas!)
         const linkRequests = [];
         function addLinkRequest(colIndex, url, displayText) {
-          if (!url || !String(url).startsWith('http')) {
-            linkRequests.push({
-              updateCells: {
-                range: { sheetId, startRowIndex: rowIndex, endRowIndex: rowIndex + 1, startColumnIndex: colIndex, endColumnIndex: colIndex + 1 },
-                rows: [{ values: [{ userEnteredValue: { stringValue: String(url || '') } }] }],
-                fields: 'userEnteredValue'
-              }
-            });
-            return;
-          }
-          linkRequests.push({
-            updateCells: {
-              range: { sheetId, startRowIndex: rowIndex, endRowIndex: rowIndex + 1, startColumnIndex: colIndex, endColumnIndex: colIndex + 1 },
-              rows: [{
-                values: [{
-                  userEnteredValue: { stringValue: displayText },
-                  userEnteredFormat: {
-                    textFormat: {
-                      link: { uri: String(url) },
-                      foregroundColor: { red: 0.062, green: 0.353, blue: 0.824 },
-                      underline: true,
-                      fontSize: 10
-                    }
-                  }
-                }]
-              }],
-              fields: 'userEnteredValue,userEnteredFormat.textFormat'
-            }
-          });
-        }
+           let targetUrl = String(url || '').trim();
+           if (!targetUrl) {
+             linkRequests.push({
+               updateCells: {
+                 range: { sheetId, startRowIndex: rowIndex, endRowIndex: rowIndex + 1, startColumnIndex: colIndex, endColumnIndex: colIndex + 1 },
+                 rows: [{ values: [{ userEnteredValue: { stringValue: '' } }] }],
+                 fields: 'userEnteredValue'
+               }
+             });
+             return;
+           }
+
+           if (!targetUrl.startsWith('http://') && !targetUrl.startsWith('https://')) {
+             targetUrl = 'https://' + targetUrl;
+           }
+
+           linkRequests.push({
+             updateCells: {
+               range: { sheetId, startRowIndex: rowIndex, endRowIndex: rowIndex + 1, startColumnIndex: colIndex, endColumnIndex: colIndex + 1 },
+               rows: [{
+                 values: [{
+                   userEnteredValue: { stringValue: displayText },
+                   userEnteredFormat: {
+                     textFormat: {
+                       link: { uri: targetUrl },
+                       foregroundColor: { red: 0.062, green: 0.353, blue: 0.824 },
+                       underline: true,
+                       fontSize: 10
+                     }
+                   }
+                 }]
+               }],
+               fields: 'userEnteredValue,userEnteredFormat.textFormat'
+             }
+           });
+         }
 
         addLinkRequest(4, rowData.trackingLink, "Open Tracking");
         addLinkRequest(11, rowData.pageOrigin, "View Page Origin");

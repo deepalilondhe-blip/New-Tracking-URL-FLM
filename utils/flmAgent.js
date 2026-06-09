@@ -63,7 +63,7 @@ class AIAgent {
                 'DateTime', 'Type', 'Affiliate', 'Campaign ID', 'Link',
                 'Slider Amount', 'Cake Income', 'State', 'Phone', 'Lead ID',
                 'DBID', 'Page Origin', 'Thank u URL', 'CDB Status', 'CDB Email',
-                'Neustar', 'Neustar Disposition', 'Pixel Fired', 'Run Date',
+                'Neustar', 'Neustar Disposition', 'Pixel Fired', 'Tax Debt',
                 'Step 1', 'Step 2', 'Step 3'
             ],
             apis: {
@@ -431,18 +431,23 @@ Answer the user's prompt using the real-time data above. Be direct, clear, and c
         }
 
         let maxLimit = 200000;
-        const campaigns = this.loadCampaigns();
-        const campaignConfig = campaigns.find(c => c.id === brand);
-        if (campaignConfig && campaignConfig.sliderAmount) {
-            let str = campaignConfig.sliderAmount.toString();
-            if (str.includes('-')) str = str.split('-')[1];
-            let parsed = parseInt(str.replace(/[^0-9]/g, ''));
-            if (!isNaN(parsed) && parsed > 0) maxLimit = parsed;
+        if (brand !== 'fsi-ppc2' && brand !== 'ftd-ppc2') {
+            const campaigns = this.loadCampaigns();
+            const campaignConfig = campaigns.find(c => c.id === brand);
+            if (campaignConfig && campaignConfig.sliderAmount) {
+                let str = campaignConfig.sliderAmount.toString();
+                if (str.includes('-')) str = str.split('-')[1];
+                let parsed = parseInt(str.replace(/[^0-9]/g, ''));
+                if (!isNaN(parsed) && parsed > 0) maxLimit = parsed;
+            }
         }
 
         const apiMatch = (apiVal && apiVal.toString().replace(/[$,\s]/g, '') === expectedCake.replace(/,/g, ''));
         const sheetMatch = (cakeIncome && cakeIncome.toString().replace(/[$,\s]/g, '') === expectedCake.replace(/,/g, ''));
         const withinLimit = raw <= maxLimit;
+
+        console.log(`🤖 [Audit Diagnostics] apiVal: "${apiVal}" (clean: "${apiVal ? apiVal.toString().replace(/[$,\s]/g, '') : ''}"), expectedCake: "${expectedCake}" (clean: "${expectedCake.replace(/,/g, '')}"), cakeIncome: "${cakeIncome}" (clean: "${cakeIncome ? cakeIncome.toString().replace(/[$,\s]/g, '') : ''}")`);
+        console.log(`🤖 [Audit Diagnostics] apiMatch: ${apiMatch}, sheetMatch: ${sheetMatch}, withinLimit: ${withinLimit}`);
 
         const status = (apiMatch && sheetMatch && withinLimit) ? "PASS" : "FAIL";
 

@@ -72,6 +72,7 @@ class FormPage {
     }
 
     console.log('✅ Page loaded successfully');
+    this.redirectedUrl = this.page.url();
   }
 
     // ==================================================
@@ -188,13 +189,42 @@ class FormPage {
             if (validOptions.length > 0) {
               const selectedOpt = validOptions[runIndex % validOptions.length];
               console.log(`✅ [Rotational Logic] Selected dropdown choice: "${selectedOpt.text}"`);
+              await taxDebtSelect.evaluate(el => {
+                el.style.outline = '5px solid #FF1493';
+                el.style.border = '2px solid #FF1493';
+                el.style.backgroundColor = '#FFE4E1';
+                el.style.boxShadow = '0 0 20px #FF1493';
+                el.focus();
+              }).catch(() => {});
+              await taxDebtSelect.click({ force: true }).catch(() => {});
+              await this.page.waitForTimeout(2000);
               await taxDebtSelect.selectOption(selectedOpt.value || { index: selectedOpt.index });
+              await taxDebtSelect.evaluate(el => {
+                el.style.backgroundColor = '#ADFF2F'; // Light green highlight on success
+                el.style.outline = '5px solid #32CD32';
+                el.style.boxShadow = '0 0 20px #32CD32';
+              }).catch(() => {});
+              await this.page.waitForTimeout(2000);
               this.selectedSliderAmount = selectedOpt.text;
               selected = true;
             } else {
               // Fallback if URL doesn't support the high limits (e.g. Wednesday 100k target but dropdown maxes at 50k)
               console.log('⚠️ [Dropdown Scanner] No options match the daily range. Attempting fallback to nearest available max tier...');
+              await taxDebtSelect.evaluate(el => {
+                el.style.outline = '5px solid #FF8C00'; // Orange for fallback
+                el.style.backgroundColor = '#FFEBCD';
+                el.style.boxShadow = '0 0 20px #FF8C00';
+                el.focus();
+              }).catch(() => {});
+              await taxDebtSelect.click({ force: true }).catch(() => {});
+              await this.page.waitForTimeout(2000);
               await taxDebtSelect.selectOption({ index: count - 1 }).catch(() => {});
+              await taxDebtSelect.evaluate(el => {
+                el.style.backgroundColor = '#ADFF2F';
+                el.style.outline = '5px solid #32CD32';
+                el.style.boxShadow = '0 0 20px #32CD32';
+              }).catch(() => {});
+              await this.page.waitForTimeout(2000);
               this.selectedSliderAmount = await taxDebtSelect.locator('option').nth(count - 1).textContent().catch(() => sliderAmount);
               selected = true;
             }
@@ -1010,7 +1040,7 @@ class FormPage {
   }
 
   getPageOrigin() {
-    return this.originalUrl;
+    return this.redirectedUrl || this.originalUrl;
   }
 }
 

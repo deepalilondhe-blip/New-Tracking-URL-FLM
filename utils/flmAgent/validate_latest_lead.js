@@ -162,13 +162,13 @@ function computeAlternateDay(date) {
 
 // Format a Date as "d/m/yyyy HH:MM:SS"
 function formatDateTime(dt) {
-  const d = dt.getDate();
-  const m = dt.getMonth() + 1; // months are zero‑based
-  const y = dt.getFullYear();
+  const d = String(dt.getDate()).padStart(2, '0');
+  const m = String(dt.getMonth() + 1).padStart(2, '0'); // months are zero‑based
+  const y = String(dt.getFullYear()).slice(-2);
   const hh = String(dt.getHours()).padStart(2, '0');
   const mm = String(dt.getMinutes()).padStart(2, '0');
   const ss = String(dt.getSeconds()).padStart(2, '0');
-  return `${d}/${m}/${y} ${hh}:${mm}:${ss}`;
+  return `${d}-${m}-${y} ${hh}:${mm}:${ss}`;
 }
 
 async function waitForAny(page, selectors, timeout = 10000) {

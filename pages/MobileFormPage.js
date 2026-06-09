@@ -65,19 +65,19 @@ class MobileFormPage {
         const wrapper = document.createElement('div');
         wrapper.id = 'iphone-bezel-wrapper';
         wrapper.innerHTML = `
-          <!-- Premium Titanium Device Frame Bezel Overlay -->
+          <!-- Premium Pink Titanium Device Frame Bezel Overlay -->
           <div style="
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            border: 14px solid #9f9d96; /* Natural Titanium Brushed Finish */
+            border: 14px solid #ff69b4; /* Pink Titanium Brushed Finish */
             border-radius: 46px;
             box-sizing: border-box;
             pointer-events: none;
             z-index: 99999999;
-            box-shadow: inset 0 0 12px rgba(0,0,0,0.95), 0 0 25px rgba(0,0,0,0.5);
+            box-shadow: inset 0 0 12px rgba(0,0,0,0.85), 0 0 25px rgba(255,105,180,0.5);
           "></div>
           
           <!-- Screen Glass Border Reflection -->
@@ -397,6 +397,7 @@ class MobileFormPage {
     }
 
     console.log('✅ [Mobile] Page loaded successfully');
+    this.redirectedUrl = this.page.url();
     await this.injectDeviceFrame();
   }
 
@@ -517,12 +518,41 @@ class MobileFormPage {
             if (validOptions.length > 0) {
               const selectedOpt = validOptions[runIndex % validOptions.length];
               console.log(`✅ [Mobile Rotational Logic] Selected dropdown choice: "${selectedOpt.text}"`);
+              await taxDebtSelect.evaluate(el => {
+                el.style.outline = '5px solid #FF1493';
+                el.style.border = '2px solid #FF1493';
+                el.style.backgroundColor = '#FFE4E1';
+                el.style.boxShadow = '0 0 20px #FF1493';
+                el.focus();
+              }).catch(() => {});
+              await taxDebtSelect.click({ force: true }).catch(() => {});
+              await this.page.waitForTimeout(2000);
               await taxDebtSelect.selectOption(selectedOpt.value || { index: selectedOpt.index });
+              await taxDebtSelect.evaluate(el => {
+                el.style.backgroundColor = '#ADFF2F';
+                el.style.outline = '5px solid #32CD32';
+                el.style.boxShadow = '0 0 20px #32CD32';
+              }).catch(() => {});
+              await this.page.waitForTimeout(2000);
               this.selectedSliderAmount = selectedOpt.text;
               selected = true;
             } else {
               console.log('⚠️ [Mobile Dropdown Scanner] No options match the daily range. Attempting fallback to nearest available max tier...');
+              await taxDebtSelect.evaluate(el => {
+                el.style.outline = '5px solid #FF8C00';
+                el.style.backgroundColor = '#FFEBCD';
+                el.style.boxShadow = '0 0 20px #FF8C00';
+                el.focus();
+              }).catch(() => {});
+              await taxDebtSelect.click({ force: true }).catch(() => {});
+              await this.page.waitForTimeout(2000);
               await taxDebtSelect.selectOption({ index: count - 1 }).catch(() => {});
+              await taxDebtSelect.evaluate(el => {
+                el.style.backgroundColor = '#ADFF2F';
+                el.style.outline = '5px solid #32CD32';
+                el.style.boxShadow = '0 0 20px #32CD32';
+              }).catch(() => {});
+              await this.page.waitForTimeout(2000);
               this.selectedSliderAmount = await taxDebtSelect.locator('option').nth(count - 1).textContent().catch(() => sliderAmount);
               selected = true;
             }
@@ -1316,7 +1346,7 @@ class MobileFormPage {
   }
 
   getPageOrigin() {
-    return this.originalUrl;
+    return this.redirectedUrl || this.originalUrl;
   }
 }
 

@@ -1,0 +1,55 @@
+================================================================================
+🚀 CCPA BRAND AUTOMATION - DEVICE AND BROWSER RUN COMMANDS
+================================================================================
+
+This guide lists the exact command structures to run the CCPA form automation 
+script ('ccpa-process-all.js') for specific emulated devices and browser combinations. 
+
+To run the script, use one of the commands below depending on your device and 
+browser selection:
+
+--------------------------------------------------------------------------------
+📱 MOBILE COMMANDS
+--------------------------------------------------------------------------------
+
+1. Android - Chrome (Writes "Google Pixel 10Pro 5G"):
+   👉 node ccpa-process-all.js --device=android --browser=chrome
+
+2. Android - Firefox (Writes "Google Pixel 10Pro 5G"):
+   👉 node ccpa-process-all.js --device=android --browser=firefox
+
+3. iOS - Chrome (Writes "I phone 17 pro Max"):
+   👉 node ccpa-process-all.js --device=ios --browser=chrome
+
+4. iOS - Safari (Writes "I phone 17 pro Max"):
+   👉 node ccpa-process-all.js --device=ios --browser=safari
+
+--------------------------------------------------------------------------------
+📟 TABLET COMMANDS
+--------------------------------------------------------------------------------
+
+1. Tablet - Safari (Writes "Apple 11-inch ipad Air Wi-Fi"):
+   👉 node ccpa-process-all.js --device=tab --browser=safari
+
+2. Tablet - Chrome (Writes "Apple 11-inch ipad Air Wi-Fi"):
+   👉 node ccpa-process-all.js --device=tab --browser=chrome
+
+--------------------------------------------------------------------------------
+🖥️ DESKTOP COMMANDS
+--------------------------------------------------------------------------------
+
+1. Windows - Chrome (Default - Writes "Windows"):
+   👉 node ccpa-process-all.js --device=windows --browser=chrome
+
+2. Windows - Firefox (Writes "Windows"):
+   👉 node ccpa-process-all.js --device=windows --browser=firefox
+
+3. MAC - Safari (Writes "MacBook Air M4"):
+   👉 node ccpa-process-all.js --device=mac --browser=safari
+
+4. MAC - Chrome (Writes "MacBook Air M4"):
+   👉 node ccpa-process-all.js --device=mac --browser=chrome
+
+================================================================================
+Spreadsheet: https://docs.google.com/spreadsheets/d/1hcJgC1E1Bw3V5WdYgPpumQXke_kzMbNX1rCH4kKCBwk
+================================================================================
