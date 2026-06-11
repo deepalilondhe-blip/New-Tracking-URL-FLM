@@ -717,22 +717,25 @@ async function verifyLeadInCDB(page, urlName, leadId, logFile) {
       
       // Also explicitly click the Search button associated with this specific input
       try {
-        await searchBox.evaluate(el => {
-          // Try to find a form and its submit button
-          const form = el.closest('form');
-          if (form) {
-            const btn = form.querySelector('button[type="submit"], input[type="submit"], button');
-            if (btn) { btn.click(); return; }
+        // Try to locate the submit button within the same form
+        const formSubmitBtn = searchBox.locator('xpath=ancestor::form//button[@type="submit"] | ancestor::form//input[@type="submit"]').first();
+        if (await formSubmitBtn.isVisible()) {
+          await formSubmitBtn.click();
+        } else {
+          // Try to locate a sibling button next to the input
+          const siblingBtn = searchBox.locator('xpath=../button | ../input[@type="button"] | ../input[@type="submit"]').first();
+          if (await siblingBtn.isVisible()) {
+            await siblingBtn.click();
+          } else {
+            // Fallback: click any visible Search/Submit button
+            const globalBtn = page.locator('button:has-text("Search"), input[value="Search"], input[type="submit"]').first();
+            if (await globalBtn.isVisible()) {
+              await globalBtn.click();
+            }
           }
-          // Try to find a button in the immediate vicinity (siblings or parent)
-          const container = el.closest('div') || el.parentElement;
-          if (container) {
-            const btn = container.querySelector('button, input[type="button"], input[type="submit"]');
-            if (btn) { btn.click(); return; }
-          }
-        });
+        }
       } catch (e) {
-        // Ignore evaluation errors
+        // Ignore if button not found or not clickable
       }
       
       await page.waitForTimeout(3000);
