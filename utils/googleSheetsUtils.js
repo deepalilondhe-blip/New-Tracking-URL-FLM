@@ -688,9 +688,48 @@ async function appendNonTestRow(urlName, leadId, cdbStatus, allCondition) {
   }
 }
 
+// ==================================================
+// 🔹 FETCH LATEST LEAD ID FROM GOOGLE SHEETS
+// ==================================================
+async function getLatestLeadIdFromSheet(sheetName, spreadsheetIdOverride = null) {
+  try {
+    const client = await authenticate();
+    const sheets = google.sheets({ version: 'v4', auth: client });
+    // Use the provided spreadsheet ID or fall back to the one in .env
+    const spreadsheetId = spreadsheetIdOverride || process.env.GOOGLE_SHEET_ID || '1rXIg3dMQ4APH3lHLcfWYfP45PnOAKmV9POkoSS3YWxI';
+
+    // Fetch column J (Lead ID column) from the sheet
+    const range = `${sheetName}!J:J`;
+    const res = await sheets.spreadsheets.values.get({
+      spreadsheetId,
+      range: range
+    });
+
+    const rows = res.data.values;
+    if (!rows || rows.length === 0) {
+      console.warn(`[WARN] No data found in column J of sheet ${sheetName}`);
+      return null;
+    }
+
+    // Iterate backwards from the bottom to find the last non-empty Lead ID
+    for (let i = rows.length - 1; i >= 1; i--) {
+      const val = rows[i][0];
+      if (val && val.trim() !== '' && val.trim() !== 'Lead ID') {
+        return val.trim();
+      }
+    }
+
+    return null;
+  } catch (error) {
+    console.error(`[ERROR] Failed to fetch latest Lead ID from sheet ${sheetName}:`, error.message);
+    return null;
+  }
+}
+
 module.exports = {
   appendRowByHeader,
   updateSummaryDashboard,
   appendFinalValidationRow,
-  appendNonTestRow
+  appendNonTestRow,
+  getLatestLeadIdFromSheet
 };

@@ -24,6 +24,7 @@ const path = require('path');
 require('dotenv').config({ path: path.resolve(__dirname, '..', '.env') });
 
 const utils = require('./cake_utils');
+const googleSheetsUtils = require('../utils/googleSheetsUtils');
 
 // 🎯 FLM AGENT EXECUTION TRACKER
 const EXECUTION = {
@@ -75,7 +76,7 @@ async function extractLatestLeadID(logFile) {
   utils.writeLog(logFile, 'Extracting latest Lead ID from scheduler execution', 'INFO');
 
   try {
-    // Allow overriding with a CLI argument first
+    // Allow overriding with a CLI argument for specific Lead ID
     const leadIdArg = process.argv.find(arg => arg.startsWith('--lead-id='));
     if (leadIdArg) {
       const cliLeadId = leadIdArg.split('=')[1];
@@ -83,7 +84,24 @@ async function extractLatestLeadID(logFile) {
       return cliLeadId;
     }
 
-    // Look for latest execution results dynamically in the reports folder
+    // ==========================================================
+    // NEW: FETCH LEAD ID FROM GOOGLE SHEETS
+    // ==========================================================
+    const sheetNameArg = process.argv.find(arg => arg.startsWith('--sheet-name='));
+    const sheetName = sheetNameArg ? sheetNameArg.split('=')[1] : 'Senior Tax Defense (X)';
+    
+    utils.writeLog(logFile, `Connecting to Google Sheets to extract latest Lead ID from tab: "${sheetName}"...`, 'INFO');
+    
+    const sheetLeadId = await googleSheetsUtils.getLatestLeadIdFromSheet(sheetName);
+    if (sheetLeadId) {
+      utils.writeLog(logFile, `✓ Successfully extracted latest Lead ID from Google Sheets: ${sheetLeadId}`, 'INFO');
+      return sheetLeadId;
+    }
+
+    // ==========================================================
+    // FALLBACK: Look for latest execution results locally
+    // ==========================================================
+    utils.writeLog(logFile, `[WARN] Failed to extract from Google Sheets. Falling back to local JSON reports...`, 'WARN');
     const reportsDir = CONFIG.REPORT_DIR;
     let latestResult = null;
     let latestTimestamp = 0;
@@ -104,13 +122,7 @@ async function extractLatestLeadID(logFile) {
       }
     }
 
-    // Allow overriding with a CLI argument
-    const leadIdArg = process.argv.find(arg => arg.startsWith('--lead-id='));
-    if (leadIdArg) {
-      const cliLeadId = leadIdArg.split('=')[1];
-      utils.writeLog(logFile, `✓ Using Lead ID from CLI argument: ${cliLeadId}`, 'INFO');
-      return cliLeadId;
-    }
+    // Allow overriding with a CLI argument (duplicate check removed)
 
     // Support both schema variations
     const leadsArray = (latestResult && (latestResult.details || latestResult.results)) || [];
