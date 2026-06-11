@@ -33,7 +33,7 @@ const FLM_TestOnly_IP_Validation = {
   CSV_DASHBOARD_PATH: path.resolve(__dirname, '../../FML_Project_Dashboard/Test_Only_IP_Validation_Dashboard.csv'),
   GOOGLE_SHEET_ID: '1fO1YFFIM-i_DRPLqdSqC4oECeAHEETPJmN6RWlTrLzU',
   SHEET_TAB_NAME: 'Test Only IP Data',
-  EXPECTED_HEADERS: ['Date', 'Lead ID', 'IP & IP Count', 'IS Test', 'Name & Email Validation'],
+  EXPECTED_HEADERS: ['Date', 'Lead ID', 'IP & IP Count', 'IS Test', 'Name & Email Validation', 'Pixel Fired'],
   EXPECTED_USER_INFO: {
     firstName: 'CKMTESTPIXEL',
     lastName: 'CKMTESTPIXEL',
@@ -251,7 +251,13 @@ function appendToCSV(rowsToAppend) {
 
     // 1. Navigate to Cake CRM and login
     log('Navigating to Cake CRM...');
-    await page.goto('https://app.forwardleapmarketing.com/', { waitUntil: 'networkidle', timeout: 30000 });
+    try {
+      await page.goto('https://app.forwardleapmarketing.com/', { waitUntil: 'domcontentloaded', timeout: 60000 });
+    } catch (navErr) {
+      log(`First navigation attempt failed (${navErr.message}), retrying...`, 'WARN');
+      await page.waitForTimeout(3000);
+      await page.goto('https://app.forwardleapmarketing.com/', { waitUntil: 'domcontentloaded', timeout: 60000 });
+    }
     await page.waitForTimeout(2000);
 
     const loginBtn = await page.$('#submitButton, button:has-text("Log In"), input[type="submit"]');
@@ -474,7 +480,6 @@ function appendToCSV(rowsToAppend) {
     // 6. Traverse All Pages and Count IP Occurrences
     log('Aggregating unique IP addresses page-by-page...');
     const ipCounts = new Map(); // ip -> count
-    const ipLeadMap = new Map(); // ip -> Array of Lead IDs
     let pageNum = 1;
     let hasNextPage = true;
 
@@ -482,41 +487,32 @@ function appendToCSV(rowsToAppend) {
       log(`Processing page ${pageNum}...`);
       await page.waitForTimeout(2000);
 
-      // Extract rows and cell texts in a single evaluate call for instant performance
-      const pageRowsData = await page.evaluate(() => {
+      // Extract only IP addresses from each row (no lead ID collection needed)
+      const pageIPs = await page.evaluate(() => {
         const rows = Array.from(document.querySelectorAll('.ag-row, .x-grid3-row, .x-grid-row, [role="row"]'));
-        const findings = [];
+        const ips = [];
         for (const row of rows) {
           const cells = Array.from(row.querySelectorAll('.ag-cell, .x-grid3-cell, [role="gridcell"], [role="cell"], td'));
-          if (cells.length > 0) {
-            const leadId = (cells[0].textContent || '').trim();
-            if (leadId === 'Unique ID' || leadId === 'Lead ID' || leadId === '') continue;
-            
-            // Search all cells for an IP address pattern
-            let ip = '';
-            for (let c = 1; c < cells.length; c++) {
-              const cellText = (cells[c].textContent || '').trim();
-              if (/\b(?:\d{1,3}\.){3}\d{1,3}\b/.test(cellText)) {
-                ip = cellText;
-                break;
-              }
-            }
-            if (leadId && ip) {
-              findings.push({ leadId, ip });
+          if (cells.length === 0) continue;
+          const firstCellText = (cells[0].textContent || '').trim();
+          if (firstCellText === 'Unique ID' || firstCellText === 'Lead ID' || firstCellText === '') continue;
+
+          // Search all cells for an IP address pattern
+          for (let c = 1; c < cells.length; c++) {
+            const cellText = (cells[c].textContent || '').trim();
+            if (/\b(?:\d{1,3}\.){3}\d{1,3}\b/.test(cellText)) {
+              ips.push(cellText);
+              break;
             }
           }
         }
-        return findings;
+        return ips;
       });
 
-      log(`Found ${pageRowsData.length} valid data rows on page ${pageNum}.`);
+      log(`Found ${pageIPs.length} IP entries on page ${pageNum}.`);
 
-      for (const item of pageRowsData) {
-        ipCounts.set(item.ip, (ipCounts.get(item.ip) || 0) + 1);
-        if (!ipLeadMap.has(item.ip)) {
-          ipLeadMap.set(item.ip, []);
-        }
-        ipLeadMap.get(item.ip).push(item.leadId);
+      for (const ip of pageIPs) {
+        ipCounts.set(ip, (ipCounts.get(ip) || 0) + 1);
       }
 
       // Check next page button
@@ -543,144 +539,316 @@ function appendToCSV(rowsToAppend) {
 
     log(`Total unique IP addresses found: ${ipCounts.size}`);
     for (const [ip, count] of ipCounts.entries()) {
-      log(` - IP: ${ip} : ${count} occurrences`);
+      log(` - IP: ${ip} : ${count} occurrence(s)`);
     }
 
-    // 7. Process all available unique IPs dynamically for Lead validation
-    const selectedIPs = Array.from(ipCounts.keys());
-    log(`Selected all ${selectedIPs.length} unique IP(s) for validation.`);
-
+    // 7. For each unique IP — find one lead in the grid, then validate it
+    log(`Starting lead validation for ${ipCounts.size} unique IP(s)...`);
     const rowsToAppend = [];
 
-    for (const ip of selectedIPs) {
-      const count = ipCounts.get(ip);
-      const leadIdList = ipLeadMap.get(ip);
-      if (!leadIdList || leadIdList.length === 0) continue;
+    for (const [ip, count] of ipCounts.entries()) {
+      log(`🔎 Looking for a lead row with IP: ${ip} (${count} occurrence(s))...`);
 
-      // Pick a random Lead ID from the list associated with this IP
-      const randomIndex = Math.floor(Math.random() * leadIdList.length);
-      const leadId = leadIdList[randomIndex];
-      log(`🔎 Validating Lead ID: ${leadId} (randomly selected from ${leadIdList.length} leads) for IP: ${ip}`);
-
-      // Go back to first page if we are not on it, or search using browser/grid if navigation is complex
-      // For simplicity, we can navigate page-by-page to find the link, or search/refresh
-      let linkClicked = false;
-      let pageScanNum = 1;
-      let hasScanNext = true;
-
-      // Navigate back to page 1 first to search
+      // Navigate back to page 1 before searching
       const firstBtn = page.locator('button.ag-paging-button[ref="btFirst"], .x-tbar-page-first, button:has-text("First")').filter({ visible: true }).first();
       const firstVisible = await firstBtn.isVisible().catch(() => false);
       const firstDisabled = firstVisible ? await firstBtn.evaluate((el) => {
-        return el.disabled || 
-               el.classList.contains('x-item-disabled') || 
-               el.closest('.x-item-disabled') !== null || 
+        return el.disabled ||
+               el.classList.contains('x-item-disabled') ||
+               el.closest('.x-item-disabled') !== null ||
                el.closest('.x-btn-disabled') !== null;
       }).catch(() => true) : true;
 
       if (firstVisible && !firstDisabled) {
-        log('Navigating back to page 1 to search for Lead ID...');
+        log('Navigating back to page 1 to search for IP row...');
         await firstBtn.click();
         await page.waitForTimeout(2000);
         await waitForGridLoad(page);
       }
 
+      // Search through pages to find first row that has this IP
+      let foundLeadId = null;
+      let linkClicked = false;
+      let scanPage = 1;
+      let hasScanNext = true;
+
       while (hasScanNext && !linkClicked) {
-        // Find and click the link for leadId directly in the browser DOM
-        const clickedInBrowser = await page.evaluate((targetLeadId) => {
+        const result = await page.evaluate((targetIP) => {
           const rows = Array.from(document.querySelectorAll('.ag-row, .x-grid3-row, .x-grid-row, [role="row"], table tr'));
           for (const row of rows) {
-            const text = (row.textContent || '').trim();
-            if (text.includes(targetLeadId)) {
-              // Find first clickable link inside this row
-              const link = row.querySelector('a, button, [role="button"]');
-              if (link) {
-                // Scroll into view
-                link.scrollIntoView();
-                // Click the element
-                link.click();
-                return true;
-              }
+            const cells = Array.from(row.querySelectorAll('.ag-cell, .x-grid3-cell, [role="gridcell"], [role="cell"], td'));
+            if (cells.length === 0) continue;
+            const rowText = row.textContent || '';
+            if (!rowText.includes(targetIP)) continue;
+
+            // Confirm the IP is an exact cell match
+            const hasIP = Array.from(cells).some(c => {
+              const t = (c.textContent || '').trim();
+              return t === targetIP || new RegExp('\\b' + targetIP.replace(/\./g, '\\.') + '\\b').test(t);
+            });
+            if (!hasIP) continue;
+
+            // Get lead ID from first cell
+            const leadId = (cells[0].textContent || '').trim();
+            if (!leadId || leadId === 'Unique ID' || leadId === 'Lead ID') continue;
+
+            // Click the first link in the row
+            const link = row.querySelector('a, button, [role="button"]');
+            if (link) {
+              link.scrollIntoView();
+              link.click();
+              return { clicked: true, leadId };
             }
           }
-          return false;
-        }, leadId);
+          return { clicked: false, leadId: null };
+        }, ip);
 
-        if (clickedInBrowser) {
-          log(`✓ Clicked lead link in DOM for Lead ID: ${leadId}`);
-          await page.waitForTimeout(5000); // Wait for record popup/navigation
+        if (result.clicked && result.leadId) {
+          foundLeadId = result.leadId;
+          log(`✓ Found and clicked lead ${foundLeadId} for IP: ${ip} on scan page ${scanPage}`);
+          await page.waitForTimeout(5000);
           linkClicked = true;
           break;
         }
 
-        if (!linkClicked) {
-          const nextBtn = page.locator('button.ag-paging-button[ref="btNext"], .x-tbar-page-next, button:has-text("Next")').filter({ visible: true }).first();
-          const nextVisible = await nextBtn.isVisible().catch(() => false);
-          const nextDisabled = nextVisible ? await nextBtn.evaluate((el) => {
-            return el.disabled || 
-                   el.classList.contains('x-item-disabled') || 
-                   el.closest('.x-item-disabled') !== null || 
-                   el.closest('.x-btn-disabled') !== null;
-          }).catch(() => true) : true;
+        // Try next page
+        const nextBtn = page.locator('button.ag-paging-button[ref="btNext"], .x-tbar-page-next, button:has-text("Next")').filter({ visible: true }).first();
+        const nextVisible = await nextBtn.isVisible().catch(() => false);
+        const nextDisabled = nextVisible ? await nextBtn.evaluate((el) => {
+          return el.disabled ||
+                 el.classList.contains('x-item-disabled') ||
+                 el.closest('.x-item-disabled') !== null ||
+                 el.closest('.x-btn-disabled') !== null;
+        }).catch(() => true) : true;
 
-          if (nextVisible && !nextDisabled) {
-            await nextBtn.click();
-            await page.waitForTimeout(2000);
-            await waitForGridLoad(page);
-            pageScanNum++;
-          } else {
-            hasScanNext = false;
-          }
+        if (nextVisible && !nextDisabled) {
+          await nextBtn.click();
+          await page.waitForTimeout(2000);
+          await waitForGridLoad(page);
+          scanPage++;
+        } else {
+          hasScanNext = false;
         }
       }
 
-      if (!linkClicked) {
-        log(`Could not locate clickable link for Lead ID: ${leadId}`, 'WARN');
+      if (!linkClicked || !foundLeadId) {
+        log(`Could not find a clickable lead row for IP: ${ip}`, 'WARN');
         continue;
       }
 
-      // 8. Lead Verification (Read First Name, Last Name, Email, Is Test)
+      // 8. Lead Verification — click each tab and read fields within it
       const extracted = {
         firstName: '',
         lastName: '',
         email: '',
-        isTest: false
+        isTest: false,
+        disposition: ''
       };
 
-      try {
-        const firstField = page.locator('input[name*="first" i], input[id*="first" i], input[placeholder*="first" i]').first();
-        if (await firstField.isVisible()) extracted.firstName = (await firstField.inputValue()).trim();
+      // Helper: click a named tab via JS evaluate() — bypasses ExtJS overlay pointer interception
+      async function clickLeadTab(tabName, tabIndex) {
+        log(`  → Clicking Tab ${tabIndex}: "${tabName}"...`);
 
-        const lastField = page.locator('input[name*="last" i], input[id*="last" i], input[placeholder*="last" i]').first();
-        if (await lastField.isVisible()) extracted.lastName = (await lastField.inputValue()).trim();
+        // Strategy 1: Use ExtJS TabPanel API directly (most reliable for ExtJS apps)
+        const extjsSuccess = await page.evaluate((name) => {
+          try {
+            if (typeof Ext === 'undefined') return false;
+            const all = Ext.ComponentMgr.all.items || [];
+            const tabPanels = all.filter(c => c && c.getXType && c.getXType() === 'tabpanel');
+            for (const panel of tabPanels) {
+              const items = panel.items && panel.items.items ? panel.items.items : [];
+              for (let i = 0; i < items.length; i++) {
+                const tab = items[i];
+                const title = (tab.title || tab.tabTip || '').trim();
+                if (title.toLowerCase().includes(name.toLowerCase())) {
+                  panel.setActiveTab(i);
+                  return true;
+                }
+              }
+            }
+          } catch (e) {}
+          return false;
+        }, tabName).catch(() => false);
 
-        const emailField = page.locator('input[type="email" i], input[name*="email" i], input[id*="email" i]').first();
-        if (await emailField.isVisible()) extracted.email = (await emailField.inputValue()).trim();
+        if (extjsSuccess) {
+          log(`  ✓ Tab ${tabIndex} "${tabName}" opened via ExtJS API.`);
+          await page.waitForTimeout(1500);
+          // Highlight tab visually
+          await page.evaluate((name) => {
+            const items = Array.from(document.querySelectorAll('.x-tab-strip-text, .x-tab-strip li span, .x-tab-strip li a'));
+            const el = items.find(e => e.textContent.trim().toLowerCase().includes(name.toLowerCase()));
+            if (el) { el.style.outline = '3px solid #ff6600'; el.style.outlineOffset = '1px'; }
+          }, tabName).catch(() => {});
+          return true;
+        }
 
-        const testCheckbox = page.locator('input[type="checkbox"][id*="test" i], input[type="checkbox"][name*="test" i]').first();
-        if (await testCheckbox.isVisible()) extracted.isTest = await testCheckbox.isChecked();
-      } catch (err) {
-        log(`Error reading fields: ${err.message}`, 'WARN');
+        // Strategy 2: Direct DOM .click() via evaluate() — bypasses pointer-event blocking
+        const domSuccess = await page.evaluate((name) => {
+          try {
+            // Try tab strip items first (ExtJS tab bar)
+            const candidates = [
+              ...Array.from(document.querySelectorAll('.x-tab-strip-text')),
+              ...Array.from(document.querySelectorAll('.x-tab-strip li')),
+              ...Array.from(document.querySelectorAll('.x-tab-strip a')),
+              ...Array.from(document.querySelectorAll('[role="tab"]'))
+            ];
+            for (const el of candidates) {
+              if ((el.textContent || '').trim().toLowerCase().includes(name.toLowerCase())) {
+                el.style.outline = '3px solid #ff6600';
+                el.style.outlineOffset = '1px';
+                el.click(); // Direct DOM click — no pointer-event check
+                return true;
+              }
+            }
+          } catch (e) {}
+          return false;
+        }, tabName).catch(() => false);
+
+        if (domSuccess) {
+          log(`  ✓ Tab ${tabIndex} "${tabName}" opened via DOM click.`);
+          await page.waitForTimeout(1500);
+          return true;
+        }
+
+        log(`  ✗ Tab ${tabIndex} "${tabName}" not found by any method.`, 'WARN');
+        return false;
       }
 
-      log(`Extracted: First="${extracted.firstName}", Last="${extracted.lastName}", Email="${extracted.email}", IsTest=${extracted.isTest}`);
+      // Helper: read a field by its label — handles both standard inputs AND ExtJS display fields (div.x-form-display-field)
+      async function extractFieldValue(labelText) {
+        try {
+          const labelRegex = new RegExp(`^\\s*${labelText}\\s*:?\\s*$`, 'i');
+          // Try <label> element approach
+          const label = page.locator('label').filter({ hasText: labelRegex }).first();
+          if (await label.count().catch(() => 0)) {
+            const parent = label.locator('xpath=..');
+            const field = parent.locator('input, .x-form-display-field, .x-form-field').first();
+            if (await field.count().catch(() => 0)) {
+              const val = await field.inputValue().catch(() => null);
+              const text = val !== null ? val : await field.textContent().catch(() => '');
+              return String(text || '').trim();
+            }
+          }
+          // Try <td> label approach (table-based ExtJS layouts)
+          const tdLabel = page.locator('td').filter({ hasText: labelRegex }).last();
+          if (await tdLabel.count().catch(() => 0)) {
+            const nextTd = tdLabel.locator('xpath=following-sibling::td').first();
+            if (await nextTd.count().catch(() => 0)) {
+              return String(await nextTd.textContent().catch(() => '') || '').trim();
+            }
+          }
+        } catch (e) {}
+        return '(not found)';
+      }
 
-      const isNameEmailValid = (extracted.firstName === FLM_TestOnly_IP_Validation.EXPECTED_USER_INFO.firstName &&
-                                extracted.lastName === FLM_TestOnly_IP_Validation.EXPECTED_USER_INFO.lastName &&
-                                extracted.email === FLM_TestOnly_IP_Validation.EXPECTED_USER_INFO.email);
+      try {
+        // ── TAB 1: Personal Information ───────────────────────────────────
+        const tab1Opened = await clickLeadTab('Personal Information', 1);
+        if (tab1Opened) {
+          const firstField = page.locator('input[name*="first" i], input[id*="first" i]').first();
+          if (await firstField.isVisible().catch(() => false))
+            extracted.firstName = (await firstField.inputValue()).trim();
 
+          const lastField = page.locator('input[name*="last" i], input[id*="last" i]').first();
+          if (await lastField.isVisible().catch(() => false))
+            extracted.lastName = (await lastField.inputValue()).trim();
+
+          const emailField = page.locator('input[type="email" i], input[name*="email" i], input[id*="email" i]').first();
+          if (await emailField.isVisible().catch(() => false))
+            extracted.email = (await emailField.inputValue()).trim();
+
+          // IS Test checkbox is usually on the Personal Information tab
+          const testCheckbox = page.locator(
+            'input[type="checkbox"][id*="test" i], input[type="checkbox"][name*="test" i]'
+          ).first();
+          if (await testCheckbox.isVisible().catch(() => false))
+            extracted.isTest = await testCheckbox.isChecked().catch(() => false);
+
+          log(`  Personal Info → First="${extracted.firstName}", Last="${extracted.lastName}", Email="${extracted.email}", IsTest=${extracted.isTest}`);
+          await page.waitForTimeout(1500);
+        }
+
+        // ── TAB 2: Sale Info ──────────────────────────────────────────────
+        const tab2Opened = await clickLeadTab('Sale Info', 2);
+        if (tab2Opened) {
+          // Use label-based extractor — works for ExtJS display fields (not just standard inputs)
+          let pixelVal = await extractFieldValue('Pixel Log');
+          if (!pixelVal || pixelVal === '(not found)') pixelVal = await extractFieldValue('Pixel Fired');
+          if (!pixelVal || pixelVal === '(not found)') pixelVal = await extractFieldValue('pixel_fired');
+
+          let affiliateVal = await extractFieldValue('Affiliate');
+          if (!affiliateVal || affiliateVal === '(not found)') affiliateVal = await extractFieldValue('affiliate');
+
+          let dbidVal = await extractFieldValue('DBID');
+          if (!dbidVal || dbidVal === '(not found)') dbidVal = await extractFieldValue('Sub ID');
+
+          extracted.disposition = await extractFieldValue('Disposition');
+
+          log(`  Sale Info → Pixel Log="${pixelVal}", Affiliate="${affiliateVal}", DBID="${dbidVal}", Disposition="${extracted.disposition}"`);
+          await page.waitForTimeout(1500);
+        }
+
+        // ── TAB 3: Vertical Specific ──────────────────────────────────────
+        const tab3Opened = await clickLeadTab('Vertical Specific', 3);
+        if (tab3Opened) {
+          // Use label-based extractor for all ExtJS display fields
+          let pageOriginVal = await extractFieldValue('page origin');
+          if (!pageOriginVal || pageOriginVal === '(not found)') pageOriginVal = await extractFieldValue('Page Origin');
+          if (!pageOriginVal || pageOriginVal === '(not found)') pageOriginVal = await extractFieldValue('page_origin');
+
+          let taxDebtVal = await extractFieldValue('tax_debt');
+          if (!taxDebtVal || taxDebtVal === '(not found)') taxDebtVal = await extractFieldValue('Tax Debt');
+
+          let neustarVal = await extractFieldValue('Neustar');
+          if (!neustarVal || neustarVal === '(not found)') neustarVal = await extractFieldValue('neustar');
+
+          if (!extracted.disposition || extracted.disposition === '(not found)') {
+             extracted.disposition = await extractFieldValue('Disposition');
+          }
+
+          log(`  Vertical Specific → Page Origin="${pageOriginVal}", Tax Debt="${taxDebtVal}", Neustar="${neustarVal}", Disposition="${extracted.disposition}"`);
+          await page.waitForTimeout(1500);
+        }
+
+        // Fallback: if IS Test was not found on tab 1, try reading it from current context
+        if (!extracted.isTest) {
+          const fallbackCheckbox = page.locator(
+            'input[type="checkbox"][id*="test" i], input[type="checkbox"][name*="test" i]'
+          ).first();
+          if (await fallbackCheckbox.isVisible().catch(() => false))
+            extracted.isTest = await fallbackCheckbox.isChecked().catch(() => false);
+        }
+
+      } catch (err) {
+        log(`Error during tab navigation for lead ${foundLeadId}: ${err.message}`, 'WARN');
+      }
+
+      log(`Extracted: First="${extracted.firstName}", Last="${extracted.lastName}", Email="${extracted.email}", IsTest=${extracted.isTest}, Disposition="${extracted.disposition}"`);
+
+      const isNameEmailValid = (
+        (extracted.firstName.toUpperCase() === 'CKMTESTPIXEL' || extracted.firstName.toUpperCase() === 'CKMTEST') &&
+        (extracted.lastName.toUpperCase() === 'CKMTESTPIXEL' || extracted.lastName.toUpperCase() === 'CKMTEST') &&
+        (extracted.email.toLowerCase() === 'ckmtestpixel@gmail.com' || extracted.email.toLowerCase() === 'ckmtest@gmail.com')
+      );
       const isTestValid = extracted.isTest;
       const dateStr = formatDateMDY(new Date());
 
+      // Determine Pixel Fired based on Disposition
+      let pixelFiredResult = 'Yes';
+      if (extracted.disposition && extracted.disposition.toLowerCase() === 'duplicate') {
+        pixelFiredResult = 'No';
+      }
+
       rowsToAppend.push([
         dateStr,
-        leadId,
+        foundLeadId,
         `${ip} : ${count}`,
         isTestValid ? 'True' : 'False',
-        isNameEmailValid ? 'Correct' : 'Incorrect'
+        isNameEmailValid ? 'Correct' : 'Incorrect',
+        pixelFiredResult
       ]);
 
-      // Go back to report grid
+      // Return to report grid
       log('Returning to Conversions report grid...');
       await page.goBack();
       await page.waitForTimeout(3000);
@@ -688,19 +856,11 @@ function appendToCSV(rowsToAppend) {
 
     // 9. Append findings to Google Sheets and local CSV
     if (rowsToAppend.length > 0) {
+      log(`✅ Saving ${rowsToAppend.length} validated IP row(s) to CSV and Google Sheet...`);
       appendToCSV(rowsToAppend);
       await appendToGoogleSheet(rowsToAppend);
     } else {
-      log('No real validation rows prepared. Appending a sample verification row for testing...', 'INFO');
-      const sampleRow = [
-        formatDateMDY(new Date()),
-        '3959A000',
-        '192.168.1.99 : 1',
-        'True',
-        'Correct'
-      ];
-      appendToCSV([sampleRow]);
-      await appendToGoogleSheet([sampleRow]);
+      log('No validated rows to save. Check if date range has data.', 'WARN');
     }
 
   } catch (err) {
