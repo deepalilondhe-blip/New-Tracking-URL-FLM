@@ -245,10 +245,10 @@ async function appendRowByHeader(sheetName, rowData) {
                   range: { sheetId, startRowIndex: rowIndex, endRowIndex: rowIndex + 1, startColumnIndex: 0, endColumnIndex: 1 },
                   cell: {
                     userEnteredFormat: {
-                      numberFormat: {
-                        type: 'DATE_TIME',
-                        pattern: 'dd-mm-yy HH:mm:ss'
-                      }
+                        numberFormat: {
+                          type: 'DATE_TIME',
+                          pattern: 'd/M/yyyy H:mm:ss'
+                        }
                     }
                   },
                   fields: 'userEnteredFormat.numberFormat'
@@ -301,10 +301,6 @@ async function appendRowByHeader(sheetName, rowData) {
         addLinkRequest(4, rowData.trackingLink, "Open Tracking");
         addLinkRequest(11, rowData.pageOrigin, "View Page Origin");
         addLinkRequest(12, rowData.thankYouUrl, "ViewThankURL");
-
-        for(let i=0; i<10; i++) {
-          addLinkRequest(19 + i, rowData[`step${i+1}`], `Step ${i+1}`);
-        }
 
         if (linkRequests.length > 0) {
           await sheets.spreadsheets.batchUpdate({
@@ -616,7 +612,7 @@ async function appendNonTestRow(urlName, leadId, cdbStatus, allCondition) {
   try {
     const client = await authenticate();
     const sheets = google.sheets({ version: 'v4', auth: client });
-    const spreadsheetId = process.env.GOOGLE_SHEET_ID;
+    const spreadsheetId = FINAL_SPREADSHEET_ID;
     const sheetName = 'Non Test';
 
     // 1. Ensure sheet exists with correct headers
