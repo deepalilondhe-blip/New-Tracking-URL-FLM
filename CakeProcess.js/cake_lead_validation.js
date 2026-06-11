@@ -96,6 +96,14 @@ async function extractLatestLeadID(logFile) {
       }
     }
 
+    // Allow overriding with a CLI argument
+    const leadIdArg = process.argv.find(arg => arg.startsWith('--lead-id='));
+    if (leadIdArg) {
+      const cliLeadId = leadIdArg.split('=')[1];
+      utils.writeLog(logFile, `✓ Using Lead ID from CLI argument: ${cliLeadId}`, 'INFO');
+      return cliLeadId;
+    }
+
     if (latestResult && latestResult.details && latestResult.details.length > 0) {
       // Extract Lead IDs from results
       const leadIds = latestResult.details
@@ -305,6 +313,26 @@ async function searchLeadInCDB(page, leadId, logFile) {
       await searchBoxes[1].fill(leadId);
       await page.waitForTimeout(500);
       await searchBoxes[1].press('Enter');
+      
+      // Physically click the Search button associated with this input
+      try {
+        const searchBox = searchBoxes[1];
+        const formSubmitBtn = searchBox.locator('xpath=ancestor::form//button[@type="submit"] | ancestor::form//input[@type="submit"]').first();
+        if (await formSubmitBtn.isVisible()) {
+          await formSubmitBtn.click();
+        } else {
+          const siblingBtn = searchBox.locator('xpath=../button | ../input[@type="button"] | ../input[@type="submit"]').first();
+          if (await siblingBtn.isVisible()) {
+            await siblingBtn.click();
+          } else {
+            const globalBtn = page.locator('button:has-text("Search"), input[value="Search"], input[type="submit"]').first();
+            if (await globalBtn.isVisible()) {
+              await globalBtn.click();
+            }
+          }
+        }
+      } catch (e) {}
+
       await page.waitForTimeout(2000);
       utils.writeLog(logFile, `Searched for Lead ID in CDB: ${leadId}`, 'INFO');
 

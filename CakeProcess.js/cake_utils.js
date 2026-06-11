@@ -78,7 +78,7 @@ function formatDateDisplay(date) {
  * Capture screenshot and save to specified directory
  */
 async function captureScreenshot(page, filename, subdir = 'screenshots') {
-  const screenshotDir = path.join(__dirname, subdir);
+  const screenshotDir = path.isAbsolute(subdir) ? subdir : path.join(__dirname, subdir);
   const screenshotPath = path.join(screenshotDir, filename);
 
   if (!fs.existsSync(screenshotDir)) {
