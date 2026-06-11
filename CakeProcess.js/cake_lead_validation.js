@@ -75,24 +75,32 @@ async function extractLatestLeadID(logFile) {
   utils.writeLog(logFile, 'Extracting latest Lead ID from scheduler execution', 'INFO');
 
   try {
-    // Look for latest execution results
-    const resultsFiles = [
-      path.join(__dirname, 'cake_non_test_results.json'),
-      path.join(__dirname, 'test_only_reports', 'test_only_report_*.json')
-    ];
+    // Allow overriding with a CLI argument first
+    const leadIdArg = process.argv.find(arg => arg.startsWith('--lead-id='));
+    if (leadIdArg) {
+      const cliLeadId = leadIdArg.split('=')[1];
+      utils.writeLog(logFile, `✓ Using Lead ID from CLI argument: ${cliLeadId}`, 'INFO');
+      return cliLeadId;
+    }
 
+    // Look for latest execution results dynamically in the reports folder
+    const reportsDir = CONFIG.REPORT_DIR;
     let latestResult = null;
     let latestTimestamp = 0;
 
-    for (const file of resultsFiles) {
-      if (fs.existsSync(file)) {
-        const content = JSON.parse(fs.readFileSync(file, 'utf-8'));
-        const timestamp = new Date(content.executionTime || content.timestamp).getTime();
-        
-        if (timestamp > latestTimestamp) {
-          latestTimestamp = timestamp;
-          latestResult = content;
-        }
+    if (fs.existsSync(reportsDir)) {
+      const files = fs.readdirSync(reportsDir).filter(f => f.endsWith('.json'));
+      for (const file of files) {
+        const filePath = path.join(reportsDir, file);
+        try {
+          const content = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+          const timestamp = new Date(content.executionTime || content.timestamp || fs.statSync(filePath).mtime).getTime();
+          
+          if (timestamp > latestTimestamp) {
+            latestTimestamp = timestamp;
+            latestResult = content;
+          }
+        } catch(e) {}
       }
     }
 
@@ -104,9 +112,12 @@ async function extractLatestLeadID(logFile) {
       return cliLeadId;
     }
 
-    if (latestResult && latestResult.details && latestResult.details.length > 0) {
+    // Support both schema variations
+    const leadsArray = (latestResult && (latestResult.details || latestResult.results)) || [];
+
+    if (leadsArray.length > 0) {
       // Extract Lead IDs from results
-      const leadIds = latestResult.details
+      const leadIds = leadsArray
         .map(d => d.leadId || d.lead_id)
         .filter(id => id);
 
