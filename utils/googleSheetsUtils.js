@@ -617,13 +617,18 @@ async function appendNonTestRow(urlName, leadId, cdbStatus, allCondition) {
 
     // 1. Ensure sheet exists with correct headers
     let sheetExists = true;
+    let needsHeaders = false;
     try {
-      await sheets.spreadsheets.values.get({
+      const response = await sheets.spreadsheets.values.get({
         spreadsheetId,
         range: `${sheetName}!A1:D1`
       });
+      if (!response.data.values || response.data.values.length === 0) {
+        needsHeaders = true;
+      }
     } catch (e) {
       sheetExists = false;
+      needsHeaders = true;
     }
 
     if (!sheetExists) {
@@ -645,7 +650,9 @@ async function appendNonTestRow(urlName, leadId, cdbStatus, allCondition) {
           }]
         }
       }).catch(() => {});
+    }
 
+    if (needsHeaders) {
       const headers = ["Search URL Name", "Lead ID", "CDB Status", "All Condition"];
       await sheets.spreadsheets.values.update({
         spreadsheetId,
