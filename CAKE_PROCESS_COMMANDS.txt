@@ -15,9 +15,11 @@ DATE: 2026-05-27
 1. Non-Test & Test Process
 2. Test Only Filter Process
 3. Latest Lead Validation Process (Isolated Dashboard Update)
-4. Advanced Execution Options
-5. Batch File Shortcuts
-6. Troubleshooting & Debug Commands
+4. Dynamic Test Only IP Validation (New)
+5. Non-Test Cake + CDB Validation (New)
+6. Advanced Execution Options
+7. Batch File Shortcuts
+8. Troubleshooting & Debug Commands
 
 ================================================================================
                     1. NON-TEST & TEST PROCESS
@@ -183,7 +185,40 @@ COMMAND 1: Run with Visible Browser (Headed Mode)
   └─ Shows Yellow Highlighting for bad Affiliate rows
 
 ================================================================================
-                    4. ADVANCED EXECUTION OPTIONS
+                    4. DYNAMIC TEST ONLY IP VALIDATION (NEW)
+================================================================================
+
+Description:
+  This script extracts and aggregates all unique IP addresses across multiple pages
+  for the "Tests Only" filter. It validates name/email formats and cross-checks the 
+  Pixel Fired vs Disposition logic before appending to the final Google Sheet.
+
+File Location:
+  utils/flmAgent/test_only_ip_validation.js
+
+COMMAND:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  node utils/flmAgent/test_only_ip_validation.js
+
+================================================================================
+                    5. NON-TEST CAKE + CDB VALIDATION (NEW)
+================================================================================
+
+Description:
+  This script filters for "Non-Tests", dynamically rotates through target URLs 
+  (e.g., Top Money, White Collar), verifies strict lead criteria in Cake CRM, 
+  and cross-verifies the Lead ID in the Central Database (CDB).
+
+File Location:
+  CakeProcess.js/cake_non_test_validation.js
+
+COMMANDS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  node CakeProcess.js\cake_non_test_validation.js --headed
+  node CakeProcess.js\cake_non_test_validation.js --headed --url-name="White Collar"
+
+================================================================================
+                    6. ADVANCED EXECUTION OPTIONS
 ================================================================================
 
 COMPARING BOTH PROCESSES
@@ -494,8 +529,11 @@ VERIFY EMAIL NOTIFICATION
 │ TEST ONLY PROCESS (Headed - Recommended):                                  │
 │ node CakeProcess.js\cake_test_only.js --headed                             │
 │                                                                             │
-│ TEST ONLY PROCESS (Headless - Faster):                                     │
-│ node CakeProcess.js\cake_test_only.js                                      │
+│ DYNAMIC TEST ONLY IP VALIDATION:                                           │
+│ node utils/flmAgent/test_only_ip_validation.js                             │
+│                                                                             │
+│ NON-TEST CAKE + CDB VALIDATION:                                            │
+│ node CakeProcess.js\cake_non_test_validation.js --headed                   │
 │                                                                             │
 │ NON-TEST & TEST PROCESS (Headed):                                          │
 │ node CakeProcess.js\cake.js --non-test-procedure --headed --hold=180       │
