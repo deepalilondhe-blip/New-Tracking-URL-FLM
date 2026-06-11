@@ -715,14 +715,24 @@ async function verifyLeadInCDB(page, urlName, leadId, logFile) {
       await searchBox.press('Enter');
       await page.waitForTimeout(1000);
       
-      // Also explicitly click the Search button if one exists
+      // Also explicitly click the Search button associated with this specific input
       try {
-        const searchBtn = page.locator('button:has-text("Search"), input[value="Search"], input[type="submit"], button:has-text("Go")').first();
-        if (await searchBtn.isVisible()) {
-          await searchBtn.click();
-        }
+        await searchBox.evaluate(el => {
+          // Try to find a form and its submit button
+          const form = el.closest('form');
+          if (form) {
+            const btn = form.querySelector('button[type="submit"], input[type="submit"], button');
+            if (btn) { btn.click(); return; }
+          }
+          // Try to find a button in the immediate vicinity (siblings or parent)
+          const container = el.closest('div') || el.parentElement;
+          if (container) {
+            const btn = container.querySelector('button, input[type="button"], input[type="submit"]');
+            if (btn) { btn.click(); return; }
+          }
+        });
       } catch (e) {
-        // Ignore if button not found or not clickable
+        // Ignore evaluation errors
       }
       
       await page.waitForTimeout(3000);
