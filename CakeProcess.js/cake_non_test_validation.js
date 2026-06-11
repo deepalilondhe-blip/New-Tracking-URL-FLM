@@ -713,6 +713,18 @@ async function verifyLeadInCDB(page, urlName, leadId, logFile) {
       const searchBox = searchInputs[searchInputs.length - 1];
       await searchBox.fill(leadId);
       await searchBox.press('Enter');
+      await page.waitForTimeout(1000);
+      
+      // Also explicitly click the Search button if one exists
+      try {
+        const searchBtn = page.locator('button:has-text("Search"), input[value="Search"], input[type="submit"], button:has-text("Go")').first();
+        if (await searchBtn.isVisible()) {
+          await searchBtn.click();
+        }
+      } catch (e) {
+        // Ignore if button not found or not clickable
+      }
+      
       await page.waitForTimeout(3000);
 
       // Verify lead ID is present in table rows
