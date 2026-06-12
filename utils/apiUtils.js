@@ -78,19 +78,22 @@ function getDomainNameForBrand(brandName) {
     return 'https://www.veteranstaxservices.com';
   }
   if (brand.includes('FSI') || brand.includes('Fresh Start')) {
-    return 'https://www.freshstartinitiative.com';
+    return 'https://www.fresh-start-initiative.com';
   }
   if (brand.includes('TRA') || brand.includes('PPC') || brand.includes('Advocates')) {
     return 'https://www.taxreliefadvocates.com';
   }
-  if (brand.includes('1800') || brand.includes('FTH') || brand.includes('Fresh Tax')) {
+  if (brand.includes('FTH') || brand.includes('Fresh Tax Help')) {
+    return 'https://fresh-tax-help.com';
+  }
+  if (brand.includes('1800') || brand.includes('Fresh Tax')) {
     return 'https://www.1800freshtax.com';
   }
   if (brand.includes('SCTR') || brand.includes('Second Chance')) {
     return 'https://www.secondchancetaxrelief.com';
   }
-  if (brand.includes('SCTD') || brand.includes('Senior Tax Defence')) {
-    return 'https://www.seniortaxdefence.com';
+  if (brand.includes('SCTD') || brand.includes('Senior Tax Defence') || brand.includes('Senior Tax Defense') || brand.includes('Guardian')) {
+    return 'https://www.seniortaxdefense.com';
   }
   if (brand.includes('Everest')) {
     return 'https://www.everesttaxrelief.com';
@@ -117,16 +120,31 @@ async function callSecondApi(leadId, domainName) {
 
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     try {
+      // Resolve the actual domain first (whether passed as URL or brand name)
+      const resolvedDomain = domainName.startsWith('http')
+        ? domainName.replace(/\/$/, '')
+        : getDomainNameForBrand(domainName);
+
+      const dl = resolvedDomain.toLowerCase();
+      const isEverest = dl.includes('everest');
+      const isVts = dl.includes('veteranstaxservices') || dl.includes('vts');
+      const isFsi = dl.includes('fresh-start') || dl.includes('freshstart') || dl.includes('freshstartinitiative');
+      const isFtd = dl.includes('fidelity-tax');
+      const is1800 = dl.includes('1800freshtax');
+      const isSenior = dl.includes('seniortaxdefense') || dl.includes('seniortaxdefence') || dl.includes('senior-tax');
+
+      const isA2Host = isEverest || isVts || isFsi || isFtd || is1800 || isSenior;
+
       let apiUrl;
       const params = new URLSearchParams();
-      const isEverest = domainName.toLowerCase().includes('everest');
-      const isVts = domainName.toLowerCase().includes('vts');
 
-      if (isEverest || isVts) {
+      if (isA2Host) {
         apiUrl = 'https://everesttaxrelief.net/api-qa-automation-atwohosting/getData.php';
+
         params.append('cake_id', leadId);
-        params.append('domain_name', 'https://everesttaxrelief.net');
-        console.log(`📡 ${isVts ? 'VTS Original (via Everest)' : 'Everest'} Custom Second API Payload: cake_id=${leadId}, domain_name=https://everesttaxrelief.net`);
+        params.append('domain_name', resolvedDomain);
+        console.log(`📡 A2Hosting Second API Payload: cake_id=${leadId}, domain_name=${resolvedDomain}`);
+
       } else {
         const seniorBrands = ['Senior Tax Defence', 'Senior Tax Defence 2'];
         const isSeniorBrand = seniorBrands.some(brand => domainName.includes(brand));
@@ -139,11 +157,11 @@ async function callSecondApi(leadId, domainName) {
           params.append('lead_id', leadId);
         } else {
           params.append('cake_id', leadId);
-          const resolvedDomain = getDomainNameForBrand(domainName);
           params.append('domain_name', resolvedDomain);
-          console.log(`📡 Standard Second API Payload: cake_id=${leadId}, domain_name=${resolvedDomain}`);
+          console.log(`📡 Standard FLM-Utility Second API Payload: cake_id=${leadId}, domain_name=${resolvedDomain}`);
         }
       }
+
 
       const response = await axios.post(apiUrl, 
         params.toString(),

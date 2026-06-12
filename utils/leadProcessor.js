@@ -336,6 +336,14 @@ async function processLead(brandConfig, page) {
          if (numVal <= 50000) return '20,000';
          return '50,000';
       }
+      if (bId === 'senior-tax-defence-main' || bId === 'senior-tax-defense-x' || bId === 'guardian-tax-relief-ppc') {
+         if (numVal < 5000) return '5,000';
+         if (numVal < 10000) return '7,500';
+         if (numVal < 20000) return '10,000';
+         if (numVal < 30000) return '20,000';
+         if (numVal < 100000) return '50,000';
+         return '100,000';
+      }
       
       // Default (For the 6 Standard Rotating Ranges)
       if (numVal <= 10000) return '5,000'; 
@@ -450,6 +458,20 @@ async function processLead(brandConfig, page) {
         selectedDebtNum = 20000;
       } else {
         selectedDebtNum = 50000;
+      }
+    } else if (brandId === 'senior-tax-defence-main' || brandId === 'senior-tax-defense-x' || brandId === 'guardian-tax-relief-ppc') {
+      if (selectedDebtNum < 5000) {
+        selectedDebtNum = 5000;
+      } else if (selectedDebtNum < 10000) {
+        selectedDebtNum = 7500;
+      } else if (selectedDebtNum < 20000) {
+        selectedDebtNum = 10000;
+      } else if (selectedDebtNum < 30000) {
+        selectedDebtNum = 20000;
+      } else if (selectedDebtNum < 100000) {
+        selectedDebtNum = 50000;
+      } else {
+        selectedDebtNum = 100000;
       }
     } else if (selectedDebtNum < 5000) {
       selectedDebtNum = 5000;

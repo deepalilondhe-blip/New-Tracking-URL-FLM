@@ -178,23 +178,26 @@ async function appendRowByHeader(sheetName, rowData) {
       rowData.dbid,
       rowData.pageOrigin, // Will be overwritten
       rowData.thankYouUrl, // Will be overwritten
-      rowData.cdbStatus,
+      // Normalize CDB Status to uppercase TRUE/FALSE
+      rowData.cdbStatus ? String(rowData.cdbStatus).toUpperCase() : 'FALSE',
       rowData.cdbEmail,
       rowData.neustar,
       rowData.neustarDisposition,
       rowData.pixelFired,
       rowData.taxDebt || '',
-      rowData.step1,
-      rowData.step2,
-      rowData.step3,
-      rowData.step4,
-      rowData.step5,
-      rowData.step6,
-      rowData.step7,
-      rowData.step8,
-      rowData.step9,
-      rowData.step10
+      // ✅ Step columns — option text clicked at each questionnaire/choice step
+      rowData.step1 || '',
+      rowData.step2 || '',
+      rowData.step3 || '',
+      rowData.step4 || '',
+      rowData.step5 || '',
+      rowData.step6 || '',
+      rowData.step7 || '',
+      rowData.step8 || '',
+      rowData.step9 || '',
+      rowData.step10 || ''
     ];
+
 
     const response = await sheets.spreadsheets.values.append({
       spreadsheetId,
@@ -726,10 +729,128 @@ async function getLatestLeadIdFromSheet(sheetName, spreadsheetIdOverride = null)
   }
 }
 
+// ==================================================
+// 🔹 FETCH LATEST FULL ROW FROM GOOGLE SHEETS
+// ==================================================
+async function getLatestLeadRowFromSheet(sheetName, spreadsheetIdOverride = null) {
+  try {
+    const client = await authenticate();
+    const sheets = google.sheets({ version: 'v4', auth: client });
+    const spreadsheetId = spreadsheetIdOverride || process.env.GOOGLE_SHEET_ID || '1rXIg3dMQ4APH3lHLcfWYfP45PnOAKmV9POkoSS3YWxI';
+
+    // Fetch the full rows from A to Z
+    const range = `${sheetName}!A:Z`;
+    const res = await sheets.spreadsheets.values.get({
+      spreadsheetId,
+      range: range
+    });
+
+    const rows = res.data.values;
+    if (!rows || rows.length === 0) {
+      console.warn(`[WARN] No data found in sheet ${sheetName}`);
+      return null;
+    }
+
+    // Iterate backwards to find the last valid row with a Lead ID (Index 9)
+    for (let i = rows.length - 1; i >= 1; i--) {
+      const row = rows[i];
+      const leadId = row[9];
+      if (leadId && leadId.trim() !== '' && leadId.trim() !== 'Lead ID') {
+        return {
+          sheetName: sheetName, // Added to track which tab it came from
+          rowIndex: i + 1, // 1-indexed
+          dateTime: row[0] || '',
+          affiliate: row[2] || '',
+          leadId: leadId.trim(),
+          dbid: row[10] || '',
+          pageOrigin: row[11] || '',
+          thankYouUrl: row[12] || '',
+          neustar: row[15] || '',
+          neustarDisposition: row[16] || '',
+          pixelFired: row[17] || '',
+          taxDebt: row[18] || ''
+        };
+      }
+    }
+    return null;
+  } catch (error) {
+    console.error(`[ERROR] Failed to fetch latest row from sheet ${sheetName}:`, error.message);
+    return null;
+  }
+}
+
+// ==================================================
+// 🔹 APPEND RAW ROW TO ANY SHEET
+// ==================================================
+async function appendRawRow(spreadsheetId, sheetName, rowData) {
+  try {
+    const client = await authenticate();
+    const sheets = google.sheets({ version: 'v4', auth: client });
+
+    await sheets.spreadsheets.values.append({
+      spreadsheetId,
+      range: `${sheetName}!A:L`,
+      valueInputOption: 'USER_ENTERED',
+      insertDataOption: 'INSERT_ROWS',
+      requestBody: {
+        values: [rowData]
+      }
+    });
+
+    console.log(`✅ Raw row appended successfully to ${sheetName}`);
+    return true;
+  } catch (error) {
+    console.error(`❌ Failed to append raw row to ${sheetName}:`, error.message);
+    return false;
+  }
+}
+
+// ==================================================
+// 🔹 FETCH LATEST LEAD ACROSS ALL TABS
+// ==================================================
+async function getAbsoluteLatestLeadAcrossAllTabs(spreadsheetIdOverride = null) {
+  try {
+    const client = await authenticate();
+    const sheets = google.sheets({ version: 'v4', auth: client });
+    const spreadsheetId = spreadsheetIdOverride || process.env.GOOGLE_SHEET_ID || '1rXIg3dMQ4APH3lHLcfWYfP45PnOAKmV9POkoSS3YWxI';
+
+    // 1. Get all sheet names
+    const spreadsheet = await sheets.spreadsheets.get({ spreadsheetId });
+    const sheetNames = spreadsheet.data.sheets.map(s => s.properties.title);
+    
+    let latestLead = null;
+    let latestDate = 0;
+
+    // 2. Loop through all sheets and get the latest lead from each
+    for (const sheetName of sheetNames) {
+      // Skip hidden or config tabs if any, but search all data tabs
+      const leadData = await getLatestLeadRowFromSheet(sheetName, spreadsheetId);
+      if (leadData && leadData.dateTime) {
+        // Parse dateTime (assume standard format like "MM/DD/YYYY HH:MM:SS" or similar)
+        // If the date string is poorly formatted, new Date() might result in NaN, so we handle it
+        const timeValue = new Date(leadData.dateTime).getTime();
+        
+        if (!isNaN(timeValue) && timeValue > latestDate) {
+          latestDate = timeValue;
+          latestLead = leadData;
+        }
+      }
+    }
+
+    return latestLead;
+  } catch (error) {
+    console.error('❌ Error finding latest lead across all tabs:', error.message);
+    return null;
+  }
+}
+
 module.exports = {
   appendRowByHeader,
   updateSummaryDashboard,
   appendFinalValidationRow,
   appendNonTestRow,
-  getLatestLeadIdFromSheet
+  getLatestLeadIdFromSheet,
+  getLatestLeadRowFromSheet,
+  appendRawRow,
+  getAbsoluteLatestLeadAcrossAllTabs
 };
