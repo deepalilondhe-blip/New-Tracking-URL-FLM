@@ -3,20 +3,18 @@ const { processLead } = require('./utils/leadProcessor');
 const path = require('path');
 const fs = require('fs');
 
-// Set exact overrides for the runner
-process.env.OVERRIDE_SLIDER = "26000";
+// Set overrides for the runner
+// process.env.OVERRIDE_SLIDER = "26000"; // Commented out to enable rotational slider range selection on each run
 process.env.OVERRIDE_STATE = "Colorado";
 // process.env.OVERRIDE_PHONE = "303-485-6826"; // Commented out to generate fresh dynamic phone number to avoid duplicate filter rejection
 process.env.PROCESS_BROWSER = "chromium";
 process.env.PROCESS_LABEL = "D-Chromium";
 
-console.log('✅ Running Premier Tax Relief (PTR) Campaign in Chromium (Chrome)...');
+console.log('✅ Running Premier Tax Relief (PTR) Campaign in Chromium (Chrome) with Rotational Slider...');
 console.log('✅ Tracking URL: https://mlf-trk.com/?a=659&oc=778&c=2251&s1=');
 console.log('✅ Sheet Name: Premier Tax Relief (PTR)');
 console.log('✅ Browser: Chrome (Chromium)');
 console.log('✅ Device: Windows');
-console.log('✅ Slider Value: 26000 (EXACT)');
-console.log('✅ State: Colorado (EXACT)');
 
 (async () => {
     const traceDir = path.join(__dirname, 'traces');
@@ -37,14 +35,14 @@ console.log('✅ State: Colorado (EXACT)');
             name: "Premier Tax Relief (PTR)",
             url: "https://mlf-trk.com/?a=659&oc=778&c=2251&s1=",
             sheet: "Premier Tax Relief (PTR)",
-            sliderAmount: "26000",
+            sliderAmount: "40000", // Default limit boundary
             state: "Colorado",
             firstName: "ckmtestpixel",
             lastName: "ckmtestpixel",
             email: "ckmtestpixel@gmail.com",
             phone: "303-485-6826",
-            disableRotation: true,
-            forceExactValues: true,
+            disableRotation: false, // Enable rotation to pick different value for each run
+            forceExactValues: false, // Allow rotational ranges
             forceExactPhone: false, // Allow generating fresh phone to bypass duplicate filters
             forceExactState: true,
             createNewSheetTab: true
