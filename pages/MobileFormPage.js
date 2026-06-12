@@ -1276,7 +1276,7 @@ class MobileFormPage {
       let cleanDebtVal = this.selectedSliderAmount.toString().toLowerCase().replace(/,/g, '').trim();
       let numericDebt = 0;
 
-      if (this.brandId === 'senior-tax-defence-main' || this.brandId === 'senior-tax-defense-x' || this.brandId === 'guardian-tax-relief-ppc') {
+      if (this.brandId === 'senior-tax-defence-main' || this.brandId === 'senior-tax-defense-x') {
         const match = cleanDebtVal.match(/\d+/);
         if (match) {
           const firstVal = parseInt(match[0]);

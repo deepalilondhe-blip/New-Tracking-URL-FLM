@@ -428,7 +428,7 @@ Answer the user's prompt using the real-time data above. Be direct, clear, and c
         if (brand === 'fth-questionnaire' && (cleanVal.includes('more') || cleanVal.includes('above') || cleanVal.includes('>'))) {
             raw = 60000;
         }
-        const traLinks = ['tra-cpl', 'tra-d3', 'tra-cpm', 'ppc', 'ppc-st', 'ppc-st2', 'ppc-m-ca', 'ppc-cr', 'ppc-fs'];
+        const traLinks = ['tra-cpl', 'tra-d3', 'tra-cpm', 'ppc', 'ppc-st', 'ppc-st2', 'ppc-m-ca', 'ppc-cr', 'ppc-fs', 'guardian-tax-relief-ppc'];
         const isTraLink = traLinks.includes(brand);
 
         let expectedCake = "5000";
@@ -464,7 +464,7 @@ Answer the user's prompt using the real-time data above. Be direct, clear, and c
             else if (raw < 20000) expectedCake = "10000";
             else if (raw <= 50000) expectedCake = "20000";
             else expectedCake = "50000";
-        } else if (brand === 'senior-tax-defence-main' || brand === 'senior-tax-defense-x' || brand === 'guardian-tax-relief-ppc') {
+        } else if (brand === 'senior-tax-defence-main' || brand === 'senior-tax-defense-x') {
             if (raw < 5000) expectedCake = "5000";
             else if (raw < 10000) expectedCake = "7500";
             else if (raw < 20000) expectedCake = "10000";

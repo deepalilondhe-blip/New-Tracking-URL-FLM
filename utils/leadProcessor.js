@@ -246,7 +246,7 @@ async function processLead(brandConfig, page) {
     const FormPageClass = !isDevice ? require('../pages/FormPage') : require('../pages/MobileFormPage');
     const formPage = new FormPageClass(page);
 
-    const traLinks = ['tra-cpl', 'tra-d3', 'tra-cpm', 'ppc', 'ppc-st', 'ppc-st2', 'ppc-m-ca', 'ppc-cr', 'ppc-fs'];
+    const traLinks = ['tra-cpl', 'tra-d3', 'tra-cpm', 'ppc', 'ppc-st', 'ppc-st2', 'ppc-m-ca', 'ppc-cr', 'ppc-fs', 'guardian-tax-relief-ppc'];
     const isTraLink = traLinks.includes(brandId);
 
     await formPage.navigate(finalBrandConfig.url);
@@ -336,7 +336,7 @@ async function processLead(brandConfig, page) {
          if (numVal <= 50000) return '20,000';
          return '50,000';
       }
-      if (bId === 'senior-tax-defence-main' || bId === 'senior-tax-defense-x' || bId === 'guardian-tax-relief-ppc') {
+      if (bId === 'senior-tax-defence-main' || bId === 'senior-tax-defense-x') {
          if (numVal < 5000) return '5,000';
          if (numVal < 10000) return '7,500';
          if (numVal < 20000) return '10,000';
@@ -467,7 +467,7 @@ async function processLead(brandConfig, page) {
       } else {
         selectedDebtNum = 50000;
       }
-    } else if (brandId === 'senior-tax-defence-main' || brandId === 'senior-tax-defense-x' || brandId === 'guardian-tax-relief-ppc') {
+    } else if (brandId === 'senior-tax-defence-main' || brandId === 'senior-tax-defense-x') {
       if (selectedDebtNum < 5000) {
         selectedDebtNum = 5000;
       } else if (selectedDebtNum < 10000) {

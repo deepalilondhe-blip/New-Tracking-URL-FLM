@@ -170,13 +170,20 @@
     "skipSecondApi": false
   },
   {
-    "id": "1803-fresh-tax-afr",
+    "id": "1803-fresh-tax-afr-cobranded",
     "name": "1803 Fresh Tax - AFR cobranded",
-    "url": "https://flmtrk.com/?a=659&oc=696&c=1867&s1=",
+    "url": "https://flmtrk.com/?a=659&oc=847&c=1867&s1=",
     "sheet": "1803 Fresh Tax - AFR cobranded",
-    "sliderAmount": "12000",
-    "state": "Maine",
-    "phone": "207-234-3082",
+    "sliderOptions": [
+      "Less than 9999",
+      "$10,000 - $19,999",
+      "$20,000 - $49,999",
+      "$50,000 - $99,999",
+      "$100,000 or more"
+    ],
+    "sliderAmount": "Less than 9999",
+    "state": "Colorado",
+    "phone": "720-544-1097",
     "skipSecondApi": false
   },
   {
@@ -184,9 +191,9 @@
     "name": "Senior Tax Defence-Main",
     "url": "https://flmtrk.com/?a=659&oc=714&c=1892&s1=",
     "sheet": "Senior Tax Defence-Main",
-    "sliderAmount": "30000",
-    "state": "Florida",
-    "phone": "305-555-1234",
+    "sliderAmount": "33000",
+    "state": "Colorado",
+    "phone": "970-717-4901",
     "skipSecondApi": false
   },
   {
@@ -286,15 +293,15 @@
      "skipSecondApi": false
    },
    {
-     "id": "guardian-tax-relief-ppc",
-     "name": "Guardian Tax Relief",
-     "url": "https://flmtrk.com/?a=659&oc=831&c=2599&s1=",
-     "sheet": "Guardian Tax Relief",
-     "sliderAmount": "30000",
-     "state": "Florida",
-     "phone": "305-555-1234",
-     "skipSecondApi": false
-   },
+      "id": "guardian-tax-relief-ppc",
+      "name": "Guardian Tax Relief (PPC)",
+      "url": "https://mlf-gt.com/?a=659&oc=816&c=2521&s1=",
+      "sheet": "Guardian Tax Relief (PPC)",
+      "sliderAmount": "50000",
+      "state": "Colorado",
+      "phone": "970-321-4664",
+      "skipSecondApi": false
+    },
    {
      "id": "empire-tax-relief-x",
      "name": "Empire Tax Relief (X)",

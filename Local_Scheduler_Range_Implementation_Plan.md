@@ -77,7 +77,7 @@ Based on explicit requirements, the following campaigns have strict custom range
 * `$20,000 - $49,999` ➔ (Mapped to: **20000**)
 * `$50,000 or more` ➔ (Mapped to: **50000**)
 
-### F. Senior Tax Campaigns (`senior-tax-defence-main` / `senior-tax-defense-x` / `guardian-tax-relief-ppc`)
+### F. Senior Tax Campaigns (`senior-tax-defence-main` / `senior-tax-defense-x`)
 **URLs:** `https://flmtrk.com/?a=659&oc=714&c=1892&s1=`, `https://flmtrk.com/?a=659&oc=831&c=2599&s1=`
 * `$5,000 - $9,999` ➔ (Mapped to: **7500**)
 * `$10,000 - $19,999` ➔ (Mapped to: **10000**)
@@ -99,6 +99,10 @@ Based on explicit requirements, the following campaigns have strict custom range
 * `$20,000 - $49,999` ➔ (Mapped to: **20000**)
 * `$50,000 - $99,999` ➔ (Mapped to: **50000**)
 * `$100,000+` ➔ (Mapped to: **100,000 & More**)
+
+### H. TRA Link Campaigns (including `guardian-tax-relief-ppc`)
+**Campaigns:** `tra-cpl`, `tra-d3`, `tra-cpm`, `ppc`, `ppc-st`, `ppc-st2`, `ppc-m-ca`, `ppc-cr`, `ppc-fs`, and `guardian-tax-relief-ppc`
+* **Rule:** If the slider value is `>= 5,000`, reflect the exact slider value. If the slider value is `< 5,000`, map it to **5,000**.
 
 ## Implementation Strategy for `leadProcessor.js`
 1. **Dropdown Rotation Logic update:** Currently, `FSI-PPC2` rotates into `$50,000 or more` and maps to `100,000`. We will update the logic to explicitly map it to `50000` per the spec above.
