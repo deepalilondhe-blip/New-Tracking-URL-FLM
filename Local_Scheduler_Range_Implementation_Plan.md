@@ -85,8 +85,14 @@ Based on explicit requirements, the following campaigns have strict custom range
 * `$30,000 - $99,999` ➔ (Mapped to: **50000**)
 * `$100,000+` ➔ (Mapped to: **100000**)
 
-### G. Premier Tax Relief (PTR) (`ptr-main`)
-**URL:** `https://flmtra.com/?a=659&oc=763&c=2225&s1=`
+### G. Custom 6-Tier Mapping Campaigns
+**Campaigns & URLs:**
+* **America's First Tax Relief (AFTR)** (`aftr-main`) ➔ `https://mlf-trk.com/?a=659&oc=759&c=2211&s1=`
+* **Premier Tax Relief (PTR)** (`ptr-main`) ➔ `https://mlf-trk.com/?a=659&oc=778&c=2251&s1=`
+* **Capital Tax Relief (X)** (`capital-tax-relief-x`) ➔ `https://jsttrk.com/?a=659&oc=846&c=2691&s1=`
+* **Empire Tax Relief (X)** (`empire-tax-relief-x`) ➔ `https://jsttrk.com/?a=659&oc=844&c=2689&s1=`
+
+**Range Mappings:**
 * `$0 - $4,999` ➔ (Mapped to: **5000**)
 * `$5,000 - $9,999` ➔ (Mapped to: **7500**)
 * `$10,000 - $19,999` ➔ (Mapped to: **10000**)

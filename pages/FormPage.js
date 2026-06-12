@@ -978,7 +978,43 @@ class FormPage {
       let cleanDebtVal = this.selectedSliderAmount.toString().toLowerCase().replace(/,/g, '').trim();
       let numericDebt = 0;
 
-      if (this.brandId === 'fth-questionnaire') {
+      if (this.brandId === 'senior-tax-defence-main' || this.brandId === 'senior-tax-defense-x' || this.brandId === 'guardian-tax-relief-ppc') {
+        const match = cleanDebtVal.match(/\d+/);
+        if (match) {
+          const firstVal = parseInt(match[0]);
+          if (firstVal < 5000) {
+            numericDebt = 5000;
+          } else if (firstVal < 10000) {
+            numericDebt = 7500;
+          } else if (firstVal < 20000) {
+            numericDebt = 10000;
+          } else if (firstVal < 30000) {
+            numericDebt = 20000;
+          } else if (firstVal < 100000) {
+            numericDebt = 50000;
+          } else {
+            numericDebt = 100000;
+          }
+        }
+      } else if (this.brandId === 'ptr-main' || this.brandId === 'aftr-main' || this.brandId === 'capital-tax-relief-x' || this.brandId === 'empire-tax-relief-x') {
+        const match = cleanDebtVal.match(/\d+/);
+        if (match) {
+          const firstVal = parseInt(match[0]);
+          if (firstVal < 5000) {
+            numericDebt = 5000;
+          } else if (firstVal < 10000) {
+            numericDebt = 7500;
+          } else if (firstVal < 20000) {
+            numericDebt = 10000;
+          } else if (firstVal < 50000) {
+            numericDebt = 20000;
+          } else if (firstVal < 100000) {
+            numericDebt = 50000;
+          } else {
+            numericDebt = 100000;
+          }
+        }
+      } else if (this.brandId === 'fth-questionnaire') {
         if (cleanDebtVal.includes('less than') || cleanDebtVal.includes('under') || cleanDebtVal.includes('<')) {
           numericDebt = 4000;
         } else if (cleanDebtVal.includes('5,000') || cleanDebtVal.includes('5000')) {

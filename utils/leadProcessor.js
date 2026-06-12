@@ -344,7 +344,7 @@ async function processLead(brandConfig, page) {
          if (numVal < 100000) return '50,000';
          return '100,000';
       }
-      if (bId === 'ptr-main') {
+      if (bId === 'ptr-main' || bId === 'aftr-main' || bId === 'capital-tax-relief-x' || bId === 'empire-tax-relief-x') {
          if (numVal < 5000) return '5,000';
          if (numVal < 10000) return '7,500';
          if (numVal < 20000) return '10,000';
@@ -481,7 +481,7 @@ async function processLead(brandConfig, page) {
       } else {
         selectedDebtNum = 100000;
       }
-    } else if (brandId === 'ptr-main') {
+    } else if (brandId === 'ptr-main' || brandId === 'aftr-main' || brandId === 'capital-tax-relief-x' || brandId === 'empire-tax-relief-x') {
       if (selectedDebtNum < 5000) {
         selectedDebtNum = 5000;
       } else if (selectedDebtNum < 10000) {

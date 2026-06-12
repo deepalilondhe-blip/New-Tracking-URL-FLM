@@ -471,7 +471,7 @@ Answer the user's prompt using the real-time data above. Be direct, clear, and c
             else if (raw < 30000) expectedCake = "20000";
             else if (raw < 100000) expectedCake = "50000";
             else expectedCake = "100000";
-        } else if (brand === 'ptr-main') {
+        } else if (brand === 'ptr-main' || brand === 'aftr-main' || brand === 'capital-tax-relief-x' || brand === 'empire-tax-relief-x') {
             if (raw < 5000) expectedCake = "5000";
             else if (raw < 10000) expectedCake = "7500";
             else if (raw < 20000) expectedCake = "10000";
