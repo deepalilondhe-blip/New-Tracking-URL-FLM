@@ -85,6 +85,15 @@ Based on explicit requirements, the following campaigns have strict custom range
 * `$30,000 - $99,999` ➔ (Mapped to: **50000**)
 * `$100,000+` ➔ (Mapped to: **100000**)
 
+### G. Premier Tax Relief (PTR) (`ptr-main`)
+**URL:** `https://flmtra.com/?a=659&oc=763&c=2225&s1=`
+* `$0 - $4,999` ➔ (Mapped to: **5000**)
+* `$5,000 - $9,999` ➔ (Mapped to: **7500**)
+* `$10,000 - $19,999` ➔ (Mapped to: **10000**)
+* `$20,000 - $49,999` ➔ (Mapped to: **20000**)
+* `$50,000 - $99,999` ➔ (Mapped to: **50000**)
+* `$100,000+` ➔ (Mapped to: **100,000 & More**)
+
 ## Implementation Strategy for `leadProcessor.js`
 1. **Dropdown Rotation Logic update:** Currently, `FSI-PPC2` rotates into `$50,000 or more` and maps to `100,000`. We will update the logic to explicitly map it to `50000` per the spec above.
 2. **Standard Slider Custom Caps:** For `vts` and `sctr`, we will enforce explicit `min` and `max` constraints in the rotational algorithm so they never exceed `$100,000` and `$50,000` respectively. 

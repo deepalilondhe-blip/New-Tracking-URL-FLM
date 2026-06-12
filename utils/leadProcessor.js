@@ -344,6 +344,14 @@ async function processLead(brandConfig, page) {
          if (numVal < 100000) return '50,000';
          return '100,000';
       }
+      if (bId === 'ptr-main') {
+         if (numVal < 5000) return '5,000';
+         if (numVal < 10000) return '7,500';
+         if (numVal < 20000) return '10,000';
+         if (numVal < 50000) return '20,000';
+         if (numVal < 100000) return '50,000';
+         return '100,000 & More';
+      }
       
       // Default (For the 6 Standard Rotating Ranges)
       if (numVal <= 10000) return '5,000'; 
@@ -467,6 +475,20 @@ async function processLead(brandConfig, page) {
       } else if (selectedDebtNum < 20000) {
         selectedDebtNum = 10000;
       } else if (selectedDebtNum < 30000) {
+        selectedDebtNum = 20000;
+      } else if (selectedDebtNum < 100000) {
+        selectedDebtNum = 50000;
+      } else {
+        selectedDebtNum = 100000;
+      }
+    } else if (brandId === 'ptr-main') {
+      if (selectedDebtNum < 5000) {
+        selectedDebtNum = 5000;
+      } else if (selectedDebtNum < 10000) {
+        selectedDebtNum = 7500;
+      } else if (selectedDebtNum < 20000) {
+        selectedDebtNum = 10000;
+      } else if (selectedDebtNum < 50000) {
         selectedDebtNum = 20000;
       } else if (selectedDebtNum < 100000) {
         selectedDebtNum = 50000;
