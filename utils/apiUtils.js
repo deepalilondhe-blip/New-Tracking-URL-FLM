@@ -108,7 +108,7 @@ function getDomainNameForBrand(brandName) {
     return 'https://www.americafreshtaxrelief.com';
   }
   if (brand.includes('Premier')) {
-    return 'https://www.premiertaxrelief.com';
+    return 'https://www.premier-taxrelief.com';
   }
   
   return 'https://fidelity-tax-defense.net'; // Default fallback
