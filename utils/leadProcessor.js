@@ -80,9 +80,18 @@ async function processLead(brandConfig, page) {
     let targetMin = 0;
     let targetMax = 200000;
     
+    let finalSlider;
+
     if (process.env.OVERRIDE_SLIDER) {
-      rawSliderVal = parseInt(process.env.OVERRIDE_SLIDER);
-      console.log(`🔌 [Override] Applying custom slider value: ${rawSliderVal}`);
+      const cleanOverride = process.env.OVERRIDE_SLIDER.trim();
+      const match = cleanOverride.replace(/,/g, '').match(/\d+/);
+      if (match) {
+        rawSliderVal = parseInt(match[0]);
+      } else {
+        rawSliderVal = 5000;
+      }
+      finalSlider = cleanOverride;
+      console.log(`🔌 [Override] Applying custom slider value: ${finalSlider} (raw numeric: ${rawSliderVal})`);
     } else if (brandId === 'fsi-ppc2' || brandId === 'ftd-ppc2') {
       const bucketIdx = runIndex % 4;
       if (bucketIdx === 0) rawSliderVal = 5000;  // Represents "$0 - $9,999"
@@ -100,6 +109,10 @@ async function processLead(brandConfig, page) {
         if (!isNaN(parsed) && parsed > 0) maxLimit = parsed;
       }
 
+      // Hardcode explicit max bounds based on specific URL constraints
+      if (brandId === 'vts-original') maxLimit = 100000;
+      if (brandId === 'second-chance-tax-relief-x' || brandId === 'sctr') maxLimit = 50000;
+
       // URL-BASED ROTATIONAL RANGE LOGIC
       let min = 0, max = 0;
       let urlIndex = 0;
@@ -116,8 +129,8 @@ async function processLead(brandConfig, page) {
 
       // 6 Rotating Ranges
       const ranges = [
-        { min: 0, max: 7500 },
-        { min: 7500, max: 10000 },
+        { min: 0, max: 5000 },
+        { min: 5000, max: 10000 },
         { min: 10000, max: 20000 },
         { min: 20000, max: 50000 },
         { min: 50000, max: 100000 },
@@ -174,7 +187,7 @@ async function processLead(brandConfig, page) {
       }
     }
 
-    const finalSlider = rawSliderVal.toLocaleString();
+    if (!finalSlider) finalSlider = rawSliderVal.toLocaleString();
 
     // Dynamic State rotation
     const rotatingStates = [
@@ -208,9 +221,9 @@ async function processLead(brandConfig, page) {
     }
     const finalStateCode = stateToCode[finalState] || finalState;
 
-    // Dynamic dummy phone generation
-    const suffixNum = String(1000 + (runIndex % 9000));
-    let dummyPhone = `401-247-${suffixNum}`;
+    // Dynamic dummy phone generation matching selected State
+    const { generateStateDummyPhone } = require('./phoneHelper');
+    let dummyPhone = generateStateDummyPhone(finalState, runIndex);
     if (process.env.OVERRIDE_PHONE) {
       dummyPhone = process.env.OVERRIDE_PHONE;
     }
@@ -233,8 +246,12 @@ async function processLead(brandConfig, page) {
     const FormPageClass = !isDevice ? require('../pages/FormPage') : require('../pages/MobileFormPage');
     const formPage = new FormPageClass(page);
 
+    const traLinks = ['tra-cpl', 'tra-d3', 'tra-cpm', 'ppc', 'ppc-st', 'ppc-st2', 'ppc-m-ca', 'ppc-cr', 'ppc-fs'];
+    const isTraLink = traLinks.includes(brandId);
+
     await formPage.navigate(finalBrandConfig.url);
     const fillResult = await formPage.fillForm({
+      brandId,
       sliderAmount: finalBrandConfig.sliderAmount,
       targetMin,
       targetMax,
@@ -243,43 +260,198 @@ async function processLead(brandConfig, page) {
       lastName,
       email,
       phone: finalBrandConfig.phone,
-      runIndex
+      runIndex,
+      isTraLink,
+      stepOverrides: finalBrandConfig.stepOverrides
     });
     
     // CAKE MAPPING EXACTLY FROM UI SELECTION
+    let fthSelectedRange = null;
+    if (brandId === 'fth-questionnaire') {
+      const stepKeys = ['step1', 'step2', 'step3'];
+      for (const key of stepKeys) {
+        const val = (formPage[key] || '').trim();
+        if (!val) continue;
+        const lower = val.toLowerCase();
+        if (lower.includes('$') || lower.includes('<') || lower.includes('>') || lower.includes('less') || lower.includes('more')) {
+          if (lower.includes('4,000') || lower.includes('5,000') || lower.includes('7,500') || lower.includes('7,400') || lower.includes('9,999') || lower.includes('10,000') || lower.includes('19,999') || lower.includes('20,000') || lower.includes('50,000')) {
+            fthSelectedRange = val;
+            break;
+          }
+        }
+      }
+      if (fthSelectedRange) {
+        console.log(`🎯 [FTH Questionnaire] Found selected debt range from step columns: "${fthSelectedRange}"`);
+      }
+    }
+
     let uiSelectedSliderStr = fillResult?.extractedSliderAmount || finalSlider;
-    const cleanSliderStr = uiSelectedSliderStr.toString().replace(/,/g, '');
-    const firstNumMatch = cleanSliderStr.match(/\d+/);
-    const uiSelectedSliderNum = firstNumMatch ? parseInt(firstNumMatch[0]) : rawSliderVal;
+    if (brandId === 'fth-questionnaire' && fthSelectedRange) {
+      uiSelectedSliderStr = fthSelectedRange;
+    }
     
-    const traLinks = ['tra-cpl', 'tra-d3', 'tra-cpm', 'ppc', 'ppc-st', 'ppc-st2', 'ppc-m-ca', 'ppc-cr', 'ppc-fs'];
+    let uiSelectedSliderNum;
+    const cleanStr = uiSelectedSliderStr.toString().toLowerCase();
+    if (brandId === 'fth-questionnaire') {
+      if (cleanStr.includes('less than') || cleanStr.includes('under') || cleanStr.includes('<')) {
+        uiSelectedSliderNum = 4000;
+      } else if (cleanStr.includes('more') || cleanStr.includes('above') || cleanStr.includes('>')) {
+        uiSelectedSliderNum = 60000;
+      } else {
+        const cleanSliderStr = uiSelectedSliderStr.toString().replace(/,/g, '');
+        const firstNumMatch = cleanSliderStr.match(/\d+/);
+        uiSelectedSliderNum = firstNumMatch ? parseInt(firstNumMatch[0]) : rawSliderVal;
+      }
+    } else {
+      const cleanSliderStr = uiSelectedSliderStr.toString().replace(/,/g, '');
+      const firstNumMatch = cleanSliderStr.match(/\d+/);
+      uiSelectedSliderNum = firstNumMatch ? parseInt(firstNumMatch[0]) : rawSliderVal;
+    }
+    
     let cakeIncomeOverride;
 
-    // Enforce Exact Match Logic for ALL URLs
-    if (uiSelectedSliderNum < 5000) {
-      cakeIncomeOverride = "5,000";
-    } else if (uiSelectedSliderNum >= 100000) {
-      cakeIncomeOverride = "100,000";
-      uiSelectedSliderStr = "100000 & more";
+    // UNIVERSAL RANGE MAPPING for Cake Income
+    // Maps slider value to fixed range buckets
+    function mapToRange(numVal, bId) {
+      if (bId === 'vts-original') {
+         if (numVal < 5000) return '5,000';
+         if (numVal < 10000) return '7,500';
+         if (numVal < 20000) return '10,000';
+         if (numVal < 50000) return '20,000';
+         if (numVal < 100000) return '50,000';
+         return '100,000';
+      }
+      if (bId === 'second-chance-tax-relief-x' || bId === 'sctr') {
+         if (numVal < 5000) return '5,000';
+         if (numVal < 10000) return '7,500';
+         if (numVal < 20000) return '10,000';
+         if (numVal < 50000) return '20,000';
+         return '50,000';
+      }
+      if (bId === 'fth-questionnaire') {
+         if (numVal < 5000) return '4,000';
+         if (numVal < 7500) return '5,000';
+         if (numVal < 10000) return '7,500';
+         if (numVal < 20000) return '10,000';
+         if (numVal <= 50000) return '20,000';
+         return '50,000';
+      }
+      
+      // Default (For the 6 Standard Rotating Ranges)
+      if (numVal <= 10000) return '5,000'; 
+      if (numVal <= 20000) return '10,000';
+      if (numVal <= 50000) return '20,000';
+      if (numVal <= 100000) return '50,000';
+      return '100,000 & More';
+    }
+
+    if (isTraLink) {
+      if (uiSelectedSliderNum >= 5000) {
+        cakeIncomeOverride = uiSelectedSliderNum.toLocaleString();
+      } else {
+        cakeIncomeOverride = '4,000';
+      }
+      console.log(`💡 [cakeIncomeOverride] TRA Link: ${uiSelectedSliderNum} → ${cakeIncomeOverride}`);
+    } else if (brandConfig.sliderOptions && Array.isArray(brandConfig.sliderOptions)) {
+      // For sliderOptions (dropdown) campaigns, map from the label text
+      const lbl = (finalSlider || '').trim().toLowerCase();
+      
+      if (brandId === 'fsi-ppc2' || brandId === 'ftd-ppc2') {
+         if (lbl.includes('9999') || lbl.includes('9,999')) cakeIncomeOverride = '5,000';
+         else if (lbl.includes('10') && lbl.includes('19')) cakeIncomeOverride = '10,000';
+         else if (lbl.includes('20') && (lbl.includes('50') || lbl.includes('49'))) cakeIncomeOverride = '20,000';
+         else cakeIncomeOverride = '50,000';
+      } else if (brandId === '1803-fresh-tax-afr') {
+         if (lbl.includes('9999') || lbl.includes('9,999')) cakeIncomeOverride = '5,000';
+         else if (lbl.includes('10') && lbl.includes('19')) cakeIncomeOverride = '10,000';
+         else if (lbl.includes('20') && lbl.includes('49')) cakeIncomeOverride = '20,000';
+         else cakeIncomeOverride = '50,000';
+      } else if (brandId === 'fth-questionnaire') {
+         // FTH Questionnaire exact tier mapping:
+         // < $5,000      → 4,000
+         // $5,000-$7,499 → 5,000
+         // $7,500-$9,999 → 7,500
+         // $10,000-$19,999 → 10,000
+         // $20,000-$50,000 → 20,000
+         // > $50,000     → 50,000
+         if (lbl.includes('less than')) cakeIncomeOverride = '4,000';
+         else if ((lbl.includes('5,000') || lbl.includes('5000')) && (lbl.includes('7,499') || lbl.includes('7499'))) cakeIncomeOverride = '5,000';
+         else if ((lbl.includes('7,500') || lbl.includes('7500')) || (lbl.includes('7,400') || lbl.includes('7400'))) cakeIncomeOverride = '7,500';
+         else if (lbl.includes('10') && lbl.includes('19')) cakeIncomeOverride = '10,000';
+         else if (lbl.includes('20') && (lbl.includes('49') || lbl.includes('50'))) cakeIncomeOverride = '20,000';
+         else cakeIncomeOverride = '50,000';
+      } else {
+         // Generic Dropdown fallback
+         if (lbl.includes('less than') || lbl.includes('under') || lbl.includes('9999') || lbl.includes('9,999')) {
+           cakeIncomeOverride = '5,000';
+         } else if (lbl.includes('10') && lbl.includes('19')) {
+           cakeIncomeOverride = '10,000';
+         } else if (lbl.includes('20') && lbl.includes('49')) {
+           cakeIncomeOverride = '50,000';
+         } else if (lbl.includes('50') && (lbl.includes('99') || lbl.includes('more') || lbl.includes('above') || lbl.includes('+'))) {
+           cakeIncomeOverride = '100,000';
+         } else if (lbl.includes('100') || lbl.includes('1,000') || lbl.includes('million') || lbl.includes('100k')) {
+           cakeIncomeOverride = '100,000';
+         } else {
+           cakeIncomeOverride = '5,000';
+         }
+      }
+      console.log(`💡 [cakeIncomeOverride] sliderOptions label "${finalSlider}" → ${cakeIncomeOverride}`);
     } else {
-      cakeIncomeOverride = uiSelectedSliderNum.toLocaleString();
+      // For regular slider campaigns, map from the numeric slider value
+      cakeIncomeOverride = mapToRange(uiSelectedSliderNum, brandId);
+      if (uiSelectedSliderNum >= 100000) {
+        uiSelectedSliderStr = "100000 & more";
+      }
+      console.log(`💡 [cakeIncomeOverride] Range map: ${uiSelectedSliderNum} → ${cakeIncomeOverride}`);
     }
     await formPage.submitForm();
 
     let thankYouUrl = await formPage.getThankYouUrl();
     console.log(`📋 [Pre-Fix] Thank-you URL before debt correction: ${thankYouUrl}`);
     
+    if (brandId === 'fth-questionnaire' && fthSelectedRange) {
+      formPage.selectedSliderAmount = fthSelectedRange;
+      console.log(`🎯 [FTH Questionnaire] Overriding selectedSliderAmount with matched range: "${formPage.selectedSliderAmount}"`);
+    }
+
     // Get the UI-selected slider amount from the form
     const extractedSliderAmount = formPage.selectedSliderAmount.toString().replace(/,/g, '').trim();
     
     // Safely extract the FIRST number if there's a range (e.g. "5000 - 9999" -> 5000)
     let selectedDebtNum = 0;
-    const match = extractedSliderAmount.match(/\d+/);
-    if (match) selectedDebtNum = parseInt(match[0]);
+    const cleanExtracted = extractedSliderAmount.toLowerCase();
+    if (brandId === 'fth-questionnaire') {
+      if (cleanExtracted.includes('less than') || cleanExtracted.includes('under') || cleanExtracted.includes('<')) {
+        selectedDebtNum = 4000;
+      } else if (cleanExtracted.includes('more') || cleanExtracted.includes('above') || cleanExtracted.includes('>')) {
+        selectedDebtNum = 60000;
+      } else {
+        const match = extractedSliderAmount.match(/\d+/);
+        if (match) selectedDebtNum = parseInt(match[0]);
+      }
+    } else {
+      const match = extractedSliderAmount.match(/\d+/);
+      if (match) selectedDebtNum = parseInt(match[0]);
+    }
     
     // Use the exact numeric value from the UI for debt mapping
-    // But enforce the Tax Debt floor universally
-    if (selectedDebtNum < 5000) {
+    // Enforce custom mapped ranges for FTH Questionnaire, or a 5,000 floor universally otherwise
+    if (brandId === 'fth-questionnaire') {
+      if (selectedDebtNum < 5000) {
+        selectedDebtNum = 4000;
+      } else if (selectedDebtNum < 7500) {
+        selectedDebtNum = 5000;
+      } else if (selectedDebtNum < 10000) {
+        selectedDebtNum = 7500;
+      } else if (selectedDebtNum < 20000) {
+        selectedDebtNum = 10000;
+      } else if (selectedDebtNum <= 50000) {
+        selectedDebtNum = 20000;
+      } else {
+        selectedDebtNum = 50000;
+      }
+    } else if (selectedDebtNum < 5000) {
       selectedDebtNum = 5000;
     }
     
@@ -429,6 +601,10 @@ async function processLead(brandConfig, page) {
     // 🛡️ [AI Agent] ENSURING 100K & MORE LOGIC
     const numericSliderVal = parseInt(finalSliderAmount.toString().replace(/[$,\s]/g, '')) || 0;
     let displaySliderAmount = (numericSliderVal >= 100000) ? "100000 & more" : finalSliderAmount;
+
+    if (process.env.OVERRIDE_SLIDER) {
+      displaySliderAmount = process.env.OVERRIDE_SLIDER.trim();
+    }
     let taxDebtOverride = '';
 
     // Extract Affiliate ID and Campaign ID from the tracking URL as fallbacks if First API data is missing
@@ -448,8 +624,30 @@ async function processLead(brandConfig, page) {
     const sanitize = (val) => (val === 'N/A' || val === undefined || val === null) ? '' : val;
 
     // If this is the questionnaire, keep sliderAmount blank because it's recorded in the Step columns
-    const isQuestionnaire = finalBrandConfig.name.toLowerCase().includes('questionnaire') || finalBrandConfig.name.toLowerCase().includes('quesstionnarie');
+    // EXCEPT for fth-questionnaire where the selected range text is appended to the sliderAmount column
+    let isQuestionnaire = finalBrandConfig.name.toLowerCase().includes('questionnaire') || finalBrandConfig.name.toLowerCase().includes('quesstionnarie');
+    if (brandId === 'fth-questionnaire') {
+      isQuestionnaire = false;
+    }
     
+    // ==================================================
+    // TAX DEBT & CAKE INCOME — UNIVERSAL RANGE MAPPING
+    // ==================================================
+    let taxDebtValue = cakeIncomeOverride; // default: use the range-mapped value
+
+    if (isTraLink) {
+      taxDebtValue = cakeIncomeOverride;
+      console.log(`💡 [TRA TaxDebt Map] TRA Link → Tax Debt: ${taxDebtValue}`);
+    } else if (brandConfig.sliderOptions && Array.isArray(brandConfig.sliderOptions)) {
+      // Tax Debt defaults to the custom mapped Cake Income value for dropdown campaigns
+      taxDebtValue = cakeIncomeOverride;
+      console.log(`💡 [sliderOptions TaxDebt Map] "${finalSlider || formPage.selectedSliderAmount}" → Tax Debt: ${taxDebtValue}`);
+    } else {
+      // For regular slider campaigns, use the same range mapping as cakeIncomeOverride
+      taxDebtValue = cakeIncomeOverride;
+      console.log(`💡 [Range TaxDebt Map] Slider ${uiSelectedSliderNum} → Tax Debt: ${taxDebtValue}`);
+    }
+
     const rowData = {
       dateTime: sanitize(formatDateTime()),
       type: sanitize(process.env.PROCESS_LABEL || finalDeviceType),
@@ -457,7 +655,7 @@ async function processLead(brandConfig, page) {
       campaignId: sanitize(firstApiData.campaignId || fallbackCampaignId),
       trackingLink: sanitize(finalBrandConfig.url),
       sliderAmount: isQuestionnaire ? '' : sanitize(displaySliderAmount),
-      cakeIncome: sanitize(cakeIncomeOverride || firstApiData.income || displaySliderAmount),
+      cakeIncome: cakeIncomeOverride,
       state: sanitize(firstApiData.state || finalStateCode),
       phone: sanitize(firstApiData.phone || finalBrandConfig.phone),
       leadId: sanitize(leadIdToUse),
@@ -469,7 +667,7 @@ async function processLead(brandConfig, page) {
       neustar: sanitize(firstApiData.neustar),
       neustarDisposition: sanitize(firstApiData.neustarDisposition),
       pixelFired: sanitize(firstApiData.pixelFired),
-      taxDebt: sanitize(firstApiData.income),
+      taxDebt: taxDebtValue,
       runDate: sanitize(formatDateTime().split(',')[0]), // Extract date part
       step1: sanitize(formPage.step1),
       step2: sanitize(formPage.step2),
@@ -549,7 +747,7 @@ if (sheetSuccess) {
     // ==================================================
     // Only run the AI audit if we have a valid income value from the first API.
     if (firstApiData && firstApiData.income) {
-      const validation = aiAgent.validateIncomeMapping(finalSliderAmount, cakeIncomeOverride, firstApiData.income, brandConfig.id);
+      const validation = aiAgent.validateIncomeMapping(finalSliderAmount, cakeIncomeOverride, firstApiData.income, brandId);
       console.log(`🤖 [AI Agent Audit] Status: ${validation.status}`);
       console.log(`🤖 [AI Agent Audit] Details: ${validation.details}`);
 

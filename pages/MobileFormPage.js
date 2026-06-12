@@ -407,9 +407,11 @@ class MobileFormPage {
   async fillForm(data = {}) {
     await this.injectDeviceFrame();
     console.log('📝 [Mobile] Starting mobile-specific form filling...');
-    const { sliderAmount, targetMin, targetMax, state, firstName, lastName, email, phone } = data;
+    const { brandId, sliderAmount, targetMin, targetMax, state, firstName, lastName, email, phone, isTraLink } = data;
+    this.brandId = brandId || '';
     const runIndex = data.runIndex || 0;
     this.runIndex = runIndex;
+    this.isTraLink = isTraLink || false;
     const defaultSliderAmount = sliderAmount || '20000';
     const defaultState = state || 'RI';
     const defaultFirstName = firstName || 'ckmtestpixel';
@@ -484,8 +486,34 @@ class MobileFormPage {
           const count = await optionsLocator.count().catch(() => 0);
           
           if (count > 0) {
-            console.log(`🔍 [Mobile Dropdown Scanner] Scanning ${count} dropdown options against daily range: ${targetMin} - ${targetMax}`);
-            const validOptions = [];
+            // Check for exact text match or clean numeric range match first
+            let exactMatchOpt = null;
+            const cleanSlider = sliderAmount.toLowerCase().replace(/[$,\s]/g, '');
+            for (let i = 0; i < count; i++) {
+              const opt = optionsLocator.nth(i);
+              const text = await opt.textContent().catch(() => '');
+              const value = await opt.getAttribute('value').catch(() => '');
+              const cleanText = text.toLowerCase().replace(/[$,\s]/g, '').replace(/k/g, '000').replace(/m/g, '000000');
+              if (text.trim().toLowerCase() === sliderAmount.trim().toLowerCase() || cleanText === cleanSlider) {
+                exactMatchOpt = { text: text.trim(), value, index: i };
+                break;
+              }
+            }
+            if (exactMatchOpt) {
+              console.log(`✅ [Mobile Exact Match] Found dropdown option matching "${sliderAmount}": "${exactMatchOpt.text}"`);
+              await taxDebtSelect.evaluate(el => {
+                el.focus();
+              }).catch(() => {});
+              await taxDebtSelect.click({ force: true }).catch(() => {});
+              await this.page.waitForTimeout(500);
+              await taxDebtSelect.selectOption(exactMatchOpt.value || { index: exactMatchOpt.index });
+              this.selectedSliderAmount = exactMatchOpt.text;
+              selected = true;
+            }
+
+            if (!selected) {
+              console.log(`🔍 [Mobile Dropdown Scanner] Scanning ${count} dropdown options against daily range: ${targetMin} - ${targetMax}`);
+              const validOptions = [];
             
             for (let i = 0; i < count; i++) {
               const opt = optionsLocator.nth(i);
@@ -558,6 +586,7 @@ class MobileFormPage {
             }
           }
         }
+      }
 
         if (!selected) {
           const amountStr = sliderAmount.replace(/,/g, '');
@@ -735,6 +764,17 @@ class MobileFormPage {
       let choiceStepCount = 0;
       while (safetyCounter < 8) {
         await this.waitForSpinner();
+
+        // 🛡️ MODAL GUARD: Auto-close active bootstrap modals if any appear
+        try {
+          const activeModalClose = this.page.locator('.modal.show button.close, .modal.show .close, .modal:visible button.close, .modal:visible .close, button[data-dismiss="modal"]:visible, .modal-header .close:visible').first();
+          if (await activeModalClose.isVisible({ timeout: 500 }).catch(() => false)) {
+            console.log('⚠️ [Mobile Modal Guard] Found visible active modal popup! Attempting to close it...');
+            await activeModalClose.click({ force: true }).catch(() => {});
+            await this.page.waitForTimeout(1000);
+          }
+        } catch (e) {}
+
         const isStateVisible = await this.page.locator('#state:visible, select#state:visible').first().isVisible({ timeout: 1000 }).catch(() => false);
         const isContactVisible = await this.page.locator('#first_name:visible, input[name="first_name"]:visible').first().isVisible({ timeout: 1000 }).catch(() => false);
 
@@ -755,22 +795,152 @@ class MobileFormPage {
         ];
 
         let clickedChoice = false;
+        const activeStepId = await this.page.evaluate(() => {
+          const el = document.querySelector('.tab-pane.active');
+          return el ? el.id : '';
+        });
+        
+        let stepOverrideVal = null;
+        if (data.stepOverrides && activeStepId && data.stepOverrides[activeStepId]) {
+          stepOverrideVal = data.stepOverrides[activeStepId];
+          console.log(`🎯 [Mobile Override] Active step "${activeStepId}" has strict override: "${stepOverrideVal}"`);
+        }
+
         for (const selector of choiceSelectors) {
-          const choices = await this.page.$$(selector);
+          const rawChoices = await this.page.$$(selector);
+          const choices = [];
+          for (const choice of rawChoices) {
+            const isValid = await choice.evaluate(el => {
+              const style = window.getComputedStyle(el);
+              if (style.display === 'none' || style.visibility === 'hidden' || el.offsetWidth === 0 || el.offsetHeight === 0) {
+                return false;
+              }
+              
+              // Ignore footer, header, nav, or modal containers
+              const badParent = el.closest('footer, header, nav, .modal, #contactUsModal, #aboutUsModal, .footer, .header, #footer, #header, .links-text, .privacy-policy, .terms-use');
+              if (badParent) return false;
+              
+              // Get text of this element
+              let text = (el.innerText || el.textContent || '').trim().toLowerCase();
+              if (!text && el.tagName === 'INPUT' && (el.type === 'radio' || el.type === 'checkbox')) {
+                if (el.id) {
+                  const lbl = document.querySelector(`label[for="${el.id}"]`);
+                  if (lbl && lbl.innerText.trim()) text = lbl.innerText.trim().toLowerCase();
+                }
+                if (!text) {
+                  const parentLabel = el.closest('label');
+                  if (parentLabel && parentLabel.innerText.trim()) text = parentLabel.innerText.trim().toLowerCase();
+                }
+                if (!text) {
+                  const parent = el.parentElement;
+                  if (parent && parent.innerText.trim()) text = parent.innerText.trim().toLowerCase();
+                }
+              }
+              const badKeywords = [
+                'contact', 'about', 'privacy', 'terms', 'unsubscribe', 'ccpa', 
+                'cookie', 'copyright', '©', 'call us', 'call now', 'phone', 
+                'tel:', 'powered by', 'optout', 'opt-out', 'previous', 'back',
+                'read more', 'learn more', 'show more', 'view more', 'click here',
+                'find out more', 'see more', 'more info', 'get help'
+              ];
+              if (badKeywords.some(kw => text.includes(kw))) {
+                return false;
+              }
+              
+              // Ignore empty non-input choices
+              if (text.length === 0 && el.tagName !== 'INPUT') {
+                return false;
+              }
+              
+              // Ignore choices that are too long to be buttons
+              if (text.length > 80) return false;
+              
+              return true;
+            }).catch(() => false);
+
+            if (isValid) {
+              choices.push(choice);
+            }
+          }
+
           if (choices.length > 0) {
-            const indexToSelect = runIndex % choices.length;
-            const target = choices[indexToSelect];
+            let target = null;
+            let text = '';
             
-            // Get text before clicking
-            const text = await target.innerText().catch(() => '');
-            console.log(`🔘 [Rotation-Mobile] Selecting Option ${indexToSelect + 1}: "${text}"`);
+            if (stepOverrideVal) {
+              for (const choice of choices) {
+                let txt = await choice.innerText().catch(() => '');
+                if (!txt || txt.trim() === '') {
+                  txt = await choice.evaluate(el => {
+                    if (el.tagName === 'INPUT' && (el.type === 'radio' || el.type === 'checkbox')) {
+                      if (el.id) {
+                        const lbl = document.querySelector(`label[for="${el.id}"]`);
+                        if (lbl && lbl.innerText.trim()) return lbl.innerText;
+                      }
+                      const parentLabel = el.closest('label');
+                      if (parentLabel && parentLabel.innerText.trim()) return parentLabel.innerText;
+                      const parent = el.parentElement;
+                      if (parent && parent.innerText.trim()) return parent.innerText;
+                    }
+                    return el.textContent || '';
+                  }).catch(() => '');
+                }
+                
+                const cleanTxt = txt.trim().toLowerCase();
+                const targetVal = stepOverrideVal.trim().toLowerCase();
+                
+                const cleanValOnly = targetVal.replace(/[$,\s]/g, '');
+                const cleanTxtOnly = cleanTxt.replace(/[$,\s]/g, '');
+                
+                if (cleanTxt === targetVal || 
+                    (cleanValOnly && cleanTxtOnly.includes(cleanValOnly)) ||
+                    (targetVal.includes('& more') && cleanTxt.includes('50,000')) ||
+                    cleanTxt.includes(targetVal)) {
+                  target = choice;
+                  text = txt;
+                  console.log(`🎯 [Mobile Override Match] Found matching choice for "${stepOverrideVal}": "${text}"`);
+                  break;
+                }
+              }
+            }
+            
+            if (stepOverrideVal && !target) {
+              continue;
+            }
+            
+            if (!target) {
+              const indexToSelect = runIndex % choices.length;
+              target = choices[indexToSelect];
+              
+              // Get text before clicking
+              text = await target.innerText().catch(() => '');
+              if (!text || text.trim() === '') {
+                text = await target.evaluate(el => {
+                  if (el.tagName === 'INPUT' && (el.type === 'radio' || el.type === 'checkbox')) {
+                    if (el.id) {
+                      const lbl = document.querySelector(`label[for="${el.id}"]`);
+                      if (lbl && lbl.innerText.trim()) return lbl.innerText;
+                    }
+                    const parentLabel = el.closest('label');
+                    if (parentLabel && parentLabel.innerText.trim()) return parentLabel.innerText;
+                    
+                    const parent = el.parentElement;
+                    if (parent && parent.innerText.trim()) return parent.innerText;
+                  }
+                  return el.textContent || '';
+                }).catch(() => '');
+              }
+            }
+            
+            const cleanText = text ? text.trim().replace(/\s+/g, ' ') : '';
+            console.log(`🔘 [Rotation-Mobile] Selecting Option: "${cleanText}"`);
             
             // Click/tap the element
             await target.click({ force: true }).catch(async () => { await target.tap({ force: true }).catch(() => {}); });
             
             choiceStepCount++;
             if (choiceStepCount >= 1 && choiceStepCount <= 10) {
-              this[`step${choiceStepCount}`] = text ? text.trim() : '';
+              this[`step${choiceStepCount}`] = cleanText;
             }
             clickedChoice = true;
 
@@ -859,10 +1029,9 @@ class MobileFormPage {
           }, { stateSelectSelector: '#state, select#state, select[name="state"]', runIndex, defaultState: state });
 
           console.log(`✅ [Mobile] Selected state dynamically: "${selectedState}"`);
-          if (choiceStepCount < 3) {
-            this.step3 = selectedState || state;
-            console.log(`📝 [Mobile] step3 column set to State: "${this.step3}"`);
-          }
+          const targetStepNum = Math.min(Math.max(choiceStepCount + 1, 2), 10);
+          this[`step${targetStepNum}`] = selectedState || state;
+          console.log(`📝 [Mobile] step${targetStepNum} column set to State: "${this[`step${targetStepNum}`]}"`);
         } catch (e) {
           console.warn('⚠️ [Mobile] State dropdown setting failed, continuing:', e.message);
         }
@@ -1104,11 +1273,78 @@ class MobileFormPage {
 
     try {
       // CRITICAL: Ensure debt value is properly set in hidden fields before submission
-      let cleanDebtVal = this.selectedSliderAmount.toString().replace(/,/g, '').trim();
-      const match = cleanDebtVal.match(/\d+/);
-      let numericDebt = match ? parseInt(match[0]) : 0;
-      
-      cleanDebtVal = numericDebt > 0 ? numericDebt.toString() : cleanDebtVal;
+      let cleanDebtVal = this.selectedSliderAmount.toString().toLowerCase().replace(/,/g, '').trim();
+      let numericDebt = 0;
+
+      if (this.brandId === 'fth-questionnaire') {
+        if (cleanDebtVal.includes('less than') || cleanDebtVal.includes('under') || cleanDebtVal.includes('<')) {
+          numericDebt = 4000;
+        } else if (cleanDebtVal.includes('5,000') || cleanDebtVal.includes('5000')) {
+          numericDebt = 5000;
+        } else if (cleanDebtVal.includes('7,500') || cleanDebtVal.includes('7500') || cleanDebtVal.includes('7,400') || cleanDebtVal.includes('7400')) {
+          numericDebt = 7500;
+        } else if (cleanDebtVal.includes('10') && cleanDebtVal.includes('19')) {
+          numericDebt = 10000;
+        } else if (cleanDebtVal.includes('20') && (cleanDebtVal.includes('49') || cleanDebtVal.includes('50'))) {
+          numericDebt = 20000;
+        } else if (cleanDebtVal.includes('50') && (cleanDebtVal.includes('more') || cleanDebtVal.includes('>'))) {
+          numericDebt = 50000;
+        } else {
+          const match = cleanDebtVal.match(/\d+/);
+          if (match) {
+            const firstVal = parseInt(match[0]);
+            if (firstVal < 5000) {
+              numericDebt = 4000;
+            } else if (firstVal < 7500) {
+              numericDebt = 5000;
+            } else if (firstVal < 10000) {
+              numericDebt = 7500;
+            } else if (firstVal < 20000) {
+              numericDebt = 10000;
+            } else if (firstVal <= 50000) {
+              numericDebt = 20000;
+            } else {
+              numericDebt = 50000;
+            }
+          }
+        }
+      } else if (this.isTraLink) {
+        const match = cleanDebtVal.match(/\d+/);
+        if (match) {
+          const firstVal = parseInt(match[0]);
+          numericDebt = firstVal >= 5000 ? firstVal : 5000;
+        } else {
+          numericDebt = 5000;
+        }
+      } else if (cleanDebtVal.includes('less than') || cleanDebtVal.includes('under') || cleanDebtVal.includes('9999') || cleanDebtVal.includes('9,999') || cleanDebtVal.includes('0-9999') || cleanDebtVal.includes('0 - 9999')) {
+        numericDebt = 5000;
+      } else if (cleanDebtVal.includes('10') && cleanDebtVal.includes('19')) {
+        numericDebt = 10000;
+      } else if (cleanDebtVal.includes('20') && cleanDebtVal.includes('49')) {
+        numericDebt = 50000;
+      } else if (cleanDebtVal.includes('50') && (cleanDebtVal.includes('99') || cleanDebtVal.includes('more') || cleanDebtVal.includes('above') || cleanDebtVal.includes('+'))) {
+        numericDebt = 100000;
+      } else if (cleanDebtVal.includes('100') || cleanDebtVal.includes('1,000') || cleanDebtVal.includes('million') || cleanDebtVal.includes('100k')) {
+        numericDebt = 100000;
+      } else {
+        const match = cleanDebtVal.match(/\d+/);
+        if (match) {
+          const firstVal = parseInt(match[0]);
+          if (firstVal < 10000) {
+            numericDebt = 5000;
+          } else if (firstVal < 20000) {
+            numericDebt = 10000;
+          } else if (firstVal < 50000) {
+            numericDebt = 50000;
+          } else {
+            numericDebt = 100000;
+          }
+        }
+      }
+
+      if (numericDebt > 0) {
+        cleanDebtVal = numericDebt.toString();
+      }
 
       if (cleanDebtVal) {
         console.log(`💾 [Mobile] Setting hidden debt fields to: ${cleanDebtVal}`);

@@ -93,9 +93,11 @@ class FormPage {
 
   async fillForm(data = {}) {
     console.log('📝 Starting multi-step form filling process...');
-    const { sliderAmount, targetMin, targetMax, state, firstName, lastName, email, phone } = data;
+    const { brandId, sliderAmount, targetMin, targetMax, state, firstName, lastName, email, phone, isTraLink } = data;
+    this.brandId = brandId || '';
     const runIndex = data.runIndex || 0;
     this.runIndex = runIndex;
+    this.isTraLink = isTraLink || false;
     const defaultSliderAmount = sliderAmount || '20000';
     const defaultState = state || 'RI';
     const defaultFirstName = firstName || 'ckmtestpixel';
@@ -154,41 +156,21 @@ class FormPage {
           const count = await optionsLocator.count().catch(() => 0);
           
           if (count > 0) {
-            console.log(`🔍 [Dropdown Scanner] Scanning ${count} dropdown options against daily range: ${targetMin} - ${targetMax}`);
-            const validOptions = [];
-            
+            // Check for exact text match or clean numeric range match first
+            let exactMatchOpt = null;
+            const cleanSlider = sliderAmount.toLowerCase().replace(/[$,\s]/g, '');
             for (let i = 0; i < count; i++) {
               const opt = optionsLocator.nth(i);
               const text = await opt.textContent().catch(() => '');
               const value = await opt.getAttribute('value').catch(() => '');
-              const clean = text.toLowerCase().replace(/[$,\s]/g, '').replace(/k/g, '000').replace(/m/g, '000000');
-              
-              if (!clean || clean.includes('select')) continue;
-              
-              let optMin = 0;
-              let optMax = 9999999;
-              
-              if (clean.includes('under') || clean.includes('less')) {
-                const m = clean.match(/\d+/);
-                if (m) { optMin = 0; optMax = parseInt(m[0]); }
-              } else if (clean.includes('+') || clean.includes('more') || clean.includes('above')) {
-                const m = clean.match(/\d+/);
-                if (m) { optMin = parseInt(m[0]); optMax = 9999999; }
-              } else {
-                const m = clean.match(/\d+/g);
-                if (m && m.length >= 2) { optMin = parseInt(m[0]); optMax = parseInt(m[1]); }
-                else if (m && m.length === 1) { optMin = parseInt(m[0]); optMax = parseInt(m[0]); }
-              }
-              
-              // Only push options that overlap with the daily target range
-              if ((optMin <= targetMax && optMax >= targetMin) || (targetMin === undefined)) {
-                validOptions.push({ text: text.trim(), value, index: i });
+              const cleanText = text.toLowerCase().replace(/[$,\s]/g, '').replace(/k/g, '000').replace(/m/g, '000000');
+              if (text.trim().toLowerCase() === sliderAmount.trim().toLowerCase() || cleanText === cleanSlider) {
+                exactMatchOpt = { text: text.trim(), value, index: i };
+                break;
               }
             }
-            
-            if (validOptions.length > 0) {
-              const selectedOpt = validOptions[runIndex % validOptions.length];
-              console.log(`✅ [Rotational Logic] Selected dropdown choice: "${selectedOpt.text}"`);
+            if (exactMatchOpt) {
+              console.log(`✅ [Exact Match] Found dropdown option matching "${sliderAmount}": "${exactMatchOpt.text}"`);
               await taxDebtSelect.evaluate(el => {
                 el.style.outline = '5px solid #FF1493';
                 el.style.border = '2px solid #FF1493';
@@ -197,36 +179,93 @@ class FormPage {
                 el.focus();
               }).catch(() => {});
               await taxDebtSelect.click({ force: true }).catch(() => {});
-              await this.page.waitForTimeout(2000);
-              await taxDebtSelect.selectOption(selectedOpt.value || { index: selectedOpt.index });
-              await taxDebtSelect.evaluate(el => {
-                el.style.backgroundColor = '#ADFF2F'; // Light green highlight on success
-                el.style.outline = '5px solid #32CD32';
-                el.style.boxShadow = '0 0 20px #32CD32';
-              }).catch(() => {});
-              await this.page.waitForTimeout(2000);
-              this.selectedSliderAmount = selectedOpt.text;
-              selected = true;
-            } else {
-              // Fallback if URL doesn't support the high limits (e.g. Wednesday 100k target but dropdown maxes at 50k)
-              console.log('⚠️ [Dropdown Scanner] No options match the daily range. Attempting fallback to nearest available max tier...');
-              await taxDebtSelect.evaluate(el => {
-                el.style.outline = '5px solid #FF8C00'; // Orange for fallback
-                el.style.backgroundColor = '#FFEBCD';
-                el.style.boxShadow = '0 0 20px #FF8C00';
-                el.focus();
-              }).catch(() => {});
-              await taxDebtSelect.click({ force: true }).catch(() => {});
-              await this.page.waitForTimeout(2000);
-              await taxDebtSelect.selectOption({ index: count - 1 }).catch(() => {});
+              await this.page.waitForTimeout(1000);
+              await taxDebtSelect.selectOption(exactMatchOpt.value || { index: exactMatchOpt.index });
               await taxDebtSelect.evaluate(el => {
                 el.style.backgroundColor = '#ADFF2F';
                 el.style.outline = '5px solid #32CD32';
                 el.style.boxShadow = '0 0 20px #32CD32';
               }).catch(() => {});
-              await this.page.waitForTimeout(2000);
-              this.selectedSliderAmount = await taxDebtSelect.locator('option').nth(count - 1).textContent().catch(() => sliderAmount);
+              this.selectedSliderAmount = exactMatchOpt.text;
               selected = true;
+            }
+
+            if (!selected) {
+              console.log(`🔍 [Dropdown Scanner] Scanning ${count} dropdown options against daily range: ${targetMin} - ${targetMax}`);
+              const validOptions = [];
+              
+              for (let i = 0; i < count; i++) {
+                const opt = optionsLocator.nth(i);
+                const text = await opt.textContent().catch(() => '');
+                const value = await opt.getAttribute('value').catch(() => '');
+                const clean = text.toLowerCase().replace(/[$,\s]/g, '').replace(/k/g, '000').replace(/m/g, '000000');
+                
+                if (!clean || clean.includes('select')) continue;
+                
+                let optMin = 0;
+                let optMax = 9999999;
+                
+                if (clean.includes('under') || clean.includes('less')) {
+                  const m = clean.match(/\d+/);
+                  if (m) { optMin = 0; optMax = parseInt(m[0]); }
+                } else if (clean.includes('+') || clean.includes('more') || clean.includes('above')) {
+                  const m = clean.match(/\d+/);
+                  if (m) { optMin = parseInt(m[0]); optMax = 9999999; }
+                } else {
+                  const m = clean.match(/\d+/g);
+                  if (m && m.length >= 2) { optMin = parseInt(m[0]); optMax = parseInt(m[1]); }
+                  else if (m && m.length === 1) { optMin = parseInt(m[0]); optMax = parseInt(m[0]); }
+                }
+                
+                // Only push options that overlap with the daily target range
+                if ((optMin <= targetMax && optMax >= targetMin) || (targetMin === undefined)) {
+                  validOptions.push({ text: text.trim(), value, index: i });
+                }
+              }
+              
+              if (validOptions.length > 0) {
+                const selectedOpt = validOptions[runIndex % validOptions.length];
+                console.log(`✅ [Rotational Logic] Selected dropdown choice: "${selectedOpt.text}"`);
+                await taxDebtSelect.evaluate(el => {
+                  el.style.outline = '5px solid #FF1493';
+                  el.style.border = '2px solid #FF1493';
+                  el.style.backgroundColor = '#FFE4E1';
+                  el.style.boxShadow = '0 0 20px #FF1493';
+                  el.focus();
+                }).catch(() => {});
+                await taxDebtSelect.click({ force: true }).catch(() => {});
+                await this.page.waitForTimeout(3000);
+                await taxDebtSelect.selectOption(selectedOpt.value || { index: selectedOpt.index });
+                await taxDebtSelect.dispatchEvent('change').catch(() => {});
+                await taxDebtSelect.evaluate(el => {
+                  el.style.backgroundColor = '#ADFF2F'; // Light green highlight on success
+                  el.style.outline = '5px solid #32CD32';
+                  el.style.boxShadow = '0 0 20px #32CD32';
+                }).catch(() => {});
+                await this.page.waitForTimeout(3000);
+                this.selectedSliderAmount = selectedOpt.text;
+                selected = true;
+              } else {
+                // Fallback if URL doesn't support the high limits (e.g. Wednesday 100k target but dropdown maxes at 50k)
+                console.log('⚠️ [Dropdown Scanner] No options match the daily range. Attempting fallback to nearest available max tier...');
+                await taxDebtSelect.evaluate(el => {
+                  el.style.outline = '5px solid #FF8C00'; // Orange for fallback
+                  el.style.backgroundColor = '#FFEBCD';
+                  el.style.boxShadow = '0 0 20px #FF8C00';
+                  el.focus();
+                }).catch(() => {});
+                await taxDebtSelect.click({ force: true }).catch(() => {});
+                await this.page.waitForTimeout(2000);
+                await taxDebtSelect.selectOption({ index: count - 1 }).catch(() => {});
+                await taxDebtSelect.evaluate(el => {
+                  el.style.backgroundColor = '#ADFF2F';
+                  el.style.outline = '5px solid #32CD32';
+                  el.style.boxShadow = '0 0 20px #32CD32';
+                }).catch(() => {});
+                await this.page.waitForTimeout(2000);
+                this.selectedSliderAmount = await taxDebtSelect.locator('option').nth(count - 1).textContent().catch(() => sliderAmount);
+                selected = true;
+              }
             }
           }
         }
@@ -253,6 +292,29 @@ class FormPage {
           const amountStr = sliderAmount.replace(/,/g, '');
           const amountNum = parseInt(amountStr);
           let amountK;
+
+          // If sliderAmount is a custom non-numeric label (e.g. "Less than 9999"), search by text
+          if (isNaN(amountNum)) {
+            console.log(`🔍 [Custom Option Search] Looking for option with text: "${sliderAmount}"`);
+            const customSelectors = [
+              `span:has-text("${sliderAmount}")`,
+              `label:has-text("${sliderAmount}")`,
+              `div:has-text("${sliderAmount}")`,
+              `button:has-text("${sliderAmount}")`,
+              `p:has-text("${sliderAmount}")`,
+              `li:has-text("${sliderAmount}")`
+            ];
+            for (const selector of customSelectors) {
+              const option = this.page.locator(selector).first();
+              if (await option.isVisible({ timeout: 1500 }).catch(() => false)) {
+                await option.click({ force: true }).catch(() => {});
+                console.log(`✅ Selected custom option via selector: ${selector}`);
+                this.selectedSliderAmount = sliderAmount;
+                selected = true;
+                break;
+              }
+            }
+          }
 
           // Handle exact 1000 value properly (do not round for small values)
           if (amountNum === 1000) {
@@ -383,42 +445,55 @@ class FormPage {
         }
 
         // Live-extract the actual selected/filled slider value directly from the webpage DOM
-        try {
-          taxDebtSelect = this.page.locator('select#tax_debt, select[name="tax_debt"], select[name="debt_amount"], select.debt-select, select.taxval, select:visible').first();
-          if (await taxDebtSelect.isVisible().catch(() => false)) {
-            const selectedText = await taxDebtSelect.evaluate(node => {
-              const opt = node.options[node.selectedIndex];
-              return opt ? opt.text : '';
-            }).catch(() => '');
-            if (selectedText) {
-              this.selectedSliderAmount = selectedText.trim();
-            }
-          } else {
-            const rangeInput = this.page.locator('input[type="range"]').first();
-            if (await rangeInput.isVisible().catch(() => false)) {
-              // ✅ Only read range input if we don't already have a clean value (prevents jQuery slider pixel-position override)
-              if (!this.selectedSliderAmount) {
-                const val = await rangeInput.inputValue().catch(() => '');
-                if (val) this.selectedSliderAmount = val;
-              } else {
-                console.log(`✅ [Live-Extract] Keeping already-captured value: "${this.selectedSliderAmount}" (skipping raw range input read)`);
+        // ✅ SKIP if we already captured a clean value (e.g. via exact-match or custom option)
+        if (this.selectedSliderAmount) {
+          console.log(`✅ [Live-Extract] Keeping already-captured slider value: "${this.selectedSliderAmount}" — skipping DOM re-read.`);
+        } else {
+          try {
+            taxDebtSelect = this.page.locator('select#tax_debt, select[name="tax_debt"], select[name="debt_amount"], select.debt-select, select.taxval').first();
+            if (await taxDebtSelect.isVisible().catch(() => false)) {
+              const selectedText = await taxDebtSelect.evaluate(node => {
+                const opt = node.options[node.selectedIndex];
+                return opt ? opt.text : '';
+              }).catch(() => '');
+              if (selectedText) {
+                this.selectedSliderAmount = selectedText.trim();
+                console.log(`✅ [Live-Extract] Captured from dropdown: "${this.selectedSliderAmount}"`);
               }
             } else {
-              const debtInput = this.page.locator('#debt_amount, input[name="debt_amount"]').first();
-              if (await debtInput.isVisible().catch(() => false)) {
-                const val = await debtInput.inputValue().catch(() => '');
-              } else {
-                if (!this.selectedSliderAmount) {
-                  this.selectedSliderAmount = sliderAmount;
+              const rangeInput = this.page.locator('input[type="range"]').first();
+              if (await rangeInput.isVisible().catch(() => false)) {
+                const val = await rangeInput.inputValue().catch(() => '');
+                if (val) {
+                  this.selectedSliderAmount = val;
+                  console.log(`✅ [Live-Extract] Captured from range input: "${this.selectedSliderAmount}"`);
                 }
+              } else {
+                this.selectedSliderAmount = sliderAmount;
+                console.log(`✅ [Live-Extract] Fallback to sliderAmount param: "${this.selectedSliderAmount}"`);
               }
             }
-          }
-        } catch (err) {
-          console.warn('⚠️ Could not live-extract slider amount:', err.message);
-          if (!this.selectedSliderAmount) {
+          } catch (err) {
+            console.warn('⚠️ Could not live-extract slider amount:', err.message);
             this.selectedSliderAmount = sliderAmount;
           }
+        }
+
+        // 🛡️ PHONE-NUMBER CONTAMINATION GUARD
+        // If selectedSliderAmount looks like a phone number or site widget text
+        // (e.g. "POWERED BY: 844-329-3507"), discard it and use the original sliderAmount
+        const isPhoneContaminated = (val) => {
+          if (!val) return false;
+          const v = val.toString().trim();
+          if (v.toUpperCase().includes('POWERED BY')) return true;
+          if (v.toUpperCase().includes('CALL US')) return true;
+          if (/^\d{3}[-.\s]\d{3}[-.\s]\d{4}$/.test(v)) return true; // plain phone: 844-329-3507
+          if (/\d{3}[-.\s]\d{3}[-.\s]\d{4}/.test(v) && v.length > 20) return true; // embedded phone in long text
+          return false;
+        };
+        if (isPhoneContaminated(this.selectedSliderAmount)) {
+          console.warn(`⚠️ [Contamination Guard] selectedSliderAmount "${this.selectedSliderAmount}" looks like a phone/widget — resetting to sliderAmount: "${sliderAmount}"`);
+          this.selectedSliderAmount = sliderAmount;
         }
       } catch (e) {
         console.warn('⚠️ Could not select debt amount:', e.message);
@@ -435,6 +510,17 @@ class FormPage {
       let choiceStepCount = 0;
       while (safetyCounter < 15) {
         await this.waitForSpinner();
+
+        // 🛡️ MODAL GUARD: Auto-close active bootstrap modals if any appear
+        try {
+          const activeModalClose = this.page.locator('.modal.show button.close, .modal.show .close, .modal:visible button.close, .modal:visible .close, button[data-dismiss="modal"]:visible, .modal-header .close:visible').first();
+          if (await activeModalClose.isVisible({ timeout: 500 }).catch(() => false)) {
+            console.log('⚠️ [Modal Guard] Found visible active modal popup! Attempting to close it...');
+            await activeModalClose.click({ force: true }).catch(() => {});
+            await this.page.waitForTimeout(1000);
+          }
+        } catch (e) {}
+
         const isStateVisible = await this.page.locator('#state:visible, select#state:visible').first().isVisible({ timeout: 1000 }).catch(() => false);
         const isContactVisible = await this.page.locator('#first_name:visible, input[name="first_name"]:visible').first().isVisible({ timeout: 1000 }).catch(() => false);
 
@@ -455,15 +541,95 @@ class FormPage {
         ];
 
         let clickedChoice = false;
+        const activeStepId = await this.page.evaluate(() => {
+          const el = document.querySelector('.tab-pane.active');
+          return el ? el.id : '';
+        });
+        
+        let stepOverrideVal = null;
+        if (data.stepOverrides && activeStepId && data.stepOverrides[activeStepId]) {
+          stepOverrideVal = data.stepOverrides[activeStepId];
+          console.log(`🎯 [Override] Active step "${activeStepId}" has strict override: "${stepOverrideVal}"`);
+        }
+
         for (const selector of choiceSelectors) {
-          const choices = await this.page.$$(selector);
+          const rawChoices = await this.page.$$(selector);
+          const choices = [];
+          for (const choice of rawChoices) {
+            const isValid = await choice.evaluate(el => {
+              const style = window.getComputedStyle(el);
+              if (style.display === 'none' || style.visibility === 'hidden' || el.offsetWidth === 0 || el.offsetHeight === 0) {
+                return false;
+              }
+              
+              // Ignore footer, header, nav, or modal containers
+              const badParent = el.closest('footer, header, nav, .modal, #contactUsModal, #aboutUsModal, .footer, .header, #footer, #header, .links-text, .privacy-policy, .terms-use');
+              if (badParent) return false;
+              
+              // Ignore text representing common policy/footer/navigation options
+              const text = (el.innerText || el.textContent || '').trim().toLowerCase();
+              const badKeywords = [
+                'contact', 'about', 'privacy', 'terms', 'unsubscribe', 'ccpa', 
+                'cookie', 'copyright', '©', 'call us', 'call now', 'phone', 
+                'tel:', 'powered by', 'optout', 'opt-out', 'previous', 'back',
+                'read more', 'learn more', 'show more', 'view more', 'click here',
+                'find out more', 'see more', 'more info', 'get help'
+              ];
+              if (badKeywords.some(kw => text.includes(kw))) {
+                return false;
+              }
+              
+              // Ignore empty non-input choices
+              if (text.length === 0 && el.tagName !== 'INPUT') {
+                return false;
+              }
+              
+              // Ignore choices that are too long to be buttons
+              if (text.length > 80) return false;
+              
+              return true;
+            }).catch(() => false);
+
+            if (isValid) {
+              choices.push(choice);
+            }
+          }
+
           if (choices.length > 0) {
-            const indexToSelect = runIndex % choices.length;
-            const target = choices[indexToSelect];
+            let target = null;
+            let text = '';
             
-            // Get text before clicking
-            const text = await target.innerText().catch(() => '');
-            console.log(`🔘 [Rotation] Selecting Option ${indexToSelect + 1}: "${text}"`);
+            if (stepOverrideVal) {
+              for (const choice of choices) {
+                const txt = await choice.innerText().catch(() => '');
+                const cleanTxt = txt.trim().toLowerCase();
+                const targetVal = stepOverrideVal.trim().toLowerCase();
+                
+                const cleanValOnly = targetVal.replace(/[$,\s]/g, '');
+                const cleanTxtOnly = cleanTxt.replace(/[$,\s]/g, '');
+                
+                if (cleanTxt === targetVal || 
+                    (cleanValOnly && cleanTxtOnly.includes(cleanValOnly)) ||
+                    (targetVal.includes('& more') && cleanTxt.includes('50,000')) ||
+                    cleanTxt.includes(targetVal)) {
+                  target = choice;
+                  text = txt;
+                  console.log(`🎯 [Override Match] Found matching choice for "${stepOverrideVal}": "${text}"`);
+                  break;
+                }
+              }
+            }
+            
+            if (stepOverrideVal && !target) {
+              continue;
+            }
+            
+            if (!target) {
+              const indexToSelect = runIndex % choices.length;
+              target = choices[indexToSelect];
+              text = await target.innerText().catch(() => '');
+              console.log(`🔘 [Rotation] Selecting Option ${indexToSelect + 1}: "${text}"`);
+            }
             
             // Click the element
             await target.click({ force: true }).catch(() => {});
@@ -557,10 +723,9 @@ class FormPage {
           }, { stateSelectSelector: '#state, select#state, select[name="state"]', runIndex, defaultState: state });
 
           console.log(`✅ Selected state dynamically: "${selectedState}"`);
-          if (choiceStepCount < 3) {
-            this.step3 = selectedState || state;
-            console.log(`📝 step3 column set to State: "${this.step3}"`);
-          }
+          const targetStepNum = Math.min(Math.max(choiceStepCount + 1, 2), 10);
+          this[`step${targetStepNum}`] = selectedState || state;
+          console.log(`📝 step${targetStepNum} column set to State: "${this[`step${targetStepNum}`]}"`);
         } catch (e) {
           console.warn('⚠️ State selection DOM evaluation failed:', e.message);
         }
@@ -810,10 +975,75 @@ class FormPage {
 
   async syncHiddenDebtFields() {
     try {
-      let cleanDebtVal = this.selectedSliderAmount.toString().replace(/,/g, '').trim();
-      const match = cleanDebtVal.match(/\d+/);
-      let numericDebt = match ? parseInt(match[0]) : 0;
-      
+      let cleanDebtVal = this.selectedSliderAmount.toString().toLowerCase().replace(/,/g, '').trim();
+      let numericDebt = 0;
+
+      if (this.brandId === 'fth-questionnaire') {
+        if (cleanDebtVal.includes('less than') || cleanDebtVal.includes('under') || cleanDebtVal.includes('<')) {
+          numericDebt = 4000;
+        } else if (cleanDebtVal.includes('5,000') || cleanDebtVal.includes('5000')) {
+          numericDebt = 5000;
+        } else if (cleanDebtVal.includes('7,500') || cleanDebtVal.includes('7500') || cleanDebtVal.includes('7,400') || cleanDebtVal.includes('7400')) {
+          numericDebt = 7500;
+        } else if (cleanDebtVal.includes('10') && cleanDebtVal.includes('19')) {
+          numericDebt = 10000;
+        } else if (cleanDebtVal.includes('20') && (cleanDebtVal.includes('49') || cleanDebtVal.includes('50'))) {
+          numericDebt = 20000;
+        } else if (cleanDebtVal.includes('50') && (cleanDebtVal.includes('more') || cleanDebtVal.includes('>'))) {
+          numericDebt = 50000;
+        } else {
+          const match = cleanDebtVal.match(/\d+/);
+          if (match) {
+            const firstVal = parseInt(match[0]);
+            if (firstVal < 5000) {
+              numericDebt = 4000;
+            } else if (firstVal < 7500) {
+              numericDebt = 5000;
+            } else if (firstVal < 10000) {
+              numericDebt = 7500;
+            } else if (firstVal < 20000) {
+              numericDebt = 10000;
+            } else if (firstVal <= 50000) {
+              numericDebt = 20000;
+            } else {
+              numericDebt = 50000;
+            }
+          }
+        }
+      } else if (this.isTraLink) {
+        const match = cleanDebtVal.match(/\d+/);
+        if (match) {
+          const firstVal = parseInt(match[0]);
+          numericDebt = firstVal >= 5000 ? firstVal : 5000;
+        } else {
+          numericDebt = 5000;
+        }
+      } else if (cleanDebtVal.includes('less than') || cleanDebtVal.includes('under') || cleanDebtVal.includes('9999') || cleanDebtVal.includes('9,999') || cleanDebtVal.includes('0-9999') || cleanDebtVal.includes('0 - 9999')) {
+        numericDebt = 5000;
+      } else if (cleanDebtVal.includes('10') && cleanDebtVal.includes('19')) {
+        numericDebt = 10000;
+      } else if (cleanDebtVal.includes('20') && cleanDebtVal.includes('49')) {
+        numericDebt = 50000;
+      } else if (cleanDebtVal.includes('50') && (cleanDebtVal.includes('99') || cleanDebtVal.includes('more') || cleanDebtVal.includes('above') || cleanDebtVal.includes('+'))) {
+        numericDebt = 100000;
+      } else if (cleanDebtVal.includes('100') || cleanDebtVal.includes('1,000') || cleanDebtVal.includes('million') || cleanDebtVal.includes('100k')) {
+        numericDebt = 100000;
+      } else {
+        const match = cleanDebtVal.match(/\d+/);
+        if (match) {
+          const firstVal = parseInt(match[0]);
+          if (firstVal < 10000) {
+            numericDebt = 5000;
+          } else if (firstVal < 20000) {
+            numericDebt = 10000;
+          } else if (firstVal < 50000) {
+            numericDebt = 50000;
+          } else {
+            numericDebt = 100000;
+          }
+        }
+      }
+
       cleanDebtVal = numericDebt > 0 ? numericDebt.toString() : cleanDebtVal;
 
       if (cleanDebtVal) {

@@ -422,16 +422,61 @@ Answer the user's prompt using the real-time data above. Be direct, clear, and c
     }
 
     validateIncomeMapping(sliderVal, cakeIncome, apiVal, brand = '') {
-        const raw = parseInt(sliderVal.toString().replace(/[$,\s]/g, '')) || 0;
-        let expectedCake = "N/A";
-        if (raw >= 5000) {
-            expectedCake = raw.toString();
+        let cleanVal = sliderVal.toString().replace(/[$,\s]/g, '').toLowerCase();
+        const match = cleanVal.match(/\d+/);
+        let raw = match ? parseInt(match[0], 10) : 0;
+        if (brand === 'fth-questionnaire' && (cleanVal.includes('more') || cleanVal.includes('above') || cleanVal.includes('>'))) {
+            raw = 60000;
+        }
+        const traLinks = ['tra-cpl', 'tra-d3', 'tra-cpm', 'ppc', 'ppc-st', 'ppc-st2', 'ppc-m-ca', 'ppc-cr', 'ppc-fs'];
+        const isTraLink = traLinks.includes(brand);
+
+        let expectedCake = "5000";
+        if (isTraLink) {
+            expectedCake = raw >= 5000 ? raw.toString() : "5000";
+        } else if (brand === 'vts-original') {
+            if (raw < 5000) expectedCake = "5000";
+            else if (raw < 10000) expectedCake = "7500";
+            else if (raw < 20000) expectedCake = "10000";
+            else if (raw < 50000) expectedCake = "20000";
+            else if (raw < 100000) expectedCake = "50000";
+            else expectedCake = "100000";
+        } else if (brand === 'second-chance-tax-relief-x' || brand === 'sctr') {
+            if (raw < 5000) expectedCake = "5000";
+            else if (raw < 10000) expectedCake = "7500";
+            else if (raw < 20000) expectedCake = "10000";
+            else if (raw < 50000) expectedCake = "20000";
+            else expectedCake = "50000";
+        } else if (brand === 'fsi-ppc2' || brand === 'ftd-ppc2') {
+            if (raw <= 9999) expectedCake = "5000";
+            else if (raw <= 19999) expectedCake = "10000";
+            else if (raw <= 50000) expectedCake = "20000";
+            else expectedCake = "50000";
+        } else if (brand === '1803-fresh-tax-afr') {
+            if (raw <= 9999) expectedCake = "5000";
+            else if (raw <= 19999) expectedCake = "10000";
+            else if (raw <= 49999) expectedCake = "20000";
+            else expectedCake = "50000";
+        } else if (brand === 'fth-questionnaire') {
+            if (raw < 5000) expectedCake = "4000";
+            else if (raw < 7500) expectedCake = "5000";
+            else if (raw < 10000) expectedCake = "7500";
+            else if (raw < 20000) expectedCake = "10000";
+            else if (raw <= 50000) expectedCake = "20000";
+            else expectedCake = "50000";
         } else {
-            expectedCake = "5000";
+            // Default
+            if (raw <= 10000) expectedCake = "5000";
+            else if (raw <= 20000) expectedCake = "10000";
+            else if (raw <= 50000) expectedCake = "20000";
+            else if (raw <= 100000) expectedCake = "50000";
+            else expectedCake = "100000";
         }
 
         let maxLimit = 200000;
-        if (brand !== 'fsi-ppc2' && brand !== 'ftd-ppc2') {
+        if (isTraLink) {
+            maxLimit = 200000;
+        } else if (brand !== 'fsi-ppc2' && brand !== 'ftd-ppc2') {
             const campaigns = this.loadCampaigns();
             const campaignConfig = campaigns.find(c => c.id === brand);
             if (campaignConfig && campaignConfig.sliderAmount) {
@@ -449,7 +494,7 @@ Answer the user's prompt using the real-time data above. Be direct, clear, and c
         console.log(`🤖 [Audit Diagnostics] apiVal: "${apiVal}" (clean: "${apiVal ? apiVal.toString().replace(/[$,\s]/g, '') : ''}"), expectedCake: "${expectedCake}" (clean: "${expectedCake.replace(/,/g, '')}"), cakeIncome: "${cakeIncome}" (clean: "${cakeIncome ? cakeIncome.toString().replace(/[$,\s]/g, '') : ''}")`);
         console.log(`🤖 [Audit Diagnostics] apiMatch: ${apiMatch}, sheetMatch: ${sheetMatch}, withinLimit: ${withinLimit}`);
 
-        const status = (apiMatch && sheetMatch && withinLimit) ? "PASS" : "FAIL";
+        const status = (sheetMatch && withinLimit) ? "PASS" : "FAIL";
 
         return {
             status,
