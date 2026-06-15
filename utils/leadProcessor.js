@@ -49,11 +49,8 @@ function isValidLeadId(leadId) {
   if (!leadId) return false;
   const normalized = String(leadId).trim().toUpperCase();
   if (normalized === 'DUPLICATE') return false;
-  // Expected style: 8-char alphanumeric with at least one letter and one number (e.g., ACAAA01E)
-  if (!/^[A-Z0-9]{8}$/.test(normalized)) return false;
-  if (!/[A-Z]/.test(normalized)) return false;
-  if (!/[0-9]/.test(normalized)) return false;
-  return true;
+  // Expected style: exactly 8-char alphanumeric
+  return /^[A-Z0-9]{8}$/.test(normalized);
 }
 
 /**
@@ -64,6 +61,7 @@ function isValidLeadId(leadId) {
  */
 async function processLead(brandConfig, page) {
   console.log(`🔄 Processing lead for brand: ${brandConfig.name}`);
+  let leadIdToUse = null;
 
   try {
     const brandId = brandConfig.id || brandConfig.name?.toLowerCase().replace(/[^a-z0-9]/g, '-') || 'unknown-id';
@@ -140,8 +138,8 @@ async function processLead(brandConfig, page) {
       // Dynamically filter ranges that fit within maxLimit (min must be less than maxLimit)
       const validRanges = ranges.filter(r => r.min < maxLimit);
       
-      // Select range rotationally starting from 0 for this particular link
-      const rangeObj = validRanges.length > 0 ? validRanges[runIndex % validRanges.length] : ranges[0];
+      // Select range rotationally starting from 0 for this particular link, offset by urlIndex so different campaigns get different ranges in the same batch run
+      const rangeObj = validRanges.length > 0 ? validRanges[(runIndex + urlIndex) % validRanges.length] : ranges[0];
       min = rangeObj.min;
       max = rangeObj.max;
 
@@ -167,7 +165,7 @@ async function processLead(brandConfig, page) {
          if (rangeSize <= 0) {
            rawSliderVal = min;
          } else {
-           const step = runIndex % (rangeSize + 1);
+           const step = (runIndex + urlIndex) % (rangeSize + 1);
            rawSliderVal = (minThousands + step) * 1000;
          }
       }
@@ -537,19 +535,21 @@ async function processLead(brandConfig, page) {
     const finalDeviceType = process.env.PROCESS_LABEL || `${deviceType}-${activeBrowser}`;
     console.log(`📱 Device Type detected: ${finalDeviceType}`);
 
-    let leadIdToUse = leadId;
+    leadIdToUse = leadId;
     let hasLeadId = true;
     let leadIdFormatValid = true;
+    let isSyntheticLeadId = false;
 
     if (process.env.OVERRIDE_LEAD_ID) {
       leadIdToUse = process.env.OVERRIDE_LEAD_ID;
       console.log(`🔌 [Override] Applying custom Lead ID: ${leadIdToUse}`);
     } else if (!leadId) {
-    console.warn('⚠️ No Lead ID found. This is likely a duplicate lead submission redirected to a static thank you page. Generating synthetic Lead ID.');
-    const syntheticId = `CKM${String(Math.floor(Math.random()*100000)).padStart(5,'0')}`;
-    leadIdToUse = syntheticId;
-    hasLeadId = true;
-  }
+      console.warn('⚠️ No Lead ID found. This is likely a duplicate lead submission redirected to a static thank you page. Generating synthetic Lead ID.');
+      const syntheticId = `CKM${String(Math.floor(Math.random()*100000)).padStart(5,'0')}`;
+      leadIdToUse = syntheticId;
+      hasLeadId = true;
+      isSyntheticLeadId = true;
+    }
 
     if (!isValidLeadId(leadIdToUse)) {
       leadIdFormatValid = false;
@@ -808,6 +808,10 @@ if (sheetSuccess) {
       console.log('🤖 [AI Agent Audit] Skipped: No income data from first API to validate.');
     }
 
+    if (isSyntheticLeadId) {
+      throw new Error("Lead ID could not be extracted from the Thank You page or DOM.");
+    }
+
     if (!leadIdFormatValid) {
       throw new Error(`Invalid Lead ID format: ${leadIdToUse}`);
     }
@@ -844,7 +848,7 @@ if (sheetSuccess) {
 
     return {
       success: true,
-      leadId,
+      leadId: leadIdToUse,
       brand: brandConfig.name
     };
 
@@ -853,6 +857,7 @@ if (sheetSuccess) {
     return {
       success: false,
       error: error.message,
+      leadId: leadIdToUse,
       brand: brandConfig.name
     };
   }

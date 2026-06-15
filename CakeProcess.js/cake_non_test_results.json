@@ -1,23 +1,20 @@
 {
-  "checkedAt": "2026-06-01T12:07:06.109Z",
+  "checkedAt": "2026-06-11T07:43:52.059Z",
   "reportPage": "newrep.aspx",
   "dateRange": {
-    "startDate": "5/29/2026",
-    "endDate": "6/1/2026"
+    "startDate": "6/10/2026",
+    "endDate": "6/10/2026"
   },
   "browserFind": {
     "triggered": true,
     "term": "QA Affiliate"
   },
   "footerPageCount": {
-    "footerText": "Page of 3 Rows Per Page: Displaying Items 1 - 200 of 460",
-    "currentPage": null,
-    "totalPages": null,
-    "displayingFrom": 1,
-    "displayingTo": 200,
-    "totalItems": 460
+    "currentPage": 1,
+    "totalPages": 1,
+    "totalItems": 0
   },
-  "qaAffiliateRowFound": true,
+  "qaAffiliateRowFound": false,
   "redRows": {
     "leadIds": [],
     "rows": []

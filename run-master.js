@@ -8,7 +8,11 @@
  * Usage:
  *   node run-master.js --campaign <id> --viewport <desktop|tablet|mobile|api>
  */
-const { chromium, devices } = require('playwright');
+const { chromium, firefox, webkit } = require('playwright-extra');
+const stealth = require('puppeteer-extra-plugin-stealth')();
+chromium.use(stealth);
+firefox.use(stealth);
+const { devices } = require('playwright');
 const { processLead } = require('./utils/leadProcessor');
 const path = require('path');
 const fs = require('fs');
@@ -128,7 +132,7 @@ if (viewportArg === 'api') {
     else if (isHeadlessArg || process.env.HEADLESS === 'true') isHeadless = true;
 
     const browserType = process.env.PROCESS_BROWSER || 'chromium';
-    const browserEngine = require('playwright')[browserType];
+    const browserEngine = require('playwright-extra')[browserType];
     
     if (!browserEngine) {
       console.error(`❌ Invalid browser engine: ${browserType}`);
@@ -199,6 +203,7 @@ if (viewportArg === 'api') {
     // Initialize tracing
     await context.tracing.start({ screenshots: true, snapshots: true, sources: true });
     const page = await context.newPage();
+    let brand = null;
 
     try {
       // Build dynamic brand configuration for lead processor
@@ -206,7 +211,8 @@ if (viewportArg === 'api') {
       if (viewportArg === 'tablet') brandSuffix = ' Tablet';
       if (viewportArg === 'mobile') brandSuffix = ' Mobile';
 
-      const brand = {
+      brand = {
+        ...campaignConfig,
         id: campaignConfig.id,
         name: `${campaignConfig.name}${brandSuffix}`,
         url: campaignConfig.url,
@@ -223,7 +229,13 @@ if (viewportArg === 'api') {
       }
 
       const result = await processLead(brand, page);
+      if (!result.success) {
+        const err = new Error(result.error || 'Execution failed during processLead');
+        err.leadId = result.leadId;
+        throw err;
+      }
       console.log(`\n✅ Execution successfully processed!`, result);
+      console.log(JSON.stringify(result));
 
       // Stop tracing and save ZIP report
       const tracePath = path.join(traceDir, `${campaignConfig.id}_${viewportArg}.zip`);
@@ -245,10 +257,12 @@ if (viewportArg === 'api') {
       console.log(JSON.stringify({
         success: false,
         error: error.message,
+        leadId: error.leadId || null,
         brand: brand,
         screenshot: failScreenshot,
         video: videoPath
       }));
+      process.exitCode = 1;
     } finally {
       await page.waitForTimeout(3000);
       await browser.close().catch(() => null);

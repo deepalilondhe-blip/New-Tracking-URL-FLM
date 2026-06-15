@@ -1,4 +1,4 @@
-const { chromium } = require('playwright');
+const { firefox } = require('playwright');
 const FormPage = require('./pages/FormPage');
 const { processLead } = require('./utils/leadProcessor');
 const path = require('path');
@@ -12,7 +12,7 @@ console.log('✅ Sheet Name: 1800 Fresh Tax (X) Main');
     const traceDir = path.join(__dirname, 'traces');
     if (!fs.existsSync(traceDir)) fs.mkdirSync(traceDir);
 
-    const browser = await chromium.launch({ headless: false, slowMo: 800 });
+    const browser = await firefox.launch({ headless: false, slowMo: 800 });
     const context = await browser.newContext({
         recordVideo: { dir: 'traces/videos/' }
     });
@@ -21,16 +21,22 @@ console.log('✅ Sheet Name: 1800 Fresh Tax (X) Main');
 
     try {
         const brand = {
+            id: "1800-fresh-tax-x-main",
             name: "1800 Fresh Tax (X) Main",
             url: "https://flmtrk.com/?a=659&oc=696&c=1867&s1=",
             sheet: "1800 Fresh Tax (X) Main",
-            sliderAmount: "12000",
-            state: "Maine",
+            sliderAmount: "31000",
+            state: "Colorado",
             firstName: "ckmtestpixel",
             lastName: "ckmtestpixel",
             email: "ckmtestpixel@gmail.com",
-            phone: "207-234-3082"
+            phone: "970-752-5155"
         };
+
+        // Enforce the user-specified overrides so rotational scheduler logic is bypassed
+        process.env.OVERRIDE_SLIDER = brand.sliderAmount;
+        process.env.OVERRIDE_STATE = brand.state;
+        process.env.OVERRIDE_PHONE = brand.phone;
 
         const result = await processLead(brand, page);
         console.log('✅ 1800 Fresh Tax (X) Main Test completed:', result);

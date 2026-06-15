@@ -775,7 +775,8 @@ class FormPage {
           const currentVal = await fName.inputValue().catch(() => '');
           if (!currentVal || currentVal !== firstName) {
             await fName.click({ timeout: 3000 }).catch(() => {});
-            await fName.fill(firstName, { timeout: 3000 }).catch(() => {});
+            await fName.fill('');
+            await fName.pressSequentially(firstName, { delay: 50 }).catch(() => {});
             await this.page.keyboard.press('Tab').catch(() => {});
             console.log(`✅ Filled First Name: ${firstName}`);
             filledSomething = true;
@@ -788,7 +789,8 @@ class FormPage {
           const currentVal = await lName.inputValue().catch(() => '');
           if (!currentVal || currentVal !== lastName) {
             await lName.click({ timeout: 3000 }).catch(() => {});
-            await lName.fill(lastName, { timeout: 3000 }).catch(() => {});
+            await lName.fill('');
+            await lName.pressSequentially(lastName, { delay: 50 }).catch(() => {});
             await this.page.keyboard.press('Tab').catch(() => {});
             console.log(`✅ Filled Last Name: ${lastName}`);
             filledSomething = true;
@@ -801,7 +803,8 @@ class FormPage {
           const currentVal = await emailField.inputValue().catch(() => '');
           if (!currentVal || currentVal !== email) {
             await emailField.click({ timeout: 3000 }).catch(() => {});
-            await emailField.fill(email, { timeout: 3000 }).catch(() => {});
+            await emailField.fill('');
+            await emailField.pressSequentially(email, { delay: 50 }).catch(() => {});
             await this.page.keyboard.press('Tab').catch(() => {});
             console.log(`✅ Filled Email: ${email}`);
             filledSomething = true;
@@ -814,7 +817,8 @@ class FormPage {
           const currentVal = await phoneField.inputValue().catch(() => '');
           if (!currentVal || currentVal !== phone) {
             await phoneField.click({ timeout: 3000 }).catch(() => {});
-            await phoneField.fill(phone, { timeout: 3000 }).catch(() => {});
+            await phoneField.fill('');
+            await phoneField.pressSequentially(phone, { delay: 50 }).catch(() => {});
             await this.page.keyboard.press('Tab').catch(() => {});
             console.log(`✅ Filled Phone: ${phone}`);
             filledSomething = true;
@@ -835,9 +839,11 @@ class FormPage {
           }
 
           lastFilledState = currentState;
+          console.log('⏳ Waiting 3 seconds for validation scripts to sync...');
+          await this.page.waitForTimeout(3000);
           console.log(`🔘 Clicking active contact NEXT/SUBMIT button...`);
           await nextBtn.click({ force: true }).catch(() => { });
-          await this.page.waitForTimeout(400);
+          await this.page.waitForTimeout(1000);
         } else {
           console.log('🔘 No active contact NEXT/SUBMIT button visible. Exiting loop.');
           break;

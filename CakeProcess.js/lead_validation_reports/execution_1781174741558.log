@@ -1,0 +1,28 @@
+[2026-06-11T10:45:41.558Z] [INFO] Lead Validation & CDB Verification Process Started
+[2026-06-11T10:45:41.573Z] [INFO] Extracting latest Lead ID from scheduler execution
+[2026-06-11T10:45:41.574Z] [WARN] No Lead ID found in results, using dynamic generation
+[2026-06-11T10:45:41.575Z] [INFO] Launching browser
+[2026-06-11T10:45:41.995Z] [INFO] --- STEP 1: Search Lead in Cake ---
+[2026-06-11T10:45:41.996Z] [INFO] Searching Lead ID in Cake: TEST_1781174741574
+[2026-06-11T10:45:48.099Z] [WARN] Search box not found
+[2026-06-11T10:45:48.177Z] [INFO] Screenshot: C:\Users\Deepali_Londhe\Desktop\New Tracking URL\CakeProcess.js\lead_validation_screenshots\01_lead_search_TEST_1781174741574_1781174748100.png
+[2026-06-11T10:45:48.192Z] [INFO] --- STEP 2: Verify Lead Popup Details ---
+[2026-06-11T10:45:48.194Z] [INFO] Opening Lead popup and verifying details
+[2026-06-11T10:45:48.203Z] [INFO] --- STEP 3: Search Lead in CDB ---
+[2026-06-11T10:45:48.205Z] [INFO] Searching Lead ID in CDB: TEST_1781174741574
+[2026-06-11T10:45:54.120Z] [INFO] Logging into CDB
+[2026-06-11T10:45:54.185Z] [INFO] Entered CDB email
+[2026-06-11T10:45:54.209Z] [INFO] Entered CDB password
+[2026-06-11T10:45:54.276Z] [INFO] Clicked CDB login button
+[2026-06-11T10:46:00.043Z] [INFO] Opened Lead Listing tab
+[2026-06-11T10:46:00.061Z] [INFO] CDB Status: NOT FOUND
+[2026-06-11T10:46:00.153Z] [INFO] Screenshot: C:\Users\Deepali_Londhe\Desktop\New Tracking URL\CakeProcess.js\lead_validation_screenshots\03_cdb_search_NOT FOUND_1781174760062.png
+[2026-06-11T10:46:00.153Z] [INFO] --- STEP 4: Update FML Project Dashboard ---
+[2026-06-11T10:46:00.155Z] [INFO] Updating FML Project dashboard
+[2026-06-11T10:46:00.214Z] [INFO] Appended to existing dashboard sheet
+[2026-06-11T10:46:00.216Z] [INFO] ✓ Updated dashboard: C:\Users\Deepali_Londhe\Desktop\New Tracking URL\FML_Project_Dashboard\June_2026\Sheet_6_2026.csv
+[2026-06-11T10:46:00.218Z] [INFO] Generating comprehensive report
+[2026-06-11T10:46:00.221Z] [INFO] Report saved: C:\Users\Deepali_Londhe\Desktop\New Tracking URL\CakeProcess.js\lead_validation_report_TEST_1781174741574_1781174760219.json
+[2026-06-11T10:46:00.222Z] [INFO] Execution completed in 18.66 seconds
+[2026-06-11T10:46:00.468Z] [INFO] Browser closed
+[2026-06-11T10:46:00.469Z] [INFO] Process finished

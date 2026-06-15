@@ -13,7 +13,7 @@ const SPREADSHEET_ID = '1hcJgC1E1Bw3V5WdYgPpumQXke_kzMbNX1rCH4kKCBwk';
 
   const res = await sheets.spreadsheets.values.get({
     spreadsheetId: SPREADSHEET_ID,
-    range: `'09-06-26'!A:H`
+    range: `'11-06-26'!A:H`
   });
 
   console.log('📋 Current sheet rows:');

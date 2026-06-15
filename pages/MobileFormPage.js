@@ -1081,11 +1081,10 @@ class MobileFormPage {
         if (await fName.isVisible({ timeout: 500 }).catch(() => false)) {
           const currentVal = await fName.inputValue().catch(() => '');
           if (!currentVal || currentVal !== firstName) {
-            await fName.evaluate((node, val) => {
-              node.value = val;
-              node.dispatchEvent(new Event('input', { bubbles: true }));
-              node.dispatchEvent(new Event('change', { bubbles: true }));
-            }, firstName);
+            await fName.click({ timeout: 3000 }).catch(() => {});
+            await fName.fill('');
+            await fName.pressSequentially(firstName, { delay: 50 }).catch(() => {});
+            await this.page.keyboard.press('Tab').catch(() => {});
             console.log(`✅ [Mobile] Filled First Name: ${firstName}`);
             filledSomething = true;
           }
@@ -1096,11 +1095,10 @@ class MobileFormPage {
         if (await lName.isVisible({ timeout: 500 }).catch(() => false)) {
           const currentVal = await lName.inputValue().catch(() => '');
           if (!currentVal || currentVal !== lastName) {
-            await lName.evaluate((node, val) => {
-              node.value = val;
-              node.dispatchEvent(new Event('input', { bubbles: true }));
-              node.dispatchEvent(new Event('change', { bubbles: true }));
-            }, lastName);
+            await lName.click({ timeout: 3000 }).catch(() => {});
+            await lName.fill('');
+            await lName.pressSequentially(lastName, { delay: 50 }).catch(() => {});
+            await this.page.keyboard.press('Tab').catch(() => {});
             console.log(`✅ [Mobile] Filled Last Name: ${lastName}`);
             filledSomething = true;
           }
@@ -1111,11 +1109,10 @@ class MobileFormPage {
         if (await emailField.isVisible({ timeout: 500 }).catch(() => false)) {
           const currentVal = await emailField.inputValue().catch(() => '');
           if (!currentVal || currentVal !== email) {
-            await emailField.evaluate((node, val) => {
-              node.value = val;
-              node.dispatchEvent(new Event('input', { bubbles: true }));
-              node.dispatchEvent(new Event('change', { bubbles: true }));
-            }, email);
+            await emailField.click({ timeout: 3000 }).catch(() => {});
+            await emailField.fill('');
+            await emailField.pressSequentially(email, { delay: 50 }).catch(() => {});
+            await this.page.keyboard.press('Tab').catch(() => {});
             console.log(`✅ [Mobile] Filled Email: ${email}`);
             filledSomething = true;
           }
@@ -1126,11 +1123,10 @@ class MobileFormPage {
         if (await phoneField.isVisible({ timeout: 500 }).catch(() => false)) {
           const currentVal = await phoneField.inputValue().catch(() => '');
           if (!currentVal || currentVal !== phone) {
-            await phoneField.evaluate((node, val) => {
-              node.value = val;
-              node.dispatchEvent(new Event('input', { bubbles: true }));
-              node.dispatchEvent(new Event('change', { bubbles: true }));
-            }, phone);
+            await phoneField.click({ timeout: 3000 }).catch(() => {});
+            await phoneField.fill('');
+            await phoneField.pressSequentially(phone, { delay: 50 }).catch(() => {});
+            await this.page.keyboard.press('Tab').catch(() => {});
             console.log(`✅ [Mobile] Filled Phone: ${phone}`);
             filledSomething = true;
           }
@@ -1151,11 +1147,11 @@ class MobileFormPage {
           }
           
           lastFilledState = currentState;
+          console.log('⏳ [Mobile] Waiting 3 seconds for validation scripts to sync...');
+          await this.page.waitForTimeout(3000);
           console.log(`🔘 [Mobile] Clicking active contact NEXT/SUBMIT button...`);
-          await nextBtn.evaluate(node => node.click()).catch(async () => {
-            await nextBtn.tap({ force: true }).catch(() => {});
-          });
-          await this.page.waitForTimeout(2000);
+          await nextBtn.tap({ force: true }).catch(() => nextBtn.click({ force: true }));
+          await this.page.waitForTimeout(1000);
         } else {
           console.log('🔘 [Mobile] No active contact NEXT/SUBMIT button visible. Exiting loop.');
           break;

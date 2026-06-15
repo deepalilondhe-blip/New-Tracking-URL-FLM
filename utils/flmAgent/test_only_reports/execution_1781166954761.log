@@ -1,0 +1,1180 @@
+[2026-06-11T08:35:54.761Z] [INFO] ======================================================================
+[2026-06-11T08:35:54.763Z] [INFO] 🚀 PROCESS START: FLM_TestOnly_IP_Validation (Dynamic Date & 200 Rows Mode)
+[2026-06-11T08:35:54.763Z] [INFO] ======================================================================
+[2026-06-11T08:35:54.765Z] [INFO] Processed Dynamic Date Range: Start = 06/10/2026, End = 06/11/2026
+[2026-06-11T08:35:54.766Z] [INFO] Launching Playwright Browser in HEADED mode (Chrome channel)...
+[2026-06-11T08:35:55.682Z] [INFO] Navigating to Cake CRM...
+[2026-06-11T08:36:04.376Z] [INFO] ✓ Already logged in via session state.
+[2026-06-11T08:36:04.379Z] [INFO] Navigating to Reports > Conversions...
+[2026-06-11T08:36:09.485Z] [INFO] Waiting for Conversion Report page to load...
+[2026-06-11T08:36:10.615Z] [INFO] ✓ Navigated to Conversions Report Page.
+[2026-06-11T08:36:10.616Z] [INFO] Applying Tests Only filter dropdown option...
+[2026-06-11T08:36:10.629Z] [INFO] ✓ Tests dropdown updated via ExtJS API.
+[2026-06-11T08:36:13.633Z] [INFO] Setting Rows Per Page to 200...
+[2026-06-11T08:36:13.640Z] [INFO] ✓ Set Rows Per Page = 200.
+[2026-06-11T08:36:18.649Z] [INFO] Applying date range inputs...
+[2026-06-11T08:36:20.374Z] [INFO] Clicking the "Filter" button...
+[2026-06-11T08:36:20.385Z] [INFO] ✓ Filter button clicked.
+[2026-06-11T08:36:25.400Z] [INFO] ✓ Date range set successfully: 06/10/2026 to 06/11/2026
+[2026-06-11T08:36:25.425Z] [INFO] ✓ Report grid is visible.
+[2026-06-11T08:36:25.427Z] [INFO] Waiting for grid data to load...
+[2026-06-11T08:36:25.457Z] [INFO] ✓ Grid data loaded successfully.
+[2026-06-11T08:36:25.458Z] [INFO] Aggregating unique IP addresses page-by-page...
+[2026-06-11T08:36:25.459Z] [INFO] Processing page 1...
+[2026-06-11T08:36:27.488Z] [INFO] Found 72 IP entries on page 1.
+[2026-06-11T08:36:27.541Z] [INFO] Reached last page of report.
+[2026-06-11T08:36:27.542Z] [INFO] Total unique IP addresses found: 4
+[2026-06-11T08:36:27.544Z] [INFO]  - IP: 27.54.170.27 : 51 occurrence(s)
+[2026-06-11T08:36:27.545Z] [INFO]  - IP: 15.204.166.127 : 4 occurrence(s)
+[2026-06-11T08:36:27.546Z] [INFO]  - IP: 122.167.187.68 : 13 occurrence(s)
+[2026-06-11T08:36:27.546Z] [INFO]  - IP: 69.75.39.10 : 4 occurrence(s)
+[2026-06-11T08:36:27.547Z] [INFO] Starting lead validation for 4 unique IP(s)...
+[2026-06-11T08:36:27.547Z] [INFO] 🔎 Looking for a lead row with IP: 27.54.170.27 (51 occurrence(s))...
+[2026-06-11T08:36:27.599Z] [INFO] ✓ Found and clicked lead 129A706C for IP: 27.54.170.27 on scan page 1
+[2026-06-11T08:36:32.613Z] [INFO]   → Clicking Tab 1: "Personal Information"...
+[2026-06-11T08:36:34.253Z] [INFO]   ✓ Tab 1 "Personal Information" opened.
+[2026-06-11T08:36:34.387Z] [INFO]   Personal Info → First="CKMTESTPIXEL", Last="CKMTESTPIXEL", Email="ckmtestpixel@gmail.com", IsTest=true
+[2026-06-11T08:36:35.903Z] [INFO]   → Clicking Tab 2: "Sale Info"...
+[2026-06-11T08:36:37.517Z] [INFO]   ✓ Tab 2 "Sale Info" opened.
+[2026-06-11T08:36:37.551Z] [INFO]   Sale Info → Pixel Fired="(not visible)", Affiliate="(not visible)"
+[2026-06-11T08:36:39.060Z] [INFO]   → Clicking Tab 3: "Vertical Specific"...
+[2026-06-11T08:36:40.679Z] [INFO]   ✓ Tab 3 "Vertical Specific" opened.
+[2026-06-11T08:36:40.726Z] [INFO]   Vertical Specific → Page Origin="(not visible)", Tax Debt="20000"
+[2026-06-11T08:36:42.235Z] [INFO] Extracted: First="CKMTESTPIXEL", Last="CKMTESTPIXEL", Email="ckmtestpixel@gmail.com", IsTest=true
+[2026-06-11T08:36:42.237Z] [INFO] Returning to Conversions report grid...
+[2026-06-11T08:36:45.254Z] [INFO] 🔎 Looking for a lead row with IP: 15.204.166.127 (4 occurrence(s))...
+[2026-06-11T08:36:45.320Z] [INFO] ✓ Found and clicked lead FC9AE68D for IP: 15.204.166.127 on scan page 1
+[2026-06-11T08:36:50.337Z] [INFO]   → Clicking Tab 1: "Personal Information"...
+[2026-06-11T08:36:55.381Z] [WARN]   ⚠️ Tab 1 click failed on selector "a:has-text("Personal Information")": locator.click: Timeout 5000ms exceeded.
+Call log:
+[2m  - waiting for locator('a:has-text("Personal Information")').first()[22m
+[2m    - locator resolved to <a href="#" class="x-tab-right" onclick="return false;">…</a>[22m
+[2m  - attempting click action[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m    - waiting 20ms[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 100ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting 500ms[22m
+
+[2026-06-11T08:37:00.408Z] [WARN]   ⚠️ Tab 1 click failed on selector "span:has-text("Personal Information")": locator.click: Timeout 5000ms exceeded.
+Call log:
+[2m  - waiting for locator('span:has-text("Personal Information")').first()[22m
+[2m    - locator resolved to <span class="x-tab-strip-inner">…</span>[22m
+[2m  - attempting click action[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting 20ms[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 100ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting 500ms[22m
+
+[2026-06-11T08:37:00.419Z] [WARN]   ✗ Tab 1 "Personal Information" not found.
+[2026-06-11T08:37:00.420Z] [INFO]   → Clicking Tab 2: "Sale Info"...
+[2026-06-11T08:37:05.451Z] [WARN]   ⚠️ Tab 2 click failed on selector "a:has-text("Sale Info")": locator.click: Timeout 5000ms exceeded.
+Call log:
+[2m  - waiting for locator('a:has-text("Sale Info")').first()[22m
+[2m    - locator resolved to <a href="#" class="x-tab-right" onclick="return false;">…</a>[22m
+[2m  - attempting click action[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting 20ms[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 100ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting 500ms[22m
+
+[2026-06-11T08:37:10.475Z] [WARN]   ⚠️ Tab 2 click failed on selector "span:has-text("Sale Info")": locator.click: Timeout 5000ms exceeded.
+Call log:
+[2m  - waiting for locator('span:has-text("Sale Info")').first()[22m
+[2m    - locator resolved to <span class="x-tab-strip-inner">…</span>[22m
+[2m  - attempting click action[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting 20ms[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 100ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting 500ms[22m
+
+[2026-06-11T08:37:10.485Z] [WARN]   ✗ Tab 2 "Sale Info" not found.
+[2026-06-11T08:37:10.486Z] [INFO]   → Clicking Tab 3: "Vertical Specific"...
+[2026-06-11T08:37:15.509Z] [WARN]   ⚠️ Tab 3 click failed on selector "a:has-text("Vertical Specific")": locator.click: Timeout 5000ms exceeded.
+Call log:
+[2m  - waiting for locator('a:has-text("Vertical Specific")').first()[22m
+[2m    - locator resolved to <a href="#" class="x-tab-right" onclick="return false;">…</a>[22m
+[2m  - attempting click action[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting 20ms[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 100ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting 500ms[22m
+
+[2026-06-11T08:37:20.525Z] [WARN]   ⚠️ Tab 3 click failed on selector "span:has-text("Vertical Specific")": locator.click: Timeout 5000ms exceeded.
+Call log:
+[2m  - waiting for locator('span:has-text("Vertical Specific")').first()[22m
+[2m    - locator resolved to <span class="x-tab-strip-inner">…</span>[22m
+[2m  - attempting click action[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting 20ms[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 100ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting 500ms[22m
+
+[2026-06-11T08:37:20.535Z] [WARN]   ✗ Tab 3 "Vertical Specific" not found.
+[2026-06-11T08:37:20.549Z] [INFO] Extracted: First="", Last="", Email="", IsTest=false
+[2026-06-11T08:37:20.550Z] [INFO] Returning to Conversions report grid...
+[2026-06-11T08:37:23.573Z] [INFO] 🔎 Looking for a lead row with IP: 122.167.187.68 (13 occurrence(s))...
+[2026-06-11T08:37:23.648Z] [INFO] ✓ Found and clicked lead 96394A48 for IP: 122.167.187.68 on scan page 1
+[2026-06-11T08:37:28.655Z] [INFO]   → Clicking Tab 1: "Personal Information"...
+[2026-06-11T08:37:33.703Z] [WARN]   ⚠️ Tab 1 click failed on selector "a:has-text("Personal Information")": locator.click: Timeout 5000ms exceeded.
+Call log:
+[2m  - waiting for locator('a:has-text("Personal Information")').first()[22m
+[2m    - locator resolved to <a href="#" class="x-tab-right" onclick="return false;">…</a>[22m
+[2m  - attempting click action[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting 20ms[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 100ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting 500ms[22m
+
+[2026-06-11T08:37:38.723Z] [WARN]   ⚠️ Tab 1 click failed on selector "span:has-text("Personal Information")": locator.click: Timeout 5000ms exceeded.
+Call log:
+[2m  - waiting for locator('span:has-text("Personal Information")').first()[22m
+[2m    - locator resolved to <span class="x-tab-strip-inner">…</span>[22m
+[2m  - attempting click action[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting 20ms[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 100ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting 500ms[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting 500ms[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+
+[2026-06-11T08:37:38.736Z] [WARN]   ✗ Tab 1 "Personal Information" not found.
+[2026-06-11T08:37:38.737Z] [INFO]   → Clicking Tab 2: "Sale Info"...
+[2026-06-11T08:37:43.763Z] [WARN]   ⚠️ Tab 2 click failed on selector "a:has-text("Sale Info")": locator.click: Timeout 5000ms exceeded.
+Call log:
+[2m  - waiting for locator('a:has-text("Sale Info")').first()[22m
+[2m    - locator resolved to <a href="#" class="x-tab-right" onclick="return false;">…</a>[22m
+[2m  - attempting click action[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting 20ms[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 100ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting 500ms[22m
+
+[2026-06-11T08:37:48.790Z] [WARN]   ⚠️ Tab 2 click failed on selector "span:has-text("Sale Info")": locator.click: Timeout 5000ms exceeded.
+Call log:
+[2m  - waiting for locator('span:has-text("Sale Info")').first()[22m
+[2m    - locator resolved to <span class="x-tab-strip-inner">…</span>[22m
+[2m  - attempting click action[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting 20ms[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 100ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting 500ms[22m
+
+[2026-06-11T08:37:48.803Z] [WARN]   ✗ Tab 2 "Sale Info" not found.
+[2026-06-11T08:37:48.804Z] [INFO]   → Clicking Tab 3: "Vertical Specific"...
+[2026-06-11T08:37:53.843Z] [WARN]   ⚠️ Tab 3 click failed on selector "a:has-text("Vertical Specific")": locator.click: Timeout 5000ms exceeded.
+Call log:
+[2m  - waiting for locator('a:has-text("Vertical Specific")').first()[22m
+[2m    - locator resolved to <a href="#" class="x-tab-right" onclick="return false;">…</a>[22m
+[2m  - attempting click action[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting 20ms[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 100ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting 500ms[22m
+
+[2026-06-11T08:37:58.880Z] [WARN]   ⚠️ Tab 3 click failed on selector "span:has-text("Vertical Specific")": locator.click: Timeout 5000ms exceeded.
+Call log:
+[2m  - waiting for locator('span:has-text("Vertical Specific")').first()[22m
+[2m    - locator resolved to <span class="x-tab-strip-inner">…</span>[22m
+[2m  - attempting click action[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting 20ms[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 100ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m    - retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting 500ms[22m
+
+[2026-06-11T08:37:58.890Z] [WARN]   ✗ Tab 3 "Vertical Specific" not found.
+[2026-06-11T08:37:58.903Z] [INFO] Extracted: First="", Last="", Email="", IsTest=false
+[2026-06-11T08:37:58.906Z] [INFO] Returning to Conversions report grid...
+[2026-06-11T08:38:01.927Z] [INFO] 🔎 Looking for a lead row with IP: 69.75.39.10 (4 occurrence(s))...
+[2026-06-11T08:38:02.058Z] [INFO] ✓ Found and clicked lead D93E2924 for IP: 69.75.39.10 on scan page 1
+[2026-06-11T08:38:07.066Z] [INFO]   → Clicking Tab 1: "Personal Information"...
+[2026-06-11T08:38:12.112Z] [WARN]   ⚠️ Tab 1 click failed on selector "a:has-text("Personal Information")": locator.click: Timeout 5000ms exceeded.
+Call log:
+[2m  - waiting for locator('a:has-text("Personal Information")').first()[22m
+[2m    - locator resolved to <a href="#" class="x-tab-right" onclick="return false;">…</a>[22m
+[2m  - attempting click action[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting 20ms[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 100ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting 500ms[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting 500ms[22m
+
+[2026-06-11T08:38:17.148Z] [WARN]   ⚠️ Tab 1 click failed on selector "span:has-text("Personal Information")": locator.click: Timeout 5000ms exceeded.
+Call log:
+[2m  - waiting for locator('span:has-text("Personal Information")').first()[22m
+[2m    - locator resolved to <span class="x-tab-strip-inner">…</span>[22m
+[2m  - attempting click action[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting 20ms[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 100ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting 500ms[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting 500ms[22m
+
+[2026-06-11T08:38:17.167Z] [WARN]   ✗ Tab 1 "Personal Information" not found.
+[2026-06-11T08:38:17.169Z] [INFO]   → Clicking Tab 2: "Sale Info"...
+[2026-06-11T08:38:22.223Z] [WARN]   ⚠️ Tab 2 click failed on selector "a:has-text("Sale Info")": locator.click: Timeout 5000ms exceeded.
+Call log:
+[2m  - waiting for locator('a:has-text("Sale Info")').first()[22m
+[2m    - locator resolved to <a href="#" class="x-tab-right" onclick="return false;">…</a>[22m
+[2m  - attempting click action[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting 20ms[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 100ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting 500ms[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting 500ms[22m
+
+[2026-06-11T08:38:27.250Z] [WARN]   ⚠️ Tab 2 click failed on selector "span:has-text("Sale Info")": locator.click: Timeout 5000ms exceeded.
+Call log:
+[2m  - waiting for locator('span:has-text("Sale Info")').first()[22m
+[2m    - locator resolved to <span class="x-tab-strip-inner">…</span>[22m
+[2m  - attempting click action[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting 20ms[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 100ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting 500ms[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting 500ms[22m
+
+[2026-06-11T08:38:27.269Z] [WARN]   ✗ Tab 2 "Sale Info" not found.
+[2026-06-11T08:38:27.270Z] [INFO]   → Clicking Tab 3: "Vertical Specific"...
+[2026-06-11T08:38:32.331Z] [WARN]   ⚠️ Tab 3 click failed on selector "a:has-text("Vertical Specific")": locator.click: Timeout 5000ms exceeded.
+Call log:
+[2m  - waiting for locator('a:has-text("Vertical Specific")').first()[22m
+[2m    - locator resolved to <a href="#" class="x-tab-right" onclick="return false;">…</a>[22m
+[2m  - attempting click action[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting 20ms[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 100ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting 500ms[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting 500ms[22m
+
+[2026-06-11T08:38:37.356Z] [WARN]   ⚠️ Tab 3 click failed on selector "span:has-text("Vertical Specific")": locator.click: Timeout 5000ms exceeded.
+Call log:
+[2m  - waiting for locator('span:has-text("Vertical Specific")').first()[22m
+[2m    - locator resolved to <span class="x-tab-strip-inner">…</span>[22m
+[2m  - attempting click action[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting 20ms[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 100ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  2 × retrying click action[22m
+[2m      - waiting 500ms[22m
+[2m      - waiting for element to be visible, enabled and stable[22m
+[2m      - element is visible, enabled and stable[22m
+[2m      - scrolling into view if needed[22m
+[2m      - done scrolling[22m
+[2m      - <ul id="ext-gen384" class="x-tab-strip x-tab-strip-top">…</ul> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting 500ms[22m
+[2m    - waiting for element to be visible, enabled and stable[22m
+[2m    - element is visible, enabled and stable[22m
+[2m    - scrolling into view if needed[22m
+[2m    - done scrolling[22m
+[2m    - <div id="ext-gen374" class="x-window-body">…</div> from <div id="le2381711" class=" x-window x-window-plain">…</div> subtree intercepts pointer events[22m
+[2m  - retrying click action[22m
+[2m    - waiting 500ms[22m
+
+[2026-06-11T08:38:37.374Z] [WARN]   ✗ Tab 3 "Vertical Specific" not found.
+[2026-06-11T08:38:37.403Z] [INFO] Extracted: First="", Last="", Email="", IsTest=false
+[2026-06-11T08:38:37.404Z] [INFO] Returning to Conversions report grid...
+[2026-06-11T08:38:40.424Z] [INFO] ✅ Saving 4 validated IP row(s) to CSV and Google Sheet...
+[2026-06-11T08:38:40.425Z] [INFO] Appending 4 row(s) to local CSV Dashboard at C:\Users\Deepali_Londhe\Desktop\New Tracking URL\FML_Project_Dashboard\Test_Only_IP_Validation_Dashboard_June_2026.csv...
+[2026-06-11T08:38:40.426Z] [INFO] Appended to CSV: 06/11/2026,129A706C,27.54.170.27 : 51,True,Correct
+[2026-06-11T08:38:40.426Z] [INFO] Appended to CSV: 06/11/2026,FC9AE68D,15.204.166.127 : 4,False,Incorrect
+[2026-06-11T08:38:40.427Z] [INFO] Appended to CSV: 06/11/2026,96394A48,122.167.187.68 : 13,False,Incorrect
+[2026-06-11T08:38:40.428Z] [INFO] Appended to CSV: 06/11/2026,D93E2924,69.75.39.10 : 4,False,Incorrect
+[2026-06-11T08:38:40.429Z] [INFO] Connecting to Google Sheet ID: 1fO1YFFIM-i_DRPLqdSqC4oECeAHEETPJmN6RWlTrLzU, Tab: Test Only IP Data...
+[2026-06-11T08:38:41.809Z] [INFO] ✓ Google Sheet updated successfully.
+[2026-06-11T08:38:42.156Z] [INFO] Browser closed. Process complete.
+[2026-06-11T08:38:42.157Z] [INFO] ======================================================================

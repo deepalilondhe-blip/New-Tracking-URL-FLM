@@ -1,0 +1,17 @@
+[2026-06-11T08:34:50.803Z] [INFO] ======================================================================
+[2026-06-11T08:34:50.804Z] [INFO] 🚀 PROCESS START: FLM_TestOnly_IP_Validation (Dynamic Date & 200 Rows Mode)
+[2026-06-11T08:34:50.805Z] [INFO] ======================================================================
+[2026-06-11T08:34:50.805Z] [INFO] Processed Dynamic Date Range: Start = 06/10/2026, End = 06/11/2026
+[2026-06-11T08:34:50.806Z] [INFO] Launching Playwright Browser in HEADED mode (Chrome channel)...
+[2026-06-11T08:34:51.628Z] [INFO] Navigating to Cake CRM...
+[2026-06-11T08:35:21.635Z] [ERROR] FATAL ERROR: page.goto: Timeout 30000ms exceeded.
+Call log:
+[2m  - navigating to "https://app.forwardleapmarketing.com/", waiting until "networkidle"[22m
+
+[2026-06-11T08:35:21.637Z] [ERROR] page.goto: Timeout 30000ms exceeded.
+Call log:
+[2m  - navigating to "https://app.forwardleapmarketing.com/", waiting until "networkidle"[22m
+
+    at C:\Users\Deepali_Londhe\Desktop\New Tracking URL\utils\flmAgent\test_only_ip_validation.js:254:16
+[2026-06-11T08:35:21.992Z] [INFO] Browser closed. Process complete.
+[2026-06-11T08:35:21.993Z] [INFO] ======================================================================

@@ -28,7 +28,7 @@ cd /d "%PROJECT_ROOT%"
 :: Run the Playwright Scheduler once and exit
 echo Running Playwright batch scheduler...
 echo Running Playwright batch scheduler... >> "%RUN_LOG%"
-powershell -Command "& 'C:\Program Files\nodejs\node.exe' scheduler.js --once 2>&1 | Tee-Object -FilePath '%RUN_LOG%' -Append"
+powershell -Command "& 'C:\Program Files\nodejs\node.exe' scheduler.js --once --headed 2>&1 | Tee-Object -FilePath '%RUN_LOG%' -Append"
 
 echo ===================================================== >> "%RUN_LOG%"
 echo SCHEDULER FINISHED AT: %date% %time% >> "%RUN_LOG%"

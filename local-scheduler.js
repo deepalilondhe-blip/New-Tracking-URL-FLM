@@ -13,6 +13,7 @@ function shouldRunToday() {
 function runPlaywrightTests() {
   if (!shouldRunToday()) {
     console.log(`\n⏰ [${new Date().toLocaleString()}] Skipping campaign run: today is not Mon/Wed/Fri.`);
+    scheduleNextRun();
     return;
   }
   console.log(`\n⏰ [${new Date().toLocaleString()}] Starting Playwright campaign automation batch run...`);
@@ -32,13 +33,26 @@ function runPlaywrightTests() {
       console.log(`❌ [${new Date().toLocaleString()}] Batch run completed with some errors (Exit Code: ${code})`);
     }
     console.log(`================================================================`);
-    console.log(`⏳ Next automated batch will run in 2 hours...`);
+    scheduleNextRun();
   });
 }
 
-// Run every 2 hours (2 * 60 * 60 * 1000 milliseconds)
-const INTERVAL_MS = 2 * 60 * 60 * 1000;
-setInterval(runPlaywrightTests, INTERVAL_MS);
+function scheduleNextRun() {
+  const now = new Date();
+  const nextRun = new Date();
+  nextRun.setHours(11, 30, 0, 0);
 
-// Run immediately upon start if today is allowed
-runPlaywrightTests();
+  // If 11:30 AM has already passed today, set for tomorrow at 11:30 AM
+  if (now >= nextRun) {
+    nextRun.setDate(nextRun.getDate() + 1);
+  }
+
+  const delay = nextRun.getTime() - now.getTime();
+  console.log(`⏳ Next automated batch is scheduled to run at: ${nextRun.toLocaleString()}`);
+  console.log(`⏳ Waiting for ${Math.round(delay / 1000 / 60)} minutes...`);
+
+  setTimeout(runPlaywrightTests, delay);
+}
+
+// Start scheduling
+scheduleNextRun();

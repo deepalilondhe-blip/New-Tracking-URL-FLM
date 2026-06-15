@@ -1,4 +1,4 @@
-﻿
+
 
 const { chromium } = require('playwright');
 const fs = require('fs');
@@ -128,19 +128,14 @@ function formatCakeDate(date) {
 
 function getScheduledReportRange(referenceDate = new Date()) {
   const scheduledDays = new Set([1, 3, 5]); // Mon / Wed / Fri
-  const end = new Date(referenceDate);
-  const start = new Date(referenceDate);
-
-  // The local scheduler runs on Mon/Wed/Fri, so the report window starts at the most
-  // recent scheduled day before "today" and ends on the current day.
-  start.setDate(start.getDate() - 1);
-  while (!scheduledDays.has(start.getDay())) {
-    start.setDate(start.getDate() - 1);
+  let schedDate = new Date(referenceDate);
+  while (!scheduledDays.has(schedDate.getDay())) {
+    schedDate.setDate(schedDate.getDate() - 1);
   }
-
+  const dateStr = formatCakeDate(schedDate);
   return {
-    startDate: formatCakeDate(start),
-    endDate: formatCakeDate(end)
+    startDate: dateStr,
+    endDate: dateStr
   };
 }
 
@@ -523,8 +518,106 @@ async function setReportDateRange(page, startDate, endDate) {
   await endLocator.fill(endDate).catch(() => {});
   await endLocator.press('Enter').catch(() => {});
 
-  await page.waitForTimeout(5000);
   console.log(`Selected report date range: ${startDate} -> ${endDate}`);
+
+  // Click the Filter button to reload the grid with selected dates
+  const filterClicked = await page.evaluate(() => {
+    const filterTd = Array.from(document.querySelectorAll('td.x-btn-mc')).find(td => td.innerText.includes('Filter'));
+    if (filterTd) {
+      const btn = filterTd.querySelector('button') || filterTd;
+      btn.click();
+      return true;
+    }
+    return false;
+  });
+
+  if (filterClicked) {
+    console.log('Clicked Filter button to apply date range.');
+  } else {
+    console.warn('Filter button not found.');
+  }
+
+  await page.waitForTimeout(5000);
+}
+
+async function setAffiliateFilter(page, affiliateName) {
+  console.log(`Setting Affiliate filter to: "${affiliateName}"...`);
+  
+  const affiliateInputFound = await page.evaluate(async (name) => {
+    const visible = (el) => {
+      const s = window.getComputedStyle(el);
+      const r = el.getBoundingClientRect();
+      return s.display !== 'none' && s.visibility !== 'hidden' && r.width > 0 && r.height > 0;
+    };
+    
+    // Find the input element that contains "All Affiliates", "QA affiliate" or whose parent label is "Affiliate"
+    const inputs = Array.from(document.querySelectorAll('input.x-form-field'));
+    const affInput = inputs.find(i => {
+      if (!visible(i)) return false;
+      const val = (i.value || '').trim();
+      if (/All Affiliates|QA affiliate/i.test(val)) return true;
+      const label = i.closest('.x-form-item') ? i.closest('.x-form-item').querySelector('label') : null;
+      if (label && /Affiliate/i.test(label.textContent)) return true;
+      return false;
+    });
+
+    if (!affInput) return false;
+    
+    affInput.focus();
+    affInput.value = '';
+    
+    // Type name characters with small delay
+    for (let char of name) {
+      affInput.value += char;
+      affInput.dispatchEvent(new Event('input', { bubbles: true }));
+      affInput.dispatchEvent(new Event('keyup', { bubbles: true }));
+      await new Promise(r => setTimeout(r, 50));
+    }
+    affInput.dispatchEvent(new Event('change', { bubbles: true }));
+    return true;
+  }, affiliateName);
+
+  if (!affiliateInputFound) {
+    console.warn('Could not locate the Affiliate input via ExtJS selectors.');
+  } else {
+    await page.waitForTimeout(2000);
+    
+    // Locate the dropdown option matching the affiliateName
+    const dropdownClicked = await page.evaluate((name) => {
+      const items = Array.from(document.querySelectorAll('.x-combo-list-item'));
+      const target = items.find(el => new RegExp(name, 'i').test(el.textContent));
+      if (target) {
+        target.click();
+        return true;
+      }
+      return false;
+    }, affiliateName);
+    
+    if (dropdownClicked) {
+      console.log(`✓ Clicked autocomplete dropdown option matching "${affiliateName}".`);
+    } else {
+      console.warn(`✗ Autocomplete option matching "${affiliateName}" not found in dropdown list.`);
+    }
+  }
+
+  // Click the Filter button to apply the affiliate selection to the grid
+  const filterClicked = await page.evaluate(() => {
+    const filterTd = Array.from(document.querySelectorAll('td.x-btn-mc')).find(td => td.innerText.includes('Filter'));
+    if (filterTd) {
+      const btn = filterTd.querySelector('button') || filterTd;
+      btn.click();
+      return true;
+    }
+    return false;
+  });
+
+  if (filterClicked) {
+    console.log('✓ Filter button clicked to apply Affiliate filter.');
+  } else {
+    console.warn('✗ Filter button not found after choosing Affiliate.');
+  }
+
+  await page.waitForTimeout(6000);
 }
 
 async function ensureTestsAndNonTestsFilter(page) {
@@ -589,7 +682,7 @@ async function triggerBrowserFind(page, term) {
 }
 
 async function readFooterPageCount(page) {
-  const footerText = await page.evaluate(() => {
+  const parsed = await page.evaluate(() => {
     const normalize = (text) => (text || '').replace(/\s+/g, ' ').trim();
     const isVisible = (el) => {
       if (!el) return false;
@@ -598,46 +691,39 @@ async function readFooterPageCount(page) {
       return style.display !== 'none' && style.visibility !== 'hidden' && rect.width > 0 && rect.height > 0;
     };
 
-    const readText = (el) => normalize((el && (el.innerText || el.textContent || el.value)) || '');
+    const pageInput = document.querySelector('input.x-tbar-page-number');
+    const currentPage = pageInput ? parseInt(pageInput.value, 10) : 1;
 
-    const targetedSelectors = [
-      '.x-panel-bbar',
-      '.x-grid-bottom',
-      '.x-toolbar',
-      '.ag-paging-panel',
-      '.paging',
-      '.pager'
-    ];
-
-    for (const selector of targetedSelectors) {
-      const roots = Array.from(document.querySelectorAll(selector));
-      for (const root of roots) {
-        if (!isVisible(root)) continue;
-        const text = readText(root);
-        if (/rows\s+per\s+page/i.test(text) || /displaying\s+items/i.test(text) || /page\s+\d+\s+of\s+\d+/i.test(text)) {
-          return text;
-        }
-      }
+    let totalPages = 1;
+    const toolbar = document.querySelector('.x-panel-bbar, .x-toolbar');
+    let footerText = '';
+    if (toolbar) {
+      footerText = normalize(toolbar.innerText || '');
+      const match = footerText.match(/of\s+(\d+)/i);
+      if (match) totalPages = parseInt(match[1], 10);
     }
 
-    const candidates = Array.from(document.querySelectorAll('div, span, td, button'))
-      .map((el) => ({ el, text: readText(el) }))
-      .filter(({ el, text }) => isVisible(el) && (/rows\s+per\s+page/i.test(text) || /displaying\s+items/i.test(text) || /page\s+\d+\s+of\s+\d+/i.test(text)))
-      .sort((a, b) => a.text.length - b.text.length);
+    const displayingMatch = footerText.match(/Displaying\s+Items\s+(\d+)\s*-\s*(\d+)\s+of\s+(\d+)/i);
 
-    return candidates.length ? candidates[0].text : '';
-  }).catch(() => '');
+    return {
+      footerText,
+      currentPage,
+      totalPages,
+      displayingFrom: displayingMatch ? Number(displayingMatch[1]) : null,
+      displayingTo: displayingMatch ? Number(displayingMatch[2]) : null,
+      totalItems: displayingMatch ? Number(displayingMatch[3]) : null
+    };
+  }).catch(() => null);
 
-  const pageMatch = footerText.match(/Page\s+(\d+)\s+of\s+(\d+)/i);
-  const displayingMatch = footerText.match(/Displaying\s+Items\s+(\d+)\s*-\s*(\d+)\s+of\s+(\d+)/i);
+  if (parsed) return parsed;
 
   return {
-    footerText,
-    currentPage: pageMatch ? Number(pageMatch[1]) : null,
-    totalPages: pageMatch ? Number(pageMatch[2]) : null,
-    displayingFrom: displayingMatch ? Number(displayingMatch[1]) : null,
-    displayingTo: displayingMatch ? Number(displayingMatch[2]) : null,
-    totalItems: displayingMatch ? Number(displayingMatch[3]) : null
+    footerText: '',
+    currentPage: 1,
+    totalPages: 1,
+    displayingFrom: null,
+    displayingTo: null,
+    totalItems: null
   };
 }
 
@@ -671,26 +757,60 @@ async function extractRedQaLeadIds(page) {
       return c.includes('rgb(255, 0, 0)') || c.includes('rgb(220') || c.includes('red');
     };
 
-    const allRows = Array.from(document.querySelectorAll('table tr'));
+    const allRows = Array.from(document.querySelectorAll('tr, .x-grid3-row'));
     const findings = [];
+
+    // Locate column indices dynamically
+    const headerCells = Array.from(document.querySelectorAll('.x-grid3-hd-inner, .x-grid3-header td, th'));
+    const testColIndex = headerCells.findIndex(el => el.textContent.trim().toLowerCase() === 'test');
+    const pixelColIndex = headerCells.findIndex(el => el.textContent.trim().toLowerCase() === 'pixel');
+    
+    const testIdx = testColIndex !== -1 ? testColIndex : 20;
+    const pixelIdx = pixelColIndex !== -1 ? pixelColIndex : 17;
 
     for (const tr of allRows) {
       const tds = Array.from(tr.querySelectorAll('td'));
       if (!tds.length) continue;
       const rowText = normalize(tr.textContent || '');
+      
+      // Mimic Ctrl+F search for "QA Affiliate"
       if (!/qa affiliate/i.test(rowText)) continue;
 
       let hasRed = false;
-      for (const td of tds) {
-        const nodes = [td, ...Array.from(td.querySelectorAll('*'))];
-        for (const node of nodes) {
-          const styles = window.getComputedStyle(node);
-          if (redLike(styles.color) || redLike(styles.backgroundColor) || redLike(styles.borderColor)) {
+
+      // 1. Check Test column for red (inactive) indicator
+      const testTd = tds[testIdx];
+      if (testTd) {
+        const img = testTd.querySelector('img');
+        if (img && (img.src || img.getAttribute('src') || '').toLowerCase().includes('inactive')) {
+          hasRed = true;
+        }
+      }
+
+      // 2. Check Pixel column for red (inactive) indicator
+      if (!hasRed) {
+        const pixelTd = tds[pixelIdx];
+        if (pixelTd) {
+          const img = pixelTd.querySelector('img');
+          if (img && (img.src || img.getAttribute('src') || '').toLowerCase().includes('inactive')) {
             hasRed = true;
-            break;
           }
         }
-        if (hasRed) break;
+      }
+
+      // 3. Fallback CSS color rules check
+      if (!hasRed) {
+        for (const td of tds) {
+          const nodes = [td, ...Array.from(td.querySelectorAll('*'))];
+          for (const node of nodes) {
+            const styles = window.getComputedStyle(node);
+            if (redLike(styles.color) || redLike(styles.backgroundColor) || redLike(styles.borderColor)) {
+              hasRed = true;
+              break;
+            }
+          }
+          if (hasRed) break;
+        }
       }
 
       if (!hasRed) continue;
@@ -698,13 +818,26 @@ async function extractRedQaLeadIds(page) {
       const rowId = tr.getAttribute('row-id') || tr.getAttribute('data-row-id') || tr.getAttribute('comp-id') || '';
       const affiliate = normalize((tds[0] && tds[0].textContent) || '');
       const manager = normalize((tds[1] && tds[1].textContent) || '');
-      const leadIdMatch = rowText.match(/\b[A-Z0-9]{6,12}\b/g) || [];
+      
+      // Extract Lead ID exactly from the first cell's link, or fallback to regex
+      let leadId = '';
+      if (tds[0]) {
+        const link = tds[0].querySelector('a');
+        if (link) {
+          leadId = normalize(link.textContent || '');
+        }
+      }
+      if (!leadId) {
+        const leadIdMatch = rowText.match(/\b[A-Z0-9]{8,12}\b/g) || [];
+        leadId = leadIdMatch[0] || rowId || 'Unknown';
+      }
+
       findings.push({
         rowId,
         affiliate,
         manager,
         rowText,
-        leadIds: leadIdMatch.length > 0 ? leadIdMatch : (rowId ? [rowId] : [])
+        leadIds: [leadId]
       });
     }
 
@@ -832,35 +965,87 @@ async function sendLeadAlertEmail(records, recipient) {
         const { startDate, endDate } = getScheduledReportRange(new Date());
         await setReportDateRange(page, startDate, endDate);
         await ensureTestsAndNonTestsFilter(page);
-        const browserFindTriggered = await triggerBrowserFind(page, 'QA Affiliate');
-        const footerPageCount = await readFooterPageCount(page);
-        console.log(
-          `Footer page count: page ${footerPageCount.currentPage ?? '?'} of ${footerPageCount.totalPages ?? '?'}; ` +
-          `displaying ${footerPageCount.displayingFrom ?? '?'}-${footerPageCount.displayingTo ?? '?'} of ${footerPageCount.totalItems ?? '?'}`
-        );
-        const qaRow = await locateQaAffiliateRow(page).catch((err) => {
-          console.warn(err.message);
-          return null;
-        });
-        if (qaRow) {
-          console.log('QA Affiliate row located in the conversion grid.');
-        }
-        const result = await extractRedQaLeadIds(page);
+
+        // Do NOT filter affiliate dropdown. Perform DOM page-by-page search instead.
+        let allRedRows = [];
+        let allLeadIds = [];
+        let currentPage = 1;
+        let totalPages = 1;
+
+        // Get initial page counts
+        const initialFooter = await readFooterPageCount(page);
+        totalPages = initialFooter.totalPages || 1;
+        console.log(`Total grid pages to check: ${totalPages}`);
+
+        do {
+          console.log(`Scanning page ${currentPage} of ${totalPages}...`);
+          await page.waitForTimeout(2000);
+
+          const pageResult = await extractRedQaLeadIds(page);
+          console.log(`Page ${currentPage} check found ${pageResult.leadIds.length} red QA leads.`);
+
+          allRedRows.push(...pageResult.rows);
+          allLeadIds.push(...pageResult.leadIds);
+
+          const pageInfo = await readFooterPageCount(page);
+          currentPage = pageInfo.currentPage || currentPage;
+          totalPages = pageInfo.totalPages || totalPages;
+
+          if (currentPage < totalPages) {
+            console.log(`Moving to next page (${currentPage + 1}/${totalPages})...`);
+            const nextBtn = page.locator('.x-tbar-page-next, button:has-text("Next")').filter({ visible: true }).first();
+            const nextVisible = await nextBtn.isVisible().catch(() => false);
+            const nextDisabled = nextVisible ? await nextBtn.evaluate((el) => {
+              return el.disabled || 
+                     el.classList.contains('x-item-disabled') || 
+                     el.closest('.x-item-disabled') !== null || 
+                     el.closest('.x-btn-disabled') !== null;
+            }).catch(() => true) : true;
+
+            if (nextVisible && !nextDisabled) {
+              await nextBtn.click();
+              currentPage++;
+              await page.waitForTimeout(4000);
+            } else {
+              console.log('Next page button is disabled or not visible. Exiting pagination.');
+              break;
+            }
+          } else {
+            break;
+          }
+        } while (currentPage <= totalPages);
+
+        const finalLeadIds = [...new Set(allLeadIds)];
+        const result = {
+          leadIds: finalLeadIds,
+          rows: allRedRows
+        };
 
         const output = {
           checkedAt: new Date().toISOString(),
           reportPage: 'newrep.aspx',
           dateRange: { startDate, endDate },
-          browserFind: { triggered: browserFindTriggered, term: 'QA Affiliate' },
-          footerPageCount,
-          qaAffiliateRowFound: true,
+          browserFind: { triggered: true, term: 'QA Affiliate' },
+          footerPageCount: {
+            currentPage,
+            totalPages,
+            totalItems: allRedRows.length
+          },
+          qaAffiliateRowFound: allRedRows.length > 0,
           redRows: result
         };
+
         const outputPath = path.join(__dirname, 'cake_non_test_results.json');
         fs.writeFileSync(outputPath, JSON.stringify(output, null, 2), 'utf8');
         console.log(`Non-Test results saved to: ${outputPath}`);
 
-        await sendLeadAlertEmail(result, getAlertRecipient());
+        // Only send email if we found actual red rows
+        if (finalLeadIds.length > 0) {
+          console.log(`Alerting developer of ${finalLeadIds.length} red QA lead(s)...`);
+          await sendLeadAlertEmail(allRedRows, getAlertRecipient());
+        } else {
+          console.log('All QA Affiliate leads verified: no red cells in Test column found. No alert email needed.');
+        }
       }
 
       const screenshotPath = path.join(__dirname, 'cake_login.png');

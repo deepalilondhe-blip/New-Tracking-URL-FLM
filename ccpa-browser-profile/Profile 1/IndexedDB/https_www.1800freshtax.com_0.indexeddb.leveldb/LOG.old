@@ -1,0 +1,13 @@
+2026/06/15-18:02:10.595 56c Reusing MANIFEST C:\Users\Deepali_Londhe\Desktop\New Tracking URL\ccpa-browser-profile\Profile 1\IndexedDB\https_www.1800freshtax.com_0.indexeddb.leveldb/MANIFEST-000001
+2026/06/15-18:02:10.596 56c Recovering log #7
+2026/06/15-18:02:10.596 56c Reusing old log C:\Users\Deepali_Londhe\Desktop\New Tracking URL\ccpa-browser-profile\Profile 1\IndexedDB\https_www.1800freshtax.com_0.indexeddb.leveldb/000007.log 
+2026/06/15-18:02:10.620 1a88 Level-0 table #11: started
+2026/06/15-18:02:10.623 1a88 Level-0 table #11: 1003 bytes OK
+2026/06/15-18:02:10.625 1a88 Delete type=0 #7
+2026/06/15-18:02:10.626 1768 Manual compaction at level-0 from '\x00\x04\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x05\x00\x00\x00' @ 0 : 0; will stop at '\x00\x04\x00\x00\xc8\x06\x00a\x00d\x00r\x00o\x00l\x00l' @ 212 : 1
+2026/06/15-18:02:10.626 1768 Compacting 1@0 + 1@1 files
+2026/06/15-18:02:10.629 1768 Generated table #12@0: 16 keys, 491 bytes
+2026/06/15-18:02:10.629 1768 Compacted 1@0 + 1@1 files => 491 bytes
+2026/06/15-18:02:10.630 1768 compacted to: files[ 0 1 1 0 0 0 0 ]
+2026/06/15-18:02:10.631 1768 Delete type=2 #11
+2026/06/15-18:02:10.631 1768 Manual compaction at level-0 from '\x00\x04\x00\x00\xc8\x06\x00a\x00d\x00r\x00o\x00l\x00l' @ 212 : 1 .. '\x00\x05\x00\x00\x00' @ 0 : 0; will stop at (end)

@@ -27,6 +27,7 @@ const URL = 'http://www.1800freshtax.com/ccpa/';
     args: [
       '--disable-blink-features=AutomationControlled',
       '--no-sandbox',
+      '--disable-features=AutofillAddressEnabled,AutofillCreditCardEnabled,AutofillPasswordEnabled',
       '--window-size=1280,900'
     ],
     viewport: { width: 1280, height: 900 },
@@ -134,10 +135,13 @@ const URL = 'http://www.1800freshtax.com/ccpa/';
   // Phone (masked input — use click + type character by character)
   const phoneField = await page.$('input[name*="phone" i], input[type="tel"], input[placeholder*="Phone" i], input[id*="phone" i]');
   if (phoneField) {
-    await phoneField.click();
+    await phoneField.focus();
     await page.waitForTimeout(300);
-    // Select all existing content first
-    await page.keyboard.press('Home');
+    // Select all existing content first to clear it
+    await page.keyboard.down('Control');
+    await page.keyboard.press('a');
+    await page.keyboard.up('Control');
+    await page.keyboard.press('Delete');
     await page.waitForTimeout(200);
     // Type digits only (mask will auto-add dashes)
     const digitsOnly = FORM_DATA.phone.replace(/\D/g, '');

@@ -1,0 +1,7 @@
+2026/06/15-18:03:12.916 a48 Reusing MANIFEST C:\Users\Deepali_Londhe\Desktop\New Tracking URL\ccpa-browser-profile\Default\IndexedDB\https_www.1800freshtax.com_0.indexeddb.leveldb/MANIFEST-000001
+2026/06/15-18:03:12.916 a48 Recovering log #3
+2026/06/15-18:03:12.916 a48 Reusing old log C:\Users\Deepali_Londhe\Desktop\New Tracking URL\ccpa-browser-profile\Default\IndexedDB\https_www.1800freshtax.com_0.indexeddb.leveldb/000003.log 
+2026/06/15-18:03:12.924 a48 Level-0 table #5: started
+2026/06/15-18:03:12.926 a48 Level-0 table #5: 1063 bytes OK
+2026/06/15-18:03:12.928 a48 Delete type=0 #3
+2026/06/15-18:03:12.929 a48 Manual compaction at level-0 from '\x00\x01\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x02\x00\x00\x00' @ 0 : 0; will stop at (end)

@@ -1,0 +1,16 @@
+{
+  "executionTime": "2026-06-11T09:35:49.276Z",
+  "urlNameProcessed": "Second Chance",
+  "dateRangeProcessed": {
+    "startDate": "06/10/2026",
+    "endDate": "06/11/2026",
+    "displayStart": "2026-06-10",
+    "displayEnd": "2026-06-11"
+  },
+  "summary": {
+    "totalLeadsProcessed": 0,
+    "passedLeads": 0,
+    "failedLeads": 0
+  },
+  "results": []
+}

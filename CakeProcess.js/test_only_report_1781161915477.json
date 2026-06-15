@@ -1,0 +1,16 @@
+{
+  "executionTime": "2026-06-11T07:11:55.477Z",
+  "dateRange": {
+    "start": "2026-06-10",
+    "end": "2026-06-11"
+  },
+  "recordsFound": 0,
+  "uniqueIPs": [],
+  "validationResults": [],
+  "summary": {
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "failedLeadIds": []
+  }
+}

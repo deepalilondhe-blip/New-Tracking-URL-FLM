@@ -122,7 +122,7 @@ const DOMAIN_TO_FIND = '1800freshtax';
 
   if (tableData.results.length > 0) {
     // Get the most recent matching row
-    const latestMatch = tableData.results[tableData.results.length - 1];
+    const latestMatch = tableData.results[0];
     const cells = latestMatch.cells;
     const headers = tableData.headers;
 

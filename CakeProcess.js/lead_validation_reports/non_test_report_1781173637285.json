@@ -1,0 +1,137 @@
+{
+  "executionTime": "2026-06-11T10:27:17.285Z",
+  "urlNameProcessed": "TRA",
+  "dateRangeProcessed": {
+    "startDate": "06/10/2026",
+    "endDate": "06/11/2026",
+    "displayStart": "2026-06-10",
+    "displayEnd": "2026-06-11"
+  },
+  "summary": {
+    "totalLeadsProcessed": 5,
+    "passedLeads": 0,
+    "failedLeads": 5
+  },
+  "results": [
+    {
+      "leadId": "B9E67D3F",
+      "firstNameVal": "Passed",
+      "lastNameVal": "Passed",
+      "emailVal": "Passed",
+      "pixelFired": "",
+      "disposition": "1",
+      "pixelLogStatus": "Passed",
+      "saleInfoStatus": "Passed",
+      "taxDebt": "1",
+      "neustar": "",
+      "neustarDisp": "",
+      "verticalStatus": "Failed",
+      "emailOversight": "",
+      "emailOversightStatus": "Failed",
+      "overallStatus": "Failed",
+      "reasons": [
+        "Tax debt < 10,000 but Neustar is \"\" (expected \"Under\")",
+        "Email Oversight is \"\" (expected \"Verified\")",
+        "Lead ID not found in CDB listing"
+      ],
+      "urlName": "TRA",
+      "cdbValidation": "Failed"
+    },
+    {
+      "leadId": "F7E5EB44",
+      "firstNameVal": "Passed",
+      "lastNameVal": "Passed",
+      "emailVal": "Passed",
+      "pixelFired": "",
+      "disposition": "1",
+      "pixelLogStatus": "Passed",
+      "saleInfoStatus": "Passed",
+      "taxDebt": "1",
+      "neustar": "",
+      "neustarDisp": "",
+      "verticalStatus": "Failed",
+      "emailOversight": "",
+      "emailOversightStatus": "Failed",
+      "overallStatus": "Failed",
+      "reasons": [
+        "Tax debt < 10,000 but Neustar is \"\" (expected \"Under\")",
+        "Email Oversight is \"\" (expected \"Verified\")",
+        "Lead ID not found in CDB listing"
+      ],
+      "urlName": "TRA",
+      "cdbValidation": "Failed"
+    },
+    {
+      "leadId": "9F4EAE5C",
+      "firstNameVal": "Passed",
+      "lastNameVal": "Passed",
+      "emailVal": "Passed",
+      "pixelFired": "",
+      "disposition": "1",
+      "pixelLogStatus": "Passed",
+      "saleInfoStatus": "Passed",
+      "taxDebt": "1",
+      "neustar": "",
+      "neustarDisp": "",
+      "verticalStatus": "Failed",
+      "emailOversight": "",
+      "emailOversightStatus": "Failed",
+      "overallStatus": "Failed",
+      "reasons": [
+        "Tax debt < 10,000 but Neustar is \"\" (expected \"Under\")",
+        "Email Oversight is \"\" (expected \"Verified\")",
+        "Lead ID not found in CDB listing"
+      ],
+      "urlName": "TRA",
+      "cdbValidation": "Failed"
+    },
+    {
+      "leadId": "D0106CE4",
+      "firstNameVal": "Passed",
+      "lastNameVal": "Passed",
+      "emailVal": "Passed",
+      "pixelFired": "",
+      "disposition": "1",
+      "pixelLogStatus": "Passed",
+      "saleInfoStatus": "Passed",
+      "taxDebt": "1",
+      "neustar": "",
+      "neustarDisp": "",
+      "verticalStatus": "Failed",
+      "emailOversight": "",
+      "emailOversightStatus": "Failed",
+      "overallStatus": "Failed",
+      "reasons": [
+        "Tax debt < 10,000 but Neustar is \"\" (expected \"Under\")",
+        "Email Oversight is \"\" (expected \"Verified\")",
+        "Lead ID not found in CDB listing"
+      ],
+      "urlName": "TRA",
+      "cdbValidation": "Failed"
+    },
+    {
+      "leadId": "4945AA2E",
+      "firstNameVal": "Passed",
+      "lastNameVal": "Passed",
+      "emailVal": "Passed",
+      "pixelFired": "",
+      "disposition": "1",
+      "pixelLogStatus": "Passed",
+      "saleInfoStatus": "Passed",
+      "taxDebt": "1",
+      "neustar": "",
+      "neustarDisp": "",
+      "verticalStatus": "Failed",
+      "emailOversight": "",
+      "emailOversightStatus": "Failed",
+      "overallStatus": "Failed",
+      "reasons": [
+        "Tax debt < 10,000 but Neustar is \"\" (expected \"Under\")",
+        "Email Oversight is \"\" (expected \"Verified\")",
+        "Lead ID not found in CDB listing"
+      ],
+      "urlName": "TRA",
+      "cdbValidation": "Failed"
+    }
+  ]
+}

@@ -72,7 +72,7 @@ async function extractDbid(page, domainQuery) {
   }, domainQuery);
 
   if (tableData.results && tableData.results.length > 0) {
-    const latestMatch = tableData.results[tableData.results.length - 1];
+    const latestMatch = tableData.results[0];
     const cells = latestMatch.cells;
     const headers = tableData.headers;
     const idIndex = headers.findIndex(h => h.toLowerCase() === 'id');

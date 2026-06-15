@@ -43,3 +43,8 @@ URL,LeadID,Validation Status,CDB Status,Execution Date
 "https://app.forwardleapmarketing.com/newaffl.aspx","F942A764","FAIL","False","3/6/2026 10:43:09"
 "https://app.forwardleapmarketing.com/newaffl.aspx","4939E71F","FAIL","False","5/6/2026 16:09:25"
 "https://app.forwardleapmarketing.com/newaffl.aspx","D8BBC338","FAIL","True","8/6/2026 11:37:49"
+
+"2026-06-11T10:42:59.646Z","https://app.forwardleapmarketing.com/","TEST_1781174560958","NO","0","NOT FOUND","YES"
+"2026-06-11T10:46:00.214Z","https://app.forwardleapmarketing.com/","TEST_1781174741574","NO","0","NOT FOUND","YES"
+"2026-06-11T10:48:56.244Z","https://app.forwardleapmarketing.com/","B9E67D3F","NO","0","NOT FOUND","YES"
+"2026-06-11T10:58:27.278Z","https://app.forwardleapmarketing.com/","75706B4E","NO","0","NOT FOUND","YES"

@@ -450,7 +450,7 @@ Answer the user's prompt using the real-time data above. Be direct, clear, and c
         } else if (brand === 'fsi-ppc2' || brand === 'ftd-ppc2') {
             if (raw <= 9999) expectedCake = "5000";
             else if (raw <= 19999) expectedCake = "10000";
-            else if (raw <= 50000) expectedCake = "20000";
+            else if (raw <= 50000 && !cleanVal.includes('more') && !cleanVal.includes('+') && !cleanVal.includes('above')) expectedCake = "20000";
             else expectedCake = "50000";
         } else if (brand === '1803-fresh-tax-afr') {
             if (raw <= 9999) expectedCake = "5000";

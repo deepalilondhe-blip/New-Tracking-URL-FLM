@@ -1,4 +1,4 @@
-const { chromium } = require('playwright');
+const { firefox } = require('playwright');
 const FormPage = require('./pages/FormPage');
 const { processLead } = require('./utils/leadProcessor');
 const path = require('path');
@@ -13,7 +13,7 @@ console.log('✅ Sheet Name: VTS-Original');
     const traceDir = path.join(__dirname, 'traces');
     if (!fs.existsSync(traceDir)) fs.mkdirSync(traceDir);
 
-    const browser = await chromium.launch({ headless: false, slowMo: 800 });
+    const browser = await firefox.launch({ headless: false, slowMo: 800 });
 
     // Create a context with video recording enabled
     const context = await browser.newContext({
@@ -30,13 +30,18 @@ console.log('✅ Sheet Name: VTS-Original');
             name: "VTS Original",
             url: "https://mlfvts-trk.com/?a=659&oc=323&c=569&s1=",
             sheet: "VTS-Original",
-            sliderAmount: "70000",
-            state: "Idaho",
+            sliderAmount: "82000",
+            state: "Colorado",
             firstName: "ckmtestpixel",
             lastName: "ckmtestpixel",
             email: "ckmtestpixel@gmail.com",
-            phone: "406-314-1715"
+            phone: "720-921-7391"
         };
+
+        // Enforce the user-specified overrides so rotational scheduler logic is bypassed
+        process.env.OVERRIDE_SLIDER = brand.sliderAmount;
+        process.env.OVERRIDE_STATE = brand.state;
+        process.env.OVERRIDE_PHONE = brand.phone;
 
         const result = await processLead(brand, page);
         console.log('✅ VTS Original Test completed:', result);

@@ -1,0 +1,26 @@
+[2026-06-11T07:13:05.024Z] [INFO] Cake Test Only Validation Process Started
+[2026-06-11T07:13:05.025Z] [INFO] Launching browser
+[2026-06-11T07:13:05.671Z] [INFO] Navigating to Cake CRM
+[2026-06-11T07:13:20.574Z] [INFO] Checking if login is required
+[2026-06-11T07:13:20.602Z] [INFO] No login form found - already logged in
+[2026-06-11T07:13:20.602Z] [INFO] Navigating to Cake Reports > Conversions
+[2026-06-11T07:13:22.618Z] [INFO] Looking for Conversions menu item...
+[2026-06-11T07:13:22.624Z] [WARN] Conversions link not directly visible - trying REPORTS menu
+[2026-06-11T07:13:24.398Z] [INFO] ✓ Clicked REPORTS menu
+[2026-06-11T07:13:24.960Z] [WARN] Menu navigation failed - trying direct URL navigation
+[2026-06-11T07:13:24.962Z] [INFO] Navigating directly to: https://app.forwardleapmarketing.com/reports/conversion
+[2026-06-11T07:13:27.406Z] [INFO] ✓ Successfully navigated to Conversions page via direct URL
+[2026-06-11T07:13:27.406Z] [INFO] Setting date range from scheduler
+[2026-06-11T07:13:27.407Z] [INFO] Date range: 2026-06-10 to 2026-06-11
+[2026-06-11T07:13:27.409Z] [WARN] Found only 0 date input fields
+[2026-06-11T07:13:28.425Z] [INFO] Applying Test Only filter
+[2026-06-11T07:13:28.435Z] [WARN] Could not apply Test Only filter - checking page state
+[2026-06-11T07:13:30.440Z] [ERROR] Error applying Test Only filter: ENOENT: no such file or directory, mkdir 'C:\Users\Deepali_Londhe\Desktop\New Tracking URL\CakeProcess.js\C:\Users\Deepali_Londhe\Desktop\New Tracking URL\CakeProcess.js\test_only_screenshots'
+[2026-06-11T07:13:30.441Z] [INFO] Extracting records from conversion grid using Ctrl+F
+[2026-06-11T07:13:30.443Z] [WARN] No test records found
+[2026-06-11T07:13:30.445Z] [INFO] Generating execution report
+[2026-06-11T07:13:30.446Z] [INFO] Report Summary: 0 total, 0 passed, 0 failed
+[2026-06-11T07:13:30.446Z] [INFO] Execution completed in 25.42 seconds
+[2026-06-11T07:13:30.447Z] [INFO] Summary: 0 passed, 0 failed
+[2026-06-11T07:13:30.597Z] [INFO] Browser closed
+[2026-06-11T07:13:30.598Z] [INFO] Process finished

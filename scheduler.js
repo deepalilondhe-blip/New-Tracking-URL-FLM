@@ -18,6 +18,14 @@ if (fs.existsSync(configPath)) {
   }
 }
 
+// Support filtering campaigns via command line argument (e.g. node scheduler.js --campaigns original,aftr-main)
+const campaignFilterArg = process.argv.includes('--campaigns') ? process.argv[process.argv.indexOf('--campaigns') + 1] : null;
+if (campaignFilterArg) {
+  const allowedIds = campaignFilterArg.split(',').map(id => id.trim().toLowerCase());
+  campaigns = campaigns.filter(c => allowedIds.includes(c.id.toLowerCase()));
+  console.log(`🔍 [Filter] Scheduler running only: ${campaigns.map(c => c.name).join(', ')}`);
+}
+
 // Map each campaign config to a Tablet-only execution matrix
 const runnerScripts = campaigns.map(c => {
   const matrix = [
@@ -74,18 +82,25 @@ function runScript(campaignId, viewport, browserEngine = 'chromium', label = 'St
 
       if (error || evidence.success === false) {
         const errorMsg = evidence.error || error?.message || 'Unknown execution error';
-        console.error(`❌ [${formatTimestamp()}] FAILED: ${displayLabel}`);
+        const leadIdStr = evidence.leadId ? ` | Lead ID: ${evidence.leadId}` : '';
+        console.error(`❌ [${formatTimestamp()}] FAILED: ${displayLabel}${leadIdStr}`);
         return resolve({ 
           campaignId, viewport, browser: browserEngine, label, 
           success: false, 
           error: errorMsg,
+          leadId: evidence.leadId || null,
           screenshot: evidence.screenshot,
           video: evidence.video
         });
       }
       
-      console.log(`✅ [${formatTimestamp()}] COMPLETED: ${displayLabel}`);
-      return resolve({ campaignId, viewport, browser: browserEngine, label, success: true });
+      const leadIdStr = evidence.leadId ? ` | Lead ID: ${evidence.leadId}` : '';
+      console.log(`✅ [${formatTimestamp()}] COMPLETED: ${displayLabel}${leadIdStr}`);
+      return resolve({ 
+        campaignId, viewport, browser: browserEngine, label, 
+        success: true, 
+        leadId: evidence.leadId || null 
+      });
     });
 
     // Pipe outputs to scheduler terminal
@@ -502,7 +517,11 @@ async function sendProfessionalDailyReport(summary) {
             <tbody>
               ${summary.runs.slice(-12).map(r => `
                 <tr style="border-bottom: 1px solid #f8fafc;">
-                  <td style="padding: 12px 0; font-weight: 700; color: #1e293b;">${r.campaignId.toUpperCase()} <span style="font-weight: 400; color: #94a3b8; font-size: 10px;">[${r.viewport}]</span></td>
+                  <td style="padding: 12px 0; font-weight: 700; color: #1e293b;">
+                    ${r.campaignId.toUpperCase()} 
+                    <span style="font-weight: 400; color: #94a3b8; font-size: 10px;">[${r.viewport}]</span>
+                    ${r.leadId ? `<br/><span style="font-weight: normal; font-size: 11px; color: #64748b;">ID: ${r.leadId}</span>` : ''}
+                  </td>
                   <td style="padding: 12px 0; text-align: center;">
                     <span style="padding: 4px 10px; border-radius: 20px; font-weight: 800; font-size: 10px; ${r.success ? 'background: #dcfce7; color: #166534;' : 'background: #fee2e2; color: #991b1b;'}">
                       ${r.success ? 'SHIELDED' : 'EXPOSED'}
