@@ -328,6 +328,12 @@ async function processLead(brandConfig, page) {
          if (numVal < 50000) return '20,000';
          return '50,000';
       }
+      if (bId === 'fsi-ppc2' || bId === 'ftd-ppc2') {
+         if (numVal <= 9999) return '5,000';
+         if (numVal <= 19999) return '10,000';
+         if (numVal <= 50000) return '20,000';
+         return '50,000';
+      }
       if (bId === 'fth-questionnaire') {
          if (numVal < 5000) return '4,000';
          if (numVal < 7500) return '5,000';
@@ -368,7 +374,7 @@ async function processLead(brandConfig, page) {
         cakeIncomeOverride = '4,000';
       }
       console.log(`💡 [cakeIncomeOverride] TRA Link: ${uiSelectedSliderNum} → ${cakeIncomeOverride}`);
-    } else if (brandConfig.sliderOptions && Array.isArray(brandConfig.sliderOptions)) {
+    } else if ((brandConfig.sliderOptions && Array.isArray(brandConfig.sliderOptions)) || brandId === 'fsi-ppc2' || brandId === 'ftd-ppc2') {
       // For sliderOptions (dropdown) campaigns, map from the label text
       const lbl = (finalSlider || '').trim().toLowerCase();
       
