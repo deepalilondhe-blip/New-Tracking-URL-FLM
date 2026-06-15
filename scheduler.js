@@ -18,11 +18,11 @@ if (fs.existsSync(configPath)) {
   }
 }
 
-// Map each campaign config to a Desktop-only execution matrix
+// Map each campaign config to a Tablet-only execution matrix
 const runnerScripts = campaigns.map(c => {
   const matrix = [
-    // --- Desktop ---
-    { campaignId: c.id, viewport: 'desktop', browser: 'chromium', label: 'Desktop - Chrome' }
+    // --- Tablet ---
+    { campaignId: c.id, viewport: 'tablet', browser: 'chromium', label: 'Tablet - Chrome' }
   ];
 
   return matrix;
@@ -298,7 +298,7 @@ async function runBatch() {
   }
 
   console.log(`\n================================================================`);
-  console.log(`⚡ Processing ${allRuns.length} Tasks in Parallel (Concurrency: 4)`);
+  console.log(`⚡ Processing ${allRuns.length} Tasks Sequentially (One by One)`);
   console.log(`================================================================`);
 
   let runIndex = 0;
@@ -329,13 +329,8 @@ async function runBatch() {
     }
   }
 
-  // Launch parallel workers
-  const CONCURRENCY = 4; // Safe limit for simultaneous headed browsers
-  const workers = [];
-  for (let i = 0; i < CONCURRENCY; i++) {
-    workers.push(worker());
-  }
-  await Promise.all(workers);
+  // Launch sequential worker
+  await worker();
 
   const durationMinutes = ((Date.now() - startTime) / (1000 * 60)).toFixed(2);
   const total = results.length;
