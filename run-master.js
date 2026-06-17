@@ -95,11 +95,28 @@ if (viewportArg === 'api') {
     });
 
     try {
+      // Implement strict randomization for every execution
+      let dynamicSliderAmount = campaignConfig.sliderAmount;
+      if (campaignConfig.sliderOptions && Array.isArray(campaignConfig.sliderOptions)) {
+        const randomIndex = Math.floor(Math.random() * campaignConfig.sliderOptions.length);
+        dynamicSliderAmount = campaignConfig.sliderOptions[randomIndex];
+        console.log(`🎲 [Randomizer] Selected random dropdown option: "${dynamicSliderAmount}"`);
+      } else {
+        const randomNum = Math.floor(Math.random() * 100) * 1000 + 1000;
+        dynamicSliderAmount = randomNum.toString();
+        console.log(`🎲 [Randomizer] Generated random numeric slider value: ${dynamicSliderAmount}`);
+      }
+
+      if (process.env.OVERRIDE_SLIDER) {
+        dynamicSliderAmount = process.env.OVERRIDE_SLIDER;
+        console.log(`🎲 [Randomizer] Overridden by manual script override: ${dynamicSliderAmount}`);
+      }
+
       const brand = {
         name: campaignConfig.name,
         url: campaignConfig.url,
         sheet: campaignConfig.sheet,
-        sliderAmount: campaignConfig.sliderAmount,
+        sliderAmount: dynamicSliderAmount,
         state: campaignConfig.state,
         phone: campaignConfig.phone
       };
@@ -211,13 +228,30 @@ if (viewportArg === 'api') {
       if (viewportArg === 'tablet') brandSuffix = ' Tablet';
       if (viewportArg === 'mobile') brandSuffix = ' Mobile';
 
+      // Implement strict randomization for every execution
+      let dynamicSliderAmount = campaignConfig.sliderAmount;
+      if (campaignConfig.sliderOptions && Array.isArray(campaignConfig.sliderOptions)) {
+        const randomIndex = Math.floor(Math.random() * campaignConfig.sliderOptions.length);
+        dynamicSliderAmount = campaignConfig.sliderOptions[randomIndex];
+        console.log(`🎲 [Randomizer] Selected random dropdown option: "${dynamicSliderAmount}"`);
+      } else {
+        const randomNum = Math.floor(Math.random() * 100) * 1000 + 1000;
+        dynamicSliderAmount = randomNum.toString();
+        console.log(`🎲 [Randomizer] Generated random numeric slider value: ${dynamicSliderAmount}`);
+      }
+
+      if (process.env.OVERRIDE_SLIDER) {
+        dynamicSliderAmount = process.env.OVERRIDE_SLIDER;
+        console.log(`🎲 [Randomizer] Overridden by manual script override: ${dynamicSliderAmount}`);
+      }
+
       brand = {
         ...campaignConfig,
         id: campaignConfig.id,
         name: `${campaignConfig.name}${brandSuffix}`,
         url: campaignConfig.url,
         sheet: campaignConfig.sheet,
-        sliderAmount: campaignConfig.sliderAmount,
+        sliderAmount: dynamicSliderAmount,
         state: campaignConfig.state,
         phone: campaignConfig.phone,
         skipSecondApi: campaignConfig.skipSecondApi || false
