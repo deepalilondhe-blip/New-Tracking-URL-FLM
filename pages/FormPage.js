@@ -1062,26 +1062,23 @@ class FormPage {
         }
       } else if (cleanDebtVal.includes('less than') || cleanDebtVal.includes('under') || cleanDebtVal.includes('9999') || cleanDebtVal.includes('9,999') || cleanDebtVal.includes('0-9999') || cleanDebtVal.includes('0 - 9999')) {
         numericDebt = 5000;
-      } else if (cleanDebtVal.includes('10') && cleanDebtVal.includes('19')) {
+      } else if ((cleanDebtVal.includes('10') && cleanDebtVal.includes('19')) && !cleanDebtVal.match(/^1000$/)) {
         numericDebt = 10000;
-      } else if (cleanDebtVal.includes('20') && cleanDebtVal.includes('49')) {
+      } else if ((cleanDebtVal.includes('20') && cleanDebtVal.includes('49')) && !cleanDebtVal.match(/^2000$/)) {
         numericDebt = 50000;
       } else if (cleanDebtVal.includes('50') && (cleanDebtVal.includes('99') || cleanDebtVal.includes('more') || cleanDebtVal.includes('above') || cleanDebtVal.includes('+'))) {
         numericDebt = 100000;
-      } else if (cleanDebtVal.includes('100') || cleanDebtVal.includes('1,000') || cleanDebtVal.includes('million') || cleanDebtVal.includes('100k')) {
+      } else if (cleanDebtVal.includes('100,000') || cleanDebtVal.includes('100k') || cleanDebtVal.includes('million')) {
         numericDebt = 100000;
       } else {
         const match = cleanDebtVal.match(/\d+/);
         if (match) {
           const firstVal = parseInt(match[0]);
-          if (firstVal < 10000) {
+          // Match the leadProcessor.js exact floor logic
+          if (firstVal < 5000) {
             numericDebt = 5000;
-          } else if (firstVal < 20000) {
-            numericDebt = 10000;
-          } else if (firstVal < 50000) {
-            numericDebt = 50000;
           } else {
-            numericDebt = 100000;
+            numericDebt = firstVal;
           }
         }
       }
@@ -1094,7 +1091,7 @@ class FormPage {
           // Update all possible hidden debt field names with the selected slider value
           const debtFieldNames = ['tax_debt', 'debt_amount', 'debt', 'debt_value', 'debt_range', 'slider_value', 'amount', 'debt_range_value'];
           debtFieldNames.forEach(name => {
-            const fields = document.querySelectorAll(`input[name="${name}"], input[id="${name}"], select[name="${name}"], select[id="${name}"]`);
+            const fields = document.querySelectorAll(`input[name="${name}"], input[id="${name}"], select[name="${name}"], select[id="${name}"], input.taxval, input.debt-select`);
             fields.forEach(field => {
               if (field.tagName.toLowerCase() === 'select') {
                 let found = false;

@@ -369,7 +369,13 @@ async function processLead(brandConfig, page) {
       if (uiSelectedSliderNum >= 5000) {
         cakeIncomeOverride = uiSelectedSliderNum.toLocaleString();
       } else {
-        cakeIncomeOverride = '4,000';
+        // Specific TRA links need a 5,000 floor instead of the standard 4,000 floor
+        const tra5kFloorLinks = ['ppc', 'ppc-st', 'ppc-st2', 'ppc-m-ca', 'ppc-cr', 'ppc-fs'];
+        if (tra5kFloorLinks.includes(brandId)) {
+          cakeIncomeOverride = '5,000';
+        } else {
+          cakeIncomeOverride = '4,000';
+        }
       }
       console.log(`💡 [cakeIncomeOverride] TRA Link: ${uiSelectedSliderNum} → ${cakeIncomeOverride}`);
     } else if ((brandConfig.sliderOptions && Array.isArray(brandConfig.sliderOptions)) || brandId === 'fsi-ppc2' || brandId === 'ftd-ppc2') {
