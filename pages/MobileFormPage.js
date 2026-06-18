@@ -1,4 +1,5 @@
-require('dotenv').config();
+const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, '..', '.env') });
 const aiAgent = require('../utils/flmAgent');
 
 /**
@@ -422,11 +423,13 @@ class MobileFormPage {
     try {
       let taxDebtSelect;
       // ===== STEP 1: DEBT AMOUNT =====
-      await this.waitForSpinner();
-      console.log(`🔘 [Mobile] Step 1: Selecting Debt Amount (${sliderAmount})`);
-
-      try {
-        let selected = false;
+      if (this.brandId === 'fth-questionnaire') {
+        console.log('🔘 [Mobile FTH Questionnaire] Skipping Step 1 slider selection (answered dynamically during steps).');
+      } else {
+        await this.waitForSpinner();
+        console.log(`🔘 [Mobile] Step 1: Selecting Debt Amount (${sliderAmount})`);
+        try {
+          let selected = false;
 
 
 
@@ -756,6 +759,7 @@ class MobileFormPage {
       }
 
       await this.clickNextButton('.next-btn1, .btn-next');
+      }
 
       // ==================================================
       // 🔹 DYNAMIC CHOICE/INTERMEDIATE STEPS TRAVERSAL
@@ -795,10 +799,13 @@ class MobileFormPage {
         ];
 
         let clickedChoice = false;
-        const activeStepId = await this.page.evaluate(() => {
+        const activeStepInfo = await this.page.evaluate(() => {
           const el = document.querySelector('.tab-pane.active');
-          return el ? el.id : '';
+          if (!el) return { id: '', h2: '' };
+          const h2 = el.querySelector('h2') ? el.querySelector('h2').innerText.trim().replace(/\s+/g, ' ') : '';
+          return { id: el.id || '', h2 };
         });
+        const activeStepId = activeStepInfo.id;
         
         let stepOverrideVal = null;
         if (data.stepOverrides && activeStepId && data.stepOverrides[activeStepId]) {
@@ -941,6 +948,19 @@ class MobileFormPage {
             choiceStepCount++;
             if (choiceStepCount >= 1 && choiceStepCount <= 10) {
               this[`step${choiceStepCount}`] = cleanText;
+            }
+            let isDebtQuestion = true;
+            if (this.brandId === 'fth-questionnaire') {
+              isDebtQuestion = (activeStepId === 'step3' || 
+                                (activeStepInfo && activeStepInfo.h2 && 
+                                 (activeStepInfo.h2.toLowerCase().includes('how much do you owe') || 
+                                  activeStepInfo.h2.toLowerCase().includes('approximate'))));
+            }
+            if (isDebtQuestion && cleanText && (cleanText.includes('$') || cleanText.includes('less') || cleanText.includes('more') || cleanText.toLowerCase().includes('under') || cleanText.includes('<') || cleanText.includes('>'))) {
+              if (cleanText.includes('4,000') || cleanText.includes('5,000') || cleanText.includes('7,500') || cleanText.includes('7,400') || cleanText.includes('9,999') || cleanText.includes('10,000') || cleanText.includes('19,999') || cleanText.includes('20,000') || cleanText.includes('50,000')) {
+                this.selectedSliderAmount = cleanText;
+                console.log(`🎯 [MobileFormPage] Live-captured selected slider amount from questionnaire step: "${this.selectedSliderAmount}"`);
+              }
             }
             clickedChoice = true;
 
@@ -1309,22 +1329,14 @@ class MobileFormPage {
           }
         }
       } else if (this.brandId === 'fth-questionnaire') {
-        if (cleanDebtVal.includes('less than') || cleanDebtVal.includes('under') || cleanDebtVal.includes('<')) {
-          numericDebt = 4000;
-        } else if (cleanDebtVal.includes('5,000') || cleanDebtVal.includes('5000')) {
-          numericDebt = 5000;
-        } else if (cleanDebtVal.includes('7,500') || cleanDebtVal.includes('7500') || cleanDebtVal.includes('7,400') || cleanDebtVal.includes('7400')) {
-          numericDebt = 7500;
-        } else if (cleanDebtVal.includes('10') && cleanDebtVal.includes('19')) {
-          numericDebt = 10000;
-        } else if (cleanDebtVal.includes('20') && (cleanDebtVal.includes('49') || cleanDebtVal.includes('50'))) {
-          numericDebt = 20000;
-        } else if (cleanDebtVal.includes('50') && (cleanDebtVal.includes('more') || cleanDebtVal.includes('>'))) {
-          numericDebt = 50000;
-        } else {
-          const match = cleanDebtVal.match(/\d+/);
-          if (match) {
-            const firstVal = parseInt(match[0]);
+        const match = cleanDebtVal.match(/\d+/);
+        if (match) {
+          const firstVal = parseInt(match[0]);
+          if (cleanDebtVal.includes('less than') || cleanDebtVal.includes('under') || cleanDebtVal.includes('<')) {
+            numericDebt = 4000;
+          } else if (cleanDebtVal.includes('more') || cleanDebtVal.includes('above') || cleanDebtVal.includes('>')) {
+            numericDebt = 50000;
+          } else {
             if (firstVal < 5000) {
               numericDebt = 4000;
             } else if (firstVal < 7500) {
@@ -1333,7 +1345,7 @@ class MobileFormPage {
               numericDebt = 7500;
             } else if (firstVal < 20000) {
               numericDebt = 10000;
-            } else if (firstVal <= 50000) {
+            } else if (firstVal < 50000) {
               numericDebt = 20000;
             } else {
               numericDebt = 50000;
