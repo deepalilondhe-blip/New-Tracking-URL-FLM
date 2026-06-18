@@ -30,7 +30,7 @@ console.log('✅ Sheet Name: VTS-Original');
             name: "VTS Original",
             url: "https://mlfvts-trk.com/?a=659&oc=323&c=569&s1=",
             sheet: "VTS-Original",
-            sliderAmount: "82000",
+            sliderAmount: "1000",
             state: "Colorado",
             firstName: "ckmtestpixel",
             lastName: "ckmtestpixel",

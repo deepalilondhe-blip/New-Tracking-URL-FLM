@@ -1,5 +1,5 @@
 {
-  "date": "2026-06-15",
+  "date": "2026-06-17",
   "runs": [
     {
       "campaignId": "ftd-x",
@@ -7,7 +7,8 @@
       "browser": "chromium",
       "label": "Tablet - Chrome",
       "success": true,
-      "timestamp": "10:31:10 AM"
+      "leadId": "E58416FA",
+      "timestamp": "11:41:10 AM"
     },
     {
       "campaignId": "fsi-ppc2",
@@ -15,7 +16,8 @@
       "browser": "chromium",
       "label": "Tablet - Chrome",
       "success": true,
-      "timestamp": "10:31:43 AM"
+      "leadId": "40F4BFB8",
+      "timestamp": "11:42:34 AM"
     },
     {
       "campaignId": "tra-cpl",
@@ -23,7 +25,8 @@
       "browser": "chromium",
       "label": "Tablet - Chrome",
       "success": true,
-      "timestamp": "10:32:54 AM"
+      "leadId": "A348FB85",
+      "timestamp": "11:44:17 AM"
     },
     {
       "campaignId": "tra-d3",
@@ -31,7 +34,8 @@
       "browser": "chromium",
       "label": "Tablet - Chrome",
       "success": true,
-      "timestamp": "10:33:58 AM"
+      "leadId": "E9A1A447",
+      "timestamp": "11:45:43 AM"
     },
     {
       "campaignId": "ppc-st",
@@ -39,217 +43,8 @@
       "browser": "chromium",
       "label": "Tablet - Chrome",
       "success": true,
-      "timestamp": "10:34:36 AM"
-    },
-    {
-      "campaignId": "ppc-st2",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": false,
-      "error": "Command failed: node -r \"./utils/browser-intercept.js\" run-master.js --campaign \"ppc-st2\" --viewport \"tablet\"\nC:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\utils\\leadProcessor.js:429\r\n    await formPage.submitForm();\r\n    ^^^^^\r\n\r\nSyntaxError: await is only valid in async functions and the top level bodies of modules\r\n    at wrapSafe (node:internal/modules/cjs/loader:1743:18)\r\n    at Module._compile (node:internal/modules/cjs/loader:1786:20)\r\n    at Object..js (node:internal/modules/cjs/loader:1943:10)\r\n    at Module.load (node:internal/modules/cjs/loader:1533:32)\r\n    at Module._load (node:internal/modules/cjs/loader:1335:12)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)\r\n    at Module.require (C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\utils\\browser-intercept.js:81:26)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at Object.<anonymous> (C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\run-master.js:12:25)\r\n\r\nNode.js v24.14.1\r\n",
-      "timestamp": "10:34:37 AM"
-    },
-    {
-      "campaignId": "ppc-m-ca",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": false,
-      "error": "Command failed: node -r \"./utils/browser-intercept.js\" run-master.js --campaign \"ppc-m-ca\" --viewport \"tablet\"\nC:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\utils\\leadProcessor.js:429\r\n    await formPage.submitForm();\r\n    ^^^^^\r\n\r\nSyntaxError: await is only valid in async functions and the top level bodies of modules\r\n    at wrapSafe (node:internal/modules/cjs/loader:1743:18)\r\n    at Module._compile (node:internal/modules/cjs/loader:1786:20)\r\n    at Object..js (node:internal/modules/cjs/loader:1943:10)\r\n    at Module.load (node:internal/modules/cjs/loader:1533:32)\r\n    at Module._load (node:internal/modules/cjs/loader:1335:12)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)\r\n    at Module.require (C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\utils\\browser-intercept.js:81:26)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at Object.<anonymous> (C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\run-master.js:12:25)\r\n\r\nNode.js v24.14.1\r\n",
-      "timestamp": "10:34:37 AM"
-    },
-    {
-      "campaignId": "ppc-cr",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": false,
-      "error": "Command failed: node -r \"./utils/browser-intercept.js\" run-master.js --campaign \"ppc-cr\" --viewport \"tablet\"\nC:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\utils\\leadProcessor.js:429\r\n    await formPage.submitForm();\r\n    ^^^^^\r\n\r\nSyntaxError: await is only valid in async functions and the top level bodies of modules\r\n    at wrapSafe (node:internal/modules/cjs/loader:1743:18)\r\n    at Module._compile (node:internal/modules/cjs/loader:1786:20)\r\n    at Object..js (node:internal/modules/cjs/loader:1943:10)\r\n    at Module.load (node:internal/modules/cjs/loader:1533:32)\r\n    at Module._load (node:internal/modules/cjs/loader:1335:12)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)\r\n    at Module.require (C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\utils\\browser-intercept.js:81:26)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at Object.<anonymous> (C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\run-master.js:12:25)\r\n\r\nNode.js v24.14.1\r\n",
-      "timestamp": "10:34:38 AM"
-    },
-    {
-      "campaignId": "ppc-fs",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": false,
-      "error": "Command failed: node -r \"./utils/browser-intercept.js\" run-master.js --campaign \"ppc-fs\" --viewport \"tablet\"\nC:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\utils\\leadProcessor.js:429\r\n    await formPage.submitForm();\r\n    ^^^^^\r\n\r\nSyntaxError: await is only valid in async functions and the top level bodies of modules\r\n    at wrapSafe (node:internal/modules/cjs/loader:1743:18)\r\n    at Module._compile (node:internal/modules/cjs/loader:1786:20)\r\n    at Object..js (node:internal/modules/cjs/loader:1943:10)\r\n    at Module.load (node:internal/modules/cjs/loader:1533:32)\r\n    at Module._load (node:internal/modules/cjs/loader:1335:12)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)\r\n    at Module.require (C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\utils\\browser-intercept.js:81:26)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at Object.<anonymous> (C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\run-master.js:12:25)\r\n\r\nNode.js v24.14.1\r\n",
-      "timestamp": "10:34:38 AM"
-    },
-    {
-      "campaignId": "ppc",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": false,
-      "error": "Command failed: node -r \"./utils/browser-intercept.js\" run-master.js --campaign \"ppc\" --viewport \"tablet\"\nC:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\utils\\leadProcessor.js:429\r\n    await formPage.submitForm();\r\n    ^^^^^\r\n\r\nSyntaxError: await is only valid in async functions and the top level bodies of modules\r\n    at wrapSafe (node:internal/modules/cjs/loader:1743:18)\r\n    at Module._compile (node:internal/modules/cjs/loader:1786:20)\r\n    at Object..js (node:internal/modules/cjs/loader:1943:10)\r\n    at Module.load (node:internal/modules/cjs/loader:1533:32)\r\n    at Module._load (node:internal/modules/cjs/loader:1335:12)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)\r\n    at Module.require (C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\utils\\browser-intercept.js:81:26)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at Object.<anonymous> (C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\run-master.js:12:25)\r\n\r\nNode.js v24.14.1\r\n",
-      "timestamp": "10:34:39 AM"
-    },
-    {
-      "campaignId": "tra-cpm",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": false,
-      "error": "Command failed: node -r \"./utils/browser-intercept.js\" run-master.js --campaign \"tra-cpm\" --viewport \"tablet\"\nC:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\utils\\leadProcessor.js:429\r\n    await formPage.submitForm();\r\n    ^^^^^\r\n\r\nSyntaxError: await is only valid in async functions and the top level bodies of modules\r\n    at wrapSafe (node:internal/modules/cjs/loader:1743:18)\r\n    at Module._compile (node:internal/modules/cjs/loader:1786:20)\r\n    at Object..js (node:internal/modules/cjs/loader:1943:10)\r\n    at Module.load (node:internal/modules/cjs/loader:1533:32)\r\n    at Module._load (node:internal/modules/cjs/loader:1335:12)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)\r\n    at Module.require (C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\utils\\browser-intercept.js:81:26)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at Object.<anonymous> (C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\run-master.js:12:25)\r\n\r\nNode.js v24.14.1\r\n",
-      "timestamp": "10:34:39 AM"
-    },
-    {
-      "campaignId": "everest-tr-x",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": false,
-      "error": "Command failed: node -r \"./utils/browser-intercept.js\" run-master.js --campaign \"everest-tr-x\" --viewport \"tablet\"\nC:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\utils\\leadProcessor.js:429\r\n    await formPage.submitForm();\r\n    ^^^^^\r\n\r\nSyntaxError: await is only valid in async functions and the top level bodies of modules\r\n    at wrapSafe (node:internal/modules/cjs/loader:1743:18)\r\n    at Module._compile (node:internal/modules/cjs/loader:1786:20)\r\n    at Object..js (node:internal/modules/cjs/loader:1943:10)\r\n    at Module.load (node:internal/modules/cjs/loader:1533:32)\r\n    at Module._load (node:internal/modules/cjs/loader:1335:12)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)\r\n    at Module.require (C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\utils\\browser-intercept.js:81:26)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at Object.<anonymous> (C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\run-master.js:12:25)\r\n\r\nNode.js v24.14.1\r\n",
-      "timestamp": "10:34:40 AM"
-    },
-    {
-      "campaignId": "vts-original",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": false,
-      "error": "Command failed: node -r \"./utils/browser-intercept.js\" run-master.js --campaign \"vts-original\" --viewport \"tablet\"\nC:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\utils\\leadProcessor.js:429\r\n    await formPage.submitForm();\r\n    ^^^^^\r\n\r\nSyntaxError: await is only valid in async functions and the top level bodies of modules\r\n    at wrapSafe (node:internal/modules/cjs/loader:1743:18)\r\n    at Module._compile (node:internal/modules/cjs/loader:1786:20)\r\n    at Object..js (node:internal/modules/cjs/loader:1943:10)\r\n    at Module.load (node:internal/modules/cjs/loader:1533:32)\r\n    at Module._load (node:internal/modules/cjs/loader:1335:12)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)\r\n    at Module.require (C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\utils\\browser-intercept.js:81:26)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at Object.<anonymous> (C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\run-master.js:12:25)\r\n\r\nNode.js v24.14.1\r\n",
-      "timestamp": "10:34:40 AM"
-    },
-    {
-      "campaignId": "vts-ne-branded",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": false,
-      "error": "Command failed: node -r \"./utils/browser-intercept.js\" run-master.js --campaign \"vts-ne-branded\" --viewport \"tablet\"\nC:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\utils\\leadProcessor.js:429\r\n    await formPage.submitForm();\r\n    ^^^^^\r\n\r\nSyntaxError: await is only valid in async functions and the top level bodies of modules\r\n    at wrapSafe (node:internal/modules/cjs/loader:1743:18)\r\n    at Module._compile (node:internal/modules/cjs/loader:1786:20)\r\n    at Object..js (node:internal/modules/cjs/loader:1943:10)\r\n    at Module.load (node:internal/modules/cjs/loader:1533:32)\r\n    at Module._load (node:internal/modules/cjs/loader:1335:12)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)\r\n    at Module.require (C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\utils\\browser-intercept.js:81:26)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at Object.<anonymous> (C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\run-master.js:12:25)\r\n\r\nNode.js v24.14.1\r\n",
-      "timestamp": "10:34:41 AM"
-    },
-    {
-      "campaignId": "original",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": false,
-      "error": "Command failed: node -r \"./utils/browser-intercept.js\" run-master.js --campaign \"original\" --viewport \"tablet\"\nC:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\utils\\leadProcessor.js:429\r\n    await formPage.submitForm();\r\n    ^^^^^\r\n\r\nSyntaxError: await is only valid in async functions and the top level bodies of modules\r\n    at wrapSafe (node:internal/modules/cjs/loader:1743:18)\r\n    at Module._compile (node:internal/modules/cjs/loader:1786:20)\r\n    at Object..js (node:internal/modules/cjs/loader:1943:10)\r\n    at Module.load (node:internal/modules/cjs/loader:1533:32)\r\n    at Module._load (node:internal/modules/cjs/loader:1335:12)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)\r\n    at Module.require (C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\utils\\browser-intercept.js:81:26)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at Object.<anonymous> (C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\run-master.js:12:25)\r\n\r\nNode.js v24.14.1\r\n",
-      "timestamp": "10:34:41 AM"
-    },
-    {
-      "campaignId": "1800-fresh-tax-x-main",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": false,
-      "error": "Command failed: node -r \"./utils/browser-intercept.js\" run-master.js --campaign \"1800-fresh-tax-x-main\" --viewport \"tablet\"\nC:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\utils\\leadProcessor.js:429\r\n    await formPage.submitForm();\r\n    ^^^^^\r\n\r\nSyntaxError: await is only valid in async functions and the top level bodies of modules\r\n    at wrapSafe (node:internal/modules/cjs/loader:1743:18)\r\n    at Module._compile (node:internal/modules/cjs/loader:1786:20)\r\n    at Object..js (node:internal/modules/cjs/loader:1943:10)\r\n    at Module.load (node:internal/modules/cjs/loader:1533:32)\r\n    at Module._load (node:internal/modules/cjs/loader:1335:12)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)\r\n    at Module.require (C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\utils\\browser-intercept.js:81:26)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at Object.<anonymous> (C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\run-master.js:12:25)\r\n\r\nNode.js v24.14.1\r\n",
-      "timestamp": "10:34:42 AM"
-    },
-    {
-      "campaignId": "fsi-main",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": false,
-      "error": "Command failed: node -r \"./utils/browser-intercept.js\" run-master.js --campaign \"fsi-main\" --viewport \"tablet\"\nC:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\utils\\leadProcessor.js:429\r\n    await formPage.submitForm();\r\n    ^^^^^\r\n\r\nSyntaxError: await is only valid in async functions and the top level bodies of modules\r\n    at wrapSafe (node:internal/modules/cjs/loader:1743:18)\r\n    at Module._compile (node:internal/modules/cjs/loader:1786:20)\r\n    at Object..js (node:internal/modules/cjs/loader:1943:10)\r\n    at Module.load (node:internal/modules/cjs/loader:1533:32)\r\n    at Module._load (node:internal/modules/cjs/loader:1335:12)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)\r\n    at Module.require (C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\utils\\browser-intercept.js:81:26)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at Object.<anonymous> (C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\run-master.js:12:25)\r\n\r\nNode.js v24.14.1\r\n",
-      "timestamp": "10:34:42 AM"
-    },
-    {
-      "campaignId": "1803-fresh-tax-afr-cobranded",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": false,
-      "error": "Command failed: node -r \"./utils/browser-intercept.js\" run-master.js --campaign \"1803-fresh-tax-afr-cobranded\" --viewport \"tablet\"\nC:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\utils\\leadProcessor.js:429\r\n    await formPage.submitForm();\r\n    ^^^^^\r\n\r\nSyntaxError: await is only valid in async functions and the top level bodies of modules\r\n    at wrapSafe (node:internal/modules/cjs/loader:1743:18)\r\n    at Module._compile (node:internal/modules/cjs/loader:1786:20)\r\n    at Object..js (node:internal/modules/cjs/loader:1943:10)\r\n    at Module.load (node:internal/modules/cjs/loader:1533:32)\r\n    at Module._load (node:internal/modules/cjs/loader:1335:12)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)\r\n    at Module.require (C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\utils\\browser-intercept.js:81:26)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at Object.<anonymous> (C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\run-master.js:12:25)\r\n\r\nNode.js v24.14.1\r\n",
-      "timestamp": "10:34:43 AM"
-    },
-    {
-      "campaignId": "senior-tax-defence-main",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": false,
-      "error": "Command failed: node -r \"./utils/browser-intercept.js\" run-master.js --campaign \"senior-tax-defence-main\" --viewport \"tablet\"\nC:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\utils\\leadProcessor.js:429\r\n    await formPage.submitForm();\r\n    ^^^^^\r\n\r\nSyntaxError: await is only valid in async functions and the top level bodies of modules\r\n    at wrapSafe (node:internal/modules/cjs/loader:1743:18)\r\n    at Module._compile (node:internal/modules/cjs/loader:1786:20)\r\n    at Object..js (node:internal/modules/cjs/loader:1943:10)\r\n    at Module.load (node:internal/modules/cjs/loader:1533:32)\r\n    at Module._load (node:internal/modules/cjs/loader:1335:12)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)\r\n    at Module.require (C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\utils\\browser-intercept.js:81:26)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at Object.<anonymous> (C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\run-master.js:12:25)\r\n\r\nNode.js v24.14.1\r\n",
-      "timestamp": "10:34:43 AM"
-    },
-    {
-      "campaignId": "fresh-start-initiative-x-main",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": false,
-      "error": "Command failed: node -r \"./utils/browser-intercept.js\" run-master.js --campaign \"fresh-start-initiative-x-main\" --viewport \"tablet\"\nC:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\utils\\leadProcessor.js:429\r\n    await formPage.submitForm();\r\n    ^^^^^\r\n\r\nSyntaxError: await is only valid in async functions and the top level bodies of modules\r\n    at wrapSafe (node:internal/modules/cjs/loader:1743:18)\r\n    at Module._compile (node:internal/modules/cjs/loader:1786:20)\r\n    at Object..js (node:internal/modules/cjs/loader:1943:10)\r\n    at Module.load (node:internal/modules/cjs/loader:1533:32)\r\n    at Module._load (node:internal/modules/cjs/loader:1335:12)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)\r\n    at Module.require (C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\utils\\browser-intercept.js:81:26)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at Object.<anonymous> (C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\run-master.js:12:25)\r\n\r\nNode.js v24.14.1\r\n",
-      "timestamp": "10:34:44 AM"
-    },
-    {
-      "campaignId": "aftr-main",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": false,
-      "error": "Command failed: node -r \"./utils/browser-intercept.js\" run-master.js --campaign \"aftr-main\" --viewport \"tablet\"\nC:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\utils\\leadProcessor.js:429\r\n    await formPage.submitForm();\r\n    ^^^^^\r\n\r\nSyntaxError: await is only valid in async functions and the top level bodies of modules\r\n    at wrapSafe (node:internal/modules/cjs/loader:1743:18)\r\n    at Module._compile (node:internal/modules/cjs/loader:1786:20)\r\n    at Object..js (node:internal/modules/cjs/loader:1943:10)\r\n    at Module.load (node:internal/modules/cjs/loader:1533:32)\r\n    at Module._load (node:internal/modules/cjs/loader:1335:12)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)\r\n    at Module.require (C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\utils\\browser-intercept.js:81:26)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at Object.<anonymous> (C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\run-master.js:12:25)\r\n\r\nNode.js v24.14.1\r\n",
-      "timestamp": "10:34:44 AM"
-    },
-    {
-      "campaignId": "ptr-main",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": false,
-      "error": "Command failed: node -r \"./utils/browser-intercept.js\" run-master.js --campaign \"ptr-main\" --viewport \"tablet\"\nC:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\utils\\leadProcessor.js:429\r\n    await formPage.submitForm();\r\n    ^^^^^\r\n\r\nSyntaxError: await is only valid in async functions and the top level bodies of modules\r\n    at wrapSafe (node:internal/modules/cjs/loader:1743:18)\r\n    at Module._compile (node:internal/modules/cjs/loader:1786:20)\r\n    at Object..js (node:internal/modules/cjs/loader:1943:10)\r\n    at Module.load (node:internal/modules/cjs/loader:1533:32)\r\n    at Module._load (node:internal/modules/cjs/loader:1335:12)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)\r\n    at Module.require (C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\utils\\browser-intercept.js:81:26)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at Object.<anonymous> (C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\run-master.js:12:25)\r\n\r\nNode.js v24.14.1\r\n",
-      "timestamp": "10:34:45 AM"
-    },
-    {
-      "campaignId": "fth-questionnaire",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": false,
-      "error": "Command failed: node -r \"./utils/browser-intercept.js\" run-master.js --campaign \"fth-questionnaire\" --viewport \"tablet\"\nC:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\utils\\leadProcessor.js:429\r\n    await formPage.submitForm();\r\n    ^^^^^\r\n\r\nSyntaxError: await is only valid in async functions and the top level bodies of modules\r\n    at wrapSafe (node:internal/modules/cjs/loader:1743:18)\r\n    at Module._compile (node:internal/modules/cjs/loader:1786:20)\r\n    at Object..js (node:internal/modules/cjs/loader:1943:10)\r\n    at Module.load (node:internal/modules/cjs/loader:1533:32)\r\n    at Module._load (node:internal/modules/cjs/loader:1335:12)\r\n    at wrapModuleLoad (node:internal/modules/cjs/loader:255:19)\r\n    at Module.<anonymous> (node:internal/modules/cjs/loader:1556:12)\r\n    at Module.require (C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\utils\\browser-intercept.js:81:26)\r\n    at require (node:internal/modules/helpers:152:16)\r\n    at Object.<anonymous> (C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\run-master.js:12:25)\r\n\r\nNode.js v24.14.1\r\n",
-      "timestamp": "10:34:45 AM"
-    },
-    {
-      "campaignId": "fth-x",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": true,
-      "timestamp": "10:35:19 AM"
-    },
-    {
-      "campaignId": "ftd-x",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": true,
-      "timestamp": "10:38:00 AM"
-    },
-    {
-      "campaignId": "fsi-ppc2",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": true,
-      "timestamp": "10:38:32 AM"
-    },
-    {
-      "campaignId": "tra-cpl",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": true,
-      "timestamp": "10:39:15 AM"
-    },
-    {
-      "campaignId": "tra-d3",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": true,
-      "timestamp": "10:40:22 AM"
-    },
-    {
-      "campaignId": "ppc-st",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": true,
-      "timestamp": "10:40:56 AM"
+      "leadId": "6B52E3E4",
+      "timestamp": "11:47:11 AM"
     },
     {
       "campaignId": "ppc-st2",
@@ -257,7 +52,8 @@
       "browser": "chromium",
       "label": "Tablet - Chrome",
       "success": true,
-      "timestamp": "10:41:32 AM"
+      "leadId": "D2F79B89",
+      "timestamp": "11:48:34 AM"
     },
     {
       "campaignId": "ppc-m-ca",
@@ -265,15 +61,20 @@
       "browser": "chromium",
       "label": "Tablet - Chrome",
       "success": true,
-      "timestamp": "10:42:09 AM"
+      "leadId": "042C7FDF",
+      "timestamp": "11:49:56 AM"
     },
     {
       "campaignId": "ppc-cr",
       "viewport": "tablet",
       "browser": "chromium",
       "label": "Tablet - Chrome",
-      "success": true,
-      "timestamp": "10:42:39 AM"
+      "success": false,
+      "error": "locator.fill: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#primary_phone, #phone, #phone_home, input[name=\"phone\"], input[name=\"phone_home\"], input[name=\"primary_phone\"], input[type=\"tel\"]').first()\u001b[22m\n\u001b[2m    - locator resolved to <input value=\" \" id=\"phone\" name=\"phone\" type=\"hidden\"/>\u001b[22m\n\u001b[2m    - fill(\"\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    48 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying fill action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+      "leadId": null,
+      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_ppc-cr_tablet.png",
+      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@2e89a6b07d235ed9a78cf429f14e68b1.webm",
+      "timestamp": "11:51:40 AM"
     },
     {
       "campaignId": "ppc-fs",
@@ -281,7 +82,8 @@
       "browser": "chromium",
       "label": "Tablet - Chrome",
       "success": true,
-      "timestamp": "10:43:20 AM"
+      "leadId": "3A41939E",
+      "timestamp": "11:53:03 AM"
     },
     {
       "campaignId": "ppc",
@@ -289,7 +91,8 @@
       "browser": "chromium",
       "label": "Tablet - Chrome",
       "success": true,
-      "timestamp": "10:43:56 AM"
+      "leadId": "B722A1B0",
+      "timestamp": "11:54:32 AM"
     },
     {
       "campaignId": "tra-cpm",
@@ -297,7 +100,8 @@
       "browser": "chromium",
       "label": "Tablet - Chrome",
       "success": true,
-      "timestamp": "10:44:32 AM"
+      "leadId": "0D25BF35",
+      "timestamp": "11:56:03 AM"
     },
     {
       "campaignId": "everest-tr-x",
@@ -305,7 +109,8 @@
       "browser": "chromium",
       "label": "Tablet - Chrome",
       "success": true,
-      "timestamp": "10:45:21 AM"
+      "leadId": "CE117CCC",
+      "timestamp": "11:57:35 AM"
     },
     {
       "campaignId": "vts-original",
@@ -313,7 +118,8 @@
       "browser": "chromium",
       "label": "Tablet - Chrome",
       "success": true,
-      "timestamp": "10:45:54 AM"
+      "leadId": "DF3C2358",
+      "timestamp": "11:59:03 AM"
     },
     {
       "campaignId": "vts-ne-branded",
@@ -321,15 +127,20 @@
       "browser": "chromium",
       "label": "Tablet - Chrome",
       "success": true,
-      "timestamp": "10:46:25 AM"
+      "leadId": "7E21483C",
+      "timestamp": "12:00:47 PM"
     },
     {
       "campaignId": "original",
       "viewport": "tablet",
       "browser": "chromium",
       "label": "Tablet - Chrome",
-      "success": true,
-      "timestamp": "10:47:07 AM"
+      "success": false,
+      "error": "Invalid Lead ID format: 4a5773806a1611f18435d17e4a74bda6",
+      "leadId": "4a5773806a1611f18435d17e4a74bda6",
+      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_original_tablet.png",
+      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@5d429c31af6dc73682296b89a067a907.webm",
+      "timestamp": "12:02:47 PM"
     },
     {
       "campaignId": "1800-fresh-tax-x-main",
@@ -337,7 +148,8 @@
       "browser": "chromium",
       "label": "Tablet - Chrome",
       "success": true,
-      "timestamp": "10:47:47 AM"
+      "leadId": "1DA8D56A",
+      "timestamp": "12:04:21 PM"
     },
     {
       "campaignId": "fsi-main",
@@ -345,7 +157,8 @@
       "browser": "chromium",
       "label": "Tablet - Chrome",
       "success": true,
-      "timestamp": "10:48:22 AM"
+      "leadId": "6ADBE719",
+      "timestamp": "12:05:59 PM"
     },
     {
       "campaignId": "1803-fresh-tax-afr-cobranded",
@@ -353,7 +166,8 @@
       "browser": "chromium",
       "label": "Tablet - Chrome",
       "success": true,
-      "timestamp": "10:48:54 AM"
+      "leadId": "73F77B60",
+      "timestamp": "12:07:38 PM"
     },
     {
       "campaignId": "senior-tax-defence-main",
@@ -361,7 +175,8 @@
       "browser": "chromium",
       "label": "Tablet - Chrome",
       "success": true,
-      "timestamp": "10:49:38 AM"
+      "leadId": "F4016EAB",
+      "timestamp": "12:08:57 PM"
     },
     {
       "campaignId": "fresh-start-initiative-x-main",
@@ -369,7 +184,8 @@
       "browser": "chromium",
       "label": "Tablet - Chrome",
       "success": true,
-      "timestamp": "10:50:11 AM"
+      "leadId": "A71B8704",
+      "timestamp": "12:10:48 PM"
     },
     {
       "campaignId": "aftr-main",
@@ -377,15 +193,20 @@
       "browser": "chromium",
       "label": "Tablet - Chrome",
       "success": true,
-      "timestamp": "10:50:57 AM"
+      "leadId": "234EC33E",
+      "timestamp": "12:12:31 PM"
     },
     {
       "campaignId": "ptr-main",
       "viewport": "tablet",
       "browser": "chromium",
       "label": "Tablet - Chrome",
-      "success": true,
-      "timestamp": "10:51:34 AM"
+      "success": false,
+      "error": "locator.fill: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#primary_phone, #phone, #phone_home, input[name=\"phone\"], input[name=\"phone_home\"], input[name=\"primary_phone\"], input[type=\"tel\"]').first()\u001b[22m\n\u001b[2m    - locator resolved to <input value=\" \" id=\"phone\" name=\"phone\" type=\"hidden\"/>\u001b[22m\n\u001b[2m    - fill(\"\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    48 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying fill action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+      "leadId": null,
+      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_ptr-main_tablet.png",
+      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@f46c568c2c62a8448541edd179ba76bd.webm",
+      "timestamp": "12:14:15 PM"
     },
     {
       "campaignId": "fth-questionnaire",
@@ -393,7 +214,8 @@
       "browser": "chromium",
       "label": "Tablet - Chrome",
       "success": true,
-      "timestamp": "10:52:29 AM"
+      "leadId": "B05E1032",
+      "timestamp": "12:16:25 PM"
     },
     {
       "campaignId": "fth-x",
@@ -401,7 +223,8 @@
       "browser": "chromium",
       "label": "Tablet - Chrome",
       "success": true,
-      "timestamp": "10:53:00 AM"
+      "leadId": "023A1658",
+      "timestamp": "12:17:53 PM"
     },
     {
       "campaignId": "second-chance-tax-relief-x",
@@ -409,7 +232,8 @@
       "browser": "chromium",
       "label": "Tablet - Chrome",
       "success": true,
-      "timestamp": "10:54:19 AM"
+      "leadId": "AB73315E",
+      "timestamp": "12:19:26 PM"
     },
     {
       "campaignId": "sctr-main",
@@ -417,15 +241,20 @@
       "browser": "chromium",
       "label": "Tablet - Chrome",
       "success": true,
-      "timestamp": "10:55:36 AM"
+      "leadId": "9705A664",
+      "timestamp": "12:20:52 PM"
     },
     {
       "campaignId": "1800-fresh-tax-cpc",
       "viewport": "tablet",
       "browser": "chromium",
       "label": "Tablet - Chrome",
-      "success": true,
-      "timestamp": "10:56:20 AM"
+      "success": false,
+      "error": "Invalid Lead ID format: 034517006a1911f195e95b6127bcb08f",
+      "leadId": "034517006a1911f195e95b6127bcb08f",
+      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_1800-fresh-tax-cpc_tablet.png",
+      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@6ec672b11dc3a632cff8e8e9e19dd32f.webm",
+      "timestamp": "12:22:18 PM"
     },
     {
       "campaignId": "senior-tax-defense-x",
@@ -433,7 +262,8 @@
       "browser": "chromium",
       "label": "Tablet - Chrome",
       "success": true,
-      "timestamp": "10:56:50 AM"
+      "leadId": "1A567B99",
+      "timestamp": "12:23:46 PM"
     },
     {
       "campaignId": "guardian-tax-relief-ppc",
@@ -441,7 +271,8 @@
       "browser": "chromium",
       "label": "Tablet - Chrome",
       "success": true,
-      "timestamp": "10:58:30 AM"
+      "leadId": "4050A0E4",
+      "timestamp": "12:25:06 PM"
     },
     {
       "campaignId": "empire-tax-relief-x",
@@ -449,7 +280,8 @@
       "browser": "chromium",
       "label": "Tablet - Chrome",
       "success": true,
-      "timestamp": "10:59:46 AM"
+      "leadId": "00776C78",
+      "timestamp": "12:26:31 PM"
     },
     {
       "campaignId": "capital-tax-relief-x",
@@ -457,7 +289,8 @@
       "browser": "chromium",
       "label": "Tablet - Chrome",
       "success": true,
-      "timestamp": "11:00:27 AM"
+      "leadId": "BA002D89",
+      "timestamp": "12:28:00 PM"
     },
     {
       "campaignId": "ftd-ppc2",
@@ -465,297 +298,605 @@
       "browser": "chromium",
       "label": "Tablet - Chrome",
       "success": true,
-      "timestamp": "11:01:06 AM"
+      "leadId": "40237A6C",
+      "timestamp": "12:29:19 PM"
     },
     {
       "campaignId": "ftd-x",
-      "viewport": "tablet",
+      "viewport": "desktop",
       "browser": "chromium",
-      "label": "Tablet - Chrome",
+      "label": "Mac - Chrome",
       "success": true,
-      "timestamp": "11:02:25 AM"
+      "leadId": "6D0677DA",
+      "timestamp": "12:44:33 PM"
     },
     {
       "campaignId": "fsi-ppc2",
-      "viewport": "tablet",
+      "viewport": "desktop",
       "browser": "chromium",
-      "label": "Tablet - Chrome",
+      "label": "Mac - Chrome",
       "success": true,
-      "timestamp": "11:03:00 AM"
+      "leadId": "7CFEE991",
+      "timestamp": "12:46:03 PM"
     },
     {
       "campaignId": "tra-cpl",
-      "viewport": "tablet",
+      "viewport": "desktop",
       "browser": "chromium",
-      "label": "Tablet - Chrome",
+      "label": "Mac - Chrome",
       "success": true,
-      "timestamp": "11:03:52 AM"
+      "leadId": "8147FB7B",
+      "timestamp": "12:47:39 PM"
     },
     {
       "campaignId": "tra-d3",
-      "viewport": "tablet",
+      "viewport": "desktop",
       "browser": "chromium",
-      "label": "Tablet - Chrome",
+      "label": "Mac - Chrome",
       "success": true,
-      "timestamp": "11:04:59 AM"
+      "leadId": "C784D1CF",
+      "timestamp": "12:48:42 PM"
     },
     {
       "campaignId": "ppc-st",
-      "viewport": "tablet",
+      "viewport": "desktop",
       "browser": "chromium",
-      "label": "Tablet - Chrome",
+      "label": "Mac - Chrome",
       "success": true,
-      "timestamp": "11:05:41 AM"
+      "leadId": "D92A9769",
+      "timestamp": "12:50:02 PM"
     },
     {
       "campaignId": "ppc-st2",
-      "viewport": "tablet",
+      "viewport": "desktop",
       "browser": "chromium",
-      "label": "Tablet - Chrome",
+      "label": "Mac - Chrome",
       "success": true,
-      "timestamp": "11:06:22 AM"
+      "leadId": "03F49985",
+      "timestamp": "12:51:25 PM"
     },
     {
       "campaignId": "ppc-m-ca",
-      "viewport": "tablet",
+      "viewport": "desktop",
       "browser": "chromium",
-      "label": "Tablet - Chrome",
+      "label": "Mac - Chrome",
       "success": true,
-      "timestamp": "11:07:01 AM"
+      "leadId": "976C55D4",
+      "timestamp": "12:52:45 PM"
     },
     {
       "campaignId": "ppc-cr",
-      "viewport": "tablet",
+      "viewport": "desktop",
       "browser": "chromium",
-      "label": "Tablet - Chrome",
+      "label": "Mac - Chrome",
       "success": true,
-      "timestamp": "11:07:31 AM"
+      "leadId": "1CBC2C20",
+      "timestamp": "12:53:58 PM"
     },
     {
       "campaignId": "ppc-fs",
-      "viewport": "tablet",
+      "viewport": "desktop",
       "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": true,
-      "timestamp": "11:08:19 AM"
+      "label": "Mac - Chrome",
+      "success": false,
+      "error": "locator.fill: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#primary_phone, #phone, #phone_home, input[name=\"phone\"], input[name=\"phone_home\"], input[name=\"primary_phone\"], input[type=\"tel\"]').first()\u001b[22m\n\u001b[2m    - locator resolved to <input value=\" \" id=\"phone\" name=\"phone\" type=\"hidden\"/>\u001b[22m\n\u001b[2m    - fill(\"\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    48 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying fill action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+      "leadId": null,
+      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_ppc-fs_desktop.png",
+      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@5aff2af54590b4fd81fcf40fc30531ea.webm",
+      "timestamp": "12:55:40 PM"
     },
     {
       "campaignId": "ppc",
-      "viewport": "tablet",
+      "viewport": "desktop",
       "browser": "chromium",
-      "label": "Tablet - Chrome",
+      "label": "Mac - Chrome",
       "success": true,
-      "timestamp": "11:09:00 AM"
+      "leadId": "21014B3C",
+      "timestamp": "12:57:04 PM"
     },
     {
       "campaignId": "tra-cpm",
-      "viewport": "tablet",
+      "viewport": "desktop",
       "browser": "chromium",
-      "label": "Tablet - Chrome",
+      "label": "Mac - Chrome",
       "success": true,
-      "timestamp": "11:09:46 AM"
+      "leadId": "49A32888",
+      "timestamp": "12:58:25 PM"
     },
     {
       "campaignId": "everest-tr-x",
-      "viewport": "tablet",
+      "viewport": "desktop",
       "browser": "chromium",
-      "label": "Tablet - Chrome",
+      "label": "Mac - Chrome",
       "success": true,
-      "timestamp": "11:10:36 AM"
+      "leadId": "0FFE084D",
+      "timestamp": "12:59:53 PM"
     },
     {
       "campaignId": "vts-original",
-      "viewport": "tablet",
+      "viewport": "desktop",
       "browser": "chromium",
-      "label": "Tablet - Chrome",
+      "label": "Mac - Chrome",
       "success": true,
-      "timestamp": "11:11:13 AM"
+      "leadId": "8A7F8ED3",
+      "timestamp": "1:01:42 PM"
     },
     {
       "campaignId": "vts-ne-branded",
-      "viewport": "tablet",
+      "viewport": "desktop",
       "browser": "chromium",
-      "label": "Tablet - Chrome",
+      "label": "Mac - Chrome",
       "success": true,
-      "timestamp": "11:11:54 AM"
+      "leadId": "FFF9D03E",
+      "timestamp": "1:03:13 PM"
     },
     {
       "campaignId": "original",
-      "viewport": "tablet",
+      "viewport": "desktop",
       "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": true,
-      "timestamp": "11:12:43 AM"
+      "label": "Mac - Chrome",
+      "success": false,
+      "error": "Invalid Lead ID format: f389d3a06a1e11f1ab1c7d6028bf797e",
+      "leadId": "f389d3a06a1e11f1ab1c7d6028bf797e",
+      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_original_desktop.png",
+      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@05e19ecce2f6c6126f1e77066238b24d.webm",
+      "timestamp": "1:04:48 PM"
     },
     {
       "campaignId": "1800-fresh-tax-x-main",
-      "viewport": "tablet",
+      "viewport": "desktop",
       "browser": "chromium",
-      "label": "Tablet - Chrome",
+      "label": "Mac - Chrome",
       "success": true,
-      "timestamp": "11:13:24 AM"
+      "leadId": "D029A291",
+      "timestamp": "1:06:24 PM"
     },
     {
       "campaignId": "fsi-main",
-      "viewport": "tablet",
+      "viewport": "desktop",
       "browser": "chromium",
-      "label": "Tablet - Chrome",
+      "label": "Mac - Chrome",
       "success": true,
-      "timestamp": "11:14:04 AM"
+      "leadId": "E3ECE69B",
+      "timestamp": "1:07:59 PM"
     },
     {
       "campaignId": "1803-fresh-tax-afr-cobranded",
-      "viewport": "tablet",
+      "viewport": "desktop",
       "browser": "chromium",
-      "label": "Tablet - Chrome",
+      "label": "Mac - Chrome",
       "success": true,
-      "timestamp": "11:14:43 AM"
+      "leadId": "1C1355BB",
+      "timestamp": "1:09:38 PM"
     },
     {
       "campaignId": "senior-tax-defence-main",
-      "viewport": "tablet",
+      "viewport": "desktop",
       "browser": "chromium",
-      "label": "Tablet - Chrome",
+      "label": "Mac - Chrome",
       "success": true,
-      "timestamp": "11:15:20 AM"
+      "leadId": "FA533BC6",
+      "timestamp": "1:11:02 PM"
     },
     {
       "campaignId": "fresh-start-initiative-x-main",
-      "viewport": "tablet",
+      "viewport": "desktop",
       "browser": "chromium",
-      "label": "Tablet - Chrome",
+      "label": "Mac - Chrome",
       "success": true,
-      "timestamp": "11:15:57 AM"
+      "leadId": "6D24FA76",
+      "timestamp": "1:12:27 PM"
     },
     {
       "campaignId": "aftr-main",
-      "viewport": "tablet",
+      "viewport": "desktop",
       "browser": "chromium",
-      "label": "Tablet - Chrome",
+      "label": "Mac - Chrome",
       "success": true,
-      "timestamp": "11:16:44 AM"
+      "leadId": "4EA11EE8",
+      "timestamp": "1:14:02 PM"
     },
     {
       "campaignId": "ptr-main",
-      "viewport": "tablet",
+      "viewport": "desktop",
       "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": true,
-      "timestamp": "11:17:27 AM"
+      "label": "Mac - Chrome",
+      "success": false,
+      "error": "locator.fill: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#primary_phone, #phone, #phone_home, input[name=\"phone\"], input[name=\"phone_home\"], input[name=\"primary_phone\"], input[type=\"tel\"]').first()\u001b[22m\n\u001b[2m    - locator resolved to <input value=\" \" id=\"phone\" name=\"phone\" type=\"hidden\"/>\u001b[22m\n\u001b[2m    - fill(\"\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    48 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying fill action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+      "leadId": null,
+      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_ptr-main_desktop.png",
+      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@11964d1ad624d8166e15da811626036b.webm",
+      "timestamp": "1:15:48 PM"
     },
     {
       "campaignId": "fth-questionnaire",
-      "viewport": "tablet",
+      "viewport": "desktop",
       "browser": "chromium",
-      "label": "Tablet - Chrome",
+      "label": "Mac - Chrome",
       "success": true,
-      "timestamp": "11:18:22 AM"
+      "leadId": "BD518AB1",
+      "timestamp": "1:17:59 PM"
     },
     {
       "campaignId": "fth-x",
-      "viewport": "tablet",
+      "viewport": "desktop",
       "browser": "chromium",
-      "label": "Tablet - Chrome",
+      "label": "Mac - Chrome",
       "success": true,
-      "timestamp": "11:18:53 AM"
+      "leadId": "A051595A",
+      "timestamp": "1:19:23 PM"
     },
     {
       "campaignId": "second-chance-tax-relief-x",
-      "viewport": "tablet",
+      "viewport": "desktop",
       "browser": "chromium",
-      "label": "Tablet - Chrome",
+      "label": "Mac - Chrome",
       "success": true,
-      "timestamp": "11:20:22 AM"
+      "leadId": "55980EFC",
+      "timestamp": "1:21:07 PM"
     },
     {
       "campaignId": "sctr-main",
-      "viewport": "tablet",
+      "viewport": "desktop",
       "browser": "chromium",
-      "label": "Tablet - Chrome",
+      "label": "Mac - Chrome",
       "success": true,
-      "timestamp": "11:21:47 AM"
+      "leadId": "ACA1DCFA",
+      "timestamp": "1:22:41 PM"
     },
     {
       "campaignId": "1800-fresh-tax-cpc",
-      "viewport": "tablet",
+      "viewport": "desktop",
       "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": true,
-      "timestamp": "11:22:32 AM"
+      "label": "Mac - Chrome",
+      "success": false,
+      "error": "Invalid Lead ID format: af5ce1a06a2111f1ad96771fec77a33e",
+      "leadId": "af5ce1a06a2111f1ad96771fec77a33e",
+      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_1800-fresh-tax-cpc_desktop.png",
+      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@5ea0e246f33643f72209b84a58a83859.webm",
+      "timestamp": "1:24:21 PM"
     },
     {
       "campaignId": "senior-tax-defense-x",
-      "viewport": "tablet",
+      "viewport": "desktop",
       "browser": "chromium",
-      "label": "Tablet - Chrome",
+      "label": "Mac - Chrome",
       "success": true,
-      "timestamp": "11:23:07 AM"
+      "leadId": "18E466C0",
+      "timestamp": "1:25:46 PM"
     },
     {
       "campaignId": "guardian-tax-relief-ppc",
-      "viewport": "tablet",
+      "viewport": "desktop",
       "browser": "chromium",
-      "label": "Tablet - Chrome",
+      "label": "Mac - Chrome",
       "success": true,
-      "timestamp": "11:24:56 AM"
+      "leadId": "606A98AE",
+      "timestamp": "1:27:09 PM"
     },
     {
       "campaignId": "empire-tax-relief-x",
-      "viewport": "tablet",
+      "viewport": "desktop",
       "browser": "chromium",
-      "label": "Tablet - Chrome",
+      "label": "Mac - Chrome",
       "success": true,
-      "timestamp": "11:26:26 AM"
+      "leadId": "5A94956F",
+      "timestamp": "1:28:47 PM"
     },
     {
       "campaignId": "capital-tax-relief-x",
-      "viewport": "tablet",
+      "viewport": "desktop",
       "browser": "chromium",
-      "label": "Tablet - Chrome",
+      "label": "Mac - Chrome",
       "success": true,
-      "timestamp": "11:27:06 AM"
+      "leadId": "27A4B543",
+      "timestamp": "1:30:28 PM"
     },
     {
       "campaignId": "ftd-ppc2",
-      "viewport": "tablet",
+      "viewport": "desktop",
       "browser": "chromium",
-      "label": "Tablet - Chrome",
+      "label": "Mac - Chrome",
       "success": true,
-      "timestamp": "11:27:43 AM"
+      "leadId": "FC706384",
+      "timestamp": "1:32:13 PM"
+    },
+    {
+      "campaignId": "ftd-x",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "FE48D2A4",
+      "timestamp": "2:06:21 PM"
+    },
+    {
+      "campaignId": "fsi-ppc2",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "0B7AD54C",
+      "timestamp": "2:07:57 PM"
+    },
+    {
+      "campaignId": "tra-cpl",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "31B480CB",
+      "timestamp": "2:09:37 PM"
+    },
+    {
+      "campaignId": "tra-d3",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "8E21414B",
+      "timestamp": "2:10:55 PM"
+    },
+    {
+      "campaignId": "ppc-st",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "A1600B62",
+      "timestamp": "2:12:28 PM"
+    },
+    {
+      "campaignId": "ppc-st2",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "DAD79689",
+      "timestamp": "2:13:58 PM"
+    },
+    {
+      "campaignId": "ppc-m-ca",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": false,
+      "error": "locator.fill: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#primary_phone, #phone, #phone_home, input[name=\"phone\"], input[name=\"phone_home\"], input[name=\"primary_phone\"], input[type=\"tel\"]').first()\u001b[22m\n\u001b[2m    - locator resolved to <input value=\" \" id=\"phone\" name=\"phone\" type=\"hidden\"/>\u001b[22m\n\u001b[2m    - fill(\"\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    46 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying fill action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+      "leadId": null,
+      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_ppc-m-ca_desktop.png",
+      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@3a9a0c6f24ac2c166d6b54785630a52d.webm",
+      "timestamp": "2:15:49 PM"
+    },
+    {
+      "campaignId": "ppc-cr",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "F329F3AD",
+      "timestamp": "2:17:09 PM"
+    },
+    {
+      "campaignId": "ppc-fs",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "7FD98C8A",
+      "timestamp": "2:18:40 PM"
+    },
+    {
+      "campaignId": "ppc",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "A5DCC7CD",
+      "timestamp": "2:20:03 PM"
+    },
+    {
+      "campaignId": "tra-cpm",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "54EC66BE",
+      "timestamp": "2:21:25 PM"
+    },
+    {
+      "campaignId": "everest-tr-x",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "FEC14574",
+      "timestamp": "2:22:54 PM"
+    },
+    {
+      "campaignId": "vts-original",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "AE8E5149",
+      "timestamp": "2:24:25 PM"
+    },
+    {
+      "campaignId": "vts-ne-branded",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "5527C565",
+      "timestamp": "2:25:55 PM"
     },
     {
       "campaignId": "original",
-      "viewport": "tablet",
+      "viewport": "desktop",
       "browser": "chromium",
-      "label": "Tablet - Chrome",
+      "label": "Mac - Device",
       "success": false,
-      "error": "Lead ID could not be extracted from the Thank You page or DOM.",
-      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_original_tablet.png",
-      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@af8c3162b60b718d2f07da1f8b2dabdc.webm",
-      "timestamp": "5:26:21 PM"
+      "error": "Invalid Lead ID format: 831995306a2a11f197846f6e68c7721a",
+      "leadId": "831995306a2a11f197846f6e68c7721a",
+      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_original_desktop.png",
+      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@29ec530312f64aaf7e96256a6b421b3c.webm",
+      "timestamp": "2:27:31 PM"
+    },
+    {
+      "campaignId": "1800-fresh-tax-x-main",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "D569A1AC",
+      "timestamp": "2:29:05 PM"
+    },
+    {
+      "campaignId": "fsi-main",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "BF6088A8",
+      "timestamp": "2:30:50 PM"
+    },
+    {
+      "campaignId": "1803-fresh-tax-afr-cobranded",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "8CFD92E8",
+      "timestamp": "2:32:32 PM"
+    },
+    {
+      "campaignId": "senior-tax-defence-main",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "4341F864",
+      "timestamp": "2:33:55 PM"
+    },
+    {
+      "campaignId": "fresh-start-initiative-x-main",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "ACC47460",
+      "timestamp": "2:35:37 PM"
     },
     {
       "campaignId": "aftr-main",
-      "viewport": "tablet",
+      "viewport": "desktop",
       "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": false,
-      "error": "Invalid Lead ID format: 5b37de34590ff08a67e782a2e5f85096",
-      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_aftr-main_tablet.png",
-      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@d826b00c640d90c9e81ff8664ac43d41.webm",
-      "timestamp": "5:27:04 PM"
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "D8418410",
+      "timestamp": "2:37:12 PM"
     },
     {
-      "campaignId": "original",
-      "viewport": "tablet",
+      "campaignId": "ptr-main",
+      "viewport": "desktop",
       "browser": "chromium",
-      "label": "Tablet - Chrome",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "9B3083F1",
+      "timestamp": "2:38:36 PM"
+    },
+    {
+      "campaignId": "fth-questionnaire",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "45B2CC24",
+      "timestamp": "2:40:44 PM"
+    },
+    {
+      "campaignId": "fth-x",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "61D0EC84",
+      "timestamp": "2:42:06 PM"
+    },
+    {
+      "campaignId": "second-chance-tax-relief-x",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "979E08BF",
+      "timestamp": "2:43:42 PM"
+    },
+    {
+      "campaignId": "sctr-main",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "1DA81912",
+      "timestamp": "2:45:17 PM"
+    },
+    {
+      "campaignId": "1800-fresh-tax-cpc",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
       "success": false,
-      "error": "Lead ID could not be extracted from the Thank You page or DOM.",
-      "leadId": "CKM29006",
-      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_original_tablet.png",
-      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@04cf0f2e5f54708d00a832acdbe81301.webm",
-      "timestamp": "5:38:55 PM"
+      "error": "Invalid Lead ID format: 322f48a06a2d11f19ece83b619ae1b08",
+      "leadId": "322f48a06a2d11f19ece83b619ae1b08",
+      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_1800-fresh-tax-cpc_desktop.png",
+      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@c5597e05fb6b04f57bed04a96170055d.webm",
+      "timestamp": "2:46:44 PM"
+    },
+    {
+      "campaignId": "senior-tax-defense-x",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "5D9D6924",
+      "timestamp": "2:48:06 PM"
+    },
+    {
+      "campaignId": "guardian-tax-relief-ppc",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "D9EDD56C",
+      "timestamp": "2:49:25 PM"
+    },
+    {
+      "campaignId": "empire-tax-relief-x",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "D64BCF85",
+      "timestamp": "2:51:01 PM"
+    },
+    {
+      "campaignId": "capital-tax-relief-x",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "B539863F",
+      "timestamp": "2:52:33 PM"
+    },
+    {
+      "campaignId": "ftd-ppc2",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "EAECD973",
+      "timestamp": "2:54:02 PM"
     }
   ],
   "emailSent": false

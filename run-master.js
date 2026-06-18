@@ -102,7 +102,8 @@ if (viewportArg === 'api') {
         dynamicSliderAmount = campaignConfig.sliderOptions[randomIndex];
         console.log(`🎲 [Randomizer] Selected random dropdown option: "${dynamicSliderAmount}"`);
       } else {
-        const randomNum = Math.floor(Math.random() * 100) * 1000 + 1000;
+        // Generate a random number from 1 to 10, then multiply by 10,000 (e.g. 10000, 20000... 100000)
+        const randomNum = Math.floor(Math.random() * 10 + 1) * 10000;
         dynamicSliderAmount = randomNum.toString();
         console.log(`🎲 [Randomizer] Generated random numeric slider value: ${dynamicSliderAmount}`);
       }
@@ -235,7 +236,8 @@ if (viewportArg === 'api') {
         dynamicSliderAmount = campaignConfig.sliderOptions[randomIndex];
         console.log(`🎲 [Randomizer] Selected random dropdown option: "${dynamicSliderAmount}"`);
       } else {
-        const randomNum = Math.floor(Math.random() * 100) * 1000 + 1000;
+        // Generate a random number from 1 to 10, then multiply by 10,000 (e.g. 10000, 20000... 100000)
+        const randomNum = Math.floor(Math.random() * 10 + 1) * 10000;
         dynamicSliderAmount = randomNum.toString();
         console.log(`🎲 [Randomizer] Generated random numeric slider value: ${dynamicSliderAmount}`);
       }

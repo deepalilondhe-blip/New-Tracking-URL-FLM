@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GlobeWest AU Accessibility Remediation — Phase 1: QA Tester Scope</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #050e1c;
+      --secondary: #1e3d59;
+      --accent: #e0533c;
+      --bg-light: #f8fafc;
+      --border: #e2e8f0;
+      --text: #334155;
+      --text-light: #64748b;
+      --success: #10b981;
+      --warning: #f59e0b;
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Outfit', sans-serif;
+      color: var(--text);
+      line-height: 1.4;
+      margin: 0;
+      padding: 0;
+      background-color: #ffffff;
+      font-size: 12px;
+    }
+    
+    .container {
+      padding: 0;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    /* Header styling */
+    .header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: #ffffff;
+      padding: 20px 25px;
+      border-radius: 0 0 10px 10px;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+    
+    .brand {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 3px;
+    }
+    
+    .title {
+      font-size: 20px;
+      margin: 0 0 6px 0;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+    
+    .subtitle {
+      font-size: 12px;
+      color: #cbd5e1;
+      margin: 0;
+      font-weight: 300;
+    }
+    
+    /* Section styling */
+    .section-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-left: 4px solid var(--accent);
+      padding-left: 8px;
+      margin: 18px 0 10px 0;
+      page-break-after: avoid;
+    }
+    
+    .card {
+      background-color: var(--bg-light);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 12px 15px;
+      margin-bottom: 15px;
+      page-break-inside: avoid;
+    }
+    
+    /* Grid system */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    
+    /* List styling */
+    ul {
+      margin: 0;
+      padding-left: 15px;
+    }
+    
+    li {
+      margin-bottom: 4px;
+    }
+    
+    li strong {
+      color: var(--primary);
+    }
+    
+    /* Table styling */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      font-size: 11px;
+      margin-bottom: 8px;
+    }
+    
+    th, td {
+      border: 1px solid var(--border);
+      padding: 6px 8px;
+      text-align: left;
+      vertical-align: top;
+    }
+    
+    th {
+      background-color: #f1f5f9;
+      color: var(--primary);
+      font-weight: 600;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #ffffff;
+    }
+    
+    /* Pre / Code formatting */
+    code, pre {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      background-color: #e2e8f0;
+      padding: 1px 3px;
+      border-radius: 3px;
+    }
+    
+    pre {
+      display: block;
+      padding: 8px;
+      background-color: #0f172a;
+      color: #f8fafc;
+      overflow-x: auto;
+      margin: 8px 0;
+    }
+    
+    /* Footer */
+    .footer {
+      text-align: center;
+      margin-top: 30px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      font-size: 10px;
+      color: var(--text-light);
+      page-break-inside: avoid;
+    }
+    
+    /* Page break adjustments */
+    .page-break {
+      page-break-before: always;
+    }
+    
+    .meta-box {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      padding: 5px 8px;
+      font-size: 10px;
+      color: var(--text-light);
+      display: inline-block;
+      margin-top: 8px;
+    }
+    
+    .meta-box strong {
+      color: var(--primary);
+    }
+    
+    .pill {
+      display: inline-block;
+      padding: 1px 6px;
+      border-radius: 10px;
+      font-size: 9px;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    
+    .pill-success {
+      background-color: #d1fae5;
+      color: #065f46;
+    }
+    
+    .pill-accent {
+      background-color: #fee2e2;
+      color: #991b1b;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Page 1: Header & Introduction -->
+  <div class="header">
+    <div class="brand">GlobeWest — Phase 1 Scope of Work</div>
+    <h1 class="title">AU Accessibility Remediation: QA Scope</h1>
+    <p class="subtitle">WCAG 2.2 Level AA Front-End Remediation QA Verification Plan</p>
+    <div class="meta-box">
+      <strong>Target:</strong> WCAG 2.2 Level AA compliance | <strong>Audited Site:</strong> globewest.com.au | <strong>Platform:</strong> Adobe Commerce (Magento 2)
+    </div>
+  </div>
+  
+  <h2 class="section-title">📌 Project Overview &amp; Context</h2>
+  <div class="card">
+    <p style="margin-top: 0; margin-bottom: 5px;">This document establishes the <strong>QA Tester Scope of Work</strong> for the front-end accessibility remediation of the GlobeWest Australian (AU) store. The objective is to verify all remediation fixes based on the WCAG 2.2 Level AA Audit Report.</p>
+    <p style="margin-bottom: 0;"><strong>Strategic Goal:</strong> Achieve full compliance on the AU site before the US store fork in Phase 2, preventing duplicated front-end accessibility development cycles.</p>
+  </div>
+
+  <h2 class="section-title">👥 Contact Information</h2>
+  <div class="card">
+    <div class="grid">
+      <div>
+        <strong>Overdose Digital Project Team:</strong>
+        <ul style="padding-left: 12px; font-size: 10px; margin-top: 3px; margin-bottom: 0;">
+          <li>Jess Anticaglia (Sponsor) - jessica.a@overdose.digital</li>
+          <li>Michelle Munro (Project Manager) - michelle@overdose.digital</li>
+          <li>Alex Pape (Technical Lead) - alex@overdose.digital</li>
+          <li>Shantelle Johnson (Design Lead) - shantelle@overdose.digital</li>
+        </ul>
+      </div>
+      <div>
+        <strong>Delivery Partner (MagnetoIT QA Team):</strong>
+        <ul style="padding-left: 12px; font-size: 10px; margin-top: 3px; margin-bottom: 0;">
+          <li>Project Lead: TBC</li>
+          <li>Technical Lead: TBC</li>
+          <li>QA Accessibility Tester: TBC</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="section-title">📊 QA Execution Flow</h2>
+  <div class="card">
+    <pre style="margin: 0;">
+1. Setup &amp; Analyze Inputs (Audit specifications &amp; Lighthouse baseline scores)
+   ↓
+2. Environment Configuration (Staging: mcstaging2.globewest.com)
+   ↓
+3. Execute Page Template Audits (Automated scans &amp; manual NVDA/VoiceOver runs)
+   ↓
+4. Log &amp; Re-test Defects (Manage remediation logs &amp; UAT sheets)
+   ↓
+5. Post-Fix Performance &amp; Auditor Pass (Verify CWVs &amp; support client verification)
+   ↓
+6. Final Sign-off &amp; Delivery (Zero P1/P2 accessibility bugs)</pre>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- Page 2: Validation Rules -->
+  <div class="header" style="padding: 10px 20px; margin-bottom: 12px;">
+    <div class="brand">GlobeWest — Phase 1</div>
+    <h1 class="title" style="font-size: 15px; margin: 0;">AU Accessibility Remediation — QA Scope</h1>
+  </div>
+
+  <h2 class="section-title">🔍 Verification Rules &amp; Accessibility Criteria</h2>
+  <div class="card" style="padding: 10px 12px;">
+    <table style="margin: 0;">
+      <thead>
+        <tr>
+          <th style="width: 25%;">Remediation Pillar</th>
+          <th style="width: 40%;">✓ Pass Condition</th>
+          <th style="width: 35%;">✗ Fail Condition</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Color Contrast</strong><br><small>WCAG 1.4.3</small></td>
+          <td>Text &amp; UI elements must hit contrast ratios of:
+            <ul style="padding-left: 10px; margin: 2px 0;">
+              <li><strong>4.5:1</strong> for normal text</li>
+              <li><strong>3.0:1</strong> for large text / UI elements</li>
+            </ul>
+          </td>
+          <td>Headers, buttons, inputs, ETA spans, or footer text failing contrast checker tools.</td>
+        </tr>
+        <tr>
+          <td><strong>ARIA &amp; Labels</strong><br><small>WCAG 1.1.1 / 4.1.2</small></td>
+          <td>Discernible text name or <code>aria-label</code> attribute describing all interactive controls.</td>
+          <td>Empty links, buttons with SVG icons only and no label text.</td>
+        </tr>
+        <tr>
+          <td><strong>Touch Target Sizing</strong><br><small>WCAG 2.5.8</small></td>
+          <td>All tap targets must have size/spacing of at least <strong>44x44px</strong>.</td>
+          <td>Small mobile swatches, header navigation icons, or carousel links under 44px.</td>
+        </tr>
+        <tr>
+          <td><strong>Viewport &amp; Zoom</strong><br><small>WCAG 1.4.4</small></td>
+          <td>Users must be able to pinch-to-zoom on mobile devices.</td>
+          <td>Meta tags using <code>user-scalable=no</code> or setting max/min scales.</td>
+        </tr>
+        <tr>
+          <td><strong>Carousel HTML DOM</strong><br><small>WCAG 1.3.1 / 4.1.1</small></td>
+          <td>Clean semantic layouts where list containers only enclose list items.</td>
+          <td>Slick/Swiper templates inserting direct <code>div</code> children within <code>ul</code> lists.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="section-title">⌨️ Keyboard Navigation &amp; Focus Rules</h2>
+  <div class="card">
+    <ul style="margin-bottom: 0;">
+      <li><strong>Logical Sequence:</strong> Tab progression must follow a logical top-to-bottom, left-to-right visual layout order.</li>
+      <li><strong>Visual Focus Outlines:</strong> Every interactive element must display a high-contrast visual outline when focused.</li>
+      <li><strong>Focus Trap Handling:</strong> During active modal drawers (minicart, mobile nav, PLP filters, login drawer), focus must be locked inside the overlay. Pressing tab should cycle inside and not jump behind the background overlay.</li>
+    </ul>
+  </div>
+
+  <h2 class="section-title">📋 Page Templates In-Scope</h2>
+  <div class="card">
+    <div class="grid" style="margin-bottom: 0;">
+      <div>
+        <ul style="margin-bottom: 0;">
+          <li><strong>Homepage:</strong> Banners, promo widgets, main nav header.</li>
+          <li><strong>Listing Page (PLP):</strong> Filter checkboxes, grids, sorting dropdowns.</li>
+          <li><strong>Detail Page (PDP):</strong> Swatches, galleries, zoom, sizes, reviews.</li>
+          <li><strong>Search Results Page:</strong> Autocomplete panels, results grids.</li>
+        </ul>
+      </div>
+      <div>
+        <ul style="margin-bottom: 0;">
+          <li><strong>Checkout Journey:</strong> Cart forms, minicart, billing inputs.</li>
+          <li><strong>My Account Area:</strong> Customer dashboards, address books.</li>
+          <li><strong>B2B Trade Portal:</strong> Multi-step registrations, pricing grids.</li>
+          <li><strong>Static Pages:</strong> Showrooms, FAQs, Contact forms.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- Page 3: Matrices & Deliverables -->
+  <div class="header" style="padding: 10px 20px; margin-bottom: 12px;">
+    <div class="brand">GlobeWest — Phase 1</div>
+    <h1 class="title" style="font-size: 15px; margin: 0;">AU Accessibility Remediation — QA Matrices</h1>
+  </div>
+
+  <h2 class="section-title">💻 Browser &amp; Device Testing Matrices</h2>
+  <div class="card" style="padding: 10px 12px;">
+    <strong>7.1 UI Testing Matrix (12 Layout Combinations):</strong>
+    <table style="margin-top: 4px; margin-bottom: 8px;">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Device Category</th>
+          <th>Operating System</th>
+          <th>Web Browser</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>MacBook Pro / iMac</td>
+          <td>macOS Ventura</td>
+          <td>Chrome (latest)</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>MacBook Pro / iMac</td>
+          <td>macOS Ventura</td>
+          <td>Safari (latest)</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>MacBook Pro / iMac</td>
+          <td>macOS Sonoma</td>
+          <td>Chrome (latest)</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>MacBook Pro / iMac</td>
+          <td>macOS Sonoma</td>
+          <td>Safari (latest)</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Android Phone (S22)</td>
+          <td>Android 14</td>
+          <td>Chrome (latest)</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Android Phone (S23 Ultra)</td>
+          <td>Android 14</td>
+          <td>Samsung Internet (latest)</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>iPhone 13 mini</td>
+          <td>iOS 18</td>
+          <td>Safari (latest)</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>iPhone 14 Pro Max</td>
+          <td>iOS 18</td>
+          <td>Safari (latest)</td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>iPad Air (5th gen)</td>
+          <td>iPadOS 17</td>
+          <td>Safari (latest)</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>Android Tablet (Tab S8)</td>
+          <td>Android 13</td>
+          <td>Chrome (latest)</td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td>Windows PC</td>
+          <td>Windows 11</td>
+          <td>Chrome (latest)</td>
+        </tr>
+        <tr>
+          <td>12</td>
+          <td>Windows PC</td>
+          <td>Windows 11</td>
+          <td>Edge (latest)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <strong>7.2 Functionality &amp; Journey Testing Matrix (3 Combinations):</strong>
+    <table style="margin-top: 4px; margin-bottom: 0;">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Device Category</th>
+          <th>Operating System</th>
+          <th>Web Browser</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>MacBook Pro / iMac</td>
+          <td>macOS Sonoma</td>
+          <td>Chrome (latest)</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>iPhone 14 Pro Max</td>
+          <td>iOS 18</td>
+          <td>Safari (latest)</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Samsung Galaxy S23 Ultra</td>
+          <td>Android 14</td>
+          <td>Chrome (latest)</td>
+        </tr>
+      </tbody>
+    </table>
+    <p style="margin-top: 5px; margin-bottom: 0; font-size: 10px; color: var(--text-light);">
+      <em>*Note: Accessibility journey testing must be separately verified using NVDA on Windows 11 (Chrome/Edge), VoiceOver on macOS (Safari), and VoiceOver on iOS 18 (Safari).</em>
+    </p>
+  </div>
+
+  <h2 class="section-title">📦 QA Deliverables &amp; Artifacts Checklist</h2>
+  <div class="card">
+    <div class="grid">
+      <div>
+        <ul style="padding-left: 12px; font-size: 10px; margin-bottom: 0;">
+          <li><strong>Remapping Log:</strong> Spreadsheet indexing pages, fail codes, fixes, and re-tests.</li>
+          <li><strong>Run Sheets:</strong> Executed matrices for the 12 browser/device layout combinations.</li>
+          <li><strong>Screen Reader Recordings:</strong> Video/audio evidence of NVDA &amp; VoiceOver runs.</li>
+        </ul>
+      </div>
+      <div>
+        <ul style="padding-left: 12px; font-size: 10px; margin-bottom: 0;">
+          <li><strong>Zero P1/P2 Bugs:</strong> Validation report proving no critical/high issues are open.</li>
+          <li><strong>Automated Reports:</strong> Exported Lighthouse/axe-core pass logs.</li>
+          <li><strong>CWV Scores:</strong> Verification that LCP &lt; 2.5s, CLS &lt; 0.1, INP &lt; 200ms are met.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-break"></div>
+
+  <!-- Page 4: Scope Boundaries & Troubleshooting -->
+  <div class="header" style="padding: 10px 20px; margin-bottom: 12px;">
+    <div class="brand">GlobeWest — Phase 1</div>
+    <h1 class="title" style="font-size: 15px; margin: 0;">AU Accessibility Remediation — QA Scope Boundaries</h1>
+  </div>
+
+  <h2 class="section-title">⚠️ Scope Boundaries</h2>
+  <div class="card">
+    <div class="grid">
+      <div>
+        <span class="pill pill-success">In-Scope QA Duties</span>
+        <ul style="padding-left: 12px; font-size: 10px; margin-top: 4px; margin-bottom: 0;">
+          <li>Code fixes verification on staging.</li>
+          <li>Automated &amp; manual accessibility testing.</li>
+          <li>Device/Browser testing compliance.</li>
+          <li>Performance metrics post-fixes.</li>
+        </ul>
+      </div>
+      <div>
+        <span class="pill pill-accent">Out-of-Scope (Excluded)</span>
+        <ul style="padding-left: 12px; font-size: 10px; margin-top: 4px; margin-bottom: 0;">
+          <li>Testing Brand Refresh styles (OD).</li>
+          <li>ERP (NetSuite) integration verification.</li>
+          <li>Phase 2 US store builds &amp; configurations.</li>
+          <li>Writing the website's accessibility statement.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="section-title">🐛 Common QA Troubleshooting</h2>
+  <div class="card">
+    <table style="margin-top: 0; margin-bottom: 0;">
+      <thead>
+        <tr>
+          <th style="width: 35%;">Observed QA Failure</th>
+          <th style="width: 65%;">Verification &amp; Remediation Fix</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>No focus outline on buttons/links</strong></td>
+          <td>Verify outline is visible. Ensure focus styles are not disabled via outline: none.
+          <br><code>a:focus { outline: 3px solid #e0533c !important; outline-offset: 2px; }</code></td>
+        </tr>
+        <tr>
+          <td><strong>Tab focus escapes active modal drawer</strong></td>
+          <td>Verify keyboard tab navigation is trapped. Ensure Javascript modal libraries catch keydown events and loop focus back to drawer elements.</td>
+        </tr>
+        <tr>
+          <td><strong>Screen reader skips icon buttons</strong></td>
+          <td>Ensure SVGs and icon-only anchors specify clear <code>aria-label</code> values (e.g. <code>aria-label="Search"</code>) to describe functionality.</td>
+        </tr>
+        <tr>
+          <td><strong>Mobile pinch-to-zoom is locked</strong></td>
+          <td>Verify mobile zoom behavior. Remove user-scalable limitations from layout viewport headers:
+          <br><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="footer">
+    GlobeWest AU Accessibility Remediation (Phase 1) — Prepared by Overdose Digital &copy; 2026. Confidential QA Document.
+  </div>
+</div>
+
+</body>
+</html>

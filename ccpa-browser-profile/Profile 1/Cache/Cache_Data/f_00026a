@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+        <meta name="csrf-token" content="mAhpxOFn8S5nqX3stmQCXVsornq7dC4MWYBkEiYi" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <title>CCPA Request - Tax Relief Advocates</title>
+<meta name="description"
+    content="If you are a California resident, you have rights under the California Consumer Privacy Act (&quot;CCPA&quot;), including the right to opt-out of us selling certain of">
+    <link rel="icon" type="image/x-icon" href="https://tra.com/public/assets/images/favicon.png">
+    <link rel="icon" type="image/x-icon" href="https://tra.com/public/assets/images/favicon.ico">
+    <!-- open graph -->
+    <meta property="og:title" content="TRA - Tax Relief Advocates">
+    <meta property="og:description" content="TRA - Tax Relief Advocates">
+    <meta property="og:url" content="https://www.tra.com">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://tra.com/public/assets/images/TRA.png?v=2" />
+    <meta property="og:image:secure_url" content="https://tra.com/public/assets/images/TRA.png?v=2" />
+    <meta property="og:image:width" content="350" />
+    <meta property="og:image:height" content="350" />
+    <meta property="og:image:alt" content="our menu" />
+    <meta property="og:image:type" content="image/png" />
+    <!-- slick css  -->
+    <link rel="stylesheet" type="text/css" href="https://tra.com/public/assets/css/slick.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://tra.com/public/assets/css/jquery-ui.min.css" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://tra.com/public/assets/images/logo.png?v=3">
+    <!-- style css  -->
+    <link href="https://tra.com/public/assets/css/home.css" rel="stylesheet">
+<link href="https://tra.com/public/assets/css/terms-and-use.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <style>
+        .header-menu{display:flex;gap:50px;align-items:center}.header-menu nav{margin-top:4px}.header-menu nav ul{display:flex;gap:25px}.header-menu nav ul li a{font-size:22px;color:#000;display:inline-block;font-weight:500;transition:.4s}.header-menu nav ul li a:hover{color:#0f75bd}.header-menu .number-desc{max-width:100%;width:auto}.header-menu .number-desc .btn-custom-num span{line-height:normal}.header-menu .hamburger{position:relative;height:21px;width:30px;display:none}.header-menu .hamburger span{height:3px;background-color:#000;width:100%;border-radius:100px;transition:.4s;position:absolute}.header-menu .hamburger span:first-child{top:0}.header-menu .hamburger span:nth-child(2){top:9px}.header-menu .hamburger span:nth-child(3){top:18px}.overflow-hidden{overflow:hidden}@media only screen and (max-width:991px){.header-menu .hamburger{display:flex;position:absolute;top:50%;transform:translateY(-50%);cursor:pointer;right:20px}.header-menu .menu-inner+.number-desc{margin-right:60px}.header-menu .menu-inner nav{position:absolute;top:100%;height:100vh;background:#fff;margin:0;padding:20px;width:100%;right:100%;transition:.4s}.header-menu .menu-inner nav ul{flex-direction:column}.main-header.show-menu .header-menu .menu-inner nav{right:0}.main-header.show-menu .header-menu .hamburger span:first-child{transform:rotate(135deg);top:9px}.main-header.show-menu .header-menu .hamburger span:nth-child(2){opacity:0}.main-header.show-menu .header-menu .hamburger span:nth-child(3){transform:rotate(-135deg);top:9px}}@media only screen and (max-width:767px){.header-menu .hamburger{top:calc(50% + 4.5px)}.header-menu .menu-inner+.number-desc{margin-right:50px}.header-menu nav ul li a{font-size:20px}.header-menu nav ul{gap:16px}}
+    </style>
+
+    <link href="https://tra.com/public/assets/css/footer.css" rel="stylesheet">
+    <link href="https://tra.com/public/assets/css/popup.css" rel="stylesheet">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-671010050"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'AW-671010050');
+    </script>
+    <script>
+        function gtag_report_conversion(url) {
+            function redirect() {
+                if (typeof(url) != 'undefined') {
+                    window.location.href = url;
+                }
+            };
+            gtag('event', 'conversion', {
+                'send_to': 'AW-671010050/K1v6CNeD5tMYEIKa-78C',
+                'event_callback': redirect()
+            });
+            return false;
+        }
+    </script>
+    <!-- Google Fonts -->
+    <!-- Roboto font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <!-- Archivo font -->
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Montserrat font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,800&display=swap"
+        rel="stylesheet">
+    <!-- Poppins font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+    
+    
+    
+                <!-- Google Tag Manager -->
+        <script>
+            setTimeout(() => {
+                (function(w, d, s, l, i) {
+                    w[l] = w[l] || [];
+                    w[l].push({
+                        'gtm.start': new Date().getTime(),
+                        event: 'gtm.js'
+                    });
+                    var f = d.getElementsByTagName(s)[0],
+                        j = d.createElement(s),
+                        dl = l != 'dataLayer' ? '&l=' + l : '';
+                    j.async = true;
+                    j.src =
+                        'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+                    f.parentNode.insertBefore(j, f);
+                })(window, document, 'script', 'dataLayer', 'GTM-T4QQLMB');
+            }, 3000)
+        </script>
+        <!-- End Google Tag Manager -->
+            
+                 </head>
+
+<body class="shadow-header">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe title="Google Tag Manager" src="https://www.googletagmanager.com/ns.html?id=GTM-T4QQLMB" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div id="contact"></div>
+    <!-- header sec start  -->
+    <!-- <header class="main-header">
+        <div class="container">
+            <div class="header-wrapper">
+                <div class="logo-header">
+                    <img src="https://tra.com/public/assets/images/logo.png" alt="logo"
+                            width="145" height="89" />
+                </div>
+                <div class="number-desc">
+                    <a class="btn-custom-num" href="tel:+18772601553">
+    <img src="https://tra.com/public/assets/images/headicon.webp" width="38" height="38" alt="headicon icon" />
+    <span> 877-260-1553</span></a>
+                </div>
+            </div>
+        </div>
+    </header> -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-wrapper">
+                <div class="logo-header">
+                    <img src="https://tra.com/public/assets/images/TRA.svg" alt="logo" width="145" height="89" />
+
+                    
+                                    </div>
+                <div class="header-menu">
+                                        <div class="number-desc">
+                        <a class="btn-custom-num" href="tel:+18772601553">
+    <img src="https://tra.com/public/assets/images/headicon.webp" width="38" height="38" alt="headicon icon" />
+    <span> 877-260-1553</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- header sec end -->
+<main id="main-content">
+<!-- ccpa content start -->
+<section class="ccpa-content">
+    <div class="loader">Loading&#8230;</div>
+    <div class="container">
+        <div class="ccpa-desc">
+            <h1>FOR CALIFORNIA RESIDENTS ONLY</h1>
+            <h2>"Do Not Sell My Information" Request and Assertion of Privacy Rights</h2>
+            <p>If you are a California resident, you have rights under the California Consumer Privacy Act (“CCPA”),
+                including the right to opt-out of us selling certain of your personal information by filing a CCPA
+                “Do Not Sell My Information Request,” and the rights to request what information is being collected
+                about you, the sources of the information, what information is sold and to whom, the right to have
+                your data deleted and the right to have a copy of the data about you. More information about what we
+                collect and how we share your personal information is available in our <a
+                    href="https://tra.com/privacy-policy" target="_blank">California Privacy Policy</a> . There are other
+                laws
+                which may impact our ability to complete any requests under CCPA. If you would like to submit a
+                request under CCPA, please complete and submit the form below:</p>
+
+
+            
+
+            <form id="ccpa-form" class="ccpa-form" method="post">
+                <input type="hidden" name="_token" value="mAhpxOFn8S5nqX3stmQCXVsornq7dC4MWYBkEiYi" autocomplete="off">                <input type="hidden" name="post_id" value="5071">
+                <input type="hidden" name="form_id" value="158656d5">
+                <input type="hidden" name="referer_title" value="CCPA Request - Tax Relief Advocates">
+                <input type="hidden" name="user_ip" value="27.54.170.27">
+                <input type="hidden" name="referrer" value="/ccpa-request">
+                <input type="hidden" id="form_id" name="form_id" value="5" />
+                <input type="hidden" id="page_id" name="page_id" value="5" />
+                <div>
+                    <h3>The Requestor is a:</h3>
+                    <div class="requestor">
+                        <div class="input-group">
+                            <input type="radio" name="requester" id="california" value="California Resident">
+                            <label for="california">California Resident</label>
+                        </div>
+                        <div class="input-group">
+                            <input type="radio" name="requester" id="authorized"
+                                value="Duly authorized third-party representative of a California Resident">
+                            <label for="authorized">Duly authorized third-party representative of a California
+                                Resident</label>
+                        </div>
+                        <label id="requester-error" class="error" for="requester" style="display: none;">Please select
+                            the
+                            requester type.</label>
+                    </div>
+
+                </div>
+                <div>
+                    <h3>I would like to submit the following request(s):</h3>
+
+                    <div class="form-check">
+                        <div class="input-group">
+                            <input type="checkbox" class="request" name="request[]"
+                                value="What data is collected about me" aria-label="What data is collected about me">
+                            <label for="text">What data is collected about me</label>
+                        </div>
+                        <div class="input-group">
+                            <input type="checkbox" class="request" name="request[]" value="Who has received my data" aria-label="Who has received my data">
+                            <label for="text">Who has received my data</label>
+                        </div>
+                        <div class="input-group">
+                            <input type="checkbox" class="request" name="request[]"
+                                value="Provide a portable version of my data" aria-label="Provide a portable version of my data">
+                            <label for="text">Provide a portable version of my data</label>
+                        </div>
+                        <div class="input-group">
+                            <input type="checkbox" class="request" name="request[]" value="Delete my data" aria-label="Delete my data">
+                            <label for="text">Delete my data</label>
+                        </div>
+                        <div class="input-group">
+                            <input type="checkbox" class="request" name="request[]" value="Do not sell my data" aria-label="Do not sell my data">
+                            <label for="text">Do not sell my data</label>
+                        </div>
+                        <label id="request[]-error" class="error" for="request[]" style="display: none;">Please select
+                            at
+                            least one request.</label>
+                    </div>
+
+                </div>
+
+                <div class="ccpa-group mb-20">
+                    <div class="ccpa-input">
+                        <label for="first_name">First Name</label>
+                        <input type="text" name="first_name" placeholder="Enter First Name">
+                    </div>
+                    <div class="ccpa-input">
+                        <label for="last_name">Last Name</label>
+                        <input type="text" name="last_name" placeholder="Enter Last Name">
+                    </div>
+                </div>
+                <div class="ccpa-group m-20">
+                    <div class="ccpa-input mb-20">
+                        <label for="address1">Street Number and Street Name</label>
+                        <input type="text" name="address1" placeholder="Enter Street Number and Street Name">
+                    </div>
+                    <div class="ccpa-input mb-20 ">
+                        <label for="address2">Apartment,Floor,Suite Number</label>
+                        <input type="text" name="address2" placeholder="Enter Apartment,Floor,Suite Number">
+                    </div>
+                </div>
+                <div class="ccpa-group mb-20">
+                    <div class="ccpa-input">
+                        <label for="city">City</label>
+                        <input type="text" name="city" placeholder="Enter City">
+                    </div>
+                    <div class="ccpa-input">
+                        <label for="state">State</label>
+                        <div class="field-group state-icon">
+    <select id="state" name="state" class="form-control" aria-label="Select Your State"  tabindex="0">
+        <option value="">Select Your State</option>
+                    <option value="AL" >
+                Alabama
+            </option>
+                    <option value="AK" >
+                Alaska
+            </option>
+                    <option value="AZ" >
+                Arizona
+            </option>
+                    <option value="AR" >
+                Arkansas
+            </option>
+                    <option value="CA" >
+                California
+            </option>
+                    <option value="CO" >
+                Colorado
+            </option>
+                    <option value="CT" >
+                Connecticut
+            </option>
+                    <option value="DE" >
+                Delaware
+            </option>
+                    <option value="DC" >
+                District of Columbia
+            </option>
+                    <option value="FL" >
+                Florida
+            </option>
+                    <option value="GA" >
+                Georgia
+            </option>
+                    <option value="HI" >
+                Hawaii
+            </option>
+                    <option value="ID" >
+                Idaho
+            </option>
+                    <option value="IL" >
+                Illinois
+            </option>
+                    <option value="IN" >
+                Indiana
+            </option>
+                    <option value="IA" >
+                Iowa
+            </option>
+                    <option value="KS" >
+                Kansas
+            </option>
+                    <option value="KY" >
+                Kentucky
+            </option>
+                    <option value="LA" >
+                Louisiana
+            </option>
+                    <option value="ME" >
+                Maine
+            </option>
+                    <option value="MD" >
+                Maryland
+            </option>
+                    <option value="MA" >
+                Massachusetts
+            </option>
+                    <option value="MI" >
+                Michigan
+            </option>
+                    <option value="MN" >
+                Minnesota
+            </option>
+                    <option value="MS" >
+                Mississippi
+            </option>
+                    <option value="MO" >
+                Missouri
+            </option>
+                    <option value="MT" >
+                Montana
+            </option>
+                    <option value="NE" >
+                Nebraska
+            </option>
+                    <option value="NV" >
+                Nevada
+            </option>
+                    <option value="NH" >
+                New Hampshire
+            </option>
+                    <option value="NJ" >
+                New Jersey
+            </option>
+                    <option value="NM" >
+                New Mexico
+            </option>
+                    <option value="NY" >
+                New York
+            </option>
+                    <option value="NC" >
+                North Carolina
+            </option>
+                    <option value="ND" >
+                North Dakota
+            </option>
+                    <option value="OH" >
+                Ohio
+            </option>
+                    <option value="OK" >
+                Oklahoma
+            </option>
+                    <option value="OR" >
+                Oregon
+            </option>
+                    <option value="PA" >
+                Pennsylvania
+            </option>
+                    <option value="RI" >
+                Rhode Island
+            </option>
+                    <option value="SC" >
+                South Carolina
+            </option>
+                    <option value="SD" >
+                South Dakota
+            </option>
+                    <option value="TN" >
+                Tennessee
+            </option>
+                    <option value="TX" >
+                Texas
+            </option>
+                    <option value="UT" >
+                Utah
+            </option>
+                    <option value="VT" >
+                Vermont
+            </option>
+                    <option value="VA" >
+                Virginia
+            </option>
+                    <option value="WA" >
+                Washington
+            </option>
+                    <option value="WV" >
+                West Virginia
+            </option>
+                    <option value="WI" >
+                Wisconsin
+            </option>
+                    <option value="WY" >
+                Wyoming
+            </option>
+            </select>
+    <label for="state" generated="true" class="error"></label>
+</div>                    </div>
+                    <div class="ccpa-input">
+                        <label for="zipcode">Zipcode</label>
+                        <input type="text" name="zipcode" id="zipcode" placeholder="Enter Zipcode">
+                    </div>
+                </div>
+                <div class="ccpa-group mb-20 ">
+                    <div class="ccpa-input">
+                        <label for="email_address">Email Address (Submitted on Second Chance Tax Relief)
+                        </label>
+                        <input type="email" name="email_address" placeholder="Enter Email Address">
+                    </div>
+                    <div class="ccpa-input field-group">
+                        <label for="primary_phone">Phone Number:</label>
+                        <input type="tel" name="primary_phone" id="primary_phone"
+                            placeholder="Enter Phone Nubmer" class="form-control">
+                    </div>
+                </div>
+                <!-- <button type="submit" class="g-recaptcha submitBtn" data-sitekey="6Lfj1JYpAAAAAN5lr8JuXqEi_Eppo-HX5RPO_Spu"
+                >Submit</button> -->
+                <input type="submit" value="Submit" data-callback="onSubmitMain" class="g-recaptcha submit submitBtn" data-sitekey="6Lfj1JYpAAAAAN5lr8JuXqEi_Eppo-HX5RPO_Spu">
+            </form>
+            <div id="success-message" class="alert alert-success" style="display: none;">
+                Your ccpa-request form has been submitted.
+            </div>
+            <p>More information about what we collect and how we share your personal information is available in our
+                <a href="https://tra.com/privacy-policy" target="_blank">California Privacy Policy</a>.
+            </p>
+            <h3>Certification</h3>
+            <p>By submitting this form, you certify that you are a California Resident or are duly authorized to act
+                as an agent for a California Resident, that the information provided above is correct.</p>
+        </div>
+    </div>
+</section>
+<!-- ccpa content end -->
+</main>
+<!-- footer section start -->
+  <footer class="footer">
+      <div class="container">
+          <div class="footer-inner">
+              <a href="#contact" class="footer-logo"><img src="https://tra.com/public/assets/images/TRA_Logo_inverted.webp" 
+                      tabindex="0" alt="footer logo" width="300" height="184"></a>
+              <ul class="footer-menu-list">
+                  <li><a class="form-popup-open" href="https://tra.com/contact" tabindex="0">Contact Us</a></li>
+                  <li><a href="https://tra.com/terms-of-use" target="_blank" tabindex="0">Terms of Use</a></li>
+                  <li><a href="https://tra.com/privacy-policy" target="_blank" tabindex="0">Privacy Policy</a></li>
+                  
+                  <li><a href="https://tra.com/ccpa-request " target="_blank" tabindex="0">CCPA Request</a></li>
+              </ul>            
+              <p>TRA’s estimates are based on prior results, which will vary depending on your specific circumstances. TRA does not guarantee that your debts will be resolved for a specific amount or percentage or within a specific period of time. TRA does not assume your debts, make monthly payments to creditors or provide tax, bankruptcy, accounting or legal advice or credit repair services. TRA’s services may not be available in all states and their fees may vary from state to state. By providing your contact information, you expressly consent to receiving calls and/or SMS text messages at the number you provided as part of our service offerings, including but not limited to advertisements, solicitations, and service updates. The phone number belonging to the called/messaged person(s) could incur charges for such contact. Read and understand all program materials prior to enrollment. 
+              </p>
+              <p>Please note that all calls with the company may be recorded or monitored for quality assurance and training purposes.</p>
+          </div>
+      </div>
+      <div class="copy-right">
+          <div class="container">
+              <p>Copyright © 2026 TRA Tax Relief Advocates</p>
+          </div>
+      </div>
+  </footer>
+  <!-- footer section end -->
+  <div class="wrapper" style="position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none;">
+      <div class="custom-popup js-custom-popup" id="custom-popup" data-popup="custom-popup">
+          <span class="custom-popup__close js-close-popup"></span>
+          <div class="custom-popup__holder js-custom-popup-holder">
+              <iframe title="Video" width="420" height="315"></iframe>
+          </div>
+      </div>
+  </div>
+  <!-- Form Popup -->
+  <div class="wrapper" style="position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none;">
+      <div class="form-popup">
+          <div class="form-holder">
+              <div class="form-popup-header">
+                  <h3>Contact Us</h3>
+                  <span class="close-form-popup"></span>
+              </div>
+              <div class="form-popup-content">
+                  <p>Tax Relief Advocates <br>
+                    16808 Armstrong Ave. Irvine, CA 92606<br>
+                    8005752063<br>
+                      <a href="mailto:contact@tra.com" tabindex="0">contact@tra.com</a>
+                  </p>
+              </div>
+              <div class="form-popup-footer">
+                  <button class="close-btn-popup" tabindex="0">Close</button>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- Form Popup -->
+
+  <script>
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
+<script type="text/javascript" src="https://tra.com/public/assets/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="https://tra.com/public/assets/js/slick.min.js"></script>
+<script type="text/javascript" src="https://tra.com/public/assets/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="https://tra.com/public/assets/js/jquery.ui.touch-punch.min.js"></script>
+<script type="text/javascript" src="https://tra.com/public/assets/js/custom.js"></script>
+<!-- <script type="text/javascript" src="https://tra.com/public/assets/js/phone.js"></script> -->
+<script type="text/javascript" src="https://tra.com/public/assets/js/jquery.validate.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<script>
+    $(document).ready(function() {
+
+        $("input[name='primary_phone']").on("input", function () {
+        let value = $(this).val().replace(/\D/g, ""); // Remove non-digit characters
+    
+        if (value.length === 11 && (value.startsWith("0") || value.startsWith("1"))) {
+            value = value.substring(1); // Remove the first digit
+        }
+    
+        $(this).val(value); // Update input field
+       });
+
+        $('#ccpa-form').validate({
+            rules: {
+                requester: "required", // Validation for radio buttons
+                "request[]": "required", // Validation for checkboxes (note the array syntax)
+                first_name: {
+                    required: true,
+                    noInputSpaces: !0
+                },
+                last_name: {
+                    required: true,
+                    noInputSpaces: !0
+                },
+                address1: {
+                    required: true,
+                    noInputSpaces: !0
+                },
+                address2: {
+                    required: true,
+                    noInputSpaces: !0
+                },
+                city: {
+                    required: true,
+                    noInputSpaces: !0
+                },
+                state: "required",
+                zipcode: {
+                    required: true,
+                    maxlength: 6, // Maximum length of 10 characters
+                },
+                email_address: {
+                    required: true,
+                    email: true, // Ensure it's a valid email address
+                    emailCheck: true,
+                },
+                primary_phone: {
+                    required: true,
+                    phoneDigit:true
+
+                    // phoneUS: true,
+                    // phoneValidate: true
+                },
+            },
+            messages: {
+                requester: "Please select the requestor type.",
+                "request[]": "Please select at least one option.",
+                first_name: "Please enter your first name.",
+                last_name: "Please enter your last name.",
+                address1: "Please enter your street number and street name",
+                address2: 'Please enter your apartment/floor/suite number',
+                city: "Please enter your city.",
+                state: "Please select your state.",
+                zipcode: {
+                    required: "Please enter your zipcode.",
+                    maxlength: "zipcode must not exceed 6 characters.",
+                },
+                email_address: {
+                    required: "Please enter your email address.",
+                    email: "Please enter a valid email address.",
+                },
+                primary_phone: {
+                    required: "Please enter your phone number.",
+                }
+            },
+            // submitHandler: function(form) {
+            //     // Serialize the form data
+            //     event.preventDefault();
+            //     var formData = $(form).serialize();
+            //     $('.loader').show();
+            //     $('.submitBtn').attr("disabled", true);
+
+            //     // Make the Ajax request
+            //     $.ajax({
+            //         headers: {
+            //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
+            //                 'content')
+            //         },
+            //         type: "POST",
+            //         url: "https://tra.com/submit-ccpa",
+            //         data: formData,
+            //         success: function(response) {
+            //             // Handle the success response (e.g., show a success message)
+            //             // You can also redirect or perform other actions here
+            //             if (response) {
+            //                 // $("#success-message").show();
+            //                 Swal.fire({
+            //                     showCloseButton: false,
+            //                     icon: 'success',
+            //                     html: 'Your CCPA Request form has been submitted successfully',
+            //                     title: 'Success!',
+            //                     text: '',
+            //                     customClass: {
+            //                         popup: 'small-popup-class',
+            //                     },
+            //                     onOpen: () => {
+            //                         const popup = document.querySelector(
+            //                             '.swal2-popup');
+            //                         popup.style.width = '500px';
+            //                         popup.style.fontSize = '18px';
+            //                         popup.style.textAlign = 'center';
+            //                     },
+            //                     backdrop: false, // Disable the backdrop (background blur)
+            //                     allowOutsideClick: false, // Disallow clicking outside the popup
+
+            //                 }).then((result) => {
+            //                     if (result.isConfirmed) {
+            //                         // The "OK" button was clicked, you can perform actions here if needed
+            //                         location
+            //                             .reload(); // Reload the page, for example
+            //                     }
+            //                 });
+            //             }
+            //         },
+            //         error: function(xhr, status, error) {
+            //             // Handle errors (e.g., display an error message)
+            //             console.error(xhr.responseText);
+            //         },
+            //         complete: function() {
+            //             // Hide the loading spinner after the request is complete
+            //             $('.loader').hide();
+            //             // Clear all form fields
+            //             $('#ccpa-form').find(
+            //                 "input[type=text], input[type=email], input[type=radio], input[type=checkbox],input[type=tel],  select"
+            //             ).val('');
+
+            //             // Optionally, you can reset any radio buttons or checkboxes to their default state
+            //             $('#ccpa-form').find("input[type=radio], input[type=checkbox]")
+            //                 .prop("checked", false);
+            //             $('.submitBtn').attr("disabled", false);
+            //         }
+            //     });
+
+            // },
+        });
+
+        // $('#state').change(function(e) {
+        //     $("#ccpa-form").valid();
+        // });
+        $('input').on('keypress', function(event) {
+            // Check if the Enter key (keyCode 13) is pressed
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                $("#ccpa-form").valid();
+            }
+        });
+
+        // $.validator.addMethod("emailCheck", function(value, element) {
+        //     var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z]{2,4})+$/;
+        //     return this.optional(element) || regex.test(value);
+        // }, "Please enter a valid email address.");
+
+        jQuery.validator.addMethod("emailCheck", function(e, t) {
+            var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z]{2,4})+$/;
+            return regex.test(e);
+        }, "Please enter a valid email address.");
+
+        jQuery.validator.addMethod("phoneUS", function(value, element) {
+            return this.optional(element) || /^\(\d{3}\) \d{3}-\d{4}$/.test(value) ||
+                /^[1-9]\d{2}-\d{3}-\d{4}$/.test(value);
+        }, "Please enter a valid US phone number in the format (999) 999-9999");
+
+        $.validator.addMethod("phoneValidate", function(e, t) {
+            e = e.replace(/\\s+/g, "");
+            return this.optional(t) || e.length > 9 && e.match(/^\([2-9]\d{2}\) [0-9]\d{2}-\d{4}$/) || e
+                .length > 9 && e.match(/^[2-9]\d{2}-\d{3}-\d{4}$/);
+        }, "Please don’t add '0' or '1' before your phone number");
+
+        $.validator.addMethod("noInputSpaces", function(value, element) {
+            return !/^\s+$/.test(value); // Returns true if the value doesn't contain only spaces
+        }, "Input must not contain only spaces.");
+
+        $.validator.addMethod("phoneDigit", function (value, element) {
+        value = value.replace(/\D/g, ""); // Remove non-digit characters
+        return this.optional(element) || /^[2-9]\d{9}$/.test(value); // Must be exactly 10 digits, not starting with 0 or 1
+    }, "Please enter a valid 10-digit phone number.");
+
+    });
+
+
+    function onSubmitMain(event) {
+        $('#ccpa-form').valid();
+        if ($('#ccpa-form').valid()) {
+            var formData = $('#ccpa-form').serialize();
+            $('.loader').show();
+            $('.submitBtn').attr("disabled", true);
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
+                        'content')
+                },
+                type: "POST",
+                url: "https://tra.com/submit-ccpa",
+                data: formData,
+                success: function(response) {
+                    // Handle the success response (e.g., show a success message)
+                    // You can also redirect or perform other actions here
+
+                    console.log('response',response);
+                    if (response) {
+                        // $("#success-message").show();
+                        Swal.fire({
+                            showCloseButton: false,
+                            icon: 'success',
+                            html: 'Your CCPA Request form has been submitted successfully',
+                            title: 'Success!',
+                            text: '',
+                            customClass: {
+                                popup: 'small-popup-class',
+                            },
+                            onOpen: () => {
+                                const popup = document.querySelector(
+                                    '.swal2-popup');
+                                popup.style.width = '500px';
+                                popup.style.fontSize = '18px';
+                                popup.style.textAlign = 'center';
+                            },
+                            backdrop: false, // Disable the backdrop (background blur)
+                            allowOutsideClick: false, // Disallow clicking outside the popup
+
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                // The "OK" button was clicked, you can perform actions here if needed
+                                location
+                                    .reload(); // Reload the page, for example
+                            }
+                        });
+                    }
+                },
+                error: function(xhr, status, error) {
+                    // Handle errors (e.g., display an error message)
+                    console.error('error', xhr.responseText);
+                },
+                complete: function() {
+                    // Hide the loading spinner after the request is complete
+                    $('.loader').hide();
+                    // Clear all form fields
+                    $('#ccpa-form').find(
+                        "input[type=text], input[type=email], input[type=radio], input[type=checkbox],input[type=tel],  select"
+                    ).val('');
+
+                    // Optionally, you can reset any radio buttons or checkboxes to their default state
+                    $('#ccpa-form').find("input[type=radio], input[type=checkbox]")
+                        .prop("checked", false);
+                    $('.submitBtn').attr("disabled", false);
+                }
+            });
+        }else{
+           
+        }
+    }
+</script>
+<script>
+    AOS.init();
+</script>
+</body>
+
+</html>

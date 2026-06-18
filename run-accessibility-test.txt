@@ -1,0 +1,48 @@
+============================================================
+ACCESSIBILITY AUTOMATION QA TESTING GUIDE & RUN COMMANDS
+============================================================
+
+1. RUN COMMANDS
+------------------------------------------------------------
+To run the failing test (shows all Google accessibility bugs):
+npx playwright test tests/accessibility-demo.spec.js --headed --project=chromium
+
+To run the passing test (ignores Google's known accessibility bugs):
+npx playwright test tests/accessibility-demo-fixed.spec.js --headed --project=chromium
+
+
+2. WHAT WE DID
+------------------------------------------------------------
+- We installed Deque's '@axe-core/playwright' library into the project.
+- We aligned the versions of '@playwright/test' and 'playwright' packages to fix a version conflict in the project.
+- We created two test files:
+  1. `tests/accessibility-demo.spec.js` (Failing test)
+  2. `tests/accessibility-demo-fixed.spec.js` (Passing test)
+
+
+3. WHY WAS THE FIRST TEST FAILING?
+------------------------------------------------------------
+The first test asserted that the accessibility violations list was completely empty:
+`expect(accessibilityScanResults.violations).toEqual([]);`
+
+Because Google's homepage has several real accessibility issues (like low color contrast on text links, missing <h1> heading tags, and incorrect ARIA roles), Axe-core found these issues and added them to the `violations` list. Since the list was not empty, the test failed.
+
+
+4. WHY DID THE SECOND TEST PASS?
+------------------------------------------------------------
+We updated the scanner to disable the specific rules that were failing on Google's homepage:
+`.disableRules([
+  'aria-allowed-role',
+  'landmark-one-main',
+  'link-in-text-block',
+  'page-has-heading-one',
+  'region'
+])`
+
+This told the test runner to skip checking these rules. Since no other violations were found, the list returned empty and the test passed.
+
+
+5. WHAT IS THE DIFFERENCE?
+------------------------------------------------------------
+- The first test checks EVERYTHING and is very strict. It will fail if even a minor rule is violated. This is good for testing your own code during development.
+- The second test is customized/filtered. It allows you to skip issues that you cannot control (like third-party pages, external widgets, or legacy components) while still checking everything else.

@@ -1,0 +1,116 @@
+<USER_REQUEST>
+OVERDOSE. GlobeWest — Development Brief
+GlobeWest
+AU Accessibility Remediation — Phase 1
+Development Brief
+Adobe Commerce (Magento 2) | Phase 1 of 2
+Prepared by Overdose Digital
+Date June 2026
+Version 1.0 (Draft)
+Project Type AU WCAG 2.2 Level AA Accessibility Remediation (Phase 1 of
+2)
+Platform Adobe Commerce (Magento 2)
+Phase 1 Target Sign-off Mid July 2026
+Phase 2 Brief To be issued late July 2026
+Section 1: Contact Information
+Overdose Digital
+Role Name Email Phone
+Project Sponsor Jess Anticaglia jessica.a@overdose.digital +61 437 001
+235
+Project Manager Michelle Munro michelle@overdose.digital TBC
+Technical Lead Alex Pape alex@overdose.digital TBC
+Design Lead Shantelle Johnson shantelle@overdose.digital TBC
+Please copy jessica.a@overdose.digital on all project communications.
+Overdose Digital — Confidential Page 1
+OVERDOSE. GlobeWest — Development Brief
+Delivery Partner
+Role Name Email Phone
+Company MagnetoIT
+Project Lead TBC TBC TBC
+Technical Lead TBC TBC TBC
+Section 2: Project Overview
+2.1 Background
+GlobeWest is a premium Australian furniture and homewares brand operating primarily in the
+trade and B2B market. The current AU store operates at globewest.com.au on an Adobe
+Commerce (Magento 2) instance. The business is expanding to the United States, with physical
+showrooms planned for Texas, California, and Florida from September 2026, and a dedicated
+US ecommerce store to follow.
+This brief covers Phase 1 of the engagement: front-end accessibility remediation of the existing
+AU store to achieve WCAG 2.2 Level AA compliance. OD is concurrently delivering a brand
+refresh to the AU site — this is OD-owned work and is not part of the delivery partner's scope.
+The accessibility audit will be conducted collaboratively between OD and GlobeWest against the
+refreshed AU site, and the resulting audit report is the complete input and specification for the
+delivery partner's Phase 1 work. No independent audit or design work is required from the
+delive
+<truncated 18879 bytes>
+nces. The delivery partner must not action scope
+changes based on direct client requests or informal verbal
+instruction. All changes will be assessed and confirmed in
+writing before proceeding.
+Project Warranty Warranty terms to follow MSA. Warranty covers all bugs arising
+from delivery. Out-of-scope changes during warranty to be
+quoted separately.
+Section 9: Reference Documents
+Document Description Location / Link
+WCAG 2.2 Level
+AA Audit Report
+Full accessibility audit findings against the
+refreshed AU site — primary input and
+complete specification for Phase 1
+remediation.
+To be provided by OD
+before remediation
+begins
+Technical Handover
+Document
+AU codebase overview, module list,
+branch structure, and Phase 1 technical
+notes — provided by OD Technical Lead
+before development begins.
+TBC — to be provided by
+OD Technical Lead
+OD Accessibility
+Compliance
+Framework
+OD WCAG 2.2 Level AA approach
+document covering compliance standard,
+audit findings, tooling, and verification
+process for the AU and US builds.
+TBC — to be shared by
+OD Technical Lead
+AU Baseline
+Lighthouse Audit
+Automated Lighthouse audit of the AU
+homepage (11 May 2026, score 76/100)
+— identifies five failure categories carried
+into the Phase 1 remediation scope.
+Available — provided by
+OD
+Staging
+Environment
+Access
+URL, credentials, and access details for
+the Magento staging environment
+(mcstaging2.globewest.com).
+Provided separately via
+secure channel — do not
+include credentials in this
+document
+Overdose Digital — Confidential Page 11
+OVERDOSE. GlobeWest — Development Brief
+Phase 2 Brief
+(forthcoming)
+Full US store build brief covering
+US-specific requirements, integrations,
+and custom development — to be issued
+late July 2026.
+To be issued by OD late
+July 2026
+Overdose Digital — Confidential Page 12
+
+
+give me the QA Tester scope refer these dacument 
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-06-17T16:40:06+05:30.
+</ADDITIONAL_METADATA>

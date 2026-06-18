@@ -29,8 +29,8 @@ if (campaignFilterArg) {
 // Map each campaign config to a Tablet-only execution matrix
 const runnerScripts = campaigns.map(c => {
   const matrix = [
-    // --- Tablet ---
-    { campaignId: c.id, viewport: 'tablet', browser: 'chromium', label: 'Tablet - Chrome' }
+    // --- Mac Device ---
+    { campaignId: c.id, viewport: 'desktop', browser: 'chromium', label: 'Mac - Device' }
   ];
 
   return matrix;

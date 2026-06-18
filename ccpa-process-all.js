@@ -689,23 +689,54 @@ async function injectMobileFrame(page, deviceArg) {
       let captchaSolved = url.includes('tra.com') ? true : false;
       const maxWaitTime = 300000;
       const startTime = Date.now();
+      let busterClicked = false;
+      let busterClickTime = 0;
 
       while (!captchaSolved && (Date.now() - startTime) < maxWaitTime) {
         await page.waitForTimeout(2000);
 
-        // Try to click Buster solver button if the challenge popup is open
         const challengeFrame = page.frames().find(f => 
           f.url().includes('recaptcha/api2/bframe') || f.url().includes('recaptcha/enterprise/bframe')
         );
-        if (challengeFrame) {
-          try {
-            const busterBtn = await challengeFrame.$('#solver-button');
-            if (busterBtn && await busterBtn.isVisible()) {
-              await busterBtn.click();
-              console.log('🖱️ Clicked Buster CAPTCHA solver button.');
-              await page.waitForTimeout(1000); // Wait after clicking
+
+        // Try to click Buster solver button if the challenge popup is open
+        if (!busterClicked) {
+          if (challengeFrame) {
+            try {
+              const busterBtn = await challengeFrame.$('#solver-button, .help-button-holder');
+              if (busterBtn) {
+                await challengeFrame.waitForTimeout(500); // Give Buster a moment to inject and render
+                await busterBtn.click({ force: true });
+                busterClicked = true; // Set flag so we don't spam click it while it solves
+                busterClickTime = Date.now();
+                console.log('🖱️ Auto-clicked Buster CAPTCHA solver button!');
+                await page.waitForTimeout(3000); // Give it time to start audio challenge
+              }
+            } catch (e) {}
+          }
+        } else {
+          // If Buster was clicked but 15 seconds have passed and it's still not solved
+          if (Date.now() - busterClickTime > 15000 && !captchaSolved) {
+            console.log('⚠️ Buster is taking too long or failed. Reloading CAPTCHA...');
+            if (challengeFrame) {
+              try {
+                // Find the reload button using multiple possible selectors
+                const reloadBtn = await challengeFrame.$('#recaptcha-reload-button, .rc-button-reload, button[title="Get a new challenge"]');
+                if (reloadBtn) {
+                  await reloadBtn.click({ force: true });
+                  console.log('🔄 Clicked reCAPTCHA reload button.');
+                  busterClicked = false; // Reset so we can click Buster again on the new challenge
+                  busterClickTime = Date.now(); // Reset time to prevent instant reload loop
+                  await page.waitForTimeout(3000); // Wait for the new challenge to load
+                } else {
+                  console.log('⚠️ Could not find reload button. Resetting timer to try again...');
+                  busterClickTime = Date.now(); // Reset timer so it doesn't spam
+                }
+              } catch (e) {
+                busterClickTime = Date.now(); // Reset timer on error to prevent spam
+              }
             }
-          } catch (e) {}
+          }
         }
 
         if (captchaFrame) {

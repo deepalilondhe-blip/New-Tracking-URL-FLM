@@ -51,5 +51,30 @@ browser selection:
    👉 node ccpa-process-all.js --device=mac --browser=chrome
 
 ================================================================================
+⏰ CCPA LOCAL SCHEDULER & REGISTRATION COMMANDS
+================================================================================
+
+The CCPA Scheduler is set up to run automatically on Monday, Wednesday, and Friday
+at 11:30 AM with device rotation:
+- Monday: Windows - Chrome (node ccpa-process-all.js --device=windows --browser=chrome)
+- Wednesday: Android - Chrome (node ccpa-process-all.js --device=android --browser=chrome)
+- Friday: iOS - Safari (node ccpa-process-all.js --device=ios --browser=safari)
+
+1. Run the Scheduler script directly (runs today's scheduled device configuration):
+   👉 node ccpa-scheduler.js
+
+2. Run the Scheduler script overriding the day context (for testing):
+   👉 node ccpa-scheduler.js --day=monday
+   👉 node ccpa-scheduler.js --day=wednesday
+   👉 node ccpa-scheduler.js --day=friday
+
+3. Run the scheduler via the batch file:
+   👉 run-ccpa-scheduler.bat
+
+4. Register the automated task in Windows Task Scheduler:
+   Open PowerShell as Administrator and run:
+   👉 Powershell.exe -ExecutionPolicy Bypass -File register-ccpa-scheduler.ps1
+
+================================================================================
 Spreadsheet: https://docs.google.com/spreadsheets/d/1hcJgC1E1Bw3V5WdYgPpumQXke_kzMbNX1rCH4kKCBwk
 ================================================================================
