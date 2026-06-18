@@ -766,7 +766,7 @@ class MobileFormPage {
       // ==================================================
       let safetyCounter = 0;
       let choiceStepCount = 0;
-      while (safetyCounter < 8) {
+      while (safetyCounter < 15) {
         await this.waitForSpinner();
 
         // 🛡️ MODAL GUARD: Auto-close active bootstrap modals if any appear
@@ -943,7 +943,9 @@ class MobileFormPage {
             console.log(`🔘 [Rotation-Mobile] Selecting Option: "${cleanText}"`);
             
             // Click/tap the element
-            await target.click({ force: true }).catch(async () => { await target.tap({ force: true }).catch(() => {}); });
+            await target.evaluate(el => el.click()).catch(async () => {
+              await target.click({ force: true, timeout: 2000 }).catch(async () => { await target.tap({ force: true, timeout: 2000 }).catch(() => {}); });
+            });
             
             choiceStepCount++;
             if (choiceStepCount >= 1 && choiceStepCount <= 10) {

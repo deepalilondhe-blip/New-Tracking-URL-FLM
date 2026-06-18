@@ -248,6 +248,8 @@ async function processLead(brandConfig, page) {
     const isTraLink = traLinks.includes(brandId);
 
     await formPage.navigate(finalBrandConfig.url);
+    const landingPageUrl = page.url();
+    console.log(`📋 [Navigation] Landed on URL: ${landingPageUrl}`);
     const fillResult = await formPage.fillForm({
       brandId,
       sliderAmount: finalBrandConfig.sliderAmount,
@@ -435,6 +437,16 @@ async function processLead(brandConfig, page) {
 
     let thankYouUrl = await formPage.getThankYouUrl();
     console.log(`📋 [Pre-Fix] Thank-you URL before debt correction: ${thankYouUrl}`);
+
+    // 🛡️ Redirect Validation: Verify the browser redirected to a thank-you page and did not stay stuck on the landing page
+    const finalUrlObj = new URL(thankYouUrl);
+    const landingUrlObj = new URL(landingPageUrl);
+    const isSamePath = finalUrlObj.pathname === landingUrlObj.pathname && finalUrlObj.hostname === landingUrlObj.hostname;
+    const isThankYouKeyword = thankYouUrl.includes('/ty') || thankYouUrl.includes('/thank-you') || thankYouUrl.includes('/thankyou') || thankYouUrl.includes('/quest-thank-you') || thankYouUrl.includes('/success');
+
+    if (isSamePath && !isThankYouKeyword) {
+      throw new Error(`Form submission failed: Browser stayed on the landing page path (${finalUrlObj.pathname}) and did not redirect to a thank-you page.`);
+    }
     
     if (brandId === 'fth-questionnaire' && fthSelectedRange) {
       formPage.selectedSliderAmount = fthSelectedRange;

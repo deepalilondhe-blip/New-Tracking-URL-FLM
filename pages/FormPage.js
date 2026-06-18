@@ -640,7 +640,9 @@ class FormPage {
             }
             
             // Click the element
-            await target.click({ force: true }).catch(() => {});
+            await target.evaluate(el => el.click()).catch(async () => {
+              await target.click({ force: true, timeout: 2000 }).catch(() => {});
+            });
             
             choiceStepCount++;
             const cleanTextVal = text ? text.trim() : '';
