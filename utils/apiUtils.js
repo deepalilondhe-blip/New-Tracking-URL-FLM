@@ -1,7 +1,9 @@
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 const axios = require('axios');
 const xml2js = require('xml2js');
-require('dotenv').config();
+const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, '..', '.env') });
+
 
 const parser = new xml2js.Parser({ explicitArray: false });
 

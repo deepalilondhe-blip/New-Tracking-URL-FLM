@@ -40,6 +40,11 @@ const args = process.argv.slice(2);
 const campaignIdArg = getArgValue(args, '--campaign');
 const viewportArg = (getArgValue(args, '--viewport') || 'desktop').toLowerCase();
 
+if (viewportArg === 'mac-firefox') {
+  process.env.PROCESS_BROWSER = 'firefox';
+  process.env.PROCESS_LABEL = 'Mac - Firefox';
+}
+
 if (!campaignIdArg) {
   console.error('❌ Error: Missing --campaign argument. Example: node run-master.js --campaign ftd-x');
   process.exit(1);

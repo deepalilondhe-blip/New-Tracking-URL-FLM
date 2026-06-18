@@ -1,5 +1,6 @@
 const { google } = require('googleapis');
-require('dotenv').config();
+const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, '..', '.env') });
 
 const sheetCache = {
   initialized: {}, // sheetName -> true
@@ -7,12 +8,17 @@ const sheetCache = {
 };
 
 async function authenticate() {
+  let keyPath = process.env.GOOGLE_SERVICE_ACCOUNT_FILE || 'service_account.json';
+  if (!path.isAbsolute(keyPath)) {
+    keyPath = path.resolve(__dirname, '..', keyPath);
+  }
   const auth = new google.auth.GoogleAuth({
-    keyFile: process.env.GOOGLE_SERVICE_ACCOUNT_FILE,
+    keyFile: keyPath,
     scopes: ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive']
   });
   return auth.getClient();
 }
+
 
 async function appendRowByHeader(sheetName, rowData) {
   try {

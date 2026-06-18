@@ -29,158 +29,158 @@ To manually run any campaign, use the following template structure:
    🔹 Desktop: node run-master.js --campaign ftd-x --viewport desktop
    🔹 Tablet:  node run-master.js --campaign ftd-x --viewport tablet
    🔹 Mobile:  node run-master.js --campaign ftd-x --viewport mobile
-   🔹 Mac - Firefox: $env:PROCESS_BROWSER="firefox"; $env:PROCESS_LABEL="Mac - Firefox"; node run-master.js --campaign ftd-x --viewport desktop
+   🔹 Mac - Firefox: node run-master.js --campaign ftd-x --viewport mac-firefox
 
 2. 📊 FSI-PPC2 (FSI-PPC2)
    🔹 Desktop: node run-master.js --campaign fsi-ppc2 --viewport desktop
    🔹 Tablet:  node run-master.js --campaign fsi-ppc2 --viewport tablet
    🔹 Mobile:  node run-master.js --campaign fsi-ppc2 --viewport mobile
-   🔹 Mac - Firefox: $env:PROCESS_BROWSER="firefox"; $env:PROCESS_LABEL="Mac - Firefox"; node run-master.js --campaign fsi-ppc2 --viewport desktop
+   🔹 Mac - Firefox: node run-master.js --campaign fsi-ppc2 --viewport mac-firefox
 
 3. 📊 TRA-CPL (TRA-CPL)
    🔹 Desktop: node run-master.js --campaign tra-cpl --viewport desktop
    🔹 Tablet:  node run-master.js --campaign tra-cpl --viewport tablet
    🔹 Mobile:  node run-master.js --campaign tra-cpl --viewport mobile
-   🔹 Mac - Firefox: $env:PROCESS_BROWSER="firefox"; $env:PROCESS_LABEL="Mac - Firefox"; node run-master.js --campaign tra-cpl --viewport desktop
+   🔹 Mac - Firefox: node run-master.js --campaign tra-cpl --viewport mac-firefox
 
 4. 📊 TRA-D3 (TRA-DT3)
    🔹 Desktop: node run-master.js --campaign tra-d3 --viewport desktop
    🔹 Tablet:  node run-master.js --campaign tra-d3 --viewport tablet
    🔹 Mobile:  node run-master.js --campaign tra-d3 --viewport mobile
-   🔹 Mac - Firefox: $env:PROCESS_BROWSER="firefox"; $env:PROCESS_LABEL="Mac - Firefox"; node run-master.js --campaign tra-d3 --viewport desktop
+   🔹 Mac - Firefox: node run-master.js --campaign tra-d3 --viewport mac-firefox
 
 5. 📊 PPC-ST (PPC-ST)
    🔹 Desktop: node run-master.js --campaign ppc-st --viewport desktop
    🔹 Tablet:  node run-master.js --campaign ppc-st --viewport tablet
    🔹 Mobile:  node run-master.js --campaign ppc-st --viewport mobile
-   🔹 Mac - Firefox: $env:PROCESS_BROWSER="firefox"; $env:PROCESS_LABEL="Mac - Firefox"; node run-master.js --campaign ppc-st --viewport desktop
+   🔹 Mac - Firefox: node run-master.js --campaign ppc-st --viewport mac-firefox
 
 6. 📊 PPC-ST2 (PPC-ST2)
    🔹 Desktop: node run-master.js --campaign ppc-st2 --viewport desktop
    🔹 Tablet:  node run-master.js --campaign ppc-st2 --viewport tablet
    🔹 Mobile:  node run-master.js --campaign ppc-st2 --viewport mobile
-   🔹 Mac - Firefox: $env:PROCESS_BROWSER="firefox"; $env:PROCESS_LABEL="Mac - Firefox"; node run-master.js --campaign ppc-st2 --viewport desktop
+   🔹 Mac - Firefox: node run-master.js --campaign ppc-st2 --viewport mac-firefox
    🔹 Direct API: node run-master.js --campaign ppc-st2 --viewport api
 
 7. 📊 PPC-M-CA (PPC/M/CA)
    🔹 Desktop: node run-master.js --campaign ppc-m-ca --viewport desktop
    🔹 Tablet:  node run-master.js --campaign ppc-m-ca --viewport tablet
    🔹 Mobile:  node run-master.js --campaign ppc-m-ca --viewport mobile
-   🔹 Mac - Firefox: $env:PROCESS_BROWSER="firefox"; $env:PROCESS_LABEL="Mac - Firefox"; node run-master.js --campaign ppc-m-ca --viewport desktop
+   🔹 Mac - Firefox: node run-master.js --campaign ppc-m-ca --viewport mac-firefox
 
 8. 📊 PPC CR (PPC-CR)
    🔹 Desktop: node run-master.js --campaign ppc-cr --viewport desktop
    🔹 Tablet:  node run-master.js --campaign ppc-cr --viewport tablet
    🔹 Mobile:  node run-master.js --campaign ppc-cr --viewport mobile
-   🔹 Mac - Firefox: $env:PROCESS_BROWSER="firefox"; $env:PROCESS_LABEL="Mac - Firefox"; node run-master.js --campaign ppc-cr --viewport desktop
+   🔹 Mac - Firefox: node run-master.js --campaign ppc-cr --viewport mac-firefox
 
 9. 📊 PPC FS (PPC FS)
    🔹 Desktop: node run-master.js --campaign ppc-fs --viewport desktop
    🔹 Tablet:  node run-master.js --campaign ppc-fs --viewport tablet
    🔹 Mobile:  node run-master.js --campaign ppc-fs --viewport mobile
-   🔹 Mac - Firefox: $env:PROCESS_BROWSER="firefox"; $env:PROCESS_LABEL="Mac - Firefox"; node run-master.js --campaign ppc-fs --viewport desktop
+   🔹 Mac - Firefox: node run-master.js --campaign ppc-fs --viewport mac-firefox
 
 10. 📊 PPC (PPC)
     🔹 Desktop: node run-master.js --campaign ppc --viewport desktop
     🔹 Tablet:  node run-master.js --campaign ppc --viewport tablet
     🔹 Mobile:  node run-master.js --campaign ppc --viewport mobile
-    🔹 Mac - Firefox: $env:PROCESS_BROWSER="firefox"; $env:PROCESS_LABEL="Mac - Firefox"; node run-master.js --campaign ppc --viewport desktop
+    🔹 Mac - Firefox: node run-master.js --campaign ppc --viewport mac-firefox
 
 11. 📊 TRA-CPM (TRA-CPM)
     🔹 Desktop: node run-master.js --campaign tra-cpm --viewport desktop
     🔹 Tablet:  node run-master.js --campaign tra-cpm --viewport tablet
     🔹 Mobile:  node run-master.js --campaign tra-cpm --viewport mobile
-    🔹 Mac - Firefox: $env:PROCESS_BROWSER="firefox"; $env:PROCESS_LABEL="Mac - Firefox"; node run-master.js --campaign tra-cpm --viewport desktop
+    🔹 Mac - Firefox: node run-master.js --campaign tra-cpm --viewport mac-firefox
 
 12. 📊 Everest Tax Releif(X) (Everest Tax Releif(X))
     🔹 Desktop: node run-master.js --campaign everest-tr-x --viewport desktop
     🔹 Tablet:  node run-master.js --campaign everest-tr-x --viewport tablet
     🔹 Mobile:  node run-master.js --campaign everest-tr-x --viewport mobile
-    🔹 Mac - Firefox: $env:PROCESS_BROWSER="firefox"; $env:PROCESS_LABEL="Mac - Firefox"; node run-master.js --campaign everest-tr-x --viewport desktop
+    🔹 Mac - Firefox: node run-master.js --campaign everest-tr-x --viewport mac-firefox
 
 13. 📊 VTS Original (VTS-Original)
     🔹 Desktop: node run-master.js --campaign vts-original --viewport desktop
     🔹 Tablet:  node run-master.js --campaign vts-original --viewport tablet
     🔹 Mobile:  node run-master.js --campaign vts-original --viewport mobile
-    🔹 Mac - Firefox: $env:PROCESS_BROWSER="firefox"; $env:PROCESS_LABEL="Mac - Firefox"; node run-master.js --campaign vts-original --viewport desktop
+    🔹 Mac - Firefox: node run-master.js --campaign vts-original --viewport mac-firefox
 
 14. 📊 1800 Fresh Tax (X) Main (1800 Fresh Tax (X) Main)
     🔹 Desktop: node run-master.js --campaign 1800-fresh-tax-x-main --viewport desktop
     🔹 Tablet:  node run-master.js --campaign 1800-fresh-tax-x-main --viewport tablet
     🔹 Mobile:  node run-master.js --campaign 1800-fresh-tax-x-main --viewport mobile
-    🔹 Mac - Firefox: $env:PROCESS_BROWSER="firefox"; $env:PROCESS_LABEL="Mac - Firefox"; node run-master.js --campaign 1800-fresh-tax-x-main --viewport desktop
+    🔹 Mac - Firefox: node run-master.js --campaign 1800-fresh-tax-x-main --viewport mac-firefox
 
 15. 📊 1803 Fresh Tax - AFR cobranded (1803 Fresh Tax - AFR cobranded)
     🔹 Desktop: node run-master.js --campaign 1803-fresh-tax-afr --viewport desktop
     🔹 Tablet:  node run-master.js --campaign 1803-fresh-tax-afr --viewport tablet
     🔹 Mobile:  node run-master.js --campaign 1803-fresh-tax-afr --viewport mobile
-    🔹 Mac - Firefox: $env:PROCESS_BROWSER="firefox"; $env:PROCESS_LABEL="Mac - Firefox"; node run-master.js --campaign 1803-fresh-tax-afr --viewport desktop
+    🔹 Mac - Firefox: node run-master.js --campaign 1803-fresh-tax-afr --viewport mac-firefox
 
 16. 📊 Senior Tax Defence-Main (Senior Tax Defence-Main)
     🔹 Desktop: node run-master.js --campaign senior-tax-defence-main --viewport desktop
     🔹 Tablet:  node run-master.js --campaign senior-tax-defence-main --viewport tablet
     🔹 Mobile:  node run-master.js --campaign senior-tax-defence-main --viewport mobile
-    🔹 Mac - Firefox: $env:PROCESS_BROWSER="firefox"; $env:PROCESS_LABEL="Mac - Firefox"; node run-master.js --campaign senior-tax-defence-main --viewport desktop
+    🔹 Mac - Firefox: node run-master.js --campaign senior-tax-defence-main --viewport mac-firefox
 
 17. 📊 Fresh Start Initiative (X) Main (Fresh Start Initiative (X) Main)
     🔹 Desktop: node run-master.js --campaign fresh-start-initiative-x-main --viewport desktop
     🔹 Tablet:  node run-master.js --campaign fresh-start-initiative-x-main --viewport tablet
     🔹 Mobile:  node run-master.js --campaign fresh-start-initiative-x-main --viewport mobile
-    🔹 Mac - Firefox: $env:PROCESS_BROWSER="firefox"; $env:PROCESS_LABEL="Mac - Firefox"; node run-master.js --campaign fresh-start-initiative-x-main --viewport desktop
+    🔹 Mac - Firefox: node run-master.js --campaign fresh-start-initiative-x-main --viewport mac-firefox
 
 18. 📊 America's First Tax Relief (AFTR) (America's First Tax Relief (AFTR))
     🔹 Desktop: node run-master.js --campaign aftr-main --viewport desktop
     🔹 Tablet:  node run-master.js --campaign aftr-main --viewport tablet
     🔹 Mobile:  node run-master.js --campaign aftr-main --viewport mobile
-    🔹 Mac - Firefox: $env:PROCESS_BROWSER="firefox"; $env:PROCESS_LABEL="Mac - Firefox"; node run-master.js --campaign aftr-main --viewport desktop
+    🔹 Mac - Firefox: node run-master.js --campaign aftr-main --viewport mac-firefox
 
 19. 📊 Premier Tax Relief (PTR) (Premier Tax Relief (PTR))
     🔹 Desktop: node run-master.js --campaign ptr-main --viewport desktop
     🔹 Tablet:  node run-master.js --campaign ptr-main --viewport tablet
     🔹 Mobile:  node run-master.js --campaign ptr-main --viewport mobile
-    🔹 Mac - Firefox: $env:PROCESS_BROWSER="firefox"; $env:PROCESS_LABEL="Mac - Firefox"; node run-master.js --campaign ptr-main --viewport desktop
+    🔹 Mac - Firefox: node run-master.js --campaign ptr-main --viewport mac-firefox
 
 20. 📊 Fresh Tax Help Questionnaire (FTH-questionnaire)
     🔹 Desktop: node run-master.js --campaign fth-questionnaire --viewport desktop
     🔹 Tablet:  node run-master.js --campaign fth-questionnaire --viewport tablet
     🔹 Mobile:  node run-master.js --campaign fth-questionnaire --viewport mobile
-    🔹 Mac - Firefox: $env:PROCESS_BROWSER="firefox"; $env:PROCESS_LABEL="Mac - Firefox"; node run-master.js --campaign fth-questionnaire --viewport desktop
+    🔹 Mac - Firefox: node run-master.js --campaign fth-questionnaire --viewport mac-firefox
 
 21. 📊 FTH-X (FTH-X)
     🔹 Desktop: node run-master.js --campaign fth-x --viewport desktop
     🔹 Tablet:  node run-master.js --campaign fth-x --viewport tablet
     🔹 Mobile:  node run-master.js --campaign fth-x --viewport mobile
-    🔹 Mac - Firefox: $env:PROCESS_BROWSER="firefox"; $env:PROCESS_LABEL="Mac - Firefox"; node run-master.js --campaign fth-x --viewport desktop
+    🔹 Mac - Firefox: node run-master.js --campaign fth-x --viewport mac-firefox
 
 22. 📊 Second Chance Tax Relief (X)
     🔹 Desktop: node run-master.js --campaign second-chance-tax-relief-x --viewport desktop
     🔹 Tablet:  node run-master.js --campaign second-chance-tax-relief-x --viewport tablet
     🔹 Mobile:  node run-master.js --campaign second-chance-tax-relief-x --viewport mobile
-    🔹 Mac - Firefox: $env:PROCESS_BROWSER="firefox"; $env:PROCESS_LABEL="Mac - Firefox"; node run-master.js --campaign second-chance-tax-relief-x --viewport desktop
+    🔹 Mac - Firefox: node run-master.js --campaign second-chance-tax-relief-x --viewport mac-firefox
 
 23. 📊 Senior Tax Defense (X)
     🔹 Desktop: node run-master.js --campaign senior-tax-defense-x --viewport desktop
     🔹 Tablet:  node run-master.js --campaign senior-tax-defense-x --viewport tablet
     🔹 Mobile:  node run-master.js --campaign senior-tax-defense-x --viewport mobile
-    🔹 Mac - Firefox: $env:PROCESS_BROWSER="firefox"; $env:PROCESS_LABEL="Mac - Firefox"; node run-master.js --campaign senior-tax-defense-x --viewport desktop
+    🔹 Mac - Firefox: node run-master.js --campaign senior-tax-defense-x --viewport mac-firefox
 
 24. 📊 Guardian Tax Relief
     🔹 Desktop: node run-master.js --campaign guardian-tax-relief-ppc --viewport desktop
     🔹 Tablet:  node run-master.js --campaign guardian-tax-relief-ppc --viewport tablet
     🔹 Mobile:  node run-master.js --campaign guardian-tax-relief-ppc --viewport mobile
-    🔹 Mac - Firefox: $env:PROCESS_BROWSER="firefox"; $env:PROCESS_LABEL="Mac - Firefox"; node run-master.js --campaign guardian-tax-relief-ppc --viewport desktop
+    🔹 Mac - Firefox: node run-master.js --campaign guardian-tax-relief-ppc --viewport mac-firefox
 
 25. 📊 Empire Tax Relief (X)
     🔹 Desktop: node run-master.js --campaign empire-tax-relief-x --viewport desktop
     🔹 Tablet:  node run-master.js --campaign empire-tax-relief-x --viewport tablet
     🔹 Mobile:  node run-master.js --campaign empire-tax-relief-x --viewport mobile
-    🔹 Mac - Firefox: $env:PROCESS_BROWSER="firefox"; $env:PROCESS_LABEL="Mac - Firefox"; node run-master.js --campaign empire-tax-relief-x --viewport desktop
+    🔹 Mac - Firefox: node run-master.js --campaign empire-tax-relief-x --viewport mac-firefox
 
 26. 📊 Capital Tax Relief (X)
     🔹 Desktop: node run-master.js --campaign capital-tax-relief-x --viewport desktop
     🔹 Tablet:  node run-master.js --campaign capital-tax-relief-x --viewport tablet
     🔹 Mobile:  node run-master.js --campaign capital-tax-relief-x --viewport mobile
-    🔹 Mac - Firefox: $env:PROCESS_BROWSER="firefox"; $env:PROCESS_LABEL="Mac - Firefox"; node run-master.js --campaign capital-tax-relief-x --viewport desktop
+    🔹 Mac - Firefox: node run-master.js --campaign capital-tax-relief-x --viewport mac-firefox
 
 # 👉 Manual run command for Second Chance Tax Relief (X) – Desktop (visible browser)
 node run-master.js --campaign second-chance-tax-relief-x --viewport desktop
@@ -246,7 +246,7 @@ Spreadsheet: https://docs.google.com/spreadsheets/d/1rXIg3dMQ4APH3lHLcfWYfP45PnO
     🔹 Desktop: node run-master.js --campaign fth-questionnaire --viewport desktop
     🔹 Tablet:  node run-master.js --campaign fth-questionnaire --viewport tablet
     🔹 Mobile:  node run-master.js --campaign fth-questionnaire --viewport mobile
-    🔹 Mac - Firefox: $env:PROCESS_BROWSER="firefox"; $env:PROCESS_LABEL="Mac - Firefox"; node run-master.js --campaign fth-questionnaire --viewport desktop
+    🔹 Mac - Firefox: node run-master.js --campaign fth-questionnaire --viewport mac-firefox
 
 --------------------------------------------------------------------------------
 🧪 FLM AGENT – LEAD & IP VALIDATION COMMANDS

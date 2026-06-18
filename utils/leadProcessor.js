@@ -337,7 +337,7 @@ async function processLead(brandConfig, page) {
          if (numVal < 7500) return '5,000';
          if (numVal < 10000) return '7,500';
          if (numVal < 20000) return '10,000';
-         if (numVal <= 50000) return '20,000';
+         if (numVal < 50000) return '20,000';
          return '50,000';
       }
       if (bId === 'senior-tax-defence-main' || bId === 'senior-tax-defense-x') {
@@ -472,7 +472,7 @@ async function processLead(brandConfig, page) {
         selectedDebtNum = 7500;
       } else if (selectedDebtNum < 20000) {
         selectedDebtNum = 10000;
-      } else if (selectedDebtNum <= 50000) {
+      } else if (selectedDebtNum < 50000) {
         selectedDebtNum = 20000;
       } else {
         selectedDebtNum = 50000;

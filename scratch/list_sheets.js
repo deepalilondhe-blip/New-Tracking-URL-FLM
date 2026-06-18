@@ -12,10 +12,10 @@ const SPREADSHEET_ID = '1rXIg3dMQ4APH3lHLcfWYfP45PnOAKmV9POkoSS3YWxI';
     const client = await auth.getClient();
     const sheets = google.sheets({ version: 'v4', auth: client });
 
-    console.log('\n📋 Last 5 Rows of Guardian Tax Relief (PPC):');
+    console.log('\n📋 Last 5 Rows of Second Chance Tax Relief (X):');
     const res = await sheets.spreadsheets.values.get({
       spreadsheetId: SPREADSHEET_ID,
-      range: `'Guardian Tax Relief (PPC)'!A:AC`
+      range: `'Second Chance Tax Relief (X)'!A:AC`
     });
 
     if (res.data.values) {
@@ -25,7 +25,7 @@ const SPREADSHEET_ID = '1rXIg3dMQ4APH3lHLcfWYfP45PnOAKmV9POkoSS3YWxI';
         console.log(`Row ${i + 1}:`, JSON.stringify(rows[i]));
       }
     } else {
-      console.log('No data in Guardian Tax Relief (PPC)');
+      console.log('No data in Second Chance Tax Relief (X)');
     }
   } catch (err) {
     console.error('Error:', err.message);
