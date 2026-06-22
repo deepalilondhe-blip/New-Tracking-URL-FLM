@@ -7,6 +7,7 @@ require('dotenv').config();
  * Focused on high-speed lead verification and API health monitoring.
  */
 class RestAssurance {
+
     constructor() {
         this.parser = new xml2js.Parser({ explicitArray: false });
         this.baseUrl = process.env.FIRST_API_BASE_URL;

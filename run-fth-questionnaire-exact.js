@@ -54,6 +54,10 @@ console.log('✅ Other steps: SELECT RANDOM/ROTATIONAL');
                 "step1": "Audit",
                 "step3": "> $50,000",
                 "step10": "Colorado"
+
+                
+
+
             }
         };
 

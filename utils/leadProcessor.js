@@ -706,14 +706,9 @@ async function processLead(brandConfig, page) {
     if (isTraLink) {
       taxDebtValue = cakeIncomeOverride;
       console.log(`💡 [TRA TaxDebt Map] TRA Link → Tax Debt: ${taxDebtValue}`);
-    } else if (brandConfig.sliderOptions && Array.isArray(brandConfig.sliderOptions)) {
-      // Tax Debt defaults to the custom mapped Cake Income value for dropdown campaigns
-      taxDebtValue = cakeIncomeOverride;
-      console.log(`💡 [sliderOptions TaxDebt Map] "${finalSlider || formPage.selectedSliderAmount}" → Tax Debt: ${taxDebtValue}`);
     } else {
-      // For regular slider campaigns, use the same range mapping as cakeIncomeOverride
-      taxDebtValue = cakeIncomeOverride;
-      console.log(`💡 [Range TaxDebt Map] Slider ${uiSelectedSliderNum} → Tax Debt: ${taxDebtValue}`);
+      taxDebtValue = firstApiData.income || cakeIncomeOverride;
+      console.log(`💡 [Non-TRA TaxDebt Map] First API Data "${firstApiData.income}" → Tax Debt: ${taxDebtValue}`);
     }
 
     const rowData = {
@@ -723,7 +718,7 @@ async function processLead(brandConfig, page) {
       campaignId: sanitize(firstApiData.campaignId || fallbackCampaignId),
       trackingLink: sanitize(finalBrandConfig.url),
       sliderAmount: isQuestionnaire ? '' : sanitize(displaySliderAmount),
-      cakeIncome: cakeIncomeOverride,
+      cakeIncome: taxDebtValue,
       state: sanitize(firstApiData.state || finalStateCode),
       phone: sanitize(firstApiData.phone || finalBrandConfig.phone),
       leadId: sanitize(leadIdToUse),

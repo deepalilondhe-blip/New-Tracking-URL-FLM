@@ -30,7 +30,7 @@ console.log('✅ Sheet Name: VTS-Original');
             name: "VTS Original",
             url: "https://mlfvts-trk.com/?a=659&oc=323&c=569&s1=",
             sheet: "VTS-Original",
-            sliderAmount: "1000",
+            sliderAmount: "6000",
             state: "Colorado",
             firstName: "ckmtestpixel",
             lastName: "ckmtestpixel",
@@ -42,6 +42,9 @@ console.log('✅ Sheet Name: VTS-Original');
         process.env.OVERRIDE_SLIDER = brand.sliderAmount;
         process.env.OVERRIDE_STATE = brand.state;
         process.env.OVERRIDE_PHONE = brand.phone;
+        if (!process.env.OVERRIDE_LEAD_ID) {
+            process.env.OVERRIDE_LEAD_ID = '4EA7F857';
+        }
 
         const result = await processLead(brand, page);
         console.log('✅ VTS Original Test completed:', result);

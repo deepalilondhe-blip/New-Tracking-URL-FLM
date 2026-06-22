@@ -1,614 +1,14 @@
 {
-  "date": "2026-06-17",
+  "date": "2026-06-22",
   "runs": [
     {
       "campaignId": "ftd-x",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": true,
-      "leadId": "E58416FA",
-      "timestamp": "11:41:10 AM"
-    },
-    {
-      "campaignId": "fsi-ppc2",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": true,
-      "leadId": "40F4BFB8",
-      "timestamp": "11:42:34 AM"
-    },
-    {
-      "campaignId": "tra-cpl",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": true,
-      "leadId": "A348FB85",
-      "timestamp": "11:44:17 AM"
-    },
-    {
-      "campaignId": "tra-d3",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": true,
-      "leadId": "E9A1A447",
-      "timestamp": "11:45:43 AM"
-    },
-    {
-      "campaignId": "ppc-st",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": true,
-      "leadId": "6B52E3E4",
-      "timestamp": "11:47:11 AM"
-    },
-    {
-      "campaignId": "ppc-st2",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": true,
-      "leadId": "D2F79B89",
-      "timestamp": "11:48:34 AM"
-    },
-    {
-      "campaignId": "ppc-m-ca",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": true,
-      "leadId": "042C7FDF",
-      "timestamp": "11:49:56 AM"
-    },
-    {
-      "campaignId": "ppc-cr",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": false,
-      "error": "locator.fill: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#primary_phone, #phone, #phone_home, input[name=\"phone\"], input[name=\"phone_home\"], input[name=\"primary_phone\"], input[type=\"tel\"]').first()\u001b[22m\n\u001b[2m    - locator resolved to <input value=\" \" id=\"phone\" name=\"phone\" type=\"hidden\"/>\u001b[22m\n\u001b[2m    - fill(\"\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    48 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying fill action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
-      "leadId": null,
-      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_ppc-cr_tablet.png",
-      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@2e89a6b07d235ed9a78cf429f14e68b1.webm",
-      "timestamp": "11:51:40 AM"
-    },
-    {
-      "campaignId": "ppc-fs",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": true,
-      "leadId": "3A41939E",
-      "timestamp": "11:53:03 AM"
-    },
-    {
-      "campaignId": "ppc",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": true,
-      "leadId": "B722A1B0",
-      "timestamp": "11:54:32 AM"
-    },
-    {
-      "campaignId": "tra-cpm",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": true,
-      "leadId": "0D25BF35",
-      "timestamp": "11:56:03 AM"
-    },
-    {
-      "campaignId": "everest-tr-x",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": true,
-      "leadId": "CE117CCC",
-      "timestamp": "11:57:35 AM"
-    },
-    {
-      "campaignId": "vts-original",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": true,
-      "leadId": "DF3C2358",
-      "timestamp": "11:59:03 AM"
-    },
-    {
-      "campaignId": "vts-ne-branded",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": true,
-      "leadId": "7E21483C",
-      "timestamp": "12:00:47 PM"
-    },
-    {
-      "campaignId": "original",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": false,
-      "error": "Invalid Lead ID format: 4a5773806a1611f18435d17e4a74bda6",
-      "leadId": "4a5773806a1611f18435d17e4a74bda6",
-      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_original_tablet.png",
-      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@5d429c31af6dc73682296b89a067a907.webm",
-      "timestamp": "12:02:47 PM"
-    },
-    {
-      "campaignId": "1800-fresh-tax-x-main",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": true,
-      "leadId": "1DA8D56A",
-      "timestamp": "12:04:21 PM"
-    },
-    {
-      "campaignId": "fsi-main",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": true,
-      "leadId": "6ADBE719",
-      "timestamp": "12:05:59 PM"
-    },
-    {
-      "campaignId": "1803-fresh-tax-afr-cobranded",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": true,
-      "leadId": "73F77B60",
-      "timestamp": "12:07:38 PM"
-    },
-    {
-      "campaignId": "senior-tax-defence-main",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": true,
-      "leadId": "F4016EAB",
-      "timestamp": "12:08:57 PM"
-    },
-    {
-      "campaignId": "fresh-start-initiative-x-main",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": true,
-      "leadId": "A71B8704",
-      "timestamp": "12:10:48 PM"
-    },
-    {
-      "campaignId": "aftr-main",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": true,
-      "leadId": "234EC33E",
-      "timestamp": "12:12:31 PM"
-    },
-    {
-      "campaignId": "ptr-main",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": false,
-      "error": "locator.fill: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#primary_phone, #phone, #phone_home, input[name=\"phone\"], input[name=\"phone_home\"], input[name=\"primary_phone\"], input[type=\"tel\"]').first()\u001b[22m\n\u001b[2m    - locator resolved to <input value=\" \" id=\"phone\" name=\"phone\" type=\"hidden\"/>\u001b[22m\n\u001b[2m    - fill(\"\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    48 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying fill action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
-      "leadId": null,
-      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_ptr-main_tablet.png",
-      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@f46c568c2c62a8448541edd179ba76bd.webm",
-      "timestamp": "12:14:15 PM"
-    },
-    {
-      "campaignId": "fth-questionnaire",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": true,
-      "leadId": "B05E1032",
-      "timestamp": "12:16:25 PM"
-    },
-    {
-      "campaignId": "fth-x",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": true,
-      "leadId": "023A1658",
-      "timestamp": "12:17:53 PM"
-    },
-    {
-      "campaignId": "second-chance-tax-relief-x",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": true,
-      "leadId": "AB73315E",
-      "timestamp": "12:19:26 PM"
-    },
-    {
-      "campaignId": "sctr-main",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": true,
-      "leadId": "9705A664",
-      "timestamp": "12:20:52 PM"
-    },
-    {
-      "campaignId": "1800-fresh-tax-cpc",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": false,
-      "error": "Invalid Lead ID format: 034517006a1911f195e95b6127bcb08f",
-      "leadId": "034517006a1911f195e95b6127bcb08f",
-      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_1800-fresh-tax-cpc_tablet.png",
-      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@6ec672b11dc3a632cff8e8e9e19dd32f.webm",
-      "timestamp": "12:22:18 PM"
-    },
-    {
-      "campaignId": "senior-tax-defense-x",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": true,
-      "leadId": "1A567B99",
-      "timestamp": "12:23:46 PM"
-    },
-    {
-      "campaignId": "guardian-tax-relief-ppc",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": true,
-      "leadId": "4050A0E4",
-      "timestamp": "12:25:06 PM"
-    },
-    {
-      "campaignId": "empire-tax-relief-x",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": true,
-      "leadId": "00776C78",
-      "timestamp": "12:26:31 PM"
-    },
-    {
-      "campaignId": "capital-tax-relief-x",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": true,
-      "leadId": "BA002D89",
-      "timestamp": "12:28:00 PM"
-    },
-    {
-      "campaignId": "ftd-ppc2",
-      "viewport": "tablet",
-      "browser": "chromium",
-      "label": "Tablet - Chrome",
-      "success": true,
-      "leadId": "40237A6C",
-      "timestamp": "12:29:19 PM"
-    },
-    {
-      "campaignId": "ftd-x",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Chrome",
-      "success": true,
-      "leadId": "6D0677DA",
-      "timestamp": "12:44:33 PM"
-    },
-    {
-      "campaignId": "fsi-ppc2",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Chrome",
-      "success": true,
-      "leadId": "7CFEE991",
-      "timestamp": "12:46:03 PM"
-    },
-    {
-      "campaignId": "tra-cpl",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Chrome",
-      "success": true,
-      "leadId": "8147FB7B",
-      "timestamp": "12:47:39 PM"
-    },
-    {
-      "campaignId": "tra-d3",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Chrome",
-      "success": true,
-      "leadId": "C784D1CF",
-      "timestamp": "12:48:42 PM"
-    },
-    {
-      "campaignId": "ppc-st",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Chrome",
-      "success": true,
-      "leadId": "D92A9769",
-      "timestamp": "12:50:02 PM"
-    },
-    {
-      "campaignId": "ppc-st2",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Chrome",
-      "success": true,
-      "leadId": "03F49985",
-      "timestamp": "12:51:25 PM"
-    },
-    {
-      "campaignId": "ppc-m-ca",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Chrome",
-      "success": true,
-      "leadId": "976C55D4",
-      "timestamp": "12:52:45 PM"
-    },
-    {
-      "campaignId": "ppc-cr",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Chrome",
-      "success": true,
-      "leadId": "1CBC2C20",
-      "timestamp": "12:53:58 PM"
-    },
-    {
-      "campaignId": "ppc-fs",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Chrome",
-      "success": false,
-      "error": "locator.fill: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#primary_phone, #phone, #phone_home, input[name=\"phone\"], input[name=\"phone_home\"], input[name=\"primary_phone\"], input[type=\"tel\"]').first()\u001b[22m\n\u001b[2m    - locator resolved to <input value=\" \" id=\"phone\" name=\"phone\" type=\"hidden\"/>\u001b[22m\n\u001b[2m    - fill(\"\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    48 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying fill action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
-      "leadId": null,
-      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_ppc-fs_desktop.png",
-      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@5aff2af54590b4fd81fcf40fc30531ea.webm",
-      "timestamp": "12:55:40 PM"
-    },
-    {
-      "campaignId": "ppc",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Chrome",
-      "success": true,
-      "leadId": "21014B3C",
-      "timestamp": "12:57:04 PM"
-    },
-    {
-      "campaignId": "tra-cpm",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Chrome",
-      "success": true,
-      "leadId": "49A32888",
-      "timestamp": "12:58:25 PM"
-    },
-    {
-      "campaignId": "everest-tr-x",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Chrome",
-      "success": true,
-      "leadId": "0FFE084D",
-      "timestamp": "12:59:53 PM"
-    },
-    {
-      "campaignId": "vts-original",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Chrome",
-      "success": true,
-      "leadId": "8A7F8ED3",
-      "timestamp": "1:01:42 PM"
-    },
-    {
-      "campaignId": "vts-ne-branded",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Chrome",
-      "success": true,
-      "leadId": "FFF9D03E",
-      "timestamp": "1:03:13 PM"
-    },
-    {
-      "campaignId": "original",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Chrome",
-      "success": false,
-      "error": "Invalid Lead ID format: f389d3a06a1e11f1ab1c7d6028bf797e",
-      "leadId": "f389d3a06a1e11f1ab1c7d6028bf797e",
-      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_original_desktop.png",
-      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@05e19ecce2f6c6126f1e77066238b24d.webm",
-      "timestamp": "1:04:48 PM"
-    },
-    {
-      "campaignId": "1800-fresh-tax-x-main",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Chrome",
-      "success": true,
-      "leadId": "D029A291",
-      "timestamp": "1:06:24 PM"
-    },
-    {
-      "campaignId": "fsi-main",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Chrome",
-      "success": true,
-      "leadId": "E3ECE69B",
-      "timestamp": "1:07:59 PM"
-    },
-    {
-      "campaignId": "1803-fresh-tax-afr-cobranded",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Chrome",
-      "success": true,
-      "leadId": "1C1355BB",
-      "timestamp": "1:09:38 PM"
-    },
-    {
-      "campaignId": "senior-tax-defence-main",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Chrome",
-      "success": true,
-      "leadId": "FA533BC6",
-      "timestamp": "1:11:02 PM"
-    },
-    {
-      "campaignId": "fresh-start-initiative-x-main",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Chrome",
-      "success": true,
-      "leadId": "6D24FA76",
-      "timestamp": "1:12:27 PM"
-    },
-    {
-      "campaignId": "aftr-main",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Chrome",
-      "success": true,
-      "leadId": "4EA11EE8",
-      "timestamp": "1:14:02 PM"
-    },
-    {
-      "campaignId": "ptr-main",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Chrome",
-      "success": false,
-      "error": "locator.fill: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#primary_phone, #phone, #phone_home, input[name=\"phone\"], input[name=\"phone_home\"], input[name=\"primary_phone\"], input[type=\"tel\"]').first()\u001b[22m\n\u001b[2m    - locator resolved to <input value=\" \" id=\"phone\" name=\"phone\" type=\"hidden\"/>\u001b[22m\n\u001b[2m    - fill(\"\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    48 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying fill action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
-      "leadId": null,
-      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_ptr-main_desktop.png",
-      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@11964d1ad624d8166e15da811626036b.webm",
-      "timestamp": "1:15:48 PM"
-    },
-    {
-      "campaignId": "fth-questionnaire",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Chrome",
-      "success": true,
-      "leadId": "BD518AB1",
-      "timestamp": "1:17:59 PM"
-    },
-    {
-      "campaignId": "fth-x",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Chrome",
-      "success": true,
-      "leadId": "A051595A",
-      "timestamp": "1:19:23 PM"
-    },
-    {
-      "campaignId": "second-chance-tax-relief-x",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Chrome",
-      "success": true,
-      "leadId": "55980EFC",
-      "timestamp": "1:21:07 PM"
-    },
-    {
-      "campaignId": "sctr-main",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Chrome",
-      "success": true,
-      "leadId": "ACA1DCFA",
-      "timestamp": "1:22:41 PM"
-    },
-    {
-      "campaignId": "1800-fresh-tax-cpc",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Chrome",
-      "success": false,
-      "error": "Invalid Lead ID format: af5ce1a06a2111f1ad96771fec77a33e",
-      "leadId": "af5ce1a06a2111f1ad96771fec77a33e",
-      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_1800-fresh-tax-cpc_desktop.png",
-      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@5ea0e246f33643f72209b84a58a83859.webm",
-      "timestamp": "1:24:21 PM"
-    },
-    {
-      "campaignId": "senior-tax-defense-x",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Chrome",
-      "success": true,
-      "leadId": "18E466C0",
-      "timestamp": "1:25:46 PM"
-    },
-    {
-      "campaignId": "guardian-tax-relief-ppc",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Chrome",
-      "success": true,
-      "leadId": "606A98AE",
-      "timestamp": "1:27:09 PM"
-    },
-    {
-      "campaignId": "empire-tax-relief-x",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Chrome",
-      "success": true,
-      "leadId": "5A94956F",
-      "timestamp": "1:28:47 PM"
-    },
-    {
-      "campaignId": "capital-tax-relief-x",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Chrome",
-      "success": true,
-      "leadId": "27A4B543",
-      "timestamp": "1:30:28 PM"
-    },
-    {
-      "campaignId": "ftd-ppc2",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Chrome",
-      "success": true,
-      "leadId": "FC706384",
-      "timestamp": "1:32:13 PM"
-    },
-    {
-      "campaignId": "ftd-x",
       "viewport": "desktop",
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "FE48D2A4",
-      "timestamp": "2:06:21 PM"
+      "leadId": "1CCE9346",
+      "timestamp": "11:03:19 AM"
     },
     {
       "campaignId": "fsi-ppc2",
@@ -616,8 +16,8 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "0B7AD54C",
-      "timestamp": "2:07:57 PM"
+      "leadId": "458036D1",
+      "timestamp": "11:04:45 AM"
     },
     {
       "campaignId": "tra-cpl",
@@ -625,26 +25,32 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "31B480CB",
-      "timestamp": "2:09:37 PM"
+      "leadId": "F79B8EAE",
+      "timestamp": "11:06:18 AM"
     },
     {
       "campaignId": "tra-d3",
       "viewport": "desktop",
       "browser": "chromium",
       "label": "Mac - Device",
-      "success": true,
-      "leadId": "8E21414B",
-      "timestamp": "2:10:55 PM"
+      "success": false,
+      "error": "Form submission failed: Browser stayed on the landing page path (/dt3) and did not redirect to a thank-you page.",
+      "leadId": null,
+      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_tra-d3_desktop.png",
+      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@b1268dc11f85fa293b36e66e3e6aa8d9.webm",
+      "timestamp": "11:07:00 AM"
     },
     {
       "campaignId": "ppc-st",
       "viewport": "desktop",
       "browser": "chromium",
       "label": "Mac - Device",
-      "success": true,
-      "leadId": "A1600B62",
-      "timestamp": "2:12:28 PM"
+      "success": false,
+      "error": "locator.fill: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#primary_phone, #phone, #phone_home, input[name=\"phone\"], input[name=\"phone_home\"], input[name=\"primary_phone\"], input[type=\"tel\"]').first()\u001b[22m\n\u001b[2m    - locator resolved to <input value=\" \" id=\"phone\" name=\"phone\" type=\"hidden\"/>\u001b[22m\n\u001b[2m    - fill(\"\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    48 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying fill action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+      "leadId": null,
+      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_ppc-st_desktop.png",
+      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@e0c6c2669cfab9ed81aec8dd8273d09c.webm",
+      "timestamp": "11:08:41 AM"
     },
     {
       "campaignId": "ppc-st2",
@@ -652,8 +58,8 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "DAD79689",
-      "timestamp": "2:13:58 PM"
+      "leadId": "F70FA47B",
+      "timestamp": "11:10:01 AM"
     },
     {
       "campaignId": "ppc-m-ca",
@@ -661,11 +67,11 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": false,
-      "error": "locator.fill: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#primary_phone, #phone, #phone_home, input[name=\"phone\"], input[name=\"phone_home\"], input[name=\"primary_phone\"], input[type=\"tel\"]').first()\u001b[22m\n\u001b[2m    - locator resolved to <input value=\" \" id=\"phone\" name=\"phone\" type=\"hidden\"/>\u001b[22m\n\u001b[2m    - fill(\"\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    46 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying fill action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+      "error": "locator.fill: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#primary_phone, #phone, #phone_home, input[name=\"phone\"], input[name=\"phone_home\"], input[name=\"primary_phone\"], input[type=\"tel\"]').first()\u001b[22m\n\u001b[2m    - locator resolved to <input value=\" \" id=\"phone\" name=\"phone\" type=\"hidden\"/>\u001b[22m\n\u001b[2m    - fill(\"\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    48 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying fill action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
       "leadId": null,
       "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_ppc-m-ca_desktop.png",
-      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@3a9a0c6f24ac2c166d6b54785630a52d.webm",
-      "timestamp": "2:15:49 PM"
+      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@dcbf3bf97df82f0eb1c6ca56ee694be5.webm",
+      "timestamp": "11:11:41 AM"
     },
     {
       "campaignId": "ppc-cr",
@@ -673,8 +79,8 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "F329F3AD",
-      "timestamp": "2:17:09 PM"
+      "leadId": "CAC8BEED",
+      "timestamp": "11:12:53 AM"
     },
     {
       "campaignId": "ppc-fs",
@@ -682,26 +88,32 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "7FD98C8A",
-      "timestamp": "2:18:40 PM"
+      "leadId": "43F51F43",
+      "timestamp": "11:14:11 AM"
     },
     {
       "campaignId": "ppc",
       "viewport": "desktop",
       "browser": "chromium",
       "label": "Mac - Device",
-      "success": true,
-      "leadId": "A5DCC7CD",
-      "timestamp": "2:20:03 PM"
+      "success": false,
+      "error": "locator.fill: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#primary_phone, #phone, #phone_home, input[name=\"phone\"], input[name=\"phone_home\"], input[name=\"primary_phone\"], input[type=\"tel\"]').first()\u001b[22m\n\u001b[2m    - locator resolved to <input value=\" \" id=\"phone\" name=\"phone\" type=\"hidden\"/>\u001b[22m\n\u001b[2m    - fill(\"\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    48 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying fill action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+      "leadId": null,
+      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_ppc_desktop.png",
+      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@11483474ae02c68bed3c7eaf2ab9601b.webm",
+      "timestamp": "11:15:50 AM"
     },
     {
       "campaignId": "tra-cpm",
       "viewport": "desktop",
       "browser": "chromium",
       "label": "Mac - Device",
-      "success": true,
-      "leadId": "54EC66BE",
-      "timestamp": "2:21:25 PM"
+      "success": false,
+      "error": "locator.fill: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#primary_phone, #phone, #phone_home, input[name=\"phone\"], input[name=\"phone_home\"], input[name=\"primary_phone\"], input[type=\"tel\"]').first()\u001b[22m\n\u001b[2m    - locator resolved to <input value=\" \" id=\"phone\" name=\"phone\" type=\"hidden\"/>\u001b[22m\n\u001b[2m    - fill(\"\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    49 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying fill action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+      "leadId": null,
+      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_tra-cpm_desktop.png",
+      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@6c8e8bbeb80c5ef259775c1d9e03f954.webm",
+      "timestamp": "11:17:30 AM"
     },
     {
       "campaignId": "everest-tr-x",
@@ -709,8 +121,8 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "FEC14574",
-      "timestamp": "2:22:54 PM"
+      "leadId": "67E4C63E",
+      "timestamp": "11:18:54 AM"
     },
     {
       "campaignId": "vts-original",
@@ -718,8 +130,8 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "AE8E5149",
-      "timestamp": "2:24:25 PM"
+      "leadId": "4EA7F857",
+      "timestamp": "11:20:24 AM"
     },
     {
       "campaignId": "vts-ne-branded",
@@ -727,8 +139,8 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "5527C565",
-      "timestamp": "2:25:55 PM"
+      "leadId": "8D7DE1B8",
+      "timestamp": "11:21:52 AM"
     },
     {
       "campaignId": "original",
@@ -736,11 +148,11 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": false,
-      "error": "Invalid Lead ID format: 831995306a2a11f197846f6e68c7721a",
-      "leadId": "831995306a2a11f197846f6e68c7721a",
+      "error": "Invalid Lead ID format: 9b957dc06dfe11f1be1885f668957773",
+      "leadId": "9b957dc06dfe11f1be1885f668957773",
       "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_original_desktop.png",
-      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@29ec530312f64aaf7e96256a6b421b3c.webm",
-      "timestamp": "2:27:31 PM"
+      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@41bfb4912f3c5bc778df79408069ca34.webm",
+      "timestamp": "11:23:20 AM"
     },
     {
       "campaignId": "1800-fresh-tax-x-main",
@@ -748,8 +160,8 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "D569A1AC",
-      "timestamp": "2:29:05 PM"
+      "leadId": "422FB9CF",
+      "timestamp": "11:24:48 AM"
     },
     {
       "campaignId": "fsi-main",
@@ -757,8 +169,8 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "BF6088A8",
-      "timestamp": "2:30:50 PM"
+      "leadId": "4D51AA6D",
+      "timestamp": "11:26:35 AM"
     },
     {
       "campaignId": "1803-fresh-tax-afr-cobranded",
@@ -766,8 +178,8 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "8CFD92E8",
-      "timestamp": "2:32:32 PM"
+      "leadId": "096893A8",
+      "timestamp": "11:28:04 AM"
     },
     {
       "campaignId": "senior-tax-defence-main",
@@ -775,8 +187,8 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "4341F864",
-      "timestamp": "2:33:55 PM"
+      "leadId": "BE6CD184",
+      "timestamp": "11:29:21 AM"
     },
     {
       "campaignId": "fresh-start-initiative-x-main",
@@ -784,8 +196,8 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "ACC47460",
-      "timestamp": "2:35:37 PM"
+      "leadId": "145C2767",
+      "timestamp": "11:31:06 AM"
     },
     {
       "campaignId": "aftr-main",
@@ -793,8 +205,8 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "D8418410",
-      "timestamp": "2:37:12 PM"
+      "leadId": "583E8030",
+      "timestamp": "11:32:42 AM"
     },
     {
       "campaignId": "ptr-main",
@@ -802,8 +214,8 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "9B3083F1",
-      "timestamp": "2:38:36 PM"
+      "leadId": "262DB33C",
+      "timestamp": "11:34:03 AM"
     },
     {
       "campaignId": "fth-questionnaire",
@@ -811,8 +223,8 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "45B2CC24",
-      "timestamp": "2:40:44 PM"
+      "leadId": "6F0C874F",
+      "timestamp": "11:36:00 AM"
     },
     {
       "campaignId": "fth-x",
@@ -820,8 +232,8 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "61D0EC84",
-      "timestamp": "2:42:06 PM"
+      "leadId": "4422003F",
+      "timestamp": "11:37:28 AM"
     },
     {
       "campaignId": "second-chance-tax-relief-x",
@@ -829,8 +241,8 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "979E08BF",
-      "timestamp": "2:43:42 PM"
+      "leadId": "794CDD82",
+      "timestamp": "11:39:07 AM"
     },
     {
       "campaignId": "sctr-main",
@@ -838,8 +250,8 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "1DA81912",
-      "timestamp": "2:45:17 PM"
+      "leadId": "0E2E8DEF",
+      "timestamp": "11:40:49 AM"
     },
     {
       "campaignId": "1800-fresh-tax-cpc",
@@ -847,11 +259,11 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": false,
-      "error": "Invalid Lead ID format: 322f48a06a2d11f19ece83b619ae1b08",
-      "leadId": "322f48a06a2d11f19ece83b619ae1b08",
+      "error": "Invalid Lead ID format: 3fb861a06e0111f1892afd91ad0166d8",
+      "leadId": "3fb861a06e0111f1892afd91ad0166d8",
       "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_1800-fresh-tax-cpc_desktop.png",
-      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@c5597e05fb6b04f57bed04a96170055d.webm",
-      "timestamp": "2:46:44 PM"
+      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@891e8a1c63aa1617fdc0c947367dab26.webm",
+      "timestamp": "11:42:20 AM"
     },
     {
       "campaignId": "senior-tax-defense-x",
@@ -859,8 +271,8 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "5D9D6924",
-      "timestamp": "2:48:06 PM"
+      "leadId": "DAE7B773",
+      "timestamp": "11:43:43 AM"
     },
     {
       "campaignId": "guardian-tax-relief-ppc",
@@ -868,8 +280,8 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "D9EDD56C",
-      "timestamp": "2:49:25 PM"
+      "leadId": "D08E7E3C",
+      "timestamp": "11:45:05 AM"
     },
     {
       "campaignId": "empire-tax-relief-x",
@@ -877,8 +289,8 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "D64BCF85",
-      "timestamp": "2:51:01 PM"
+      "leadId": "4C02F69F",
+      "timestamp": "11:46:39 AM"
     },
     {
       "campaignId": "capital-tax-relief-x",
@@ -886,8 +298,8 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "B539863F",
-      "timestamp": "2:52:33 PM"
+      "leadId": "6D39B387",
+      "timestamp": "11:48:12 AM"
     },
     {
       "campaignId": "ftd-ppc2",
@@ -895,8 +307,8 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "EAECD973",
-      "timestamp": "2:54:02 PM"
+      "leadId": "B1DA9008",
+      "timestamp": "11:49:47 AM"
     }
   ],
   "emailSent": false
