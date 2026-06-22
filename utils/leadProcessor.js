@@ -321,7 +321,7 @@ async function processLead(brandConfig, page) {
          if (numVal < 100000) return '50,000';
          return '100,000';
       }
-      if (bId === 'second-chance-tax-relief-x' || bId === 'sctr') {
+      if (bId === 'second-chance-tax-relief-x' || bId === 'sctr' || bId === 'sctr-main') {
          if (numVal < 5000) return '5,000';
          if (numVal < 10000) return '7,500';
          if (numVal < 20000) return '10,000';
@@ -372,7 +372,7 @@ async function processLead(brandConfig, page) {
         cakeIncomeOverride = uiSelectedSliderNum.toLocaleString();
       } else {
         // Specific TRA links need a 5,000 floor instead of the standard 4,000 floor
-        const tra5kFloorLinks = ['ppc', 'ppc-st', 'ppc-st2', 'ppc-m-ca', 'ppc-cr', 'ppc-fs'];
+        const tra5kFloorLinks = ['ppc', 'ppc-st', 'ppc-st2', 'ppc-m-ca', 'ppc-cr', 'ppc-fs', 'guardian-tax-relief-ppc'];
         if (tra5kFloorLinks.includes(brandId)) {
           cakeIncomeOverride = '5,000';
         } else {
@@ -718,7 +718,7 @@ async function processLead(brandConfig, page) {
       campaignId: sanitize(firstApiData.campaignId || fallbackCampaignId),
       trackingLink: sanitize(finalBrandConfig.url),
       sliderAmount: isQuestionnaire ? '' : sanitize(displaySliderAmount),
-      cakeIncome: taxDebtValue,
+      cakeIncome: cakeIncomeOverride,
       state: sanitize(firstApiData.state || finalStateCode),
       phone: sanitize(firstApiData.phone || finalBrandConfig.phone),
       leadId: sanitize(leadIdToUse),
