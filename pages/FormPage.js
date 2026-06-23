@@ -1311,6 +1311,11 @@ class FormPage {
         if (domId) leadId = domId;
       }
 
+      if (leadId && !/^[a-zA-Z0-9]{8}$/.test(leadId.trim())) {
+        console.warn(`⚠️ [extractLeadId] Extracted ID "${leadId}" is invalid format (not 8-char alphanumeric). Ignoring.`);
+        leadId = null;
+      }
+
       if (leadId) {
         console.log('✅ Extracted Lead ID:', leadId);
       } else {
