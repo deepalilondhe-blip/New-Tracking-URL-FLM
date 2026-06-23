@@ -382,15 +382,16 @@ async function processLead(brandConfig, page) {
       console.log(`💡 [cakeIncomeOverride] TRA Link: ${uiSelectedSliderNum} → ${cakeIncomeOverride}`);
     } else if ((brandConfig.sliderOptions && Array.isArray(brandConfig.sliderOptions)) || brandId === 'fsi-ppc2' || brandId === 'ftd-ppc2') {
       // For sliderOptions (dropdown) campaigns, map from the label text
-      const lbl = (finalSlider || '').trim().toLowerCase();
+      const lbl = (uiSelectedSliderStr || '').trim().toLowerCase();
       
       if (brandId === 'fsi-ppc2' || brandId === 'ftd-ppc2') {
-         if (lbl.includes('9999') || lbl.includes('9,999')) cakeIncomeOverride = '5,000';
+         if ((lbl.includes('9999') || lbl.includes('9,999')) && !lbl.includes('19')) cakeIncomeOverride = '5,000';
          else if (lbl.includes('10') && lbl.includes('19')) cakeIncomeOverride = '10,000';
          else if (lbl.includes('20') && (lbl.includes('50') || lbl.includes('49'))) cakeIncomeOverride = '20,000';
+         else if (lbl.includes('50') && (lbl.includes('more') || lbl.includes('above') || lbl.includes('+'))) cakeIncomeOverride = '50,000';
          else cakeIncomeOverride = '50,000';
       } else if (brandId === '1803-fresh-tax-afr') {
-         if (lbl.includes('9999') || lbl.includes('9,999')) cakeIncomeOverride = '5,000';
+         if ((lbl.includes('9999') || lbl.includes('9,999')) && !lbl.includes('19')) cakeIncomeOverride = '5,000';
          else if (lbl.includes('10') && lbl.includes('19')) cakeIncomeOverride = '10,000';
          else if (lbl.includes('20') && lbl.includes('49')) cakeIncomeOverride = '20,000';
          else cakeIncomeOverride = '50,000';
@@ -410,7 +411,7 @@ async function processLead(brandConfig, page) {
          else cakeIncomeOverride = '50,000';
       } else {
          // Generic Dropdown fallback
-         if (lbl.includes('less than') || lbl.includes('under') || lbl.includes('9999') || lbl.includes('9,999')) {
+         if (lbl.includes('less than') || lbl.includes('under') || ((lbl.includes('9999') || lbl.includes('9,999')) && !lbl.includes('19'))) {
            cakeIncomeOverride = '5,000';
          } else if (lbl.includes('10') && lbl.includes('19')) {
            cakeIncomeOverride = '10,000';
@@ -424,7 +425,7 @@ async function processLead(brandConfig, page) {
            cakeIncomeOverride = '5,000';
          }
       }
-      console.log(`💡 [cakeIncomeOverride] sliderOptions label "${finalSlider}" → ${cakeIncomeOverride}`);
+      console.log(`💡 [cakeIncomeOverride] sliderOptions label "${uiSelectedSliderStr}" → ${cakeIncomeOverride}`);
     } else {
       // For regular slider campaigns, map from the numeric slider value
       cakeIncomeOverride = mapToRange(uiSelectedSliderNum, brandId);

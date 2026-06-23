@@ -884,7 +884,7 @@ class FormPage {
       let currentUrl = this.page.url();
       if (currentUrl.includes('/ty') || currentUrl.includes('/thank-you') || currentUrl.includes('/thankyou') || currentUrl.includes('leadid=') || currentUrl.includes('transaction_id=')) {
         console.log('✅ Thank you page detected before Step 6. Exiting form filling.');
-        return;
+        return { extractedSliderAmount: this.selectedSliderAmount };
       }
 
       // ===== STEP 6: SOURCE / HOW DID YOU HEAR (If present) =====
@@ -1090,12 +1090,14 @@ class FormPage {
           }
         }
       } else if (this.brandId === 'fsi-ppc2' || this.brandId === 'ftd-ppc2') {
-        if (cleanDebtVal.includes('9999') || cleanDebtVal.includes('9,999')) {
+        if ((cleanDebtVal.includes('9999') || cleanDebtVal.includes('9,999')) && !cleanDebtVal.includes('19')) {
           numericDebt = 5000;
         } else if (cleanDebtVal.includes('10') && cleanDebtVal.includes('19')) {
           numericDebt = 10000;
         } else if (cleanDebtVal.includes('20') && (cleanDebtVal.includes('49') || cleanDebtVal.includes('50'))) {
           numericDebt = 20000;
+        } else if (cleanDebtVal.includes('50') && (cleanDebtVal.includes('more') || cleanDebtVal.includes('above') || cleanDebtVal.includes('+'))) {
+          numericDebt = 50000;
         } else {
           if (firstVal <= 9999) {
             numericDebt = 5000;
@@ -1109,7 +1111,7 @@ class FormPage {
         }
       } else if (this.isTraLink) {
         numericDebt = firstVal >= 5000 ? firstVal : 5000;
-      } else if (cleanDebtVal.includes('less than') || cleanDebtVal.includes('under') || cleanDebtVal.includes('9999') || cleanDebtVal.includes('9,999') || cleanDebtVal.includes('0-9999') || cleanDebtVal.includes('0 - 9999')) {
+      } else if (cleanDebtVal.includes('less than') || cleanDebtVal.includes('under') || ((cleanDebtVal.includes('9999') || cleanDebtVal.includes('9,999')) && !cleanDebtVal.includes('19')) || cleanDebtVal.includes('0-9999') || cleanDebtVal.includes('0 - 9999')) {
         numericDebt = 5000;
       } else if (cleanDebtVal.includes('5000') && (cleanDebtVal.includes('more') || cleanDebtVal.includes('above') || cleanDebtVal.includes('+')) && !cleanDebtVal.includes('50000')) {
         numericDebt = 10000;
