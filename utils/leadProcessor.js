@@ -474,11 +474,23 @@ async function processLead(brandConfig, page) {
     }
     
     // Use the exact numeric value from the UI for debt mapping
-    // Enforce custom mapped ranges for FTH Questionnaire, or a 5,000 floor universally otherwise
-    if (brandId === 'fth-questionnaire') {
+    // Enforce custom mapped ranges for specific campaigns, or default standard rotational rules
+    if (brandId === 'vts-original') {
       if (selectedDebtNum < 5000) {
-        selectedDebtNum = 4000;
-      } else if (selectedDebtNum < 7500) {
+        selectedDebtNum = 5000;
+      } else if (selectedDebtNum < 10000) {
+        selectedDebtNum = 7500;
+      } else if (selectedDebtNum < 20000) {
+        selectedDebtNum = 10000;
+      } else if (selectedDebtNum < 50000) {
+        selectedDebtNum = 20000;
+      } else if (selectedDebtNum < 100000) {
+        selectedDebtNum = 50000;
+      } else {
+        selectedDebtNum = 100000;
+      }
+    } else if (brandId === 'second-chance-tax-relief-x' || brandId === 'sctr' || brandId === 'sctr-main') {
+      if (selectedDebtNum < 5000) {
         selectedDebtNum = 5000;
       } else if (selectedDebtNum < 10000) {
         selectedDebtNum = 7500;
@@ -517,8 +529,50 @@ async function processLead(brandConfig, page) {
       } else {
         selectedDebtNum = 100000;
       }
+    } else if (brandId === 'fth-questionnaire') {
+      if (selectedDebtNum < 5000) {
+        selectedDebtNum = 4000;
+      } else if (selectedDebtNum < 7500) {
+        selectedDebtNum = 5000;
+      } else if (selectedDebtNum < 10000) {
+        selectedDebtNum = 7500;
+      } else if (selectedDebtNum < 20000) {
+        selectedDebtNum = 10000;
+      } else if (selectedDebtNum < 50000) {
+        selectedDebtNum = 20000;
+      } else {
+        selectedDebtNum = 50000;
+      }
+    } else if (brandId === 'fsi-ppc2' || brandId === 'ftd-ppc2') {
+      if (selectedDebtNum <= 9999) {
+        selectedDebtNum = 5000;
+      } else if (selectedDebtNum <= 19999) {
+        selectedDebtNum = 10000;
+      } else if (selectedDebtNum <= 50000) {
+        selectedDebtNum = 20000;
+      } else {
+        selectedDebtNum = 50000;
+      }
+    } else if (isTraLink) {
+      selectedDebtNum = selectedDebtNum >= 5000 ? selectedDebtNum : 5000;
     } else if (selectedDebtNum < 5000) {
       selectedDebtNum = 5000;
+    } else {
+      if (selectedDebtNum > 0) {
+        if (selectedDebtNum <= 10000) {
+          selectedDebtNum = 5000;
+        } else if (selectedDebtNum <= 20000) {
+          selectedDebtNum = 10000;
+        } else if (selectedDebtNum <= 50000) {
+          selectedDebtNum = 20000;
+        } else if (selectedDebtNum <= 100000) {
+          selectedDebtNum = 50000;
+        } else {
+          selectedDebtNum = 100000;
+        }
+      } else {
+        selectedDebtNum = 5000;
+      }
     }
     
     console.log(`💾 [Debt Debug] formPage.selectedSliderAmount = "${formPage.selectedSliderAmount}"`);

@@ -27,6 +27,7 @@ class MobileFormPage {
     this.step10 = '';
     this.selectedSliderAmount = '';
     this.clickedChoiceTexts = new Set();
+    this.sliderSuccess = false;
   }
 
   /**
@@ -754,6 +755,9 @@ class MobileFormPage {
             this.selectedSliderAmount = sliderAmount;
           }
         }
+        if (selected) {
+          this.sliderSuccess = true;
+        }
       } catch (e) {
         console.warn('⚠️ [Mobile] Could not complete debt selection:', e.message);
       }
@@ -951,7 +955,7 @@ class MobileFormPage {
             if (choiceStepCount >= 1 && choiceStepCount <= 10) {
               this[`step${choiceStepCount}`] = cleanText;
             }
-            let isDebtQuestion = true;
+            let isDebtQuestion = !this.sliderSuccess;
             if (this.brandId === 'fth-questionnaire') {
               isDebtQuestion = (activeStepId === 'step3' || 
                                 (activeStepInfo && activeStepInfo.h2 && 
@@ -1294,29 +1298,72 @@ class MobileFormPage {
       let cleanDebtVal = this.selectedSliderAmount.toString().toLowerCase().replace(/,/g, '').trim();
       let numericDebt = 0;
 
-      if (this.brandId === 'senior-tax-defence-main' || this.brandId === 'senior-tax-defense-x') {
-        const match = cleanDebtVal.match(/\d+/);
-        if (match) {
-          const firstVal = parseInt(match[0]);
-          if (firstVal < 5000) {
-            numericDebt = 5000;
-          } else if (firstVal < 10000) {
-            numericDebt = 7500;
-          } else if (firstVal < 20000) {
-            numericDebt = 10000;
-          } else if (firstVal < 30000) {
-            numericDebt = 20000;
-          } else if (firstVal < 100000) {
-            numericDebt = 50000;
-          } else {
-            numericDebt = 100000;
-          }
+      const match = cleanDebtVal.match(/\d+/);
+      const firstVal = match ? parseInt(match[0]) : 0;
+
+      if (this.brandId === 'vts-original') {
+        if (firstVal < 5000) {
+          numericDebt = 5000;
+        } else if (firstVal < 10000) {
+          numericDebt = 7500;
+        } else if (firstVal < 20000) {
+          numericDebt = 10000;
+        } else if (firstVal < 50000) {
+          numericDebt = 20000;
+        } else if (firstVal < 100000) {
+          numericDebt = 50000;
+        } else {
+          numericDebt = 100000;
+        }
+      } else if (this.brandId === 'second-chance-tax-relief-x' || this.brandId === 'sctr' || this.brandId === 'sctr-main') {
+        if (firstVal < 5000) {
+          numericDebt = 5000;
+        } else if (firstVal < 10000) {
+          numericDebt = 7500;
+        } else if (firstVal < 20000) {
+          numericDebt = 10000;
+        } else if (firstVal < 50000) {
+          numericDebt = 20000;
+        } else {
+          numericDebt = 50000;
+        }
+      } else if (this.brandId === 'senior-tax-defence-main' || this.brandId === 'senior-tax-defense-x') {
+        if (firstVal < 5000) {
+          numericDebt = 5000;
+        } else if (firstVal < 10000) {
+          numericDebt = 7500;
+        } else if (firstVal < 20000) {
+          numericDebt = 10000;
+        } else if (firstVal < 30000) {
+          numericDebt = 20000;
+        } else if (firstVal < 100000) {
+          numericDebt = 50000;
+        } else {
+          numericDebt = 100000;
         }
       } else if (this.brandId === 'ptr-main' || this.brandId === 'aftr-main' || this.brandId === 'capital-tax-relief-x' || this.brandId === 'empire-tax-relief-x') {
-        const match = cleanDebtVal.match(/\d+/);
-        if (match) {
-          const firstVal = parseInt(match[0]);
+        if (firstVal < 5000) {
+          numericDebt = 5000;
+        } else if (firstVal < 10000) {
+          numericDebt = 7500;
+        } else if (firstVal < 20000) {
+          numericDebt = 10000;
+        } else if (firstVal < 50000) {
+          numericDebt = 20000;
+        } else if (firstVal < 100000) {
+          numericDebt = 50000;
+        } else {
+          numericDebt = 100000;
+        }
+      } else if (this.brandId === 'fth-questionnaire') {
+        if (cleanDebtVal.includes('less than') || cleanDebtVal.includes('under') || cleanDebtVal.includes('<')) {
+          numericDebt = 4000;
+        } else if (cleanDebtVal.includes('more') || cleanDebtVal.includes('above') || cleanDebtVal.includes('>')) {
+          numericDebt = 50000;
+        } else {
           if (firstVal < 5000) {
+            numericDebt = 4000;
+          } else if (firstVal < 7500) {
             numericDebt = 5000;
           } else if (firstVal < 10000) {
             numericDebt = 7500;
@@ -1324,46 +1371,34 @@ class MobileFormPage {
             numericDebt = 10000;
           } else if (firstVal < 50000) {
             numericDebt = 20000;
-          } else if (firstVal < 100000) {
-            numericDebt = 50000;
           } else {
-            numericDebt = 100000;
+            numericDebt = 50000;
           }
         }
-      } else if (this.brandId === 'fth-questionnaire') {
-        const match = cleanDebtVal.match(/\d+/);
-        if (match) {
-          const firstVal = parseInt(match[0]);
-          if (cleanDebtVal.includes('less than') || cleanDebtVal.includes('under') || cleanDebtVal.includes('<')) {
-            numericDebt = 4000;
-          } else if (cleanDebtVal.includes('more') || cleanDebtVal.includes('above') || cleanDebtVal.includes('>')) {
-            numericDebt = 50000;
+      } else if (this.brandId === 'fsi-ppc2' || this.brandId === 'ftd-ppc2') {
+        if (cleanDebtVal.includes('9999') || cleanDebtVal.includes('9,999')) {
+          numericDebt = 5000;
+        } else if (cleanDebtVal.includes('10') && cleanDebtVal.includes('19')) {
+          numericDebt = 10000;
+        } else if (cleanDebtVal.includes('20') && (cleanDebtVal.includes('49') || cleanDebtVal.includes('50'))) {
+          numericDebt = 20000;
+        } else {
+          if (firstVal <= 9999) {
+            numericDebt = 5000;
+          } else if (firstVal <= 19999) {
+            numericDebt = 10000;
+          } else if (firstVal <= 50000) {
+            numericDebt = 20000;
           } else {
-            if (firstVal < 5000) {
-              numericDebt = 4000;
-            } else if (firstVal < 7500) {
-              numericDebt = 5000;
-            } else if (firstVal < 10000) {
-              numericDebt = 7500;
-            } else if (firstVal < 20000) {
-              numericDebt = 10000;
-            } else if (firstVal < 50000) {
-              numericDebt = 20000;
-            } else {
-              numericDebt = 50000;
-            }
+            numericDebt = 50000;
           }
         }
       } else if (this.isTraLink) {
-        const match = cleanDebtVal.match(/\d+/);
-        if (match) {
-          const firstVal = parseInt(match[0]);
-          numericDebt = firstVal >= 5000 ? firstVal : 5000;
-        } else {
-          numericDebt = 5000;
-        }
+        numericDebt = firstVal >= 5000 ? firstVal : 5000;
       } else if (cleanDebtVal.includes('less than') || cleanDebtVal.includes('under') || cleanDebtVal.includes('9999') || cleanDebtVal.includes('9,999') || cleanDebtVal.includes('0-9999') || cleanDebtVal.includes('0 - 9999')) {
         numericDebt = 5000;
+      } else if (cleanDebtVal.includes('5000') && (cleanDebtVal.includes('more') || cleanDebtVal.includes('above') || cleanDebtVal.includes('+')) && !cleanDebtVal.includes('50000')) {
+        numericDebt = 10000;
       } else if ((cleanDebtVal.includes('10') && cleanDebtVal.includes('19')) && !cleanDebtVal.match(/^1000$/)) {
         numericDebt = 10000;
       } else if ((cleanDebtVal.includes('20') && cleanDebtVal.includes('49')) && !cleanDebtVal.match(/^2000$/)) {
@@ -1373,15 +1408,20 @@ class MobileFormPage {
       } else if (cleanDebtVal.includes('100,000') || cleanDebtVal.includes('100k') || cleanDebtVal.includes('million')) {
         numericDebt = 100000;
       } else {
-        const match = cleanDebtVal.match(/\d+/);
-        if (match) {
-          const firstVal = parseInt(match[0]);
-          // Match the leadProcessor.js exact floor logic
-          if (firstVal < 5000) {
+        if (firstVal > 0) {
+          if (firstVal <= 10000) {
             numericDebt = 5000;
+          } else if (firstVal <= 20000) {
+            numericDebt = 10000;
+          } else if (firstVal <= 50000) {
+            numericDebt = 20000;
+          } else if (firstVal <= 100000) {
+            numericDebt = 50000;
           } else {
-            numericDebt = firstVal;
+            numericDebt = 100000;
           }
+        } else {
+          numericDebt = 5000;
         }
       }
 
@@ -1415,10 +1455,26 @@ class MobileFormPage {
                 }
               } else {
                 field.value = debtVal;
+                try {
+                  Object.defineProperty(field, 'value', {
+                    get: function() { return debtVal; },
+                    set: function(val) {
+                      // Lock value to prevent scripts from reverting it
+                    },
+                    configurable: true
+                  });
+                  const origGetAttribute = field.getAttribute;
+                  field.getAttribute = function(name) {
+                    if (name === 'value') return debtVal;
+                    return origGetAttribute ? origGetAttribute.apply(this, arguments) : debtVal;
+                  };
+                } catch (e) {
+                  console.warn('Could not lock input field value:', e.message);
+                }
               }
               field.dispatchEvent(new Event('change', { bubbles: true }));
               field.dispatchEvent(new Event('input', { bubbles: true }));
-              console.log(`✅ Updated ${field.tagName.toLowerCase()} ${name} = ${debtVal}`);
+              console.log(`✅ Updated and locked ${field.tagName.toLowerCase()} ${name} = ${debtVal}`);
             });
           });
         }, cleanDebtVal);
