@@ -2,6 +2,37 @@ const path = require('path');
 require('dotenv').config({ path: path.resolve(__dirname, '..', '.env') });
 const aiAgent = require('../utils/flmAgent');
 
+function isThankYouPage(url) {
+  if (!url) return false;
+  const lowerUrl = url.toLowerCase();
+  
+  // Explicit thank you path indicators
+  if (lowerUrl.includes('/ty') || lowerUrl.includes('/thank-you') || lowerUrl.includes('/thankyou') || lowerUrl.includes('/thanks')) {
+    return true;
+  }
+  
+  // Parameter indicators (must not be literal placeholders like #leadid# or #transaction_id#)
+  try {
+    const urlObj = new URL(url);
+    const leadIdVal = urlObj.searchParams.get('leadid') || urlObj.searchParams.get('transaction_id') || urlObj.searchParams.get('lead_id') || urlObj.searchParams.get('ckm_id');
+    if (leadIdVal) {
+      const cleanVal = leadIdVal.trim();
+      if (cleanVal && !cleanVal.includes('#') && !cleanVal.includes('%')) {
+        return cleanVal.length >= 6;
+      }
+    }
+  } catch (e) {
+    const hasRealLeadId = url.includes('leadid=') && !url.includes('leadid=&') && !url.includes('leadid=#') && !url.includes('leadid=%23');
+    const hasRealTransId = url.includes('transaction_id=') && !url.includes('transaction_id=&') && !url.includes('transaction_id=#') && !url.includes('transaction_id=%23');
+    if (hasRealLeadId || hasRealTransId) {
+      return true;
+    }
+  }
+  
+  return false;
+}
+
+
 class FormPage {
   constructor(page) {
     this.page = page;
@@ -790,7 +821,7 @@ class FormPage {
 
         // Exit immediately if thank you page is detected
         const currentUrl = this.page.url();
-        if (currentUrl.includes('/ty') || currentUrl.includes('/thank-you') || currentUrl.includes('/thankyou') || currentUrl.includes('leadid=') || currentUrl.includes('transaction_id=')) {
+        if (isThankYouPage(currentUrl)) {
           console.log('✅ Thank you page or lead id detected in URL during contact loop. Exiting contact loop.');
           break;
         }
@@ -882,7 +913,7 @@ class FormPage {
 
       // Check if already navigated to final page before Step 6
       let currentUrl = this.page.url();
-      if (currentUrl.includes('/ty') || currentUrl.includes('/thank-you') || currentUrl.includes('/thankyou') || currentUrl.includes('leadid=') || currentUrl.includes('transaction_id=')) {
+      if (isThankYouPage(currentUrl)) {
         console.log('✅ Thank you page detected before Step 6. Exiting form filling.');
         return { extractedSliderAmount: this.selectedSliderAmount };
       }
@@ -908,7 +939,7 @@ class FormPage {
 
         // Check if thank you page/redirect was reached during the loop
         currentUrl = this.page.url();
-        if (currentUrl.includes('/ty') || currentUrl.includes('/thank-you') || currentUrl.includes('/thankyou') || currentUrl.includes('leadid=') || currentUrl.includes('transaction_id=')) {
+        if (isThankYouPage(currentUrl)) {
           console.log('✅ Thank you page detected during adaptive submit loop. Exiting loop.');
           break;
         }
@@ -1203,7 +1234,7 @@ class FormPage {
 
     // Bypass if already submitted/on thank you page to prevent timeout delays
     const currentUrl = this.page.url();
-    if (currentUrl.includes('/ty') || currentUrl.includes('/thank-you') || currentUrl.includes('/thankyou') || currentUrl.includes('leadid=') || currentUrl.includes('transaction_id=')) {
+    if (isThankYouPage(currentUrl)) {
       console.log('✅ Form already submitted. Bypassing submitForm logic.');
       return;
     }
@@ -1245,7 +1276,7 @@ class FormPage {
           
           // Verify we actually left the form page
           const newUrl = this.page.url();
-          if (newUrl.includes('/ty') || newUrl.includes('/thank-you') || newUrl.includes('/thankyou') || newUrl.includes('leadid=') || newUrl.includes('transaction_id=')) {
+          if (isThankYouPage(newUrl)) {
             console.log('✅ Successfully navigated to Thank You page');
           } else {
             console.log('⚠️ Still on form page after submit click');
