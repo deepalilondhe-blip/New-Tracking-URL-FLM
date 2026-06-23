@@ -92,10 +92,17 @@ async function processLead(brandConfig, page) {
       console.log(`🔌 [Override] Applying custom slider value: ${finalSlider} (raw numeric: ${rawSliderVal})`);
     } else if (brandId === 'fsi-ppc2' || brandId === 'ftd-ppc2') {
       const bucketIdx = runIndex % 4;
-      if (bucketIdx === 0) rawSliderVal = 5000;  // Represents "$0 - $9,999"
-      else if (bucketIdx === 1) rawSliderVal = 15000; // Represents "$10,000 - $19,999"
-      else if (bucketIdx === 2) rawSliderVal = 35000; // Represents "$20,000 - $50,000"
-      else rawSliderVal = 75000; // Represents "$50,000 or more"
+      const dropdownLabels = brandConfig.sliderOptions || [
+        "$0 - $9,999",
+        "$10,000 - $19,999",
+        "$20,000 - $50,000",
+        "$50,000 or more"
+      ];
+      if (bucketIdx === 0) { rawSliderVal = 5000; finalSlider = dropdownLabels[0]; }
+      else if (bucketIdx === 1) { rawSliderVal = 15000; finalSlider = dropdownLabels[1]; }
+      else if (bucketIdx === 2) { rawSliderVal = 35000; finalSlider = dropdownLabels[2]; }
+      else { rawSliderVal = 75000; finalSlider = dropdownLabels[3]; }
+      console.log(`🎯 [FSI/FTD Dropdown] Bucket ${bucketIdx}: rawSliderVal=${rawSliderVal}, finalSlider="${finalSlider}"`);
     } else {
       // WEEKLY ROTATIONAL SLIDER LOGIC
       // Parse max slider limit from campaigns config
