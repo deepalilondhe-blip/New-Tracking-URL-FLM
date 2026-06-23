@@ -707,8 +707,8 @@ async function processLead(brandConfig, page) {
       taxDebtValue = cakeIncomeOverride;
       console.log(`💡 [TRA TaxDebt Map] TRA Link → Tax Debt: ${taxDebtValue}`);
     } else {
-      taxDebtValue = firstApiData.income || cakeIncomeOverride;
-      console.log(`💡 [Non-TRA TaxDebt Map] First API Data "${firstApiData.income}" → Tax Debt: ${taxDebtValue}`);
+      taxDebtValue = cakeIncomeOverride;
+      console.log(`💡 [Non-TRA TaxDebt Map] First API Data: "${firstApiData.income}" | Mapped Tax Debt: ${taxDebtValue}`);
     }
 
     const rowData = {
