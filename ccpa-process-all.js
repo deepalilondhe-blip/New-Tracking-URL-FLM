@@ -343,6 +343,50 @@ async function injectMobileFrame(page, deviceArg) {
   }
 }
 
+async function typeHumanLike(page, selectorOrElement, text) {
+  const el = typeof selectorOrElement === 'string' ? await page.$(selectorOrElement) : selectorOrElement;
+  if (!el) return;
+  
+  await el.focus();
+  await page.waitForTimeout(Math.random() * 200 + 100);
+  
+  // Select all and clear
+  await page.keyboard.down('Control');
+  await page.keyboard.press('a');
+  await page.keyboard.up('Control');
+  await page.keyboard.press('Delete');
+  await page.waitForTimeout(Math.random() * 200 + 100);
+  
+  // Type character-by-character
+  for (const char of text) {
+    await page.keyboard.type(char, { delay: Math.random() * 50 + 50 });
+  }
+  
+  // Wait a bit after typing
+  await page.waitForTimeout(Math.random() * 300 + 200);
+}
+
+async function smoothScrollDown(page) {
+  console.log('📜 Scrolling page to simulate human reading...');
+  await page.evaluate(async () => {
+    await new Promise((resolve) => {
+      let totalHeight = 0;
+      const distance = 120;
+      const timer = setInterval(() => {
+        const scrollHeight = document.body.scrollHeight;
+        window.scrollBy(0, distance);
+        totalHeight += distance;
+
+        if (totalHeight >= scrollHeight - window.innerHeight || totalHeight > 2500) {
+          clearInterval(timer);
+          resolve();
+        }
+      }, 100);
+    });
+  });
+  await page.waitForTimeout(1000);
+}
+
 (async () => {
   // Browser context and page will be launched fresh for each brand iteration inside the loop.
   
@@ -538,6 +582,9 @@ async function injectMobileFrame(page, deviceArg) {
       await page.waitForTimeout(2000);
       await injectMobileFrame(page, deviceArg);
 
+      // Smooth scroll to mimic human reading and trigger lazy scripts
+      await smoothScrollDown(page);
+
       // 1. Check Logo
       const logoExists = await page.evaluate(() => {
         const logoSelectors = [
@@ -628,56 +675,68 @@ async function injectMobileFrame(page, deviceArg) {
       console.log(`✅ Selected ${selectedCheckboxes} checkboxes.`);
 
       // 4. Fill form fields
-      console.log('📝 Filling form fields with static data...');
+      console.log('📝 Filling form fields with human-like typing...');
 
       const fnField = await page.$('input[name*="first" i], input[placeholder*="First" i], input[id*="first" i]');
-      if (fnField) await fnField.fill(FORM_DATA.firstName);
+      if (fnField) {
+        await typeHumanLike(page, fnField, FORM_DATA.firstName);
+        await page.waitForTimeout(Math.random() * 500 + 300);
+      }
 
       const lnField = await page.$('input[name*="last" i], input[placeholder*="Last" i], input[id*="last" i]');
-      if (lnField) await lnField.fill(FORM_DATA.lastName);
+      if (lnField) {
+        await typeHumanLike(page, lnField, FORM_DATA.lastName);
+        await page.waitForTimeout(Math.random() * 500 + 300);
+      }
 
       const streetField = await page.$('input[name*="street" i], input[placeholder*="Street" i], input[id*="street" i]');
-      if (streetField) await streetField.fill(FORM_DATA.streetName);
+      if (streetField) {
+        await typeHumanLike(page, streetField, FORM_DATA.streetName);
+        await page.waitForTimeout(Math.random() * 500 + 300);
+      }
 
       const aptField = await page.$('input[name*="apartment" i], input[name*="apt" i], input[placeholder*="Apartment" i], input[id*="apartment" i]');
-      if (aptField) await aptField.fill(FORM_DATA.apartment);
+      if (aptField) {
+        await typeHumanLike(page, aptField, FORM_DATA.apartment);
+        await page.waitForTimeout(Math.random() * 500 + 300);
+      }
 
       const cityField = await page.$('input[name*="city" i], input[placeholder*="City" i], input[id*="city" i]');
-      if (cityField) await cityField.fill(FORM_DATA.city);
+      if (cityField) {
+        await typeHumanLike(page, cityField, FORM_DATA.city);
+        await page.waitForTimeout(Math.random() * 500 + 300);
+      }
 
       const stateSelect = await page.$('select[name*="state" i], select[id*="state" i]');
-      if (stateSelect) await stateSelect.selectOption({ label: FORM_DATA.state });
+      if (stateSelect) {
+        await stateSelect.focus();
+        await page.waitForTimeout(Math.random() * 300 + 200);
+        await stateSelect.selectOption({ label: FORM_DATA.state });
+        await page.waitForTimeout(Math.random() * 500 + 300);
+      }
 
       const zipField = await page.$('input[name*="zip" i], input[placeholder*="Zip" i], input[id*="zip" i]');
       if (zipField) {
         await page.waitForTimeout(1000); // Wait for any address auto-fill AJAX from city/state
-        await zipField.fill('');
-        await zipField.fill(FORM_DATA.zipCode);
+        await typeHumanLike(page, zipField, FORM_DATA.zipCode);
         await zipField.evaluate((node, val) => {
           node.value = val;
           node.dispatchEvent(new Event('input', { bubbles: true }));
           node.dispatchEvent(new Event('change', { bubbles: true }));
         }, FORM_DATA.zipCode);
+        await page.waitForTimeout(Math.random() * 500 + 300);
       }
 
       const emailField = await page.$('input[name*="email" i], input[type="email"], input[placeholder*="Email" i], input[id*="email" i]');
-      if (emailField) await emailField.fill(FORM_DATA.email);
+      if (emailField) {
+        await typeHumanLike(page, emailField, FORM_DATA.email);
+        await page.waitForTimeout(Math.random() * 500 + 300);
+      }
 
       const phoneField = await page.$('input[name*="phone" i], input[type="tel"], input[placeholder*="Phone" i], input[id*="phone" i]');
       if (phoneField) {
-        await phoneField.focus();
-        await page.waitForTimeout(200);
-        await page.keyboard.down('Control');
-        await page.keyboard.press('a');
-        await page.keyboard.up('Control');
-        await page.keyboard.press('Delete');
-        await page.waitForTimeout(200);
-
-        const digitsOnly = FORM_DATA.phone.replace(/\D/g, '');
-        for (const digit of digitsOnly) {
-          await page.keyboard.press(digit);
-          await page.waitForTimeout(50);
-        }
+        await typeHumanLike(page, phoneField, FORM_DATA.phone.replace(/\D/g, ''));
+        await page.waitForTimeout(Math.random() * 500 + 300);
       }
 
       const screenshotName = `ccpa_filled_${uIndex + 1}.png`;
