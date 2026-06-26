@@ -1,17 +1,500 @@
 {
-  "date": "2026-06-23",
+  "date": "2026-06-26",
   "runs": [
+    {
+      "campaignId": "ftd-x",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "6A072024",
+      "timestamp": "10:18:20 AM"
+    },
+    {
+      "campaignId": "fsi-ppc2",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "F43DB930",
+      "timestamp": "10:19:56 AM"
+    },
+    {
+      "campaignId": "tra-cpl",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "EEC5AE8A",
+      "timestamp": "10:22:45 AM"
+    },
+    {
+      "campaignId": "tra-d3",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": false,
+      "error": "locator.fill: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#primary_phone, #phone, #phone_home, input[name=\"phone\"], input[name=\"phone_home\"], input[name=\"primary_phone\"], input[type=\"tel\"]').first()\u001b[22m\n\u001b[2m    - locator resolved to <input value=\" \" id=\"phone\" name=\"phone\" type=\"hidden\"/>\u001b[22m\n\u001b[2m    - fill(\"\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    7 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\u001b[2m    - waiting for\" https://id5-sync.com/true-link?partnerId=1941&trueLinkLocation=https%3A%2F%2Ftra.com%2Fthank-you%3Fdebt%3D20000%26leadid%3DC522B1F1%26reqid%3D26980506%26affid%3D659%26oid%3D145\" navigation to finish...\u001b[22m\n\u001b[2m    - navigated to \"https://tra.com/thank-you?debt=20000&leadid=C522B1F1&reqid=26980506&affid=659&oid=145&trueLinkId=DvpMA6y43uxiOlTueAq2HSMXAKqxdKq6%2Fy5lclNQhunB%2FYkYB5LqrPXmkSisj0pFGyNDwmASzd6Z6gLK0bvVww%3D%3D&trueL…\"\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m  - element was detached from the DOM, retrying\u001b[22m\n\u001b[2m    - locator resolved to <input value=\" \" id=\"phone\" name=\"phone\" type=\"hidden\"/>\u001b[22m\n\u001b[2m    - fill(\"\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    31 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying fill action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+      "leadId": null,
+      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_tra-d3_desktop.png",
+      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@fbec7fb1f97cb039655ec70af2ac8ad7.webm",
+      "timestamp": "10:25:40 AM"
+    },
+    {
+      "campaignId": "ppc-st",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": false,
+      "error": "locator.fill: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#primary_phone, #phone, #phone_home, input[name=\"phone\"], input[name=\"phone_home\"], input[name=\"primary_phone\"], input[type=\"tel\"]').first()\u001b[22m\n\u001b[2m    - waiting for\" https://tra.com/thank-you/nn?debt=13000&leadid=D5BEA13E&reqid=26980513&affid=659&oid=133\" navigation to finish...\u001b[22m\n\u001b[2m    - navigated to \"https://tra.com/thank-you/nn?debt=13000&leadid=D5BEA13E&reqid=26980513&affid=659&oid=133\"\u001b[22m\n\u001b[2m    - locator resolved to <input value=\" \" id=\"phone\" name=\"phone\" type=\"hidden\"/>\u001b[22m\n\u001b[2m    - fill(\"\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    36 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying fill action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+      "leadId": null,
+      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_ppc-st_desktop.png",
+      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@0dde2ceed83512a437a66b11574fef0a.webm",
+      "timestamp": "10:28:17 AM"
+    },
+    {
+      "campaignId": "ftd-x",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "2AC3311C",
+      "timestamp": "10:30:49 AM"
+    },
+    {
+      "campaignId": "ppc-st2",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": false,
+      "error": "locator.fill: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#primary_phone, #phone, #phone_home, input[name=\"phone\"], input[name=\"phone_home\"], input[name=\"primary_phone\"], input[type=\"tel\"]').first()\u001b[22m\n\u001b[2m    - locator resolved to <input value=\" \" id=\"phone\" name=\"phone\" type=\"hidden\"/>\u001b[22m\n\u001b[2m    - fill(\"\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    42 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying fill action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+      "leadId": null,
+      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_ppc-st2_desktop.png",
+      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@b5b5310b99f99894c2a6f17c9235a546.webm",
+      "timestamp": "10:31:03 AM"
+    },
+    {
+      "campaignId": "fsi-ppc2",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "4D20AE5B",
+      "timestamp": "10:32:14 AM"
+    },
+    {
+      "campaignId": "tra-cpl",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "A49D9D22",
+      "timestamp": "10:34:36 AM"
+    },
+    {
+      "campaignId": "tra-d3",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": false,
+      "error": "Form submission failed: Browser stayed on the landing page path (/dt3) and did not redirect to a thank-you page.",
+      "leadId": null,
+      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_tra-d3_desktop.png",
+      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@597e6c225f2c2274c89818f3cfdac58b.webm",
+      "timestamp": "10:36:24 AM"
+    },
+    {
+      "campaignId": "ppc-m-ca",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "21EAB01F",
+      "timestamp": "10:36:56 AM"
+    },
+    {
+      "campaignId": "ppc-cr",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": false,
+      "error": "locator.fill: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#primary_phone, #phone, #phone_home, input[name=\"phone\"], input[name=\"phone_home\"], input[name=\"primary_phone\"], input[type=\"tel\"]').first()\u001b[22m\n\u001b[2m    - waiting for\" https://tra.com/thank-you?debt=12000&leadid=ECD6FCDC&reqid=26980573&affid=659&oid=133\" navigation to finish...\u001b[22m\n\u001b[2m    - navigated to \"https://tra.com/thank-you?debt=12000&leadid=ECD6FCDC&reqid=26980573&affid=659&oid=133\"\u001b[22m\n\u001b[2m    - locator resolved to <input value=\" \" id=\"phone\" name=\"phone\" type=\"hidden\"/>\u001b[22m\n\u001b[2m    - fill(\"\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    23 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying fill action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+      "leadId": null,
+      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_ppc-cr_desktop.png",
+      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@d977fdeede90aff6eadde480e715a572.webm",
+      "timestamp": "10:39:30 AM"
+    },
+    {
+      "campaignId": "ppc-st",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": false,
+      "error": "Form submission failed: Browser stayed on the landing page path (/ppc/st) and did not redirect to a thank-you page.",
+      "leadId": null,
+      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_ppc-st_desktop.png",
+      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@a384d9748d85fe867ee4e39aa51ec399.webm",
+      "timestamp": "10:40:16 AM"
+    },
+    {
+      "campaignId": "ppc-st2",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "C096B432",
+      "timestamp": "10:42:16 AM"
+    },
+    {
+      "campaignId": "ppc-fs",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": false,
+      "error": "Form submission failed: Browser stayed on the landing page path (/ppc/fs) and did not redirect to a thank-you page.",
+      "leadId": null,
+      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_ppc-fs_desktop.png",
+      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@a792dbb5c24dbbc37dfee7934d323245.webm",
+      "timestamp": "10:43:20 AM"
+    },
+    {
+      "campaignId": "ppc-m-ca",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": false,
+      "error": "locator.fill: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#primary_phone, #phone, #phone_home, input[name=\"phone\"], input[name=\"phone_home\"], input[name=\"primary_phone\"], input[type=\"tel\"]').first()\u001b[22m\n\u001b[2m    - locator resolved to <input value=\" \" id=\"phone\" name=\"phone\" type=\"hidden\"/>\u001b[22m\n\u001b[2m    - fill(\"\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    44 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying fill action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+      "leadId": null,
+      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_ppc-m-ca_desktop.png",
+      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@086f03b322c644bc2f26e7cff629e86c.webm",
+      "timestamp": "10:45:20 AM"
+    },
+    {
+      "campaignId": "ppc",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": false,
+      "error": "locator.fill: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#primary_phone, #phone, #phone_home, input[name=\"phone\"], input[name=\"phone_home\"], input[name=\"primary_phone\"], input[type=\"tel\"]').first()\u001b[22m\n\u001b[2m    - locator resolved to <input value=\" \" id=\"phone\" name=\"phone\" type=\"hidden\"/>\u001b[22m\n\u001b[2m    - fill(\"\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    48 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying fill action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+      "leadId": null,
+      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_ppc_desktop.png",
+      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@ac2d16a9c87cbe72452699a7b94f63d5.webm",
+      "timestamp": "10:46:04 AM"
+    },
+    {
+      "campaignId": "ppc-cr",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "38B61303",
+      "timestamp": "10:47:36 AM"
+    },
+    {
+      "campaignId": "tra-cpm",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "98578A21",
+      "timestamp": "10:48:25 AM"
+    },
+    {
+      "campaignId": "everest-tr-x",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "61F078C7",
+      "timestamp": "10:49:51 AM"
+    },
+    {
+      "campaignId": "vts-original",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "9329A827",
+      "timestamp": "10:51:30 AM"
+    },
+    {
+      "campaignId": "ppc-fs",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "AB1394F3",
+      "timestamp": "10:52:06 AM"
+    },
+    {
+      "campaignId": "vts-ne-branded",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "6F34141C",
+      "timestamp": "10:53:06 AM"
+    },
+    {
+      "campaignId": "ppc",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": false,
+      "error": "locator.fill: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#primary_phone, #phone, #phone_home, input[name=\"phone\"], input[name=\"phone_home\"], input[name=\"primary_phone\"], input[type=\"tel\"]').first()\u001b[22m\n\u001b[2m    - locator resolved to <input value=\" \" id=\"phone\" name=\"phone\" type=\"hidden\"/>\u001b[22m\n\u001b[2m    - fill(\"\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    47 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying fill action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+      "leadId": null,
+      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_ppc_desktop.png",
+      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@8e9a6664482b64b5e4b8eb5401c7c132.webm",
+      "timestamp": "10:54:50 AM"
+    },
+    {
+      "campaignId": "original",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": false,
+      "error": "Lead ID could not be extracted from the Thank You page or DOM.",
+      "leadId": "CKM88905",
+      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_original_desktop.png",
+      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@d8b770d59b921a18b7d714b998c6a012.webm",
+      "timestamp": "10:54:52 AM"
+    },
+    {
+      "campaignId": "1800-fresh-tax-x-main",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "3286013D",
+      "timestamp": "10:56:27 AM"
+    },
+    {
+      "campaignId": "tra-cpm",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": false,
+      "error": "locator.fill: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#primary_phone, #phone, #phone_home, input[name=\"phone\"], input[name=\"phone_home\"], input[name=\"primary_phone\"], input[type=\"tel\"]').first()\u001b[22m\n\u001b[2m    - locator resolved to <input value=\" \" id=\"phone\" name=\"phone\" type=\"hidden\"/>\u001b[22m\n\u001b[2m    - fill(\"\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    41 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying fill action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+      "leadId": null,
+      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_tra-cpm_desktop.png",
+      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@d60aa5b0dd60f241f5437408521ba937.webm",
+      "timestamp": "10:57:18 AM"
+    },
+    {
+      "campaignId": "fsi-main",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "0B1A5AF0",
+      "timestamp": "10:58:05 AM"
+    },
+    {
+      "campaignId": "everest-tr-x",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "B64E9329",
+      "timestamp": "10:58:57 AM"
+    },
+    {
+      "campaignId": "1803-fresh-tax-afr-cobranded",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "69453AD6",
+      "timestamp": "10:59:43 AM"
+    },
+    {
+      "campaignId": "vts-original",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "7384394E",
+      "timestamp": "11:00:39 AM"
+    },
+    {
+      "campaignId": "senior-tax-defence-main",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "ACC18B40",
+      "timestamp": "11:01:05 AM"
+    },
+    {
+      "campaignId": "vts-ne-branded",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "88C8CE28",
+      "timestamp": "11:02:27 AM"
+    },
+    {
+      "campaignId": "fresh-start-initiative-x-main",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "E36CEDBC",
+      "timestamp": "11:02:28 AM"
+    },
+    {
+      "campaignId": "aftr-main",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "6B08DBA8",
+      "timestamp": "11:04:07 AM"
+    },
+    {
+      "campaignId": "original",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": false,
+      "error": "Lead ID could not be extracted from the Thank You page or DOM.",
+      "leadId": "CKM48617",
+      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_original_desktop.png",
+      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@9fc787cc73b00b827b70035659e51098.webm",
+      "timestamp": "11:04:21 AM"
+    },
+    {
+      "campaignId": "ftd-x",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "D6B2CA19",
+      "timestamp": "11:05:13 AM"
+    },
+    {
+      "campaignId": "1800-fresh-tax-x-main",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "8F54CBE1",
+      "timestamp": "11:05:52 AM"
+    },
+    {
+      "campaignId": "fsi-ppc2",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "60EF7C87",
+      "timestamp": "11:06:41 AM"
+    },
+    {
+      "campaignId": "ptr-main",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "B65D2137",
+      "timestamp": "11:06:51 AM"
+    },
+    {
+      "campaignId": "fsi-main",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "5DC2F138",
+      "timestamp": "11:07:31 AM"
+    },
+    {
+      "campaignId": "fth-questionnaire",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "7662F316",
+      "timestamp": "11:08:48 AM"
+    },
+    {
+      "campaignId": "1803-fresh-tax-afr-cobranded",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "84B2A07E",
+      "timestamp": "11:09:17 AM"
+    },
+    {
+      "campaignId": "fth-x",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "C40BF01A",
+      "timestamp": "11:10:20 AM"
+    },
+    {
+      "campaignId": "senior-tax-defence-main",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "AEC4C534",
+      "timestamp": "11:10:38 AM"
+    },
+    {
+      "campaignId": "tra-cpl",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": false,
+      "error": "Form submission failed: Browser stayed on the landing page path (/list) and did not redirect to a thank-you page.",
+      "leadId": null,
+      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_tra-cpl_desktop.png",
+      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@d35b984e4e94c5995c18a91493791241.webm",
+      "timestamp": "11:11:14 AM"
+    },
+    {
+      "campaignId": "fresh-start-initiative-x-main",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "18B195DD",
+      "timestamp": "11:12:00 AM"
+    },
     {
       "campaignId": "second-chance-tax-relief-x",
       "viewport": "desktop",
       "browser": "chromium",
       "label": "Mac - Device",
+      "success": true,
+      "leadId": "87DABC06",
+      "timestamp": "11:12:04 AM"
+    },
+    {
+      "campaignId": "tra-d3",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
       "success": false,
-      "error": "Form submission failed: Browser stayed on the landing page path (/) and did not redirect to a thank-you page.",
+      "error": "Form submission failed: Browser stayed on the landing page path (/dt3) and did not redirect to a thank-you page.",
       "leadId": null,
-      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_second-chance-tax-relief-x_desktop.png",
-      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@eeff2e9c81922bb66d300cb0246affd2.webm",
-      "timestamp": "11:27:15 AM"
+      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_tra-d3_desktop.png",
+      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@57b22b6cf866d03eb91302f7eda1ed8a.webm",
+      "timestamp": "11:13:04 AM"
+    },
+    {
+      "campaignId": "aftr-main",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "EDF67248",
+      "timestamp": "11:13:35 AM"
     },
     {
       "campaignId": "sctr-main",
@@ -19,8 +502,8 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "7190380C",
-      "timestamp": "11:28:47 AM"
+      "leadId": "0E3585BE",
+      "timestamp": "11:13:36 AM"
     },
     {
       "campaignId": "1800-fresh-tax-cpc",
@@ -29,10 +512,31 @@
       "label": "Mac - Device",
       "success": false,
       "error": "Lead ID could not be extracted from the Thank You page or DOM.",
-      "leadId": "CKM31235",
+      "leadId": "CKM12538",
       "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_1800-fresh-tax-cpc_desktop.png",
-      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@f6c017e9a274963bd632acdd4ca5800c.webm",
-      "timestamp": "11:30:19 AM"
+      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@6a53e4e445fb61bb3f51812c21b660b0.webm",
+      "timestamp": "11:15:27 AM"
+    },
+    {
+      "campaignId": "ppc-st",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": false,
+      "error": "locator.fill: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#email, #email_address, input[name=\"email\"], input[name=\"email_address\"], input[type=\"email\"], input[placeholder*=\"Email\" i]').first()\u001b[22m\n\u001b[2m    - locator resolved to <input value=\" \" id=\"email\" name=\"email\" type=\"hidden\"/>\u001b[22m\n\u001b[2m    - fill(\"\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    48 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying fill action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+      "leadId": null,
+      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_ppc-st_desktop.png",
+      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@d1ad6f5b1608888cb342304a06dfc76d.webm",
+      "timestamp": "11:15:56 AM"
+    },
+    {
+      "campaignId": "ptr-main",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "C4913B35",
+      "timestamp": "11:16:06 AM"
     },
     {
       "campaignId": "senior-tax-defense-x",
@@ -40,8 +544,17 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "E6C1EA13",
-      "timestamp": "11:32:05 AM"
+      "leadId": "F658061D",
+      "timestamp": "11:16:54 AM"
+    },
+    {
+      "campaignId": "fth-questionnaire",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "3FF19569",
+      "timestamp": "11:18:03 AM"
     },
     {
       "campaignId": "guardian-tax-relief-ppc",
@@ -49,8 +562,29 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "7B0BD4B1",
-      "timestamp": "11:33:45 AM"
+      "leadId": "23222E3F",
+      "timestamp": "11:18:18 AM"
+    },
+    {
+      "campaignId": "ppc-st2",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": false,
+      "error": "locator.fill: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#primary_phone, #phone, #phone_home, input[name=\"phone\"], input[name=\"phone_home\"], input[name=\"primary_phone\"], input[type=\"tel\"]').first()\u001b[22m\n\u001b[2m    - locator resolved to <input value=\" \" id=\"phone\" name=\"phone\" type=\"hidden\"/>\u001b[22m\n\u001b[2m    - fill(\"\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    45 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying fill action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+      "leadId": null,
+      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_ppc-st2_desktop.png",
+      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@98525da5c2f605602f95a6e7faae32a8.webm",
+      "timestamp": "11:18:52 AM"
+    },
+    {
+      "campaignId": "fth-x",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "10F45BC0",
+      "timestamp": "11:19:27 AM"
     },
     {
       "campaignId": "empire-tax-relief-x",
@@ -58,8 +592,29 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "CBD652CC",
-      "timestamp": "11:35:42 AM"
+      "leadId": "350B6AC8",
+      "timestamp": "11:19:57 AM"
+    },
+    {
+      "campaignId": "second-chance-tax-relief-x",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "045B0381",
+      "timestamp": "11:21:11 AM"
+    },
+    {
+      "campaignId": "ppc-m-ca",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": false,
+      "error": "locator.fill: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#primary_phone, #phone, #phone_home, input[name=\"phone\"], input[name=\"phone_home\"], input[name=\"primary_phone\"], input[type=\"tel\"]').first()\u001b[22m\n\u001b[2m    - locator resolved to <input value=\" \" id=\"phone\" name=\"phone\" type=\"hidden\"/>\u001b[22m\n\u001b[2m    - fill(\"\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    48 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying fill action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+      "leadId": null,
+      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_ppc-m-ca_desktop.png",
+      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@fa353b05f270b56c499c3ff6bbd2ea67.webm",
+      "timestamp": "11:21:39 AM"
     },
     {
       "campaignId": "capital-tax-relief-x",
@@ -67,8 +622,17 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "922E029D",
-      "timestamp": "11:37:15 AM"
+      "leadId": "14AD12C0",
+      "timestamp": "11:21:39 AM"
+    },
+    {
+      "campaignId": "sctr-main",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "D2FA8054",
+      "timestamp": "11:22:59 AM"
     },
     {
       "campaignId": "ftd-ppc2",
@@ -76,8 +640,101 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "21F4EB8C",
-      "timestamp": "11:39:14 AM"
+      "leadId": "43A8E435",
+      "timestamp": "11:23:12 AM"
+    },
+    {
+      "campaignId": "1800-fresh-tax-cpc",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": false,
+      "error": "Lead ID could not be extracted from the Thank You page or DOM.",
+      "leadId": "CKM39055",
+      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_1800-fresh-tax-cpc_desktop.png",
+      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@d97cc32489dde869dad07a1e5cd7effd.webm",
+      "timestamp": "11:24:27 AM"
+    },
+    {
+      "campaignId": "ppc-cr",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": false,
+      "error": "Form submission failed: Browser stayed on the landing page path (/ppc/cr) and did not redirect to a thank-you page.",
+      "leadId": null,
+      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_ppc-cr_desktop.png",
+      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@f525455dd767a8281cf46025779d63ed.webm",
+      "timestamp": "11:25:52 AM"
+    },
+    {
+      "campaignId": "senior-tax-defense-x",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "044FA78C",
+      "timestamp": "11:26:00 AM"
+    },
+    {
+      "campaignId": "guardian-tax-relief-ppc",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "506977DF",
+      "timestamp": "11:27:22 AM"
+    },
+    {
+      "campaignId": "empire-tax-relief-x",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "23C54D7E",
+      "timestamp": "11:29:02 AM"
+    },
+    {
+      "campaignId": "ppc-fs",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": false,
+      "error": "Form submission failed: Browser stayed on the landing page path (/ppc/fs) and did not redirect to a thank-you page.",
+      "leadId": null,
+      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_ppc-fs_desktop.png",
+      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@faa13b0ac0513974a638d88e021ee114.webm",
+      "timestamp": "11:29:41 AM"
+    },
+    {
+      "campaignId": "capital-tax-relief-x",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "C355DCF6",
+      "timestamp": "11:30:33 AM"
+    },
+    {
+      "campaignId": "ftd-ppc2",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "C8766A88",
+      "timestamp": "11:32:03 AM"
+    },
+    {
+      "campaignId": "ppc",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": false,
+      "error": "locator.fill: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#email, #email_address, input[name=\"email\"], input[name=\"email_address\"], input[type=\"email\"], input[placeholder*=\"Email\" i]').first()\u001b[22m\n\u001b[2m    - locator resolved to <input value=\" \" id=\"email\" name=\"email\" type=\"hidden\"/>\u001b[22m\n\u001b[2m    - fill(\"\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    49 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying fill action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+      "leadId": null,
+      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_ppc_desktop.png",
+      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@a755f148ad88190c23112c0d79ab8e17.webm",
+      "timestamp": "11:32:37 AM"
     }
   ],
   "emailSent": false

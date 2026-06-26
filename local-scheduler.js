@@ -11,7 +11,7 @@ function shouldRunToday() {
 }
 
 function runPlaywrightTests() {
-  if (!shouldRunToday()) {
+  if (!shouldRunToday() && !process.argv.includes('--force')) {
     console.log(`\n⏰ [${new Date().toLocaleString()}] Skipping campaign run: today is not Mon/Wed/Fri.`);
     scheduleNextRun();
     return;
