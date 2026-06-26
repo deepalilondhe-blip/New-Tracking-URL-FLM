@@ -27,13 +27,16 @@ jobs:
 
       - name: Build Environment Configuration File
         run: |
+          echo "CAKE_USERNAME=${{ secrets.CAKE_USERNAME }}" >> .env
+          echo "CAKE_PASSWORD=${{ secrets.CAKE_PASSWORD }}" >> .env
+          echo "GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}" >> .env
           echo "FIRST_API_BASE_URL=http://app.forwardleapmarketing.com/api/1/get.asmx/LeadInfo" >> .env
           echo "FIRST_API_KEY=${{ secrets.FIRST_API_KEY }}" >> .env
           echo "VERTICAL_ID=2" >> .env
           echo "SECOND_API_URL_STANDARD=https://flm-utility.com/api-qa-automation-hostgator/getData.php" >> .env
-          echo "SECOND_API_URL_SENIOR=https://everesttaxrelief.net/api-qa-automation-atwohosting/getData.php" >> .env
+          echo "SECOND_API_URL_SENIOR=https://flm-utility.com/api-qa-automation-hostgator/getData.php" >> .env
           echo "GOOGLE_SHEET_ID=1rXIg3dMQ4APH3lHLcfWYfP45PnOAKmV9POkoSS3YWxI" >> .env
-          echo "GOOGLE_SERVICE_ACCOUNT_FILE=service-account-creds.json" >> .env
+          echo "GOOGLE_SERVICE_ACCOUNT_FILE=service_account.json" >> .env
           echo "TEST_FIRST_NAME=ckmtestpixel" >> .env
           echo "TEST_LAST_NAME=ckmtestpixel" >> .env
           echo "TEST_EMAIL=ckmtestpixel@gmail.com" >> .env
@@ -46,7 +49,7 @@ jobs:
           echo "REPORT_EMAIL_RECIPIENT=${{ secrets.REPORT_EMAIL_RECIPIENT }}" >> .env
           
           # Write service account creds from JSON secret
-          echo '${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}' > service-account-creds.json
+          echo '${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}' > service_account.json
 
       - name: Execute Automation Suite
         run: xvfb-run --auto-servernum --server-args="-screen 0 1280x1024x24" node scheduler.js --once
