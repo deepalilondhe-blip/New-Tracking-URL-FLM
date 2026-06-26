@@ -517,7 +517,7 @@ async function injectMobileFrame(page, deviceArg) {
     console.log(`==================================================`);
 
     try {
-      await page.goto(url, { waitUntil: 'networkidle', timeout: 30000 });
+      await page.goto(url, { waitUntil: 'load', timeout: 30000 });
       await page.waitForTimeout(2000);
       await injectMobileFrame(page, deviceArg);
 
