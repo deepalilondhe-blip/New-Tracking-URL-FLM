@@ -517,6 +517,16 @@ async function injectMobileFrame(page, deviceArg) {
     console.log(`==================================================`);
 
     try {
+      // 🛡️ Clear cookies & cache between brands to prevent reCAPTCHA accumulation
+      const context = page.context();
+      await context.clearCookies();
+      console.log('🧹 Cleared cookies for fresh reCAPTCHA session.');
+
+      // ⏳ Random human-like delay between brands (3-8 seconds)
+      const randomDelay = Math.floor(Math.random() * 5000) + 3000;
+      console.log(`⏳ Waiting ${(randomDelay / 1000).toFixed(1)}s before next brand...`);
+      await page.waitForTimeout(randomDelay);
+
       await page.goto(url, { waitUntil: 'load', timeout: 30000 });
       await page.waitForTimeout(2000);
       await injectMobileFrame(page, deviceArg);
