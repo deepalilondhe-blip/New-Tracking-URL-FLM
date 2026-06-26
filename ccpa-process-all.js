@@ -777,23 +777,29 @@ async function smoothScrollDown(page) {
         );
 
         // Try to click Buster solver button if the challenge popup is open
-        if (!busterClicked) {
-          if (challengeFrame) {
-            try {
-              const busterBtn = await challengeFrame.$('#solver-button, .help-button-holder');
-              if (busterBtn) {
-                await challengeFrame.waitForTimeout(500); // Give Buster a moment to inject and render
-                await busterBtn.click({ force: true });
-                busterClicked = true; // Set flag so we don't spam click it while it solves
-                busterClickTime = Date.now();
-                console.log('🖱️ Auto-clicked Buster CAPTCHA solver button!');
-                await page.waitForTimeout(3000); // Give it time to start audio challenge
-              }
-            } catch (e) {}
+        if (!busterClicked && challengeFrame) {
+          try {
+            // Wait 2.5 seconds for Buster to fully load and inject the button
+            console.log('⏳ Challenge frame detected. Waiting 2.5s for Buster to initialize...');
+            await page.waitForTimeout(2500);
+
+            const busterBtn = await challengeFrame.waitForSelector('#solver-button', { timeout: 5000 });
+            if (busterBtn) {
+              await busterBtn.hover();
+              await page.waitForTimeout(300);
+              await busterBtn.click();
+              
+              busterClicked = true; // Set flag so we don't spam click it while it solves
+              busterClickTime = Date.now();
+              console.log('🖱️ Auto-clicked Buster CAPTCHA solver button!');
+              await page.waitForTimeout(4000); // Give it time to start audio challenge
+            }
+          } catch (e) {
+            console.log('⚠️ Could not find or click Buster button:', e.message);
           }
-        } else {
-          // If Buster was clicked but 15 seconds have passed and it's still not solved
-          if (Date.now() - busterClickTime > 15000 && !captchaSolved) {
+        } else if (busterClicked) {
+          // If Buster was clicked but 25 seconds have passed and it's still not solved
+          if (Date.now() - busterClickTime > 25000 && !captchaSolved) {
             console.log('⚠️ Buster is taking too long or failed. Reloading CAPTCHA...');
             if (challengeFrame) {
               try {
