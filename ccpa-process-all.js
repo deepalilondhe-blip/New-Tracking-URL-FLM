@@ -344,27 +344,7 @@ async function injectMobileFrame(page, deviceArg) {
 }
 
 (async () => {
-  const userDataDir = './ccpa-browser-profile';
-  const pathToExtension = path.resolve(__dirname, 'buster-extension');
-  const browser = await chromium.launchPersistentContext(userDataDir, {
-    headless: false,
-    args: [
-      '--disable-blink-features=AutomationControlled',
-      '--no-sandbox',
-      '--disable-features=AutofillAddressEnabled,AutofillCreditCardEnabled,AutofillPasswordEnabled',
-      `--disable-extensions-except=${pathToExtension}`,
-      `--load-extension=${pathToExtension}`,
-      isMobile ? '--window-size=500,900' : '--window-size=1400,900'
-    ],
-    viewport: viewport,
-    ignoreHTTPSErrors: true,
-    locale: 'en-US',
-    userAgent: userAgent,
-    isMobile: isMobile,
-    hasTouch: hasTouch
-  });
-
-  const page = browser.pages()[0] || await browser.newPage();
+  // Browser context and page will be launched fresh for each brand iteration inside the loop.
   
   // Authenticate Google Sheets API
   const auth = new google.auth.GoogleAuth({
@@ -508,7 +488,7 @@ async function injectMobileFrame(page, deviceArg) {
   for (let uIndex = 0; uIndex < URLS.length; uIndex++) {
     const url = URLS[uIndex];
     const skipKey = `${url.trim().toLowerCase()}_${sheetDevice.trim().toLowerCase()}`;
-    if (existingDomains.has(skipKey)) {
+    if (existingDomains.has(skipKey) && !args.force) {
       console.log(`⏭️ Brand [${uIndex + 1}/${URLS.length}] already processed today for ${sheetDevice}, skipping: ${url}`);
       continue;
     }
@@ -516,11 +496,37 @@ async function injectMobileFrame(page, deviceArg) {
     console.log(`🌐 Processing brand [${uIndex + 1}/${URLS.length}]: ${url}`);
     console.log(`==================================================`);
 
+    const specificUserDataDir = path.resolve(__dirname, `ccpa-profile-brand-${uIndex}`);
+    // Clean up any existing directory from a crashed previous run
     try {
-      // 🛡️ Clear cookies & cache between brands to prevent reCAPTCHA accumulation
-      const context = page.context();
-      await context.clearCookies();
-      console.log('🧹 Cleared cookies for fresh reCAPTCHA session.');
+      const fs = require('fs');
+      if (fs.existsSync(specificUserDataDir)) {
+        fs.rmSync(specificUserDataDir, { recursive: true, force: true });
+      }
+    } catch (e) {}
+
+    let browser;
+    try {
+      const pathToExtension = path.resolve(__dirname, 'buster-extension');
+      browser = await chromium.launchPersistentContext(specificUserDataDir, {
+        headless: false,
+        args: [
+          '--disable-blink-features=AutomationControlled',
+          '--no-sandbox',
+          '--disable-features=AutofillAddressEnabled,AutofillCreditCardEnabled,AutofillPasswordEnabled',
+          `--disable-extensions-except=${pathToExtension}`,
+          `--load-extension=${pathToExtension}`,
+          isMobile ? '--window-size=500,900' : '--window-size=1400,900'
+        ],
+        viewport: viewport,
+        ignoreHTTPSErrors: true,
+        locale: 'en-US',
+        userAgent: userAgent,
+        isMobile: isMobile,
+        hasTouch: hasTouch
+      });
+
+      const page = browser.pages()[0] || await browser.newPage();
 
       // ⏳ Random human-like delay between brands (3-8 seconds)
       const randomDelay = Math.floor(Math.random() * 5000) + 3000;
@@ -698,7 +704,7 @@ async function injectMobileFrame(page, deviceArg) {
 
       // Wait for solve (up to 5 mins)
       let captchaSolved = url.includes('tra.com') ? true : false;
-      const maxWaitTime = 300000;
+      const maxWaitTime = 60000; // 60 seconds (1 minute) maximum wait time for CAPTCHA to avoid hanging the script
       const startTime = Date.now();
       let busterClicked = false;
       let busterClickTime = 0;
@@ -851,9 +857,27 @@ async function injectMobileFrame(page, deviceArg) {
 
     } catch (err) {
       console.error(`❌ Error processing brand ${url}:`, err.message);
+    } finally {
+      if (browser) {
+        try {
+          await browser.close();
+          console.log(`🔒 Closed browser context for ${url}`);
+        } catch (closeErr) {
+          console.warn(`⚠️ Error closing browser:`, closeErr.message);
+        }
+      }
+      // Delete temporary user profile directory to save disk space and prevent tracking
+      try {
+        const fs = require('fs');
+        if (fs.existsSync(specificUserDataDir)) {
+          fs.rmSync(specificUserDataDir, { recursive: true, force: true });
+          console.log(`🧹 Cleaned up temporary profile: ${specificUserDataDir}`);
+        }
+      } catch (cleanErr) {
+        console.warn(`⚠️ Error cleaning up profile directory:`, cleanErr.message);
+      }
     }
   }
 
   console.log('\n🎉 ALL CCPA URLS PROCESSED SUCCESSFULLY!');
-  await browser.close();
 })();
