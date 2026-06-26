@@ -773,7 +773,12 @@ async function injectMobileFrame(page, deviceArg) {
 
       // 6. DB ID Extract from Portal
       const domainQuery = getDomainQuery(url);
-      const dbId = await extractDbid(page, domainQuery);
+      let dbId = 'N/A';
+      try {
+        dbId = await extractDbid(page, domainQuery);
+      } catch (e) {
+        console.warn(`⚠️ Failed to extract DB ID for ${domainQuery}:`, e.message);
+      }
       console.log(`🔍 Extracted DB ID for ${domainQuery}: ${dbId}`);
 
       // 7. Append to Sheet
