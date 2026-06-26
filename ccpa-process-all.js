@@ -513,7 +513,8 @@ async function injectMobileFrame(page, deviceArg) {
         args: [
           '--disable-blink-features=AutomationControlled',
           '--no-sandbox',
-          '--disable-features=AutofillAddressEnabled,AutofillCreditCardEnabled,AutofillPasswordEnabled',
+          '--disable-web-security',
+          '--disable-features=IsolateOrigins,site-per-process,AutofillAddressEnabled,AutofillCreditCardEnabled,AutofillPasswordEnabled',
           `--disable-extensions-except=${pathToExtension}`,
           `--load-extension=${pathToExtension}`,
           isMobile ? '--window-size=500,900' : '--window-size=1400,900'
