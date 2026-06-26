@@ -39,12 +39,27 @@ function runPlaywrightTests() {
 
 function scheduleNextRun() {
   const now = new Date();
-  const nextRun = new Date();
-  nextRun.setHours(11, 30, 0, 0);
+  const candidates = [];
 
-  // If 11:30 AM has already passed today, set for tomorrow at 11:30 AM
-  if (now >= nextRun) {
-    nextRun.setDate(nextRun.getDate() + 1);
+  // Run 1: 11:30 AM today
+  const run1 = new Date(now);
+  run1.setHours(11, 30, 0, 0);
+
+  // Run 2: 5:30 PM today
+  const run2 = new Date(now);
+  run2.setHours(17, 30, 0, 0);
+
+  if (run1 > now) candidates.push(run1);
+  if (run2 > now) candidates.push(run2);
+
+  let nextRun;
+  if (candidates.length > 0) {
+    nextRun = candidates[0];
+  } else {
+    // Both runs for today have passed, schedule for tomorrow 11:30 AM
+    nextRun = new Date(now);
+    nextRun.setDate(now.getDate() + 1);
+    nextRun.setHours(11, 30, 0, 0);
   }
 
   const delay = nextRun.getTime() - now.getTime();
