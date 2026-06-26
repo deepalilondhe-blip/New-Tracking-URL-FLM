@@ -762,14 +762,20 @@ async function smoothScrollDown(page) {
         } catch (e) {}
       }
 
-      // Wait for solve (up to 5 mins)
+      // Wait for solve (up to 3 mins)
       let captchaSolved = url.includes('tra.com') ? true : false;
-      const maxWaitTime = 60000; // 60 seconds (1 minute) maximum wait time for CAPTCHA to avoid hanging the script
+      const maxWaitTime = 180000; // 180 seconds (3 minutes) maximum wait time for CAPTCHA to allow manual solve if needed
       const startTime = Date.now();
       let busterClicked = false;
       let busterClickTime = 0;
 
       while (!captchaSolved && (Date.now() - startTime) < maxWaitTime) {
+        const elapsed = Math.round((Date.now() - startTime) / 1000);
+        const remaining = Math.max(0, Math.round((maxWaitTime - (Date.now() - startTime)) / 1000));
+        if (elapsed % 10 === 0) {
+          console.log(`⏳ Waiting for CAPTCHA solution... (${remaining}s remaining)`);
+        }
+
         await page.waitForTimeout(2000);
 
         const challengeFrame = page.frames().find(f => 
@@ -837,7 +843,14 @@ async function smoothScrollDown(page) {
       }
 
       if (!captchaSolved) {
-        console.log('❌ CAPTCHA timeout for this brand. Skipping submission...');
+        console.log('❌ CAPTCHA timeout for this brand. Saving debug screenshot and skipping...');
+        try {
+          const timeoutScreenshot = `ccpa_captcha_timeout_${uIndex + 1}.png`;
+          await page.screenshot({ path: timeoutScreenshot, fullPage: true });
+          console.log(`📸 Saved timeout screenshot to: ${timeoutScreenshot}`);
+        } catch (screenshotErr) {
+          console.warn('⚠️ Failed to save timeout screenshot:', screenshotErr.message);
+        }
         continue;
       }
 
