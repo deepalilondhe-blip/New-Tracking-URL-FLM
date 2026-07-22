@@ -1,62 +1,50 @@
 📊 ACTIVE GOOGLE SPREADSHEET URL:
-https://docs.google.com/spreadsheets/d/1rXIg3dMQ4APH3lHLcfWYfP45PnOAKmV9POkoSS3YWxI/edit?gid=1177143742#gid=1177143742
+https://docs.google.com/spreadsheets/d/1TJYMxbyREFVIIGYIdb15SpwG0X6Kmm4nhmBS_OUE8EY/edit?gid=0#gid=0
 
 ================================================================================
-🔗 ACTIVE CREATED SHEET TAB TRACKING URLs (12 Active Tabs)
+🔗 ACTIVE CREATED SHEET TAB TRACKING URLs (11 Active Tabs)
 ================================================================================
 
-1. PPC
-   - Sheet Tab: PPC
-   - Tracking URL: https://flmtra.com/?a=659&oc=782&c=2210&s1=
+1. 1800 Fresh Tax (X) Main
+   - Sheet Tab: 1800X-lf4
+   - Tracking URL: https://flmtrk.com/?a=659&oc=696&c=1867&s1=
 
-2. TRA-DT3
-   - Sheet Tab: TRA-DT3
-   - Tracking URL: https://flmtra.com/?a=659&oc=792&c=2386&s1=
+2. Everest Tax Releif(X)
+   - Sheet Tab: ETR-v5
+   - Tracking URL: https://mlf-trk.com/?a=659&oc=812&c=2498&s1=
 
-3. TRA-CPL
-   - Sheet Tab: TRA-CPL
-   - Tracking URL: https://flmtra.com/?a=659&oc=756&c=2210&s1=
+3. FTD-X
+   - Sheet Tab: FTD-ftdx
+   - Tracking URL: https://mlfftd.com/?a=659&oc=543&c=167&s1=
 
-4. PPC-ST
-   - Sheet Tab: PPC-ST
-   - Tracking URL: https://flmtra.com/?a=659&oc=837&c=2210&s1=
+4. FSI-fsi22
+   - Sheet Tab: FSI-fsi22
+   - Tracking URL: https://fsimlf-trk.com/?a=659&oc=548&c=111&s1=
 
-5. PPC-ST2
-   - Sheet Tab: PPC-ST2
-   - Tracking URL: https://flmtra.com/?a=659&oc=858&c=2210&s1=
+5. FSI-PPC2
+   - Sheet Tab: FSI-PPC-ppc2
+   - Tracking URL: https://fsimlf-trk.com/?a=659&oc=750&c=143&s1=
 
-6. PPC-M/CA
-   - Sheet Tab: PPC-M/CA
-   - Tracking URL: https://flmtra.com/?a=659&oc=822&c=2210&s1=
+6. FSI X (v1)
+   - Sheet Tab: FSI-X-v1
+   - Tracking URL: https://flmtrk.com/?a=659&oc=780&c=1940&s1=
 
-7. PPC-CR
-   - Sheet Tab: PPC-CR
-   - Tracking URL: https://flmtra.com/?a=659&oc=848&c=2210&s1=
+7. GT-m26
+   - Sheet Tab: TRA-ppc-fs
+   - Tracking URL: https://flmtra.com/?a=659&oc=841&c=2210&s1=
 
-8. TRA-CPM
-   - Sheet Tab: TRA-CPM
-   - Tracking URL: https://flmtra.com/?a=659&oc=763&c=2225&s1=
+8. PTR (lf3)
+   - Sheet Tab: PTR-lf3
+   - Tracking URL: https://mlf-trk.com/?a=659&oc=778&c=2251&s1=
 
-9. PPC-FS
-    - Sheet Tab: PPC-FS
-    - Tracking URL: https://flmtra.com/?a=659&oc=841&c=2210&s1=
+9. SCTR (main)
+   - Sheet Tab: SCTR-main
+   - Tracking URL: https://secure-sctr.com/?a=659&oc=800&c=2432&s1=
 
-10. FSI-PPC2
-    - Sheet Tab: FSI-PPC2
-    - Tracking URL: https://fsimlf-trk.com/?a=659&oc=750&c=143&s1=
-
-11. FTD-X
-    - Sheet Tab: FTD-X
-    - Tracking URL: https://mlfftd.com/?a=659&oc=656&c=167&s1=
-
-12. Everest Tax Releif(X)
-    - Sheet Tab: Everest Tax Releif(X)
-    - Tracking URL: https://mlf-trk.com/?a=659&oc=812&c=2498&s1=
-
-13. VTS-Original
-    - Sheet Tab: VTS-Original
+10. VTS-Original
+    - Sheet Tab: VTS-v5ne
     - Tracking URL: https://flmtra.com/?a=659&oc=855&c=2210&s1=
 
-14. 1800 Fresh Tax (X) Main
-    - Sheet Tab: 1800 Fresh Tax (X) Main
-    - Tracking URL: https://flmtrk.com/?a=659&oc=696&c=1867&s1=
+11. AFTR (v6)
+    - Sheet Tab: AFTR-v6
+    - Tracking URL: https://mlf-trk.com/?a=659&oc=809&c=2227&s1=
