@@ -256,7 +256,7 @@ async function appendRowByHeader(sheetName, rowData) {
                     userEnteredFormat: {
                         numberFormat: {
                           type: 'DATE_TIME',
-                          pattern: 'd/M/yyyy H:mm:ss'
+                          pattern: 'dd-MM-yyyy HH:mm:ss'
                         }
                     }
                   },

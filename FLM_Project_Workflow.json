@@ -1,0 +1,60 @@
+{
+  "id": "3",
+  "name": "FLM Project",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 2
+            }
+          ]
+        }
+      },
+      "id": "a988d8b4-0268-450f-90db-312278457788",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        380,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "command": "node run-master.js --campaign tra-list --viewport desktop --headed",
+        "cwd": "c:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL"
+      },
+      "id": "e988d8b4-0268-450f-90db-312278457789",
+      "name": "Execute Command",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        600,
+        240
+      ]
+    }
+  ],
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Execute Command",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "active": false
+}

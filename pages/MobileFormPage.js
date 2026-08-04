@@ -1138,9 +1138,8 @@ class MobileFormPage {
         if (await fName.isVisible({ timeout: 500 }).catch(() => false)) {
           const currentVal = await fName.inputValue().catch(() => '');
           if (!currentVal || currentVal !== firstName) {
-            await fName.click({ timeout: 3000 }).catch(() => {});
-            await fName.fill('');
-            await fName.pressSequentially(firstName, { delay: 50 }).catch(() => {});
+            await fName.click({ timeout: 1500 }).catch(() => {});
+            await fName.fill(firstName, { timeout: 1500 }).catch(() => {});
             await this.page.keyboard.press('Tab').catch(() => {});
             console.log(`✅ [Mobile] Filled First Name: ${firstName}`);
             filledSomething = true;
@@ -1152,9 +1151,8 @@ class MobileFormPage {
         if (await lName.isVisible({ timeout: 500 }).catch(() => false)) {
           const currentVal = await lName.inputValue().catch(() => '');
           if (!currentVal || currentVal !== lastName) {
-            await lName.click({ timeout: 3000 }).catch(() => {});
-            await lName.fill('');
-            await lName.pressSequentially(lastName, { delay: 50 }).catch(() => {});
+            await lName.click({ timeout: 1500 }).catch(() => {});
+            await lName.fill(lastName, { timeout: 1500 }).catch(() => {});
             await this.page.keyboard.press('Tab').catch(() => {});
             console.log(`✅ [Mobile] Filled Last Name: ${lastName}`);
             filledSomething = true;
@@ -1166,9 +1164,8 @@ class MobileFormPage {
         if (await emailField.isVisible({ timeout: 500 }).catch(() => false)) {
           const currentVal = await emailField.inputValue().catch(() => '');
           if (!currentVal || currentVal !== email) {
-            await emailField.click({ timeout: 3000 }).catch(() => {});
-            await emailField.fill('');
-            await emailField.pressSequentially(email, { delay: 50 }).catch(() => {});
+            await emailField.click({ timeout: 1500 }).catch(() => {});
+            await emailField.fill(email, { timeout: 1500 }).catch(() => {});
             await this.page.keyboard.press('Tab').catch(() => {});
             console.log(`✅ [Mobile] Filled Email: ${email}`);
             filledSomething = true;
@@ -1180,9 +1177,8 @@ class MobileFormPage {
         if (await phoneField.isVisible({ timeout: 500 }).catch(() => false)) {
           const currentVal = await phoneField.inputValue().catch(() => '');
           if (!currentVal || currentVal !== phone) {
-            await phoneField.click({ timeout: 3000 }).catch(() => {});
-            await phoneField.fill('');
-            await phoneField.pressSequentially(phone, { delay: 50 }).catch(() => {});
+            await phoneField.click({ timeout: 1500 }).catch(() => {});
+            await phoneField.fill(phone, { timeout: 1500 }).catch(() => {});
             await this.page.keyboard.press('Tab').catch(() => {});
             console.log(`✅ [Mobile] Filled Phone: ${phone}`);
             filledSomething = true;
