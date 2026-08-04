@@ -412,6 +412,12 @@ class MobileFormPage {
     } catch (e) {
       console.warn(`⚠️ [Mobile] Navigation warning: ${e.message}. Continuing with page execution...`);
     }
+
+    const finalUrl = this.page.url();
+    if (finalUrl.includes('chrome-error://') || finalUrl.includes('chromewebdata')) {
+      throw new Error(`Navigation failed: browser landed on chrome error page (${finalUrl})`);
+    }
+
     await this.page.waitForLoadState('domcontentloaded').catch(() => {});
 
     // Reset local/session storage on the mobile browser context

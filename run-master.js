@@ -274,6 +274,7 @@ if (viewportArg === 'api') {
       console.log(`\n🚀 Campaign Execution Attempt ${attempts}/${maxAttempts}...`);
 
       let proxyServer = null;
+      let page = null;
       if (useVpn) {
         // Retrieve a fresh USA proxy for this attempt
         proxyServer = await getWorkingUsProxy();
@@ -299,7 +300,7 @@ if (viewportArg === 'api') {
 
         // Initialize tracing
         await context.tracing.start({ screenshots: true, snapshots: true, sources: true });
-        const page = await context.newPage();
+        page = await context.newPage();
 
         // Build dynamic brand configuration for lead processor
         let brandSuffix = '';

@@ -87,6 +87,12 @@ class FormPage {
     } catch (e) {
       console.warn(`⚠️ Navigation warning: ${e.message}. Continuing with page execution...`);
     }
+
+    const finalUrl = this.page.url();
+    if (finalUrl.includes('chrome-error://') || finalUrl.includes('chromewebdata')) {
+      throw new Error(`Navigation failed: browser landed on chrome error page (${finalUrl})`);
+    }
+
     await this.page.waitForLoadState('domcontentloaded').catch(() => {});
 
     // Clear storage after navigation to avoid SecurityError on blank pages
