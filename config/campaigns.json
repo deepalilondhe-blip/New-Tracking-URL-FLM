@@ -33,7 +33,7 @@
     "sliderAmount": "30,000",
     "state": "IN",
     "phone": "9763546781",
-    "skipSecondApi": false
+    "skipSecondApi": true
   },
   {
     "id": "tra-d3",
@@ -43,7 +43,7 @@
     "sliderAmount": "10,000",
     "state": "IN",
     "phone": "843-939-2210",
-    "skipSecondApi": false
+    "skipSecondApi": true
   },
   {
     "id": "ppc-st",
@@ -53,7 +53,7 @@
     "sliderAmount": "18,000",
     "state": "OR",
     "phone": "503-518-1606",
-    "skipSecondApi": false
+    "skipSecondApi": true
   },
   {
     "id": "ppc-st2",
@@ -63,7 +63,7 @@
     "sliderAmount": "20,000",
     "state": "Nebraska",
     "phone": "402-919-7047",
-    "skipSecondApi": false
+    "skipSecondApi": true
   },
   {
     "id": "ppc-m-ca",
@@ -73,7 +73,7 @@
     "sliderAmount": "50,000",
     "state": "TX",
     "phone": "405-507-5965",
-    "skipSecondApi": false
+    "skipSecondApi": true
   },
   {
     "id": "ppc-cr",
@@ -93,7 +93,7 @@
     "sliderAmount": "50,000",
     "state": "RI",
     "phone": "401-739-6095",
-    "skipSecondApi": false
+    "skipSecondApi": true
   },
   {
     "id": "tra-cpm",
@@ -103,7 +103,7 @@
     "sliderAmount": "9000",
     "state": "Rhode Island",
     "phone": "401-453-0576",
-    "skipSecondApi": false
+    "skipSecondApi": true
   },
   {
     "id": "everest-tr-x",
@@ -232,7 +232,7 @@
     "sliderAmount": "50000",
     "state": "Colorado",
     "phone": "970-321-4664",
-    "skipSecondApi": false
+    "skipSecondApi": true
   },
   {
     "id": "tra-st-tsg",
@@ -242,7 +242,7 @@
     "sliderAmount": "20,000",
     "state": "IN",
     "phone": "9763546781",
-    "skipSecondApi": false
+    "skipSecondApi": true
   },
   {
     "id": "tra-st-tf",
@@ -252,7 +252,7 @@
     "sliderAmount": "20,000",
     "state": "IN",
     "phone": "9763546781",
-    "skipSecondApi": false
+    "skipSecondApi": true
   },
   {
     "id": "tra-st-sp",
@@ -262,7 +262,7 @@
     "sliderAmount": "20,000",
     "state": "IN",
     "phone": "9763546781",
-    "skipSecondApi": false
+    "skipSecondApi": true
   },
   {
     "id": "tra-ppc-v9",
@@ -272,7 +272,7 @@
     "sliderAmount": "20,000",
     "state": "IN",
     "phone": "9763546781",
-    "skipSecondApi": false
+    "skipSecondApi": true
   },
   {
     "id": "tra-ppcbtr",
@@ -282,7 +282,7 @@
     "sliderAmount": "20,000",
     "state": "IN",
     "phone": "9763546781",
-    "skipSecondApi": false
+    "skipSecondApi": true
   },
   {
     "id": "tra-ppcbm",
@@ -292,6 +292,6 @@
     "sliderAmount": "20,000",
     "state": "IN",
     "phone": "9763546781",
-    "skipSecondApi": false
+    "skipSecondApi": true
   }
 ]
