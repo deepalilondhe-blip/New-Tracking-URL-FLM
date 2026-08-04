@@ -263,114 +263,144 @@ if (viewportArg === 'api') {
       console.log(`💻 Emulated Device Profile: DESKTOP - [${label}]`);
     }
 
-    let proxyServer = null;
-    if (useVpn) {
-      proxyServer = await getWorkingUsProxy();
-      if (proxyServer) {
-        contextOptions.proxy = {
-          server: proxyServer
+    let attempts = 0;
+    const maxAttempts = 3;
+    let success = false;
+    let lastError = null;
+    let brand = null;
+
+    while (attempts < maxAttempts && !success) {
+      attempts++;
+      console.log(`\n🚀 Campaign Execution Attempt ${attempts}/${maxAttempts}...`);
+
+      let proxyServer = null;
+      if (useVpn) {
+        // Retrieve a fresh USA proxy for this attempt
+        proxyServer = await getWorkingUsProxy();
+        if (proxyServer) {
+          contextOptions.proxy = {
+            server: proxyServer
+          };
+          console.log(`🛡️  Routing browser traffic via US Proxy: ${proxyServer}`);
+        } else {
+          console.warn('⚠️ Could not find a working USA proxy. Proceeding with direct connection.');
+        }
+      }
+
+      try {
+        browser = await browserEngine.launch({
+          headless: isHeadless,
+          slowMo: isHeadless ? 0 : 2000
+        });
+        context = await browser.newContext(contextOptions);
+
+        await context.setDefaultTimeout(25000);
+        await context.setDefaultNavigationTimeout(35000);
+
+        // Initialize tracing
+        await context.tracing.start({ screenshots: true, snapshots: true, sources: true });
+        const page = await context.newPage();
+
+        // Build dynamic brand configuration for lead processor
+        let brandSuffix = '';
+        if (viewportArg === 'tablet') brandSuffix = ' Tablet';
+        if (viewportArg === 'mobile') brandSuffix = ' Mobile';
+
+        // Implement strict randomization for every execution
+        let dynamicSliderAmount = campaignConfig.sliderAmount;
+        if (campaignConfig.sliderOptions && Array.isArray(campaignConfig.sliderOptions)) {
+          const randomIndex = Math.floor(Math.random() * campaignConfig.sliderOptions.length);
+          dynamicSliderAmount = campaignConfig.sliderOptions[randomIndex];
+          console.log(`🎲 [Randomizer] Selected random dropdown option: "${dynamicSliderAmount}"`);
+        } else {
+          // Generate a random number from 1 to 10, then multiply by 10,000 (e.g. 10000, 20000... 100000)
+          const randomNum = Math.floor(Math.random() * 10 + 1) * 10000;
+          dynamicSliderAmount = randomNum.toString();
+          console.log(`🎲 [Randomizer] Generated random numeric slider value: ${dynamicSliderAmount}`);
+        }
+
+        if (process.env.OVERRIDE_SLIDER) {
+          dynamicSliderAmount = process.env.OVERRIDE_SLIDER;
+          console.log(`🎲 [Randomizer] Overridden by manual script override: ${dynamicSliderAmount}`);
+        }
+
+        brand = {
+          ...campaignConfig,
+          id: campaignConfig.id,
+          name: `${campaignConfig.name}${brandSuffix}`,
+          url: campaignConfig.url,
+          sheet: campaignConfig.sheet,
+          sliderAmount: dynamicSliderAmount,
+          state: campaignConfig.state,
+          phone: campaignConfig.phone,
+          skipSecondApi: campaignConfig.skipSecondApi || false
         };
-        console.log(`🛡️  Routing browser traffic via US Proxy: ${proxyServer}`);
-      } else {
-        console.warn('⚠️ Could not find a working USA proxy. Proceeding with direct connection.');
+
+        if (viewportArg !== 'desktop') {
+          console.log('⏳ Delaying 200ms to allow responsive layouts to mount...');
+          await page.waitForTimeout(200);
+        }
+
+        const result = await processLead(brand, page);
+        if (!result.success) {
+          const err = new Error(result.error || 'Execution failed during processLead');
+          err.leadId = result.leadId;
+          throw err;
+        }
+        console.log(`\n✅ Execution successfully processed!`, result);
+        console.log(JSON.stringify(result));
+
+        // Stop tracing and save ZIP report
+        const tracePath = path.join(traceDir, `${campaignConfig.id}_${viewportArg}.zip`);
+        await context.tracing.stop({ path: tracePath });
+        console.log(`📋 Trace report successfully saved: traces/${campaignConfig.id}_${viewportArg}.zip`);
+
+        success = true; // Mark as successful to exit loop
+
+      } catch (error) {
+        console.error(`⚠️ Attempt ${attempts} encountered a fatal error:`, error.message);
+        lastError = error;
+
+        // Capture failure screenshot for this specific attempt
+        const failScreenshot = path.join(traceDir, `FAILURE_${campaignConfig.id}_${viewportArg}_attempt_${attempts}.png`);
+        try {
+          const pages = context ? context.pages() : [];
+          if (pages.length > 0) {
+            await pages[0].screenshot({ path: failScreenshot });
+            console.log(`📸 Failure screenshot saved for attempt ${attempts}: ${failScreenshot}`);
+          }
+        } catch (err) {}
+
+      } finally {
+        await page?.waitForTimeout(2000).catch(() => {});
+        if (browser) {
+          await browser.close().catch(() => null);
+          browser = null;
+          context = null;
+        }
       }
     }
 
-    browser = await browserEngine.launch({
-      headless: isHeadless,
-      slowMo: isHeadless ? 0 : 2000
-    });
-    context = await browser.newContext(contextOptions);
-
-    await context.setDefaultTimeout(25000);
-    await context.setDefaultNavigationTimeout(35000);
-
-    // Initialize tracing
-    await context.tracing.start({ screenshots: true, snapshots: true, sources: true });
-    const page = await context.newPage();
-    let brand = null;
-
-    try {
-      // Build dynamic brand configuration for lead processor
-      let brandSuffix = '';
-      if (viewportArg === 'tablet') brandSuffix = ' Tablet';
-      if (viewportArg === 'mobile') brandSuffix = ' Mobile';
-
-      // Implement strict randomization for every execution
-      let dynamicSliderAmount = campaignConfig.sliderAmount;
-      if (campaignConfig.sliderOptions && Array.isArray(campaignConfig.sliderOptions)) {
-        const randomIndex = Math.floor(Math.random() * campaignConfig.sliderOptions.length);
-        dynamicSliderAmount = campaignConfig.sliderOptions[randomIndex];
-        console.log(`🎲 [Randomizer] Selected random dropdown option: "${dynamicSliderAmount}"`);
-      } else {
-        // Generate a random number from 1 to 10, then multiply by 10,000 (e.g. 10000, 20000... 100000)
-        const randomNum = Math.floor(Math.random() * 10 + 1) * 10000;
-        dynamicSliderAmount = randomNum.toString();
-        console.log(`🎲 [Randomizer] Generated random numeric slider value: ${dynamicSliderAmount}`);
-      }
-
-      if (process.env.OVERRIDE_SLIDER) {
-        dynamicSliderAmount = process.env.OVERRIDE_SLIDER;
-        console.log(`🎲 [Randomizer] Overridden by manual script override: ${dynamicSliderAmount}`);
-      }
-
-      brand = {
-        ...campaignConfig,
-        id: campaignConfig.id,
-        name: `${campaignConfig.name}${brandSuffix}`,
-        url: campaignConfig.url,
-        sheet: campaignConfig.sheet,
-        sliderAmount: dynamicSliderAmount,
-        state: campaignConfig.state,
-        phone: campaignConfig.phone,
-        skipSecondApi: campaignConfig.skipSecondApi || false
-      };
-
-      if (viewportArg !== 'desktop') {
-        console.log('⏳ Delaying 200ms to allow responsive layouts to mount...');
-        await page.waitForTimeout(200);
-      }
-
-      const result = await processLead(brand, page);
-      if (!result.success) {
-        const err = new Error(result.error || 'Execution failed during processLead');
-        err.leadId = result.leadId;
-        throw err;
-      }
-      console.log(`\n✅ Execution successfully processed!`, result);
-      console.log(JSON.stringify(result));
-
-      // Stop tracing and save ZIP report
-      const tracePath = path.join(traceDir, `${campaignConfig.id}_${viewportArg}.zip`);
-      await context.tracing.stop({ path: tracePath });
-      console.log(`📋 Trace report successfully saved: traces/${campaignConfig.id}_${viewportArg}.zip`);
-
-    } catch (error) {
-      console.error(`❌ Automation Run encountered a fatal exception:`, error.message);
+    if (!success) {
+      console.error(`❌ All ${maxAttempts} attempts failed. Fatal exception:`, lastError.message);
       
-      // Capture failure screenshot for Auto-Evidence emailing
       const failScreenshot = path.join(traceDir, `FAILURE_${campaignConfig.id}_${viewportArg}.png`);
-      try {
-        await page.screenshot({ path: failScreenshot });
-        console.log(`📸 Failure screenshot saved: ${failScreenshot}`);
-      } catch (err) {}
+      const lastAttemptScreenshot = path.join(traceDir, `FAILURE_${campaignConfig.id}_${viewportArg}_attempt_${attempts}.png`);
+      if (fs.existsSync(lastAttemptScreenshot)) {
+        try {
+          fs.copyFileSync(lastAttemptScreenshot, failScreenshot);
+        } catch (err) {}
+      }
 
-      // Return paths so scheduler can email them
-      const videoPath = await page.video()?.path();
       console.log(JSON.stringify({
         success: false,
-        error: error.message,
-        leadId: error.leadId || null,
+        error: lastError.message,
+        leadId: lastError.leadId || null,
         brand: brand,
         screenshot: failScreenshot,
-        video: videoPath
+        video: null
       }));
       process.exitCode = 1;
-    } finally {
-      await page.waitForTimeout(3000);
-      if (browser) {
-        await browser.close().catch(() => null);
-      }
     }
   })();
 }
