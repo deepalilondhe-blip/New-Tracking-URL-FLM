@@ -152,10 +152,21 @@ if (viewportArg === 'api') {
         dynamicSliderAmount = campaignConfig.sliderOptions[randomIndex];
         console.log(`🎲 [Randomizer] Selected random dropdown option: "${dynamicSliderAmount}"`);
       } else {
-        // Generate a random number from 1 to 10, then multiply by 10,000 (e.g. 10000, 20000... 100000)
-        const randomNum = Math.floor(Math.random() * 10 + 1) * 10000;
+        let maxLimit = 100000;
+        if (campaignConfig.sliderAmount) {
+          const parsed = parseInt(campaignConfig.sliderAmount.toString().replace(/[^0-9]/g, ''));
+          if (!isNaN(parsed) && parsed > 0) maxLimit = parsed;
+        }
+        let randomNum;
+        if (maxLimit < 10000) {
+          randomNum = maxLimit;
+        } else {
+          const maxSteps = Math.floor(maxLimit / 10000);
+          const steps = Math.floor(Math.random() * maxSteps + 1);
+          randomNum = steps * 10000;
+        }
         dynamicSliderAmount = randomNum.toString();
-        console.log(`🎲 [Randomizer] Generated random numeric slider value: ${dynamicSliderAmount}`);
+        console.log(`🎲 [Randomizer] Generated random numeric slider value: ${dynamicSliderAmount} (capped at configured max ${maxLimit})`);
       }
 
       if (process.env.OVERRIDE_SLIDER) {
@@ -314,10 +325,21 @@ if (viewportArg === 'api') {
           dynamicSliderAmount = campaignConfig.sliderOptions[randomIndex];
           console.log(`🎲 [Randomizer] Selected random dropdown option: "${dynamicSliderAmount}"`);
         } else {
-          // Generate a random number from 1 to 10, then multiply by 10,000 (e.g. 10000, 20000... 100000)
-          const randomNum = Math.floor(Math.random() * 10 + 1) * 10000;
+          let maxLimit = 100000;
+          if (campaignConfig.sliderAmount) {
+            const parsed = parseInt(campaignConfig.sliderAmount.toString().replace(/[^0-9]/g, ''));
+            if (!isNaN(parsed) && parsed > 0) maxLimit = parsed;
+          }
+          let randomNum;
+          if (maxLimit < 10000) {
+            randomNum = maxLimit;
+          } else {
+            const maxSteps = Math.floor(maxLimit / 10000);
+            const steps = Math.floor(Math.random() * maxSteps + 1);
+            randomNum = steps * 10000;
+          }
           dynamicSliderAmount = randomNum.toString();
-          console.log(`🎲 [Randomizer] Generated random numeric slider value: ${dynamicSliderAmount}`);
+          console.log(`🎲 [Randomizer] Generated random numeric slider value: ${dynamicSliderAmount} (capped at configured max ${maxLimit})`);
         }
 
         if (process.env.OVERRIDE_SLIDER) {
