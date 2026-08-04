@@ -251,7 +251,7 @@ async function processLead(brandConfig, page) {
     const FormPageClass = !isDevice ? require('../pages/FormPage') : require('../pages/MobileFormPage');
     const formPage = new FormPageClass(page);
 
-    const traLinks = ['tra-cpl', 'tra-d3', 'tra-cpm', 'ppc', 'ppc-st', 'ppc-st2', 'ppc-m-ca', 'ppc-cr', 'ppc-fs', 'guardian-tax-relief-ppc', 'tra-list'];
+    const traLinks = ['tra-cpl', 'tra-d3', 'tra-cpm', 'ppc', 'ppc-st', 'ppc-st2', 'ppc-m-ca', 'ppc-cr', 'ppc-fs', 'guardian-tax-relief-ppc', 'tra-list', 'tra-st-tsg', 'tra-st-tf', 'tra-st-sp', 'tra-ppc-v9', 'tra-ppcbtr', 'tra-ppcbm'];
     const isTraLink = traLinks.includes(brandId);
 
     await formPage.navigate(finalBrandConfig.url);
@@ -375,16 +375,16 @@ async function processLead(brandConfig, page) {
     }
 
     if (isTraLink) {
-      if (uiSelectedSliderNum >= 5000) {
-        cakeIncomeOverride = uiSelectedSliderNum.toLocaleString();
-      } else {
-        // Specific TRA links need a 5,000 floor instead of the standard 4,000 floor
-        const tra5kFloorLinks = ['ppc', 'ppc-st', 'ppc-st2', 'ppc-m-ca', 'ppc-cr', 'ppc-fs', 'guardian-tax-relief-ppc', 'tra-list'];
-        if (tra5kFloorLinks.includes(brandId)) {
-          cakeIncomeOverride = '5,000';
+      const floor5kBrands = ['tra-st-tsg', 'tra-st-tf', 'tra-st-sp', 'tra-ppc-v9', 'ppc-st', 'ppc-m-ca', 'ppc-fs', 'ppc-cr', 'tra-ppcbm', 'tra-ppcbtr', 'guardian-tax-relief-ppc'];
+      if (floor5kBrands.includes(brandId)) {
+        if (uiSelectedSliderNum >= 5000) {
+          cakeIncomeOverride = uiSelectedSliderNum.toLocaleString();
         } else {
-          cakeIncomeOverride = '4,000';
+          cakeIncomeOverride = '5,000';
         }
+      } else {
+        // "as it is" - no floor
+        cakeIncomeOverride = uiSelectedSliderNum.toLocaleString();
       }
       console.log(`💡 [cakeIncomeOverride] TRA Link: ${uiSelectedSliderNum} → ${cakeIncomeOverride}`);
     } else if ((brandConfig.sliderOptions && Array.isArray(brandConfig.sliderOptions)) || brandId === 'fsi-ppc2' || brandId === 'ftd-ppc2') {
@@ -562,7 +562,13 @@ async function processLead(brandConfig, page) {
         selectedDebtNum = 50000;
       }
     } else if (isTraLink) {
-      selectedDebtNum = selectedDebtNum >= 5000 ? selectedDebtNum : 5000;
+      const floor5kBrands = ['tra-st-tsg', 'tra-st-tf', 'tra-st-sp', 'tra-ppc-v9', 'ppc-st', 'ppc-m-ca', 'ppc-fs', 'ppc-cr', 'tra-ppcbm', 'tra-ppcbtr', 'guardian-tax-relief-ppc'];
+      if (floor5kBrands.includes(brandId)) {
+        selectedDebtNum = selectedDebtNum >= 5000 ? selectedDebtNum : 5000;
+      } else {
+        // "as it is" - no floor
+        selectedDebtNum = selectedDebtNum;
+      }
     } else if (selectedDebtNum < 5000) {
       selectedDebtNum = 5000;
     } else {

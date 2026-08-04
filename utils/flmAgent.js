@@ -428,12 +428,17 @@ Answer the user's prompt using the real-time data above. Be direct, clear, and c
         if (brand === 'fth-questionnaire' && (cleanVal.includes('more') || cleanVal.includes('above') || cleanVal.includes('>'))) {
             raw = 60000;
         }
-        const traLinks = ['tra-cpl', 'tra-d3', 'tra-cpm', 'ppc', 'ppc-st', 'ppc-st2', 'ppc-m-ca', 'ppc-cr', 'ppc-fs', 'guardian-tax-relief-ppc', 'tra-list'];
+        const traLinks = ['tra-cpl', 'tra-d3', 'tra-cpm', 'ppc', 'ppc-st', 'ppc-st2', 'ppc-m-ca', 'ppc-cr', 'ppc-fs', 'guardian-tax-relief-ppc', 'tra-list', 'tra-st-tsg', 'tra-st-tf', 'tra-st-sp', 'tra-ppc-v9', 'tra-ppcbtr', 'tra-ppcbm'];
         const isTraLink = traLinks.includes(brand);
 
         let expectedCake = "5000";
         if (isTraLink) {
-            expectedCake = raw >= 5000 ? raw.toString() : "5000";
+            const floor5kBrands = ['tra-st-tsg', 'tra-st-tf', 'tra-st-sp', 'tra-ppc-v9', 'ppc-st', 'ppc-m-ca', 'ppc-fs', 'ppc-cr', 'tra-ppcbm', 'tra-ppcbtr', 'guardian-tax-relief-ppc'];
+            if (floor5kBrands.includes(brand)) {
+                expectedCake = raw >= 5000 ? raw.toString() : "5000";
+            } else {
+                expectedCake = raw.toString();
+            }
         } else if (brand === 'vts-original') {
             if (raw < 5000) expectedCake = "5000";
             else if (raw < 10000) expectedCake = "7500";

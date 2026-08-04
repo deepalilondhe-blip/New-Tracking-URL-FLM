@@ -1429,7 +1429,12 @@ class MobileFormPage {
           }
         }
       } else if (this.isTraLink) {
-        numericDebt = firstVal >= 5000 ? firstVal : 5000;
+        const floor5kBrands = ['tra-st-tsg', 'tra-st-tf', 'tra-st-sp', 'tra-ppc-v9', 'ppc-st', 'ppc-m-ca', 'ppc-fs', 'ppc-cr', 'tra-ppcbm', 'tra-ppcbtr', 'guardian-tax-relief-ppc'];
+        if (floor5kBrands.includes(this.brandId)) {
+          numericDebt = firstVal >= 5000 ? firstVal : 5000;
+        } else {
+          numericDebt = firstVal;
+        }
       } else if (cleanDebtVal.includes('less than') || cleanDebtVal.includes('under') || ((cleanDebtVal.includes('9999') || cleanDebtVal.includes('9,999')) && !cleanDebtVal.includes('19')) || cleanDebtVal.includes('0-9999') || cleanDebtVal.includes('0 - 9999')) {
         numericDebt = 5000;
       } else if (cleanDebtVal.includes('5000') && (cleanDebtVal.includes('more') || cleanDebtVal.includes('above') || cleanDebtVal.includes('+')) && !cleanDebtVal.includes('50000')) {
