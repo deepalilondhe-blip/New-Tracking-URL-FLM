@@ -16,74 +16,50 @@ const { devices } = require('playwright');
 const { processLead } = require('./utils/leadProcessor');
 const path = require('path');
 const fs = require('fs');
+const axios = require('axios');
 
-async function setupVeePN(context) {
-  console.log('🛡️  Configuring VeePN connection...');
-  // 1. Wait a moment for any auto-opened welcome pages
-  await new Promise(resolve => setTimeout(resolve, 3000));
-  const pages = context.pages();
-  const welcomePage = pages.find(p => p.url().includes('welcome/index.html'));
-  if (welcomePage) {
-    console.log('Handling auto-opened welcome page...');
-    const btn = welcomePage.locator('button:has-text("Continue without a plan")');
-    if (await btn.isVisible().catch(() => false)) {
-      await btn.click().catch(() => {});
-      console.log('Clicked "Continue without a plan" on welcome page.');
-    }
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    await welcomePage.close().catch(() => {});
-  }
-
-  // 2. Open popup page to configure/connect
-  const popupPage = await context.newPage();
-  const popupUrl = 'chrome-extension://majdfhpaihoncoakbjgbdhglocklcgno/src/popup/popup.html';
+async function getWorkingUsProxy() {
+  console.log('📡 Fetching USA SOCKS5 proxy pool from ProxyScrape...');
   try {
-    await popupPage.goto(popupUrl);
-    await popupPage.waitForTimeout(3000);
-
-    // Dynamic click-through onboarding
-    if (await popupPage.locator('.free-step__btn').isVisible().catch(() => false)) {
-      console.log('Clicking "Continue" (Step 1)...');
-      await popupPage.click('.free-step__btn').catch(() => {});
-      await popupPage.waitForTimeout(1000);
-    }
-    if (await popupPage.locator('.premium-step__btn').isVisible().catch(() => false)) {
-      console.log('Clicking "Start" (Step 2)...');
-      await popupPage.click('.premium-step__btn').catch(() => {});
-      await popupPage.waitForTimeout(1000);
-    }
-    if (await popupPage.locator('.pricing-step__action--free').isVisible().catch(() => false)) {
-      console.log('Clicking "Continue without a plan" (Step 3)...');
-      await popupPage.click('.pricing-step__action--free').catch(() => {});
-      await popupPage.waitForTimeout(1000);
-    }
-    if (await popupPage.locator('.trial-modal__close').isVisible().catch(() => false)) {
-      console.log('Clicking "Close" (Step 4 - Trial Modal)...');
-      await popupPage.click('.trial-modal__close').catch(() => {});
-      await popupPage.waitForTimeout(1000);
-    }
-    if (await popupPage.locator('.premium-banner__skip').isVisible().catch(() => false)) {
-      console.log('Clicking "No, thanks, continue limited" (Premium Banner)...');
-      await popupPage.click('.premium-banner__skip').catch(() => {});
-      await popupPage.waitForTimeout(1000);
-    }
-
-    // Force click the connect button
-    if (await popupPage.locator('.connect-button').isVisible().catch(() => false)) {
-      console.log('Clicking Connect Button on VPN popup (forcing)...');
-      await popupPage.click('.connect-button', { force: true }).catch(() => {});
-      // Wait for connection to start
-      await popupPage.waitForTimeout(8000);
+    const response = await axios.get('https://api.proxyscrape.com/v4/free-proxy-list/get?request=display_proxies&proxy_format=ipport&format=json&country=us&protocol=socks5', { timeout: 8000 });
+    const proxies = response.data.proxies || [];
+    console.log(`📡 Pool size: ${proxies.length} proxies. Testing for responsiveness...`);
+    
+    // Test the top 15 proxies
+    for (let i = 0; i < Math.min(proxies.length, 15); i++) {
+      const p = proxies[i];
+      const proxyUrl = `socks5://${p.ip}:${p.port}`;
+      console.log(`🔌 Testing proxy ${i+1}/${Math.min(proxies.length, 15)}: ${proxyUrl}`);
+      
+      let testBrowser;
+      try {
+        testBrowser = await chromium.launch({
+          proxy: { server: proxyUrl }
+        });
+        const context = await testBrowser.newContext();
+        const page = await context.newPage();
+        
+        await page.goto('https://ipinfo.io/json', { timeout: 10000 });
+        const text = await page.locator('pre').innerText();
+        const details = JSON.parse(text);
+        
+        if (details && details.country === 'US') {
+          console.log(`✅ Proxy verified! Country: ${details.country}, City: ${details.city}, IP: ${details.ip}`);
+          await testBrowser.close().catch(() => {});
+          return proxyUrl;
+        }
+      } catch (err) {
+        // Silent fail for next proxy
+      } finally {
+        if (testBrowser) {
+          await testBrowser.close().catch(() => {});
+        }
+      }
     }
   } catch (err) {
-    console.warn('⚠️ Error during VeePN configuration:', err.message);
-  } finally {
-    await popupPage.close().catch(() => {});
+    console.error('⚠️ ProxyScrape fetch failed:', err.message);
   }
-
-  // 3. Clear website cookies to ensure clean session
-  await context.clearCookies().catch(() => {});
-  console.log('🧹 Website cookies cleared. Ready for campaign run.');
+  return null;
 }
 
 // Register global error handlers to ensure clean teardown behavior under all engines
@@ -287,30 +263,24 @@ if (viewportArg === 'api') {
       console.log(`💻 Emulated Device Profile: DESKTOP - [${label}]`);
     }
 
+    let proxyServer = null;
     if (useVpn) {
-      console.log('🛡️  VPN Extension Requested. Loading VeePN extension...');
-      const pathToExtension = path.join(__dirname, 'veepn-extension');
-      const userDataDir = path.join(__dirname, 'veepn-profile');
-      
-      // Load VeePN unpacked extension
-      contextOptions = {
-        ...contextOptions,
-        headless: false, // Extensions do not work in headless mode
-        args: [
-          `--disable-extensions-except=${pathToExtension}`,
-          `--load-extension=${pathToExtension}`
-        ]
-      };
-      
-      context = await browserEngine.launchPersistentContext(userDataDir, contextOptions);
-      await setupVeePN(context);
-    } else {
-      browser = await browserEngine.launch({
-        headless: isHeadless,
-        slowMo: isHeadless ? 0 : 2000
-      });
-      context = await browser.newContext(contextOptions);
+      proxyServer = await getWorkingUsProxy();
+      if (proxyServer) {
+        contextOptions.proxy = {
+          server: proxyServer
+        };
+        console.log(`🛡️  Routing browser traffic via US Proxy: ${proxyServer}`);
+      } else {
+        console.warn('⚠️ Could not find a working USA proxy. Proceeding with direct connection.');
+      }
     }
+
+    browser = await browserEngine.launch({
+      headless: isHeadless,
+      slowMo: isHeadless ? 0 : 2000
+    });
+    context = await browser.newContext(contextOptions);
 
     await context.setDefaultTimeout(25000);
     await context.setDefaultNavigationTimeout(35000);
@@ -398,9 +368,7 @@ if (viewportArg === 'api') {
       process.exitCode = 1;
     } finally {
       await page.waitForTimeout(3000);
-      if (useVpn) {
-        await context.close().catch(() => null);
-      } else if (browser) {
+      if (browser) {
         await browser.close().catch(() => null);
       }
     }
