@@ -1369,10 +1369,20 @@ class FormPage {
       if (!isAlphanumericHex8(leadId)) {
         console.log('🔍 [DOM Deep-Scan] URL ID missing or non-standard (e.g. numeric reqid). Searching for Hex-8 or GUID IDs...');
         const domId = await this.page.evaluate(() => {
-          // Remove scripts and styles before scanning text to avoid CSS hex colors or JS hashes
           const clone = document.body.cloneNode(true);
-          const scripts = clone.querySelectorAll('script, style');
-          scripts.forEach(s => s.remove());
+          
+          // Remove scripts, styles, iframes, and false-positive token elements (TrustedForm, unsubscribe, google tags)
+          const ignoreSelectors = [
+            'script', 'style', 'iframe', 'noscript',
+            'a[href*="optout-trk.info"]', 'a[href*="unsubscribe"]',
+            'input[name*="trustedform" i]', 'input[value*="trustedform" i]',
+            '[id*="trustedform" i]', '[class*="trustedform" i]'
+          ];
+          ignoreSelectors.forEach(selector => {
+            try {
+              clone.querySelectorAll(selector).forEach(el => el.remove());
+            } catch (e) {}
+          });
           const html = clone.innerHTML;
           
           // 1. Search for strictly UPPERCASE 8-character Hex patterns with at least one letter
@@ -1381,19 +1391,16 @@ class FormPage {
           const validHex8 = matches.find(m => m.length === 8);
           if (validHex8) return validHex8;
 
-          // 2. Search for GUID patterns (32 chars hex)
-          const guidMatch = html.match(/[a-f0-9]{32}/i) || html.match(/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}/i);
-          if (guidMatch) return guidMatch[0];
-
-          // 3. Search for hidden inputs
+          // 2. Search for hidden inputs (name contains 'id' and value is between 8 and 36 characters)
           const inputs = Array.from(document.querySelectorAll('input[type="hidden"]'));
           for (const input of inputs) {
             if (input.name.toLowerCase().includes('id') && input.value.length >= 8) {
                const val = input.value.trim().toUpperCase();
-               if (/^[A-Z0-9]{8}$/.test(val) && /[A-Z]/.test(val)) return val;
+               if (/^[A-Z0-9-]{8,36}$/.test(val)) return val;
             }
           }
 
+          // 3. Search for visible text matches like "ID: 12345678"
           const bodyText = clone.innerText;
           const longIdMatch = bodyText.match(/(?:ID|Transaction|Ref|Conf)\s*[:#-]?\s*([A-Z0-9-]{8,40})/i);
           return longIdMatch ? longIdMatch[1] : null;
