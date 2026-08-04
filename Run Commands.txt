@@ -26,144 +26,144 @@ To manually run any campaign, use the following template structure:
 --------------------------------------------------------------------------------
 
 1. 📊 FTD (ftd-x)
-   🔹 Desktop: node run-master.js --campaign ftd-x --viewport desktop
-   🔹 Tablet:  node run-master.js --campaign ftd-x --viewport tablet
-   🔹 Mobile:  node run-master.js --campaign ftd-x --viewport mobile
+   🔹 Desktop: node run-master.js --campaign ftd-x --viewport desktop --headed
+   🔹 Tablet:  node run-master.js --campaign ftd-x --viewport tablet --headed
+   🔹 Mobile:  node run-master.js --campaign ftd-x --viewport mobile --headed
 
 2. 📊 FSI PPC (fsi-ppc2)
-   🔹 Desktop: node run-master.js --campaign fsi-ppc2 --viewport desktop
-   🔹 Tablet:  node run-master.js --campaign fsi-ppc2 --viewport tablet
-   🔹 Mobile:  node run-master.js --campaign fsi-ppc2 --viewport mobile
+   🔹 Desktop: node run-master.js --campaign fsi-ppc2 --viewport desktop --headed
+   🔹 Tablet:  node run-master.js --campaign fsi-ppc2 --viewport tablet --headed
+   🔹 Mobile:  node run-master.js --campaign fsi-ppc2 --viewport mobile --headed
 
 3. 📊 LIST (tra-list)
-   🔹 Desktop: node run-master.js --campaign tra-list --viewport desktop
-   🔹 Tablet:  node run-master.js --campaign tra-list --viewport tablet
-   🔹 Mobile:  node run-master.js --campaign tra-list --viewport mobile
+   🔹 Desktop: node run-master.js --campaign tra-list --viewport desktop --headed
+   🔹 Tablet:  node run-master.js --campaign tra-list --viewport tablet --headed
+   🔹 Mobile:  node run-master.js --campaign tra-list --viewport mobile --headed
 
 4. 📊 TRA x (tra-d3)
-   🔹 Desktop: node run-master.js --campaign tra-d3 --viewport desktop
-   🔹 Tablet:  node run-master.js --campaign tra-d3 --viewport tablet
-   🔹 Mobile:  node run-master.js --campaign tra-d3 --viewport mobile
+   🔹 Desktop: node run-master.js --campaign tra-d3 --viewport desktop --headed
+   🔹 Tablet:  node run-master.js --campaign tra-d3 --viewport tablet --headed
+   🔹 Mobile:  node run-master.js --campaign tra-d3 --viewport mobile --headed
 
 5. 📊 PPC/ST (ppc-st)
-   🔹 Desktop: node run-master.js --campaign ppc-st --viewport desktop
-   🔹 Tablet:  node run-master.js --campaign ppc-st --viewport tablet
-   🔹 Mobile:  node run-master.js --campaign ppc-st --viewport mobile
+   🔹 Desktop: node run-master.js --campaign ppc-st --viewport desktop --headed
+   🔹 Tablet:  node run-master.js --campaign ppc-st --viewport tablet --headed
+   🔹 Mobile:  node run-master.js --campaign ppc-st --viewport mobile --headed
 
 6. 📊 PPC/ST2 (ppc-st2)
-   🔹 Desktop: node run-master.js --campaign ppc-st2 --viewport desktop
-   🔹 Tablet:  node run-master.js --campaign ppc-st2 --viewport tablet
-   🔹 Mobile:  node run-master.js --campaign ppc-st2 --viewport mobile
+   🔹 Desktop: node run-master.js --campaign ppc-st2 --viewport desktop --headed
+   🔹 Tablet:  node run-master.js --campaign ppc-st2 --viewport tablet --headed
+   🔹 Mobile:  node run-master.js --campaign ppc-st2 --viewport mobile --headed
 
 7. 📊 PPCM/CA (ppc-m-ca)
-   🔹 Desktop: node run-master.js --campaign ppc-m-ca --viewport desktop
-   🔹 Tablet:  node run-master.js --campaign ppc-m-ca --viewport tablet
-   🔹 Mobile:  node run-master.js --campaign ppc-m-ca --viewport mobile
+   🔹 Desktop: node run-master.js --campaign ppc-m-ca --viewport desktop --headed
+   🔹 Tablet:  node run-master.js --campaign ppc-m-ca --viewport tablet --headed
+   🔹 Mobile:  node run-master.js --campaign ppc-m-ca --viewport mobile --headed
 
 8. 📊 PPC/CR (ppc-cr)
-   🔹 Desktop: node run-master.js --campaign ppc-cr --viewport desktop
-   🔹 Tablet:  node run-master.js --campaign ppc-cr --viewport tablet
-   🔹 Mobile:  node run-master.js --campaign ppc-cr --viewport mobile
+   🔹 Desktop: node run-master.js --campaign ppc-cr --viewport desktop --headed
+   🔹 Tablet:  node run-master.js --campaign ppc-cr --viewport tablet --headed
+   🔹 Mobile:  node run-master.js --campaign ppc-cr --viewport mobile --headed
 
 9. 📊 PPC/FS (ppc-fs)
-   🔹 Desktop: node run-master.js --campaign ppc-fs --viewport desktop
-   🔹 Tablet:  node run-master.js --campaign ppc-fs --viewport tablet
-   🔹 Mobile:  node run-master.js --campaign ppc-fs --viewport mobile
+   🔹 Desktop: node run-master.js --campaign ppc-fs --viewport desktop --headed
+   🔹 Tablet:  node run-master.js --campaign ppc-fs --viewport tablet --headed
+   🔹 Mobile:  node run-master.js --campaign ppc-fs --viewport mobile --headed
 
 10. 📊 TRA cpm (tra-cpm)
-   🔹 Desktop: node run-master.js --campaign tra-cpm --viewport desktop
-   🔹 Tablet:  node run-master.js --campaign tra-cpm --viewport tablet
-   🔹 Mobile:  node run-master.js --campaign tra-cpm --viewport mobile
+   🔹 Desktop: node run-master.js --campaign tra-cpm --viewport desktop --headed
+   🔹 Tablet:  node run-master.js --campaign tra-cpm --viewport tablet --headed
+   🔹 Mobile:  node run-master.js --campaign tra-cpm --viewport mobile --headed
 
 11. 📊 ETR (everest-tr-x)
-   🔹 Desktop: node run-master.js --campaign everest-tr-x --viewport desktop
-   🔹 Tablet:  node run-master.js --campaign everest-tr-x --viewport tablet
-   🔹 Mobile:  node run-master.js --campaign everest-tr-x --viewport mobile
+   🔹 Desktop: node run-master.js --campaign everest-tr-x --viewport desktop --headed
+   🔹 Tablet:  node run-master.js --campaign everest-tr-x --viewport tablet --headed
+   🔹 Mobile:  node run-master.js --campaign everest-tr-x --viewport mobile --headed
 
 12. 📊 VTS (vts-ne-branded)
-   🔹 Desktop: node run-master.js --campaign vts-ne-branded --viewport desktop
-   🔹 Tablet:  node run-master.js --campaign vts-ne-branded --viewport tablet
-   🔹 Mobile:  node run-master.js --campaign vts-ne-branded --viewport mobile
+   🔹 Desktop: node run-master.js --campaign vts-ne-branded --viewport desktop --headed
+   🔹 Tablet:  node run-master.js --campaign vts-ne-branded --viewport tablet --headed
+   🔹 Mobile:  node run-master.js --campaign vts-ne-branded --viewport mobile --headed
 
 13. 📊 1800 (original)
-   🔹 Desktop: node run-master.js --campaign original --viewport desktop
-   🔹 Tablet:  node run-master.js --campaign original --viewport tablet
-   🔹 Mobile:  node run-master.js --campaign original --viewport mobile
+   🔹 Desktop: node run-master.js --campaign original --viewport desktop --headed
+   🔹 Tablet:  node run-master.js --campaign original --viewport tablet --headed
+   🔹 Mobile:  node run-master.js --campaign original --viewport mobile --headed
 
 14. 📊 1800X (1800-fresh-tax-x-main)
-   🔹 Desktop: node run-master.js --campaign 1800-fresh-tax-x-main --viewport desktop
-   🔹 Tablet:  node run-master.js --campaign 1800-fresh-tax-x-main --viewport tablet
-   🔹 Mobile:  node run-master.js --campaign 1800-fresh-tax-x-main --viewport mobile
+   🔹 Desktop: node run-master.js --campaign 1800-fresh-tax-x-main --viewport desktop --headed
+   🔹 Tablet:  node run-master.js --campaign 1800-fresh-tax-x-main --viewport tablet --headed
+   🔹 Mobile:  node run-master.js --campaign 1800-fresh-tax-x-main --viewport mobile --headed
 
 15. 📊 FSI (fsi-main)
-   🔹 Desktop: node run-master.js --campaign fsi-main --viewport desktop
-   🔹 Tablet:  node run-master.js --campaign fsi-main --viewport tablet
-   🔹 Mobile:  node run-master.js --campaign fsi-main --viewport mobile
+   🔹 Desktop: node run-master.js --campaign fsi-main --viewport desktop --headed
+   🔹 Tablet:  node run-master.js --campaign fsi-main --viewport tablet --headed
+   🔹 Mobile:  node run-master.js --campaign fsi-main --viewport mobile --headed
 
 16. 📊 STD (senior-tax-defence-main)
-   🔹 Desktop: node run-master.js --campaign senior-tax-defence-main --viewport desktop
-   🔹 Tablet:  node run-master.js --campaign senior-tax-defence-main --viewport tablet
-   🔹 Mobile:  node run-master.js --campaign senior-tax-defence-main --viewport mobile
+   🔹 Desktop: node run-master.js --campaign senior-tax-defence-main --viewport desktop --headed
+   🔹 Tablet:  node run-master.js --campaign senior-tax-defence-main --viewport tablet --headed
+   🔹 Mobile:  node run-master.js --campaign senior-tax-defence-main --viewport mobile --headed
 
 17. 📊 FSI X (fresh-start-initiative-x-main)
-   🔹 Desktop: node run-master.js --campaign fresh-start-initiative-x-main --viewport desktop
-   🔹 Tablet:  node run-master.js --campaign fresh-start-initiative-x-main --viewport tablet
-   🔹 Mobile:  node run-master.js --campaign fresh-start-initiative-x-main --viewport mobile
+   🔹 Desktop: node run-master.js --campaign fresh-start-initiative-x-main --viewport desktop --headed
+   🔹 Tablet:  node run-master.js --campaign fresh-start-initiative-x-main --viewport tablet --headed
+   🔹 Mobile:  node run-master.js --campaign fresh-start-initiative-x-main --viewport mobile --headed
 
 18. 📊 AFTR (aftr-main)
-   🔹 Desktop: node run-master.js --campaign aftr-main --viewport desktop
-   🔹 Tablet:  node run-master.js --campaign aftr-main --viewport tablet
-   🔹 Mobile:  node run-master.js --campaign aftr-main --viewport mobile
+   🔹 Desktop: node run-master.js --campaign aftr-main --viewport desktop --headed
+   🔹 Tablet:  node run-master.js --campaign aftr-main --viewport tablet --headed
+   🔹 Mobile:  node run-master.js --campaign aftr-main --viewport mobile --headed
 
 19. 📊 PTR (ptr-main)
-   🔹 Desktop: node run-master.js --campaign ptr-main --viewport desktop
-   🔹 Tablet:  node run-master.js --campaign ptr-main --viewport tablet
-   🔹 Mobile:  node run-master.js --campaign ptr-main --viewport mobile
+   🔹 Desktop: node run-master.js --campaign ptr-main --viewport desktop --headed
+   🔹 Tablet:  node run-master.js --campaign ptr-main --viewport tablet --headed
+   🔹 Mobile:  node run-master.js --campaign ptr-main --viewport mobile --headed
 
 20. 📊 SCTR (sctr-main)
-   🔹 Desktop: node run-master.js --campaign sctr-main --viewport desktop
-   🔹 Tablet:  node run-master.js --campaign sctr-main --viewport tablet
-   🔹 Mobile:  node run-master.js --campaign sctr-main --viewport mobile
+   🔹 Desktop: node run-master.js --campaign sctr-main --viewport desktop --headed
+   🔹 Tablet:  node run-master.js --campaign sctr-main --viewport tablet --headed
+   🔹 Mobile:  node run-master.js --campaign sctr-main --viewport mobile --headed
 
 21. 📊 STD X (senior-tax-defense-x)
-   🔹 Desktop: node run-master.js --campaign senior-tax-defense-x --viewport desktop
-   🔹 Tablet:  node run-master.js --campaign senior-tax-defense-x --viewport tablet
-   🔹 Mobile:  node run-master.js --campaign senior-tax-defense-x --viewport mobile
+   🔹 Desktop: node run-master.js --campaign senior-tax-defense-x --viewport desktop --headed
+   🔹 Tablet:  node run-master.js --campaign senior-tax-defense-x --viewport tablet --headed
+   🔹 Mobile:  node run-master.js --campaign senior-tax-defense-x --viewport mobile --headed
 
 22. 📊 GT (guardian-tax-relief-ppc)
-   🔹 Desktop: node run-master.js --campaign guardian-tax-relief-ppc --viewport desktop
-   🔹 Tablet:  node run-master.js --campaign guardian-tax-relief-ppc --viewport tablet
-   🔹 Mobile:  node run-master.js --campaign guardian-tax-relief-ppc --viewport mobile
+   🔹 Desktop: node run-master.js --campaign guardian-tax-relief-ppc --viewport desktop --headed
+   🔹 Tablet:  node run-master.js --campaign guardian-tax-relief-ppc --viewport tablet --headed
+   🔹 Mobile:  node run-master.js --campaign guardian-tax-relief-ppc --viewport mobile --headed
 
 23. 📊 ST/TSG (tra-st-tsg)
-   🔹 Desktop: node run-master.js --campaign tra-st-tsg --viewport desktop
-   🔹 Tablet:  node run-master.js --campaign tra-st-tsg --viewport tablet
-   🔹 Mobile:  node run-master.js --campaign tra-st-tsg --viewport mobile
+   🔹 Desktop: node run-master.js --campaign tra-st-tsg --viewport desktop --headed
+   🔹 Tablet:  node run-master.js --campaign tra-st-tsg --viewport tablet --headed
+   🔹 Mobile:  node run-master.js --campaign tra-st-tsg --viewport mobile --headed
 
 24. 📊 ST/TF (tra-st-tf)
-   🔹 Desktop: node run-master.js --campaign tra-st-tf --viewport desktop
-   🔹 Tablet:  node run-master.js --campaign tra-st-tf --viewport tablet
-   🔹 Mobile:  node run-master.js --campaign tra-st-tf --viewport mobile
+   🔹 Desktop: node run-master.js --campaign tra-st-tf --viewport desktop --headed
+   🔹 Tablet:  node run-master.js --campaign tra-st-tf --viewport tablet --headed
+   🔹 Mobile:  node run-master.js --campaign tra-st-tf --viewport mobile --headed
 
 25. 📊 ST/SP (tra-st-sp)
-   🔹 Desktop: node run-master.js --campaign tra-st-sp --viewport desktop
-   🔹 Tablet:  node run-master.js --campaign tra-st-sp --viewport tablet
-   🔹 Mobile:  node run-master.js --campaign tra-st-sp --viewport mobile
+   🔹 Desktop: node run-master.js --campaign tra-st-sp --viewport desktop --headed
+   🔹 Tablet:  node run-master.js --campaign tra-st-sp --viewport tablet --headed
+   🔹 Mobile:  node run-master.js --campaign tra-st-sp --viewport mobile --headed
 
 26. 📊 PPC/V9 (tra-ppc-v9)
-   🔹 Desktop: node run-master.js --campaign tra-ppc-v9 --viewport desktop
-   🔹 Tablet:  node run-master.js --campaign tra-ppc-v9 --viewport tablet
-   🔹 Mobile:  node run-master.js --campaign tra-ppc-v9 --viewport mobile
+   🔹 Desktop: node run-master.js --campaign tra-ppc-v9 --viewport desktop --headed
+   🔹 Tablet:  node run-master.js --campaign tra-ppc-v9 --viewport tablet --headed
+   🔹 Mobile:  node run-master.js --campaign tra-ppc-v9 --viewport mobile --headed
 
 27. 📊 PPCBTR (tra-ppcbtr)
-   🔹 Desktop: node run-master.js --campaign tra-ppcbtr --viewport desktop
-   🔹 Tablet:  node run-master.js --campaign tra-ppcbtr --viewport tablet
-   🔹 Mobile:  node run-master.js --campaign tra-ppcbtr --viewport mobile
+   🔹 Desktop: node run-master.js --campaign tra-ppcbtr --viewport desktop --headed
+   🔹 Tablet:  node run-master.js --campaign tra-ppcbtr --viewport tablet --headed
+   🔹 Mobile:  node run-master.js --campaign tra-ppcbtr --viewport mobile --headed
 
 28. 📊 PPCBM (tra-ppcbm)
-   🔹 Desktop: node run-master.js --campaign tra-ppcbm --viewport desktop
-   🔹 Tablet:  node run-master.js --campaign tra-ppcbm --viewport tablet
-   🔹 Mobile:  node run-master.js --campaign tra-ppcbm --viewport mobile
+   🔹 Desktop: node run-master.js --campaign tra-ppcbm --viewport desktop --headed
+   🔹 Tablet:  node run-master.js --campaign tra-ppcbm --viewport tablet --headed
+   🔹 Mobile:  node run-master.js --campaign tra-ppcbm --viewport mobile --headed
 
 --------------------------------------------------------------------------------
 🔄 RECURRING BATCH SCHEDULER (HEADED MODE - VISIBLE BROWSER)
