@@ -17,6 +17,75 @@ const { processLead } = require('./utils/leadProcessor');
 const path = require('path');
 const fs = require('fs');
 
+async function setupVeePN(context) {
+  console.log('🛡️  Configuring VeePN connection...');
+  // 1. Wait a moment for any auto-opened welcome pages
+  await new Promise(resolve => setTimeout(resolve, 3000));
+  const pages = context.pages();
+  const welcomePage = pages.find(p => p.url().includes('welcome/index.html'));
+  if (welcomePage) {
+    console.log('Handling auto-opened welcome page...');
+    const btn = welcomePage.locator('button:has-text("Continue without a plan")');
+    if (await btn.isVisible().catch(() => false)) {
+      await btn.click().catch(() => {});
+      console.log('Clicked "Continue without a plan" on welcome page.');
+    }
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    await welcomePage.close().catch(() => {});
+  }
+
+  // 2. Open popup page to configure/connect
+  const popupPage = await context.newPage();
+  const popupUrl = 'chrome-extension://majdfhpaihoncoakbjgbdhglocklcgno/src/popup/popup.html';
+  try {
+    await popupPage.goto(popupUrl);
+    await popupPage.waitForTimeout(3000);
+
+    // Dynamic click-through onboarding
+    if (await popupPage.locator('.free-step__btn').isVisible().catch(() => false)) {
+      console.log('Clicking "Continue" (Step 1)...');
+      await popupPage.click('.free-step__btn').catch(() => {});
+      await popupPage.waitForTimeout(1000);
+    }
+    if (await popupPage.locator('.premium-step__btn').isVisible().catch(() => false)) {
+      console.log('Clicking "Start" (Step 2)...');
+      await popupPage.click('.premium-step__btn').catch(() => {});
+      await popupPage.waitForTimeout(1000);
+    }
+    if (await popupPage.locator('.pricing-step__action--free').isVisible().catch(() => false)) {
+      console.log('Clicking "Continue without a plan" (Step 3)...');
+      await popupPage.click('.pricing-step__action--free').catch(() => {});
+      await popupPage.waitForTimeout(1000);
+    }
+    if (await popupPage.locator('.trial-modal__close').isVisible().catch(() => false)) {
+      console.log('Clicking "Close" (Step 4 - Trial Modal)...');
+      await popupPage.click('.trial-modal__close').catch(() => {});
+      await popupPage.waitForTimeout(1000);
+    }
+    if (await popupPage.locator('.premium-banner__skip').isVisible().catch(() => false)) {
+      console.log('Clicking "No, thanks, continue limited" (Premium Banner)...');
+      await popupPage.click('.premium-banner__skip').catch(() => {});
+      await popupPage.waitForTimeout(1000);
+    }
+
+    // Force click the connect button
+    if (await popupPage.locator('.connect-button').isVisible().catch(() => false)) {
+      console.log('Clicking Connect Button on VPN popup (forcing)...');
+      await popupPage.click('.connect-button', { force: true }).catch(() => {});
+      // Wait for connection to start
+      await popupPage.waitForTimeout(8000);
+    }
+  } catch (err) {
+    console.warn('⚠️ Error during VeePN configuration:', err.message);
+  } finally {
+    await popupPage.close().catch(() => {});
+  }
+
+  // 3. Clear website cookies to ensure clean session
+  await context.clearCookies().catch(() => {});
+  console.log('🧹 Website cookies cleared. Ready for campaign run.');
+}
+
 // Register global error handlers to ensure clean teardown behavior under all engines
 process.on('unhandledRejection', (reason) => {
   const msg = reason && reason.message ? reason.message : String(reason);
@@ -223,15 +292,6 @@ if (viewportArg === 'api') {
       const pathToExtension = path.join(__dirname, 'veepn-extension');
       const userDataDir = path.join(__dirname, 'veepn-profile');
       
-      // Delete old profile data if exists to make sure it acts like incognito (fresh)
-      if (fs.existsSync(userDataDir)) {
-        try {
-          fs.rmSync(userDataDir, { recursive: true, force: true });
-        } catch (e) {
-          console.warn('⚠️ Could not remove old VeePN profile:', e.message);
-        }
-      }
-      
       // Load VeePN unpacked extension
       contextOptions = {
         ...contextOptions,
@@ -243,6 +303,7 @@ if (viewportArg === 'api') {
       };
       
       context = await browserEngine.launchPersistentContext(userDataDir, contextOptions);
+      await setupVeePN(context);
     } else {
       browser = await browserEngine.launch({
         headless: isHeadless,

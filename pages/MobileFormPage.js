@@ -1645,8 +1645,8 @@ class MobileFormPage {
         if (domId) leadId = domId;
       }
 
-      if (leadId && !/^[a-zA-Z0-9]{8}$/.test(leadId.trim())) {
-        console.warn(`⚠️ [Mobile extractLeadId] Extracted ID "${leadId}" is invalid format (not 8-char alphanumeric). Ignoring.`);
+      if (leadId && !/^[a-zA-Z0-9-]{8,36}$/.test(leadId.trim())) {
+        console.warn(`⚠️ [Mobile extractLeadId] Extracted ID "${leadId}" is invalid format (not 8 to 36-char alphanumeric). Ignoring.`);
         leadId = null;
       }
 

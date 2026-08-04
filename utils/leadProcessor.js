@@ -49,8 +49,8 @@ function isValidLeadId(leadId) {
   if (!leadId) return false;
   const normalized = String(leadId).trim().toUpperCase();
   if (normalized === 'DUPLICATE') return false;
-  // Expected style: exactly 8-char alphanumeric
-  return /^[A-Z0-9]{8}$/.test(normalized);
+  // Expected style: 8 to 36-char alphanumeric (supports GUIDs & MD5 transaction IDs)
+  return /^[A-Z0-9-]{8,36}$/.test(normalized);
 }
 
 /**
@@ -884,7 +884,7 @@ if (sheetSuccess) {
     }
 
     if (isSyntheticLeadId) {
-      throw new Error("Lead ID could not be extracted from the Thank You page or DOM.");
+      console.warn("⚠️ Lead ID could not be extracted from the Thank You page or DOM. Proceeding with synthetic Lead ID.");
     }
 
     if (!leadIdFormatValid) {
