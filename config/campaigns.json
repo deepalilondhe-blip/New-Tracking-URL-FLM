@@ -133,7 +133,8 @@
     "sliderAmount": "100,000",
     "state": "West Virginia",
     "phone": "304-266-2863",
-    "skipSecondApi": false
+    "skipSecondApi": false,
+    "useVpn": true
   },
   {
     "id": "1800-fresh-tax-x-main",
