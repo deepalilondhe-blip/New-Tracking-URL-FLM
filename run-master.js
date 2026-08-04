@@ -162,10 +162,9 @@ if (viewportArg === 'api') {
       process.exit(1);
     }
 
-    const browser = await browserEngine.launch({
-      headless: isHeadless,
-      slowMo: isHeadless ? 0 : 2000
-    });
+    const useVpn = campaignConfig.useVpn === true;
+    let browser = null;
+    let context = null;
 
     let contextOptions = {
       recordVideo: { dir: 'traces/videos/' }
@@ -219,7 +218,39 @@ if (viewportArg === 'api') {
       console.log(`💻 Emulated Device Profile: DESKTOP - [${label}]`);
     }
 
-    const context = await browser.newContext(contextOptions);
+    if (useVpn) {
+      console.log('🛡️  VPN Extension Requested. Loading VeePN extension...');
+      const pathToExtension = path.join(__dirname, 'veepn-extension');
+      const userDataDir = path.join(__dirname, 'veepn-profile');
+      
+      // Delete old profile data if exists to make sure it acts like incognito (fresh)
+      if (fs.existsSync(userDataDir)) {
+        try {
+          fs.rmSync(userDataDir, { recursive: true, force: true });
+        } catch (e) {
+          console.warn('⚠️ Could not remove old VeePN profile:', e.message);
+        }
+      }
+      
+      // Load VeePN unpacked extension
+      contextOptions = {
+        ...contextOptions,
+        headless: false, // Extensions do not work in headless mode
+        args: [
+          `--disable-extensions-except=${pathToExtension}`,
+          `--load-extension=${pathToExtension}`
+        ]
+      };
+      
+      context = await browserEngine.launchPersistentContext(userDataDir, contextOptions);
+    } else {
+      browser = await browserEngine.launch({
+        headless: isHeadless,
+        slowMo: isHeadless ? 0 : 2000
+      });
+      context = await browser.newContext(contextOptions);
+    }
+
     await context.setDefaultTimeout(25000);
     await context.setDefaultNavigationTimeout(35000);
 
@@ -306,7 +337,11 @@ if (viewportArg === 'api') {
       process.exitCode = 1;
     } finally {
       await page.waitForTimeout(3000);
-      await browser.close().catch(() => null);
+      if (useVpn) {
+        await context.close().catch(() => null);
+      } else if (browser) {
+        await browser.close().catch(() => null);
+      }
     }
   })();
 }

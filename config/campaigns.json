@@ -173,7 +173,8 @@
     "sliderAmount": "25000",
     "state": "Texas",
     "phone": "512-555-6789",
-    "skipSecondApi": false
+    "skipSecondApi": false,
+    "useVpn": true
   },
   {
     "id": "aftr-main",
@@ -183,7 +184,8 @@
     "sliderAmount": "35000",
     "state": "California",
     "phone": "415-555-1234",
-    "skipSecondApi": false
+    "skipSecondApi": false,
+    "useVpn": true
   },
   {
     "id": "ptr-main",
