@@ -428,7 +428,7 @@ Answer the user's prompt using the real-time data above. Be direct, clear, and c
         if (brand === 'fth-questionnaire' && (cleanVal.includes('more') || cleanVal.includes('above') || cleanVal.includes('>'))) {
             raw = 60000;
         }
-        const traLinks = ['tra-cpl', 'tra-d3', 'tra-cpm', 'ppc', 'ppc-st', 'ppc-st2', 'ppc-m-ca', 'ppc-cr', 'ppc-fs', 'guardian-tax-relief-ppc'];
+        const traLinks = ['tra-cpl', 'tra-d3', 'tra-cpm', 'ppc', 'ppc-st', 'ppc-st2', 'ppc-m-ca', 'ppc-cr', 'ppc-fs', 'guardian-tax-relief-ppc', 'tra-list'];
         const isTraLink = traLinks.includes(brand);
 
         let expectedCake = "5000";

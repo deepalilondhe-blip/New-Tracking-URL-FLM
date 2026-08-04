@@ -251,7 +251,7 @@ async function processLead(brandConfig, page) {
     const FormPageClass = !isDevice ? require('../pages/FormPage') : require('../pages/MobileFormPage');
     const formPage = new FormPageClass(page);
 
-    const traLinks = ['tra-cpl', 'tra-d3', 'tra-cpm', 'ppc', 'ppc-st', 'ppc-st2', 'ppc-m-ca', 'ppc-cr', 'ppc-fs', 'guardian-tax-relief-ppc'];
+    const traLinks = ['tra-cpl', 'tra-d3', 'tra-cpm', 'ppc', 'ppc-st', 'ppc-st2', 'ppc-m-ca', 'ppc-cr', 'ppc-fs', 'guardian-tax-relief-ppc', 'tra-list'];
     const isTraLink = traLinks.includes(brandId);
 
     await formPage.navigate(finalBrandConfig.url);
@@ -379,7 +379,7 @@ async function processLead(brandConfig, page) {
         cakeIncomeOverride = uiSelectedSliderNum.toLocaleString();
       } else {
         // Specific TRA links need a 5,000 floor instead of the standard 4,000 floor
-        const tra5kFloorLinks = ['ppc', 'ppc-st', 'ppc-st2', 'ppc-m-ca', 'ppc-cr', 'ppc-fs', 'guardian-tax-relief-ppc'];
+        const tra5kFloorLinks = ['ppc', 'ppc-st', 'ppc-st2', 'ppc-m-ca', 'ppc-cr', 'ppc-fs', 'guardian-tax-relief-ppc', 'tra-list'];
         if (tra5kFloorLinks.includes(brandId)) {
           cakeIncomeOverride = '5,000';
         } else {
