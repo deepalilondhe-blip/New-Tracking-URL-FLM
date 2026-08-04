@@ -94,7 +94,7 @@ function getDomainNameForBrand(brandName) {
   if (brand.includes('SCTR') || brand.includes('Second Chance')) {
     return 'https://www.secondchancetaxrelief.com';
   }
-  if (brand.includes('SCTD') || brand.includes('Senior Tax Defence') || brand.includes('Senior Tax Defense') || brand.includes('Guardian')) {
+  if (brand.includes('SCTD') || brand.includes('Senior Tax Defence') || brand.includes('Senior Tax Defense') || brand.includes('Guardian') || brand.includes('STD')) {
     return 'https://www.seniortaxdefense.com';
   }
   if (brand.includes('Everest')) {

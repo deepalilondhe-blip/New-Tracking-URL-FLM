@@ -692,7 +692,8 @@ async function processLead(brandConfig, page) {
     // Skip second API for brands that don't support it
     if (hasLeadId && !finalBrandConfig.skipSecondApi) {
       try {
-        secondApiData = await callSecondApi(leadIdToUse, finalBrandConfig.name);
+        const secondApiDomainName = finalBrandConfig.secondApiDomain || finalBrandConfig.name;
+        secondApiData = await callSecondApi(leadIdToUse, secondApiDomainName);
       } catch (e) {
         console.log(`⚠️  Second API skipped for ${finalBrandConfig.name}`);
       }
