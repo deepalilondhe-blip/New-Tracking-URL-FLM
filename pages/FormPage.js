@@ -877,7 +877,7 @@ class FormPage {
         const phoneField = this.page.locator('#primary_phone, #phone, #phone_home, input[name="phone"], input[name="phone_home"], input[name="primary_phone"], input[type="tel"]').first();
         if (await phoneField.isVisible({ timeout: 3000 }).catch(() => false)) {
           const currentVal = await phoneField.inputValue().catch(() => '');
-          if (!currentVal || currentVal !== phone) {
+          if (!currentVal || currentVal.replace(/[^0-9]/g, '') !== phone.replace(/[^0-9]/g, '')) {
             await phoneField.click({ timeout: 1500 }).catch(() => {});
             await phoneField.fill(phone, { timeout: 1500 }).catch(() => {});
             await this.page.keyboard.press('Tab').catch(() => {});
