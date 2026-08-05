@@ -1,0 +1,131 @@
+[
+  {
+    "updatedAt": "2026-08-03T11:51:48.238Z",
+    "createdAt": "2026-08-03T11:42:45.206Z",
+    "id": "3",
+    "name": "FLM Project",
+    "description": null,
+    "active": true,
+    "isArchived": false,
+    "nodes": [
+      {
+        "parameters": {
+          "rule": {
+            "interval": [
+              {
+                "field": "hours",
+                "hoursInterval": 2
+              }
+            ]
+          }
+        },
+        "id": "a988d8b4-0268-450f-90db-312278457788",
+        "name": "Schedule Trigger",
+        "type": "n8n-nodes-base.scheduleTrigger",
+        "typeVersion": 1.1,
+        "position": [
+          384,
+          240
+        ]
+      },
+      {
+        "parameters": {
+          "command": "node scheduler.js --once --headless"
+        },
+        "id": "e988d8b4-0268-450f-90db-312278457789",
+        "name": "Execute Command",
+        "type": "n8n-nodes-base.executeCommand",
+        "typeVersion": 1,
+        "position": [
+          608,
+          240
+        ]
+      },
+      {
+        "parameters": {
+          "fromEmail": "deepali.londhe@magnetoitsolutions.com",
+          "toEmail": "deepali.londhe@magnetoitsolutions.com",
+          "html": "=<p>Hello,</p>\n<p>The FLM automation script has completed. Here is the console execution log:</p>\n<pre>{{ $json.stdout }}</pre>",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.emailSend",
+        "typeVersion": 2.1,
+        "position": [
+          832,
+          240
+        ],
+        "id": "500d7737-cc22-43ff-87e4-5b8592ba9c59",
+        "name": "Send an Email",
+        "webhookId": "9ce85b65-cf45-432d-9adf-a9586642071d",
+        "credentials": {
+          "smtp": {
+            "id": "LAeZIZ3DMJDoYU48",
+            "name": "SMTP account"
+          }
+        }
+      }
+    ],
+    "connections": {
+      "Schedule Trigger": {
+        "main": [
+          [
+            {
+              "node": "Execute Command",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "settings": {
+      "executionOrder": "v1",
+      "binaryMode": "separate"
+    },
+    "staticData": {
+      "node:Schedule Trigger": {
+        "recurrenceRules": [
+          null
+        ],
+        "recurrenceRuleSignatures": [
+          "hours:2"
+        ]
+      }
+    },
+    "meta": {
+      "templateCredsSetupCompleted": true
+    },
+    "nodeGroups": [],
+    "pinData": {},
+    "versionId": "6aae8329-2b39-4b8e-8b9a-f3d29e3bb3a6",
+    "activeVersionId": "6aae8329-2b39-4b8e-8b9a-f3d29e3bb3a6",
+    "versionCounter": 6,
+    "triggerCount": 1,
+    "sourceWorkflowId": null,
+    "tags": [],
+    "shared": [
+      {
+        "updatedAt": "2026-08-03T11:42:45.210Z",
+        "createdAt": "2026-08-03T11:42:45.210Z",
+        "role": "workflow:owner",
+        "workflowId": "3",
+        "projectId": "qlmhqbt6n4mkSkdo",
+        "project": {
+          "updatedAt": "2026-07-13T12:05:22.690Z",
+          "createdAt": "2026-06-25T07:04:48.095Z",
+          "id": "qlmhqbt6n4mkSkdo",
+          "name": "Deepali Londhe <deepali.londhe@magnetoitsolutions.com>",
+          "type": "personal",
+          "icon": null,
+          "description": null,
+          "customTelemetryTags": [],
+          "creatorId": "e82b1dbc-25e3-4875-80a5-c7f739d4f71c"
+        }
+      }
+    ],
+    "versionMetadata": {
+      "name": "Version 6aae8329",
+      "description": ""
+    }
+  }
+]

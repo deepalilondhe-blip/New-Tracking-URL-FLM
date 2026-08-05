@@ -164,7 +164,7 @@ function computeAlternateDay(date) {
 function formatDateTime(dt) {
   const d = String(dt.getDate()).padStart(2, '0');
   const m = String(dt.getMonth() + 1).padStart(2, '0'); // months are zero‑based
-  const y = String(dt.getFullYear()).slice(-2);
+  const y = String(dt.getFullYear());
   const hh = String(dt.getHours()).padStart(2, '0');
   const mm = String(dt.getMinutes()).padStart(2, '0');
   const ss = String(dt.getSeconds()).padStart(2, '0');

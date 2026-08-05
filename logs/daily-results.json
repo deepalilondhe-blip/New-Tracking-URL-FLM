@@ -1,5 +1,5 @@
 {
-  "date": "2026-07-20",
+  "date": "2026-08-05",
   "runs": [
     {
       "campaignId": "ftd-x",
@@ -7,29 +7,26 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "D672860F",
-      "timestamp": "11:03:05 AM"
+      "leadId": "C9A053E8",
+      "timestamp": "11:05:59 AM"
     },
     {
       "campaignId": "fsi-ppc2",
       "viewport": "desktop",
       "browser": "chromium",
       "label": "Mac - Device",
-      "success": false,
-      "error": "Lead ID could not be extracted from the Thank You page or DOM.",
-      "leadId": "CKM80687",
-      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_fsi-ppc2_desktop.png",
-      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@4599d1fedb07c8bfba1a55f87eb5ea20.webm",
-      "timestamp": "11:05:05 AM"
+      "success": true,
+      "leadId": "BD4CEB09",
+      "timestamp": "11:07:09 AM"
     },
     {
-      "campaignId": "tra-cpl",
+      "campaignId": "tra-list",
       "viewport": "desktop",
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "07DF87A4",
-      "timestamp": "11:06:41 AM"
+      "leadId": "B8192AA0",
+      "timestamp": "11:09:08 AM"
     },
     {
       "campaignId": "tra-d3",
@@ -37,32 +34,26 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "EFC756E7",
-      "timestamp": "11:08:05 AM"
+      "leadId": "B4B7AEE6",
+      "timestamp": "11:10:24 AM"
     },
     {
       "campaignId": "ppc-st",
       "viewport": "desktop",
       "browser": "chromium",
       "label": "Mac - Device",
-      "success": false,
-      "error": "locator.fill: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#primary_phone, #phone, #phone_home, input[name=\"phone\"], input[name=\"phone_home\"], input[name=\"primary_phone\"], input[type=\"tel\"]').first()\u001b[22m\n\u001b[2m    - locator resolved to <input value=\" \" id=\"phone\" name=\"phone\" type=\"hidden\"/>\u001b[22m\n\u001b[2m    - fill(\"\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    48 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying fill action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
-      "leadId": null,
-      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_ppc-st_desktop.png",
-      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@94fcfc0f779cfd69aef65f89f9d945fb.webm",
-      "timestamp": "11:09:53 AM"
+      "success": true,
+      "leadId": "4E0EAA33",
+      "timestamp": "11:11:30 AM"
     },
     {
       "campaignId": "ppc-st2",
       "viewport": "desktop",
       "browser": "chromium",
       "label": "Mac - Device",
-      "success": false,
-      "error": "locator.fill: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#last_name, input[name=\"last_name\"], input[placeholder*=\"Last Name\" i]').first()\u001b[22m\n\u001b[2m    - locator resolved to <input value=\" \" type=\"hidden\" id=\"last_name\" name=\"last_name\"/>\u001b[22m\n\u001b[2m    - fill(\"\")\u001b[22m\n\u001b[2m  - attempting fill action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying fill action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    48 × waiting for element to be visible, enabled and editable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying fill action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
-      "leadId": null,
-      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_ppc-st2_desktop.png",
-      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@c46c1b6249c5563bea48f92f0b5539c9.webm",
-      "timestamp": "11:11:39 AM"
+      "success": true,
+      "leadId": "10EF3574",
+      "timestamp": "11:12:37 AM"
     },
     {
       "campaignId": "ppc-m-ca",
@@ -70,8 +61,8 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "B7162655",
-      "timestamp": "11:13:04 AM"
+      "leadId": "BE0F4366",
+      "timestamp": "11:13:53 AM"
     },
     {
       "campaignId": "ppc-cr",
@@ -79,8 +70,8 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "0347D374",
-      "timestamp": "11:14:25 AM"
+      "leadId": "58EBDDF3",
+      "timestamp": "11:14:57 AM"
     },
     {
       "campaignId": "ppc-fs",
@@ -88,17 +79,8 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "339B7E18",
-      "timestamp": "11:15:43 AM"
-    },
-    {
-      "campaignId": "ppc",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Device",
-      "success": true,
-      "leadId": "0DEF79F6",
-      "timestamp": "11:17:01 AM"
+      "leadId": "ABE1F7C6",
+      "timestamp": "11:16:00 AM"
     },
     {
       "campaignId": "tra-cpm",
@@ -106,8 +88,8 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "C9EDAE19",
-      "timestamp": "11:18:20 AM"
+      "leadId": "C0E75077",
+      "timestamp": "11:17:03 AM"
     },
     {
       "campaignId": "everest-tr-x",
@@ -115,17 +97,8 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "97233CE6",
-      "timestamp": "11:19:47 AM"
-    },
-    {
-      "campaignId": "vts-original",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Device",
-      "success": true,
-      "leadId": "BE454FE2",
-      "timestamp": "11:21:16 AM"
+      "leadId": "0D0A93B7",
+      "timestamp": "11:18:16 AM"
     },
     {
       "campaignId": "vts-ne-branded",
@@ -133,20 +106,17 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "B889DFC8",
-      "timestamp": "11:22:42 AM"
+      "leadId": "E030C865",
+      "timestamp": "11:19:34 AM"
     },
     {
       "campaignId": "original",
       "viewport": "desktop",
       "browser": "chromium",
       "label": "Mac - Device",
-      "success": false,
-      "error": "Lead ID could not be extracted from the Thank You page or DOM.",
-      "leadId": "CKM63937",
-      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_original_desktop.png",
-      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@3534e51fce405504334dcd7c155c040d.webm",
-      "timestamp": "11:24:26 AM"
+      "success": true,
+      "leadId": "E3B27A59",
+      "timestamp": "11:20:45 AM"
     },
     {
       "campaignId": "1800-fresh-tax-x-main",
@@ -154,8 +124,8 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "849DBCDE",
-      "timestamp": "11:25:57 AM"
+      "leadId": "65DC3ADD",
+      "timestamp": "11:22:04 AM"
     },
     {
       "campaignId": "fsi-main",
@@ -163,17 +133,8 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "BC774EE0",
-      "timestamp": "11:27:29 AM"
-    },
-    {
-      "campaignId": "1803-fresh-tax-afr-cobranded",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Device",
-      "success": true,
-      "leadId": "AF70F6BC",
-      "timestamp": "11:28:59 AM"
+      "leadId": "6FA037EE",
+      "timestamp": "11:23:23 AM"
     },
     {
       "campaignId": "senior-tax-defence-main",
@@ -181,8 +142,8 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "2797140E",
-      "timestamp": "11:30:26 AM"
+      "leadId": "4B5076AF",
+      "timestamp": "11:24:31 AM"
     },
     {
       "campaignId": "fresh-start-initiative-x-main",
@@ -190,8 +151,8 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "66C3B0A7",
-      "timestamp": "11:31:50 AM"
+      "leadId": "D754A3E6",
+      "timestamp": "11:25:50 AM"
     },
     {
       "campaignId": "aftr-main",
@@ -199,11 +160,11 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": false,
-      "error": "Lead ID could not be extracted from the Thank You page or DOM.",
-      "leadId": "CKM09434",
+      "error": "Navigation failed: browser landed on chrome error page (chrome-error://chromewebdata/)",
+      "leadId": null,
       "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_aftr-main_desktop.png",
-      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@6ace8b387f003e7198bcc5b4a0936967.webm",
-      "timestamp": "11:33:28 AM"
+      "video": null,
+      "timestamp": "11:26:29 AM"
     },
     {
       "campaignId": "ptr-main",
@@ -211,35 +172,8 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "44A6EDC3",
-      "timestamp": "11:34:58 AM"
-    },
-    {
-      "campaignId": "fth-questionnaire",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Device",
-      "success": true,
-      "leadId": "42A7BB7F",
-      "timestamp": "11:37:00 AM"
-    },
-    {
-      "campaignId": "fth-x",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Device",
-      "success": true,
-      "leadId": "C093B4BC",
-      "timestamp": "11:38:23 AM"
-    },
-    {
-      "campaignId": "second-chance-tax-relief-x",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Device",
-      "success": true,
-      "leadId": "3F4B0169",
-      "timestamp": "11:40:02 AM"
+      "leadId": "656A69F5",
+      "timestamp": "11:27:55 AM"
     },
     {
       "campaignId": "sctr-main",
@@ -247,20 +181,8 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "EF51A1FF",
-      "timestamp": "11:41:37 AM"
-    },
-    {
-      "campaignId": "1800-fresh-tax-cpc",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Device",
-      "success": false,
-      "error": "Lead ID could not be extracted from the Thank You page or DOM.",
-      "leadId": "CKM65524",
-      "screenshot": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\FAILURE_1800-fresh-tax-cpc_desktop.png",
-      "video": "C:\\Users\\Deepali_Londhe\\Desktop\\New Tracking URL\\traces\\videos\\page@82329bbaaecde0f0f203f62a1490a761.webm",
-      "timestamp": "11:43:07 AM"
+      "leadId": "BF1FD61C",
+      "timestamp": "11:29:14 AM"
     },
     {
       "campaignId": "senior-tax-defense-x",
@@ -268,8 +190,8 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "9E6A5BB4",
-      "timestamp": "11:44:36 AM"
+      "leadId": "92C2D0DC",
+      "timestamp": "11:30:37 AM"
     },
     {
       "campaignId": "guardian-tax-relief-ppc",
@@ -277,35 +199,62 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "8CE393EA",
-      "timestamp": "11:46:00 AM"
+      "leadId": "9D72411F",
+      "timestamp": "11:31:40 AM"
     },
     {
-      "campaignId": "empire-tax-relief-x",
+      "campaignId": "tra-st-tsg",
       "viewport": "desktop",
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "28C62F98",
-      "timestamp": "11:47:59 AM"
+      "leadId": "8AC0CD29",
+      "timestamp": "11:32:49 AM"
     },
     {
-      "campaignId": "capital-tax-relief-x",
+      "campaignId": "tra-st-tf",
       "viewport": "desktop",
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "8A88A375",
-      "timestamp": "11:49:35 AM"
+      "leadId": "715A8BD9",
+      "timestamp": "11:33:57 AM"
     },
     {
-      "campaignId": "ftd-ppc2",
+      "campaignId": "tra-st-sp",
       "viewport": "desktop",
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "06625D1D",
-      "timestamp": "11:51:04 AM"
+      "leadId": "5FF8D6CE",
+      "timestamp": "11:35:03 AM"
+    },
+    {
+      "campaignId": "tra-ppc-v9",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "47E083E8",
+      "timestamp": "11:36:12 AM"
+    },
+    {
+      "campaignId": "tra-ppcbtr",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "759BC1DA",
+      "timestamp": "11:37:18 AM"
+    },
+    {
+      "campaignId": "tra-ppcbm",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "A7721B8A",
+      "timestamp": "11:38:24 AM"
     }
   ],
   "emailSent": false

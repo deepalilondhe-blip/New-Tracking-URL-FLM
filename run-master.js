@@ -18,6 +18,7 @@ const path = require('path');
 const fs = require('fs');
 const axios = require('axios');
 
+// saved proxies to use IP rotation
 async function getWorkingUsProxy() {
   console.log('📡 Fetching USA SOCKS5 proxy pool from ProxyScrape...');
   try {

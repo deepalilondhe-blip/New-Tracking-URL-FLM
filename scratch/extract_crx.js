@@ -1,43 +1,44 @@
 const fs = require('fs');
 const path = require('path');
+const { execSync } = require('child_process');
 
-(async () => {
-  const crxPath = path.join(__dirname, '..', 'buster.crx');
-  const zipPath = path.join(__dirname, '..', 'buster.zip');
+const crxPath = path.join(__dirname, '..', 'veepn.zip');
+const zipPath = path.join(__dirname, '..', 'veepn_clean.zip');
+const extractDir = path.join(__dirname, '..', 'veepn-extension');
+
+if (!fs.existsSync(crxPath)) {
+  console.error('veepn.zip not found.');
+  process.exit(1);
+}
+
+const buffer = fs.readFileSync(crxPath);
+// Search for PK\x03\x04 signature (50 4B 03 04)
+const zipHeader = Buffer.from([0x50, 0x4B, 0x03, 0x04]);
+const index = buffer.indexOf(zipHeader);
+
+if (index === -1) {
+  console.error('Could not find ZIP header in CRX file.');
+  process.exit(1);
+}
+
+console.log(`Found ZIP header at offset: ${index}`);
+const cleanZipBuffer = buffer.slice(index);
+fs.writeFileSync(zipPath, cleanZipBuffer);
+console.log('Saved clean ZIP file to veepn_clean.zip');
+
+if (!fs.existsSync(extractDir)) {
+  fs.mkdirSync(extractDir);
+}
+
+try {
+  console.log('Extracting using PowerShell Expand-Archive...');
+  execSync(`powershell -Command "Expand-Archive -Path '${zipPath}' -DestinationPath '${extractDir}' -Force"`);
+  console.log('✅ Extraction completed successfully!');
   
-  try {
-    const buffer = fs.readFileSync(crxPath);
-    
-    // Validate CRX magic number
-    const magic = buffer.toString('utf8', 0, 4);
-    if (magic !== 'Cr24') {
-      throw new Error(`Invalid CRX magic number: ${magic}. Expected "Cr24".`);
-    }
-    
-    // Validate version
-    const version = buffer.readUInt32LE(4);
-    console.log(`CRX format version: ${version}`);
-    
-    let zipStartOffset = 0;
-    
-    if (version === 2) {
-      const publicKeyLength = buffer.readUInt32LE(8);
-      const signatureLength = buffer.readUInt32LE(12);
-      zipStartOffset = 16 + publicKeyLength + signatureLength;
-    } else if (version === 3) {
-      const headerLength = buffer.readUInt32LE(8);
-      zipStartOffset = 12 + headerLength;
-    } else {
-      throw new Error(`Unsupported CRX version: ${version}`);
-    }
-    
-    console.log(`CRX Header ends at offset: ${zipStartOffset} bytes`);
-    
-    // Extract the ZIP contents
-    const zipBuffer = buffer.subarray(zipStartOffset);
-    fs.writeFileSync(zipPath, zipBuffer);
-    console.log(`✅ Saved ZIP contents to: ${zipPath} (${zipBuffer.length} bytes)`);
-  } catch (err) {
-    console.error('❌ Failed to convert CRX to ZIP:', err.message);
-  }
-})();
+  // Cleanup temp zip files
+  fs.unlinkSync(crxPath);
+  fs.unlinkSync(zipPath);
+  console.log('Cleaned up temporary zip files.');
+} catch (err) {
+  console.error('Extraction failed:', err.message);
+}
