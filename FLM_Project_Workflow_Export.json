@@ -76,6 +76,17 @@
             }
           ]
         ]
+      },
+      "Execute Command": {
+        "main": [
+          [
+            {
+              "node": "Send an Email",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
       }
     },
     "settings": {
