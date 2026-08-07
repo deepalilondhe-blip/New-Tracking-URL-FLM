@@ -63,6 +63,29 @@
             "name": "SMTP account"
           }
         }
+      },
+      {
+        "parameters": {
+          "resource": "file",
+          "operation": "upload",
+          "fileContent": "={{ $node[\"Execute Command\"].json.stdout }}",
+          "name": "={{ 'FLM_Execution_Log_' + new Date().toISOString().replace(/:/g, '-') + '.txt' }}",
+          "options": {}
+        },
+        "id": "e988d8b4-0268-450f-90db-312278457790",
+        "name": "Upload to Google Drive",
+        "type": "n8n-nodes-base.googleDrive",
+        "typeVersion": 3,
+        "position": [
+          1056,
+          240
+        ],
+        "credentials": {
+          "googleDriveOAuth2Api": {
+            "id": "google_drive_credentials_placeholder",
+            "name": "Google Drive account"
+          }
+        }
       }
     ],
     "connections": {
@@ -82,6 +105,17 @@
           [
             {
               "node": "Send an Email",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Send an Email": {
+        "main": [
+          [
+            {
+              "node": "Upload to Google Drive",
               "type": "main",
               "index": 0
             }
