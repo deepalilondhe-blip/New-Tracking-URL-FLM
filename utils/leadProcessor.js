@@ -321,16 +321,8 @@ async function processLead(brandConfig, page) {
     // UNIVERSAL RANGE MAPPING for Cake Income
     // Maps slider value to fixed range buckets
     function mapToRange(numVal, bId) {
-      if (bId === 'vts-original') {
-         if (numVal < 5000) return '5,000';
-         if (numVal < 10000) return '7,500';
-         if (numVal < 20000) return '10,000';
-         if (numVal < 50000) return '20,000';
-         if (numVal < 100000) return '50,000';
-         return '100,000';
-      }
       if (bId === 'second-chance-tax-relief-x' || bId === 'sctr' || bId === 'sctr-main') {
-         if (numVal < 5000) return '5,000';
+         if (numVal < 5000) return numVal.toLocaleString();
          if (numVal < 10000) return '7,500';
          if (numVal < 20000) return '10,000';
          if (numVal < 50000) return '20,000';
@@ -351,15 +343,17 @@ async function processLead(brandConfig, page) {
          return '50,000';
       }
       if (bId === 'senior-tax-defence-main' || bId === 'senior-tax-defense-x') {
-         if (numVal < 5000) return '5,000';
+         if (numVal < 5000) return numVal.toLocaleString();
          if (numVal < 10000) return '7,500';
          if (numVal < 20000) return '10,000';
          if (numVal < 30000) return '20,000';
          if (numVal < 100000) return '50,000';
          return '100,000';
       }
-      if (bId === 'ptr-main' || bId === 'aftr-main' || bId === 'capital-tax-relief-x' || bId === 'empire-tax-relief-x') {
-         if (numVal < 5000) return '5,000';
+      if (bId === 'ptr-main' || bId === 'aftr-main' || bId === 'capital-tax-relief-x' || bId === 'empire-tax-relief-x' ||
+          bId === '1800-fresh-tax-x-main' || bId === 'original' || bId === 'everest-tr-x' || bId === 'ftd-x' || bId === 'fsi-main' ||
+          bId === 'fresh-start-initiative-x-main' || bId === 'vts-original' || bId === 'vts-ne-branded') {
+         if (numVal < 5000) return numVal.toLocaleString();
          if (numVal < 10000) return '7,500';
          if (numVal < 20000) return '10,000';
          if (numVal < 50000) return '20,000';
@@ -932,7 +926,8 @@ if (sheetSuccess) {
     return {
       success: true,
       leadId: leadIdToUse,
-      brand: brandConfig.name
+      brand: brandConfig.name,
+      apiStatus: hasLeadId ? (verificationStatus.startsWith('VERIFIED') ? '200 OK' : 'API_FAILED') : 'N/A'
     };
 
   } catch (error) {
@@ -941,7 +936,8 @@ if (sheetSuccess) {
       success: false,
       error: error.message,
       leadId: leadIdToUse,
-      brand: brandConfig.name
+      brand: brandConfig.name,
+      apiStatus: 'ERROR'
     };
   }
 }

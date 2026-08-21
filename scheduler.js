@@ -89,6 +89,7 @@ function runScript(campaignId, viewport, browserEngine = 'chromium', label = 'St
           success: false, 
           error: errorMsg,
           leadId: evidence.leadId || null,
+          apiStatus: evidence.apiStatus || 'FAILED',
           screenshot: evidence.screenshot,
           video: evidence.video
         });
@@ -99,7 +100,8 @@ function runScript(campaignId, viewport, browserEngine = 'chromium', label = 'St
       return resolve({ 
         campaignId, viewport, browser: browserEngine, label, 
         success: true, 
-        leadId: evidence.leadId || null 
+        leadId: evidence.leadId || null,
+        apiStatus: evidence.apiStatus || '200 OK'
       });
     });
 
@@ -521,6 +523,7 @@ async function sendProfessionalDailyReport(summary) {
                     ${r.campaignId.toUpperCase()} 
                     <span style="font-weight: 400; color: #94a3b8; font-size: 10px;">[${r.viewport}]</span>
                     ${r.leadId ? `<br/><span style="font-weight: normal; font-size: 11px; color: #64748b;">ID: ${r.leadId}</span>` : ''}
+                    ${r.apiStatus ? `<br/><span style="font-weight: normal; font-size: 11px; color: #0891b2; font-weight: 600;">API: ${r.apiStatus}</span>` : ''}
                   </td>
                   <td style="padding: 12px 0; text-align: center;">
                     <span style="padding: 4px 10px; border-radius: 20px; font-weight: 800; font-size: 10px; ${r.success ? 'background: #dcfce7; color: #166534;' : 'background: #fee2e2; color: #991b1b;'}">
