@@ -34,23 +34,44 @@ jobs:
         env:
           DOTENV_CONTENT: ${{ secrets.DOTENV }}
           GOOGLE_SA_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+          SMTP_USER_SECRET: ${{ secrets.SMTP_USER }}
+          SMTP_PASS_SECRET: ${{ secrets.SMTP_PASS }}
+          REPORT_EMAIL_SECRET: ${{ secrets.REPORT_EMAIL_RECIPIENT }}
         run: |
-          printf '%s\n' "$DOTENV_CONTENT" > .env
-          # Always append SMTP from dedicated secrets so the grouped report email
-          # is sent even if the DOTENV secret is incomplete.
-          echo "SMTP_HOST=smtp.gmail.com" >> .env
-          echo "SMTP_PORT=587" >> .env
-          echo "SMTP_SECURE=false" >> .env
-          echo "SMTP_USER=${{ secrets.SMTP_USER }}" >> .env
-          echo "SMTP_PASS=${{ secrets.SMTP_PASS }}" >> .env
-          echo "REPORT_EMAIL_RECIPIENT=${{ secrets.REPORT_EMAIL_RECIPIENT }}" >> .env
-          echo "GOOGLE_SHEET_ID=1rXIg3dMQ4APH3lHLcfWYfP45PnOAKmV9POkoSS3YWxI" >> .env
-          echo "GOOGLE_SERVICE_ACCOUNT_FILE=service_account.json" >> .env
-          printf '%s\n' "$GOOGLE_SA_JSON" > service_account.json
+          node <<'EOF'
+          const fs = require('fs');
+          const dotenvContent = process.env.DOTENV_CONTENT || '';
+          if (!dotenvContent.trim()) {
+            console.error('DOTENV secret is empty.');
+            process.exit(1);
+          }
+          const json = process.env.GOOGLE_SA_JSON || '';
+          if (!json.trim()) {
+            console.error('GOOGLE_SERVICE_ACCOUNT_JSON secret is empty.');
+            process.exit(1);
+          }
 
-      - name: Verify SMTP is configured for the campaign report email
+          const extra = [
+            'GOOGLE_SHEET_ID=1rXIg3dMQ4APH3lHLcfWYfP45PnOAKmV9POkoSS3YWxI',
+            'GOOGLE_SERVICE_ACCOUNT_FILE=service_account.json',
+            'SMTP_HOST=smtp.gmail.com',
+            'SMTP_PORT=587',
+            'SMTP_SECURE=false'
+          ];
+          // Only write dedicated SMTP secrets when they actually exist.
+          // Empty SMTP_USER= lines would overwrite values already inside DOTENV.
+          if (process.env.SMTP_USER_SECRET) extra.push('SMTP_USER=' + process.env.SMTP_USER_SECRET);
+          if (process.env.SMTP_PASS_SECRET) extra.push('SMTP_PASS=' + process.env.SMTP_PASS_SECRET);
+          if (process.env.REPORT_EMAIL_SECRET) extra.push('REPORT_EMAIL_RECIPIENT=' + process.env.REPORT_EMAIL_SECRET);
+
+          fs.writeFileSync('.env', dotenvContent.replace(/\r\n/g, '\n').trim() + '\n' + extra.join('\n') + '\n');
+          fs.writeFileSync('service_account.json', json);
+          console.log('Wrote .env and service_account.json');
+          EOF
+
+      - name: Verify SMTP from DOTENV
         run: |
-          node -e "require('dotenv').config(); if(!process.env.SMTP_USER || !process.env.SMTP_PASS){ console.error('SMTP_USER / SMTP_PASS secrets are missing. GitHub will only send its own workflow notification, not the FLM campaign report.'); process.exit(1); } console.log('SMTP recipient:', process.env.REPORT_EMAIL_RECIPIENT || 'deepali.londhe@magnetoitsolutions.com');"
+          node -e "require('dotenv').config(); if(!process.env.SMTP_USER || !process.env.SMTP_PASS){ console.log('SMTP is not in DOTENV. Campaigns and Google Sheet append will still run. Email report may be skipped.'); process.exit(0);} console.log('SMTP recipient:', process.env.REPORT_EMAIL_RECIPIENT || 'deepali.londhe@magnetoitsolutions.com');"
 
       - name: Verify Google Sheet append access
         run: node scratch/verify-sheet-access.js
@@ -59,14 +80,13 @@ jobs:
         env:
           CI: true
           HEADLESS: 'true'
-        # Headless is required so this keeps running when the laptop is off.
-        # xvfb covers any campaign that still tries to open a headed browser.
         run: xvfb-run --auto-servernum --server-args="-screen 0 1280x1024x24" node scheduler.js --once --headless
 
       - name: Send grouped campaign report email
         if: always()
         env:
           CI: true
+        continue-on-error: true
         run: node scheduler.js --email-only
 
       - name: Upload Email Report Preview

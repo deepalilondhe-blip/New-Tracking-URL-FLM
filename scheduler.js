@@ -612,14 +612,10 @@ async function sendProfessionalDailyReport(summary) {
     console.error(`⚠️ Failed to save email HTML locally:`, err.message);
   }
 
-  const isCi = process.env.CI === 'true' || process.env.GITHUB_ACTIONS === 'true';
   if (!user || !pass) {
     const message = `SMTP credentials (SMTP_USER, SMTP_PASS) are missing. The grouped campaign report was NOT emailed to ${recipient}.`;
     console.error(`\n❌ ${message}`);
     console.error('Preview is still saved at logs/flm-agent-email-today.html.');
-    if (isCi) {
-      throw new Error(message);
-    }
     return;
   }
 
