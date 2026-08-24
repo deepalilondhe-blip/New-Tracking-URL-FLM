@@ -405,24 +405,56 @@ async function sendProfessionalDailyReport(summary) {
 
   const successRate = ((summary.succeeded / (summary.total || 1)) * 100).toFixed(1);
   const campaignLookup = new Map(campaigns.map(c => [c.id, c]));
-  const uniqueCampaignIds = [...new Set((summary.runs || []).map(r => r.campaignId).filter(Boolean))];
-  const involvedCampaignRows = uniqueCampaignIds.map((id) => {
-    const cfg = campaignLookup.get(id);
-    return {
-      name: cfg?.name || id.toUpperCase(),
-      sheet: cfg?.sheet || 'N/A',
-      url: cfg?.url || 'N/A'
-    };
-  });
-  const involvedUrlsHtml = involvedCampaignRows.length > 0
-    ? involvedCampaignRows.map((r) => `
-                <tr style="border-bottom: 1px solid #f8fafc;">
-                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">${r.name}</td>
-                  <td style="padding: 10px 0; color: #475569;">${r.sheet}</td>
-                  <td style="padding: 10px 0;"><a href="${r.url}" style="color: #0891b2; text-decoration: none; font-size: 12px;">${r.url}</a></td>
-                </tr>
-      `).join('')
-    : `<tr><td colspan="3" style="padding: 10px 0; color: #64748b;">No campaign URLs found in today's summary.</td></tr>`;
+
+  // Helper to determine if a campaign is a TRA campaign
+  const isTraCampaign = (campaignId) => {
+    const id = campaignId.toLowerCase();
+    return id.startsWith('tra-') || id.startsWith('ppc-') || id === 'guardian-tax-relief-ppc';
+  };
+
+  // Sort sequentially based on order in campaigns.json
+  const campaignIndexMap = new Map(campaigns.map((c, idx) => [c.id, idx]));
+  const sortSequential = (a, b) => (campaignIndexMap.get(a.campaignId) || 0) - (campaignIndexMap.get(b.campaignId) || 0);
+
+  const allRuns = summary.runs || [];
+  const traRuns = allRuns.filter(r => isTraCampaign(r.campaignId)).sort(sortSequential);
+  const nonTraRuns = allRuns.filter(r => !isTraCampaign(r.campaignId)).sort(sortSequential);
+
+  // Helper to generate Table Rows HTML
+  const generateTableRows = (runsList) => {
+    if (runsList.length === 0) {
+      return `<tr><td colspan="3" style="padding: 20px; text-align: center; color: #64748b; font-style: italic;">No campaigns executed in this section today.</td></tr>`;
+    }
+    return runsList.map(r => {
+      const cfg = campaignLookup.get(r.campaignId);
+      const domainName = cfg?.name || r.campaignId.toUpperCase();
+      const url = cfg?.url || 'N/A';
+      const displayStatus = r.success ? 'PASS' : 'FAILED';
+      const statusColor = r.success ? 'color: #166534; background: #dcfce7;' : 'color: #991b1b; background: #fee2e2;';
+      
+      return `
+        <tr style="border-bottom: 1px solid #f1f5f9;">
+          <td style="padding: 12px 10px; font-weight: 700; color: #1e293b; vertical-align: top;">
+            ${domainName}
+            <span style="font-weight: 400; color: #94a3b8; font-size: 10px;">[${r.viewport}]</span>
+            ${r.leadId ? `<br/><span style="font-weight: normal; font-size: 11px; color: #64748b;">ID: ${r.leadId}</span>` : ''}
+            ${r.apiStatus ? `<br/><span style="font-weight: normal; font-size: 11px; color: #0891b2; font-weight: 600;">API: ${r.apiStatus}</span>` : ''}
+          </td>
+          <td style="padding: 12px 10px; font-size: 11px; max-width: 250px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; vertical-align: top;">
+            <a href="${url}" style="color: #0891b2; text-decoration: none;">${url}</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="padding: 4px 10px; border-radius: 20px; font-weight: 800; font-size: 10px; ${statusColor}">
+              ${displayStatus}
+            </span>
+          </td>
+        </tr>
+      `;
+    }).join('');
+  };
+
+  const traTableRowsHtml = generateTableRows(traRuns);
+  const nonTraTableRowsHtml = generateTableRows(nonTraRuns);
   
   const htmlBody = `
     <!DOCTYPE html>
@@ -474,7 +506,7 @@ async function sendProfessionalDailyReport(summary) {
             <div class="stat-lbl">Total Time</div>
           </div>
         </div>
-
+        
         <div class="content">
           <div class="ai-message">
             <div class="ai-message-title">🧠 Agent Insight: Why were ${summary.failed} campaigns "Blocked"?</div>
@@ -507,48 +539,33 @@ async function sendProfessionalDailyReport(summary) {
             </div>
           ` : `<div style="text-align: center; padding: 25px; background: #f0fdf4; border: 1px solid #dcfce7; border-radius: 16px; color: #166534; font-weight: 700; font-size: 15px;">✅ PERFECTION: All funnels are 100% operational.</div>`}
 
-          <div style="font-size: 14px; font-weight: 800; color: #0f172a; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; margin: 40px 0 20px;">Execution Matrix</div>
-          <table style="width: 100%; border-collapse: collapse; font-size: 12px;">
+          <!-- Section 1: TRA Campaigns -->
+          <div style="font-size: 15px; font-weight: 800; color: #0f172a; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; margin: 40px 0 15px;">TRA Campaigns Verification (Sequential)</div>
+          <table style="width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 30px; table-layout: fixed;">
             <thead>
-              <tr style="text-align: left; color: #64748b; border-bottom: 1px solid #f1f5f9;">
-                <th style="padding: 10px 0;">CAMPAIGN</th>
-                <th style="padding: 10px 0; text-align: center;">PROTECTION</th>
-                <th style="padding: 10px 0; text-align: right;">TIME</th>
+              <tr style="text-align: left; color: #64748b; border-bottom: 1.5px solid #cbd5e1; font-weight: 700;">
+                <th style="padding: 10px; width: 40%;">DOMAIN NAME</th>
+                <th style="padding: 10px; width: 45%;">URL</th>
+                <th style="padding: 10px; text-align: center; width: 15%;">STATUS</th>
               </tr>
             </thead>
             <tbody>
-              ${summary.runs.slice(-12).map(r => `
-                <tr style="border-bottom: 1px solid #f8fafc;">
-                  <td style="padding: 12px 0; font-weight: 700; color: #1e293b;">
-                    ${r.campaignId.toUpperCase()} 
-                    <span style="font-weight: 400; color: #94a3b8; font-size: 10px;">[${r.viewport}]</span>
-                    ${r.leadId ? `<br/><span style="font-weight: normal; font-size: 11px; color: #64748b;">ID: ${r.leadId}</span>` : ''}
-                    ${r.apiStatus ? `<br/><span style="font-weight: normal; font-size: 11px; color: #0891b2; font-weight: 600;">API: ${r.apiStatus}</span>` : ''}
-                  </td>
-                  <td style="padding: 12px 0; text-align: center;">
-                    <span style="padding: 4px 10px; border-radius: 20px; font-weight: 800; font-size: 10px; ${r.success ? 'background: #dcfce7; color: #166534;' : 'background: #fee2e2; color: #991b1b;'}">
-                      ${r.success ? 'SHIELDED' : 'EXPOSED'}
-                    </span>
-                  </td>
-                  <td style="padding: 12px 0; text-align: right; color: #94a3b8;">${r.timestamp}</td>
-                </tr>
-              `).join('')}
+              ${traTableRowsHtml}
             </tbody>
           </table>
 
-          <div style="font-size: 14px; font-weight: 800; color: #0f172a; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; margin: 34px 0 16px;">
-            Local Scheduler URLs Involved (Today)
-          </div>
-          <table style="width: 100%; border-collapse: collapse; font-size: 12px;">
+          <!-- Section 2: Non-TRA Campaigns -->
+          <div style="font-size: 15px; font-weight: 800; color: #0f172a; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; margin: 40px 0 15px;">Non-TRA Campaigns Verification (Sequential)</div>
+          <table style="width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 30px; table-layout: fixed;">
             <thead>
-              <tr style="text-align: left; color: #64748b; border-bottom: 1px solid #f1f5f9;">
-                <th style="padding: 10px 0;">CAMPAIGN</th>
-                <th style="padding: 10px 0;">GOOGLE SHEET TAB</th>
-                <th style="padding: 10px 0;">TRACKING URL</th>
+              <tr style="text-align: left; color: #64748b; border-bottom: 1.5px solid #cbd5e1; font-weight: 700;">
+                <th style="padding: 10px; width: 40%;">DOMAIN NAME</th>
+                <th style="padding: 10px; width: 45%;">URL</th>
+                <th style="padding: 10px; text-align: center; width: 15%;">STATUS</th>
               </tr>
             </thead>
             <tbody>
-              ${involvedUrlsHtml}
+              ${nonTraTableRowsHtml}
             </tbody>
           </table>
           
