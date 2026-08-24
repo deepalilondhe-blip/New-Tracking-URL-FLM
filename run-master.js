@@ -20,6 +20,7 @@ const axios = require('axios');
 
 // saved proxies to use IP rotation
 async function getWorkingUsProxy() {
+  global.isProxyTesting = true;
   console.log('📡 Fetching USA SOCKS5 proxy pool from ProxyScrape...');
   try {
     const response = await axios.get('https://api.proxyscrape.com/v4/free-proxy-list/get?request=display_proxies&proxy_format=ipport&format=json&country=us&protocol=socks5', { timeout: 8000 });
@@ -47,6 +48,7 @@ async function getWorkingUsProxy() {
         if (details && details.country === 'US') {
           console.log(`✅ Proxy verified! Country: ${details.country}, City: ${details.city}, IP: ${details.ip}`);
           await testBrowser.close().catch(() => {});
+          global.isProxyTesting = false;
           return proxyUrl;
         }
       } catch (err) {
@@ -59,12 +61,15 @@ async function getWorkingUsProxy() {
     }
   } catch (err) {
     console.error('⚠️ ProxyScrape fetch failed:', err.message);
+  } finally {
+    global.isProxyTesting = false;
   }
   return null;
 }
 
 // Register global error handlers to ensure clean teardown behavior under all engines
 process.on('unhandledRejection', (reason) => {
+  if (global.isProxyTesting) return;
   const msg = reason && reason.message ? reason.message : String(reason);
   if (msg.includes('closed') || msg.includes('tracing') || msg.includes('target')) {
     process.exit(0);
@@ -73,6 +78,7 @@ process.on('unhandledRejection', (reason) => {
 });
 
 process.on('uncaughtException', (err) => {
+  if (global.isProxyTesting) return;
   const msg = err && err.message ? err.message : String(err);
   if (msg.includes('closed') || msg.includes('tracing') || msg.includes('target')) {
     process.exit(0);

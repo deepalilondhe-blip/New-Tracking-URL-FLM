@@ -1,5 +1,6 @@
 // Register global error handlers to prevent minor closed page/tracing teardown errors from crashing the runner processes
 process.on('unhandledRejection', (reason) => {
+  if (global.isProxyTesting) return;
   const msg = reason && reason.message ? reason.message : String(reason);
   if (msg.includes('closed') || msg.includes('tracing') || msg.includes('target') || msg.includes('Target')) {
     process.exit(0); // Gracefully force success exit!
@@ -8,6 +9,7 @@ process.on('unhandledRejection', (reason) => {
 });
 
 process.on('uncaughtException', (err) => {
+  if (global.isProxyTesting) return;
   const msg = err && err.message ? err.message : String(err);
   if (msg.includes('closed') || msg.includes('tracing') || msg.includes('target') || msg.includes('Target')) {
     process.exit(0); // Gracefully force success exit!
