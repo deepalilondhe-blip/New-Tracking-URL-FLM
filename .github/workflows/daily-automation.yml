@@ -31,8 +31,11 @@ jobs:
         run: npx playwright install --with-deps chromium
 
       - name: Configure Credentials (.env & Google Service Account)
+        env:
+          DOTENV_CONTENT: ${{ secrets.DOTENV }}
+          GOOGLE_SA_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
         run: |
-          echo "${{ secrets.DOTENV }}" > .env
+          printf '%s\n' "$DOTENV_CONTENT" > .env
           # Always append SMTP from dedicated secrets so the grouped report email
           # is sent even if the DOTENV secret is incomplete.
           echo "SMTP_HOST=smtp.gmail.com" >> .env
@@ -43,11 +46,14 @@ jobs:
           echo "REPORT_EMAIL_RECIPIENT=${{ secrets.REPORT_EMAIL_RECIPIENT }}" >> .env
           echo "GOOGLE_SHEET_ID=1rXIg3dMQ4APH3lHLcfWYfP45PnOAKmV9POkoSS3YWxI" >> .env
           echo "GOOGLE_SERVICE_ACCOUNT_FILE=service_account.json" >> .env
-          echo '${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}' > service_account.json
+          printf '%s\n' "$GOOGLE_SA_JSON" > service_account.json
 
       - name: Verify SMTP is configured for the campaign report email
         run: |
           node -e "require('dotenv').config(); if(!process.env.SMTP_USER || !process.env.SMTP_PASS){ console.error('SMTP_USER / SMTP_PASS secrets are missing. GitHub will only send its own workflow notification, not the FLM campaign report.'); process.exit(1); } console.log('SMTP recipient:', process.env.REPORT_EMAIL_RECIPIENT || 'deepali.londhe@magnetoitsolutions.com');"
+
+      - name: Verify Google Sheet append access
+        run: node scratch/verify-sheet-access.js
 
       - name: Execute Daily Verification Campaign
         env:
