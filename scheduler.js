@@ -423,30 +423,36 @@ async function sendProfessionalDailyReport(summary) {
   // Helper to generate Table Rows HTML
   const generateTableRows = (runsList) => {
     if (runsList.length === 0) {
-      return `<tr><td colspan="3" style="padding: 20px; text-align: center; color: #64748b; font-style: italic;">No campaigns executed in this section today.</td></tr>`;
+      return `<tr><td colspan="5" style="padding: 20px; text-align: center; color: #64748b; font-style: italic;">No campaigns executed in this section today.</td></tr>`;
     }
     return runsList.map(r => {
       const cfg = campaignLookup.get(r.campaignId);
       const domainName = cfg?.name || r.campaignId.toUpperCase();
       const url = cfg?.url || 'N/A';
-      const displayStatus = r.success ? 'PASS' : 'FAILED';
-      const statusColor = r.success ? 'color: #166534; background: #dcfce7;' : 'color: #991b1b; background: #fee2e2;';
+      
+      const passMark = r.success ? '<span style="color: #166534; font-weight: 800; font-size: 14px;">✅</span>' : '';
+      const failMark = !r.success ? '<span style="color: #991b1b; font-weight: 800; font-size: 14px;">❌</span>' : '';
+      const apiStatusText = r.apiStatus || (r.success ? '200 OK' : 'N/A');
+      const apiStatusColor = r.success ? '#0891b2' : '#991b1b';
       
       return `
         <tr style="border-bottom: 1px solid #f1f5f9;">
-          <td style="padding: 12px 10px; font-weight: 700; color: #1e293b; vertical-align: top;">
+          <td style="padding: 12px 10px; font-weight: 700; color: #1e293b; vertical-align: top; word-break: break-word;">
             ${domainName}
-            <span style="font-weight: 400; color: #94a3b8; font-size: 10px;">[${r.viewport}]</span>
-            ${r.leadId ? `<br/><span style="font-weight: normal; font-size: 11px; color: #64748b;">ID: ${r.leadId}</span>` : ''}
-            ${r.apiStatus ? `<br/><span style="font-weight: normal; font-size: 11px; color: #0891b2; font-weight: 600;">API: ${r.apiStatus}</span>` : ''}
+            <span style="font-weight: 400; color: #94a3b8; font-size: 9px;">[${r.viewport}]</span>
+            ${r.leadId ? `<br/><span style="font-weight: normal; font-size: 10px; color: #64748b;">ID: ${r.leadId}</span>` : ''}
           </td>
-          <td style="padding: 12px 10px; font-size: 11px; max-width: 250px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; vertical-align: top;">
+          <td style="padding: 12px 10px; font-size: 11px; vertical-align: top; word-break: break-all;">
             <a href="${url}" style="color: #0891b2; text-decoration: none;">${url}</a>
           </td>
           <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
-            <span style="padding: 4px 10px; border-radius: 20px; font-weight: 800; font-size: 10px; ${statusColor}">
-              ${displayStatus}
-            </span>
+            ${passMark}
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            ${failMark}
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-weight: 600; color: ${apiStatusColor}; font-size: 11px;">
+            ${apiStatusText}
           </td>
         </tr>
       `;
@@ -544,9 +550,11 @@ async function sendProfessionalDailyReport(summary) {
           <table style="width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 30px; table-layout: fixed;">
             <thead>
               <tr style="text-align: left; color: #64748b; border-bottom: 1.5px solid #cbd5e1; font-weight: 700;">
-                <th style="padding: 10px; width: 40%;">DOMAIN NAME</th>
-                <th style="padding: 10px; width: 45%;">URL</th>
-                <th style="padding: 10px; text-align: center; width: 15%;">STATUS</th>
+                <th style="padding: 10px; width: 25%;">DOMAIN NAME</th>
+                <th style="padding: 10px; width: 35%;">URL</th>
+                <th style="padding: 10px; text-align: center; width: 10%;">PASS</th>
+                <th style="padding: 10px; text-align: center; width: 10%;">FAILED</th>
+                <th style="padding: 10px; text-align: center; width: 20%;">API STATUS</th>
               </tr>
             </thead>
             <tbody>
@@ -559,9 +567,11 @@ async function sendProfessionalDailyReport(summary) {
           <table style="width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 30px; table-layout: fixed;">
             <thead>
               <tr style="text-align: left; color: #64748b; border-bottom: 1.5px solid #cbd5e1; font-weight: 700;">
-                <th style="padding: 10px; width: 40%;">DOMAIN NAME</th>
-                <th style="padding: 10px; width: 45%;">URL</th>
-                <th style="padding: 10px; text-align: center; width: 15%;">STATUS</th>
+                <th style="padding: 10px; width: 25%;">DOMAIN NAME</th>
+                <th style="padding: 10px; width: 35%;">URL</th>
+                <th style="padding: 10px; text-align: center; width: 10%;">PASS</th>
+                <th style="padding: 10px; text-align: center; width: 10%;">FAILED</th>
+                <th style="padding: 10px; text-align: center; width: 20%;">API STATUS</th>
               </tr>
             </thead>
             <tbody>
