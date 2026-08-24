@@ -212,9 +212,11 @@ if (viewportArg === 'api') {
     const isHeadedArg = process.argv.includes('--headed');
     const isHeadlessArg = process.argv.includes('--headless');
     
-    // Priority: 1. Manual Flags, 2. Environment Variable (from Dashboard), 3. Default (Headless)
+    // Priority: 1. CI/GitHub Actions always headless, 2. Manual flags, 3. Environment, 4. Default (Headless)
     let isHeadless = true;
-    if (isHeadedArg || process.env.HEADLESS === 'false') isHeadless = false;
+    const isCi = process.env.CI === 'true' || process.env.GITHUB_ACTIONS === 'true';
+    if (isCi) isHeadless = true;
+    else if (isHeadedArg || process.env.HEADLESS === 'false') isHeadless = false;
     else if (isHeadlessArg || process.env.HEADLESS === 'true') isHeadless = true;
 
     const browserType = process.env.PROCESS_BROWSER || 'chromium';

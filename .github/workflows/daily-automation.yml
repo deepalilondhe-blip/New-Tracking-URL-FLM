@@ -11,6 +11,8 @@ on:
 jobs:
   run-automation:
     runs-on: ubuntu-latest
+    # One full sequential campaign batch usually takes 45-90 minutes.
+    timeout-minutes: 180
 
     steps:
       - name: Checkout Repository
@@ -31,7 +33,41 @@ jobs:
       - name: Configure Credentials (.env & Google Service Account)
         run: |
           echo "${{ secrets.DOTENV }}" > .env
+          # Always append SMTP from dedicated secrets so the grouped report email
+          # is sent even if the DOTENV secret is incomplete.
+          echo "SMTP_HOST=smtp.gmail.com" >> .env
+          echo "SMTP_PORT=587" >> .env
+          echo "SMTP_SECURE=false" >> .env
+          echo "SMTP_USER=${{ secrets.SMTP_USER }}" >> .env
+          echo "SMTP_PASS=${{ secrets.SMTP_PASS }}" >> .env
+          echo "REPORT_EMAIL_RECIPIENT=${{ secrets.REPORT_EMAIL_RECIPIENT }}" >> .env
+          echo "GOOGLE_SHEET_ID=1rXIg3dMQ4APH3lHLcfWYfP45PnOAKmV9POkoSS3YWxI" >> .env
+          echo "GOOGLE_SERVICE_ACCOUNT_FILE=service_account.json" >> .env
           echo '${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}' > service_account.json
 
+      - name: Verify SMTP is configured for the campaign report email
+        run: |
+          node -e "require('dotenv').config(); if(!process.env.SMTP_USER || !process.env.SMTP_PASS){ console.error('SMTP_USER / SMTP_PASS secrets are missing. GitHub will only send its own workflow notification, not the FLM campaign report.'); process.exit(1); } console.log('SMTP recipient:', process.env.REPORT_EMAIL_RECIPIENT || 'deepali.londhe@magnetoitsolutions.com');"
+
       - name: Execute Daily Verification Campaign
-        run: node scheduler.js --once
+        env:
+          CI: true
+          HEADLESS: 'true'
+        # Headless is required so this keeps running when the laptop is off.
+        # xvfb covers any campaign that still tries to open a headed browser.
+        run: xvfb-run --auto-servernum --server-args="-screen 0 1280x1024x24" node scheduler.js --once --headless
+
+      - name: Send grouped campaign report email
+        if: always()
+        env:
+          CI: true
+        run: node scheduler.js --email-only
+
+      - name: Upload Email Report Preview
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: daily-email-report
+          path: logs/flm-agent-email-today.html
+          if-no-files-found: warn
+          retention-days: 14

@@ -58,13 +58,16 @@ function runScript(campaignId, viewport, browserEngine = 'chromium', label = 'St
     console.log(`🔗 Target URL: ${campaignUrl}`);
     console.log(`================================================================`);
 
-    // Pass target browser and label as environment variables
-    const runHeadless = process.argv.includes('--headless'); // Only go headless if explicitly asked
+    // Local laptop runs headed so you can watch. GitHub Actions / CI must be headless
+    // because there is no desktop display when the laptop is off.
+    const isCi = process.env.CI === 'true' || process.env.GITHUB_ACTIONS === 'true';
+    const runHeadless = process.argv.includes('--headless') || isCi;
     const env = { 
       ...process.env, 
       PROCESS_BROWSER: browserEngine,
       PROCESS_LABEL: label,
-      HEADLESS: runHeadless ? 'true' : 'false' // ✅ Scheduler always runs HEADED (visible) by default
+      HEADLESS: runHeadless ? 'true' : 'false',
+      CI: isCi ? 'true' : (process.env.CI || '')
     };
     
     // Execute node run-master.js in visible mode
@@ -364,6 +367,7 @@ async function runBatch() {
   // Send Professional Intelligence Report after every batch completion
   console.log('🕕 [Scheduler] Dispatching Batch Intelligence Report...');
   const summary = dailyLogger.getDailySummary();
+  summary.durationMinutes = Number(durationMinutes);
   await sendProfessionalDailyReport(summary);
 
   // Reset completed state on successful full batch completion
@@ -430,8 +434,8 @@ async function sendProfessionalDailyReport(summary) {
       const domainName = cfg?.name || r.campaignId.toUpperCase();
       const url = cfg?.url || 'N/A';
       
-      const passMark = r.success ? '<span style="color: #166534; font-weight: 800; font-size: 14px;">✅</span>' : '';
-      const failMark = !r.success ? '<span style="color: #991b1b; font-weight: 800; font-size: 14px;">❌</span>' : '';
+      const passMark = r.success ? '<span style="color: #166534; font-weight: 800; font-size: 12px;">PASS</span>' : '<span style="color: #cbd5e1;">—</span>';
+      const failMark = !r.success ? '<span style="color: #991b1b; font-weight: 800; font-size: 12px;">FAILED</span>' : '<span style="color: #cbd5e1;">—</span>';
       const apiStatusText = r.apiStatus || (r.success ? '200 OK' : 'N/A');
       const apiStatusColor = r.success ? '#0891b2' : '#991b1b';
       
@@ -461,6 +465,11 @@ async function sendProfessionalDailyReport(summary) {
 
   const traTableRowsHtml = generateTableRows(traRuns);
   const nonTraTableRowsHtml = generateTableRows(nonTraRuns);
+  const sheetId = process.env.GOOGLE_SHEET_ID || '1rXIg3dMQ4APH3lHLcfWYfP45PnOAKmV9POkoSS3YWxI';
+  const sheetUrl = `https://docs.google.com/spreadsheets/d/${sheetId}/edit`;
+  const durationLabel = summary.durationMinutes != null
+    ? Number(summary.durationMinutes).toFixed(1)
+    : ((summary.duration || 0) / 60).toFixed(1);
   
   const htmlBody = `
     <!DOCTYPE html>
@@ -469,7 +478,7 @@ async function sendProfessionalDailyReport(summary) {
       <meta charset="utf-8">
       <style>
         body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: #1e293b; background: #f1f5f9; margin: 0; padding: 20px; }
-        .card { max-width: 650px; margin: auto; background: #ffffff; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); overflow: hidden; border: 1px solid #e2e8f0; }
+        .card { max-width: 920px; margin: auto; background: #ffffff; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); overflow: hidden; border: 1px solid #e2e8f0; }
         .header { background: linear-gradient(135deg, #0891b2 0%, #7e22ce 100%); color: #ffffff; padding: 40px 30px; text-align: center; position: relative; }
         .header h1 { margin: 0; font-size: 26px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; }
         .header p { margin: 10px 0 0; opacity: 0.9; font-size: 14px; font-weight: 600; }
@@ -508,7 +517,7 @@ async function sendProfessionalDailyReport(summary) {
             <div class="stat-lbl">Success Rate</div>
           </div>
           <div class="stat-item" style="display: table-cell;">
-            <div class="stat-val" style="color: #0891b2;">${((summary.duration || 0) / 60).toFixed(1)}m</div>
+            <div class="stat-val" style="color: #0891b2;">${durationLabel}m</div>
             <div class="stat-lbl">Total Time</div>
           </div>
         </div>
@@ -579,12 +588,13 @@ async function sendProfessionalDailyReport(summary) {
             </tbody>
           </table>
           
-          <p style="text-align: center; margin-top: 40px;">
-            <a href="https://docs.google.com/spreadsheets/d/1rXIg3dMQ4APH3lHLcfWYfP45PnOAKmV9POkoSS3YWxI/edit" class="brand-link">Explore Real-time Data Suite →</a>
-          </p>
         </div>
 
         <div class="footer">
+          <p style="margin: 0 0 12px;">Google Sheet Report</p>
+          <p style="margin: 0 0 16px;">
+            <a href="${sheetUrl}" style="color: #67e8f9; font-weight: 700; text-decoration: underline; word-break: break-all;">${sheetUrl}</a>
+          </p>
           <p>© ${new Date().getFullYear()} Forward Leap Marketing. Confidential AI Intelligence.</p>
           <p style="opacity: 0.6;">You are receiving this because FLM Agent Security Mode is ENABLED.</p>
         </div>
@@ -602,9 +612,14 @@ async function sendProfessionalDailyReport(summary) {
     console.error(`⚠️ Failed to save email HTML locally:`, err.message);
   }
 
+  const isCi = process.env.CI === 'true' || process.env.GITHUB_ACTIONS === 'true';
   if (!user || !pass) {
-    console.log('\n⚠️ SMTP credentials (SMTP_USER, SMTP_PASS) not configured in .env.');
-    console.log(`⚠️ Skipping sending daily report email to ${recipient}. Preview available in logs/flm-agent-email-today.html.`);
+    const message = `SMTP credentials (SMTP_USER, SMTP_PASS) are missing. The grouped campaign report was NOT emailed to ${recipient}.`;
+    console.error(`\n❌ ${message}`);
+    console.error('Preview is still saved at logs/flm-agent-email-today.html.');
+    if (isCi) {
+      throw new Error(message);
+    }
     return;
   }
 
@@ -613,18 +628,27 @@ async function sendProfessionalDailyReport(summary) {
     auth: { user, pass }
   });
 
+  const subject = `FLM Campaign Report: ${summary.succeeded}/${summary.total} PASS | DOMAIN | URL | PASS | FAILED | API STATUS`;
   await transporter.sendMail({
     from: `"FLM Automation Suite" <${user}>`,
     to: recipient,
-    subject: `📊 FLM Daily Intelligence: ${summary.succeeded}/${summary.total} Campaigns Verified`,
+    subject,
     html: htmlBody
   });
-  console.log('✅ Branded Daily Professional Summary Email Sent.');
+  console.log(`✅ Grouped campaign report emailed to ${recipient}.`);
+  console.log(`✅ Email subject: ${subject}`);
 }
 
 if (require.main === module) {
+  const emailOnly = process.argv.includes('--email-only');
   const runOnce = process.argv.includes('--once');
-  if (runOnce) {
+  if (emailOnly) {
+    const summary = dailyLogger.getDailySummary();
+    sendProfessionalDailyReport(summary).then(() => process.exit(0)).catch((err) => {
+      console.error('❌ Failed to send campaign report email:', err.message);
+      process.exit(1);
+    });
+  } else if (runOnce) {
     runBatch().then(() => process.exit(0)).catch(() => process.exit(1));
   } else {
     runBatch();
