@@ -427,12 +427,13 @@ async function sendProfessionalDailyReport(summary) {
   // Helper to generate Table Rows HTML
   const generateTableRows = (runsList) => {
     if (runsList.length === 0) {
-      return `<tr><td colspan="5" style="padding: 20px; text-align: center; color: #64748b; font-style: italic;">No campaigns executed in this section today.</td></tr>`;
+      return `<tr><td colspan="6" style="padding: 20px; text-align: center; color: #64748b; font-style: italic;">No campaigns executed in this section today.</td></tr>`;
     }
     return runsList.map(r => {
       const cfg = campaignLookup.get(r.campaignId);
       const domainName = cfg?.name || r.campaignId.toUpperCase();
       const url = cfg?.url || 'N/A';
+      const leadId = r.leadId || '—';
       
       const passMark = r.success ? '<span style="color: #166534; font-weight: 800; font-size: 12px;">PASS</span>' : '<span style="color: #cbd5e1;">—</span>';
       const failMark = !r.success ? '<span style="color: #991b1b; font-weight: 800; font-size: 12px;">FAILED</span>' : '<span style="color: #cbd5e1;">—</span>';
@@ -444,10 +445,12 @@ async function sendProfessionalDailyReport(summary) {
           <td style="padding: 12px 10px; font-weight: 700; color: #1e293b; vertical-align: top; word-break: break-word;">
             ${domainName}
             <span style="font-weight: 400; color: #94a3b8; font-size: 9px;">[${r.viewport}]</span>
-            ${r.leadId ? `<br/><span style="font-weight: normal; font-size: 10px; color: #64748b;">ID: ${r.leadId}</span>` : ''}
           </td>
           <td style="padding: 12px 10px; font-size: 11px; vertical-align: top; word-break: break-all;">
             <a href="${url}" style="color: #0891b2; text-decoration: none;">${url}</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-family: Consolas, monospace; font-weight: 700; font-size: 11px; color: #0f172a; word-break: break-all;">
+            ${leadId}
           </td>
           <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
             ${passMark}
@@ -478,7 +481,7 @@ async function sendProfessionalDailyReport(summary) {
       <meta charset="utf-8">
       <style>
         body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: #1e293b; background: #f1f5f9; margin: 0; padding: 20px; }
-        .card { max-width: 920px; margin: auto; background: #ffffff; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); overflow: hidden; border: 1px solid #e2e8f0; }
+        .card { max-width: 980px; margin: auto; background: #ffffff; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); overflow: hidden; border: 1px solid #e2e8f0; }
         .header { background: linear-gradient(135deg, #0891b2 0%, #7e22ce 100%); color: #ffffff; padding: 40px 30px; text-align: center; position: relative; }
         .header h1 { margin: 0; font-size: 26px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; }
         .header p { margin: 10px 0 0; opacity: 0.9; font-size: 14px; font-weight: 600; }
@@ -559,11 +562,12 @@ async function sendProfessionalDailyReport(summary) {
           <table style="width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 30px; table-layout: fixed;">
             <thead>
               <tr style="text-align: left; color: #64748b; border-bottom: 1.5px solid #cbd5e1; font-weight: 700;">
-                <th style="padding: 10px; width: 25%;">DOMAIN NAME</th>
-                <th style="padding: 10px; width: 35%;">URL</th>
+                <th style="padding: 10px; width: 18%;">DOMAIN NAME</th>
+                <th style="padding: 10px; width: 28%;">URL</th>
+                <th style="padding: 10px; text-align: center; width: 16%;">LEAD ID</th>
                 <th style="padding: 10px; text-align: center; width: 10%;">PASS</th>
                 <th style="padding: 10px; text-align: center; width: 10%;">FAILED</th>
-                <th style="padding: 10px; text-align: center; width: 20%;">API STATUS</th>
+                <th style="padding: 10px; text-align: center; width: 18%;">API STATUS</th>
               </tr>
             </thead>
             <tbody>
@@ -576,11 +580,12 @@ async function sendProfessionalDailyReport(summary) {
           <table style="width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 30px; table-layout: fixed;">
             <thead>
               <tr style="text-align: left; color: #64748b; border-bottom: 1.5px solid #cbd5e1; font-weight: 700;">
-                <th style="padding: 10px; width: 25%;">DOMAIN NAME</th>
-                <th style="padding: 10px; width: 35%;">URL</th>
+                <th style="padding: 10px; width: 18%;">DOMAIN NAME</th>
+                <th style="padding: 10px; width: 28%;">URL</th>
+                <th style="padding: 10px; text-align: center; width: 16%;">LEAD ID</th>
                 <th style="padding: 10px; text-align: center; width: 10%;">PASS</th>
                 <th style="padding: 10px; text-align: center; width: 10%;">FAILED</th>
-                <th style="padding: 10px; text-align: center; width: 20%;">API STATUS</th>
+                <th style="padding: 10px; text-align: center; width: 18%;">API STATUS</th>
               </tr>
             </thead>
             <tbody>
@@ -624,7 +629,7 @@ async function sendProfessionalDailyReport(summary) {
     auth: { user, pass }
   });
 
-  const subject = `FLM Campaign Report: ${summary.succeeded}/${summary.total} PASS | DOMAIN | URL | PASS | FAILED | API STATUS`;
+  const subject = `FLM Campaign Report: ${summary.succeeded}/${summary.total} PASS | DOMAIN | URL | LEAD ID | PASS | FAILED | API STATUS`;
   await transporter.sendMail({
     from: `"FLM Automation Suite" <${user}>`,
     to: recipient,
