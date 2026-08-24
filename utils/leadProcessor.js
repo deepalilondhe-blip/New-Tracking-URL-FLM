@@ -352,7 +352,15 @@ async function processLead(brandConfig, page) {
          if (numVal < 100000) return '50,000';
          return '100,000';
       }
-      if (bId === 'ptr-main' || bId === 'aftr-main' || bId === 'capital-tax-relief-x' || bId === 'empire-tax-relief-x' ||
+      if (bId === 'aftr-main') {
+         if (numVal < 5000) return '5,000';
+         if (numVal < 10000) return '7,500';
+         if (numVal < 20000) return '10,000';
+         if (numVal < 50000) return '20,000';
+         if (numVal < 100000) return '50,000';
+         return '100,000 & More';
+      }
+      if (bId === 'ptr-main' || bId === 'capital-tax-relief-x' || bId === 'empire-tax-relief-x' ||
           bId === '1800-fresh-tax-x-main' || bId === 'original' || bId === 'everest-tr-x' || bId === 'ftd-x' || bId === 'fsi-main' ||
           bId === 'fresh-start-initiative-x-main' || bId === 'vts-original' || bId === 'vts-ne-branded') {
          if (numVal < 5000) return numVal.toLocaleString();
