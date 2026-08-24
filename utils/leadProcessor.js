@@ -478,112 +478,11 @@ async function processLead(brandConfig, page) {
       if (match) selectedDebtNum = parseInt(match[0]);
     }
     
-    // Use the exact numeric value from the UI for debt mapping
-    // Enforce custom mapped ranges for specific campaigns, or default standard rotational rules
-    if (brandId === 'vts-original') {
-      if (selectedDebtNum < 5000) {
-        selectedDebtNum = 5000;
-      } else if (selectedDebtNum < 10000) {
-        selectedDebtNum = 7500;
-      } else if (selectedDebtNum < 20000) {
-        selectedDebtNum = 10000;
-      } else if (selectedDebtNum < 50000) {
-        selectedDebtNum = 20000;
-      } else if (selectedDebtNum < 100000) {
-        selectedDebtNum = 50000;
-      } else {
-        selectedDebtNum = 100000;
-      }
-    } else if (brandId === 'second-chance-tax-relief-x' || brandId === 'sctr' || brandId === 'sctr-main') {
-      if (selectedDebtNum < 5000) {
-        selectedDebtNum = 5000;
-      } else if (selectedDebtNum < 10000) {
-        selectedDebtNum = 7500;
-      } else if (selectedDebtNum < 20000) {
-        selectedDebtNum = 10000;
-      } else if (selectedDebtNum < 50000) {
-        selectedDebtNum = 20000;
-      } else {
-        selectedDebtNum = 50000;
-      }
-    } else if (brandId === 'senior-tax-defence-main' || brandId === 'senior-tax-defense-x') {
-      if (selectedDebtNum < 5000) {
-        selectedDebtNum = 5000;
-      } else if (selectedDebtNum < 10000) {
-        selectedDebtNum = 7500;
-      } else if (selectedDebtNum < 20000) {
-        selectedDebtNum = 10000;
-      } else if (selectedDebtNum < 30000) {
-        selectedDebtNum = 20000;
-      } else if (selectedDebtNum < 100000) {
-        selectedDebtNum = 50000;
-      } else {
-        selectedDebtNum = 100000;
-      }
-    } else if (brandId === 'ptr-main' || brandId === 'aftr-main' || brandId === 'capital-tax-relief-x' || brandId === 'empire-tax-relief-x') {
-      if (selectedDebtNum < 5000) {
-        selectedDebtNum = 5000;
-      } else if (selectedDebtNum < 10000) {
-        selectedDebtNum = 7500;
-      } else if (selectedDebtNum < 20000) {
-        selectedDebtNum = 10000;
-      } else if (selectedDebtNum < 50000) {
-        selectedDebtNum = 20000;
-      } else if (selectedDebtNum < 100000) {
-        selectedDebtNum = 50000;
-      } else {
-        selectedDebtNum = 100000;
-      }
-    } else if (brandId === 'fth-questionnaire') {
-      if (selectedDebtNum < 5000) {
-        selectedDebtNum = 4000;
-      } else if (selectedDebtNum < 7500) {
-        selectedDebtNum = 5000;
-      } else if (selectedDebtNum < 10000) {
-        selectedDebtNum = 7500;
-      } else if (selectedDebtNum < 20000) {
-        selectedDebtNum = 10000;
-      } else if (selectedDebtNum < 50000) {
-        selectedDebtNum = 20000;
-      } else {
-        selectedDebtNum = 50000;
-      }
-    } else if (brandId === 'fsi-ppc2' || brandId === 'ftd-ppc2') {
-      if (selectedDebtNum <= 9999) {
-        selectedDebtNum = 5000;
-      } else if (selectedDebtNum <= 19999) {
-        selectedDebtNum = 10000;
-      } else if (selectedDebtNum <= 50000) {
-        selectedDebtNum = 20000;
-      } else {
-        selectedDebtNum = 50000;
-      }
-    } else if (isTraLink) {
-      const floor5kBrands = ['tra-st-tsg', 'tra-st-tf', 'tra-st-sp', 'tra-ppc-v9', 'ppc-st', 'ppc-m-ca', 'ppc-fs', 'ppc-cr', 'tra-ppcbm', 'tra-ppcbtr', 'guardian-tax-relief-ppc'];
-      if (floor5kBrands.includes(brandId)) {
-        selectedDebtNum = selectedDebtNum >= 5000 ? selectedDebtNum : 5000;
-      } else {
-        // "as it is" - no floor
-        selectedDebtNum = selectedDebtNum;
-      }
-    } else if (selectedDebtNum < 5000) {
-      selectedDebtNum = 5000;
-    } else {
-      if (selectedDebtNum > 0) {
-        if (selectedDebtNum <= 10000) {
-          selectedDebtNum = 5000;
-        } else if (selectedDebtNum <= 20000) {
-          selectedDebtNum = 10000;
-        } else if (selectedDebtNum <= 50000) {
-          selectedDebtNum = 20000;
-        } else if (selectedDebtNum <= 100000) {
-          selectedDebtNum = 50000;
-        } else {
-          selectedDebtNum = 100000;
-        }
-      } else {
-        selectedDebtNum = 5000;
-      }
+    // Use the mapped value from mapToRange to ensure 100% consistency between the Google Sheet and the API/Cake submission
+    const mappedStr = mapToRange(selectedDebtNum, brandId);
+    const parsedMappedVal = parseInt(mappedStr.replace(/[^0-9]/g, ''));
+    if (!isNaN(parsedMappedVal) && parsedMappedVal > 0) {
+      selectedDebtNum = parsedMappedVal;
     }
     
     console.log(`💾 [Debt Debug] formPage.selectedSliderAmount = "${formPage.selectedSliderAmount}"`);
