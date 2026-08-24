@@ -1,0 +1,35 @@
+name: Daily FLM Automation
+
+on:
+  schedule:
+    # Run everyday at 10:00 AM IST (which is 04:30 UTC)
+    - cron: '30 4 * * *'
+  workflow_dispatch: # Allows manual trigger from the GitHub Actions UI
+
+jobs:
+  run-automation:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install Node Dependencies
+        run: npm ci
+
+      - name: Install Playwright Chrome and System Dependencies
+        run: npx playwright install --with-deps chromium
+
+      - name: Configure Credentials (.env & Google Service Account)
+        run: |
+          echo "${{ secrets.DOTENV }}" > .env
+          echo '${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}' > service_account.json
+
+      - name: Execute Daily Verification Campaign
+        run: node scheduler.js --once
