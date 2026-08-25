@@ -543,15 +543,15 @@ async function sendProfessionalDailyReport(summary) {
       <div class="card">
         <div class="header">
           <h1>FLM Automation</h1>
-          <p>Intelligence Briefing - \${new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
+          <p>Intelligence Briefing - ${new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
         </div>
         
         <div class="content">
           <div style="font-size: 15px; font-weight: 700; color: #1e293b; margin-bottom: 20px; background: #f8fafc; padding: 12px 15px; border-radius: 8px; border: 1px solid #e2e8f0;">
-            📊 URL Count - \${totalCount} &nbsp;|&nbsp; Passed: \${succeededCount} &nbsp;|&nbsp; Failed: \${failedCount}
+            📊 URL Count - ${totalCount} &nbsp;|&nbsp; Passed: ${succeededCount} &nbsp;|&nbsp; Failed: ${failedCount}
           </div>
 
-          \${failedListHtml}
+          ${failedListHtml}
 
           <!-- Section 1: FLM URL (NON TRA) -->
           <div style="font-size: 15px; font-weight: 800; color: #0f172a; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; margin: 25px 0 15px;">FLM URL (NON TRA)</div>
@@ -567,7 +567,7 @@ async function sendProfessionalDailyReport(summary) {
               </tr>
             </thead>
             <tbody>
-              \${nonTraTableRowsHtml}
+              ${nonTraTableRowsHtml}
             </tbody>
           </table>
 
@@ -585,7 +585,7 @@ async function sendProfessionalDailyReport(summary) {
               </tr>
             </thead>
             <tbody>
-              \${traTableRowsHtml}
+              ${traTableRowsHtml}
             </tbody>
           </table>
           
@@ -594,9 +594,9 @@ async function sendProfessionalDailyReport(summary) {
         <div class="footer">
           <p style="margin: 0 0 12px; font-weight: 700;">Google Sheet Report:</p>
           <p style="margin: 0 0 16px;">
-            <a href="\${sheetUrl}" style="color: #67e8f9; font-weight: 700; text-decoration: underline; word-break: break-all;">\${sheetUrl}</a>
+            <a href="${sheetUrl}" style="color: #67e8f9; font-weight: 700; text-decoration: underline; word-break: break-all;">${sheetUrl}</a>
           </p>
-          <p>© \${new Date().getFullYear()} Forward Leap Marketing. Confidential AI Intelligence.</p>
+          <p>© ${new Date().getFullYear()} Forward Leap Marketing. Confidential AI Intelligence.</p>
           <p style="opacity: 0.6;">You are receiving this because FLM Agent Security Mode is ENABLED.</p>
         </div>
       </div>
