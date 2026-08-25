@@ -350,7 +350,7 @@ async function processLead(brandConfig, page) {
          return '50,000';
       }
       if (bId === 'senior-tax-defence-main' || bId === 'senior-tax-defense-x') {
-         if (numVal < 5000) return numVal.toLocaleString();
+         if (numVal < 5000) return '5,000';
          if (numVal < 10000) return '7,500';
          if (numVal < 20000) return '10,000';
          if (numVal < 30000) return '20,000';
@@ -375,7 +375,7 @@ async function processLead(brandConfig, page) {
       if (bId === 'ptr-main' || bId === 'capital-tax-relief-x' || bId === 'empire-tax-relief-x' ||
           bId === '1800-fresh-tax-x-main' || bId === 'original' || bId === 'ftd-x' || bId === 'fsi-main' ||
           bId === 'fresh-start-initiative-x-main' || bId === 'vts-original' || bId === 'vts-ne-branded') {
-         if (numVal < 5000) return numVal.toLocaleString();
+         if (numVal < 5000) return '5,000';
          if (numVal < 10000) return '7,500';
          if (numVal < 20000) return '10,000';
          if (numVal < 50000) return '20,000';
