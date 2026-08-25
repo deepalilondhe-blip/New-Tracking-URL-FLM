@@ -186,6 +186,11 @@ async function processLead(brandConfig, page) {
         rawSliderVal = Math.min(1000, maxLimit);
       }
 
+      // Enforce minimum floor for ETR (Everest Tax Relief) to prevent disqualification below 10k
+      if (brandId === 'everest-tr-x' && rawSliderVal < 10000) {
+        rawSliderVal = 10000;
+      }
+
       // Ensure we cap it by the campaign's specific maximum limit so it doesn't break the slider
       if (rawSliderVal > maxLimit) {
         rawSliderVal = Math.floor(maxLimit / 1000) * 1000;
@@ -360,8 +365,15 @@ async function processLead(brandConfig, page) {
          if (numVal < 100000) return '50,000';
          return '100,000 & More';
       }
+      if (bId === 'everest-tr-x') {
+         if (numVal < 10000) return '10,000';
+         if (numVal < 20000) return '10,000';
+         if (numVal < 50000) return '20,000';
+         if (numVal < 100000) return '50,000';
+         return '100,000 & More';
+      }
       if (bId === 'ptr-main' || bId === 'capital-tax-relief-x' || bId === 'empire-tax-relief-x' ||
-          bId === '1800-fresh-tax-x-main' || bId === 'original' || bId === 'everest-tr-x' || bId === 'ftd-x' || bId === 'fsi-main' ||
+          bId === '1800-fresh-tax-x-main' || bId === 'original' || bId === 'ftd-x' || bId === 'fsi-main' ||
           bId === 'fresh-start-initiative-x-main' || bId === 'vts-original' || bId === 'vts-ne-branded') {
          if (numVal < 5000) return numVal.toLocaleString();
          if (numVal < 10000) return '7,500';

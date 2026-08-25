@@ -82,15 +82,40 @@ class FormPage {
     // Clear cookies/session/storage before each run for a clean state
     await this.page.context().clearCookies();
     await this.page.context().clearPermissions();
-    try {
-      await this.page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 });
-    } catch (e) {
-      console.warn(`⚠️ Navigation warning: ${e.message}. Continuing with page execution...`);
-    }
 
-    const finalUrl = this.page.url();
-    if (finalUrl.includes('chrome-error://') || finalUrl.includes('chromewebdata')) {
-      throw new Error(`Navigation failed: browser landed on chrome error page (${finalUrl})`);
+    const isChromeErrorUrl = (u) =>
+      !!u && (u.includes('chrome-error://') || u.includes('chromewebdata'));
+    const maxNavAttempts = 3;
+
+    for (let attempt = 1; attempt <= maxNavAttempts; attempt++) {
+      try {
+        await this.page.goto(url, { waitUntil: 'domcontentloaded', timeout: 45000 });
+      } catch (e) {
+        console.warn(`⚠️ Navigation warning (attempt ${attempt}/${maxNavAttempts}): ${e.message}. Continuing with page execution...`);
+      }
+
+      // Redirect hops (flmtrk -> landing) can briefly land on chrome-error.
+      await this.page.waitForTimeout(1500);
+      let finalUrl = this.page.url();
+      if (isChromeErrorUrl(finalUrl)) {
+        try {
+          await this.page.waitForFunction(
+            () => !location.href.includes('chrome-error://') && !location.href.includes('chromewebdata'),
+            { timeout: 8000 }
+          );
+          finalUrl = this.page.url();
+        } catch (_) {}
+      }
+
+      if (!isChromeErrorUrl(finalUrl)) {
+        break;
+      }
+
+      console.warn(`⚠️ Chrome error page on attempt ${attempt}/${maxNavAttempts} (${finalUrl})`);
+      if (attempt === maxNavAttempts) {
+        throw new Error(`Navigation failed: browser landed on chrome error page (${finalUrl})`);
+      }
+      await this.page.waitForTimeout(2000);
     }
 
     await this.page.waitForLoadState('domcontentloaded').catch(() => {});
@@ -120,9 +145,23 @@ class FormPage {
     async handleChoiceRotation(choicesSelector, runIndex) {
         const choices = await this.page.$$(choicesSelector);
         if (choices.length > 0) {
-            const indexToSelect = runIndex % choices.length;
-            const target = choices[indexToSelect];
-            const text = await target.innerText();
+            const visibleChoices = [];
+            for (const choice of choices) {
+              const text = await choice.innerText().catch(() => '');
+              visibleChoices.push({ element: choice, text });
+            }
+            
+            const isDisqualifying = (txt) => {
+              const lower = txt.toLowerCase().trim();
+              return lower.includes('less than') || lower.includes('under') || lower.includes('below') || lower.includes('<') || lower === 'no' || lower === 'none';
+            };
+            
+            const qualifying = visibleChoices.filter(c => !isDisqualifying(c.text));
+            const finalChoices = qualifying.length > 0 ? qualifying : visibleChoices;
+            
+            const indexToSelect = runIndex % finalChoices.length;
+            const target = finalChoices[indexToSelect].element;
+            const text = finalChoices[indexToSelect].text;
             console.log(`🔘 [Rotation] Selecting Option ${indexToSelect + 1}: "${text}"`);
             await target.click();
             return text;

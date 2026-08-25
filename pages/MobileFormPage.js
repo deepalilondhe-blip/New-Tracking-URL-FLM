@@ -407,15 +407,38 @@ class MobileFormPage {
     await this.page.context().clearCookies();
     await this.page.context().clearPermissions();
 
-    try {
-      await this.page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 });
-    } catch (e) {
-      console.warn(`⚠️ [Mobile] Navigation warning: ${e.message}. Continuing with page execution...`);
-    }
+    const isChromeErrorUrl = (u) =>
+      !!u && (u.includes('chrome-error://') || u.includes('chromewebdata'));
+    const maxNavAttempts = 3;
 
-    const finalUrl = this.page.url();
-    if (finalUrl.includes('chrome-error://') || finalUrl.includes('chromewebdata')) {
-      throw new Error(`Navigation failed: browser landed on chrome error page (${finalUrl})`);
+    for (let attempt = 1; attempt <= maxNavAttempts; attempt++) {
+      try {
+        await this.page.goto(url, { waitUntil: 'domcontentloaded', timeout: 45000 });
+      } catch (e) {
+        console.warn(`⚠️ [Mobile] Navigation warning (attempt ${attempt}/${maxNavAttempts}): ${e.message}. Continuing with page execution...`);
+      }
+
+      await this.page.waitForTimeout(1500);
+      let finalUrl = this.page.url();
+      if (isChromeErrorUrl(finalUrl)) {
+        try {
+          await this.page.waitForFunction(
+            () => !location.href.includes('chrome-error://') && !location.href.includes('chromewebdata'),
+            { timeout: 8000 }
+          );
+          finalUrl = this.page.url();
+        } catch (_) {}
+      }
+
+      if (!isChromeErrorUrl(finalUrl)) {
+        break;
+      }
+
+      console.warn(`⚠️ [Mobile] Chrome error page on attempt ${attempt}/${maxNavAttempts} (${finalUrl})`);
+      if (attempt === maxNavAttempts) {
+        throw new Error(`Navigation failed: browser landed on chrome error page (${finalUrl})`);
+      }
+      await this.page.waitForTimeout(2000);
     }
 
     await this.page.waitForLoadState('domcontentloaded').catch(() => {});
@@ -1718,8 +1741,16 @@ class MobileFormPage {
       }
     }
 
-    if (visibleOptions.length > 0) {
-      const chosen = visibleOptions[runIndex % visibleOptions.length];
+    const isDisqualifying = (txt) => {
+      const lower = txt.toLowerCase().trim();
+      return lower.includes('less than') || lower.includes('under') || lower.includes('below') || lower.includes('<') || lower === 'no' || lower === 'none';
+    };
+    
+    const qualifyingOptions = visibleOptions.filter(o => !isDisqualifying(o.text));
+    const finalOptions = qualifyingOptions.length > 0 ? qualifyingOptions : visibleOptions;
+
+    if (finalOptions.length > 0) {
+      const chosen = finalOptions[runIndex % finalOptions.length];
       console.log(`🔘 [Mobile Rotation] Selected: "${chosen.text}"`);
       this.clickedChoiceTexts.add(chosen.text);
       // Support for touch/tap events on mobile
