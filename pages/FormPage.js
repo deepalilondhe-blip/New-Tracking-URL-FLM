@@ -1127,7 +1127,21 @@ class FormPage {
         } else {
           numericDebt = 100000;
         }
-      } else if (this.brandId === 'ptr-main' || this.brandId === 'aftr-main' || this.brandId === 'capital-tax-relief-x' || this.brandId === 'empire-tax-relief-x') {
+      } else if (this.brandId === 'everest-tr-x') {
+        if (firstVal < 10000) {
+          numericDebt = 10000;
+        } else if (firstVal < 20000) {
+          numericDebt = 10000;
+        } else if (firstVal < 50000) {
+          numericDebt = 20000;
+        } else if (firstVal < 100000) {
+          numericDebt = 50000;
+        } else {
+          numericDebt = 100000;
+        }
+      } else if (this.brandId === 'ptr-main' || this.brandId === 'aftr-main' || this.brandId === 'capital-tax-relief-x' || this.brandId === 'empire-tax-relief-x' ||
+                 this.brandId === '1800-fresh-tax-x-main' || this.brandId === 'original' || this.brandId === 'ftd-x' || this.brandId === 'fsi-main' ||
+                 this.brandId === 'fresh-start-initiative-x-main' || this.brandId === 'vts-original' || this.brandId === 'vts-ne-branded') {
         if (firstVal < 5000) {
           numericDebt = 5000;
         } else if (firstVal < 10000) {
