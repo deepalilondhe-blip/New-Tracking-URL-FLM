@@ -311,10 +311,12 @@ async function runBatch() {
   }
   console.log(`🤖 [FLM Agent] Global Health Verification Complete.\n`);
 
-  // Flatten all runs into a single queue
+  // Flatten all runs into a single queue, excluding any campaigns that failed the global health check
+  const failedGlobalIds = new Set(results.map(r => r.campaignId));
   const allRuns = [];
   for (const campaignGroup of runnerScripts) {
-    allRuns.push(...campaignGroup);
+    const filtered = campaignGroup.filter(run => !failedGlobalIds.has(run.campaignId));
+    allRuns.push(...filtered);
   }
 
   console.log(`\n================================================================`);
@@ -409,7 +411,6 @@ async function sendProfessionalDailyReport(summary) {
   const ccList = '';
   const recipient = toList;
 
-  const successRate = ((summary.succeeded / (summary.total || 1)) * 100).toFixed(1);
   const campaignLookup = new Map(campaigns.map(c => [c.id, c]));
 
   // Helper to determine if a campaign is a TRA campaign
@@ -422,9 +423,27 @@ async function sendProfessionalDailyReport(summary) {
   const campaignIndexMap = new Map(campaigns.map((c, idx) => [c.id, idx]));
   const sortSequential = (a, b) => (campaignIndexMap.get(a.campaignId) || 0) - (campaignIndexMap.get(b.campaignId) || 0);
 
+  // Deduplicate runs by campaignId, keeping the most recent one (highest index/timestamp)
+  const uniqueRunsMap = new Map();
   const allRuns = summary.runs || [];
-  const traRuns = allRuns.filter(r => isTraCampaign(r.campaignId)).sort(sortSequential);
-  const nonTraRuns = allRuns.filter(r => !isTraCampaign(r.campaignId)).sort(sortSequential);
+  allRuns.forEach(r => {
+    uniqueRunsMap.set(r.campaignId, r);
+  });
+  const latestRuns = Array.from(uniqueRunsMap.values());
+
+  const totalCount = latestRuns.length;
+  const succeededCount = latestRuns.filter(r => r.success).length;
+  const failedCount = totalCount - succeededCount;
+
+  const traRuns = latestRuns.filter(r => isTraCampaign(r.campaignId)).sort(sortSequential);
+  const nonTraRuns = latestRuns.filter(r => !isTraCampaign(r.campaignId)).sort(sortSequential);
+
+  // Lead ID validation helper (excludes test/synthetic IDs like ckm58725 or ckmtestpixel)
+  const isValidLeadId = (id) => {
+    if (!id) return false;
+    const lower = id.toLowerCase();
+    return !lower.includes('ckm') && !lower.includes('test') && !lower.includes('invalid') && lower !== '—';
+  };
 
   // Helper to generate Table Rows HTML
   const generateTableRows = (runsList) => {
@@ -435,8 +454,8 @@ async function sendProfessionalDailyReport(summary) {
       const cfg = campaignLookup.get(r.campaignId);
       const domainName = cfg?.name || r.campaignId.toUpperCase();
       const url = cfg?.url || 'N/A';
-      const leadId = r.leadId || '—';
       
+      const displayLeadId = isValidLeadId(r.leadId) ? r.leadId : '—';
       const passMark = r.success ? '<span style="color: #166534; font-weight: 800; font-size: 12px;">PASS</span>' : '<span style="color: #cbd5e1;">—</span>';
       const failMark = !r.success ? '<span style="color: #991b1b; font-weight: 800; font-size: 12px;">FAILED</span>' : '<span style="color: #cbd5e1;">—</span>';
       const apiStatusText = r.apiStatus || (r.success ? '200 OK' : 'N/A');
@@ -452,7 +471,7 @@ async function sendProfessionalDailyReport(summary) {
             <a href="${url}" style="color: #0891b2; text-decoration: none;">${url}</a>
           </td>
           <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-family: Consolas, monospace; font-weight: 700; font-size: 11px; color: #0f172a; word-break: break-all;">
-            ${leadId}
+            ${displayLeadId}
           </td>
           <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
             ${passMark}
@@ -470,11 +489,30 @@ async function sendProfessionalDailyReport(summary) {
 
   const traTableRowsHtml = generateTableRows(traRuns);
   const nonTraTableRowsHtml = generateTableRows(nonTraRuns);
+  
   const sheetId = process.env.GOOGLE_SHEET_ID || '1rXIg3dMQ4APH3lHLcfWYfP45PnOAKmV9POkoSS3YWxI';
   const sheetUrl = `https://docs.google.com/spreadsheets/d/${sheetId}/edit`;
-  const durationLabel = summary.durationMinutes != null
-    ? Number(summary.durationMinutes).toFixed(1)
-    : ((summary.duration || 0) / 60).toFixed(1);
+
+  // Build the highlighted failed list for the top section
+  const failedRuns = latestRuns.filter(r => !r.success);
+  let failedListHtml = '';
+  if (failedRuns.length > 0) {
+    failedListHtml = `
+      <div style="background: #fee2e2; border-left: 4px solid #dc2626; padding: 15px; border-radius: 4px; margin-bottom: 25px;">
+        <div style="color: #991b1b; font-weight: 800; font-size: 13px; margin-bottom: 8px; text-transform: uppercase;">⚠️ FAILED URLS (ACTION REQUIRED)</div>
+        <ul style="margin: 0; padding-left: 20px; font-size: 12px; color: #7f1d1d; line-height: 1.6;">
+          ${failedRuns.map(r => {
+            const cfg = campaignLookup.get(r.campaignId);
+            const name = cfg?.name || r.campaignId.toUpperCase();
+            const url = cfg?.url || 'N/A';
+            const err = r.error || 'Timeout/Verification Failed';
+            const isVpn = cfg?.useVpn ? ' (VPN)' : '';
+            return \`<li><b>${name}${isVpn}:</b> <a href="${url}" style="color: #b91c1c; text-decoration: underline;">${url}</a> - <span style="font-weight: bold; color: #dc2626;">${err}</span></li>\`;
+          }).join('')}
+        </ul>
+      </div>
+    `;
+  }
   
   const htmlBody = `
     <!DOCTYPE html>
@@ -484,83 +522,29 @@ async function sendProfessionalDailyReport(summary) {
       <style>
         body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: #1e293b; background: #f1f5f9; margin: 0; padding: 20px; }
         .card { max-width: 980px; margin: auto; background: #ffffff; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); overflow: hidden; border: 1px solid #e2e8f0; }
-        .header { background: linear-gradient(135deg, #0891b2 0%, #7e22ce 100%); color: #ffffff; padding: 40px 30px; text-align: center; position: relative; }
-        .header h1 { margin: 0; font-size: 26px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; }
-        .header p { margin: 10px 0 0; opacity: 0.9; font-size: 14px; font-weight: 600; }
-        .agent-badge { background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); display: inline-block; padding: 5px 15px; border-radius: 20px; font-size: 11px; font-weight: 700; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.3); }
-        .stats-row { display: flex; padding: 30px; background: #ffffff; border-bottom: 1px solid #f1f5f9; text-align: center; }
-        .stat-item { flex: 1; }
-        .stat-val { font-size: 32px; font-weight: 800; background: linear-gradient(135deg, #0891b2, #7e22ce); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .stat-lbl { font-size: 11px; color: #64748b; text-transform: uppercase; font-weight: 700; margin-top: 5px; }
-        .content { padding: 40px; }
-        .ai-message { background: #f8fafc; border-left: 4px solid #0891b2; padding: 20px; border-radius: 0 12px 12px 0; margin-bottom: 30px; }
-        .ai-message-title { font-size: 13px; font-weight: 800; color: #0891b2; margin-bottom: 8px; text-transform: uppercase; }
-        .performance-box { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; margin-bottom: 30px; }
-        .progress-bar { height: 12px; background: #f1f5f9; border-radius: 6px; margin-top: 12px; overflow: hidden; border: 1px solid #e2e8f0; }
-        .progress-fill { height: 100%; background: linear-gradient(90deg, #0891b2, #22c55e); border-radius: 6px; }
-        .ai-advisory { background: #fffbeb; border: 1px solid #fef3c7; border-radius: 16px; padding: 25px; margin-bottom: 30px; }
-        .ai-title { color: #92400e; font-size: 14px; font-weight: 800; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
-        .footer { padding: 30px; text-align: center; background: #0f172a; font-size: 11px; color: #94a3b8; }
-        .brand-link { background: #0891b2; color: #ffffff; text-decoration: none; padding: 12px 25px; border-radius: 10px; font-weight: 700; display: inline-block; margin-top: 20px; transition: all 0.3s; }
+        .header { background: linear-gradient(135deg, #0891b2 0%, #7e22ce 100%); color: #ffffff; padding: 20px 30px; text-align: center; }
+        .header h1 { margin: 0; font-size: 20px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; }
+        .header p { margin: 5px 0 0; opacity: 0.9; font-size: 12px; font-weight: 600; }
+        .content { padding: 30px; }
+        .footer { padding: 25px; text-align: center; background: #0f172a; font-size: 11px; color: #94a3b8; }
       </style>
     </head>
     <body>
       <div class="card">
         <div class="header">
-          <div class="agent-badge">🛡️ FLM AGENT SECURITY: ACTIVE</div>
-          <h1>Intelligence Briefing</h1>
-          <p>${new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
-        </div>
-        
-        <div class="stats-row" style="display: table; width: 100%; table-layout: fixed;">
-          <div class="stat-item" style="display: table-cell;">
-            <div class="stat-val">${summary.total}</div>
-            <div class="stat-lbl">URLs Executed</div>
-          </div>
-          <div class="stat-item" style="display: table-cell; border-left: 1px solid #f1f5f9; border-right: 1px solid #f1f5f9;">
-            <div class="stat-val" style="color: #22c55e;">${successRate}%</div>
-            <div class="stat-lbl">Success Rate</div>
-          </div>
-          <div class="stat-item" style="display: table-cell;">
-            <div class="stat-val" style="color: #0891b2;">${durationLabel}m</div>
-            <div class="stat-lbl">Total Time</div>
-          </div>
+          <h1>FLM Automation</h1>
+          <p>Intelligence Briefing - \${new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
         </div>
         
         <div class="content">
-          <div class="ai-message">
-            <div class="ai-message-title">🧠 Agent Insight: Why were ${summary.failed} campaigns "Blocked"?</div>
-            <p style="margin: 0; font-size: 14px; color: #475569;">
-              The <b>FLM Security Shield</b> flagged these campaigns for data safety. The most common reasons for a "Blocked" or "Failed" status today were:
-              <ul style="margin: 10px 0 0; padding-left: 20px;">
-                <li><b>Data Mismatch:</b> The UI value did not match the API backend.</li>
-                <li><b>Network Timeout:</b> The campaign URL took too long to load (60s+).</li>
-                <li><b>Lead Not Found:</b> The Lead ID was not yet synced to the tracking server.</li>
-              </ul>
-            </p>
+          <div style="font-size: 15px; font-weight: 700; color: #1e293b; margin-bottom: 20px; background: #f8fafc; padding: 12px 15px; border-radius: 8px; border: 1px solid #e2e8f0;">
+            📊 URL Count - \${totalCount} &nbsp;|&nbsp; Passed: \${succeededCount} &nbsp;|&nbsp; Failed: \${failedCount}
           </div>
 
-          <div class="performance-box">
-            <div style="display: flex; justify-content: space-between; font-size: 14px; font-weight: 700; color: #1e293b;">
-              <span>Uptime Protection</span>
-              <span>${successRate}%</span>
-            </div>
-            <div class="progress-bar">
-              <div class="progress-fill" style="width: ${successRate}%;"></div>
-            </div>
-          </div>
+          \${failedListHtml}
 
-          ${summary.failed > 0 ? `
-            <div class="ai-advisory">
-              <div class="ai-title">⚠️ AGENT ADVISORY (ACTION REQUIRED)</div>
-              <ul style="font-size: 13px; color: #475569; padding-left: 20px; margin: 0;">
-                ${summary.failureDetails.map(f => `<li style="margin-bottom: 10px;">${f}</li>`).join('')}
-              </ul>
-            </div>
-          ` : `<div style="text-align: center; padding: 25px; background: #f0fdf4; border: 1px solid #dcfce7; border-radius: 16px; color: #166534; font-weight: 700; font-size: 15px;">✅ PERFECTION: All funnels are 100% operational.</div>`}
-
-          <!-- Section 1: TRA Campaigns -->
-          <div style="font-size: 15px; font-weight: 800; color: #0f172a; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; margin: 40px 0 15px;">TRA Campaigns Verification (Sequential)</div>
+          <!-- Section 1: FLM URL (NON TRA) -->
+          <div style="font-size: 15px; font-weight: 800; color: #0f172a; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; margin: 25px 0 15px;">FLM URL (NON TRA)</div>
           <table style="width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 30px; table-layout: fixed;">
             <thead>
               <tr style="text-align: left; color: #64748b; border-bottom: 1.5px solid #cbd5e1; font-weight: 700;">
@@ -573,12 +557,12 @@ async function sendProfessionalDailyReport(summary) {
               </tr>
             </thead>
             <tbody>
-              ${traTableRowsHtml}
+              \${nonTraTableRowsHtml}
             </tbody>
           </table>
 
-          <!-- Section 2: Non-TRA Campaigns -->
-          <div style="font-size: 15px; font-weight: 800; color: #0f172a; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; margin: 40px 0 15px;">Non-TRA Campaigns Verification (Sequential)</div>
+          <!-- Section 2: TRA URL -->
+          <div style="font-size: 15px; font-weight: 800; color: #0f172a; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; margin: 25px 0 15px;">TRA URL</div>
           <table style="width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 30px; table-layout: fixed;">
             <thead>
               <tr style="text-align: left; color: #64748b; border-bottom: 1.5px solid #cbd5e1; font-weight: 700;">
@@ -591,18 +575,18 @@ async function sendProfessionalDailyReport(summary) {
               </tr>
             </thead>
             <tbody>
-              ${nonTraTableRowsHtml}
+              \${traTableRowsHtml}
             </tbody>
           </table>
           
         </div>
 
         <div class="footer">
-          <p style="margin: 0 0 12px;">Google Sheet Report</p>
+          <p style="margin: 0 0 12px; font-weight: 700;">Google Sheet Report:</p>
           <p style="margin: 0 0 16px;">
-            <a href="${sheetUrl}" style="color: #67e8f9; font-weight: 700; text-decoration: underline; word-break: break-all;">${sheetUrl}</a>
+            <a href="\${sheetUrl}" style="color: #67e8f9; font-weight: 700; text-decoration: underline; word-break: break-all;">\${sheetUrl}</a>
           </p>
-          <p>© ${new Date().getFullYear()} Forward Leap Marketing. Confidential AI Intelligence.</p>
+          <p>© \${new Date().getFullYear()} Forward Leap Marketing. Confidential AI Intelligence.</p>
           <p style="opacity: 0.6;">You are receiving this because FLM Agent Security Mode is ENABLED.</p>
         </div>
       </div>
