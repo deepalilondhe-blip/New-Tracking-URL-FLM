@@ -517,7 +517,7 @@ async function sendProfessionalDailyReport(summary) {
             const url = cfg?.url || 'N/A';
             const err = r.error || 'Timeout/Verification Failed';
             const isVpn = cfg?.useVpn ? ' (VPN)' : '';
-            return \`<li><b>${name}${isVpn}:</b> <a href="${url}" style="color: #b91c1c; text-decoration: underline;">${url}</a> - <span style="font-weight: bold; color: #dc2626;">${err}</span></li>\`;
+            return `<li><b>${name}${isVpn}:</b> <a href="${url}" style="color: #b91c1c; text-decoration: underline;">${url}</a> - <span style="font-weight: bold; color: #dc2626;">${err}</span></li>`;
           }).join('')}
         </ul>
       </div>
