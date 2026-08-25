@@ -174,8 +174,7 @@
     "sliderAmount": "25000",
     "state": "Texas",
     "phone": "512-555-6789",
-    "skipSecondApi": false,
-    "useVpn": true
+    "skipSecondApi": false
   },
   {
     "id": "aftr-main",
