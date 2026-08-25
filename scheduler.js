@@ -333,6 +333,16 @@ async function runBatch() {
         console.error(`⚠️  [ERROR] Execution crashed for ${run.campaignId} [${run.label}]:`, err.message);
         return { ...run, success: false, error: err.message };
       });
+
+      // Override: If the campaign has a synthetic/invalid Lead ID, mark the run as failed!
+      if (res.success && res.leadId) {
+        const lower = res.leadId.toLowerCase();
+        if (lower.includes('ckm') || lower.includes('test') || lower.includes('invalid') || lower === '—') {
+          res.success = false;
+          res.error = `Invalid Lead ID: ${res.leadId}`;
+          res.apiStatus = 'Invalid Lead ID';
+        }
+      }
       results.push(res);
       
       // Accumulate results for the daily summary
