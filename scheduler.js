@@ -405,14 +405,8 @@ async function checkAndSendDailySummary() {
 async function sendProfessionalDailyReport(summary) {
   const user = process.env.SMTP_USER;
   const pass = process.env.SMTP_PASS;
-  const toList = 'sachin.agrawal@bytestechnolab.com, deepali.londhe@magnetoitsolutions.com';
-  const ccList = [
-    'ilfas.mansuri@bytestechnolab.com',
-    'apexa.dave@magnetoitsolutions.com',
-    'urvish.patel@bytestechnolab.com',
-    'mitul@bytestechnolab.com',
-    'nivedita@magnetoitsolutions.com'
-  ].join(', ');
+  const toList = 'deepali.londhe@magnetoitsolutions.com';
+  const ccList = '';
   const recipient = toList;
 
   const successRate = ((summary.succeeded / (summary.total || 1)) * 100).toFixed(1);
@@ -638,16 +632,18 @@ async function sendProfessionalDailyReport(summary) {
   });
 
   const subject = `FLM Campaign Report: ${summary.succeeded}/${summary.total} PASS | DOMAIN | URL | LEAD ID | PASS | FAILED | API STATUS`;
-  await transporter.sendMail({
+  const mailOptions = {
     from: `"Deepali Londhe" <${user}>`,
     to: toList,
-    cc: ccList,
     subject,
     html: htmlBody
-  });
+  };
+  if (ccList) {
+    mailOptions.cc = ccList;
+  }
+  await transporter.sendMail(mailOptions);
   console.log(`✅ Grouped campaign report emailed From: ${user}`);
   console.log(`✅ To: ${toList}`);
-  console.log(`✅ Cc: ${ccList}`);
   console.log(`✅ Email subject: ${subject}`);
 }
 
