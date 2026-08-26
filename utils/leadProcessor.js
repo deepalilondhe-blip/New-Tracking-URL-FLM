@@ -848,7 +848,8 @@ if (sheetSuccess) {
       success: true,
       leadId: leadIdToUse,
       brand: brandConfig.name,
-      apiStatus: hasLeadId ? (verificationStatus.startsWith('VERIFIED') ? '200 OK' : 'API_FAILED') : 'N/A'
+      apiStatus: hasLeadId ? (verificationStatus.startsWith('VERIFIED') ? '200 OK' : 'API_FAILED') : 'N/A',
+      thankYouUrl: thankYouUrl || ''
     };
 
   } catch (error) {
@@ -858,7 +859,8 @@ if (sheetSuccess) {
       error: error.message,
       leadId: leadIdToUse,
       brand: brandConfig.name,
-      apiStatus: 'ERROR'
+      apiStatus: 'ERROR',
+      thankYouUrl: ''
     };
   }
 }

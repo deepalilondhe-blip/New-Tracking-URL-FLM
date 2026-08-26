@@ -94,7 +94,8 @@ function runScript(campaignId, viewport, browserEngine = 'chromium', label = 'St
           leadId: evidence.leadId || null,
           apiStatus: evidence.apiStatus || 'FAILED',
           screenshot: evidence.screenshot,
-          video: evidence.video
+          video: evidence.video,
+          thankYouUrl: evidence.thankYouUrl || ''
         });
       }
       
@@ -104,7 +105,8 @@ function runScript(campaignId, viewport, browserEngine = 'chromium', label = 'St
         campaignId, viewport, browser: browserEngine, label, 
         success: true, 
         leadId: evidence.leadId || null,
-        apiStatus: evidence.apiStatus || '200 OK'
+        apiStatus: evidence.apiStatus || '200 OK',
+        thankYouUrl: evidence.thankYouUrl || ''
       });
     });
 
@@ -456,7 +458,7 @@ async function sendProfessionalDailyReport(summary) {
   // Helper to generate Table Rows HTML
   const generateTableRows = (runsList) => {
     if (runsList.length === 0) {
-      return `<tr><td colspan="6" style="padding: 20px; text-align: center; color: #64748b; font-style: italic;">No campaigns executed in this section today.</td></tr>`;
+      return `<tr><td colspan="7" style="padding: 20px; text-align: center; color: #64748b; font-style: italic;">No campaigns executed in this section today.</td></tr>`;
     }
     return runsList.map(r => {
       const cfg = campaignLookup.get(r.campaignId);
@@ -469,14 +471,18 @@ async function sendProfessionalDailyReport(summary) {
       const apiStatusText = r.apiStatus || (r.success ? '200 OK' : 'N/A');
       const apiStatusColor = r.success ? '#0891b2' : '#991b1b';
       
+      const thankYouUrlLink = r.thankYouUrl ? `<a href="${r.thankYouUrl}" style="color: #0891b2; text-decoration: underline;">View Link</a>` : '—';
+      
       return `
         <tr style="border-bottom: 1px solid #f1f5f9;">
           <td style="padding: 12px 10px; font-weight: 700; color: #1e293b; vertical-align: top; word-break: break-word;">
             ${domainName}
-            <span style="font-weight: 400; color: #94a3b8; font-size: 9px;">[${r.viewport}]</span>
           </td>
           <td style="padding: 12px 10px; font-size: 11px; vertical-align: top; word-break: break-all;">
             <a href="${url}" style="color: #0891b2; text-decoration: none;">${url}</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            ${thankYouUrlLink}
           </td>
           <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-family: Consolas, monospace; font-weight: 700; font-size: 11px; color: #0f172a; word-break: break-all;">
             ${displayLeadId}
@@ -556,12 +562,13 @@ async function sendProfessionalDailyReport(summary) {
           <table style="width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 30px; table-layout: fixed;">
             <thead>
               <tr style="text-align: left; color: #64748b; border-bottom: 1.5px solid #cbd5e1; font-weight: 700;">
-                <th style="padding: 10px; width: 18%;">DOMAIN NAME</th>
-                <th style="padding: 10px; width: 28%;">URL</th>
-                <th style="padding: 10px; text-align: center; width: 16%;">LEAD ID</th>
-                <th style="padding: 10px; text-align: center; width: 10%;">PASS</th>
-                <th style="padding: 10px; text-align: center; width: 10%;">FAILED</th>
-                <th style="padding: 10px; text-align: center; width: 18%;">API STATUS</th>
+                <th style="padding: 10px; width: 14%;">DOMAIN NAME</th>
+                <th style="padding: 10px; width: 22%;">URL</th>
+                <th style="padding: 10px; text-align: center; width: 18%;">THANK YOU URL</th>
+                <th style="padding: 10px; text-align: center; width: 14%;">LEAD ID</th>
+                <th style="padding: 10px; text-align: center; width: 9%;">PASS</th>
+                <th style="padding: 10px; text-align: center; width: 9%;">FAILED</th>
+                <th style="padding: 10px; text-align: center; width: 14%;">API STATUS</th>
               </tr>
             </thead>
             <tbody>
@@ -574,12 +581,13 @@ async function sendProfessionalDailyReport(summary) {
           <table style="width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 30px; table-layout: fixed;">
             <thead>
               <tr style="text-align: left; color: #64748b; border-bottom: 1.5px solid #cbd5e1; font-weight: 700;">
-                <th style="padding: 10px; width: 18%;">DOMAIN NAME</th>
-                <th style="padding: 10px; width: 28%;">URL</th>
-                <th style="padding: 10px; text-align: center; width: 16%;">LEAD ID</th>
-                <th style="padding: 10px; text-align: center; width: 10%;">PASS</th>
-                <th style="padding: 10px; text-align: center; width: 10%;">FAILED</th>
-                <th style="padding: 10px; text-align: center; width: 18%;">API STATUS</th>
+                <th style="padding: 10px; width: 14%;">DOMAIN NAME</th>
+                <th style="padding: 10px; width: 22%;">URL</th>
+                <th style="padding: 10px; text-align: center; width: 18%;">THANK YOU URL</th>
+                <th style="padding: 10px; text-align: center; width: 14%;">LEAD ID</th>
+                <th style="padding: 10px; text-align: center; width: 9%;">PASS</th>
+                <th style="padding: 10px; text-align: center; width: 9%;">FAILED</th>
+                <th style="padding: 10px; text-align: center; width: 14%;">API STATUS</th>
               </tr>
             </thead>
             <tbody>
@@ -623,7 +631,8 @@ async function sendProfessionalDailyReport(summary) {
     auth: { user, pass }
   });
 
-  const subject = `FLM Campaign Report: ${summary.succeeded}/${summary.total} PASS | DOMAIN | URL | LEAD ID | PASS | FAILED | API STATUS`;
+  const reportDateStr = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+  const subject = `FLM Agent Report - ${reportDateStr}`;
   const mailOptions = {
     from: `"Deepali Londhe" <${user}>`,
     to: toList,
