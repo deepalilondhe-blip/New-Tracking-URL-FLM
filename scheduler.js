@@ -418,7 +418,7 @@ async function sendProfessionalDailyReport(summary) {
   const user = process.env.SMTP_USER;
   const pass = process.env.SMTP_PASS;
   const toList = 'deepali.londhe@magnetoitsolutions.com';
-  const ccList = '';
+  const ccList = 'ilfas.mansuri@bytestechnolab.com, apexa.dave@magnetoitsolutions.com, urvish.patel@bytestechnolab.com, deepesh.jain@bytestechnolab.com, jyoti.thakur@bytestechnolab.com, nivedita@magnetoitsolutions.com';
   const recipient = toList;
 
   const campaignLookup = new Map(campaigns.map(c => [c.id, c]));
@@ -471,15 +471,15 @@ async function sendProfessionalDailyReport(summary) {
       const apiStatusText = r.apiStatus || (r.success ? '200 OK' : 'N/A');
       const apiStatusColor = r.success ? '#0891b2' : '#991b1b';
       
-      const thankYouUrlLink = r.thankYouUrl ? `<a href="${r.thankYouUrl}" style="color: #0891b2; text-decoration: underline;">View Link</a>` : '—';
+      const thankYouUrlLink = r.thankYouUrl ? `<a href="${r.thankYouUrl}" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Thank you URL</a>` : '—';
       
       return `
         <tr style="border-bottom: 1px solid #f1f5f9;">
           <td style="padding: 12px 10px; font-weight: 700; color: #1e293b; vertical-align: top; word-break: break-word;">
             ${domainName}
           </td>
-          <td style="padding: 12px 10px; font-size: 11px; vertical-align: top; word-break: break-all;">
-            <a href="${url}" style="color: #0891b2; text-decoration: none;">${url}</a>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="${url}" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Page URL</a>
           </td>
           <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
             ${thankYouUrlLink}
