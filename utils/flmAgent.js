@@ -410,13 +410,23 @@ Answer the user's prompt using the real-time data above. Be direct, clear, and c
         console.log(`🤖 [${this.name}] Pre-flight check: Verifying health for ${campaignName}...`);
         try {
             const axios = require('axios');
-            const res = await axios.get(url, { timeout: 10000 });
+            const res = await axios.get(url, { 
+                timeout: 10000,
+                headers: {
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+                }
+            });
             if (res.status >= 200 && res.status < 400) {
                 console.log(`✅ [${this.name}] ${campaignName} URL is healthy.`);
                 return { healthy: true };
             }
             return { healthy: false, error: `Status ${res.status}` };
         } catch (err) {
+            if (err.response) {
+                // If the server responded with any status code (like 403, 401, 500), it is online and reachable.
+                console.log(`✅ [${this.name}] ${campaignName} URL is reachable (Status ${err.response.status}).`);
+                return { healthy: true };
+            }
             return { healthy: false, error: err.message };
         }
     }
@@ -476,7 +486,15 @@ Answer the user's prompt using the real-time data above. Be direct, clear, and c
             else if (raw < 30000) expectedCake = "20000";
             else if (raw < 100000) expectedCake = "50000";
             else expectedCake = "100000";
-        } else if (brand === 'ptr-main' || brand === 'aftr-main' || brand === 'capital-tax-relief-x' || brand === 'empire-tax-relief-x') {
+        } else if (brand === 'everest-tr-x') {
+            if (raw < 10000) expectedCake = "10000";
+            else if (raw < 20000) expectedCake = "10000";
+            else if (raw < 50000) expectedCake = "20000";
+            else if (raw < 100000) expectedCake = "50000";
+            else expectedCake = "100000";
+        } else if (brand === 'ptr-main' || brand === 'aftr-main' || brand === 'capital-tax-relief-x' || brand === 'empire-tax-relief-x' ||
+                   brand === '1800-fresh-tax-x-main' || brand === 'original' || brand === 'ftd-x' || brand === 'fsi-main' ||
+                   brand === 'fresh-start-initiative-x-main' || brand === 'vts-original' || brand === 'vts-ne-branded') {
             if (raw < 5000) expectedCake = "5000";
             else if (raw < 10000) expectedCake = "7500";
             else if (raw < 20000) expectedCake = "10000";

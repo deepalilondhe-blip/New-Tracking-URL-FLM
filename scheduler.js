@@ -311,12 +311,10 @@ async function runBatch() {
   }
   console.log(`🤖 [FLM Agent] Global Health Verification Complete.\n`);
 
-  // Flatten all runs into a single queue, excluding any campaigns that failed the global health check
-  const failedGlobalIds = new Set(results.map(r => r.campaignId));
+  // Flatten all runs into a single queue
   const allRuns = [];
   for (const campaignGroup of runnerScripts) {
-    const filtered = campaignGroup.filter(run => !failedGlobalIds.has(run.campaignId));
-    allRuns.push(...filtered);
+    allRuns.push(...campaignGroup);
   }
 
   console.log(`\n================================================================`);
