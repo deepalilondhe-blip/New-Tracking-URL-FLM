@@ -194,8 +194,7 @@ All manual and scheduled executions automatically record a visual video and trac
 * Videos:  traces/videos/  (Can be opened in Chrome/Edge, e.g., PPC_PPC.webm)
 * Traces:  traces/         (Zip logs, timeline view: 'npx playwright show-trace traces/<campaign_viewport>.zip')
 
-================================================================================
-Spreadsheet: https://docs.google.com/spreadsheets/d/1rXIg3dMQ4APH3lHLcfWYfP45PnOAKmV9POkoSS3YWxI/edit#gid=1177143742
+Spreadsheet: https://docs.google.com/spreadsheets/d/1rXIg3dMQ4APH3lHLcfWYfP45PnOAKmV9POkoSS3YWxI/edit?gid=1285632638#gid=1285632638
 ================================================================================
 
 --------------------------------------------------------------------------------

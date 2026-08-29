@@ -46,6 +46,12 @@ async function getWorkingUsProxy() {
         const details = JSON.parse(text);
         
         if (details && details.country === 'US') {
+          // ipinfo can succeed on a proxy that still fails HTTPS landing pages
+          await page.goto('https://example.com', { waitUntil: 'domcontentloaded', timeout: 10000 });
+          const probeUrl = page.url();
+          if (probeUrl.includes('chrome-error://') || probeUrl.includes('chromewebdata')) {
+            throw new Error(`Proxy reached US IP but failed HTTPS (${probeUrl})`);
+          }
           console.log(`✅ Proxy verified! Country: ${details.country}, City: ${details.city}, IP: ${details.ip}`);
           await testBrowser.close().catch(() => {});
           global.isProxyTesting = false;
@@ -295,17 +301,29 @@ if (viewportArg === 'api') {
 
       let proxyServer = null;
       let page = null;
-      if (useVpn) {
+      const lastErrorMsg = lastError && lastError.message ? lastError.message : '';
+      const skipProxyThisAttempt = /chrome error page|chromewebdata|ERR_TUNNEL|ERR_PROXY|ERR_CONNECTION|ERR_TIMED_OUT|net::/i.test(lastErrorMsg);
+      if (skipProxyThisAttempt) {
+        delete contextOptions.proxy;
+        delete contextOptions.ignoreHTTPSErrors;
+        console.warn('⚠️ Previous attempt hit a browser/network error. Retrying without US proxy.');
+      } else if (useVpn) {
         // Retrieve a fresh USA proxy for this attempt
         proxyServer = await getWorkingUsProxy();
         if (proxyServer) {
           contextOptions.proxy = {
             server: proxyServer
           };
+          contextOptions.ignoreHTTPSErrors = true;
           console.log(`🛡️  Routing browser traffic via US Proxy: ${proxyServer}`);
         } else {
+          delete contextOptions.proxy;
+          delete contextOptions.ignoreHTTPSErrors;
           console.warn('⚠️ Could not find a working USA proxy. Proceeding with direct connection.');
         }
+      } else {
+        delete contextOptions.proxy;
+        delete contextOptions.ignoreHTTPSErrors;
       }
 
       try {
@@ -316,7 +334,7 @@ if (viewportArg === 'api') {
         context = await browser.newContext(contextOptions);
 
         await context.setDefaultTimeout(25000);
-        await context.setDefaultNavigationTimeout(35000);
+        await context.setDefaultNavigationTimeout(45000);
 
         // Initialize tracing
         await context.tracing.start({ screenshots: true, snapshots: true, sources: true });
