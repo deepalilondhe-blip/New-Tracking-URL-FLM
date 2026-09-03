@@ -13,7 +13,6 @@ function shouldRunToday() {
 function runPlaywrightTests() {
   if (!shouldRunToday() && !process.argv.includes('--force')) {
     console.log(`\n⏰ [${new Date().toLocaleString()}] Skipping campaign run: today is not Mon/Wed/Fri.`);
-    scheduleNextRun();
     return;
   }
   console.log(`\n⏰ [${new Date().toLocaleString()}] Starting Playwright campaign automation batch run...`);
@@ -33,41 +32,8 @@ function runPlaywrightTests() {
       console.log(`❌ [${new Date().toLocaleString()}] Batch run completed with some errors (Exit Code: ${code})`);
     }
     console.log(`================================================================`);
-    scheduleNextRun();
   });
 }
 
-function scheduleNextRun() {
-  const now = new Date();
-  const candidates = [];
-
-  // Run 1: 11:30 AM today
-  const run1 = new Date(now);
-  run1.setHours(11, 30, 0, 0);
-
-  // Run 2: 5:30 PM today
-  const run2 = new Date(now);
-  run2.setHours(17, 30, 0, 0);
-
-  if (run1 > now) candidates.push(run1);
-  if (run2 > now) candidates.push(run2);
-
-  let nextRun;
-  if (candidates.length > 0) {
-    nextRun = candidates[0];
-  } else {
-    // Both runs for today have passed, schedule for tomorrow 11:30 AM
-    nextRun = new Date(now);
-    nextRun.setDate(now.getDate() + 1);
-    nextRun.setHours(11, 30, 0, 0);
-  }
-
-  const delay = nextRun.getTime() - now.getTime();
-  console.log(`⏳ Next automated batch is scheduled to run at: ${nextRun.toLocaleString()}`);
-  console.log(`⏳ Waiting for ${Math.round(delay / 1000 / 60)} minutes...`);
-
-  setTimeout(runPlaywrightTests, delay);
-}
-
-// Start scheduling
-scheduleNextRun();
+// Run one batch; invoke this script again from cron or another scheduler when needed.
+runPlaywrightTests();

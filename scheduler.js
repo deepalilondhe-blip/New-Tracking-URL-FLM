@@ -36,10 +36,6 @@ const runnerScripts = campaigns.map(c => {
   return matrix;
 });
 
-// Load Interval from environment variables (default to 2 hours)
-const intervalHours = parseFloat(process.env.SCHEDULER_INTERVAL_HOURS) || 2.0;
-const intervalMs = intervalHours * 60 * 60 * 1000;
-
 function formatTimestamp() {
   return new Date().toLocaleString();
 }
@@ -263,12 +259,12 @@ async function sendEmailReport(results, durationMinutes) {
 }
 
 /**
- * Main batch execution loop
+ * Main batch execution
  */
 async function runBatch() {
   console.log(`\n🤖 ================================================================`);
   console.log(`🤖 STARTING LEADS AUTOMATION BATCH RUN [${formatTimestamp()}]`);
-  console.log(`🤖 Interval configured: every ${intervalHours} hours`);
+  console.log(`🤖 Running one batch for this scheduler invocation`);
   console.log(`🤖 ================================================================`);
 
   const options = { timeZone: 'Asia/Kolkata', weekday: 'long' };
@@ -387,7 +383,6 @@ async function runBatch() {
     fs.writeFileSync(stateFilePath, JSON.stringify({ completed: [] }, null, 2));
   } catch (err) {}
 
-  console.log(`\n⏳ Next automation batch will start at: ${new Date(Date.now() + intervalMs).toLocaleString()}`);
 }
 
 /**
@@ -650,18 +645,14 @@ async function sendProfessionalDailyReport(summary) {
 
 if (require.main === module) {
   const emailOnly = process.argv.includes('--email-only');
-  const runOnce = process.argv.includes('--once');
   if (emailOnly) {
     const summary = dailyLogger.getDailySummary();
     sendProfessionalDailyReport(summary).then(() => process.exit(0)).catch((err) => {
       console.error('❌ Failed to send campaign report email:', err.message);
       process.exit(1);
     });
-  } else if (runOnce) {
-    runBatch().then(() => process.exit(0)).catch(() => process.exit(1));
   } else {
-    runBatch();
-    setInterval(runBatch, intervalMs);
+    runBatch().then(() => process.exit(0)).catch(() => process.exit(1));
   }
 }
 

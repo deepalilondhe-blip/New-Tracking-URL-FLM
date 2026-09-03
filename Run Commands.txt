@@ -19,7 +19,7 @@ To manually run any campaign, use the following template structure:
    By default, all manual terminal commands listed below will launch a VISIBLE browser window on your screen
    with a slight delay so you can easily watch the dynamic questionnaire actions, inputs, and state selections!
 
-   *Note: The automatic 2-hour scheduler (or '--once' run) continues to run fast and invisibly in the background.
+   *Note: Each scheduler invocation runs one batch and exits.
 
 --------------------------------------------------------------------------------
 📋 CAMPAIGN-SPECIFIC RUN COMMANDS (ALL 28 ACTIVE CAMPAIGNS)
@@ -172,7 +172,7 @@ To manually run any campaign, use the following template structure:
 The scheduler runs campaigns sequentially. By default, it runs them in headless mode
 for automated scheduling, but you can override it.
 
-Start the scheduler (runs every 2 hours, headless/background by default):
+Start one scheduler batch (headless/background by default):
   👉 node scheduler.js
 
 Run all campaigns once immediately (headless/background):
@@ -181,9 +181,8 @@ Run all campaigns once immediately (headless/background):
 Run all campaigns once immediately (headed/visible browser):
   👉 node scheduler.js --once
 
-⏰ TIMING: The scheduler runs IMMEDIATELY on start, then repeats every 2 hours.
-   Example: If started at 10:00 AM → next runs at 12:00 PM, 2:00 PM, 4:00 PM...
-   The terminal will always show: "Next automation batch will start at: [time]"
+⏰ TIMING: Each invocation runs one batch and exits. Use cron or Windows Task Scheduler
+   to choose the execution time and invoke the script again.
 
 ================================================================================
 🎥 ACCESS RECORDED VIDEOS & PLOT TRACES

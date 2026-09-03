@@ -1,5 +1,5 @@
 # PowerShell script to register the Windows Scheduled Task for the Playwright Lead Automation Scheduler
-# Runs daily, repeating every 2 hours indefinitely.
+# Runs once at the configured weekly trigger time.
 
 $TaskName = "Playwright_LeadAutomation_Scheduler"
 $BatchPath = "c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-local-scheduler.bat"
