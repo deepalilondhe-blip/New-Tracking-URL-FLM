@@ -121,6 +121,9 @@ let deviceArg = args.device || 'windows';
 let browserArg = args.browser || 'chrome';
 deviceArg = deviceArg.toLowerCase();
 browserArg = browserArg.toLowerCase();
+if (deviceArg === 'iphone') deviceArg = 'ios';
+
+const isHeadless = args.headless === true || args.headless === 'true';
 
 let userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36';
 let viewport = { width: 1400, height: 900 };
@@ -553,7 +556,7 @@ async function smoothScrollDown(page) {
     try {
       const pathToExtension = path.resolve(__dirname, 'buster-extension');
       browser = await chromium.launchPersistentContext(specificUserDataDir, {
-        headless: false,
+        headless: isHeadless,
         args: [
           '--disable-blink-features=AutomationControlled',
           '--no-sandbox',

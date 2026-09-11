@@ -21,6 +21,18 @@ const axios = require('axios');
 // saved proxies to use IP rotation
 async function getWorkingUsProxy() {
   global.isProxyTesting = true;
+
+  // ── Priority 1: Use static paid proxy from .env if configured ────────────
+  // Set US_PROXY_URL in .env to skip ProxyScrape entirely.
+  // Format: socks5://user:pass@host:port  OR  http://user:pass@host:port
+  if (process.env.US_PROXY_URL && process.env.US_PROXY_URL.trim() !== '') {
+    const staticProxy = process.env.US_PROXY_URL.trim();
+    console.log(`🛡️  [Static Proxy] Using configured US_PROXY_URL: ${staticProxy}`);
+    global.isProxyTesting = false;
+    return staticProxy;
+  }
+  // ─────────────────────────────────────────────────────────────────────────
+
   console.log('📡 Fetching USA SOCKS5 proxy pool from ProxyScrape...');
   try {
     const response = await axios.get('https://api.proxyscrape.com/v4/free-proxy-list/get?request=display_proxies&proxy_format=ipport&format=json&country=us&protocol=socks5', { timeout: 8000 });
@@ -327,9 +339,23 @@ if (viewportArg === 'api') {
       }
 
       try {
+        // Stealth launch args for headless mode — bypasses anti-bot fingerprint detection.
+        // Applied only in headless mode; headed mode runs without these args.
+        const headlessStealthArgs = isHeadless ? [
+          '--disable-blink-features=AutomationControlled',
+          '--disable-web-security',
+          '--no-sandbox',
+          '--disable-setuid-sandbox',
+          '--window-size=1920,1080',
+          '--disable-dev-shm-usage',
+          '--disable-infobars',
+          '--disable-features=IsolateOrigins,site-per-process'
+        ] : [];
+
         browser = await browserEngine.launch({
           headless: isHeadless,
-          slowMo: isHeadless ? 0 : 2000
+          slowMo: isHeadless ? 0 : 2000,
+          args: headlessStealthArgs
         });
         context = await browser.newContext(contextOptions);
 

@@ -1,0 +1,35 @@
+================================================================
+  FLM AGENT - DEPENDENCIES REFERENCE (For DevOps)
+================================================================
+
+LANGUAGE      : JavaScript (Node.js)
+RUNTIME       : Node.js v22.14.0 LTS
+PACKAGE MGR   : npm 10.9.2
+OS            : Ubuntu 24.04 x64
+
+----------------------------------------------------------------
+PRODUCTION DEPENDENCIES
+----------------------------------------------------------------
+
+playwright                        1.60.0
+playwright-extra                  4.3.6
+puppeteer-extra-plugin-stealth    2.11.2
+@axe-core/playwright              4.11.3
+@google/generative-ai             0.24.1
+googleapis                        171.4.0
+axios                             1.15.2
+dotenv                            17.4.2
+nodemailer                        8.0.7
+imap-simple                       5.1.0
+xml2js                            0.6.2
+
+----------------------------------------------------------------
+DEV DEPENDENCIES
+----------------------------------------------------------------
+
+@playwright/test                  1.60.0
+allure-playwright                 3.10.0
+
+================================================================
+  END OF FILE
+================================================================

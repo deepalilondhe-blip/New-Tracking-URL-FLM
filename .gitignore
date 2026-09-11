@@ -7,3 +7,7 @@ playwright-report/
 playwright/.cache/
 traces/
 screenshots/
+ccpa-browser-profile/
+ccpa-profile-brand-*/
+logs/scheduler/*.log
+logs/ccpa_scheduler/*.log

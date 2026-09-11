@@ -5,454 +5,752 @@
       <meta charset="utf-8">
       <style>
         body { font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; color: #1e293b; background: #f1f5f9; margin: 0; padding: 20px; }
-        .card { max-width: 650px; margin: auto; background: #ffffff; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); overflow: hidden; border: 1px solid #e2e8f0; }
-        .header { background: linear-gradient(135deg, #0891b2 0%, #7e22ce 100%); color: #ffffff; padding: 40px 30px; text-align: center; position: relative; }
-        .header h1 { margin: 0; font-size: 26px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; }
-        .header p { margin: 10px 0 0; opacity: 0.9; font-size: 14px; font-weight: 600; }
-        .agent-badge { background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); display: inline-block; padding: 5px 15px; border-radius: 20px; font-size: 11px; font-weight: 700; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.3); }
-        .stats-row { display: flex; padding: 30px; background: #ffffff; border-bottom: 1px solid #f1f5f9; text-align: center; }
-        .stat-item { flex: 1; }
-        .stat-val { font-size: 32px; font-weight: 800; background: linear-gradient(135deg, #0891b2, #7e22ce); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .stat-lbl { font-size: 11px; color: #64748b; text-transform: uppercase; font-weight: 700; margin-top: 5px; }
-        .content { padding: 40px; }
-        .ai-message { background: #f8fafc; border-left: 4px solid #0891b2; padding: 20px; border-radius: 0 12px 12px 0; margin-bottom: 30px; }
-        .ai-message-title { font-size: 13px; font-weight: 800; color: #0891b2; margin-bottom: 8px; text-transform: uppercase; }
-        .performance-box { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; margin-bottom: 30px; }
-        .progress-bar { height: 12px; background: #f1f5f9; border-radius: 6px; margin-top: 12px; overflow: hidden; border: 1px solid #e2e8f0; }
-        .progress-fill { height: 100%; background: linear-gradient(90deg, #0891b2, #22c55e); border-radius: 6px; }
-        .ai-advisory { background: #fffbeb; border: 1px solid #fef3c7; border-radius: 16px; padding: 25px; margin-bottom: 30px; }
-        .ai-title { color: #92400e; font-size: 14px; font-weight: 800; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
-        .footer { padding: 30px; text-align: center; background: #0f172a; font-size: 11px; color: #94a3b8; }
-        .brand-link { background: #0891b2; color: #ffffff; text-decoration: none; padding: 12px 25px; border-radius: 10px; font-weight: 700; display: inline-block; margin-top: 20px; transition: all 0.3s; }
+        .card { max-width: 980px; margin: auto; background: #ffffff; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); overflow: hidden; border: 1px solid #e2e8f0; }
+        .header { background: linear-gradient(135deg, #0891b2 0%, #7e22ce 100%); color: #ffffff; padding: 20px 30px; text-align: center; }
+        .header h1 { margin: 0; font-size: 20px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; }
+        .header p { margin: 5px 0 0; opacity: 0.9; font-size: 12px; font-weight: 600; }
+        .content { padding: 30px; }
+        .footer { padding: 25px; text-align: center; background: #0f172a; font-size: 11px; color: #94a3b8; }
       </style>
     </head>
     <body>
       <div class="card">
         <div class="header">
-          <div class="agent-badge">🛡️ FLM AGENT SECURITY: ACTIVE</div>
-          <h1>Intelligence Briefing</h1>
-          <p>Wednesday, August 5, 2026</p>
+          <h1>FLM Automation</h1>
+          <p>Intelligence Briefing - Wednesday, September 2, 2026</p>
         </div>
         
-        <div class="stats-row" style="display: table; width: 100%; table-layout: fixed;">
-          <div class="stat-item" style="display: table-cell;">
-            <div class="stat-val">28</div>
-            <div class="stat-lbl">URLs Executed</div>
-          </div>
-          <div class="stat-item" style="display: table-cell; border-left: 1px solid #f1f5f9; border-right: 1px solid #f1f5f9;">
-            <div class="stat-val" style="color: #22c55e;">96.4%</div>
-            <div class="stat-lbl">Success Rate</div>
-          </div>
-          <div class="stat-item" style="display: table-cell;">
-            <div class="stat-val" style="color: #0891b2;">0.0m</div>
-            <div class="stat-lbl">Total Time</div>
-          </div>
-        </div>
-
         <div class="content">
-          <div class="ai-message">
-            <div class="ai-message-title">🧠 Agent Insight: Why were 1 campaigns "Blocked"?</div>
-            <p style="margin: 0; font-size: 14px; color: #475569;">
-              The <b>FLM Security Shield</b> flagged these campaigns for data safety. The most common reasons for a "Blocked" or "Failed" status today were:
-              <ul style="margin: 10px 0 0; padding-left: 20px;">
-                <li><b>Data Mismatch:</b> The UI value did not match the API backend.</li>
-                <li><b>Network Timeout:</b> The campaign URL took too long to load (60s+).</li>
-                <li><b>Lead Not Found:</b> The Lead ID was not yet synced to the tracking server.</li>
-              </ul>
-            </p>
-          </div>
-
-          <div class="performance-box">
-            <div style="display: flex; justify-content: space-between; font-size: 14px; font-weight: 700; color: #1e293b;">
-              <span>Uptime Protection</span>
-              <span>96.4%</span>
-            </div>
-            <div class="progress-bar">
-              <div class="progress-fill" style="width: 96.4%;"></div>
-            </div>
+          <div style="font-size: 15px; font-weight: 700; color: #1e293b; margin-bottom: 20px; background: #f8fafc; padding: 12px 15px; border-radius: 8px; border: 1px solid #e2e8f0;">
+            📊 URL Count - 28 &nbsp;|&nbsp; Passed: 27 &nbsp;|&nbsp; Failed: 1
           </div>
 
           
-            <div class="ai-advisory">
-              <div class="ai-title">⚠️ AGENT ADVISORY (ACTION REQUIRED)</div>
-              <ul style="font-size: 13px; color: #475569; padding-left: 20px; margin: 0;">
-                <li style="margin-bottom: 10px;">aftr-main [Mac - Device]: Navigation failed: browser landed on chrome error page (chrome-error://chromewebdata/)</li>
-              </ul>
-            </div>
-          
+      <div style="background: #fee2e2; border-left: 4px solid #dc2626; padding: 15px; border-radius: 4px; margin-bottom: 25px;">
+        <div style="color: #991b1b; font-weight: 800; font-size: 13px; margin-bottom: 8px; text-transform: uppercase;">⚠️ FAILED URLS (ACTION REQUIRED)</div>
+        <ul style="margin: 0; padding-left: 20px; font-size: 12px; color: #7f1d1d; line-height: 1.6;">
+          <li><b>AFTR (VPN):</b> <a href="https://americasfirsttaxrelief.com/v7/?a=659&oc=809&c=2227&s1=" style="color: #b91c1c; text-decoration: underline;">https://americasfirsttaxrelief.com/v7/?a=659&oc=809&c=2227&s1=</a> - <span style="font-weight: bold; color: #dc2626;">Invalid Lead ID: CKM19544</span></li>
+        </ul>
+      </div>
+    
 
-          <div style="font-size: 14px; font-weight: 800; color: #0f172a; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; margin: 40px 0 20px;">Execution Matrix</div>
-          <table style="width: 100%; border-collapse: collapse; font-size: 12px;">
+          <!-- Section 1: FLM URL (NON TRA) -->
+          <div style="font-size: 15px; font-weight: 800; color: #0f172a; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; margin: 25px 0 15px;">FLM URL (NON TRA)</div>
+          <table style="width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 30px; table-layout: fixed;">
             <thead>
-              <tr style="text-align: left; color: #64748b; border-bottom: 1px solid #f1f5f9;">
-                <th style="padding: 10px 0;">CAMPAIGN</th>
-                <th style="padding: 10px 0; text-align: center;">PROTECTION</th>
-                <th style="padding: 10px 0; text-align: right;">TIME</th>
+              <tr style="text-align: left; color: #64748b; border-bottom: 1.5px solid #cbd5e1; font-weight: 700;">
+                <th style="padding: 10px; width: 14%;">DOMAIN NAME</th>
+                <th style="padding: 10px; width: 22%;">URL</th>
+                <th style="padding: 10px; text-align: center; width: 18%;">THANK YOU URL</th>
+                <th style="padding: 10px; text-align: center; width: 14%;">LEAD ID</th>
+                <th style="padding: 10px; text-align: center; width: 9%;">PASS</th>
+                <th style="padding: 10px; text-align: center; width: 9%;">FAILED</th>
+                <th style="padding: 10px; text-align: center; width: 14%;">API STATUS</th>
               </tr>
             </thead>
             <tbody>
               
-                <tr style="border-bottom: 1px solid #f8fafc;">
-                  <td style="padding: 12px 0; font-weight: 700; color: #1e293b;">
-                    FRESH-START-INITIATIVE-X-MAIN 
-                    <span style="font-weight: 400; color: #94a3b8; font-size: 10px;">[desktop]</span>
-                    <br/><span style="font-weight: normal; font-size: 11px; color: #64748b;">ID: D754A3E6</span>
-                  </td>
-                  <td style="padding: 12px 0; text-align: center;">
-                    <span style="padding: 4px 10px; border-radius: 20px; font-weight: 800; font-size: 10px; background: #dcfce7; color: #166534;">
-                      SHIELDED
-                    </span>
-                  </td>
-                  <td style="padding: 12px 0; text-align: right; color: #94a3b8;">11:25:50 AM</td>
-                </tr>
-              
-                <tr style="border-bottom: 1px solid #f8fafc;">
-                  <td style="padding: 12px 0; font-weight: 700; color: #1e293b;">
-                    AFTR-MAIN 
-                    <span style="font-weight: 400; color: #94a3b8; font-size: 10px;">[desktop]</span>
-                    
-                  </td>
-                  <td style="padding: 12px 0; text-align: center;">
-                    <span style="padding: 4px 10px; border-radius: 20px; font-weight: 800; font-size: 10px; background: #fee2e2; color: #991b1b;">
-                      EXPOSED
-                    </span>
-                  </td>
-                  <td style="padding: 12px 0; text-align: right; color: #94a3b8;">11:26:29 AM</td>
-                </tr>
-              
-                <tr style="border-bottom: 1px solid #f8fafc;">
-                  <td style="padding: 12px 0; font-weight: 700; color: #1e293b;">
-                    PTR-MAIN 
-                    <span style="font-weight: 400; color: #94a3b8; font-size: 10px;">[desktop]</span>
-                    <br/><span style="font-weight: normal; font-size: 11px; color: #64748b;">ID: 656A69F5</span>
-                  </td>
-                  <td style="padding: 12px 0; text-align: center;">
-                    <span style="padding: 4px 10px; border-radius: 20px; font-weight: 800; font-size: 10px; background: #dcfce7; color: #166534;">
-                      SHIELDED
-                    </span>
-                  </td>
-                  <td style="padding: 12px 0; text-align: right; color: #94a3b8;">11:27:55 AM</td>
-                </tr>
-              
-                <tr style="border-bottom: 1px solid #f8fafc;">
-                  <td style="padding: 12px 0; font-weight: 700; color: #1e293b;">
-                    SCTR-MAIN 
-                    <span style="font-weight: 400; color: #94a3b8; font-size: 10px;">[desktop]</span>
-                    <br/><span style="font-weight: normal; font-size: 11px; color: #64748b;">ID: BF1FD61C</span>
-                  </td>
-                  <td style="padding: 12px 0; text-align: center;">
-                    <span style="padding: 4px 10px; border-radius: 20px; font-weight: 800; font-size: 10px; background: #dcfce7; color: #166534;">
-                      SHIELDED
-                    </span>
-                  </td>
-                  <td style="padding: 12px 0; text-align: right; color: #94a3b8;">11:29:14 AM</td>
-                </tr>
-              
-                <tr style="border-bottom: 1px solid #f8fafc;">
-                  <td style="padding: 12px 0; font-weight: 700; color: #1e293b;">
-                    SENIOR-TAX-DEFENSE-X 
-                    <span style="font-weight: 400; color: #94a3b8; font-size: 10px;">[desktop]</span>
-                    <br/><span style="font-weight: normal; font-size: 11px; color: #64748b;">ID: 92C2D0DC</span>
-                  </td>
-                  <td style="padding: 12px 0; text-align: center;">
-                    <span style="padding: 4px 10px; border-radius: 20px; font-weight: 800; font-size: 10px; background: #dcfce7; color: #166534;">
-                      SHIELDED
-                    </span>
-                  </td>
-                  <td style="padding: 12px 0; text-align: right; color: #94a3b8;">11:30:37 AM</td>
-                </tr>
-              
-                <tr style="border-bottom: 1px solid #f8fafc;">
-                  <td style="padding: 12px 0; font-weight: 700; color: #1e293b;">
-                    GUARDIAN-TAX-RELIEF-PPC 
-                    <span style="font-weight: 400; color: #94a3b8; font-size: 10px;">[desktop]</span>
-                    <br/><span style="font-weight: normal; font-size: 11px; color: #64748b;">ID: 9D72411F</span>
-                  </td>
-                  <td style="padding: 12px 0; text-align: center;">
-                    <span style="padding: 4px 10px; border-radius: 20px; font-weight: 800; font-size: 10px; background: #dcfce7; color: #166534;">
-                      SHIELDED
-                    </span>
-                  </td>
-                  <td style="padding: 12px 0; text-align: right; color: #94a3b8;">11:31:40 AM</td>
-                </tr>
-              
-                <tr style="border-bottom: 1px solid #f8fafc;">
-                  <td style="padding: 12px 0; font-weight: 700; color: #1e293b;">
-                    TRA-ST-TSG 
-                    <span style="font-weight: 400; color: #94a3b8; font-size: 10px;">[desktop]</span>
-                    <br/><span style="font-weight: normal; font-size: 11px; color: #64748b;">ID: 8AC0CD29</span>
-                  </td>
-                  <td style="padding: 12px 0; text-align: center;">
-                    <span style="padding: 4px 10px; border-radius: 20px; font-weight: 800; font-size: 10px; background: #dcfce7; color: #166534;">
-                      SHIELDED
-                    </span>
-                  </td>
-                  <td style="padding: 12px 0; text-align: right; color: #94a3b8;">11:32:49 AM</td>
-                </tr>
-              
-                <tr style="border-bottom: 1px solid #f8fafc;">
-                  <td style="padding: 12px 0; font-weight: 700; color: #1e293b;">
-                    TRA-ST-TF 
-                    <span style="font-weight: 400; color: #94a3b8; font-size: 10px;">[desktop]</span>
-                    <br/><span style="font-weight: normal; font-size: 11px; color: #64748b;">ID: 715A8BD9</span>
-                  </td>
-                  <td style="padding: 12px 0; text-align: center;">
-                    <span style="padding: 4px 10px; border-radius: 20px; font-weight: 800; font-size: 10px; background: #dcfce7; color: #166534;">
-                      SHIELDED
-                    </span>
-                  </td>
-                  <td style="padding: 12px 0; text-align: right; color: #94a3b8;">11:33:57 AM</td>
-                </tr>
-              
-                <tr style="border-bottom: 1px solid #f8fafc;">
-                  <td style="padding: 12px 0; font-weight: 700; color: #1e293b;">
-                    TRA-ST-SP 
-                    <span style="font-weight: 400; color: #94a3b8; font-size: 10px;">[desktop]</span>
-                    <br/><span style="font-weight: normal; font-size: 11px; color: #64748b;">ID: 5FF8D6CE</span>
-                  </td>
-                  <td style="padding: 12px 0; text-align: center;">
-                    <span style="padding: 4px 10px; border-radius: 20px; font-weight: 800; font-size: 10px; background: #dcfce7; color: #166534;">
-                      SHIELDED
-                    </span>
-                  </td>
-                  <td style="padding: 12px 0; text-align: right; color: #94a3b8;">11:35:03 AM</td>
-                </tr>
-              
-                <tr style="border-bottom: 1px solid #f8fafc;">
-                  <td style="padding: 12px 0; font-weight: 700; color: #1e293b;">
-                    TRA-PPC-V9 
-                    <span style="font-weight: 400; color: #94a3b8; font-size: 10px;">[desktop]</span>
-                    <br/><span style="font-weight: normal; font-size: 11px; color: #64748b;">ID: 47E083E8</span>
-                  </td>
-                  <td style="padding: 12px 0; text-align: center;">
-                    <span style="padding: 4px 10px; border-radius: 20px; font-weight: 800; font-size: 10px; background: #dcfce7; color: #166534;">
-                      SHIELDED
-                    </span>
-                  </td>
-                  <td style="padding: 12px 0; text-align: right; color: #94a3b8;">11:36:12 AM</td>
-                </tr>
-              
-                <tr style="border-bottom: 1px solid #f8fafc;">
-                  <td style="padding: 12px 0; font-weight: 700; color: #1e293b;">
-                    TRA-PPCBTR 
-                    <span style="font-weight: 400; color: #94a3b8; font-size: 10px;">[desktop]</span>
-                    <br/><span style="font-weight: normal; font-size: 11px; color: #64748b;">ID: 759BC1DA</span>
-                  </td>
-                  <td style="padding: 12px 0; text-align: center;">
-                    <span style="padding: 4px 10px; border-radius: 20px; font-weight: 800; font-size: 10px; background: #dcfce7; color: #166534;">
-                      SHIELDED
-                    </span>
-                  </td>
-                  <td style="padding: 12px 0; text-align: right; color: #94a3b8;">11:37:18 AM</td>
-                </tr>
-              
-                <tr style="border-bottom: 1px solid #f8fafc;">
-                  <td style="padding: 12px 0; font-weight: 700; color: #1e293b;">
-                    TRA-PPCBM 
-                    <span style="font-weight: 400; color: #94a3b8; font-size: 10px;">[desktop]</span>
-                    <br/><span style="font-weight: normal; font-size: 11px; color: #64748b;">ID: A7721B8A</span>
-                  </td>
-                  <td style="padding: 12px 0; text-align: center;">
-                    <span style="padding: 4px 10px; border-radius: 20px; font-weight: 800; font-size: 10px; background: #dcfce7; color: #166534;">
-                      SHIELDED
-                    </span>
-                  </td>
-                  <td style="padding: 12px 0; text-align: right; color: #94a3b8;">11:38:24 AM</td>
-                </tr>
-              
+        <tr style="border-bottom: 1px solid #f1f5f9;">
+          <td style="padding: 12px 10px; font-weight: 700; color: #1e293b; vertical-align: top; word-break: break-word;">
+            FTD
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://mlfftd.com/?a=659&oc=543&c=167&s1=" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Page URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://www.fidelity-tax-defense.net/thankyou_ts_checklist.php?debt=10000&leadid=E42B8DDB&affid=659&reqid=27257055&subid=#s1#&employment=#employment#" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Thank you URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-family: Consolas, monospace; font-weight: 700; font-size: 11px; color: #0f172a; word-break: break-all;">
+            E42B8DDB
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #166534; font-weight: 800; font-size: 12px;">PASS</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #cbd5e1;">—</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-weight: 600; color: #0891b2; font-size: 11px;">
+            200 OK
+          </td>
+        </tr>
+      
+        <tr style="border-bottom: 1px solid #f1f5f9;">
+          <td style="padding: 12px 10px; font-weight: 700; color: #1e293b; vertical-align: top; word-break: break-word;">
+            FSI PPC
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://fsimlf-trk.com/?a=659&oc=750&c=143&s1=" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Page URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://www.fresh-start-initiative.com/ty_next/?debt=10000&leadid=CC821B0E&reqid=27257056&affid=659&subid=#s1#" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Thank you URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-family: Consolas, monospace; font-weight: 700; font-size: 11px; color: #0f172a; word-break: break-all;">
+            CC821B0E
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #166534; font-weight: 800; font-size: 12px;">PASS</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #cbd5e1;">—</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-weight: 600; color: #0891b2; font-size: 11px;">
+            200 OK
+          </td>
+        </tr>
+      
+        <tr style="border-bottom: 1px solid #f1f5f9;">
+          <td style="padding: 12px 10px; font-weight: 700; color: #1e293b; vertical-align: top; word-break: break-word;">
+            ETR
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://mlf-trk.com/?a=659&oc=812&c=2498&s1=" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Page URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://www.everesttaxrelief.net/thankyou_ts.php?debt=20000&leadid=A5FE2D86&affid=659&reqid=27257107&sub" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Thank you URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-family: Consolas, monospace; font-weight: 700; font-size: 11px; color: #0f172a; word-break: break-all;">
+            A5FE2D86
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #166534; font-weight: 800; font-size: 12px;">PASS</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #cbd5e1;">—</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-weight: 600; color: #0891b2; font-size: 11px;">
+            200 OK
+          </td>
+        </tr>
+      
+        <tr style="border-bottom: 1px solid #f1f5f9;">
+          <td style="padding: 12px 10px; font-weight: 700; color: #1e293b; vertical-align: top; word-break: break-word;">
+            VTS
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://mlfvts-trk.com/?a=659&oc=830&c=569&s1=" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Page URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://www.veteranstaxservices.com/thankyou_ts_checklist.php?debt=5000&leadid=6F6A677E&affid=659&reqid=27257111&subid=#s1#" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Thank you URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-family: Consolas, monospace; font-weight: 700; font-size: 11px; color: #0f172a; word-break: break-all;">
+            6F6A677E
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #166534; font-weight: 800; font-size: 12px;">PASS</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #cbd5e1;">—</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-weight: 600; color: #0891b2; font-size: 11px;">
+            200 OK
+          </td>
+        </tr>
+      
+        <tr style="border-bottom: 1px solid #f1f5f9;">
+          <td style="padding: 12px 10px; font-weight: 700; color: #1e293b; vertical-align: top; word-break: break-word;">
+            1800
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://mlf-1800-trk.com/?a=659&oc=337&c=617&s1=" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Page URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://www.1800freshtax.com/thankyou_ts_checklist.php?debt=7500&leadid=2694DA01&affid=659&reqid=27257112&subid=#s1#" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Thank you URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-family: Consolas, monospace; font-weight: 700; font-size: 11px; color: #0f172a; word-break: break-all;">
+            2694DA01
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #166534; font-weight: 800; font-size: 12px;">PASS</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #cbd5e1;">—</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-weight: 600; color: #0891b2; font-size: 11px;">
+            200 OK
+          </td>
+        </tr>
+      
+        <tr style="border-bottom: 1px solid #f1f5f9;">
+          <td style="padding: 12px 10px; font-weight: 700; color: #1e293b; vertical-align: top; word-break: break-word;">
+            1800X
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://flmtrk.com/?a=659&oc=696&c=1867&s1=" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Page URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://www.1800freshtax.com/thankyou_ts_checklist.php?debt=7500&leadid=670ABB43&reqid=27257113&affid=659&subid=#s1#" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Thank you URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-family: Consolas, monospace; font-weight: 700; font-size: 11px; color: #0f172a; word-break: break-all;">
+            670ABB43
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #166534; font-weight: 800; font-size: 12px;">PASS</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #cbd5e1;">—</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-weight: 600; color: #0891b2; font-size: 11px;">
+            200 OK
+          </td>
+        </tr>
+      
+        <tr style="border-bottom: 1px solid #f1f5f9;">
+          <td style="padding: 12px 10px; font-weight: 700; color: #1e293b; vertical-align: top; word-break: break-word;">
+            FSI
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://fsimlf-trk.com/?a=659&oc=548&c=111&s1=" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Page URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://www.fresh-start-initiative.com/ty.rs/?debt=5000&leadid=CD7FA242&reqid=27257118&affid=659&subid=#s1#" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Thank you URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-family: Consolas, monospace; font-weight: 700; font-size: 11px; color: #0f172a; word-break: break-all;">
+            CD7FA242
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #166534; font-weight: 800; font-size: 12px;">PASS</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #cbd5e1;">—</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-weight: 600; color: #0891b2; font-size: 11px;">
+            200 OK
+          </td>
+        </tr>
+      
+        <tr style="border-bottom: 1px solid #f1f5f9;">
+          <td style="padding: 12px 10px; font-weight: 700; color: #1e293b; vertical-align: top; word-break: break-word;">
+            STD
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://flmtrk.com/?a=659&oc=714&c=1892&s1=" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Page URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://www.seniortaxdefense.com/thankyou_ts_checklist.php?debt=7500&leadid=A36D37BB&affid=659&reqid=27257119&subid=#s1#" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Thank you URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-family: Consolas, monospace; font-weight: 700; font-size: 11px; color: #0f172a; word-break: break-all;">
+            A36D37BB
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #166534; font-weight: 800; font-size: 12px;">PASS</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #cbd5e1;">—</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-weight: 600; color: #0891b2; font-size: 11px;">
+            200 OK
+          </td>
+        </tr>
+      
+        <tr style="border-bottom: 1px solid #f1f5f9;">
+          <td style="padding: 12px 10px; font-weight: 700; color: #1e293b; vertical-align: top; word-break: break-word;">
+            FSI X
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://flmtrk.com/?a=659&oc=780&c=1940&s1=" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Page URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://www.fresh-start-initiative.com/thankyou_ts_checklist_fsi23.php?debt=10000&leadid=08D392A9&reqid=27257120&affid=659" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Thank you URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-family: Consolas, monospace; font-weight: 700; font-size: 11px; color: #0f172a; word-break: break-all;">
+            08D392A9
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #166534; font-weight: 800; font-size: 12px;">PASS</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #cbd5e1;">—</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-weight: 600; color: #0891b2; font-size: 11px;">
+            200 OK
+          </td>
+        </tr>
+      
+        <tr style="border-bottom: 1px solid #f1f5f9;">
+          <td style="padding: 12px 10px; font-weight: 700; color: #1e293b; vertical-align: top; word-break: break-word;">
+            AFTR
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://americasfirsttaxrelief.com/v7/?a=659&oc=809&c=2227&s1=" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Page URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://americasfirsttaxrelief.com/thankyou.php?debt=7500&leadid=CKM19544" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Thank you URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-family: Consolas, monospace; font-weight: 700; font-size: 11px; color: #0f172a; word-break: break-all;">
+            —
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #cbd5e1;">—</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #991b1b; font-weight: 800; font-size: 12px;">FAILED</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-weight: 600; color: #991b1b; font-size: 11px;">
+            Invalid Lead ID
+          </td>
+        </tr>
+      
+        <tr style="border-bottom: 1px solid #f1f5f9;">
+          <td style="padding: 12px 10px; font-weight: 700; color: #1e293b; vertical-align: top; word-break: break-word;">
+            PTR
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://mlf-trk.com/?a=659&oc=778&c=2251&s1=" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Page URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://premier-taxrelief.com/thank-you/?debt=7500&leadid=1B46E724&affid=659&reqid=27257124&subid=#s1#" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Thank you URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-family: Consolas, monospace; font-weight: 700; font-size: 11px; color: #0f172a; word-break: break-all;">
+            1B46E724
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #166534; font-weight: 800; font-size: 12px;">PASS</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #cbd5e1;">—</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-weight: 600; color: #0891b2; font-size: 11px;">
+            200 OK
+          </td>
+        </tr>
+      
+        <tr style="border-bottom: 1px solid #f1f5f9;">
+          <td style="padding: 12px 10px; font-weight: 700; color: #1e293b; vertical-align: top; word-break: break-word;">
+            SCTR
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://secure-sctr.com/?a=659&oc=800&c=2432&s1=" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Page URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://www.secondchancetaxrelief.com/thankyou_ts.php?debt=7500&leadid=0148F42C&affid=659&reqid=27257128" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Thank you URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-family: Consolas, monospace; font-weight: 700; font-size: 11px; color: #0f172a; word-break: break-all;">
+            0148F42C
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #166534; font-weight: 800; font-size: 12px;">PASS</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #cbd5e1;">—</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-weight: 600; color: #0891b2; font-size: 11px;">
+            200 OK
+          </td>
+        </tr>
+      
+        <tr style="border-bottom: 1px solid #f1f5f9;">
+          <td style="padding: 12px 10px; font-weight: 700; color: #1e293b; vertical-align: top; word-break: break-word;">
+            STD X
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://flmtrk.com/?a=659&oc=831&c=2599&s1=" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Page URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://www.seniortaxdefense.com/thankyou.php?debt=7500&leadid=66C4FF74&affid=659&reqid=27257131&subid=#s1#" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Thank you URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-family: Consolas, monospace; font-weight: 700; font-size: 11px; color: #0f172a; word-break: break-all;">
+            66C4FF74
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #166534; font-weight: 800; font-size: 12px;">PASS</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #cbd5e1;">—</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-weight: 600; color: #0891b2; font-size: 11px;">
+            200 OK
+          </td>
+        </tr>
+      
             </tbody>
           </table>
 
-          <div style="font-size: 14px; font-weight: 800; color: #0f172a; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; margin: 34px 0 16px;">
-            Local Scheduler URLs Involved (Today)
-          </div>
-          <table style="width: 100%; border-collapse: collapse; font-size: 12px;">
+          <!-- Section 2: TRA URL -->
+          <div style="font-size: 15px; font-weight: 800; color: #0f172a; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; margin: 25px 0 15px;">TRA URL</div>
+          <table style="width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 30px; table-layout: fixed;">
             <thead>
-              <tr style="text-align: left; color: #64748b; border-bottom: 1px solid #f1f5f9;">
-                <th style="padding: 10px 0;">CAMPAIGN</th>
-                <th style="padding: 10px 0;">GOOGLE SHEET TAB</th>
-                <th style="padding: 10px 0;">TRACKING URL</th>
+              <tr style="text-align: left; color: #64748b; border-bottom: 1.5px solid #cbd5e1; font-weight: 700;">
+                <th style="padding: 10px; width: 14%;">DOMAIN NAME</th>
+                <th style="padding: 10px; width: 22%;">URL</th>
+                <th style="padding: 10px; text-align: center; width: 18%;">THANK YOU URL</th>
+                <th style="padding: 10px; text-align: center; width: 14%;">LEAD ID</th>
+                <th style="padding: 10px; text-align: center; width: 9%;">PASS</th>
+                <th style="padding: 10px; text-align: center; width: 9%;">FAILED</th>
+                <th style="padding: 10px; text-align: center; width: 14%;">API STATUS</th>
               </tr>
             </thead>
             <tbody>
               
-                <tr style="border-bottom: 1px solid #f8fafc;">
-                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">FTD</td>
-                  <td style="padding: 10px 0; color: #475569;">FTD</td>
-                  <td style="padding: 10px 0;"><a href="https://mlfftd.com/?a=659&oc=543&c=167&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://mlfftd.com/?a=659&oc=543&c=167&s1=</a></td>
-                </tr>
+        <tr style="border-bottom: 1px solid #f1f5f9;">
+          <td style="padding: 12px 10px; font-weight: 700; color: #1e293b; vertical-align: top; word-break: break-word;">
+            LIST
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://flmtra.com/?a=659&oc=756&c=2210&s1=" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Page URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://tra.com/thank-you?debt=5000&leadid=A704E7E2&reqid=27257058&affid=659&oid=133" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Thank you URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-family: Consolas, monospace; font-weight: 700; font-size: 11px; color: #0f172a; word-break: break-all;">
+            A704E7E2
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #166534; font-weight: 800; font-size: 12px;">PASS</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #cbd5e1;">—</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-weight: 600; color: #0891b2; font-size: 11px;">
+            200 OK
+          </td>
+        </tr>
       
-                <tr style="border-bottom: 1px solid #f8fafc;">
-                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">FSI PPC</td>
-                  <td style="padding: 10px 0; color: #475569;">FSI PPC</td>
-                  <td style="padding: 10px 0;"><a href="https://fsimlf-trk.com/?a=659&oc=750&c=143&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://fsimlf-trk.com/?a=659&oc=750&c=143&s1=</a></td>
-                </tr>
+        <tr style="border-bottom: 1px solid #f1f5f9;">
+          <td style="padding: 12px 10px; font-weight: 700; color: #1e293b; vertical-align: top; word-break: break-word;">
+            TRA x
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://flmtra.com/?a=659&oc=792&c=2386&s1=" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Page URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://tra.com/thank-you?debt=5000&leadid=0E4D6345&reqid=27257060&affid=659&oid=145" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Thank you URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-family: Consolas, monospace; font-weight: 700; font-size: 11px; color: #0f172a; word-break: break-all;">
+            0E4D6345
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #166534; font-weight: 800; font-size: 12px;">PASS</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #cbd5e1;">—</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-weight: 600; color: #0891b2; font-size: 11px;">
+            200 OK
+          </td>
+        </tr>
       
-                <tr style="border-bottom: 1px solid #f8fafc;">
-                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">LIST</td>
-                  <td style="padding: 10px 0; color: #475569;">LIST</td>
-                  <td style="padding: 10px 0;"><a href="https://flmtra.com/?a=659&oc=756&c=2210&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://flmtra.com/?a=659&oc=756&c=2210&s1=</a></td>
-                </tr>
+        <tr style="border-bottom: 1px solid #f1f5f9;">
+          <td style="padding: 12px 10px; font-weight: 700; color: #1e293b; vertical-align: top; word-break: break-word;">
+            PPC/ST
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://flmtra.com/?a=659&oc=837&c=2210&s1=" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Page URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://tra.com/thank-you/nn?debt=5000&leadid=9586F30A&reqid=27257078&affid=659&oid=133" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Thank you URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-family: Consolas, monospace; font-weight: 700; font-size: 11px; color: #0f172a; word-break: break-all;">
+            9586F30A
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #166534; font-weight: 800; font-size: 12px;">PASS</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #cbd5e1;">—</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-weight: 600; color: #0891b2; font-size: 11px;">
+            200 OK
+          </td>
+        </tr>
       
-                <tr style="border-bottom: 1px solid #f8fafc;">
-                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">TRA x</td>
-                  <td style="padding: 10px 0; color: #475569;">TRA x</td>
-                  <td style="padding: 10px 0;"><a href="https://flmtra.com/?a=659&oc=792&c=2386&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://flmtra.com/?a=659&oc=792&c=2386&s1=</a></td>
-                </tr>
+        <tr style="border-bottom: 1px solid #f1f5f9;">
+          <td style="padding: 12px 10px; font-weight: 700; color: #1e293b; vertical-align: top; word-break: break-word;">
+            PPC/ST2
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://flmtra.com/?a=659&oc=858&c=2210&s1=" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Page URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://tra.com/thank-you/nn?debt=5000&leadid=8E8266DB&reqid=27257092&affid=659&oid=133" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Thank you URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-family: Consolas, monospace; font-weight: 700; font-size: 11px; color: #0f172a; word-break: break-all;">
+            8E8266DB
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #166534; font-weight: 800; font-size: 12px;">PASS</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #cbd5e1;">—</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-weight: 600; color: #0891b2; font-size: 11px;">
+            200 OK
+          </td>
+        </tr>
       
-                <tr style="border-bottom: 1px solid #f8fafc;">
-                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">PPC/ST</td>
-                  <td style="padding: 10px 0; color: #475569;">PPC/ST</td>
-                  <td style="padding: 10px 0;"><a href="https://flmtra.com/?a=659&oc=837&c=2210&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://flmtra.com/?a=659&oc=837&c=2210&s1=</a></td>
-                </tr>
+        <tr style="border-bottom: 1px solid #f1f5f9;">
+          <td style="padding: 12px 10px; font-weight: 700; color: #1e293b; vertical-align: top; word-break: break-word;">
+            PPCM/CA
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://flmtra.com/?a=659&oc=822&c=2210&s1=" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Page URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://tra.com/thank-you?debt=5000&leadid=C041DBFB&reqid=27257096&affid=659&oid=133&page=tra_ppcm_ca" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Thank you URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-family: Consolas, monospace; font-weight: 700; font-size: 11px; color: #0f172a; word-break: break-all;">
+            C041DBFB
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #166534; font-weight: 800; font-size: 12px;">PASS</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #cbd5e1;">—</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-weight: 600; color: #0891b2; font-size: 11px;">
+            200 OK
+          </td>
+        </tr>
       
-                <tr style="border-bottom: 1px solid #f8fafc;">
-                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">PPC/ST2</td>
-                  <td style="padding: 10px 0; color: #475569;">PPC/ST2</td>
-                  <td style="padding: 10px 0;"><a href="https://flmtra.com/?a=659&oc=858&c=2210&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://flmtra.com/?a=659&oc=858&c=2210&s1=</a></td>
-                </tr>
+        <tr style="border-bottom: 1px solid #f1f5f9;">
+          <td style="padding: 12px 10px; font-weight: 700; color: #1e293b; vertical-align: top; word-break: break-word;">
+            PPC/CR
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://flmtra.com/?a=659&oc=848&c=2210&s1=" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Page URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://tra.com/thank-you?debt=5000&leadid=5BDD457D&reqid=27257098&affid=659&oid=133" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Thank you URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-family: Consolas, monospace; font-weight: 700; font-size: 11px; color: #0f172a; word-break: break-all;">
+            5BDD457D
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #166534; font-weight: 800; font-size: 12px;">PASS</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #cbd5e1;">—</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-weight: 600; color: #0891b2; font-size: 11px;">
+            200 OK
+          </td>
+        </tr>
       
-                <tr style="border-bottom: 1px solid #f8fafc;">
-                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">PPCM/CA</td>
-                  <td style="padding: 10px 0; color: #475569;">PPCM/CA</td>
-                  <td style="padding: 10px 0;"><a href="https://flmtra.com/?a=659&oc=822&c=2210&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://flmtra.com/?a=659&oc=822&c=2210&s1=</a></td>
-                </tr>
+        <tr style="border-bottom: 1px solid #f1f5f9;">
+          <td style="padding: 12px 10px; font-weight: 700; color: #1e293b; vertical-align: top; word-break: break-word;">
+            PPC/FS
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://flmtra.com/?a=659&oc=841&c=2210&s1=" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Page URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://tra.com/thank-you?debt=20000&leadid=8C0FDC5D&reqid=27257104&affid=659&oid=133" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Thank you URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-family: Consolas, monospace; font-weight: 700; font-size: 11px; color: #0f172a; word-break: break-all;">
+            8C0FDC5D
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #166534; font-weight: 800; font-size: 12px;">PASS</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #cbd5e1;">—</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-weight: 600; color: #0891b2; font-size: 11px;">
+            200 OK
+          </td>
+        </tr>
       
-                <tr style="border-bottom: 1px solid #f8fafc;">
-                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">PPC/CR</td>
-                  <td style="padding: 10px 0; color: #475569;">PPC/CR</td>
-                  <td style="padding: 10px 0;"><a href="https://flmtra.com/?a=659&oc=848&c=2210&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://flmtra.com/?a=659&oc=848&c=2210&s1=</a></td>
-                </tr>
+        <tr style="border-bottom: 1px solid #f1f5f9;">
+          <td style="padding: 12px 10px; font-weight: 700; color: #1e293b; vertical-align: top; word-break: break-word;">
+            TRA cpm
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://flmtra.com/?a=659&oc=763&c=2225&s1=" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Page URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://tra.com/thank-you?debt=5000&leadid=2168463E&reqid=27257106&affid=659&oid=136" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Thank you URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-family: Consolas, monospace; font-weight: 700; font-size: 11px; color: #0f172a; word-break: break-all;">
+            2168463E
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #166534; font-weight: 800; font-size: 12px;">PASS</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #cbd5e1;">—</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-weight: 600; color: #0891b2; font-size: 11px;">
+            200 OK
+          </td>
+        </tr>
       
-                <tr style="border-bottom: 1px solid #f8fafc;">
-                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">PPC/FS</td>
-                  <td style="padding: 10px 0; color: #475569;">PPC/FS</td>
-                  <td style="padding: 10px 0;"><a href="https://flmtra.com/?a=659&oc=841&c=2210&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://flmtra.com/?a=659&oc=841&c=2210&s1=</a></td>
-                </tr>
+        <tr style="border-bottom: 1px solid #f1f5f9;">
+          <td style="padding: 12px 10px; font-weight: 700; color: #1e293b; vertical-align: top; word-break: break-word;">
+            GT
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://mlf-gt.com/?a=659&oc=907&c=2521&s1=" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Page URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://guardiantax-relief.com/ty2/?debt=5000&leadid=54629D22&reqid=27257133&affid=659&oid=150" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Thank you URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-family: Consolas, monospace; font-weight: 700; font-size: 11px; color: #0f172a; word-break: break-all;">
+            54629D22
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #166534; font-weight: 800; font-size: 12px;">PASS</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #cbd5e1;">—</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-weight: 600; color: #0891b2; font-size: 11px;">
+            200 OK
+          </td>
+        </tr>
       
-                <tr style="border-bottom: 1px solid #f8fafc;">
-                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">TRA cpm</td>
-                  <td style="padding: 10px 0; color: #475569;">TRA cpm</td>
-                  <td style="padding: 10px 0;"><a href="https://flmtra.com/?a=659&oc=763&c=2225&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://flmtra.com/?a=659&oc=763&c=2225&s1=</a></td>
-                </tr>
+        <tr style="border-bottom: 1px solid #f1f5f9;">
+          <td style="padding: 12px 10px; font-weight: 700; color: #1e293b; vertical-align: top; word-break: break-word;">
+            ST/TSG
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://flmtra.com/?a=659&oc=874&c=2210&s1=" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Page URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://tra.com/thank-you/nn?debt=5000&leadid=090BA496&reqid=27257135&affid=659&oid=133" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Thank you URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-family: Consolas, monospace; font-weight: 700; font-size: 11px; color: #0f172a; word-break: break-all;">
+            090BA496
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #166534; font-weight: 800; font-size: 12px;">PASS</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #cbd5e1;">—</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-weight: 600; color: #0891b2; font-size: 11px;">
+            200 OK
+          </td>
+        </tr>
       
-                <tr style="border-bottom: 1px solid #f8fafc;">
-                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">ETR</td>
-                  <td style="padding: 10px 0; color: #475569;">ETR</td>
-                  <td style="padding: 10px 0;"><a href="https://mlf-trk.com/?a=659&oc=812&c=2498&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://mlf-trk.com/?a=659&oc=812&c=2498&s1=</a></td>
-                </tr>
+        <tr style="border-bottom: 1px solid #f1f5f9;">
+          <td style="padding: 12px 10px; font-weight: 700; color: #1e293b; vertical-align: top; word-break: break-word;">
+            ST/TF
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://flmtra.com/?a=659&oc=872&c=2210&s1=" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Page URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://tra.com/thank-you/nn?debt=5000&leadid=A79DF767&reqid=27257137&affid=659&oid=133" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Thank you URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-family: Consolas, monospace; font-weight: 700; font-size: 11px; color: #0f172a; word-break: break-all;">
+            A79DF767
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #166534; font-weight: 800; font-size: 12px;">PASS</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #cbd5e1;">—</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-weight: 600; color: #0891b2; font-size: 11px;">
+            200 OK
+          </td>
+        </tr>
       
-                <tr style="border-bottom: 1px solid #f8fafc;">
-                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">VTS</td>
-                  <td style="padding: 10px 0; color: #475569;">VTS</td>
-                  <td style="padding: 10px 0;"><a href="https://mlfvts-trk.com/?a=659&oc=830&c=569&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://mlfvts-trk.com/?a=659&oc=830&c=569&s1=</a></td>
-                </tr>
+        <tr style="border-bottom: 1px solid #f1f5f9;">
+          <td style="padding: 12px 10px; font-weight: 700; color: #1e293b; vertical-align: top; word-break: break-word;">
+            ST/SP
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://flmtra.com/?a=659&oc=904&c=2210&s1=" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Page URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://tra.com/thank-you?debt=5000&leadid=9060FDD7&reqid=27257139&affid=659&oid=133" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Thank you URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-family: Consolas, monospace; font-weight: 700; font-size: 11px; color: #0f172a; word-break: break-all;">
+            9060FDD7
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #166534; font-weight: 800; font-size: 12px;">PASS</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #cbd5e1;">—</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-weight: 600; color: #0891b2; font-size: 11px;">
+            200 OK
+          </td>
+        </tr>
       
-                <tr style="border-bottom: 1px solid #f8fafc;">
-                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">1800</td>
-                  <td style="padding: 10px 0; color: #475569;">1800</td>
-                  <td style="padding: 10px 0;"><a href="https://mlf-1800-trk.com/?a=659&oc=337&c=617&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://mlf-1800-trk.com/?a=659&oc=337&c=617&s1=</a></td>
-                </tr>
+        <tr style="border-bottom: 1px solid #f1f5f9;">
+          <td style="padding: 12px 10px; font-weight: 700; color: #1e293b; vertical-align: top; word-break: break-word;">
+            PPC/V9
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://flmtra.com/?a=659&oc=906&c=2210&s1=" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Page URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://tra.com/thank-you?debt=5000&leadid=702DCCC5&reqid=27257140&affid=659&oid=133" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Thank you URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-family: Consolas, monospace; font-weight: 700; font-size: 11px; color: #0f172a; word-break: break-all;">
+            702DCCC5
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #166534; font-weight: 800; font-size: 12px;">PASS</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #cbd5e1;">—</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-weight: 600; color: #0891b2; font-size: 11px;">
+            200 OK
+          </td>
+        </tr>
       
-                <tr style="border-bottom: 1px solid #f8fafc;">
-                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">1800X</td>
-                  <td style="padding: 10px 0; color: #475569;">1800X</td>
-                  <td style="padding: 10px 0;"><a href="https://flmtrk.com/?a=659&oc=696&c=1867&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://flmtrk.com/?a=659&oc=696&c=1867&s1=</a></td>
-                </tr>
+        <tr style="border-bottom: 1px solid #f1f5f9;">
+          <td style="padding: 12px 10px; font-weight: 700; color: #1e293b; vertical-align: top; word-break: break-word;">
+            PPCBTR
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://flmtra.com/?a=659&oc=818&c=2210&s1=" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Page URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://tra.com/thank-you?debt=5000&leadid=E8959C41&reqid=27257141&affid=659&oid=133" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Thank you URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-family: Consolas, monospace; font-weight: 700; font-size: 11px; color: #0f172a; word-break: break-all;">
+            E8959C41
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #166534; font-weight: 800; font-size: 12px;">PASS</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #cbd5e1;">—</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-weight: 600; color: #0891b2; font-size: 11px;">
+            200 OK
+          </td>
+        </tr>
       
-                <tr style="border-bottom: 1px solid #f8fafc;">
-                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">FSI</td>
-                  <td style="padding: 10px 0; color: #475569;">FSI</td>
-                  <td style="padding: 10px 0;"><a href="https://fsimlf-trk.com/?a=659&oc=548&c=111&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://fsimlf-trk.com/?a=659&oc=548&c=111&s1=</a></td>
-                </tr>
-      
-                <tr style="border-bottom: 1px solid #f8fafc;">
-                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">STD</td>
-                  <td style="padding: 10px 0; color: #475569;">STD</td>
-                  <td style="padding: 10px 0;"><a href="https://flmtrk.com/?a=659&oc=714&c=1892&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://flmtrk.com/?a=659&oc=714&c=1892&s1=</a></td>
-                </tr>
-      
-                <tr style="border-bottom: 1px solid #f8fafc;">
-                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">FSI X</td>
-                  <td style="padding: 10px 0; color: #475569;">FSI X</td>
-                  <td style="padding: 10px 0;"><a href="https://flmtrk.com/?a=659&oc=780&c=1940&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://flmtrk.com/?a=659&oc=780&c=1940&s1=</a></td>
-                </tr>
-      
-                <tr style="border-bottom: 1px solid #f8fafc;">
-                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">AFTR</td>
-                  <td style="padding: 10px 0; color: #475569;">AFTR</td>
-                  <td style="padding: 10px 0;"><a href="https://mlf-trk.com/?a=659&oc=809&c=2227&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://mlf-trk.com/?a=659&oc=809&c=2227&s1=</a></td>
-                </tr>
-      
-                <tr style="border-bottom: 1px solid #f8fafc;">
-                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">PTR</td>
-                  <td style="padding: 10px 0; color: #475569;">PTR</td>
-                  <td style="padding: 10px 0;"><a href="https://mlf-trk.com/?a=659&oc=778&c=2251&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://mlf-trk.com/?a=659&oc=778&c=2251&s1=</a></td>
-                </tr>
-      
-                <tr style="border-bottom: 1px solid #f8fafc;">
-                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">SCTR</td>
-                  <td style="padding: 10px 0; color: #475569;">SCTR</td>
-                  <td style="padding: 10px 0;"><a href="https://secure-sctr.com/?a=659&oc=800&c=2432&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://secure-sctr.com/?a=659&oc=800&c=2432&s1=</a></td>
-                </tr>
-      
-                <tr style="border-bottom: 1px solid #f8fafc;">
-                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">STD X</td>
-                  <td style="padding: 10px 0; color: #475569;">STD X</td>
-                  <td style="padding: 10px 0;"><a href="https://flmtrk.com/?a=659&oc=831&c=2599&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://flmtrk.com/?a=659&oc=831&c=2599&s1=</a></td>
-                </tr>
-      
-                <tr style="border-bottom: 1px solid #f8fafc;">
-                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">GT</td>
-                  <td style="padding: 10px 0; color: #475569;">GT</td>
-                  <td style="padding: 10px 0;"><a href="https://mlf-gt.com/?a=659&oc=907&c=2521&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://mlf-gt.com/?a=659&oc=907&c=2521&s1=</a></td>
-                </tr>
-      
-                <tr style="border-bottom: 1px solid #f8fafc;">
-                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">ST/TSG</td>
-                  <td style="padding: 10px 0; color: #475569;">ST/TSG</td>
-                  <td style="padding: 10px 0;"><a href="https://flmtra.com/?a=659&oc=874&c=2210&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://flmtra.com/?a=659&oc=874&c=2210&s1=</a></td>
-                </tr>
-      
-                <tr style="border-bottom: 1px solid #f8fafc;">
-                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">ST/TF</td>
-                  <td style="padding: 10px 0; color: #475569;">ST/TF</td>
-                  <td style="padding: 10px 0;"><a href="https://flmtra.com/?a=659&oc=872&c=2210&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://flmtra.com/?a=659&oc=872&c=2210&s1=</a></td>
-                </tr>
-      
-                <tr style="border-bottom: 1px solid #f8fafc;">
-                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">ST/SP</td>
-                  <td style="padding: 10px 0; color: #475569;">ST/SP</td>
-                  <td style="padding: 10px 0;"><a href="https://flmtra.com/?a=659&oc=904&c=2210&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://flmtra.com/?a=659&oc=904&c=2210&s1=</a></td>
-                </tr>
-      
-                <tr style="border-bottom: 1px solid #f8fafc;">
-                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">PPC/V9</td>
-                  <td style="padding: 10px 0; color: #475569;">PPC/V9</td>
-                  <td style="padding: 10px 0;"><a href="https://flmtra.com/?a=659&oc=906&c=2210&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://flmtra.com/?a=659&oc=906&c=2210&s1=</a></td>
-                </tr>
-      
-                <tr style="border-bottom: 1px solid #f8fafc;">
-                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">PPCBTR</td>
-                  <td style="padding: 10px 0; color: #475569;">PPCBTR</td>
-                  <td style="padding: 10px 0;"><a href="https://flmtra.com/?a=659&oc=818&c=2210&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://flmtra.com/?a=659&oc=818&c=2210&s1=</a></td>
-                </tr>
-      
-                <tr style="border-bottom: 1px solid #f8fafc;">
-                  <td style="padding: 10px 0; font-weight: 700; color: #1e293b;">PPCBM</td>
-                  <td style="padding: 10px 0; color: #475569;">PPCBM</td>
-                  <td style="padding: 10px 0;"><a href="https://flmtra.com/?a=659&oc=892&c=2210&s1=" style="color: #0891b2; text-decoration: none; font-size: 12px;">https://flmtra.com/?a=659&oc=892&c=2210&s1=</a></td>
-                </tr>
+        <tr style="border-bottom: 1px solid #f1f5f9;">
+          <td style="padding: 12px 10px; font-weight: 700; color: #1e293b; vertical-align: top; word-break: break-word;">
+            PPCBM
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://flmtra.com/?a=659&oc=892&c=2210&s1=" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Page URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
+            <a href="https://tra.com/thank-you?debt=5000&leadid=C863D026&reqid=27257144&affid=659&oid=133" style="color: #0891b2; text-decoration: underline; font-weight: 600;">Thank you URL</a>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-family: Consolas, monospace; font-weight: 700; font-size: 11px; color: #0f172a; word-break: break-all;">
+            C863D026
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #166534; font-weight: 800; font-size: 12px;">PASS</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top;">
+            <span style="color: #cbd5e1;">—</span>
+          </td>
+          <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-weight: 600; color: #0891b2; font-size: 11px;">
+            200 OK
+          </td>
+        </tr>
       
             </tbody>
           </table>
           
-          <p style="text-align: center; margin-top: 40px;">
-            <a href="https://docs.google.com/spreadsheets/d/1rXIg3dMQ4APH3lHLcfWYfP45PnOAKmV9POkoSS3YWxI/edit" class="brand-link">Explore Real-time Data Suite →</a>
-          </p>
         </div>
 
         <div class="footer">
+          <p style="margin: 0 0 12px; font-weight: 700;">Google Sheet Report:</p>
+          <p style="margin: 0 0 16px;">
+            <a href="https://docs.google.com/spreadsheets/d/1rXIg3dMQ4APH3lHLcfWYfP45PnOAKmV9POkoSS3YWxI/edit" style="color: #67e8f9; font-weight: 700; text-decoration: underline; word-break: break-all;">https://docs.google.com/spreadsheets/d/1rXIg3dMQ4APH3lHLcfWYfP45PnOAKmV9POkoSS3YWxI/edit</a>
+          </p>
           <p>© 2026 Forward Leap Marketing. Confidential AI Intelligence.</p>
           <p style="opacity: 0.6;">You are receiving this because FLM Agent Security Mode is ENABLED.</p>
         </div>

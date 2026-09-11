@@ -18,7 +18,7 @@ const HEADERS = [
 
 async function authenticate() {
   const auth = new google.auth.GoogleAuth({
-    keyFile: 'service-account-creds.json',
+    keyFile: process.env.GOOGLE_SERVICE_ACCOUNT_FILE || 'service_account.json',
     scopes: ['https://www.googleapis.com/auth/spreadsheets']
   });
   return auth.getClient();

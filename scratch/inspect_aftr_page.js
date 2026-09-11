@@ -12,7 +12,7 @@ const path = require('path');
   });
   const page = await context.newPage();
   try {
-    await page.goto('https://mlf-trk.com/?a=659&oc=759&c=2211&s1=', { waitUntil: 'domcontentloaded', timeout: 30000 });
+    await page.goto(' https://mlf-trk.com/?a=659&oc=759&c=2211&s1=', { waitUntil: 'domcontentloaded', timeout: 30000 });
     await page.waitForTimeout(3000);
     const sliderInfo = await page.evaluate(() => {
       const $ = window.jQuery || window.$;
