@@ -19,6 +19,13 @@
     "aftr-main:desktop:chromium:Mac - Device",
     "ptr-main:desktop:chromium:Mac - Device",
     "sctr-main:desktop:chromium:Mac - Device",
-    "senior-tax-defense-x:desktop:chromium:Mac - Device"
+    "senior-tax-defense-x:desktop:chromium:Mac - Device",
+    "guardian-tax-relief-ppc:desktop:chromium:Mac - Device",
+    "tra-st-tsg:desktop:chromium:Mac - Device",
+    "tra-st-tf:desktop:chromium:Mac - Device",
+    "tra-st-sp:desktop:chromium:Mac - Device",
+    "tra-ppc-v9:desktop:chromium:Mac - Device",
+    "tra-ppcbtr:desktop:chromium:Mac - Device",
+    "tra-ppcbm:desktop:chromium:Mac - Device"
   ]
 }
