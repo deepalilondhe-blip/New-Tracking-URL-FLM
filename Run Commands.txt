@@ -208,3 +208,18 @@ Run the latest lead validation script (headed browser):
 Run the "Test Only" IP validation script (headed browser):
 
   👉 node utils/flmAgent/test_only_ip_validation.js
+
+--------------------------------------------------------------------------------
+🚀 TRA.COM DIRECT MULTI-STEP FORM RUNNER (STANDALONE)
+--------------------------------------------------------------------------------
+
+Dedicated standalone script for testing https://tra.com/ with CKMTESTPIXEL test credentials,
+debt slider, California state selection, and confirmation screenshot.
+
+1. Headed Mode (Visible Browser):
+   👉 node run-tra-com.js
+   👉 npm run tra:com
+
+2. Headless Mode (Background / Silent):
+   👉 node run-tra-com.js --headless
+   👉 npm run tra:com:headless

@@ -246,4 +246,20 @@ To verify your active cron jobs:
 
 To remove cron jobs:
    👉 crontab -r
+
+--------------------------------------------------------------------------------
+🚀 7. TRA.COM DIRECT MULTI-STEP FORM RUNNER
+--------------------------------------------------------------------------------
+
+Standalone test script for https://tra.com/ with CKMTESTPIXEL test credentials,
+debt slider, and confirmation screenshot:
+
+• Headed Mode (Visible Browser):
+   👉 node run-tra-com.js
+   👉 npm run tra:com
+
+• Headless Mode (Background / Silent):
+   👉 node run-tra-com.js --headless
+   👉 npm run tra:com:headless
+
 ================================================================

@@ -9,7 +9,9 @@
     "test:all": "playwright test tests/brands/",
     "setup:sheets": "node utils/setupSheets.js",
     "flm:validate-lead": "node utils/flmAgent/validate_latest_lead.js",
-    "run": "node automation_script.js"
+    "run": "node automation_script.js",
+    "tra:com": "node run-tra-com.js",
+    "tra:com:headless": "node run-tra-com.js --headless"
   },
   "keywords": [],
   "author": "",
