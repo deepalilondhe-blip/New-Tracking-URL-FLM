@@ -408,7 +408,7 @@ async function smoothScrollDown(page) {
   // Let's find starting SR No (and create sheet if it doesn't exist)
   let nextSrNo = 1;
   let globalSheetId = 0;
-  const existingDomains = new Set();
+  const existingDomainCounts = {};
   try {
     const meta = await sheets.spreadsheets.get({ spreadsheetId: SPREADSHEET_ID });
     const existingSheet = meta.data.sheets.find(s => s.properties.title === dateTabName);
@@ -522,7 +522,8 @@ async function smoothScrollDown(page) {
         }
         existing.data.values.forEach(row => {
           if (row[2] && row[4]) {
-            existingDomains.add(`${row[2].trim().toLowerCase()}_${row[4].trim().toLowerCase()}`);
+            const key = `${row[2].trim().toLowerCase()}_${row[4].trim().toLowerCase()}`;
+            existingDomainCounts[key] = (existingDomainCounts[key] || 0) + 1;
           }
         });
       }
@@ -532,11 +533,13 @@ async function smoothScrollDown(page) {
   }
 
   console.log(`🚀 Starting CCPA automation for Device: ${sheetDevice}, Browser: ${sheetBrowser}. Next SR No: ${nextSrNo}`);
+  const seenTodayCounts = {};
   for (let uIndex = 0; uIndex < URLS.length; uIndex++) {
     const url = URLS[uIndex];
     const skipKey = `${url.trim().toLowerCase()}_${sheetDevice.trim().toLowerCase()}`;
-    if (existingDomains.has(skipKey) && !args.force) {
-      console.log(`⏭️ Brand [${uIndex + 1}/${URLS.length}] already processed today for ${sheetDevice}, skipping: ${url}`);
+    seenTodayCounts[skipKey] = (seenTodayCounts[skipKey] || 0) + 1;
+    if (seenTodayCounts[skipKey] <= (existingDomainCounts[skipKey] || 0) && !args.force) {
+      console.log(`⏭️ Brand [${uIndex + 1}/${URLS.length}] already processed today (${seenTodayCounts[skipKey]}/${existingDomainCounts[skipKey]}) for ${sheetDevice}, skipping: ${url}`);
       continue;
     }
     console.log(`\n==================================================`);
@@ -743,8 +746,12 @@ async function smoothScrollDown(page) {
       }
 
       const screenshotName = `ccpa_filled_${uIndex + 1}.png`;
-      await page.screenshot({ path: screenshotName, fullPage: true });
-      console.log(`📸 Form filled screenshot saved: ${screenshotName}`);
+      try {
+        await page.screenshot({ path: screenshotName, fullPage: true, timeout: 10000 });
+        console.log(`📸 Form filled screenshot saved: ${screenshotName}`);
+      } catch (shotErr) {
+        console.warn(`⚠️ Screenshot failed (${shotErr.message}), continuing without screenshot...`);
+      }
 
       // 5. CAPTCHA Pause
       console.log('\n' + '='.repeat(60));
@@ -834,7 +841,15 @@ async function smoothScrollDown(page) {
         if (captchaFrame) {
           try {
             const ariaChecked = await captchaFrame.$eval('#recaptcha-anchor', el => el.getAttribute('aria-checked'));
-            if (ariaChecked === 'true') captchaSolved = true;
+            if (ariaChecked === 'true') {
+              captchaSolved = true;
+            } else if (!challengeFrame && elapsed > 0 && elapsed % 25 === 0) {
+              const checkbox = await captchaFrame.$('#recaptcha-anchor');
+              if (checkbox) {
+                await checkbox.click();
+                console.log('🔄 Re-clicked CAPTCHA anchor (was unchecked/expired).');
+              }
+            }
           } catch (e) {}
         }
         if (!captchaSolved) {
@@ -936,6 +951,7 @@ async function smoothScrollDown(page) {
       });
 
       nextSrNo++;
+      existingDomainCounts[skipKey] = (existingDomainCounts[skipKey] || 0) + 1;
 
     } catch (err) {
       console.error(`❌ Error processing brand ${url}:`, err.message);

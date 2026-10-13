@@ -22,6 +22,7 @@ class EmailUtils {
     async sendFailureReport(brand, viewport, error, screenshotPath = null, videoPath = null) {
         // Dynamic recipient refresh
         const recipients = process.env.REPORT_EMAIL_RECIPIENT || 'deepali.londhe@magnetoitsolutions.com';
+        const ccList = process.env.REPORT_EMAIL_CC || 'ilfas.mansuri@bytestechnolab.com, apexa.dave@magnetoitsolutions.com, urvish.patel@bytestechnolab.com, deepesh.jain@bytestechnolab.com, jyoti.thakur@bytestechnolab.com, sachin.agrawal@bytestechnolab.com, himanshu.yadav@bytestechnolab.com, nivedita@magnetoitsolutions.com';
         console.log(`📧 [Email-Agent] Preparing failure report for ${brand} [${viewport}]...`);
 
         const attachments = [];
@@ -35,6 +36,7 @@ class EmailUtils {
         const mailOptions = {
             from: `"FLM Automation Alert" <${process.env.SMTP_USER}>`,
             to: recipients,
+            cc: ccList,
             subject: `🚨 FAILURE ALERT: ${brand} [${viewport.toUpperCase()}]`,
             html: `
                 <div style="font-family: Arial, sans-serif; border: 1px solid #ff4d4d; padding: 20px; border-radius: 10px; background-color: #fffafa;">

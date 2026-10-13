@@ -210,16 +210,22 @@ Run the "Test Only" IP validation script (headed browser):
   👉 node utils/flmAgent/test_only_ip_validation.js
 
 --------------------------------------------------------------------------------
-🚀 TRA.COM DIRECT MULTI-STEP FORM RUNNER (STANDALONE)
+🚀 TRA DIRECT MULTI-STEP FORM RUNNERS (FOLDER: TRA URL/)
 --------------------------------------------------------------------------------
 
-Dedicated standalone script for testing https://tra.com/ with CKMTESTPIXEL test credentials,
-debt slider, California state selection, and confirmation screenshot.
+Dedicated standalone scripts for all 14 TRA URLs inside "TRA URL/" with CKMTESTPIXEL
+test credentials, rotational US states, and branded intelligence email report.
+(See detailed guide in: "TRA URL/Run Commands.txt")
 
-1. Headed Mode (Visible Browser):
-   👉 node run-tra-com.js
-   👉 npm run tra:com
+1. Batch Runner (All 14 URLs - Headed / Headless):
+   👉 node "TRA URL/run-all-tra.js"
+   👉 node "TRA URL/run-all-tra.js" --headless
+   👉 node "TRA URL/run-all-tra.js" --only-me
 
-2. Headless Mode (Background / Silent):
-   👉 node run-tra-com.js --headless
-   👉 npm run tra:com:headless
+2. tra.com Single Runner:
+   👉 node "TRA URL/run-tra-com.js"
+   👉 node "TRA URL/run-tra-com.js" --headless
+
+3. Send Branded Email Report (Without Re-running Browser):
+   👉 node "TRA URL/send-flm-email.js"
+
