@@ -1,31 +1,3 @@
 {
-  "completed": [
-    "ftd-x:desktop:chromium:Mac - Device",
-    "fsi-ppc2:desktop:chromium:Mac - Device",
-    "tra-list:desktop:chromium:Mac - Device",
-    "tra-d3:desktop:chromium:Mac - Device",
-    "ppc-st:desktop:chromium:Mac - Device",
-    "ppc-st2:desktop:chromium:Mac - Device",
-    "ppc-m-ca:desktop:chromium:Mac - Device",
-    "ppc-cr:desktop:chromium:Mac - Device",
-    "ppc-fs:desktop:chromium:Mac - Device",
-    "tra-cpm:desktop:chromium:Mac - Device",
-    "everest-tr-x:desktop:chromium:Mac - Device",
-    "vts-ne-branded:desktop:chromium:Mac - Device",
-    "1800-fresh-tax-x-main:desktop:chromium:Mac - Device",
-    "fsi-main:desktop:chromium:Mac - Device",
-    "senior-tax-defence-main:desktop:chromium:Mac - Device",
-    "fresh-start-initiative-x-main:desktop:chromium:Mac - Device",
-    "aftr-main:desktop:chromium:Mac - Device",
-    "ptr-main:desktop:chromium:Mac - Device",
-    "sctr-main:desktop:chromium:Mac - Device",
-    "senior-tax-defense-x:desktop:chromium:Mac - Device",
-    "guardian-tax-relief-ppc:desktop:chromium:Mac - Device",
-    "tra-st-tsg:desktop:chromium:Mac - Device",
-    "tra-st-tf:desktop:chromium:Mac - Device",
-    "tra-st-sp:desktop:chromium:Mac - Device",
-    "tra-ppc-v9:desktop:chromium:Mac - Device",
-    "tra-ppcbtr:desktop:chromium:Mac - Device",
-    "tra-ppcbm:desktop:chromium:Mac - Device"
-  ]
+  "completed": []
 }
