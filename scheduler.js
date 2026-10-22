@@ -464,13 +464,12 @@ async function sendProfessionalDailyReport(summary) {
   const failedCount = totalCount - succeededCount;
 
   const traRuns = latestRuns.filter(r => isTraCampaign(r.campaignId)).sort(sortSequential);
-  // Guarantee AFTR is placed at the last position of the Non-TRA list
+  // Guarantee AFTR is placed at the end of the first group
   const nonTraRuns = latestRuns.filter(r => !isTraCampaign(r.campaignId)).sort((a, b) => {
     if (a.campaignId === 'aftr-main') return 1;
     if (b.campaignId === 'aftr-main') return -1;
     return sortSequential(a, b);
   });
-
   // Lead ID validation helper (excludes test/synthetic IDs like ckm58725 or ckmtestpixel)
   const isValidLeadId = (id) => {
     if (!id) return false;
@@ -524,8 +523,8 @@ async function sendProfessionalDailyReport(summary) {
     }).join('');
   };
 
-  const traTableRowsHtml = generateTableRows(traRuns);
-  const nonTraTableRowsHtml = generateTableRows(nonTraRuns);
+  const allRunsList = [...nonTraRuns, ...traRuns];
+  const allTableRowsHtml = generateTableRows(allRunsList);
   
   const sheetId = process.env.GOOGLE_SHEET_ID || '1rXIg3dMQ4APH3lHLcfWYfP45PnOAKmV9POkoSS3YWxI';
   const sheetUrl = `https://docs.google.com/spreadsheets/d/${sheetId}/edit`;
@@ -580,8 +579,8 @@ async function sendProfessionalDailyReport(summary) {
 
           ${failedListHtml}
 
-          <!-- Section 1: FLM URL (NON TRA) -->
-          <div style="font-size: 15px; font-weight: 800; color: #0f172a; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; margin: 25px 0 15px;">FLM URL (NON TRA)</div>
+          <!-- FLM URL Table -->
+          <div style="font-size: 15px; font-weight: 800; color: #0f172a; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; margin: 25px 0 15px;">FLM URL</div>
           <table style="width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 30px; table-layout: fixed;">
             <thead>
               <tr style="text-align: left; color: #64748b; border-bottom: 1.5px solid #cbd5e1; font-weight: 700;">
@@ -595,26 +594,7 @@ async function sendProfessionalDailyReport(summary) {
               </tr>
             </thead>
             <tbody>
-              ${nonTraTableRowsHtml}
-            </tbody>
-          </table>
-
-          <!-- Section 2: TRA URL -->
-          <div style="font-size: 15px; font-weight: 800; color: #0f172a; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; margin: 25px 0 15px;">TRA URL</div>
-          <table style="width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 30px; table-layout: fixed;">
-            <thead>
-              <tr style="text-align: left; color: #64748b; border-bottom: 1.5px solid #cbd5e1; font-weight: 700;">
-                <th style="padding: 10px 14px; width: 16%;">DOMAIN NAME</th>
-                <th style="padding: 10px; text-align: center; width: 18%;">URL</th>
-                <th style="padding: 10px; text-align: center; width: 20%;">THANK YOU URL</th>
-                <th style="padding: 10px; text-align: center; width: 14%;">LEAD ID</th>
-                <th style="padding: 10px; text-align: center; width: 9%;">PASS</th>
-                <th style="padding: 10px; text-align: center; width: 9%;">FAILED</th>
-                <th style="padding: 10px; text-align: center; width: 14%;">API STATUS</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${traTableRowsHtml}
+              ${allTableRowsHtml}
             </tbody>
           </table>
           
