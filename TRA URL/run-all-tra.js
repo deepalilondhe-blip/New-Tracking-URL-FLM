@@ -429,7 +429,7 @@ async function sendReportEmail(results, isHeadless = false) {
   const pass = process.env.SMTP_PASS;
   const toList = process.env.REPORT_EMAIL_RECIPIENT || 'deepali.londhe@magnetoitsolutions.com';
   // Include all FLM Agent team members in CC by default (can be restricted using --only-me)
-  const ccList = process.argv.includes('--only-me') ? null : (process.env.REPORT_EMAIL_CC || 'ilfas.mansuri@bytestechnolab.com, apexa.dave@magnetoitsolutions.com, urvish.patel@bytestechnolab.com, deepesh.jain@bytestechnolab.com, jyoti.thakur@bytestechnolab.com, sachin.agrawal@bytestechnolab.com, himanshu.yadav@bytestechnolab.com, nivedita@magnetoitsolutions.com');
+  const ccList = process.argv.includes('--only-me') ? null : (process.env.REPORT_EMAIL_CC || 'ilfas.mansuri@bytestechnolab.com, apexa.dave@magnetoitsolutions.com, urvish.patel@bytestechnolab.com, deepesh.jain@bytestechnolab.com, jyoti.thakur@bytestechnolab.com, sachin.agrawal@bytestechnolab.com, himanshu.yadav@bytestechnolab.com, nivedita@magnetoitsolutions.com, bhavik@bytestechnolab.com');
 
   const htmlBody = buildBrandedEmailHtml(results, isHeadless);
 

@@ -13,7 +13,8 @@ to deepali.londhe@magnetoitsolutions.com and all team members in CC by default:
 • CC: ilfas.mansuri@bytestechnolab.com, apexa.dave@magnetoitsolutions.com,
       urvish.patel@bytestechnolab.com, deepesh.jain@bytestechnolab.com,
       jyoti.thakur@bytestechnolab.com, sachin.agrawal@bytestechnolab.com,
-      himanshu.yadav@bytestechnolab.com, nivedita@magnetoitsolutions.com
+      himanshu.yadav@bytestechnolab.com, nivedita@magnetoitsolutions.com,
+      bhavik@bytestechnolab.com
 
 👉 From Workspace Root:
    • Headed Mode (Visible Browser - All Team Members):
