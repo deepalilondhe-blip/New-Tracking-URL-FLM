@@ -124,17 +124,7 @@
     "state": "West Virginia",
     "phone": "304-279-8902",
     "skipSecondApi": false
-  },
-  {
-    "id": "original",
-    "name": "1800",
-    "url": "https://mlf-1800-trk.com/?a=659&oc=337&c=617&s1=",
-    "sheet": "1800",
-    "sliderAmount": "100,000",
-    "state": "West Virginia",
-    "phone": "304-266-2863",
-    "skipSecondApi": false,
-    "useVpn": true
+
   },
   {
     "id": "1800-fresh-tax-x-main",
@@ -177,17 +167,6 @@
     "skipSecondApi": false
   },
   {
-    "id": "aftr-main",
-    "name": "AFTR",
-    "url": "https://mlf-trk.com/?a=659&oc=809&c=2227&s1=",
-    "sheet": "AFTR",
-    "sliderAmount": "35000",
-    "state": "California",
-    "phone": "415-555-1234",
-    "skipSecondApi": false,
-    "useVpn": true
-  },
-  {
     "id": "ptr-main",
     "name": "PTR",
     "url": "https://mlf-trk.com/?a=659&oc=778&c=2251&s1=",
@@ -221,6 +200,16 @@
     "phone": "305-555-1234",
     "secondApiDomain": "https://www.seniortaxdefense.com/",
     "secondApiEndpoint": "https://everesttaxrelief.net/api-qa-automation-atwohosting/getData.php",
+    "skipSecondApi": false
+  },
+  {
+    "id": "aftr-main",
+    "name": "AFTR",
+    "url": "https://www.americasfirsttaxrelief.com/v4/",
+    "sheet": "AFTR",
+    "sliderAmount": "35000",
+    "state": "California",
+    "phone": "415-555-1234",
     "skipSecondApi": false
   },
   {
@@ -292,5 +281,31 @@
     "state": "IN",
     "phone": "9763546781",
     "skipSecondApi": true
+  },
+  {
+    "id": "original",
+    "name": "1800 (VPN)",
+    "url": "https://mlf-1800-trk.com/?a=659&oc=337&c=617&s1=",
+    "sheet": "1800",
+    "sliderAmount": "100,000",
+    "state": "West Virginia",
+    "phone": "304-266-2863",
+    "skipSecondApi": false,
+    "useVpn": true,
+    "disabled": true,
+    "_comment": "VPN URL (1800 Original). Requires US VPN connection. Run individually using: node run-master.js --campaign original --viewport desktop --headed"
+  },
+  {
+    "id": "aftr-vpn",
+    "name": "AFTR (VPN)",
+    "url": "https://mlf-trk.com/?a=659&oc=809&c=2227&s1=",
+    "sheet": "AFTR",
+    "sliderAmount": "35000",
+    "state": "California",
+    "phone": "415-555-1234",
+    "skipSecondApi": false,
+    "useVpn": true,
+    "disabled": true,
+    "_comment": "VPN URL (AFTR Original Tracking). Requires US VPN connection. Run individually using: node run-master.js --campaign aftr-vpn --viewport desktop --headed"
   }
 ]

@@ -492,7 +492,7 @@ Answer the user's prompt using the real-time data above. Be direct, clear, and c
             else if (raw < 50000) expectedCake = "20000";
             else if (raw < 100000) expectedCake = "50000";
             else expectedCake = "100000";
-        } else if (brand === 'ptr-main' || brand === 'aftr-main' || brand === 'capital-tax-relief-x' || brand === 'empire-tax-relief-x' ||
+        } else if (brand === 'ptr-main' || brand === 'aftr-main' || brand === 'aftr-vpn' || brand === 'capital-tax-relief-x' || brand === 'empire-tax-relief-x' ||
                    brand === '1800-fresh-tax-x-main' || brand === 'original' || brand === 'ftd-x' || brand === 'fsi-main' ||
                    brand === 'fresh-start-initiative-x-main' || brand === 'vts-original' || brand === 'vts-ne-branded') {
             if (raw < 5000) expectedCake = "5000";

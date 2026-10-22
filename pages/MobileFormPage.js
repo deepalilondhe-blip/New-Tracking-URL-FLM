@@ -1188,6 +1188,54 @@ class MobileFormPage {
           }
         }
 
+        // State Dropdown (if present on contact step)
+        const contactStateSelect = this.page.locator('#state:visible, select#state:visible, select[name="state"]:visible').first();
+        if (await contactStateSelect.isVisible({ timeout: 1000 }).catch(() => false)) {
+          const currentStateVal = await contactStateSelect.inputValue().catch(() => '');
+          if (!currentStateVal || currentStateVal === '') {
+            try {
+              const selectedState = await this.page.evaluate(({ stateSelectSelector, runIndex, defaultState }) => {
+                const node = document.querySelector(stateSelectSelector);
+                if (node && node.options.length > 1) {
+                  const validOptions = Array.from(node.options).filter(opt => {
+                    const val = opt.value.trim();
+                    const txt = opt.text.toLowerCase();
+                    return val !== "" && !txt.includes("select") && !txt.includes("choose");
+                  });
+
+                  if (defaultState) {
+                    const target = defaultState.trim().toLowerCase();
+                    const matchedOpt = validOptions.find(opt => 
+                      opt.text.trim().toLowerCase() === target || 
+                      opt.value.trim().toLowerCase() === target
+                    );
+                    if (matchedOpt) {
+                      node.value = matchedOpt.value;
+                      node.dispatchEvent(new Event('change', { bubbles: true }));
+                      node.dispatchEvent(new Event('input', { bubbles: true }));
+                      return matchedOpt.text;
+                    }
+                  }
+
+                  if (validOptions.length > 0) {
+                    const selectedOpt = validOptions[runIndex % validOptions.length];
+                    node.value = selectedOpt.value;
+                    node.dispatchEvent(new Event('change', { bubbles: true }));
+                    node.dispatchEvent(new Event('input', { bubbles: true }));
+                    return selectedOpt.text;
+                  }
+                }
+                return defaultState;
+              }, { stateSelectSelector: '#state, select#state, select[name="state"]', runIndex: this.runIndex, defaultState: defaultState });
+
+              console.log(`✅ [Mobile] Selected State dropdown: "${selectedState}"`);
+              filledSomething = true;
+            } catch (e) {
+              console.warn('⚠️ [Mobile] State dropdown selection failed:', e.message);
+            }
+          }
+        }
+
         // Email
         const emailField = this.page.locator('#email, #email_address, input[name="email"], input[name="email_address"], input[type="email"], input[placeholder*="Email" i]').first();
         if (await emailField.isVisible({ timeout: 500 }).catch(() => false)) {
@@ -1204,10 +1252,17 @@ class MobileFormPage {
         // Phone
         const phoneField = this.page.locator('#primary_phone, #phone, #phone_home, input[name="phone"], input[name="phone_home"], input[name="primary_phone"], input[type="tel"]').first();
         if (await phoneField.isVisible({ timeout: 500 }).catch(() => false)) {
-          const currentVal = await phoneField.inputValue().catch(() => '');
-          if (!currentVal || currentVal.replace(/[^0-9]/g, '') !== phone.replace(/[^0-9]/g, '')) {
+          let currentVal = await phoneField.inputValue().catch(() => '');
+          const cleanPhone = phone.replace(/[^0-9]/g, '');
+          if (!currentVal || currentVal.replace(/[^0-9]/g, '') !== cleanPhone) {
             await phoneField.click({ timeout: 1500 }).catch(() => {});
             await phoneField.fill(phone, { timeout: 1500 }).catch(() => {});
+            currentVal = await phoneField.inputValue().catch(() => '');
+            if (currentVal.replace(/[^0-9]/g, '').length < 10) {
+              await phoneField.click({ timeout: 1000 }).catch(() => {});
+              await phoneField.fill('');
+              await phoneField.pressSequentially(cleanPhone, { delay: 30 }).catch(() => {});
+            }
             await this.page.keyboard.press('Tab').catch(() => {});
             console.log(`✅ [Mobile] Filled Phone: ${phone}`);
             filledSomething = true;
@@ -1409,7 +1464,7 @@ class MobileFormPage {
         } else {
           numericDebt = 100000;
         }
-      } else if (this.brandId === 'ptr-main' || this.brandId === 'aftr-main' || this.brandId === 'capital-tax-relief-x' || this.brandId === 'empire-tax-relief-x' ||
+      } else if (this.brandId === 'ptr-main' || this.brandId === 'aftr-main' || this.brandId === 'aftr-vpn' || this.brandId === 'capital-tax-relief-x' || this.brandId === 'empire-tax-relief-x' ||
                  this.brandId === '1800-fresh-tax-x-main' || this.brandId === 'original' || this.brandId === 'ftd-x' || this.brandId === 'fsi-main' ||
                  this.brandId === 'fresh-start-initiative-x-main' || this.brandId === 'vts-original' || this.brandId === 'vts-ne-branded') {
         if (firstVal < 5000) {

@@ -127,25 +127,25 @@ Add '--headless' if you do not want a browser window to open on your desktop:
    • Tablet:  node run-master.js --campaign fsi-ppc2-x --viewport tablet
    • Mobile:  node run-master.js --campaign fsi-ppc2-x --viewport mobile
 
-18. AFTR (aftr-main)
-   • Desktop: node run-master.js --campaign aftr-main --viewport desktop
-   • Tablet:  node run-master.js --campaign aftr-main --viewport tablet
-   • Mobile:  node run-master.js --campaign aftr-main --viewport mobile
-
-19. PTR (ptr-main)
+18. PTR (ptr-main)
    • Desktop: node run-master.js --campaign ptr-main --viewport desktop
    • Tablet:  node run-master.js --campaign ptr-main --viewport tablet
    • Mobile:  node run-master.js --campaign ptr-main --viewport mobile
 
-20. SCTR (sctr-main)
+19. SCTR (sctr-main)
    • Desktop: node run-master.js --campaign sctr-main --viewport desktop
    • Tablet:  node run-master.js --campaign sctr-main --viewport tablet
    • Mobile:  node run-master.js --campaign sctr-main --viewport mobile
 
-21. STD X (senior-tax-defense-x)
+20. STD X (senior-tax-defense-x)
    • Desktop: node run-master.js --campaign senior-tax-defense-x --viewport desktop
    • Tablet:  node run-master.js --campaign senior-tax-defense-x --viewport tablet
    • Mobile:  node run-master.js --campaign senior-tax-defense-x --viewport mobile
+
+21. AFTR (aftr-main)  [Last in Non-TRA group]
+   • Desktop: node run-master.js --campaign aftr-main --viewport desktop
+   • Tablet:  node run-master.js --campaign aftr-main --viewport tablet
+   • Mobile:  node run-master.js --campaign aftr-main --viewport mobile
 
 22. GT (guardian-tax-relief-ppc)
    • Desktop: node run-master.js --campaign guardian-tax-relief-ppc --viewport desktop
@@ -181,6 +181,27 @@ Add '--headless' if you do not want a browser window to open on your desktop:
    • Desktop: node run-master.js --campaign ppc-bm --viewport desktop
    • Tablet:  node run-master.js --campaign ppc-bm --viewport tablet
    • Mobile:  node run-master.js --campaign ppc-bm --viewport mobile
+
+--------------------------------------------------------------------------------
+🌐 VPN CAMPAIGNS (FUTURE USE - REQUIRES US VPN CONNECTION)
+--------------------------------------------------------------------------------
+
+These 2 campaigns use legacy MLF tracking links that require a US IP address / VPN.
+They are configured in config/campaigns.json with disabled: true and useVpn: true
+so they do NOT block daily automated runs. Run them manually when connected to VPN:
+
+29. 1800 (original)
+   • Desktop: node run-master.js --campaign original --viewport desktop --headed
+   • Tablet:  node run-master.js --campaign original --viewport tablet --headed
+   • Mobile:  node run-master.js --campaign original --viewport mobile --headed
+
+30. AFTR Tracking (aftr-vpn)
+   • Desktop: node run-master.js --campaign aftr-vpn --viewport desktop --headed
+   • Tablet:  node run-master.js --campaign aftr-vpn --viewport tablet --headed
+   • Mobile:  node run-master.js --campaign aftr-vpn --viewport mobile --headed
+
+   💡 Run both VPN campaigns together via scheduler:
+   👉 node scheduler.js --campaigns original,aftr-vpn --once
 
 --------------------------------------------------------------------------------
 ⚠️ 4. IMPORTANT: LAPTOP POWER OFF vs. CLOUD SERVER EXPLAINED

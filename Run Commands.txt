@@ -110,25 +110,25 @@ To manually run any campaign, use the following template structure:
    🔹 Tablet:  node run-master.js --campaign fresh-start-initiative-x-main --viewport tablet --headed
    🔹 Mobile:  node run-master.js --campaign fresh-start-initiative-x-main --viewport mobile --headed
 
-18. 📊 AFTR (aftr-main)
-   🔹 Desktop: node run-master.js --campaign aftr-main --viewport desktop --headed
-   🔹 Tablet:  node run-master.js --campaign aftr-main --viewport tablet --headed
-   🔹 Mobile:  node run-master.js --campaign aftr-main --viewport mobile --headed
-
-19. 📊 PTR (ptr-main)
+18. 📊 PTR (ptr-main)
    🔹 Desktop: node run-master.js --campaign ptr-main --viewport desktop --headed
    🔹 Tablet:  node run-master.js --campaign ptr-main --viewport tablet --headed
    🔹 Mobile:  node run-master.js --campaign ptr-main --viewport mobile --headed
 
-20. 📊 SCTR (sctr-main)
+19. 📊 SCTR (sctr-main)
    🔹 Desktop: node run-master.js --campaign sctr-main --viewport desktop --headed
    🔹 Tablet:  node run-master.js --campaign sctr-main --viewport tablet --headed
    🔹 Mobile:  node run-master.js --campaign sctr-main --viewport mobile --headed
 
-21. 📊 STD X (senior-tax-defense-x)
+20. 📊 STD X (senior-tax-defense-x)
    🔹 Desktop: node run-master.js --campaign senior-tax-defense-x --viewport desktop --headed
    🔹 Tablet:  node run-master.js --campaign senior-tax-defense-x --viewport tablet --headed
    🔹 Mobile:  node run-master.js --campaign senior-tax-defense-x --viewport mobile --headed
+
+21. 📊 AFTR (aftr-main)  [Last in Non-TRA group]
+   🔹 Desktop: node run-master.js --campaign aftr-main --viewport desktop --headed
+   🔹 Tablet:  node run-master.js --campaign aftr-main --viewport tablet --headed
+   🔹 Mobile:  node run-master.js --campaign aftr-main --viewport mobile --headed
 
 22. 📊 GT (guardian-tax-relief-ppc)
    🔹 Desktop: node run-master.js --campaign guardian-tax-relief-ppc --viewport desktop --headed
@@ -164,6 +164,27 @@ To manually run any campaign, use the following template structure:
    🔹 Desktop: node run-master.js --campaign tra-ppcbm --viewport desktop --headed
    🔹 Tablet:  node run-master.js --campaign tra-ppcbm --viewport tablet --headed
    🔹 Mobile:  node run-master.js --campaign tra-ppcbm --viewport mobile --headed
+
+--------------------------------------------------------------------------------
+🌐 VPN CAMPAIGNS (FUTURE USE - REQUIRES US VPN CONNECTION)
+--------------------------------------------------------------------------------
+
+These 2 campaigns use legacy MLF tracking links that require a US IP address / VPN.
+They are configured in config/campaigns.json with disabled: true and useVpn: true
+so they do NOT block daily automated runs. Run them manually when connected to VPN:
+
+29. 📊 1800 (original)
+   🔹 Desktop: node run-master.js --campaign original --viewport desktop --headed
+   🔹 Tablet:  node run-master.js --campaign original --viewport tablet --headed
+   🔹 Mobile:  node run-master.js --campaign original --viewport mobile --headed
+
+30. 📊 AFTR Tracking (aftr-vpn)
+   🔹 Desktop: node run-master.js --campaign aftr-vpn --viewport desktop --headed
+   🔹 Tablet:  node run-master.js --campaign aftr-vpn --viewport tablet --headed
+   🔹 Mobile:  node run-master.js --campaign aftr-vpn --viewport mobile --headed
+
+   💡 Run both VPN campaigns together via scheduler:
+   👉 node scheduler.js --campaigns original,aftr-vpn --once
 
 --------------------------------------------------------------------------------
 🔄 RECURRING BATCH SCHEDULER (HEADED MODE - VISIBLE BROWSER)

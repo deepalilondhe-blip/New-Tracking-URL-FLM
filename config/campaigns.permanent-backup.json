@@ -1,0 +1,311 @@
+[
+  {
+    "id": "ftd-x",
+    "name": "FTD",
+    "url": "https://mlfftd.com/?a=659&oc=543&c=167&s1=",
+    "sheet": "FTD",
+    "sliderAmount": "70,000",
+    "state": "Montana",
+    "phone": "406-314-1715",
+    "skipSecondApi": false
+  },
+  {
+    "id": "fsi-ppc2",
+    "name": "FSI PPC",
+    "url": "https://fsimlf-trk.com/?a=659&oc=750&c=143&s1=",
+    "sheet": "FSI PPC",
+    "sliderOptions": [
+      "$0 - $9,999",
+      "$10,000 - $19,999",
+      "$20,000 - $50,000",
+      "$50,000 or more"
+    ],
+    "sliderAmount": "$0-$9,999",
+    "state": "South Carolina",
+    "phone": "803-612-4270",
+    "skipSecondApi": false
+  },
+  {
+    "id": "tra-list",
+    "name": "LIST",
+    "url": "https://flmtra.com/?a=659&oc=756&c=2210&s1=",
+    "sheet": "LIST",
+    "sliderAmount": "30,000",
+    "state": "IN",
+    "phone": "9763546781",
+    "skipSecondApi": true
+  },
+  {
+    "id": "tra-d3",
+    "name": "TRA x",
+    "url": "https://flmtra.com/?a=659&oc=792&c=2386&s1=",
+    "sheet": "TRA x",
+    "sliderAmount": "10,000",
+    "state": "IN",
+    "phone": "843-939-2210",
+    "skipSecondApi": true
+  },
+  {
+    "id": "ppc-st",
+    "name": "PPC/ST",
+    "url": "https://flmtra.com/?a=659&oc=837&c=2210&s1=",
+    "sheet": "PPC/ST",
+    "sliderAmount": "18,000",
+    "state": "OR",
+    "phone": "503-518-1606",
+    "skipSecondApi": true
+  },
+  {
+    "id": "ppc-st2",
+    "name": "PPC/ST2",
+    "url": "https://flmtra.com/?a=659&oc=858&c=2210&s1=",
+    "sheet": "PPC/ST2",
+    "sliderAmount": "20,000",
+    "state": "Nebraska",
+    "phone": "402-919-7047",
+    "skipSecondApi": true
+  },
+  {
+    "id": "ppc-m-ca",
+    "name": "PPCM/CA",
+    "url": "https://flmtra.com/?a=659&oc=822&c=2210&s1=",
+    "sheet": "PPCM/CA",
+    "sliderAmount": "50,000",
+    "state": "TX",
+    "phone": "405-507-5965",
+    "skipSecondApi": true
+  },
+  {
+    "id": "ppc-cr",
+    "name": "PPC/CR",
+    "url": "https://flmtra.com/?a=659&oc=848&c=2210&s1=",
+    "sheet": "PPC/CR",
+    "sliderAmount": "1000",
+    "state": "South Carolina",
+    "phone": "803-726-7050",
+    "skipSecondApi": true
+  },
+  {
+    "id": "ppc-fs",
+    "name": "PPC/FS",
+    "url": "https://flmtra.com/?a=659&oc=841&c=2210&s1=",
+    "sheet": "PPC/FS",
+    "sliderAmount": "50,000",
+    "state": "RI",
+    "phone": "401-739-6095",
+    "skipSecondApi": true
+  },
+  {
+    "id": "tra-cpm",
+    "name": "TRA cpm",
+    "url": "https://flmtra.com/?a=659&oc=763&c=2225&s1=",
+    "sheet": "TRA cpm",
+    "sliderAmount": "9000",
+    "state": "Rhode Island",
+    "phone": "401-453-0576",
+    "skipSecondApi": true
+  },
+  {
+    "id": "everest-tr-x",
+    "name": "ETR",
+    "url": "https://mlf-trk.com/?a=659&oc=812&c=2498&s1=",
+    "sheet": "ETR",
+    "sliderAmount": "70000",
+    "state": "California",
+    "phone": "406-314-1715",
+    "skipSecondApi": false
+  },
+  {
+    "id": "vts-ne-branded",
+    "name": "VTS",
+    "url": "https://mlfvts-trk.com/?a=659&oc=830&c=569&s1=",
+    "sheet": "VTS",
+    "sliderAmount": "8000",
+    "state": "West Virginia",
+    "phone": "304-279-8902",
+    "skipSecondApi": false
+
+  },
+  {
+    "id": "1800-fresh-tax-x-main",
+    "name": "1800X",
+    "url": "https://flmtrk.com/?a=659&oc=696&c=1867&s1=",
+    "sheet": "1800X",
+    "sliderAmount": "12000",
+    "state": "Maine",
+    "phone": "207-234-3082",
+    "skipSecondApi": false
+  },
+  {
+    "id": "fsi-main",
+    "name": "FSI",
+    "url": "https://fsimlf-trk.com/?a=659&oc=548&c=111&s1=",
+    "sheet": "FSI",
+    "sliderAmount": "25,000",
+    "state": "California",
+    "phone": "406-314-1715",
+    "skipSecondApi": false
+  },
+  {
+    "id": "senior-tax-defence-main",
+    "name": "STD",
+    "url": "https://flmtrk.com/?a=659&oc=714&c=1892&s1=",
+    "sheet": "STD",
+    "sliderAmount": "30000",
+    "state": "Colorado",
+    "phone": "970-717-4901",
+    "skipSecondApi": false
+  },
+  {
+    "id": "fresh-start-initiative-x-main",
+    "name": "FSI X",
+    "url": "https://flmtrk.com/?a=659&oc=780&c=1940&s1=",
+    "sheet": "FSI X",
+    "sliderAmount": "25000",
+    "state": "Texas",
+    "phone": "512-555-6789",
+    "skipSecondApi": false
+  },
+  {
+    "id": "ptr-main",
+    "name": "PTR",
+    "url": "https://mlf-trk.com/?a=659&oc=778&c=2251&s1=",
+    "sheet": "PTR",
+    "sliderAmount": "40000",
+    "state": "New York",
+    "phone": "212-555-1234",
+    "skipSecondApi": false
+  },
+  {
+    "id": "sctr-main",
+    "name": "SCTR",
+    "url": "https://secure-sctr.com/?a=659&oc=800&c=2432&s1=",
+    "trackingUrl": "https://flm-sctr-trk.com/?a=659&oc=684&c=1818&s1=",
+    "sheet": "SCTR",
+    "sliderAmount": "",
+    "state": "",
+    "phone": "",
+    "skipSecondApi": false
+  },
+  {
+    "id": "senior-tax-defense-x",
+    "name": "STD X",
+    "url": "https://flmtrk.com/?a=659&oc=831&c=2599&s1=",
+    "sheet": "STD X",
+    "firstName": "ckmtestpixel",
+    "lastName": "ckmtestpixel",
+    "email": "ckmtestpixel@gmail.com",
+    "sliderAmount": "30000",
+    "state": "Florida",
+    "phone": "305-555-1234",
+    "secondApiDomain": "https://www.seniortaxdefense.com/",
+    "secondApiEndpoint": "https://everesttaxrelief.net/api-qa-automation-atwohosting/getData.php",
+    "skipSecondApi": false
+  },
+  {
+    "id": "aftr-main",
+    "name": "AFTR",
+    "url": "https://www.americasfirsttaxrelief.com/v4/",
+    "sheet": "AFTR",
+    "sliderAmount": "35000",
+    "state": "California",
+    "phone": "415-555-1234",
+    "skipSecondApi": false
+  },
+  {
+    "id": "guardian-tax-relief-ppc",
+    "name": "GT",
+    "url": "https://mlf-gt.com/?a=659&oc=907&c=2521&s1=",
+    "sheet": "GT",
+    "sliderAmount": "50000",
+    "state": "Colorado",
+    "phone": "970-321-4664",
+    "skipSecondApi": true
+  },
+  {
+    "id": "tra-st-tsg",
+    "name": "ST/TSG",
+    "url": "https://flmtra.com/?a=659&oc=874&c=2210&s1=",
+    "sheet": "ST/TSG",
+    "sliderAmount": "20,000",
+    "state": "IN",
+    "phone": "9763546781",
+    "skipSecondApi": true
+  },
+  {
+    "id": "tra-st-tf",
+    "name": "ST/TF",
+    "url": "https://flmtra.com/?a=659&oc=872&c=2210&s1=",
+    "sheet": "ST/TF",
+    "sliderAmount": "20,000",
+    "state": "IN",
+    "phone": "9763546781",
+    "skipSecondApi": true
+  },
+  {
+    "id": "tra-st-sp",
+    "name": "ST/SP",
+    "url": "https://flmtra.com/?a=659&oc=904&c=2210&s1=",
+    "sheet": "ST/SP",
+    "sliderAmount": "20,000",
+    "state": "IN",
+    "phone": "9763546781",
+    "skipSecondApi": true
+  },
+  {
+    "id": "tra-ppc-v9",
+    "name": "PPC/V9",
+    "url": "https://flmtra.com/?a=659&oc=906&c=2210&s1=",
+    "sheet": "PPC/V9",
+    "sliderAmount": "20,000",
+    "state": "IN",
+    "phone": "9763546781",
+    "skipSecondApi": true
+  },
+  {
+    "id": "tra-ppcbtr",
+    "name": "PPCBTR",
+    "url": "https://flmtra.com/?a=659&oc=818&c=2210&s1=",
+    "sheet": "PPCBTR",
+    "sliderAmount": "20,000",
+    "state": "IN",
+    "phone": "9763546781",
+    "skipSecondApi": true
+  },
+  {
+    "id": "tra-ppcbm",
+    "name": "PPCBM",
+    "url": "https://flmtra.com/?a=659&oc=892&c=2210&s1=",
+    "sheet": "PPCBM",
+    "sliderAmount": "20,000",
+    "state": "IN",
+    "phone": "9763546781",
+    "skipSecondApi": true
+  },
+  {
+    "id": "original",
+    "name": "1800 (VPN)",
+    "url": "https://mlf-1800-trk.com/?a=659&oc=337&c=617&s1=",
+    "sheet": "1800",
+    "sliderAmount": "100,000",
+    "state": "West Virginia",
+    "phone": "304-266-2863",
+    "skipSecondApi": false,
+    "useVpn": true,
+    "disabled": true,
+    "_comment": "VPN URL (1800 Original). Requires US VPN connection. Run individually using: node run-master.js --campaign original --viewport desktop --headed"
+  },
+  {
+    "id": "aftr-vpn",
+    "name": "AFTR (VPN)",
+    "url": "https://mlf-trk.com/?a=659&oc=809&c=2227&s1=",
+    "sheet": "AFTR",
+    "sliderAmount": "35000",
+    "state": "California",
+    "phone": "415-555-1234",
+    "skipSecondApi": false,
+    "useVpn": true,
+    "disabled": true,
+    "_comment": "VPN URL (AFTR Original Tracking). Requires US VPN connection. Run individually using: node run-master.js --campaign aftr-vpn --viewport desktop --headed"
+  }
+]

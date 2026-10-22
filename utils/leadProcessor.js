@@ -357,7 +357,7 @@ async function processLead(brandConfig, page) {
          if (numVal < 100000) return '50,000';
          return '100,000';
       }
-      if (bId === 'aftr-main') {
+      if (bId === 'aftr-main' || bId === 'aftr-vpn') {
          if (numVal < 5000) return '5,000';
          if (numVal < 10000) return '7,500';
          if (numVal < 20000) return '10,000';

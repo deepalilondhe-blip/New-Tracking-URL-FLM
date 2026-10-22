@@ -8,6 +8,7 @@
  * Usage:
  *   node run-master.js --campaign <id> --viewport <desktop|tablet|mobile|api>
  */
+require('dotenv').config();
 const { chromium, firefox, webkit } = require('playwright-extra');
 const stealth = require('puppeteer-extra-plugin-stealth')();
 chromium.use(stealth);
@@ -140,7 +141,15 @@ try {
   process.exit(1);
 }
 
-const campaignConfig = campaigns.find(c => c.id === campaignIdArg);
+let campaignConfig = campaigns.find(c => c.id === campaignIdArg);
+if (!campaignConfig && campaignIdArg) {
+  const lower = campaignIdArg.toLowerCase();
+  campaignConfig = campaigns.find(c => c.id.toLowerCase() === lower);
+  if (!campaignConfig) {
+    if (lower === 'aftr-vpn') campaignConfig = campaigns.find(c => c.id === 'aftr-vpn');
+    else if (lower === '1800' || lower === '1800-vpn') campaignConfig = campaigns.find(c => c.id === 'original');
+  }
+}
 if (!campaignConfig) {
   console.error(`❌ Error: Campaign ID "${campaignIdArg}" not found in config/campaigns.json`);
   process.exit(1);

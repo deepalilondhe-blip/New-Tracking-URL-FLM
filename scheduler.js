@@ -7,23 +7,40 @@ const emailUtils = require('./utils/emailUtils');
 const flmAgent = require('./utils/flmAgent');
 const dailyLogger = require('./utils/dailyLogger');
 
+// ==============================================================================
+// ℹ️ VPN CAMPAIGNS GUIDE (FUTURE USE):
+// The 2 VPN-dependent campaigns ("original" and "aftr-vpn") are configured in
+// config/campaigns.json with "disabled": true and "useVpn": true.
+//
+// In the future, if you want to run either or both VPN campaigns (requires US VPN):
+//   1. Run Single Campaign (Headed):
+//      👉 node run-master.js --campaign original --viewport desktop --headed
+//      👉 node run-master.js --campaign aftr-vpn --viewport desktop --headed
+//   2. Run via Scheduler:
+//      👉 node scheduler.js --campaigns original,aftr-vpn --once
+// ==============================================================================
+
 // Load campaigns from configuration file dynamically
 const configPath = path.join(__dirname, 'config', 'campaigns.json');
-let campaigns = [];
+let allCampaignsConfig = [];
 if (fs.existsSync(configPath)) {
   try {
-    campaigns = JSON.parse(fs.readFileSync(configPath, 'utf8'));
+    allCampaignsConfig = JSON.parse(fs.readFileSync(configPath, 'utf8'));
   } catch (e) {
     console.error('⚠️ Could not parse campaigns config inside scheduler, falling back to empty list:', e.message);
   }
 }
 
-// Support filtering campaigns via command line argument (e.g. node scheduler.js --campaigns original,aftr-main)
+// Support filtering campaigns via command line argument (e.g. node scheduler.js --campaigns ftd-x,ppc-st or --campaigns original,aftr-vpn)
+let campaigns = [...allCampaignsConfig];
 const campaignFilterArg = process.argv.includes('--campaigns') ? process.argv[process.argv.indexOf('--campaigns') + 1] : null;
 if (campaignFilterArg) {
   const allowedIds = campaignFilterArg.split(',').map(id => id.trim().toLowerCase());
   campaigns = campaigns.filter(c => allowedIds.includes(c.id.toLowerCase()));
   console.log(`🔍 [Filter] Scheduler running only: ${campaigns.map(c => c.name).join(', ')}`);
+} else {
+  // By default, exclude VPN and disabled campaigns for regular automated daily batch runs
+  campaigns = campaigns.filter(c => !c.useVpn && !c.disabled && c.id !== 'original' && c.id !== 'aftr-vpn');
 }
 
 // Map each campaign config to a Tablet-only execution matrix
@@ -422,7 +439,7 @@ async function sendProfessionalDailyReport(summary) {
   const ccList = process.env.REPORT_EMAIL_CC || 'ilfas.mansuri@bytestechnolab.com, apexa.dave@magnetoitsolutions.com, urvish.patel@bytestechnolab.com, deepesh.jain@bytestechnolab.com, jyoti.thakur@bytestechnolab.com, sachin.agrawal@bytestechnolab.com, himanshu.yadav@bytestechnolab.com, nivedita@magnetoitsolutions.com';
   const recipient = toList;
 
-  const campaignLookup = new Map(campaigns.map(c => [c.id, c]));
+  const campaignLookup = new Map(allCampaignsConfig.map(c => [c.id, c]));
 
   // Helper to determine if a campaign is a TRA campaign
   const isTraCampaign = (campaignId) => {
@@ -431,7 +448,7 @@ async function sendProfessionalDailyReport(summary) {
   };
 
   // Sort sequentially based on order in campaigns.json
-  const campaignIndexMap = new Map(campaigns.map((c, idx) => [c.id, idx]));
+  const campaignIndexMap = new Map(allCampaignsConfig.map((c, idx) => [c.id, idx]));
   const sortSequential = (a, b) => (campaignIndexMap.get(a.campaignId) || 0) - (campaignIndexMap.get(b.campaignId) || 0);
 
   // Deduplicate runs by campaignId, keeping the most recent one (highest index/timestamp)
@@ -447,7 +464,12 @@ async function sendProfessionalDailyReport(summary) {
   const failedCount = totalCount - succeededCount;
 
   const traRuns = latestRuns.filter(r => isTraCampaign(r.campaignId)).sort(sortSequential);
-  const nonTraRuns = latestRuns.filter(r => !isTraCampaign(r.campaignId)).sort(sortSequential);
+  // Guarantee AFTR is placed at the last position of the Non-TRA list
+  const nonTraRuns = latestRuns.filter(r => !isTraCampaign(r.campaignId)).sort((a, b) => {
+    if (a.campaignId === 'aftr-main') return 1;
+    if (b.campaignId === 'aftr-main') return -1;
+    return sortSequential(a, b);
+  });
 
   // Lead ID validation helper (excludes test/synthetic IDs like ckm58725 or ckmtestpixel)
   const isValidLeadId = (id) => {
