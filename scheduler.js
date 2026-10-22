@@ -7,20 +7,7 @@ const emailUtils = require('./utils/emailUtils');
 const flmAgent = require('./utils/flmAgent');
 const dailyLogger = require('./utils/dailyLogger');
 
-// ==============================================================================
-// ℹ️ VPN CAMPAIGNS GUIDE (FUTURE USE):
-// The 2 VPN-dependent campaigns ("original" and "aftr-vpn") are configured in
-// config/campaigns.json with "disabled": true and "useVpn": true.
-//
-// In the future, if you want to run either or both VPN campaigns (requires US VPN):
-//   1. Run Single Campaign (Headed):
-//      👉 node run-master.js --campaign original --viewport desktop --headed
-//      👉 node run-master.js --campaign aftr-vpn --viewport desktop --headed
-//   2. Run via Scheduler:
-//      👉 node scheduler.js --campaigns original,aftr-vpn --once
-// ==============================================================================
-
-// Load campaigns from configuration file dynamically
+// Load campaigns from configuration file dynamically (27 Active Automated Campaigns)
 const configPath = path.join(__dirname, 'config', 'campaigns.json');
 let allCampaignsConfig = [];
 if (fs.existsSync(configPath)) {
@@ -31,7 +18,7 @@ if (fs.existsSync(configPath)) {
   }
 }
 
-// Support filtering campaigns via command line argument (e.g. node scheduler.js --campaigns ftd-x,ppc-st or --campaigns original,aftr-vpn)
+// Support filtering campaigns via command line argument (e.g. node scheduler.js --campaigns ftd-x,ppc-st)
 let campaigns = [...allCampaignsConfig];
 const campaignFilterArg = process.argv.includes('--campaigns') ? process.argv[process.argv.indexOf('--campaigns') + 1] : null;
 if (campaignFilterArg) {
@@ -39,8 +26,8 @@ if (campaignFilterArg) {
   campaigns = campaigns.filter(c => allowedIds.includes(c.id.toLowerCase()));
   console.log(`🔍 [Filter] Scheduler running only: ${campaigns.map(c => c.name).join(', ')}`);
 } else {
-  // By default, exclude VPN and disabled campaigns for regular automated daily batch runs
-  campaigns = campaigns.filter(c => !c.useVpn && !c.disabled && c.id !== 'original' && c.id !== 'aftr-vpn');
+  // Run all active campaigns
+  campaigns = campaigns.filter(c => !c.disabled);
 }
 
 // Map each campaign config to a Tablet-only execution matrix

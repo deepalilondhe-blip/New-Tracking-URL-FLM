@@ -7,7 +7,17 @@ playwright-report/
 playwright/.cache/
 traces/
 screenshots/
+videos/
+*.webm
+*.crx
+veepn*
+TRA URL/
 ccpa-browser-profile/
 ccpa-profile-brand-*/
 logs/scheduler/*.log
 logs/ccpa_scheduler/*.log
+logs/flm_agent_screenshots/
+logs/preview_*.png
+config/*.backup*.json
+scratch/
+*.txt.txt

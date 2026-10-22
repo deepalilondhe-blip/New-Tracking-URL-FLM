@@ -182,26 +182,6 @@ Add '--headless' if you do not want a browser window to open on your desktop:
    • Tablet:  node run-master.js --campaign ppc-bm --viewport tablet
    • Mobile:  node run-master.js --campaign ppc-bm --viewport mobile
 
---------------------------------------------------------------------------------
-🌐 VPN CAMPAIGNS (FUTURE USE - REQUIRES US VPN CONNECTION)
---------------------------------------------------------------------------------
-
-These 2 campaigns use legacy MLF tracking links that require a US IP address / VPN.
-They are configured in config/campaigns.json with disabled: true and useVpn: true
-so they do NOT block daily automated runs. Run them manually when connected to VPN:
-
-29. 1800 (original)
-   • Desktop: node run-master.js --campaign original --viewport desktop --headed
-   • Tablet:  node run-master.js --campaign original --viewport tablet --headed
-   • Mobile:  node run-master.js --campaign original --viewport mobile --headed
-
-30. AFTR Tracking (aftr-vpn)
-   • Desktop: node run-master.js --campaign aftr-vpn --viewport desktop --headed
-   • Tablet:  node run-master.js --campaign aftr-vpn --viewport tablet --headed
-   • Mobile:  node run-master.js --campaign aftr-vpn --viewport mobile --headed
-
-   💡 Run both VPN campaigns together via scheduler:
-   👉 node scheduler.js --campaigns original,aftr-vpn --once
 
 --------------------------------------------------------------------------------
 ⚠️ 4. IMPORTANT: LAPTOP POWER OFF vs. CLOUD SERVER EXPLAINED

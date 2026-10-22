@@ -22,7 +22,7 @@ To manually run any campaign, use the following template structure:
    *Note: Each scheduler invocation runs one batch and exits.
 
 --------------------------------------------------------------------------------
-📋 CAMPAIGN-SPECIFIC RUN COMMANDS (ALL 28 ACTIVE CAMPAIGNS)
+📋 CAMPAIGN-SPECIFIC RUN COMMANDS (ALL 27 ACTIVE CAMPAIGNS)
 --------------------------------------------------------------------------------
 
 1. 📊 FTD (ftd-x)
@@ -85,134 +85,104 @@ To manually run any campaign, use the following template structure:
    🔹 Tablet:  node run-master.js --campaign vts-ne-branded --viewport tablet --headed
    🔹 Mobile:  node run-master.js --campaign vts-ne-branded --viewport mobile --headed
 
-13. 📊 1800 (original)
-   🔹 Desktop: node run-master.js --campaign original --viewport desktop --headed
-   🔹 Tablet:  node run-master.js --campaign original --viewport tablet --headed
-   🔹 Mobile:  node run-master.js --campaign original --viewport mobile --headed
-
-14. 📊 1800X (1800-fresh-tax-x-main)
+13. 📊 1800X (1800-fresh-tax-x-main)
    🔹 Desktop: node run-master.js --campaign 1800-fresh-tax-x-main --viewport desktop --headed
    🔹 Tablet:  node run-master.js --campaign 1800-fresh-tax-x-main --viewport tablet --headed
    🔹 Mobile:  node run-master.js --campaign 1800-fresh-tax-x-main --viewport mobile --headed
 
-15. 📊 FSI (fsi-main)
+14. 📊 FSI (fsi-main)
    🔹 Desktop: node run-master.js --campaign fsi-main --viewport desktop --headed
    🔹 Tablet:  node run-master.js --campaign fsi-main --viewport tablet --headed
    🔹 Mobile:  node run-master.js --campaign fsi-main --viewport mobile --headed
 
-16. 📊 STD (senior-tax-defence-main)
+15. 📊 STD (senior-tax-defence-main)
    🔹 Desktop: node run-master.js --campaign senior-tax-defence-main --viewport desktop --headed
    🔹 Tablet:  node run-master.js --campaign senior-tax-defence-main --viewport tablet --headed
    🔹 Mobile:  node run-master.js --campaign senior-tax-defence-main --viewport mobile --headed
 
-17. 📊 FSI X (fresh-start-initiative-x-main)
+16. 📊 FSI X (fresh-start-initiative-x-main)
    🔹 Desktop: node run-master.js --campaign fresh-start-initiative-x-main --viewport desktop --headed
    🔹 Tablet:  node run-master.js --campaign fresh-start-initiative-x-main --viewport tablet --headed
    🔹 Mobile:  node run-master.js --campaign fresh-start-initiative-x-main --viewport mobile --headed
 
-18. 📊 PTR (ptr-main)
+17. 📊 PTR (ptr-main)
    🔹 Desktop: node run-master.js --campaign ptr-main --viewport desktop --headed
    🔹 Tablet:  node run-master.js --campaign ptr-main --viewport tablet --headed
    🔹 Mobile:  node run-master.js --campaign ptr-main --viewport mobile --headed
 
-19. 📊 SCTR (sctr-main)
+18. 📊 SCTR (sctr-main)
    🔹 Desktop: node run-master.js --campaign sctr-main --viewport desktop --headed
    🔹 Tablet:  node run-master.js --campaign sctr-main --viewport tablet --headed
    🔹 Mobile:  node run-master.js --campaign sctr-main --viewport mobile --headed
 
-20. 📊 STD X (senior-tax-defense-x)
+19. 📊 STD X (senior-tax-defense-x)
    🔹 Desktop: node run-master.js --campaign senior-tax-defense-x --viewport desktop --headed
    🔹 Tablet:  node run-master.js --campaign senior-tax-defense-x --viewport tablet --headed
    🔹 Mobile:  node run-master.js --campaign senior-tax-defense-x --viewport mobile --headed
 
-21. 📊 AFTR (aftr-main)  [Last in Non-TRA group]
+20. 📊 AFTR (aftr-main)
    🔹 Desktop: node run-master.js --campaign aftr-main --viewport desktop --headed
    🔹 Tablet:  node run-master.js --campaign aftr-main --viewport tablet --headed
    🔹 Mobile:  node run-master.js --campaign aftr-main --viewport mobile --headed
 
-22. 📊 GT (guardian-tax-relief-ppc)
+21. 📊 GT (guardian-tax-relief-ppc)
    🔹 Desktop: node run-master.js --campaign guardian-tax-relief-ppc --viewport desktop --headed
    🔹 Tablet:  node run-master.js --campaign guardian-tax-relief-ppc --viewport tablet --headed
    🔹 Mobile:  node run-master.js --campaign guardian-tax-relief-ppc --viewport mobile --headed
 
-23. 📊 ST/TSG (tra-st-tsg)
+22. 📊 ST/TSG (tra-st-tsg)
    🔹 Desktop: node run-master.js --campaign tra-st-tsg --viewport desktop --headed
    🔹 Tablet:  node run-master.js --campaign tra-st-tsg --viewport tablet --headed
    🔹 Mobile:  node run-master.js --campaign tra-st-tsg --viewport mobile --headed
 
-24. 📊 ST/TF (tra-st-tf)
+23. 📊 ST/TF (tra-st-tf)
    🔹 Desktop: node run-master.js --campaign tra-st-tf --viewport desktop --headed
    🔹 Tablet:  node run-master.js --campaign tra-st-tf --viewport tablet --headed
    🔹 Mobile:  node run-master.js --campaign tra-st-tf --viewport mobile --headed
 
-25. 📊 ST/SP (tra-st-sp)
+24. 📊 ST/SP (tra-st-sp)
    🔹 Desktop: node run-master.js --campaign tra-st-sp --viewport desktop --headed
    🔹 Tablet:  node run-master.js --campaign tra-st-sp --viewport tablet --headed
    🔹 Mobile:  node run-master.js --campaign tra-st-sp --viewport mobile --headed
 
-26. 📊 PPC/V9 (tra-ppc-v9)
+25. 📊 PPC/V9 (tra-ppc-v9)
    🔹 Desktop: node run-master.js --campaign tra-ppc-v9 --viewport desktop --headed
    🔹 Tablet:  node run-master.js --campaign tra-ppc-v9 --viewport tablet --headed
    🔹 Mobile:  node run-master.js --campaign tra-ppc-v9 --viewport mobile --headed
 
-27. 📊 PPCBTR (tra-ppcbtr)
+26. 📊 PPCBTR (tra-ppcbtr)
    🔹 Desktop: node run-master.js --campaign tra-ppcbtr --viewport desktop --headed
    🔹 Tablet:  node run-master.js --campaign tra-ppcbtr --viewport tablet --headed
    🔹 Mobile:  node run-master.js --campaign tra-ppcbtr --viewport mobile --headed
 
-28. 📊 PPCBM (tra-ppcbm)
+27. 📊 PPCBM (tra-ppcbm)
    🔹 Desktop: node run-master.js --campaign tra-ppcbm --viewport desktop --headed
    🔹 Tablet:  node run-master.js --campaign tra-ppcbm --viewport tablet --headed
    🔹 Mobile:  node run-master.js --campaign tra-ppcbm --viewport mobile --headed
 
 --------------------------------------------------------------------------------
-🌐 VPN CAMPAIGNS (FUTURE USE - REQUIRES US VPN CONNECTION)
+🔄 RECURRING BATCH SCHEDULER (HEADLESS / SERVER READY)
 --------------------------------------------------------------------------------
 
-These 2 campaigns use legacy MLF tracking links that require a US IP address / VPN.
-They are configured in config/campaigns.json with disabled: true and useVpn: true
-so they do NOT block daily automated runs. Run them manually when connected to VPN:
+The scheduler runs campaigns sequentially in headless mode for 24/7 server automation.
 
-29. 📊 1800 (original)
-   🔹 Desktop: node run-master.js --campaign original --viewport desktop --headed
-   🔹 Tablet:  node run-master.js --campaign original --viewport tablet --headed
-   🔹 Mobile:  node run-master.js --campaign original --viewport mobile --headed
-
-30. 📊 AFTR Tracking (aftr-vpn)
-   🔹 Desktop: node run-master.js --campaign aftr-vpn --viewport desktop --headed
-   🔹 Tablet:  node run-master.js --campaign aftr-vpn --viewport tablet --headed
-   🔹 Mobile:  node run-master.js --campaign aftr-vpn --viewport mobile --headed
-
-   💡 Run both VPN campaigns together via scheduler:
-   👉 node scheduler.js --campaigns original,aftr-vpn --once
-
---------------------------------------------------------------------------------
-🔄 RECURRING BATCH SCHEDULER (HEADED MODE - VISIBLE BROWSER)
---------------------------------------------------------------------------------
-
-The scheduler runs campaigns sequentially. By default, it runs them in headless mode
-for automated scheduling, but you can override it.
-
-Start one scheduler batch (headless/background by default):
+Start one scheduler batch:
   👉 node scheduler.js
 
 Run all campaigns once immediately (headless/background):
   👉 node scheduler.js --once --headless
 
-Run all campaigns once immediately (headed/visible browser):
+Run all campaigns once immediately (headed/visible browser for debugging):
   👉 node scheduler.js --once
 
-⏰ TIMING: Each invocation runs one batch and exits. Use cron or Windows Task Scheduler
-   to choose the execution time and invoke the script again.
+⏰ TIMING: Each invocation runs one batch and exits. Use cron or systemd to schedule.
 
 ================================================================================
-🎥 ACCESS RECORDED VIDEOS & PLOT TRACES
+🎥 OPTIONAL VIDEO RECORDING
 ================================================================================
 
-All manual and scheduled executions automatically record a visual video and trace file!
-
-* Videos:  traces/videos/  (Can be opened in Chrome/Edge, e.g., PPC_PPC.webm)
-* Traces:  traces/         (Zip logs, timeline view: 'npx playwright show-trace traces/<campaign_viewport>.zip')
+To record execution video (useful for debugging, disabled by default to save server disk):
+  👉 node run-master.js --campaign ftd-x --video
 
 Spreadsheet: https://docs.google.com/spreadsheets/d/1rXIg3dMQ4APH3lHLcfWYfP45PnOAKmV9POkoSS3YWxI/edit?gid=1285632638#gid=1285632638
 ================================================================================
@@ -229,24 +199,3 @@ Run the latest lead validation script (headed browser):
 Run the "Test Only" IP validation script (headed browser):
 
   👉 node utils/flmAgent/test_only_ip_validation.js
-
---------------------------------------------------------------------------------
-🚀 TRA DIRECT MULTI-STEP FORM RUNNERS (FOLDER: TRA URL/)
---------------------------------------------------------------------------------
-
-Dedicated standalone scripts for all 14 TRA URLs inside "TRA URL/" with CKMTESTPIXEL
-test credentials, rotational US states, and branded intelligence email report.
-(See detailed guide in: "TRA URL/Run Commands.txt")
-
-1. Batch Runner (All 14 URLs - Headed / Headless):
-   👉 node "TRA URL/run-all-tra.js"
-   👉 node "TRA URL/run-all-tra.js" --headless
-   👉 node "TRA URL/run-all-tra.js" --only-me
-
-2. tra.com Single Runner:
-   👉 node "TRA URL/run-tra-com.js"
-   👉 node "TRA URL/run-tra-com.js" --headless
-
-3. Send Branded Email Report (Without Re-running Browser):
-   👉 node "TRA URL/send-flm-email.js"
-

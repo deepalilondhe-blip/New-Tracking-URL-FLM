@@ -258,8 +258,9 @@ if (viewportArg === 'api') {
     let browser = null;
     let context = null;
 
+    const shouldRecordVideo = process.argv.includes('--video') || process.env.RECORD_VIDEO === 'true';
     let contextOptions = {
-      recordVideo: { dir: 'traces/videos/' }
+      ...(shouldRecordVideo ? { recordVideo: { dir: 'traces/videos/' } } : {})
     };
 
     // Dynamically apply device emulation and viewports based on the matrix label
