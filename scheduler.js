@@ -498,7 +498,7 @@ async function sendProfessionalDailyReport(summary) {
       
       return `
         <tr style="border-bottom: 1px solid #f1f5f9;">
-          <td style="padding: 12px 10px; font-weight: 700; color: #1e293b; vertical-align: top; word-break: break-word;">
+          <td style="padding: 12px 14px; font-weight: 700; color: #1e293b; vertical-align: top; word-break: break-word;">
             ${domainName}
           </td>
           <td style="padding: 12px 10px; text-align: center; vertical-align: top; font-size: 11px; word-break: break-all;">
@@ -585,9 +585,9 @@ async function sendProfessionalDailyReport(summary) {
           <table style="width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 30px; table-layout: fixed;">
             <thead>
               <tr style="text-align: left; color: #64748b; border-bottom: 1.5px solid #cbd5e1; font-weight: 700;">
-                <th style="padding: 10px; width: 14%;">DOMAIN NAME</th>
-                <th style="padding: 10px; width: 22%;">URL</th>
-                <th style="padding: 10px; text-align: center; width: 18%;">THANK YOU URL</th>
+                <th style="padding: 10px 14px; width: 16%;">DOMAIN NAME</th>
+                <th style="padding: 10px; text-align: center; width: 18%;">URL</th>
+                <th style="padding: 10px; text-align: center; width: 20%;">THANK YOU URL</th>
                 <th style="padding: 10px; text-align: center; width: 14%;">LEAD ID</th>
                 <th style="padding: 10px; text-align: center; width: 9%;">PASS</th>
                 <th style="padding: 10px; text-align: center; width: 9%;">FAILED</th>
@@ -604,9 +604,9 @@ async function sendProfessionalDailyReport(summary) {
           <table style="width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 30px; table-layout: fixed;">
             <thead>
               <tr style="text-align: left; color: #64748b; border-bottom: 1.5px solid #cbd5e1; font-weight: 700;">
-                <th style="padding: 10px; width: 14%;">DOMAIN NAME</th>
-                <th style="padding: 10px; width: 22%;">URL</th>
-                <th style="padding: 10px; text-align: center; width: 18%;">THANK YOU URL</th>
+                <th style="padding: 10px 14px; width: 16%;">DOMAIN NAME</th>
+                <th style="padding: 10px; text-align: center; width: 18%;">URL</th>
+                <th style="padding: 10px; text-align: center; width: 20%;">THANK YOU URL</th>
                 <th style="padding: 10px; text-align: center; width: 14%;">LEAD ID</th>
                 <th style="padding: 10px; text-align: center; width: 9%;">PASS</th>
                 <th style="padding: 10px; text-align: center; width: 9%;">FAILED</th>
