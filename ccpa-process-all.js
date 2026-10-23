@@ -536,6 +536,9 @@ async function smoothScrollDown(page) {
   const seenTodayCounts = {};
   for (let uIndex = 0; uIndex < URLS.length; uIndex++) {
     const url = URLS[uIndex];
+    if (args.brand && parseInt(args.brand, 10) !== (uIndex + 1)) {
+      continue;
+    }
     const skipKey = `${url.trim().toLowerCase()}_${sheetDevice.trim().toLowerCase()}`;
     seenTodayCounts[skipKey] = (seenTodayCounts[skipKey] || 0) + 1;
     if (seenTodayCounts[skipKey] <= (existingDomainCounts[skipKey] || 0) && !args.force) {
