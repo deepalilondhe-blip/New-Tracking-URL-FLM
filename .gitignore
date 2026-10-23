@@ -21,3 +21,4 @@ logs/preview_*.png
 config/*.backup*.json
 scratch/
 *.txt.txt
+lead_links.html
