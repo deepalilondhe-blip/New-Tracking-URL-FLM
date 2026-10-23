@@ -1,7 +1,9 @@
 const { chromium } = require('playwright-extra');
 const stealth = require('puppeteer-extra-plugin-stealth')();
 const { google } = require('googleapis');
-require('dotenv').config();
+const path = require('path');
+const fs = require('fs');
+require('dotenv').config({ path: path.resolve(__dirname, '.env') });
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 chromium.use(stealth);
@@ -164,8 +166,11 @@ const DOMAIN_TO_FIND = '1800freshtax';
   console.log('\n📊 Appending data to Google Sheet...');
 
   try {
+    const keyFile = fs.existsSync(path.resolve(__dirname, 'service_account.json'))
+      ? path.resolve(__dirname, 'service_account.json')
+      : 'service_account.json';
     const auth = new google.auth.GoogleAuth({
-      keyFile: 'service_account.json',
+      keyFile: keyFile,
       scopes: ['https://www.googleapis.com/auth/spreadsheets']
     });
     const client = await auth.getClient();
