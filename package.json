@@ -11,7 +11,9 @@
     "flm:validate-lead": "node utils/flmAgent/validate_latest_lead.js",
     "run": "node automation_script.js",
     "tra:com": "node run-tra-com.js",
-    "tra:com:headless": "node run-tra-com.js --headless"
+    "tra:com:headless": "node run-tra-com.js --headless",
+    "ccpa": "node CCPA/ccpa-process-all.js",
+    "ccpa:scheduler": "node CCPA/ccpa-scheduler.js"
   },
   "keywords": [],
   "author": "",

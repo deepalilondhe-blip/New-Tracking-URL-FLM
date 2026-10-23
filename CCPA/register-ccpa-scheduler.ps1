@@ -2,8 +2,9 @@
 # Runs weekly on Monday, Wednesday, and Friday at 11:30 AM.
 
 $TaskName = "Playwright_CCPA_Scheduler"
-$BatchPath = "c:\Users\Deepali_Londhe\Desktop\New Tracking URL\run-ccpa-scheduler.bat"
-$WorkDir = "c:\Users\Deepali_Londhe\Desktop\New Tracking URL"
+$ScriptDir = if ($PSScriptRoot) { $PSScriptRoot } else { Split-Path -Parent $MyInvocation.MyCommand.Path }
+$BatchPath = Join-Path $ScriptDir "run-ccpa-scheduler.bat"
+$WorkDir = $ScriptDir
 
 # 1. Define the action to run the batch script
 $Action = New-ScheduledTaskAction -Execute "cmd.exe" -Argument "/c `"$BatchPath`"" -WorkingDirectory $WorkDir

@@ -2,7 +2,8 @@ const { chromium } = require('playwright-extra');
 const stealth = require('puppeteer-extra-plugin-stealth')();
 const { google } = require('googleapis');
 const path = require('path');
-require('dotenv').config();
+const fs = require('fs');
+require('dotenv').config({ path: path.resolve(__dirname, '.env') });
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 chromium.use(stealth);
@@ -394,8 +395,11 @@ async function smoothScrollDown(page) {
   // Browser context and page will be launched fresh for each brand iteration inside the loop.
   
   // Authenticate Google Sheets API
+  const keyFile = fs.existsSync(path.resolve(__dirname, 'service_account.json')) 
+    ? path.resolve(__dirname, 'service_account.json') 
+    : 'service_account.json';
   const auth = new google.auth.GoogleAuth({
-    keyFile: 'service_account.json',
+    keyFile,
     scopes: ['https://www.googleapis.com/auth/spreadsheets']
   });
   const client = await auth.getClient();

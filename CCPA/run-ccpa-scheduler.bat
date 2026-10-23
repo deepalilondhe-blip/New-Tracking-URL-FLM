@@ -5,7 +5,8 @@ setlocal enabledelayedexpansion
 :: CCPA AUTOMATION - MASTER RECURRING RUNNER
 :: =====================================================
 
-set PROJECT_ROOT=c:\Users\Deepali_Londhe\Desktop\New Tracking URL
+set "PROJECT_ROOT=%~dp0"
+if "%PROJECT_ROOT:~-1%"=="\" set "PROJECT_ROOT=%PROJECT_ROOT:~0,-1%"
 set LOG_DIR=%PROJECT_ROOT%\logs\ccpa_scheduler
 set TIMESTAMP=%date:~-4,4%%date:~-10,2%%date:~-7,2%_%time:~0,2%%time:~3,2%%time:~6,2%
 set TIMESTAMP=%TIMESTAMP: =0%
@@ -21,7 +22,7 @@ cd /d "%PROJECT_ROOT%"
 
 echo Running CCPA scheduled run...
 echo Running CCPA scheduled run... >> "%RUN_LOG%"
-powershell -Command "& 'C:\Program Files\nodejs\node.exe' ccpa-scheduler.js 2>&1 | Tee-Object -FilePath '%RUN_LOG%' -Append"
+powershell -Command "node ccpa-scheduler.js 2>&1 | Tee-Object -FilePath '%RUN_LOG%' -Append"
 
 echo ===================================================== >> "%RUN_LOG%"
 echo CCPA SCHEDULER FINISHED AT: %date% %time% >> "%RUN_LOG%"
