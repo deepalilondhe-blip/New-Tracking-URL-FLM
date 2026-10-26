@@ -696,10 +696,13 @@ async function processLead(brandConfig, page) {
       console.log(`💡 [Non-TRA TaxDebt Map] First API Data: "${firstApiData.income}" | Mapped Tax Debt: ${taxDebtValue}`);
     }
 
+    let finalAffiliateId = sanitize(firstApiData.affiliateId || fallbackAffid);
+    if (finalAffiliateId === '7') finalAffiliateId = '659';
+
     const rowData = {
       dateTime: sanitize(formatDateTime()),
       type: sanitize(process.env.PROCESS_LABEL || finalDeviceType),
-      affiliate: sanitize(firstApiData.affiliateId || fallbackAffid),
+      affiliate: finalAffiliateId,
       campaignId: sanitize(firstApiData.campaignId || fallbackCampaignId),
       trackingLink: sanitize(finalBrandConfig.url),
       sliderAmount: isQuestionnaire ? '' : sanitize(displaySliderAmount),
@@ -730,7 +733,34 @@ async function processLead(brandConfig, page) {
     };
 
     // Step 5: Write to Google Sheets
-    const sheetSuccess = await appendRowByHeader(finalBrandConfig.sheet, rowData);
+    let sheetSuccess = false;
+    if (process.env.DEFER_SHEET_APPEND === 'true') {
+      const fs = require('fs');
+      const path = require('path');
+      const queueFile = path.join(__dirname, '..', 'logs', 'pending-sheet-queue.json');
+      const queueDir = path.dirname(queueFile);
+      if (!fs.existsSync(queueDir)) fs.mkdirSync(queueDir, { recursive: true });
+      let queue = [];
+      try {
+        if (fs.existsSync(queueFile)) {
+          queue = JSON.parse(fs.readFileSync(queueFile, 'utf8'));
+        }
+      } catch (e) {
+        queue = [];
+      }
+      queue.push({
+        sheetName: finalBrandConfig.sheet,
+        rowData: rowData,
+        campaignId: brandConfig.id,
+        brandName: finalBrandConfig.name,
+        timestamp: new Date().toISOString()
+      });
+      fs.writeFileSync(queueFile, JSON.stringify(queue, null, 2));
+      console.log(`📋 [Deferred Sheet Append] Queued row for sheet "${finalBrandConfig.sheet}" (will append after all URLs complete). Total in queue: ${queue.length}`);
+      sheetSuccess = true;
+    } else {
+      sheetSuccess = await appendRowByHeader(finalBrandConfig.sheet, rowData);
+    }
 
 // ---------------------------------------------------
 // 📄 Generate or update lead_links.html with URL summaries and styled table

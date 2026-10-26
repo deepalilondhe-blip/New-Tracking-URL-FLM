@@ -1337,6 +1337,14 @@ class FormPage {
               console.log(`✅ Updated and locked ${field.tagName.toLowerCase()} ${name} = ${debtVal}`);
             });
           });
+
+          // Ensure affid is populated with 659 if empty on the form
+          const affidInputs = document.querySelectorAll('input[name="affid"], input[id="affid"]');
+          affidInputs.forEach(inp => {
+            if (!inp.value || inp.value === '' || inp.value === '7') {
+              inp.value = '659';
+            }
+          });
         }, cleanDebtVal);
       }
     } catch (e) {

@@ -22,3 +22,4 @@ config/*.backup*.json
 scratch/
 *.txt.txt
 lead_links.html
+logs/pending-sheet-queue.json

@@ -6,6 +6,7 @@ require('dotenv').config();
 const emailUtils = require('./utils/emailUtils');
 const flmAgent = require('./utils/flmAgent');
 const dailyLogger = require('./utils/dailyLogger');
+const slackUtils = require('./utils/slackUtils');
 
 // Load campaigns from configuration file dynamically (27 Active Automated Campaigns)
 const configPath = path.join(__dirname, 'config', 'campaigns.json');
@@ -67,7 +68,8 @@ function runScript(campaignId, viewport, browserEngine = 'chromium', label = 'St
       PROCESS_BROWSER: browserEngine,
       PROCESS_LABEL: label,
       HEADLESS: runHeadless ? 'true' : 'false',
-      CI: isCi ? 'true' : (process.env.CI || '')
+      CI: isCi ? 'true' : (process.env.CI || ''),
+      DEFER_SHEET_APPEND: 'true'
     };
     
     // Execute node run-master.js in visible mode
@@ -130,7 +132,7 @@ async function sendEmailReport(results, durationMinutes) {
   const user = process.env.SMTP_USER;
   const pass = process.env.SMTP_PASS;
   const toList = process.env.REPORT_EMAIL_RECIPIENT || 'deepali.londhe@magnetoitsolutions.com';
-  const ccList = process.env.REPORT_EMAIL_CC || 'ilfas.mansuri@bytestechnolab.com, apexa.dave@magnetoitsolutions.com, urvish.patel@bytestechnolab.com, deepesh.jain@bytestechnolab.com, jyoti.thakur@bytestechnolab.com, sachin.agrawal@bytestechnolab.com, himanshu.yadav@bytestechnolab.com, nivedita@magnetoitsolutions.com, bhavik@bytestechnolab.com';
+  const ccList = process.env.REPORT_EMAIL_CC || '';
   const recipient = toList;
 
   if (!host || !port || !user || !pass) {
@@ -301,6 +303,16 @@ async function runBatch() {
     console.warn('⚠️ Could not reset scheduler state file.');
   }
 
+  // Initialize empty queue for batch Google Sheets append
+  const queueFile = path.join(__dirname, 'logs', 'pending-sheet-queue.json');
+  try {
+    const queueDir = path.dirname(queueFile);
+    if (!fs.existsSync(queueDir)) fs.mkdirSync(queueDir, { recursive: true });
+    fs.writeFileSync(queueFile, JSON.stringify([], null, 2));
+  } catch (err) {
+    console.warn('⚠️ Could not reset pending sheet queue file.');
+  }
+
   // 🛡️ [FLM Agent] PROACTIVE URL VERIFICATION
   console.log(`\n🤖 [FLM Agent] Starting Global URL Health Verification...`);
   for (const campaign of campaigns) {
@@ -315,6 +327,14 @@ async function runBatch() {
         success: false, 
         error: `URL is DOWN: ${health.error}` 
       });
+      await slackUtils.sendSlackFailureAlert({
+        campaignId: campaign.id,
+        campaignName: campaign.name,
+        url: campaign.url,
+        viewport: 'Global Health Check',
+        error: `URL Health Check Failed: ${health.error}`,
+        leadId: 'N/A'
+      }).catch(err => console.error('⚠️ [Slack Alert Error]:', err.message));
     }
   }
   console.log(`🤖 [FLM Agent] Global Health Verification Complete.\n`);
@@ -363,12 +383,50 @@ async function runBatch() {
         }
       } else {
         console.warn(`🚨 [AI Agent] Failure recorded for ${res.campaignId} [${res.label}]. Logged to Dashboard.`);
+        const campaignObj = campaigns.find(c => c.id === res.campaignId);
+        await slackUtils.sendSlackFailureAlert({
+          campaignId: res.campaignId,
+          campaignName: campaignObj ? campaignObj.name : res.campaignId?.toUpperCase(),
+          url: campaignObj ? campaignObj.url : 'N/A',
+          viewport: `${run.label || 'Standard'} (${run.viewport || 'desktop'})`,
+          error: res.error,
+          leadId: res.leadId
+        }).catch(err => console.error('⚠️ [Slack Alert Error]:', err.message));
       }
     }
   }
 
   // Launch sequential worker
   await worker();
+
+  // ── Step: Batch Google Sheets Append (Append all URLs at once after all runs finish) ──
+  console.log(`\n================================================================`);
+  console.log(`📊 ALL URLS COMPLETED! STARTING BATCH GOOGLE SHEET APPEND`);
+  console.log(`================================================================`);
+  try {
+    if (fs.existsSync(queueFile)) {
+      const queue = JSON.parse(fs.readFileSync(queueFile, 'utf8'));
+      if (queue && queue.length > 0) {
+        console.log(`📄 Appending ${queue.length} collected row(s) to Google Sheets...`);
+        const { appendRowByHeader } = require('./utils/googleSheetsUtils');
+        for (let i = 0; i < queue.length; i++) {
+          const item = queue[i];
+          console.log(`  [${i + 1}/${queue.length}] Appending "${item.brandName || item.campaignId}" to sheet "${item.sheetName}"...`);
+          try {
+            await appendRowByHeader(item.sheetName, item.rowData);
+            console.log(`  ✅ Successfully appended to "${item.sheetName}"`);
+          } catch (appendErr) {
+            console.error(`  ❌ Failed to append to "${item.sheetName}":`, appendErr.message);
+          }
+        }
+        console.log(`🎉 Batch Google Sheet append finished.`);
+      } else {
+        console.log(`ℹ️ No rows were queued for Google Sheet append.`);
+      }
+    }
+  } catch (queueErr) {
+    console.error(`❌ Error during batch Google Sheet append:`, queueErr.message);
+  }
 
   const durationMinutes = ((Date.now() - startTime) / (1000 * 60)).toFixed(2);
   const total = results.length;
@@ -423,7 +481,7 @@ async function sendProfessionalDailyReport(summary) {
   const user = process.env.SMTP_USER;
   const pass = process.env.SMTP_PASS;
   const toList = process.env.REPORT_EMAIL_RECIPIENT || 'deepali.londhe@magnetoitsolutions.com';
-  const ccList = process.env.REPORT_EMAIL_CC || 'ilfas.mansuri@bytestechnolab.com, apexa.dave@magnetoitsolutions.com, urvish.patel@bytestechnolab.com, deepesh.jain@bytestechnolab.com, jyoti.thakur@bytestechnolab.com, sachin.agrawal@bytestechnolab.com, himanshu.yadav@bytestechnolab.com, nivedita@magnetoitsolutions.com, bhavik@bytestechnolab.com';
+  const ccList = process.env.REPORT_EMAIL_CC || '';
   const recipient = toList;
 
   const campaignLookup = new Map(allCampaignsConfig.map(c => [c.id, c]));
