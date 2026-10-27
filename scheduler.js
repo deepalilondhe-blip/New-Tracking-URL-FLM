@@ -7,6 +7,7 @@ const emailUtils = require('./utils/emailUtils');
 const flmAgent = require('./utils/flmAgent');
 const dailyLogger = require('./utils/dailyLogger');
 const slackUtils = require('./utils/slackUtils');
+const gchatUtils = require('./utils/gchatUtils');
 
 // Load campaigns from configuration file dynamically (27 Active Automated Campaigns)
 const configPath = path.join(__dirname, 'config', 'campaigns.json');
@@ -335,6 +336,15 @@ async function runBatch() {
         error: `URL Health Check Failed: ${health.error}`,
         leadId: 'N/A'
       }).catch(err => console.error('⚠️ [Slack Alert Error]:', err.message));
+
+      await gchatUtils.sendGChatFailureAlert({
+        campaignId: campaign.id,
+        campaignName: campaign.name,
+        url: campaign.url,
+        viewport: 'Global Health Check',
+        error: `URL Health Check Failed: ${health.error}`,
+        leadId: 'N/A'
+      }).catch(err => console.error('⚠️ [GChat Alert Error]:', err.message));
     }
   }
   console.log(`🤖 [FLM Agent] Global Health Verification Complete.\n`);
@@ -392,6 +402,15 @@ async function runBatch() {
           error: res.error,
           leadId: res.leadId
         }).catch(err => console.error('⚠️ [Slack Alert Error]:', err.message));
+
+        await gchatUtils.sendGChatFailureAlert({
+          campaignId: res.campaignId,
+          campaignName: campaignObj ? campaignObj.name : res.campaignId?.toUpperCase(),
+          url: campaignObj ? campaignObj.url : 'N/A',
+          viewport: `${run.label || 'Standard'} (${run.viewport || 'desktop'})`,
+          error: res.error,
+          leadId: res.leadId
+        }).catch(err => console.error('⚠️ [GChat Alert Error]:', err.message));
       }
     }
   }
