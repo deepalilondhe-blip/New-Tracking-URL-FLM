@@ -132,7 +132,7 @@ async function sendEmailReport(results, durationMinutes) {
   const port = process.env.SMTP_PORT;
   const user = process.env.SMTP_USER;
   const pass = process.env.SMTP_PASS;
-  const toList = process.env.REPORT_EMAIL_RECIPIENT || 'deepali.londhe@magnetoitsolutions.com';
+  const toList = process.env.REPORT_EMAIL_RECIPIENT || 'deepali.londhe@magnetoitsolutions.com, bhavin.gajjar@bytestechnolab.com';
   const ccList = process.env.REPORT_EMAIL_CC || '';
   const recipient = toList;
 
@@ -499,7 +499,7 @@ async function checkAndSendDailySummary() {
 async function sendProfessionalDailyReport(summary) {
   const user = process.env.SMTP_USER;
   const pass = process.env.SMTP_PASS;
-  const toList = process.env.REPORT_EMAIL_RECIPIENT || 'deepali.londhe@magnetoitsolutions.com';
+  const toList = process.env.REPORT_EMAIL_RECIPIENT || 'deepali.londhe@magnetoitsolutions.com, bhavin.gajjar@bytestechnolab.com';
   const ccList = process.env.REPORT_EMAIL_CC || '';
   const recipient = toList;
 

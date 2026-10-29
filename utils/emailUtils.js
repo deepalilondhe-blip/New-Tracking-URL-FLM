@@ -21,7 +21,7 @@ class EmailUtils {
      */
     async sendFailureReport(brand, viewport, error, screenshotPath = null, videoPath = null) {
         // Dynamic recipient refresh
-        const recipients = process.env.REPORT_EMAIL_RECIPIENT || 'deepali.londhe@magnetoitsolutions.com';
+        const recipients = process.env.REPORT_EMAIL_RECIPIENT || 'deepali.londhe@magnetoitsolutions.com, bhavin.gajjar@bytestechnolab.com';
         const ccList = process.env.REPORT_EMAIL_CC || '';
         console.log(`📧 [Email-Agent] Preparing failure report for ${brand} [${viewport}]...`);
 
