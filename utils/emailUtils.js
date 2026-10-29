@@ -21,8 +21,8 @@ class EmailUtils {
      */
     async sendFailureReport(brand, viewport, error, screenshotPath = null, videoPath = null) {
         // Dynamic recipient refresh
-        const recipients = process.env.REPORT_EMAIL_RECIPIENT || 'deepali.londhe@magnetoitsolutions.com, bhavin.gajjar@bytestechnolab.com';
-        const ccList = process.env.REPORT_EMAIL_CC || '';
+        const recipients = process.env.REPORT_EMAIL_RECIPIENT || 'deepali.londhe@magnetoitsolutions.com';
+        const ccList = process.env.REPORT_EMAIL_CC || 'ilfas.mansuri@bytestechnolab.com, apexa.dave@magnetoitsolutions.com, urvish.patel@bytestechnolab.com, deepesh.jain@bytestechnolab.com, jyoti.thakur@bytestechnolab.com, sachin.agrawal@bytestechnolab.com, himanshu.yadav@bytestechnolab.com, nivedita@magnetoitsolutions.com, bhavik@bytestechnolab.com, bhavin.gajjar@bytestechnolab.com';
         console.log(`📧 [Email-Agent] Preparing failure report for ${brand} [${viewport}]...`);
 
         const attachments = [];
