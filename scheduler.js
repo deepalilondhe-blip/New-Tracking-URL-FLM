@@ -255,7 +255,7 @@ async function sendEmailReport(results, durationMinutes) {
 
   try {
     const mailOptions = {
-      from: `"Deepali Londhe" <${user}>`,
+      from: `"Leads Automation Suite" <${user}>`,
       to: recipient,
       subject: `🔄 Automation Report: [${succeededCount}/${results.length} Passed] - ${formatTimestamp()}`,
       html: htmlBody
