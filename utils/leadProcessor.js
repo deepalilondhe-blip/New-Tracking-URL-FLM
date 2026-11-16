@@ -464,31 +464,10 @@ async function processLead(brandConfig, page) {
     console.log(`📋 [Pre-Fix] Thank-you URL before debt correction: ${thankYouUrl}`);
 
     // 🛡️ Redirect Validation: Verify the browser redirected to a thank-you page and did not stay stuck on the landing page
-    let finalUrlObj = new URL(thankYouUrl);
+    const finalUrlObj = new URL(thankYouUrl);
     const landingUrlObj = new URL(landingPageUrl);
-    let isSamePath = finalUrlObj.pathname === landingUrlObj.pathname && finalUrlObj.hostname === landingUrlObj.hostname;
-    let isThankYouKeyword = thankYouUrl.includes('/ty') || thankYouUrl.includes('/thank-you') || thankYouUrl.includes('/thankyou') || thankYouUrl.includes('/quest-thank-you') || thankYouUrl.includes('/success');
-
-    // 🛡️ Self-Healing Buffer: If still on landing page path, wait a grace period for slow server responses
-    if (isSamePath && !isThankYouKeyword) {
-      console.log('⚠️ [Redirect Safeguard] Page has not redirected yet. Checking for delayed server response (grace buffer)...');
-      for (let retrySec = 0; retrySec < 15; retrySec++) {
-        await page.waitForTimeout(1000);
-        const retryUrl = page.url();
-        try {
-          const retryUrlObj = new URL(retryUrl);
-          const retryIsThankYou = retryUrl.includes('/ty') || retryUrl.includes('/thank-you') || retryUrl.includes('/thankyou') || retryUrl.includes('/quest-thank-you') || retryUrl.includes('/success') || retryUrlObj.searchParams.has('leadid') || retryUrlObj.searchParams.has('transaction_id');
-          if (retryIsThankYou || (retryUrlObj.pathname !== landingUrlObj.pathname)) {
-            console.log(`✅ [Redirect Safeguard] Delayed server redirect succeeded: ${retryUrl}`);
-            thankYouUrl = retryUrl;
-            finalUrlObj = retryUrlObj;
-            isSamePath = false;
-            isThankYouKeyword = true;
-            break;
-          }
-        } catch (e) {}
-      }
-    }
+    const isSamePath = finalUrlObj.pathname === landingUrlObj.pathname && finalUrlObj.hostname === landingUrlObj.hostname;
+    const isThankYouKeyword = thankYouUrl.includes('/ty') || thankYouUrl.includes('/thank-you') || thankYouUrl.includes('/thankyou') || thankYouUrl.includes('/quest-thank-you') || thankYouUrl.includes('/success');
 
     if (isSamePath && !isThankYouKeyword) {
       throw new Error(`Form submission failed: Browser stayed on the landing page path (${finalUrlObj.pathname}) and did not redirect to a thank-you page.`);

@@ -1655,7 +1655,7 @@ class MobileFormPage {
       await this.page.waitForLoadState('domcontentloaded', { timeout: 15000 }).catch(() => { });
 
       const startTime = Date.now();
-      const timeout = 35000; // Poll for max 35 seconds (handles server latency)
+      const timeout = 12000; // Poll for max 12 seconds
       while (Date.now() - startTime < timeout) {
         const currentUrl = this.page.url();
         try {
