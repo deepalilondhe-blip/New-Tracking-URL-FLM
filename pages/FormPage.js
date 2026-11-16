@@ -1430,7 +1430,7 @@ class FormPage {
       await this.page.waitForLoadState('domcontentloaded', { timeout: 15000 }).catch(() => { });
 
       const startTime = Date.now();
-      const timeout = 12000; // Poll for max 12 seconds
+      const timeout = 35000; // Poll for max 35 seconds (handles server latency)
       while (Date.now() - startTime < timeout) {
         const currentUrl = this.page.url();
         try {
