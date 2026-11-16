@@ -59,7 +59,7 @@ console.log('📋 Running Hardcoded Everest Tax Relief (X) URL in Tablet Emulati
     const page = await context.newPage();
 
     // ✅ FIRST API FIX - USE CORRECT ENDPOINT (ACTUAL VARIABLE NAME USED!)
-    process.env.FIRST_API_BASE_URL = "http://app.forwardleapmarketing.com/api/1/get.asmx/LeadInfo";
+    process.env.FIRST_API_BASE_URL = "https://app.forwardleapmarketing.com/api/1/get.asmx/LeadInfo";
     process.env.FIRST_API_KEY = "N5tBZ3OCykREm3pJklWbIO4SjR3zCDel";
     process.env.VERTICAL_ID = "2";
     process.env.ENABLE_NEUSTAR_EXTRACTION = "true";

@@ -30,7 +30,7 @@ jobs:
           echo "CAKE_USERNAME=${{ secrets.CAKE_USERNAME }}" >> .env
           echo "CAKE_PASSWORD=${{ secrets.CAKE_PASSWORD }}" >> .env
           echo "GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}" >> .env
-          echo "FIRST_API_BASE_URL=http://app.forwardleapmarketing.com/api/1/get.asmx/LeadInfo" >> .env
+          echo "FIRST_API_BASE_URL=https://app.forwardleapmarketing.com/api/1/get.asmx/LeadInfo" >> .env
           echo "FIRST_API_KEY=${{ secrets.FIRST_API_KEY }}" >> .env
           echo "VERTICAL_ID=2" >> .env
           echo "SECOND_API_URL_STANDARD=https://flm-utility.com/api-qa-automation-hostgator/getData.php" >> .env

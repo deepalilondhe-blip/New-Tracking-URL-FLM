@@ -69,7 +69,7 @@ class AIAgent {
             apis: {
                 first: {
                     name: 'CAKE XML API',
-                    endpoint: 'http://app.forwardleapmarketing.com/api/1/get.asmx/LeadInfo',
+                    endpoint: 'https://app.forwardleapmarketing.com/api/1/get.asmx/LeadInfo',
                     method: 'GET',
                     returns: 'Affiliate ID, Campaign ID, Income/Tax Debt, State, Phone, Neustar, Neustar Disposition, Pixel Fired'
                 },
@@ -199,7 +199,7 @@ class AIAgent {
                 const passed = daily.runs.filter(r => r.success).length;
                 const failed = daily.runs.filter(r => !r.success).length;
                 const recentLogs = this.searchLogs('FAIL', 10).join('\\n');
-                
+
                 // Load chat history for memory
                 let historyContext = "";
                 try {
@@ -236,7 +236,7 @@ Answer the user's prompt using the real-time data above. Be direct, clear, and c
                     { text: systemPrompt },
                     { text: "User Request: " + prompt }
                 ]);
-                
+
                 return result.response.text();
             } catch (err) {
                 console.error("Gemini API Error:", err);
@@ -277,7 +277,7 @@ Answer the user's prompt using the real-time data above. Be direct, clear, and c
         if (msg.includes('pending') || msg.includes('remaining') || msg.includes('not completed') || msg.includes('left')) {
             return this._getPendingCampaigns();
         }
-        
+
         return `⚠️ **Conversational AI Mode is Locked!**\n\nI am tracking **${this.loadCampaigns().length} campaigns**, but my true brain is currently offline. To enable my advanced conversational capabilities and allow me to answer arbitrary prompts, you **MUST** provide a \`GEMINI_API_KEY\` in your \`.env\` file.\n\nUntil then, I can only respond to basic commands like **"status"**, **"help"**, or **"run [campaign]"**.`;
     }
 
@@ -410,7 +410,7 @@ Answer the user's prompt using the real-time data above. Be direct, clear, and c
         console.log(`🤖 [${this.name}] Pre-flight check: Verifying health for ${campaignName}...`);
         try {
             const axios = require('axios');
-            const res = await axios.get(url, { 
+            const res = await axios.get(url, {
                 timeout: 10000,
                 headers: {
                     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
@@ -493,8 +493,8 @@ Answer the user's prompt using the real-time data above. Be direct, clear, and c
             else if (raw < 100000) expectedCake = "50000";
             else expectedCake = "100000";
         } else if (brand === 'ptr-main' || brand === 'aftr-main' || brand === 'aftr-vpn' || brand === 'capital-tax-relief-x' || brand === 'empire-tax-relief-x' ||
-                   brand === '1800-fresh-tax-x-main' || brand === 'original' || brand === 'ftd-x' || brand === 'fsi-main' ||
-                   brand === 'fresh-start-initiative-x-main' || brand === 'vts-original' || brand === 'vts-ne-branded') {
+            brand === '1800-fresh-tax-x-main' || brand === 'original' || brand === 'ftd-x' || brand === 'fsi-main' ||
+            brand === 'fresh-start-initiative-x-main' || brand === 'vts-original' || brand === 'vts-ne-branded') {
             if (raw < 5000) expectedCake = "5000";
             else if (raw < 10000) expectedCake = "7500";
             else if (raw < 20000) expectedCake = "10000";
@@ -595,7 +595,7 @@ Answer the user's prompt using the real-time data above. Be direct, clear, and c
             if (keywords.some(kw => score.includes(kw))) {
                 const selector = el.id ? `#${el.id}` :
                     el.className ? `.${el.className.split(' ').join('.')}` :
-                    `${el.tag.toLowerCase()}:has-text("${el.text}")`;
+                        `${el.tag.toLowerCase()}:has-text("${el.text}")`;
                 return { selector };
             }
         }

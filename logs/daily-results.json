@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-26",
+  "date": "2026-11-16",
   "runs": [
     {
       "campaignId": "ftd-x",
@@ -7,10 +7,10 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "107AEAD7",
+      "leadId": "B8F3D2C7",
       "apiStatus": "200 OK",
-      "thankYouUrl": "https://www.fidelity-tax-defense.net/thankyou_ts_checklist.php?debt=7500&leadid=107AEAD7&affid=659&reqid=27515938&subid=#s1#&employment=#employment#",
-      "timestamp": "1:39:52 PM"
+      "thankYouUrl": "https://www.fidelity-tax-defense.net/thankyou_ts_checklist.php?debt=20000&leadid=B8F3D2C7&affid=659&reqid=27642213&subid=#s1#&employment=#employment#",
+      "timestamp": "10:52:19 AM"
     },
     {
       "campaignId": "ftd-x",
@@ -18,21 +18,10 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "39CC7B66",
+      "leadId": "4C6A6135",
       "apiStatus": "200 OK",
-      "thankYouUrl": "https://www.fidelity-tax-defense.net/thankyou_ts_checklist.php?debt=10000&leadid=39CC7B66&affid=659&reqid=27515967&subid=#s1#&employment=#employment#",
-      "timestamp": "1:54:46 PM"
-    },
-    {
-      "campaignId": "ftd-x",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Device",
-      "success": true,
-      "leadId": "BC89B47D",
-      "apiStatus": "200 OK",
-      "thankYouUrl": "https://www.fidelity-tax-defense.net/thankyou_ts_checklist.php?debt=10000&leadid=BC89B47D&affid=659&reqid=27516005&subid=#s1#&employment=#employment#",
-      "timestamp": "1:59:01 PM"
+      "thankYouUrl": "https://www.fidelity-tax-defense.net/thankyou_ts_checklist.php?debt=7500&leadid=4C6A6135&affid=659&reqid=27642230&subid=#s1#&employment=#employment#",
+      "timestamp": "10:53:02 AM"
     },
     {
       "campaignId": "fsi-ppc2",
@@ -40,307 +29,10 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "B1194F3D",
+      "leadId": "94FEB425",
       "apiStatus": "200 OK",
-      "thankYouUrl": "https://www.fresh-start-initiative.com/ty_next/?debt=5000&leadid=B1194F3D&reqid=27516009&affid=659&subid=#s1#",
-      "timestamp": "2:00:23 PM"
-    },
-    {
-      "campaignId": "tra-list",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Device",
-      "success": true,
-      "leadId": "22071E6C",
-      "apiStatus": "200 OK",
-      "thankYouUrl": "https://tra.com/thank-you?debt=10000&leadid=22071E6C&reqid=27516013&affid=659&oid=133",
-      "timestamp": "2:01:31 PM"
-    },
-    {
-      "campaignId": "tra-d3",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Device",
-      "success": true,
-      "leadId": "AA299FB6",
-      "apiStatus": "200 OK",
-      "thankYouUrl": "https://tra.com/thank-you?debt=5000&leadid=AA299FB6&reqid=27516015&affid=659&oid=145",
-      "timestamp": "2:02:32 PM"
-    },
-    {
-      "campaignId": "ppc-st",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Device",
-      "success": true,
-      "leadId": "09C201F5",
-      "apiStatus": "200 OK",
-      "thankYouUrl": "https://tra.com/thank-you/nn?debt=5000&leadid=09C201F5&reqid=27516019&affid=659&oid=133",
-      "timestamp": "2:03:33 PM"
-    },
-    {
-      "campaignId": "ppc-st2",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Device",
-      "success": true,
-      "leadId": "716278C6",
-      "apiStatus": "200 OK",
-      "thankYouUrl": "https://tra.com/thank-you/nn?debt=5000&leadid=716278C6&reqid=27516024&affid=659&oid=133",
-      "timestamp": "2:04:33 PM"
-    },
-    {
-      "campaignId": "ppc-m-ca",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Device",
-      "success": true,
-      "leadId": "715AA657",
-      "apiStatus": "200 OK",
-      "thankYouUrl": "https://tra.com/thank-you?debt=10000&leadid=715AA657&reqid=27516027&affid=659&oid=133&page=tra_ppcm_ca",
-      "timestamp": "2:05:35 PM"
-    },
-    {
-      "campaignId": "ppc-cr",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Device",
-      "success": true,
-      "leadId": "E1D3C45C",
-      "apiStatus": "200 OK",
-      "thankYouUrl": "https://tra.com/thank-you?debt=5000&leadid=E1D3C45C&reqid=27516028&affid=659&oid=133",
-      "timestamp": "2:06:36 PM"
-    },
-    {
-      "campaignId": "ppc-fs",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Device",
-      "success": true,
-      "leadId": "71AA0B46",
-      "apiStatus": "200 OK",
-      "thankYouUrl": "https://tra.com/thank-you?debt=5000&leadid=71AA0B46&reqid=27516030&affid=659&oid=133",
-      "timestamp": "2:07:36 PM"
-    },
-    {
-      "campaignId": "tra-cpm",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Device",
-      "success": true,
-      "leadId": "DF6B8B50",
-      "apiStatus": "200 OK",
-      "thankYouUrl": "https://tra.com/thank-you?debt=5000&leadid=DF6B8B50&reqid=27516031&affid=659&oid=136",
-      "timestamp": "2:08:38 PM"
-    },
-    {
-      "campaignId": "everest-tr-x",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Device",
-      "success": true,
-      "leadId": "3963381F",
-      "apiStatus": "200 OK",
-      "thankYouUrl": "https://www.everesttaxrelief.net/thankyou_ts.php?debt=10000&leadid=3963381F&affid=659&reqid=27516033&sub",
-      "timestamp": "2:09:51 PM"
-    },
-    {
-      "campaignId": "vts-ne-branded",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Device",
-      "success": true,
-      "leadId": "C08284B5",
-      "apiStatus": "200 OK",
-      "thankYouUrl": "https://www.veteranstaxservices.com/thankyou_ts_checklist.php?debt=7500&leadid=C08284B5&affid=659&reqid=27516035&subid=#s1#",
-      "timestamp": "2:11:07 PM"
-    },
-    {
-      "campaignId": "1800-fresh-tax-x-main",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Device",
-      "success": true,
-      "leadId": "1C77C9B5",
-      "apiStatus": "200 OK",
-      "thankYouUrl": "https://www.1800freshtax.com/thankyou_ts_checklist.php?debt=5000&leadid=1C77C9B5&reqid=27516037&affid=659&subid=#s1#",
-      "timestamp": "2:12:26 PM"
-    },
-    {
-      "campaignId": "fsi-main",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Device",
-      "success": true,
-      "leadId": "05723F68",
-      "apiStatus": "200 OK",
-      "thankYouUrl": "https://www.fresh-start-initiative.com/ty.rs/?debt=7500&leadid=05723F68&reqid=27516043&affid=659&subid=#s1#",
-      "timestamp": "2:13:47 PM"
-    },
-    {
-      "campaignId": "senior-tax-defence-main",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Device",
-      "success": true,
-      "leadId": "BBD368C8",
-      "apiStatus": "200 OK",
-      "thankYouUrl": "https://www.seniortaxdefense.com/thankyou_ts_checklist.php?debt=7500&leadid=BBD368C8&affid=659&reqid=27516047&subid=#s1#",
-      "timestamp": "2:14:52 PM"
-    },
-    {
-      "campaignId": "fresh-start-initiative-x-main",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Device",
-      "success": true,
-      "leadId": "873976BC",
-      "apiStatus": "200 OK",
-      "thankYouUrl": "https://www.fresh-start-initiative.com/thankyou_ts_checklist_fsi23.php?debt=10000&leadid=873976BC&reqid=27516049&affid=659",
-      "timestamp": "2:15:58 PM"
-    },
-    {
-      "campaignId": "ptr-main",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Device",
-      "success": true,
-      "leadId": "47436FC6",
-      "apiStatus": "200 OK",
-      "thankYouUrl": "https://premier-taxrelief.com/thank-you/?debt=5000&leadid=47436FC6&affid=659&reqid=27516051&subid=#s1#",
-      "timestamp": "2:17:22 PM"
-    },
-    {
-      "campaignId": "sctr-main",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Device",
-      "success": true,
-      "leadId": "17431B0E",
-      "apiStatus": "200 OK",
-      "thankYouUrl": "https://www.secondchancetaxrelief.com/thankyou_ts.php?debt=20000&leadid=17431B0E&affid=659&reqid=27516053",
-      "timestamp": "2:18:42 PM"
-    },
-    {
-      "campaignId": "senior-tax-defense-x",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Device",
-      "success": true,
-      "leadId": "42503AD6",
-      "apiStatus": "200 OK",
-      "thankYouUrl": "https://www.seniortaxdefense.com/thankyou.php?debt=5000&leadid=42503AD6&affid=659&reqid=27516056&subid=#s1#",
-      "timestamp": "2:19:48 PM"
-    },
-    {
-      "campaignId": "aftr-main",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Device",
-      "success": true,
-      "leadId": "C41D3D8D",
-      "apiStatus": "200 OK",
-      "thankYouUrl": "https://americasfirsttaxrelief.com/thankyou.php?debt=5000&leadid=C41D3D8D&affid=#affid#&reqid=#reqid#&subid=#s1#",
-      "timestamp": "2:21:02 PM"
-    },
-    {
-      "campaignId": "guardian-tax-relief-ppc",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Device",
-      "success": true,
-      "leadId": "BDAEC5A7",
-      "apiStatus": "200 OK",
-      "thankYouUrl": "https://guardiantax-relief.com/ty2/?debt=5000&leadid=BDAEC5A7&reqid=27516059&affid=659&oid=150",
-      "timestamp": "2:22:01 PM"
-    },
-    {
-      "campaignId": "tra-st-tsg",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Device",
-      "success": true,
-      "leadId": "ADD1E36C",
-      "apiStatus": "200 OK",
-      "thankYouUrl": "https://tra.com/thank-you/nn?debt=5000&leadid=ADD1E36C&reqid=27516061&affid=659&oid=133",
-      "timestamp": "2:23:01 PM"
-    },
-    {
-      "campaignId": "tra-st-tf",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Device",
-      "success": true,
-      "leadId": "5F4ED435",
-      "apiStatus": "200 OK",
-      "thankYouUrl": "https://tra.com/thank-you/nn?debt=5000&leadid=5F4ED435&reqid=27516064&affid=659&oid=133",
-      "timestamp": "2:24:01 PM"
-    },
-    {
-      "campaignId": "tra-st-sp",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Device",
-      "success": true,
-      "leadId": "27226ECB",
-      "apiStatus": "200 OK",
-      "thankYouUrl": "https://tra.com/thank-you?debt=5000&leadid=27226ECB&reqid=27516065&affid=659&oid=133",
-      "timestamp": "2:25:02 PM"
-    },
-    {
-      "campaignId": "tra-ppc-v9",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Device",
-      "success": true,
-      "leadId": "302D1A86",
-      "apiStatus": "200 OK",
-      "thankYouUrl": "https://tra.com/thank-you?debt=10000&leadid=302D1A86&reqid=27516066&affid=659&oid=133",
-      "timestamp": "2:26:07 PM"
-    },
-    {
-      "campaignId": "tra-ppcbtr",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Device",
-      "success": true,
-      "leadId": "84E15CFE",
-      "apiStatus": "200 OK",
-      "thankYouUrl": "https://tra.com/thank-you?debt=5000&leadid=84E15CFE&reqid=27516067&affid=659&oid=133",
-      "timestamp": "2:27:08 PM"
-    },
-    {
-      "campaignId": "tra-ppcbm",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Device",
-      "success": true,
-      "leadId": "A229D023",
-      "apiStatus": "200 OK",
-      "thankYouUrl": "https://tra.com/thank-you?debt=5000&leadid=A229D023&reqid=27516069&affid=659&oid=133",
-      "timestamp": "2:28:09 PM"
-    },
-    {
-      "campaignId": "aftr-main",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Device",
-      "success": true,
-      "leadId": "20A01FB8",
-      "apiStatus": "200 OK",
-      "thankYouUrl": "https://americasfirsttaxrelief.com/thankyou.php?debt=7500&leadid=20A01FB8&affid=659&reqid=#reqid#&subid=#s1#",
-      "timestamp": "2:50:06 PM"
-    },
-    {
-      "campaignId": "ftd-x",
-      "viewport": "desktop",
-      "browser": "chromium",
-      "label": "Mac - Device",
-      "success": true,
-      "leadId": "493B8E05",
-      "apiStatus": "200 OK",
-      "thankYouUrl": "https://www.fidelity-tax-defense.net/thankyou_ts_checklist.php?debt=50000&leadid=493B8E05&affid=659&reqid=27516141&subid=#s1#&employment=#employment#",
-      "timestamp": "2:54:00 PM"
+      "thankYouUrl": "https://www.fresh-start-initiative.com/ty_next/?debt=5000&leadid=94FEB425&reqid=27642232&affid=659&subid=#s1#",
+      "timestamp": "10:53:24 AM"
     },
     {
       "campaignId": "fsi-ppc2",
@@ -348,10 +40,10 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "C047C5C3",
+      "leadId": "69AD843D",
       "apiStatus": "200 OK",
-      "thankYouUrl": "https://www.fresh-start-initiative.com/ty_next/?debt=10000&leadid=C047C5C3&reqid=27516143&affid=659&subid=#s1#",
-      "timestamp": "2:55:09 PM"
+      "thankYouUrl": "https://www.fresh-start-initiative.com/ty_next/?debt=10000&leadid=69AD843D&reqid=27642235&affid=659&subid=#s1#",
+      "timestamp": "10:54:07 AM"
     },
     {
       "campaignId": "tra-list",
@@ -359,10 +51,21 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "35F69BFA",
+      "leadId": "3E27C4CE",
       "apiStatus": "200 OK",
-      "thankYouUrl": "https://tra.com/thank-you?debt=5000&leadid=35F69BFA&reqid=27516146&affid=659&oid=133",
-      "timestamp": "2:56:13 PM"
+      "thankYouUrl": "https://tra.com/thank-you?debt=5000&leadid=3E27C4CE&reqid=27642236&affid=659&oid=133",
+      "timestamp": "10:54:29 AM"
+    },
+    {
+      "campaignId": "tra-list",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "C7D9E80E",
+      "apiStatus": "200 OK",
+      "thankYouUrl": "https://tra.com/thank-you?debt=10000&leadid=C7D9E80E&reqid=27642239&affid=659&oid=133",
+      "timestamp": "10:55:07 AM"
     },
     {
       "campaignId": "tra-d3",
@@ -370,10 +73,21 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "497C816E",
+      "leadId": "D27E625A",
       "apiStatus": "200 OK",
-      "thankYouUrl": "https://tra.com/thank-you?debt=5000&leadid=497C816E&reqid=27516149&affid=659&oid=145",
-      "timestamp": "2:57:15 PM"
+      "thankYouUrl": "https://tra.com/thank-you?debt=5000&leadid=D27E625A&reqid=27642240&affid=659&oid=145",
+      "timestamp": "10:55:30 AM"
+    },
+    {
+      "campaignId": "tra-d3",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "6BE1F38B",
+      "apiStatus": "200 OK",
+      "thankYouUrl": "https://tra.com/thank-you?debt=5000&leadid=6BE1F38B&reqid=27642241&affid=659&oid=145",
+      "timestamp": "10:56:06 AM"
     },
     {
       "campaignId": "ppc-st",
@@ -381,10 +95,21 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "162D2006",
+      "leadId": "E45AA916",
       "apiStatus": "200 OK",
-      "thankYouUrl": "https://tra.com/thank-you/nn?debt=5000&leadid=162D2006&reqid=27516151&affid=659&oid=133",
-      "timestamp": "2:58:16 PM"
+      "thankYouUrl": "https://tra.com/thank-you/nn?debt=5000&leadid=E45AA916&reqid=27642243&affid=659&oid=133",
+      "timestamp": "10:56:29 AM"
+    },
+    {
+      "campaignId": "ppc-st",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "638F3618",
+      "apiStatus": "200 OK",
+      "thankYouUrl": "https://tra.com/thank-you/nn?debt=5000&leadid=638F3618&reqid=27642244&affid=659&oid=133",
+      "timestamp": "10:57:05 AM"
     },
     {
       "campaignId": "ppc-st2",
@@ -392,10 +117,10 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "0BF9A0AF",
+      "leadId": "A729116C",
       "apiStatus": "200 OK",
-      "thankYouUrl": "https://tra.com/thank-you/nn?debt=5000&leadid=0BF9A0AF&reqid=27516154&affid=659&oid=133",
-      "timestamp": "2:59:17 PM"
+      "thankYouUrl": "https://tra.com/thank-you/nn?debt=5000&leadid=A729116C&reqid=27642245&affid=659&oid=133",
+      "timestamp": "10:57:27 AM"
     },
     {
       "campaignId": "ppc-m-ca",
@@ -403,10 +128,21 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "085772EA",
+      "leadId": "C4EAED3F",
       "apiStatus": "200 OK",
-      "thankYouUrl": "https://tra.com/thank-you?debt=20000&leadid=085772EA&reqid=27516156&affid=659&oid=133&page=tra_ppcm_ca",
-      "timestamp": "3:00:19 PM"
+      "thankYouUrl": "https://tra.com/thank-you?debt=5000&leadid=C4EAED3F&reqid=27642247&affid=659&oid=133&page=tra_ppcm_ca",
+      "timestamp": "10:58:27 AM"
+    },
+    {
+      "campaignId": "ppc-st2",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "623C8C5D",
+      "apiStatus": "200 OK",
+      "thankYouUrl": "https://tra.com/thank-you/nn?debt=10000&leadid=623C8C5D&reqid=27642246&affid=659&oid=133",
+      "timestamp": "10:58:30 AM"
     },
     {
       "campaignId": "ppc-cr",
@@ -414,10 +150,21 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "2A707AA8",
+      "leadId": "054D4EC8",
       "apiStatus": "200 OK",
-      "thankYouUrl": "https://tra.com/thank-you?debt=5000&leadid=2A707AA8&reqid=27516160&affid=659&oid=133",
-      "timestamp": "3:01:21 PM"
+      "thankYouUrl": "https://tra.com/thank-you?debt=5000&leadid=054D4EC8&reqid=27642248&affid=659&oid=133",
+      "timestamp": "10:59:27 AM"
+    },
+    {
+      "campaignId": "ppc-m-ca",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "F6302FC4",
+      "apiStatus": "200 OK",
+      "thankYouUrl": "https://tra.com/thank-you?debt=20000&leadid=F6302FC4&reqid=27642249&affid=659&oid=133&page=tra_ppcm_ca",
+      "timestamp": "10:59:32 AM"
     },
     {
       "campaignId": "ppc-fs",
@@ -425,10 +172,32 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "7E620A06",
+      "leadId": "D5B28A40",
       "apiStatus": "200 OK",
-      "thankYouUrl": "https://tra.com/thank-you?debt=20000&leadid=7E620A06&reqid=27516163&affid=659&oid=133",
-      "timestamp": "3:02:21 PM"
+      "thankYouUrl": "https://tra.com/thank-you?debt=10000&leadid=D5B28A40&reqid=27642250&affid=659&oid=133",
+      "timestamp": "11:00:25 AM"
+    },
+    {
+      "campaignId": "ppc-cr",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "021E50D8",
+      "apiStatus": "200 OK",
+      "thankYouUrl": "https://tra.com/thank-you?debt=5000&leadid=021E50D8&reqid=27642251&affid=659&oid=133",
+      "timestamp": "11:00:32 AM"
+    },
+    {
+      "campaignId": "ppc-fs",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "95739CBF",
+      "apiStatus": "200 OK",
+      "thankYouUrl": "https://tra.com/thank-you?debt=5000&leadid=95739CBF&reqid=27642253&affid=659&oid=133",
+      "timestamp": "11:01:30 AM"
     },
     {
       "campaignId": "tra-cpm",
@@ -436,10 +205,21 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "EB71326D",
+      "leadId": "FA50BC0A",
       "apiStatus": "200 OK",
-      "thankYouUrl": "https://tra.com/thank-you?debt=5000&leadid=EB71326D&reqid=27516166&affid=659&oid=136",
-      "timestamp": "3:03:22 PM"
+      "thankYouUrl": "https://tra.com/thank-you?debt=5000&leadid=FA50BC0A&reqid=27642252&affid=659&oid=136",
+      "timestamp": "11:01:52 AM"
+    },
+    {
+      "campaignId": "tra-cpm",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "1EBDD562",
+      "apiStatus": "200 OK",
+      "thankYouUrl": "https://tra.com/thank-you?debt=5000&leadid=1EBDD562&reqid=27642255&affid=659&oid=136",
+      "timestamp": "11:02:29 AM"
     },
     {
       "campaignId": "everest-tr-x",
@@ -447,10 +227,21 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "8EE40B3C",
+      "leadId": "0F40AA57",
       "apiStatus": "200 OK",
-      "thankYouUrl": "https://www.everesttaxrelief.net/thankyou_ts.php?debt=20000&leadid=8EE40B3C&affid=659&reqid=27516170&sub",
-      "timestamp": "3:04:35 PM"
+      "thankYouUrl": "https://www.everesttaxrelief.net/thankyou_ts.php?debt=10000&leadid=0F40AA57&affid=659&reqid=27642256&sub",
+      "timestamp": "11:03:03 AM"
+    },
+    {
+      "campaignId": "everest-tr-x",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "B40AA00A",
+      "apiStatus": "200 OK",
+      "thankYouUrl": "https://www.everesttaxrelief.net/thankyou_ts.php?debt=20000&leadid=B40AA00A&affid=659&reqid=27642257&sub",
+      "timestamp": "11:03:39 AM"
     },
     {
       "campaignId": "vts-ne-branded",
@@ -458,10 +249,21 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "8A350D31",
+      "leadId": "9C230BD4",
       "apiStatus": "200 OK",
-      "thankYouUrl": "https://www.veteranstaxservices.com/thankyou_ts_checklist.php?debt=5000&leadid=8A350D31&affid=659&reqid=27516176&subid=#s1#",
-      "timestamp": "3:05:51 PM"
+      "thankYouUrl": "https://www.veteranstaxservices.com/thankyou_ts_checklist.php?debt=7500&leadid=9C230BD4&affid=659&reqid=27642258&subid=#s1#",
+      "timestamp": "11:04:18 AM"
+    },
+    {
+      "campaignId": "vts-ne-branded",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "3F19CA4B",
+      "apiStatus": "200 OK",
+      "thankYouUrl": "https://www.veteranstaxservices.com/thankyou_ts_checklist.php?debt=5000&leadid=3F19CA4B&affid=659&reqid=27642260&subid=#s1#",
+      "timestamp": "11:04:52 AM"
     },
     {
       "campaignId": "1800-fresh-tax-x-main",
@@ -469,10 +271,21 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "96EA8C9D",
+      "leadId": "AE09E833",
       "apiStatus": "200 OK",
-      "thankYouUrl": "https://www.1800freshtax.com/thankyou_ts_checklist.php?debt=7500&leadid=96EA8C9D&reqid=27516180&affid=659&subid=#s1#",
-      "timestamp": "3:07:10 PM"
+      "thankYouUrl": "https://www.1800freshtax.com/thankyou_ts_checklist.php?debt=5000&leadid=AE09E833&reqid=27642263&affid=659&subid=#s1#",
+      "timestamp": "11:05:35 AM"
+    },
+    {
+      "campaignId": "1800-fresh-tax-x-main",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "9EB0109F",
+      "apiStatus": "200 OK",
+      "thankYouUrl": "https://www.1800freshtax.com/thankyou_ts_checklist.php?debt=10000&leadid=9EB0109F&reqid=27642265&affid=659&subid=#s1#",
+      "timestamp": "11:06:10 AM"
     },
     {
       "campaignId": "fsi-main",
@@ -480,10 +293,21 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "C1DB6684",
+      "leadId": "D43E314D",
       "apiStatus": "200 OK",
-      "thankYouUrl": "https://www.fresh-start-initiative.com/ty.rs/?debt=10000&leadid=C1DB6684&reqid=27516184&affid=659&subid=#s1#",
-      "timestamp": "3:08:31 PM"
+      "thankYouUrl": "https://www.fresh-start-initiative.com/ty.rs/?debt=5000&leadid=D43E314D&reqid=27642267&affid=659&subid=#s1#",
+      "timestamp": "11:06:54 AM"
+    },
+    {
+      "campaignId": "fsi-main",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "F24CF8B1",
+      "apiStatus": "200 OK",
+      "thankYouUrl": "https://www.fresh-start-initiative.com/ty.rs/?debt=7500&leadid=F24CF8B1&reqid=27642268&affid=659&subid=#s1#",
+      "timestamp": "11:07:26 AM"
     },
     {
       "campaignId": "senior-tax-defence-main",
@@ -491,10 +315,21 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "BB96EF82",
+      "leadId": "CA0BF8AB",
       "apiStatus": "200 OK",
-      "thankYouUrl": "https://www.seniortaxdefense.com/thankyou_ts_checklist.php?debt=5000&leadid=BB96EF82&affid=659&reqid=27516191&subid=#s1#",
-      "timestamp": "3:09:35 PM"
+      "thankYouUrl": "https://www.seniortaxdefense.com/thankyou_ts_checklist.php?debt=7500&leadid=CA0BF8AB&affid=659&reqid=27642270&subid=#s1#",
+      "timestamp": "11:07:59 AM"
+    },
+    {
+      "campaignId": "senior-tax-defence-main",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "4F2F110B",
+      "apiStatus": "200 OK",
+      "thankYouUrl": "https://www.seniortaxdefense.com/thankyou_ts_checklist.php?debt=10000&leadid=4F2F110B&affid=659&reqid=27642273&subid=#s1#",
+      "timestamp": "11:08:30 AM"
     },
     {
       "campaignId": "fresh-start-initiative-x-main",
@@ -502,10 +337,21 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "43D0EB6E",
+      "leadId": "E8E6A553",
       "apiStatus": "200 OK",
-      "thankYouUrl": "https://www.fresh-start-initiative.com/thankyou_ts_checklist_fsi23.php?debt=5000&leadid=43D0EB6E&reqid=27516195&affid=659",
-      "timestamp": "3:10:41 PM"
+      "thankYouUrl": "https://www.fresh-start-initiative.com/thankyou_ts_checklist_fsi23.php?debt=5000&leadid=E8E6A553&reqid=27642274&affid=659",
+      "timestamp": "11:09:08 AM"
+    },
+    {
+      "campaignId": "fresh-start-initiative-x-main",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "042CFD0B",
+      "apiStatus": "200 OK",
+      "thankYouUrl": "https://www.fresh-start-initiative.com/thankyou_ts_checklist_fsi23.php?debt=7500&leadid=042CFD0B&reqid=27642276&affid=659",
+      "timestamp": "11:09:37 AM"
     },
     {
       "campaignId": "ptr-main",
@@ -513,10 +359,21 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "C1451CEE",
+      "leadId": "34551B8B",
       "apiStatus": "200 OK",
-      "thankYouUrl": "https://premier-taxrelief.com/thank-you/?debt=7500&leadid=C1451CEE&affid=659&reqid=27516207&subid=#s1#",
-      "timestamp": "3:12:05 PM"
+      "thankYouUrl": "https://premier-taxrelief.com/thank-you/?debt=5000&leadid=34551B8B&affid=659&reqid=27642280&subid=#s1#",
+      "timestamp": "11:10:35 AM"
+    },
+    {
+      "campaignId": "ptr-main",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "BDBC25F3",
+      "apiStatus": "200 OK",
+      "thankYouUrl": "https://premier-taxrelief.com/thank-you/?debt=7500&leadid=BDBC25F3&affid=659&reqid=27642281&subid=#s1#",
+      "timestamp": "11:11:02 AM"
     },
     {
       "campaignId": "sctr-main",
@@ -524,10 +381,21 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "8EC57362",
+      "leadId": "511C7DCA",
       "apiStatus": "200 OK",
-      "thankYouUrl": "https://www.secondchancetaxrelief.com/thankyou_ts.php?debt=7500&leadid=8EC57362&affid=659&reqid=27516210",
-      "timestamp": "3:13:22 PM"
+      "thankYouUrl": "https://www.secondchancetaxrelief.com/thankyou_ts.php?debt=3000&leadid=511C7DCA&affid=659&reqid=27642284",
+      "timestamp": "11:11:55 AM"
+    },
+    {
+      "campaignId": "sctr-main",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "932C61B4",
+      "apiStatus": "200 OK",
+      "thankYouUrl": "https://www.secondchancetaxrelief.com/thankyou_ts.php?debt=10000&leadid=932C61B4&affid=659&reqid=27642286",
+      "timestamp": "11:12:22 AM"
     },
     {
       "campaignId": "senior-tax-defense-x",
@@ -535,10 +403,21 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "2C956F9F",
+      "leadId": "32A0A78E",
       "apiStatus": "200 OK",
-      "thankYouUrl": "https://www.seniortaxdefense.com/thankyou.php?debt=7500&leadid=2C956F9F&affid=659&reqid=27516216&subid=#s1#",
-      "timestamp": "3:14:31 PM"
+      "thankYouUrl": "https://www.seniortaxdefense.com/thankyou.php?debt=5000&leadid=32A0A78E&affid=659&reqid=27642288&subid=#s1#",
+      "timestamp": "11:13:03 AM"
+    },
+    {
+      "campaignId": "senior-tax-defense-x",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "C2F49221",
+      "apiStatus": "200 OK",
+      "thankYouUrl": "https://www.seniortaxdefense.com/thankyou.php?debt=10000&leadid=C2F49221&affid=659&reqid=27642289&subid=#s1#",
+      "timestamp": "11:13:37 AM"
     },
     {
       "campaignId": "aftr-main",
@@ -546,10 +425,21 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "EE1DE920",
+      "leadId": "B1DC9962",
       "apiStatus": "200 OK",
-      "thankYouUrl": "https://americasfirsttaxrelief.com/thankyou.php?debt=5000&leadid=EE1DE920&affid=659&reqid=#reqid#&subid=#s1#",
-      "timestamp": "3:15:52 PM"
+      "thankYouUrl": "https://americasfirsttaxrelief.com/thankyou.php?debt=7500&leadid=B1DC9962&affid=659&reqid=#reqid#&subid=#s1#",
+      "timestamp": "11:14:25 AM"
+    },
+    {
+      "campaignId": "aftr-main",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "9A81B812",
+      "apiStatus": "200 OK",
+      "thankYouUrl": "https://americasfirsttaxrelief.com/thankyou.php?debt=7500&leadid=9A81B812&affid=659&reqid=#reqid#&subid=#s1#",
+      "timestamp": "11:14:54 AM"
     },
     {
       "campaignId": "guardian-tax-relief-ppc",
@@ -557,10 +447,21 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "7370A57A",
+      "leadId": "B6DCEF3F",
       "apiStatus": "200 OK",
-      "thankYouUrl": "https://guardiantax-relief.com/ty2/?debt=5000&leadid=7370A57A&reqid=27516225&affid=659&oid=150",
-      "timestamp": "3:16:50 PM"
+      "thankYouUrl": "https://guardiantax-relief.com/ty2/?debt=5000&leadid=B6DCEF3F&reqid=27642293&affid=659&oid=150",
+      "timestamp": "11:15:27 AM"
+    },
+    {
+      "campaignId": "guardian-tax-relief-ppc",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "8F77BA2C",
+      "apiStatus": "200 OK",
+      "thankYouUrl": "https://guardiantax-relief.com/ty2/?debt=5000&leadid=8F77BA2C&reqid=27642295&affid=659&oid=150",
+      "timestamp": "11:15:55 AM"
     },
     {
       "campaignId": "tra-st-tsg",
@@ -568,10 +469,21 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "50C71507",
+      "leadId": "B1CB0344",
       "apiStatus": "200 OK",
-      "thankYouUrl": "https://tra.com/thank-you/nn?debt=5000&leadid=50C71507&reqid=27516230&affid=659&oid=133",
-      "timestamp": "3:17:48 PM"
+      "thankYouUrl": "https://tra.com/thank-you/nn?debt=5000&leadid=B1CB0344&reqid=27642296&affid=659&oid=133",
+      "timestamp": "11:16:32 AM"
+    },
+    {
+      "campaignId": "tra-st-tsg",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "412E2F07",
+      "apiStatus": "200 OK",
+      "thankYouUrl": "https://tra.com/thank-you/nn?debt=5000&leadid=412E2F07&reqid=27642297&affid=659&oid=133",
+      "timestamp": "11:16:57 AM"
     },
     {
       "campaignId": "tra-st-tf",
@@ -579,10 +491,21 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "304C330F",
+      "leadId": "B30AD444",
       "apiStatus": "200 OK",
-      "thankYouUrl": "https://tra.com/thank-you/nn?debt=5000&leadid=304C330F&reqid=27516233&affid=659&oid=133",
-      "timestamp": "3:18:47 PM"
+      "thankYouUrl": "https://tra.com/thank-you/nn?debt=5000&leadid=B30AD444&reqid=27642300&affid=659&oid=133",
+      "timestamp": "11:17:36 AM"
+    },
+    {
+      "campaignId": "tra-st-tf",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "145121DF",
+      "apiStatus": "200 OK",
+      "thankYouUrl": "https://tra.com/thank-you/nn?debt=5000&leadid=145121DF&reqid=27642302&affid=659&oid=133",
+      "timestamp": "11:18:02 AM"
     },
     {
       "campaignId": "tra-st-sp",
@@ -590,10 +513,21 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "9969E32B",
+      "leadId": "F05A9994",
       "apiStatus": "200 OK",
-      "thankYouUrl": "https://tra.com/thank-you?debt=10000&leadid=9969E32B&reqid=27516238&affid=659&oid=133",
-      "timestamp": "3:19:45 PM"
+      "thankYouUrl": "https://tra.com/thank-you?debt=10000&leadid=F05A9994&reqid=27642303&affid=659&oid=133",
+      "timestamp": "11:18:41 AM"
+    },
+    {
+      "campaignId": "tra-st-sp",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "41913C71",
+      "apiStatus": "200 OK",
+      "thankYouUrl": "https://tra.com/thank-you?debt=5000&leadid=41913C71&reqid=27642304&affid=659&oid=133",
+      "timestamp": "11:19:06 AM"
     },
     {
       "campaignId": "tra-ppc-v9",
@@ -601,10 +535,21 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "240BD2DE",
+      "leadId": "4AF88159",
       "apiStatus": "200 OK",
-      "thankYouUrl": "https://tra.com/thank-you?debt=5000&leadid=240BD2DE&reqid=27516240&affid=659&oid=133",
-      "timestamp": "3:20:51 PM"
+      "thankYouUrl": "https://tra.com/thank-you?debt=5000&leadid=4AF88159&reqid=27642306&affid=659&oid=133",
+      "timestamp": "11:19:49 AM"
+    },
+    {
+      "campaignId": "tra-ppc-v9",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "C21F9066",
+      "apiStatus": "200 OK",
+      "thankYouUrl": "https://tra.com/thank-you?debt=5000&leadid=C21F9066&reqid=27642307&affid=659&oid=133",
+      "timestamp": "11:20:19 AM"
     },
     {
       "campaignId": "tra-ppcbtr",
@@ -612,10 +557,21 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "21BA26E6",
+      "leadId": "FBA5D749",
       "apiStatus": "200 OK",
-      "thankYouUrl": "https://tra.com/thank-you?debt=5000&leadid=21BA26E6&reqid=27516243&affid=659&oid=133",
-      "timestamp": "3:21:51 PM"
+      "thankYouUrl": "https://tra.com/thank-you?debt=5000&leadid=FBA5D749&reqid=27642308&affid=659&oid=133",
+      "timestamp": "11:20:55 AM"
+    },
+    {
+      "campaignId": "tra-ppcbtr",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "9B664D6C",
+      "apiStatus": "200 OK",
+      "thankYouUrl": "https://tra.com/thank-you?debt=5000&leadid=9B664D6C&reqid=27642309&affid=659&oid=133",
+      "timestamp": "11:21:25 AM"
     },
     {
       "campaignId": "tra-ppcbm",
@@ -623,10 +579,21 @@
       "browser": "chromium",
       "label": "Mac - Device",
       "success": true,
-      "leadId": "CF9CCB5C",
+      "leadId": "0A3827B8",
       "apiStatus": "200 OK",
-      "thankYouUrl": "https://tra.com/thank-you?debt=10000&leadid=CF9CCB5C&reqid=27516245&affid=659&oid=133",
-      "timestamp": "3:22:50 PM"
+      "thankYouUrl": "https://tra.com/thank-you?debt=5000&leadid=0A3827B8&reqid=27642311&affid=659&oid=133",
+      "timestamp": "11:21:58 AM"
+    },
+    {
+      "campaignId": "tra-ppcbm",
+      "viewport": "desktop",
+      "browser": "chromium",
+      "label": "Mac - Device",
+      "success": true,
+      "leadId": "37D58479",
+      "apiStatus": "200 OK",
+      "thankYouUrl": "https://tra.com/thank-you?debt=5000&leadid=37D58479&reqid=27642313&affid=659&oid=133",
+      "timestamp": "11:22:29 AM"
     }
   ],
   "emailSent": false
